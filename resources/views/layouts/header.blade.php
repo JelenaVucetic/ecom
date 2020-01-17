@@ -20,7 +20,8 @@
       <?php if(Auth::check()) {?>
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name}}</a>
         <?php } else { ?>
-          <a class="dropdown-item"href="{{ url('/login') }}">Login</a>
+          <a class="dropdown-item"href="{{ url('/login') }}" style="background-color:white;">Login</a>
+          <li class="list-inline-item"> <a  href="{{ route('register') }}">Register</a> </li>
         <?php } ?>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
         <?php if(Auth::check()) {?>
@@ -31,7 +32,7 @@
         </div>
       </li>
     <li class="list-inline-item"> <a  href="/cart">View Cart({{ Cart::count() }})({{ Cart::total() }}) </a> </li>
-    <li class="list-inline-item"> <a  href="{{ route('register') }}">Register</a> </li>
+   
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

@@ -32,7 +32,6 @@ class CheckoutController extends Controller
                 'zip.required' => 'Zip is not valid',
                 'city.required' => 'Enter City',
             ]);
-           
     }
 
 }

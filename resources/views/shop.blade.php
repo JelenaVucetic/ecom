@@ -36,6 +36,7 @@
                   </button>                
                 </div>
                 <small class="text-muted">9 mins</small>
+      
               </div>
             </div>
           </div>
