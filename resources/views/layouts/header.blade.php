@@ -26,6 +26,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdown01">
         <?php if(Auth::check()) {?>
           <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+          <a class="dropdown-item" href="{{ url('/profile') }}">Profile</a>
         <?php } else { ?>
           <a class="dropdown-item"href="{{ url('/login') }}">Login</a>
         <?php } ?>

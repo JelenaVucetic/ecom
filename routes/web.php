@@ -49,3 +49,10 @@ Route::put('/cart/update/{id}', 'CartController@update');
 Route::get('/checkout', 'CheckoutController@index');
 Route::post('/formvalidate', 'CheckoutController@formvalidate');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+//Route::group(['middleware' => 'auth'], function() {
+    Route::get('/thankyou', function() {
+        return view('profile.thankyou');
+    });
+    Route::get('/orders', 'ProfileController@orders');
+//}); 

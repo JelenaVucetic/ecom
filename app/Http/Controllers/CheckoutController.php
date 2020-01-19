@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Address;
+use App\Order;
+use Illuminate\Support\Facades\Auth;
+
 class CheckoutController extends Controller
 {
     //
@@ -20,7 +24,6 @@ class CheckoutController extends Controller
             'lastname' => 'required|min:3|max:35',
             'email' => 'required|email',
             'street' => 'required|min:3|max:35',
-            'street' => 'required|min:3|max:35',
             'zip' => 'required|regex:/\b\d{5}\b/',
             'city' => 'required|min:3|max:35'
         ],
@@ -32,6 +35,31 @@ class CheckoutController extends Controller
                 'zip.required' => 'Zip is not valid',
                 'city.required' => 'Enter City',
             ]);
+
+        if (Auth::check()) {
+            $userid = Auth::user()->id;
+        } else {
+            $userid = '0';
+        }
+        
+        $address = new Address;
+        $address->firstname = $request->firstname;
+        $address->lastname = $request->lastname;
+        $address->email = $request->email;
+        $address->street = $request->street;
+        $address->zip = $request->zip;
+        $address->city = $request->city;
+        $address->user_id = $userid;
+        $address->save();
+       
+        
+        Order::createOrder();
+
+        
+
+        Cart::destroy();
+        return back();
+
     }
 
 }
