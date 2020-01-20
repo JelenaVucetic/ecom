@@ -54,5 +54,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::get('/thankyou', function() {
         return view('profile.thankyou');
     });
+Route::group(['middleware' => 'auth'], function() {
     Route::get('/orders', 'ProfileController@orders');
-//}); 
+    Route::get('/address', 'ProfileController@address');
+}); 

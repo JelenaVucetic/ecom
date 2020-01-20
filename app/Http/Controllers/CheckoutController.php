@@ -51,14 +51,14 @@ class CheckoutController extends Controller
         $address->city = $request->city;
         $address->user_id = $userid;
         $address->save();
-       
+     
         
         Order::createOrder();
-
+      
         
 
         Cart::destroy();
-        return back();
+        return view('profile.thankyou');
 
     }
 
