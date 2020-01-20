@@ -55,6 +55,11 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
         return view('profile.thankyou');
     });
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('/profile', 'ProfileController@index');
     Route::get('/orders', 'ProfileController@orders');
     Route::get('/address', 'ProfileController@address');
+    Route::post('/updateAddress', 'ProfileController@updateAddress');
+    Route::get('/password', 'ProfileController@password');
+    Route::post('/updatePassword', 'ProfileController@updatePassword');
+   // Route::post('/password', 'ProfileController@updatePassword');
 }); 

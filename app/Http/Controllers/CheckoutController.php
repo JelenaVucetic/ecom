@@ -58,8 +58,12 @@ class CheckoutController extends Controller
         
 
         Cart::destroy();
-        return view('profile.thankyou');
-
+        if(Auth::user()) {
+            return view('profile.index');
+        } else {
+            return view('profile.thankyou');
+        }
+      
     }
 
 }

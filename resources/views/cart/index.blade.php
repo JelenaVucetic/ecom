@@ -27,7 +27,7 @@
     });
 </script>
 <?php if($cartItems->isEmpty()) {?>
-    <section id="cart_items">
+    <section id="cart_items" style="padding:200px">
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
@@ -35,13 +35,13 @@
                     <li class="active">Shopping cart</li>
                 </ol>
             </div>
-            <div><img src="{{ asset('/images/slika1.PNG') }}" alt=""></div>
+            <div><img src="{{ asset('/images/empty-cart.png') }}" alt=""></div>
         </div>
     </section>
 <?php } else { ?>
     <br>
     <br>
-    <section id="cart_items">
+    <section id="cart_items"  style="padding:200px">
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">

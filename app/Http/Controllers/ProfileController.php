@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Address;
+use App\Order;
+use App\Product;
+
 class ProfileController extends Controller
 {
     //
@@ -21,6 +25,43 @@ class ProfileController extends Controller
     }
 
     public function address() {
-        return view('profile.address');
+        $user_id = Auth::user()->id;
+        $address_data = DB::table('address')->where('user_id', '=', $user_id)->orderby('id', 'DESC')->get();
+        //dd( $address_data);
+        return view('profile.address', compact('address_data'));
+    }
+
+    public function updateAddress(Request $request) {
+        //echo 'here is query for updating address';
+        //dd($request->firstname);
+        $this->validate($request, [
+          
+            'firstname' => 'required|min:3|max:35',
+            'lastname' => 'required|min:3|max:35',
+            'email' => 'required|email',
+            'street' => 'required|min:3|max:35',
+            'zip' => 'required|regex:/\b\d{5}\b/',
+            'city' => 'required|min:3|max:35'
+        ],
+            [
+                'firstname.required' => 'Enter First Name',
+                'lastname.required' => 'Enter Last Name',
+                'email.required' => 'Pleaste enter valid email',
+                'street.required' => 'Enter Street',
+                'zip.required' => 'Zip is not valid',
+                'city.required' => 'Enter City',
+            ]);
+        
+        $userid = Auth::user()->id;
+        DB::table('address')->where('user_id', $userid)->update($request->except('_token'));
+        return back()->with('msg', 'Your address has been updated');
+    }
+
+    public function password() {
+        return view('profile.password');
+    }
+
+    public function updatePassword() {
+        echo 'here is query for updating password';
     }
 }
