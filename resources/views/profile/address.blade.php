@@ -9,6 +9,9 @@
                 <li class="active">My Address</li>
             </ol>
         </div>
+        @if(session('msg'))
+        <div class="alert alert-info"> {{session('msg')}} </div>
+        @endif
         <div class="row">
             @include('profile.menu') 
             <div class="col-md-8">

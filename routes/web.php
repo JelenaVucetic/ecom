@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],
       //  Route::get('/admin', 'AdminController@index');
 
         Route::resource('product', 'ProductsController');
+        Route::resource('category', 'CategoriesController');
     }
 );
 

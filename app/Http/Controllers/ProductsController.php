@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -15,7 +16,8 @@ class ProductsController extends Controller
 
     public function create() 
     {
-        return view('admin.product.create');
+        $categories = Category::pluck('name', 'id');
+        return view('admin.product.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -40,6 +42,7 @@ class ProductsController extends Controller
             $formInput['image'] = $imageName;
         } 
 
+        $categories = Category::all();
         Product::create($formInput);
         return redirect()->back();
     }

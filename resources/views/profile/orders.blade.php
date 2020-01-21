@@ -11,13 +11,7 @@
         </div>
         <div class="row">
             <div class="col-md-4 well well-sm">
-                <ul class="nav navbar">
-                    <h3>Quick Links</h3>
-                    <li>My Profile</li>
-                    <li>My Orders</li>
-                    <li>My Address</li>
-                    <li>Change Password</li>
-                </ul>
+               @include('profile.menu')
             </div>
             <div class="col-md-8">
                 <h3><span style="color:green;">{{ucwords(Auth::user()->name)}}</span>, 
@@ -37,7 +31,7 @@
                     @foreach($orders as $order)
                         <tr>
                             <td>{{$order->created_at}}</td>
-                            <td>{{$order->name}}</td>
+                            <td>{{$order->product_id}}</td>
                             <td>{{$order->total}}</td>
                             <td>{{$order->status}}</td>
                             <td>view</td>

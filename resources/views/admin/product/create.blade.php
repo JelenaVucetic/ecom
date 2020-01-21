@@ -50,6 +50,10 @@
                         {{ Form::text('description', null, array('class' => 'form-control', 'required' => '', 'minlength' => '5')) }}
                     </div>
                     <div class="form-group">
+                        {{ Form::label('category_id', 'Categories') }}
+                        {{ Form::select('category_id', $categories, null, array('class' => 'form-control', 'placeholder' => 'Select Category')) }}
+                    </div>
+                    <div class="form-group">
                         {{ Form::label('price', 'Price') }}
                         {{ Form::text('price', null, array('class' => 'form-control')) }}
                     </div>
