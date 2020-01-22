@@ -17,19 +17,10 @@ Route::get('/', function () {
 });
 
 Route::get('/shop', 'HomeController@shop');
-
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 Route::get('/product_details/{id}', 'HomeController@product_details');
 
-Route::get('/products', function(){
-    $products = Product::all();
-    return view('shop', compact('products'));
-});
-
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']],
-    function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', function() {
             return view('admin.index');
         })->name('admin.index');
@@ -62,5 +53,4 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/updateAddress', 'ProfileController@updateAddress');
     Route::get('/password', 'ProfileController@password');
     Route::post('/updatePassword', 'ProfileController@updatePassword');
-   // Route::post('/password', 'ProfileController@updatePassword');
 }); 

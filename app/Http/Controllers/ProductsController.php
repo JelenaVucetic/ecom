@@ -30,6 +30,7 @@ class ProductsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
+            'stock' => 'required',
             'image' => 'image|mimes:png,jpg,jpeg,svg|max:10000',
             'spl_price' => 'required'
         ]);

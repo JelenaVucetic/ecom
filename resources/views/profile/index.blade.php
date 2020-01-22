@@ -29,7 +29,7 @@
                                     <a href="{{url('/address')}}" class="btn btn-success">My Address</a>
                                 </td>
                                 <td>
-                                    <a href="{{url('')}}" class="btn btn-success">Change password</a>
+                                    <a href="{{url('/password')}}" class="btn btn-success">Change password</a>
                                 </td>
                             </tr>
                        </table>

@@ -13,7 +13,7 @@ class CartController extends Controller
     public function index()
     {    
         $cartItems = Cart::content();  
-        //dd($cartItems);
+        
         return view('cart.index', compact('cartItems'));
     }
 
@@ -21,8 +21,7 @@ class CartController extends Controller
     {
         $product = Product::find($id);
 
-        Cart::add($product->name, $id, 1, $product->price);
-     
+        Cart::add( $id, $product->name, 1, $product->price, ['img'=> $product->image]);
         return back();
     }
 

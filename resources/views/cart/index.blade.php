@@ -54,7 +54,7 @@
                     <table class="table table-condensed">
                         <thead>
                             <tr class="cart_menu">
-                                <td class="image">item</td>
+                                <td class="image">Image</td>
                                 <td class="description">Description</td>
                                 <td class="price">Price</td>
                                 <td class="quantity">Quantity</td>
@@ -76,17 +76,16 @@
                         <tbody>
                             <tr>
                                 <td class="cart_product">
-                                    <p><img src="{{ url('images', [$cartItem->options->img]) }}" class="card-img-top bmw" alt=""></p>
+                                    <p><img src="{{ url('images', $cartItem->img) }}" class="card-img-top bmw" alt=""></p>
                                 </td>
                                 {!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method' => 'put']) !!}
                                 @csrf
                                 <td class="card_description">
                                     <a href="{{ url('/product_details') }}/{{ $cartItem->id }}"></a>
                                     <div class="card" style="width:30rem;height:20rem;">
-                                        <img src="{{ url('images', $cartItem->img) }}" class="card-item-top" alt="">
                                         <h4><a href="{{ url('/product_details') }}/{{$cartItem->id}}" style="color:blue;">{{ $cartItem->name }} </a></h4>
                                         <p>Produc ID: {{ $cartItem->id }}</p>
-                                       
+                                        <p>Only {{ $cartItem->options->stock}} left in stock</p>
                                     </div>
                                 </td>
                                 <td class="cart_price">

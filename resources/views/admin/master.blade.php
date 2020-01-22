@@ -15,6 +15,11 @@
 <body>
     
   @include('admin.admin_header')
-  @yield('content')
+  <div class="container-fluid" style="padding-top:50px;">
+    <div class="row">
+    @include('admin.includes.sidenav')
+      @yield('content')
+    </div>
+  </div>
 </body>
 </html>
