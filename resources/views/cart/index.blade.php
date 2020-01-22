@@ -76,7 +76,7 @@
                         <tbody>
                             <tr>
                                 <td class="cart_product">
-                                    <p><img src="{{ url('images', $cartItem->img) }}" class="card-img-top bmw" alt=""></p>
+                                  <!--   <p><img src="{{ url('images', $cartItem->img) }}" class="card-img-top bmw" alt=""></p> -->
                                 </td>
                                 {!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method' => 'put']) !!}
                                 @csrf
