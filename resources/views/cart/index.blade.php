@@ -76,10 +76,8 @@
                         <tbody>
                             <tr>
                                 <td class="cart_product">
-                                  <!--   <p><img src="{{ url('images', $cartItem->img) }}" class="card-img-top bmw" alt=""></p> -->
+                                    <p><img src="{{ url('images', $cartItem->options->img) }}" class="card-img-top bmw" alt=""></p>
                                 </td>
-                                {!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method' => 'put']) !!}
-                                @csrf
                                 <td class="card_description">
                                     <a href="{{ url('/product_details') }}/{{ $cartItem->id }}"></a>
                                     <div class="card" style="width:30rem;height:20rem;">
@@ -92,16 +90,12 @@
                                     <p>{{ $cartItem->price }}</p>
                                 </td>
                                 <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-                                        <input type="hidden" id="rowId<?php echo $count;?>" value="{{ $cartItem->rowId}}">
-                                        <input type="hidden" id="proId<?php echo $count;?>" value="{{ $cartItem->proId}}">
-                                        <input type="number" value="{{ $cartItem->qty}}" name="qty" id="upCart<?php echo $count;?>" 
-                                            autocomplete="off" style="text-align: center;max-width:50px;" MIN='1' MAX="30">
-                                        <br>
-                                        <input type="submit" class="btn btn-primary" value="Update" style="margin:5px;">
-                                    </div>
+                                {!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method' => 'put']) !!}
+                                <input type="hidden" name="proId" value="{{ $cartItem->id }}">
+                                <input type="number" size="2" value="{{ $cartItem->qty }}" name="qty" id="upCart<?php echo $count; ?>" autocomplete="off" style="text-align:center; max-width:50px;" MIN='1' MAX='1000'>
+                                <input type="submit" class="btn btn-primary" value="Update" style="margin:5px;">
+                                {!! Form::close() !!}                                   
                                 </td>
-                                {!! Form::close() !!}
                                 <td class="cart_total">
                                     <p class="cart_total-price">{{ $cartItem->subtotal }}</p>
                                 </td>

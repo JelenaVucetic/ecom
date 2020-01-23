@@ -20,7 +20,6 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
           @forelse($products as $product)
         <div class="col-md-4">
@@ -39,7 +38,6 @@
                   </button>                
                 </div>
                 <small class="text-muted">9 mins</small>
-      
               </div>
             </div>
           </div>
@@ -50,6 +48,6 @@
       </div>
     </div>
   </div>
-
+  @include('recommends')
 </main>
 @endsection
