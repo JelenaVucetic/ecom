@@ -51,6 +51,11 @@ class HomeController extends Controller
             $recommends->uid = Auth::user()->id;
             $recommends->pro_id = $id;
             $recommends->save();
+        } else {
+            $recommends = new Recommends;
+            $recommends->uid = 0;
+            $recommends->pro_id = $id;
+            $recommends->save();
         }
 
         $Products = DB::table('product')->where('id', $id)->get();

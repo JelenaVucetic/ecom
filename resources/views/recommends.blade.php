@@ -9,7 +9,10 @@
 
 if(Auth::check()){
  $products2 = DB::table('recommends')
-         ->leftJoin('product','recommends.pro_id','product.id')     
+         ->leftJoin('product','recommends.pro_id','product.id')
+         ->select('pro_id','name','image','price', DB::raw('count(*) as total'))
+         ->distinct('recommends.pro_id')  
+         ->groupBy('pro_id','name','image','price')   
          ->where('uid',Auth::user()->id)
          ->inRandomOrder()
         ->take(7)
@@ -17,12 +20,16 @@ if(Auth::check()){
 }else{
  $products2 = DB::table('recommends')
          ->leftJoin('product','recommends.pro_id','product.id')
+         ->select('pro_id','name','image','price', DB::raw('count(*) as total'))
+         ->distinct('recommends.pro_id')  
+         ->groupBy('pro_id','name','image','price')  
          ->inRandomOrder()
         ->take(7)
         ->get();
 }    
 ?>
 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+<h1>Recomended for you</h1>
     <div class="carousel-inner">
         <div class="item">  
                 @foreach($products2 as $p)

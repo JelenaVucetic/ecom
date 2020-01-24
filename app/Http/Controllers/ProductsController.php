@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
     //
     public function index() 
-    {
+    {   
+        $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
         $products = Product::all();
         return view('admin.product.index', compact('products'));
     }
@@ -52,6 +54,37 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         return view('admin.product.show', compact('product'));
+    }
+
+    public function edit($id) 
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+
+        return view('admin.product.edit', compact('product', 'categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        //dd($request);
+        $products = DB::table('product')->where('id', '=', $id)->get();
+        $proId =$id;
+        //dd($id);
+        $name = $request->name;
+        $category_id = $request->cat_id;
+        $description = $request->description;
+        $price = $request->price;
+        $spl_price = $request->spl_price;
+
+        DB::table('product')->where('id', $proId)->update([
+            'name' => $name,
+            'category_id' => $category_id,
+            'description' => $description,
+            'price'=> $price,
+            'spl_price' => $spl_price
+        ]);
+
+        return view('admin.product.index', compact('products', 'category'));
     }
 
     public function destroy()
