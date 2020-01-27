@@ -10,8 +10,12 @@
         <li><img src="{{url('images', $product->image)}}" alt="" style="width:100px;height:100px;"></li>
         <li>Product price: {{ $product->price}} </li>
      <!--    category not working after updating product
-        <li>Category: {{$product->category->name}}</li> -->
+        category goes here</li> -->
         <li><a href="{{route('product.edit', $product->id)}}" class="btn btn-success btn small">Edit</a></li>
+
+        {!! Form::open(['method' => 'DELETE', 'action' => ['ProductsController@destroy', $product->id ]]) !!}
+            <li> {!! Form::submit('Delete Product', ['class'=> 'btn btn-danger col-sm-6']) !!} </li>
+        {!! Form::close() !!}
         </ul>
     </div>
     @empty

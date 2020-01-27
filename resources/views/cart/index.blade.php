@@ -90,11 +90,12 @@
                                     <p>{{ $cartItem->price }}</p>
                                 </td>
                                 <td class="cart_quantity">
-                                {!! Form::open(['url' => ['cart/update', $cartItem->rowId], 'method' => 'put']) !!}
-                                <input type="hidden" name="proId" value="{{ $cartItem->id }}">
+                                
+                                <input type="text" id="rowId<?php echo $count; ?>" value="{{ $cartItem->rowId }}">
+                                <input type="text" id="proId<?php echo $count; ?>" value="{{ $cartItem->id }}">
                                 <input type="number" size="2" value="{{ $cartItem->qty }}" name="qty" id="upCart<?php echo $count; ?>" autocomplete="off" style="text-align:center; max-width:50px;" MIN='1' MAX='1000'>
                                 <input type="submit" class="btn btn-primary" value="Update" style="margin:5px;">
-                                {!! Form::close() !!}                                   
+                                                       
                                 </td>
                                 <td class="cart_total">
                                     <p class="cart_total-price">{{ $cartItem->subtotal }}</p>

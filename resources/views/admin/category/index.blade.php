@@ -2,31 +2,48 @@
 
 @section('content')
 <div class="navbar" style="width:30%">
-    <div>
-        <a href="" class="navbar-brand">Categories</a>
-        <ul class="nav navbar-nav">
-        @if(!empty($categories))
-            @forelse($categories as $category)
-            <li class="active">
-                <a href="{{route('category.show', $category->id)}}">{{ $category->name}}</a>
-            </li>
-            @empty
-            <li>No Items</li>
-            @endforelse
-        @endif
-        </ul>
-    </div>
-    <di>
-    <h3>Add a category</h3>
-        {!! Form::open(['route' => 'category.store', 'method' => 'post']) !!}
-        <div class="form-group">
-            {{ Form::label('name', 'Title')}}
-            {{ Form::text('name', null, array('class' => 'form-control'))}}
-        </div>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-        {!! Form::close() !!}
-    </div>
+    <table class="table table-dark">
+        <thead>
+            <tr>     
+                <th>Category Name</th>
+                <th>Edit</th>
+                <th>Status</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+         @foreach($categories as $category)
+            <tr>
+                <td><a href="{{route('category.show',$category->id)}}">{{$category->name}}</a></td>
+                <td>@if($category->status=='0')
+                        Enable
+                    @else
+                        Disable
+                    @endif
+                </td>             
+            {!! Form::open(['method'=>'DELETE', 'action'=> ['CategoriesController@destroy', $category->id]]) !!}
+                <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td> 	
+            {!! Form::close() !!}    
+            </tr>
+            @endforeach 
+            </tbody>
+    </table>
+
+
+    <div class="col-md-12">
+        <div class="card card-body bg-success text-white py-5">
+            <h2>Create Category</h2>
+            <p class="lead">Lorem Ipsum has been the industry's standard dummy text ever since the</p>
+            {!! Form::open(['route' => 'category.store', 'method' => 'post']) !!}
+            <div class="form-group">
+                {{ Form::label('name', 'Name') }}
+                {{ Form::text('name', null, array('class' => 'form-control')) }}
+            </div>
+            <td>Category Status</td>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add Category</button>
+          {!! Form::close() !!}
+     </div>
 </div>
 
 <!-- products-->

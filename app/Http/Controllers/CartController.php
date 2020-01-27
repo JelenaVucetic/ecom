@@ -34,7 +34,10 @@ class CartController extends Controller
     {
         $qty = $request->qty;
         $proId = $request->proId;
-        $product = Product::find($proId);
+        $rowId = $request->rowId;
+        Cart::update($rowId, $qty);
+        
+      /*   $product = Product::find($proId);
         $stock = $product->stock;
 
         if($qty<$stock) {
@@ -44,6 +47,6 @@ class CartController extends Controller
         } else {
             $msg = 'Please check your qty is it morew than product stock';
             return back()-> with('error', $msg);
-        }
+        } */
     }
 }

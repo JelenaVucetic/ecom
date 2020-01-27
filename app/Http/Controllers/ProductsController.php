@@ -87,8 +87,32 @@ class ProductsController extends Controller
         return view('admin.product.index', compact('products', 'category'));
     }
 
-    public function destroy()
+    public function destroy($id)
+    {
+        Product::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+
+    public function ImageEditForm($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admin.product.ImageEditForm', compact('product'));
+    }
+
+    public function editProImage(Request $request)
     {
         
+        $proid = $request->id;
+
+        $image = $request->image;
+        if($image) {
+            $imageName = $image->getClientOriginalName();
+            $image->move('images', $imageName);
+            $formInput['image'] = $imageName;
+        }
+
+        DB::table('product')->where('id', $proid)->update(['image' => $imageName]);
+
+        return redirect()->back();
     }
 }
