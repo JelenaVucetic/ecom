@@ -6,9 +6,15 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
+        <?php if(Auth::check()) {?>
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
       </li>
+       <?php } else { ?>
+        <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+       <?php } ?>
       <li class="nav-item">
         <a class="nav-link" href="/shop">shop</a>
       </li>
@@ -37,17 +43,17 @@
               <div class="">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="badge badge-secondary badge-pill"><i class="fa fa-shopping-cart"></i>{{Cart::count()}}</span>
-            <span class="text-muted">Total: ({{Cart::total()}})</span>            
-          </h4>        
+            <span class="text-muted">Total: ({{Cart::total()}})</span>
+          </h4>
           <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>         
+            <span class="text-muted">Your cart</span>
           </h4>
           <ul class="list-group mb-3">
             <?php $cartItems = Cart::content();?>
                 @foreach($cartItems as $cartItem)
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div class="col-md-6">
-              <div>    
+              <div>
                 <img  class="dropdownimage" src="{{url('images',$cartItem->options->img)}}"  class="img-responsive dropdownimage" style="width:50px" />
               </div>
             </div>
@@ -61,15 +67,15 @@
              @endforeach
             <li class="list-group-item d-flex justify-content-between">
                 <a class="btn btn-primary" href="{{url('/')}}/checkout">Check Out</a>
-                <a class="btn btn-primary float-right" href="{{url('/cart')}}">View Cart</a>           
-            </li>   
+                <a class="btn btn-primary float-right" href="{{url('/cart')}}">View Cart</a>
+            </li>
       </ul>
    </div>
   </div>
   </li>
 
   <form action='' class="form-inline ml-auto" method="post">
-   
+
    <div class="d-flex justify-content-between align-items-center">
   <input type="text" name="site_search" class="form-control mr-2" type="text" placeholder="Search">
 

@@ -4,7 +4,7 @@
 <div class="navbar" style="width:30%">
     <table class="table table-dark">
         <thead>
-            <tr>     
+            <tr>
                 <th>Category Name</th>
                 <th>Edit</th>
                 <th>Status</th>
@@ -15,17 +15,20 @@
          @foreach($categories as $category)
             <tr>
                 <td><a href="{{route('category.show',$category->id)}}">{{$category->name}}</a></td>
+                <td>
+                    <a href="{{route('category.edit', $category->id)}}" class="btn btn-success btn small">Edit</a>
+                </td>
                 <td>@if($category->status=='0')
                         Enable
                     @else
                         Disable
                     @endif
-                </td>             
+                </td>
             {!! Form::open(['method'=>'DELETE', 'action'=> ['CategoriesController@destroy', $category->id]]) !!}
-                <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td> 	
-            {!! Form::close() !!}    
+                <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td>
+            {!! Form::close() !!}
             </tr>
-            @endforeach 
+            @endforeach
             </tbody>
     </table>
 

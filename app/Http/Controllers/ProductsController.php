@@ -10,14 +10,14 @@ use Illuminate\Http\Request;
 class ProductsController extends Controller
 {
     //
-    public function index() 
-    {   
+    public function index()
+    {
         $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
         $products = Product::all();
         return view('admin.product.index', compact('products'));
     }
 
-    public function create() 
+    public function create()
     {
         $categories = Category::pluck('name', 'id');
         return view('admin.product.create', compact('categories'));
@@ -25,7 +25,7 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $formInput = $request->except('image');
         //dd($formInput);
 
@@ -37,14 +37,14 @@ class ProductsController extends Controller
             'image' => 'image|mimes:png,jpg,jpeg,svg|max:10000',
             'spl_price' => 'required'
         ]);
-       
+
          $image = $request->image;
-        
+
         if($image) {
             $imageName = $image-> getClientOriginalName();
             $image->move('images', $imageName);
             $formInput['image'] = $imageName;
-        } 
+        }
 
         $categories = Category::all();
         Product::create($formInput);
@@ -57,7 +57,7 @@ class ProductsController extends Controller
         return view('admin.product.show', compact('product'));
     }
 
-    public function edit($id) 
+    public function edit($id)
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
@@ -85,7 +85,7 @@ class ProductsController extends Controller
             'spl_price' => $spl_price
         ]);
 
-        return view('admin.product.index', compact('products', 'category'));
+        return redirect()->back()->with('status', 'Product updated!');
     }
 
     public function destroy($id)
@@ -102,7 +102,7 @@ class ProductsController extends Controller
 
     public function editProImage(Request $request)
     {
-        
+
         $proid = $request->id;
 
         $image = $request->image;

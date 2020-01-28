@@ -14,14 +14,10 @@ use App\Product;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
 
 Route::get('/shop', 'HomeController@shop');
 Route::get('/home', 'HomeController@index')->name('home');
-
-
 
 Route::get('/product_details/{id}', 'HomeController@product_details');
 Route::get('selectSize', 'HomeController@selectSize');
@@ -69,4 +65,4 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
     Route::get('/wishlist', 'HomeController@viewWishlist');
     Route::get('/removeWishList/{id}', 'HomeController@destroy');
-}); 
+});

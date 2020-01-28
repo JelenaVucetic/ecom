@@ -34,6 +34,13 @@ class HomeController extends Controller
         return view('home', compact('products', 'categories'));
     }
 
+    public function welcome()
+    {
+        $products = Product::all();
+        $categories = Category::all();
+        return view('welcome', compact('products', 'categories'));
+    }
+
     public function shop()
     {
         $products = Product::all();
@@ -68,14 +75,14 @@ class HomeController extends Controller
         return view('wishlist', compact('Products'));
     }
 
-    public function wishlist(Request $request) 
+    public function wishlist(Request $request)
     {
         $wishlist = new Wishlist;
         $wishlist->user_id = Auth::user()->id;
         $wishlist->pro_id = $request->pro_id;
 
         $wishlist->save();
-        
+
         $Products = DB::table('product')->where('id', $request->pro_id)->get();
 
         return view('product_details', compact('Products'));
