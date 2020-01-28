@@ -85,4 +85,16 @@ class HomeController extends Controller
         DB::table('wishlist')->where('pro_id', '=', $id)->delete();
         return back()->with('msg', 'item removed from wishlist');
     }
+
+    public function selectSize(Request $request)
+    {
+        $proDum = $request->proDum;
+        $size = $request->size;
+
+        $s_price = DB::table('products_properties')->where('pro_id', $proDum)->where('size', $size)->get();
+
+        foreach($s_price as $sPrice) {
+            echo "&euro;" . $sPrice->p_price;
+        }
+    }
 }

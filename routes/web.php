@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/product_details/{id}', 'HomeController@product_details');
+Route::get('selectSize', 'HomeController@selectSize');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', function() {
@@ -38,13 +39,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
         Route::get('EditImage/{id}', 'ProductsController@ImageEditForm')->name('ImageEditForm');
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');
+        Route::get('/addProperty/{id}', 'ProductsController@addProperty')->name('addProperty');
+        Route::post('submitProperty', 'ProductsController@submitProperty')->name('submitProperty');
     }
 );
 
 Route::get('/cart', 'CartController@index');
 Route::get('/cart/addItem/{id}', 'CartController@addItem');
+Route::get('/cart/updateCart/{id}', 'CartController@updateCart')->name('updateCart');
+
 Route::get('/cart/remove/{id}', 'CartController@destroy');
-Route::put('/cart/update/{id}', 'CartController@update');
+
 
 Route::get('/checkout', 'CheckoutController@index');
 Route::post('/formvalidate', 'CheckoutController@formvalidate');

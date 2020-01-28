@@ -1,7 +1,23 @@
 @extends('layouts.master')
 
 @section('content')
-Details page
+<script>
+    $(document).ready(function(){
+        $('#size').change(function(){
+            var size = $('#size').val();
+            var proDum = $('#proDum').val();
+            $.ajax({
+                type: 'get',
+                dataType: 'html',
+                url: '<?php echo url('/selectSize'); ?>',
+                data: "size=" + size + "& proDum=" + proDum,
+                success: function(response) {
+                    console.log(response)
+                }
+            });
+        });
+    });
+</script>
 
 <div class="container align-vertical hero">
     <div class="row">
@@ -27,11 +43,20 @@ Details page
                                 <?php echo ucwords($product->name); ?>
                             </h2>
                             <p>{{ $product->description}}</p>      
-                            <p><b>Price:</b> {{ $product->price}} &euro;</p>
+                            <p><b>Price:</b> <span id="price">{{ $product->price}} </span>&euro;</p>
                             <p><b>Availability:</b> {{ $product->stock}} In Stock</p>
+                        <?php $sizes = DB::table('products_properties')->where('pro_id', $product->id)->get(); ?>
+                            <select name="size" id="size">
+                                @foreach($sizes as $size)
+                                <option >{{$size->size}}</option>
+                                @endforeach
+                            </select>
+                            <input type="hidden" value="<?php echo $product->id; ?>" id="proDum">
+                            <br>
+                            <br>
                             <button class="btn btn-primary btn-sm">
                                 <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart" style="color:white;">Add to cart</a>
-                            </button>    
+                            </button> 
                             <?php
                                 $wishData = DB::table('wishlist')->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')->
                                                 where('wishlist.pro_id', '=', $product->id)->get();
@@ -41,6 +66,7 @@ Details page
                           
                                 {!! Form::open(['route' => 'addToWishlist', 'method' => 'post']) !!}
                                 <input type="hidden" value="{{$product->id}}" name="pro_id">
+                                <br>
                                 <input type="submit" value="Add to Wishlist" class="btn btn-primary">
                                 {!! Form::close() !!}
                             <?php } else { ?>

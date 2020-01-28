@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
+use App\ProductProperty;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -114,5 +115,22 @@ class ProductsController extends Controller
         DB::table('product')->where('id', $proid)->update(['image' => $imageName]);
 
         return redirect()->back();
+    }
+
+    public function addProperty($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admin.product.addProperty', compact('product'));
+    }
+
+    public function submitProperty(Request $request)
+    {
+        $properties = new ProductProperty;
+        $properties->pro_id = $request->pro_id;
+        $properties->size = $request->size;
+        $properties->color = $request->color;
+        $properties->p_price =  $request->p_price;
+        $properties->save();
+        return back();
     }
 }

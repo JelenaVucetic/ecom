@@ -30,13 +30,15 @@ class CartController extends Controller
        return back();
     }
 
-    public function update(Request $request, $id)
+    public function updateCart(Request $request, $id)
     {
         $qty = $request->qty;
         $proId = $request->proId;
         $rowId = $request->rowId;
         Cart::update($rowId, $qty);
-        
+        $cartItems = Cart::content();
+//dd($cartItems);
+        return view('cart.upCart', compact('cartItems'))->with('status', 'cart updated');
       /*   $product = Product::find($proId);
         $stock = $product->stock;
 

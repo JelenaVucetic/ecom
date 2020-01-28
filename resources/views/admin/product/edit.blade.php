@@ -48,6 +48,12 @@
             <img src="{{ url('images', $product->image) }}" class="card-img-top img-fluid" style="width:200px;" alt="">
             <p><a href="{{ route('ImageEditForm', $product->id) }}" class="btn btn-info">Change image</a></p>
         </div>
+        <div class="col-md-3">
+            <h3>Add property</h3>
+    
+            <p><a href="{{ route('addProperty', $product->id) }}" class="btn btn-info">Add property</a></p>
+        </div>
+
     </div>
 </main>
 @endsection
