@@ -34,7 +34,7 @@
                             @foreach ($category->children as $child)
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between" style="color:red;">
-                                        {{ $child->name }}
+                                        <a href="{{route('category.show',$child->id)}}">{{ $child->name }} </a>
 
                                         <div class="button-group d-flex">
                                             <button type="button" class="btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal" data-id="{{ $child->id }}" data-name="{{ $child->name }}">Edit</button>
