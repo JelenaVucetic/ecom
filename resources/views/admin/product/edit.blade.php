@@ -20,12 +20,19 @@
                         {{ Form::text('description', $product->description , array('class' => 'form-control', 'required' => '', 'minlength' => '5')) }}
                     </div>
                     <div class="form-group">
-                       <select name="cat_id" class="form-control">
-                       @foreach($categories as $cat)
-                            Category: <option value="{{ $cat->id }}" <?php if( $product->cat_id==$cat->id) { ?> selected="selected" <?php } ?> >
-                                         {{ ucwords($cat->name) }}
-                                      </option>
-                        @endforeach
+                        <label for="category_id">Category</label>
+                        <select class="form-control" name="cat_id" required>
+                            <option value="">Select a Category</option>
+
+                            @foreach ($categories as $cat)
+                                <option value="{{ $cat->id }}" {{ $cat->id == $product->cat_id ? 'selected' : '' }}>{{ $cat->name }}</option>
+
+                                @if ($cat->children)
+                                    @foreach ($cat->children as $child)
+                                        <option value="{{ $child->id }}" {{ $child->id == $product->cat_id ? 'selected' : '' }}>&nbsp;&nbsp;{{ $child->name }}</option>
+                                    @endforeach
+                                @endif
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">

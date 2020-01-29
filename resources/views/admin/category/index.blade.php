@@ -28,6 +28,30 @@
                 <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td>
             {!! Form::close() !!}
             </tr>
+                <td>
+                    @if ($category->children)
+                        <ul class="list-group mt-2">
+                            @foreach ($category->children as $child)
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between" style="color:red;">
+                                        {{ $child->name }}
+
+                                        <div class="button-group d-flex">
+                                            <button type="button" class="btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal" data-id="{{ $child->id }}" data-name="{{ $child->name }}">Edit</button>
+
+                                            <form action="{{ route('category.destroy', $child->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </td>
             @endforeach
             </tbody>
     </table>
@@ -38,6 +62,16 @@
             <h2>Create Category</h2>
             <p class="lead">Lorem Ipsum has been the industry's standard dummy text ever since the</p>
             {!! Form::open(['route' => 'category.store', 'method' => 'post']) !!}
+            <div class="form-group">
+                <select class="form-control" name="parent_id">
+                    <option value="">Select Parent Category</option>
+
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group">
                 {{ Form::label('name', 'Name') }}
                 {{ Form::text('name', null, array('class' => 'form-control')) }}

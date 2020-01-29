@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 {
     //
     public function index() {
-        $categories = Category::all();
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         $products = Product::all();
         return view('admin.category.index', compact(['categories', 'products']));
     }
@@ -21,8 +21,12 @@ class CategoriesController extends Controller
     } */
 
     public function store(Request $request) {
+        $this->validate($request, [
+            'name'  => 'required|min:3|max:255|string'
+        ]);
+
         Category::create($request->all());
-        return back();
+        return back()->withSuccess('You have successfully created a Category!');
     }
 
     public function show($id) {
