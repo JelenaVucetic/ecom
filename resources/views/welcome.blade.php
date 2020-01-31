@@ -4,17 +4,7 @@
 
 <main role="main">
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Album example</h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-    <div style="display: flex;justify-content: space-around;">
-        @foreach($categories as $category)
-            <p style="color:red">{{ ucwords($category->name) }}</p>
-        @endforeach
-    </div>
-    </div>
-  </section>
+  @include('layouts.hero')
 
   <div class="album py-5 bg-light">
     <div class="container">

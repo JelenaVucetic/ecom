@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 {
     //
     public function index() {
-        $categories = Category::with('children')->whereNull('parent_id')->get();
+        $categories = Category::where('parent_id',NULL)->get();
         $products = Product::all();
         return view('admin.category.index', compact(['categories', 'products']));
     }
@@ -31,7 +31,7 @@ class CategoriesController extends Controller
 
     public function show($id) {
         $products = Category::find($id)->products;
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
 
         return view('admin.category.index', compact(['categories', 'products']));
     }

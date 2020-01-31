@@ -19,7 +19,7 @@ class ProductsController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
        // dd($categories);
         return view('admin.product.create', compact('categories'));
     }

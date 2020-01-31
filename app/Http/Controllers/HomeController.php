@@ -30,21 +30,21 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
         return view('home', compact('products', 'categories'));
     }
 
     public function welcome()
     {
         $products = Product::all();
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
         return view('welcome', compact('products', 'categories'));
     }
 
     public function shop()
     {
         $products = Product::all();
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
         return view('shop', compact('products', 'categories'));
     }
 
@@ -67,6 +67,14 @@ class HomeController extends Controller
 
         $Products = DB::table('product')->where('id', $id)->get();
         return view('product_details', compact('Products'));
+    }
+
+    public function show_category_product($id)
+    {
+        $products = Category::find($id)->products;
+        $categories = Category::where('parent_id',NULL)->get();
+
+        return view('show_category_product', compact(['categories', 'products']));
     }
 
     public function viewWishlist()
