@@ -34,6 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
         Route::resource('product', 'ProductsController');
         Route::resource('category', 'CategoriesController');
+        Route::resource('tag', 'TagsController');
 
         Route::get('EditImage/{id}', 'ProductsController@ImageEditForm')->name('ImageEditForm');
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');

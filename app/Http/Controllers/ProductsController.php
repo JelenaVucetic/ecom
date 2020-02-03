@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
+use App\Tag;
 use App\ProductProperty;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -12,8 +13,17 @@ class ProductsController extends Controller
     //
     public function index()
     {
-        $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
-        $products = Product::all();
+        if(request('tag')) 
+        {
+            $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
+            $products = Tag::where('name', request('tag'))->firstOrFail()->products;
+
+           // dd($products);
+        } else {
+            $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
+            $products = Product::latest()->get();
+        }
+       
         return view('admin.product.index', compact('products'));
     }
 
@@ -21,26 +31,29 @@ class ProductsController extends Controller
     {
         $categories = Category::where('parent_id',NULL)->get();
        // dd($categories);
-        return view('admin.product.create', compact('categories'));
+       $tags = Tag::all();
+        return view('admin.product.create', compact(['categories', 'tags']));
     }
 
     public function store(Request $request)
     {
-
+        //dd($request);
         $formInput = $request->except('image');
         //dd($formInput);
 
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
+            'category_id' => 'exists:product,id',
+            'tags' => 'exists:tags,id',
             'price' => 'required',
             'stock' => 'required',
-            'image' => 'image|mimes:png,jpg,jpeg,svg|max:10000',
+            'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:10000',
             'spl_price' => 'required'
         ]);
 
          $image = $request->image;
-
+      
         if($image) {
             $imageName = $image-> getClientOriginalName();
             $image->move('images', $imageName);
@@ -48,7 +61,7 @@ class ProductsController extends Controller
         }
 
         $categories = Category::all();
-        Product::create($formInput);
+        Product::create($formInput)->tags()->attach(request('tags'));
         return redirect()->back();
     }
 
@@ -62,21 +75,22 @@ class ProductsController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
-
-        return view('admin.product.edit', compact('product', 'categories'));
+        $tags = Tag::all();
+        return view('admin.product.edit', compact(['product', 'categories', 'tags']));
     }
 
     public function update(Request $request, $id)
     {
-        //dd($request);
+       
         $products = DB::table('product')->where('id', '=', $id)->get();
+      
         $proId =$id;
-        //dd($id);
         $name = $request->name;
         $category_id = $request->cat_id;
         $description = $request->description;
         $price = $request->price;
         $spl_price = $request->spl_price;
+       
 
         DB::table('product')->where('id', $proId)->update([
             'name' => $name,
