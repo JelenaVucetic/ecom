@@ -1,0 +1,335 @@
+#products{
+    padding-top: 100px;
+    display: flex;
+    flex-direction: row;
+    }
+
+    #c{
+    border: 1px solid gray;
+    }
+    #c1{
+    border: 1px solid gray;
+    }
+    #c2{
+    border: 1px solid gray;
+    }
+    #c3{
+    border: 1px solid gray;
+    }
+    #c4{
+        border: 1px solid gray;
+        }
+    #c5{
+        border: 1px solid gray;
+     }
+     #c6{
+        border: 1px solid gray;
+     }
+    .products{
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+    #product{
+        width: 300px;
+        height: 300px;
+        left: 0px;
+        top: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+        background-image: url('../images/can.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    #product1{
+        width: 300px;
+        height: 300px;
+        left: 0px;
+        top: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+        background-image: url('../images/can.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    #product2{
+        width: 300px;
+        height: 300px;
+        left: 0px;
+        top: 0px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 30px;
+        background-image: url('../images/phonecase.png');
+        background-size: cover;
+        background-position: center;
+    }
+    #product3{
+       /* width: 300px;
+        height: 300px;
+        left: 0px;
+        top: 0px;
+        flex-direction: row;
+        margin-right: 30px;
+         background-image: url('../images/phonecase.png');
+        background-size: cover;
+        background-position: center; */
+    }
+    #app{
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+    #app1{
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+    #app2{
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+    #app3{
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+    #app4 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+    #app5 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+    #app6 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+    #app2 img{
+        width: 30px;
+        position: relative;
+
+    }
+    .btn{
+        margin-top: 60px;
+    }
+    #capture{
+        margin-top: 70px;
+        text-align: center;
+    }
+    .disabledbutton {
+         pointer-events: none;
+        opacity: 0.4;
+    }
+    .overlay-panel{
+        display: block;
+        position: absolute;
+        height: 300px;
+        width: 300px;
+         margin: 0 auto;
+         top: 10px;
+         opacity: 1;
+         -webkit-transition: opacity 0.3s linear;
+         transition: opacity 0.3s linear;
+}
+#logo-canvas{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#logo-canvas1{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#logo-canvas2{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+#logo-canvas3{
+    position: relative;
+    top: 98px;
+    width: 110px;
+    height: 100px;
+    z-index: 1;
+    border: 1px black solid;
+}
+
+.product-options{
+    z-index: 1;
+}
+
+.product-options1{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options2{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+.product-options3{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+#row{
+    position: relative;
+    overflow: hidden;
+    height: 600px;
+}
+.row-product{
+    width: 300px;
+    text-align: center;
+}
+#proizvod{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod1{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod2{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod3{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+.background-div{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div1{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div2{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div3{
+    width: 300px;
+    height: 300px;
+}
+
+.container {
+    margin: 3em auto;
+    width: 15em;
+  }
+  
+  .result-wrp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 200px;
+  }
+
+  #color{
+      margin: auto;
+  }
+
+
+  button{
+    margin-top: 20px;
+  }
+
+  input{
+      margin-top: 12px;
+  }
+
+  .row{
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .product-options{
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+  }
+
+  .product-column{
+    width: 30%;
+    margin-bottom: 50px;
+  }
+
+  .img-div{
+    margin-bottom: 100px;
+    width: 100%;
+    }
+  
+    .save-picture{
+        z-index: 1;
+    }
