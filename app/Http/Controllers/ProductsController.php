@@ -13,7 +13,7 @@ class ProductsController extends Controller
     //
     public function index()
     {
-        if(request('tag')) 
+        if(request('tag'))
         {
             $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
             $products = Tag::where('name', request('tag'))->firstOrFail()->products;
@@ -21,9 +21,9 @@ class ProductsController extends Controller
            // dd($products);
         } else {
             $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
-            $products = Product::latest()->get();
+            $products = Product::all();
         }
-       
+
         return view('admin.product.index', compact('products'));
     }
 
@@ -53,7 +53,7 @@ class ProductsController extends Controller
         ]);
 
          $image = $request->image;
-      
+
         if($image) {
             $imageName = $image-> getClientOriginalName();
             $image->move('images', $imageName);
@@ -81,16 +81,16 @@ class ProductsController extends Controller
 
     public function update(Request $request, $id)
     {
-       
+
         $products = DB::table('product')->where('id', '=', $id)->get();
-      
+
         $proId =$id;
         $name = $request->name;
         $category_id = $request->cat_id;
         $description = $request->description;
         $price = $request->price;
         $spl_price = $request->spl_price;
-       
+
 
         DB::table('product')->where('id', $proId)->update([
             'name' => $name,
@@ -141,11 +141,21 @@ class ProductsController extends Controller
     public function submitProperty(Request $request)
     {
         $properties = new ProductProperty;
+
         $properties->pro_id = $request->pro_id;
         $properties->size = $request->size;
         $properties->color = $request->color;
         $properties->p_price =  $request->p_price;
         $properties->save();
         return back();
+    }
+
+    public function addSale(Request $request) {
+
+        $salePrice = $request->salePrice;
+        $pro_id = $request->pro_id;
+        DB::table('product')->where('id', $pro_id)->update(['spl_price' => $salePrice]);
+
+        echo "added successfully";
     }
 }

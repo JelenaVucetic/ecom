@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');
         Route::get('/addProperty/{id}', 'ProductsController@addProperty')->name('addProperty');
         Route::post('submitProperty', 'ProductsController@submitProperty')->name('submitProperty');
+        Route::get('/addSale', 'ProductsController@addSale')->name('addSale');
     }
 );
 

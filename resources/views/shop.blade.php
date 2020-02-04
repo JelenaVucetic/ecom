@@ -16,6 +16,21 @@
             <div class="card-body">
                 <p class="card-text">{{ $product->name }}</p>
               <p class="card-text">{{ $product->description }}</p>
+                <p id="price">
+                  @if($product->spl_price==0)
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="card-text">${{$product->price}}</p>
+                        <p class="card-text"></p>
+                    </div>
+                         @else
+
+                      <div class="d-flex justify-content-between align-items-center">
+                          <p class="" style="text-decoration:line-through; color:#333">${{$product->price}}</p>
+                          <img src="{{URL::asset('dist/images/shop/sale.png')}}" alt="..."  style="width:60px">
+                          <p class="">${{$product->spl_price}}</p>
+                      </div>
+                  @endif
+                </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-primpary">
@@ -23,14 +38,14 @@
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-primpary">
                       <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart"> Add to cart</a>
-                  </button>                
+                  </button>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
         </div>
-        @empty 
+        @empty
         <h3>No products</h3>
         @endforelse
       </div>
