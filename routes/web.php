@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
             return view('savework');
         });
 
+        Route::post('work/action', 'AjaxUploadController@action')->name('ajaxupload.action');
+
         Route::get('EditImage/{id}', 'ProductsController@ImageEditForm')->name('ImageEditForm');
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');
         Route::get('/addProperty/{id}', 'ProductsController@addProperty')->name('addProperty');
