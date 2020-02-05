@@ -87,11 +87,62 @@
                                     <a href="{{ url('/wishlist') }}">wishlist</a>
                                 </h3>
                             <?php } ?>
-                        </div>
+                        </div>            
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div>
+    <?php $reviews = DB::table('reviews')->where('product_id', $product->id)->get(); ?>
+        @foreach($reviews as $review)
+        <ul>
+        <li>{{$review->review_title}}</li>
+        <li>{{$review->person_name}}</li>
+        <li>{{date('F j, Y', strtotime($review->created_at))}}, {{date('H: i', strtotime($review->created_at))}}</li>
+        </ul>
+        <p>{{$review->review_content}}</p>
+    @endforeach
+<?php 
+
+if (Auth::check()) {
+            $userId = Auth::user()->id;
+        } else {
+            $userId = '0';
+        }
+      $counter = DB::table('users')->select('name' ,DB::raw('count(*) as total'))->join('orders', 'orders.user_id' , '=', 'users.id')
+        ->join('order_product', 'orders.id','=','order_product.order_id')
+        ->where('users.id', $userId)
+        ->where('order_product.product_id', $product->id)
+        ->groupBy('name')
+        ->get(); ?>
+        @foreach($counter as $c )
+       
+        @if($c->total>0)
+    <div>
+    
+    <p><b>Write Your Review</b></p>              
+        <form action="{{url('/addReview')}}" method="post">
+
+        {{ csrf_field() }}
+            <span>
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <input type="text" name="person_name" placeholder="Your Name"/>
+                <span style="color:red">{{ $errors->first('person_name') }}</span>     
+                <input type="text", name="review_title" placeholder="Title"/>
+                <span style="color:red">{{ $errors->first('review_title') }}</span> 
+            </span><br>
+            <textarea name="review_content" ></textarea> 
+            <span style="color:red">{{ $errors->first('review_content') }}</span> 
+            <br>
+            <b>Rating: </b>  <br>
+            <button type="submit" class="btn btn-success">
+                Submit
+            </button>
+        </form>
+    </div>
+    @endif
+    @endforeach
     </div>
     @endforeach
 </section>

@@ -1,23 +1,12 @@
 @extends('layouts.master')
 @section('content')
 
-<section id="cart_items" style="padding:200px">
-    <div class="container">
-        <div class="col-md-12">
-            <div class="col-md-4 well well-sm">
-                <nav class="nav flex-column">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="{{url('profile')}}">My profile</a>
-                </nav>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="cart_items">
+<section id="cart_items" style="padding-top:100px; padding-bottom:300px;">
     <div class="container">
         <div class="row">
             @include('profile.menu') 
             <div class="col-md-8">
+            <h3><span style="color:green">{{ucwords(Auth::user()->name)}}</span>, Welcome</h3>
                 <div class="breadcrumbs">
                     <ol class="breadcrumb">
                        <table>
@@ -33,7 +22,6 @@
                                 </td>
                             </tr>
                        </table>
-                        <h3><span style="color:green">{{ucwords(Auth::user()->name)}}</span>, Welcome</h3>
                     </ol>
                 </div>
             </div>       

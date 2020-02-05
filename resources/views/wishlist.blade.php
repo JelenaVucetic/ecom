@@ -185,7 +185,7 @@
 
                 </div>
                 <ul class="pagination">
-                    {{ $Products}}
+                   <!--  {{ $Products}} -->
                 </ul>
             </div><!--features_items-->
         </div>

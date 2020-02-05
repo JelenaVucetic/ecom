@@ -112,4 +112,36 @@ class HomeController extends Controller
             echo "&euro;" . $sPrice->p_price;
         }
     }
+
+    public function addReview(Request $request)
+    {
+        $this->validate($request, [
+          
+            'person_name' => 'required|min:3|max:35',
+            'review_title' => 'required|min:3|max:35',
+            'review_content' => 'required|min:3|max:35',
+        ],
+            [
+                'person_name.required' => 'Enter Your Name',
+                'review_title.required' => 'Enter Title',
+                'review_content.required' => 'Enter description',
+            ]);
+        DB::table('reviews')->insert(['person_name' => $request->person_name,
+                                    'product_id' => $request->product_id,
+                                    'review_title' => $request->review_title, 
+                                    'review_content' => $request->review_content,
+                                    'created_at' => date("Y-m-d H:i:s"),
+                                    'updated_at' => date("Y-m-d H:i:s")
+                                    ]);
+        return back();
+    }
+
+
+    public function showReview(){
+        $userId = Auth::user()->id;
+        DB::table('users')->join('orders', 'orders.user_id' , '=', 'users.id')
+        ->join('order_product', 'orders.id','=','order_product.order_id')
+        ->where('users.id', $userId)
+        ->where('order_product.order_id', $userId)->get();
+    }
 }

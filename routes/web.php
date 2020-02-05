@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product_details/{id}', 'HomeController@product_details');
 Route::get('selectSize', 'HomeController@selectSize');
 
+Route::post('/addReview', 'HomeController@addReview');
+
 Route::get('/show_category_product/{id}', 'HomeController@show_category_product');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
