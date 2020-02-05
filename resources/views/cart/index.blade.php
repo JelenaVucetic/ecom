@@ -5,13 +5,13 @@
 $(document).ready(function(){
 <?php for($i=1;$i<20;$i++){?>
 
-$('#upCart<?php echo $i;?>').on('change keyup', function(){ 
+$('#upCart<?php echo $i;?>').on('change keyup', function(){
     var newqty = $('#upCart<?php echo $i;?>').val();
     var rowId = $('#rowId<?php echo $i;?>').val();
     var proId = $('#proId<?php echo $i;?>').val();
     if(newqty <=0)
-    { 
-        alert('enter only valid quantity') 
+    {
+        alert('enter only valid quantity')
     } else {
        $.ajax({
         headers: {
@@ -43,9 +43,9 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 <li class="active">Shopping Cart</li>
             </ol>
         </div>
-        <div >  <img src="{{asset('/images/empty-cart.png')}}"/></div>
+        <div><img src="{{asset('/images/empty-cart.png')}}"/></div>
     </div>
-</section> 
+</section>
 <?php } else { ?>
 <section id="cart_items">
     <div class="container">
@@ -62,12 +62,12 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 {{session('status')}}
             </div>
         @endif
-        @if(session('error'))    
+        @if(session('error'))
         <div class="alert alert-danger">
             {{session('error')}}
         </div>
         @endif
-        <div class="table-responsive cart_info">     
+        <div class="table-responsive cart_info">
         <table class="table table-condensed">
             <thead>
                 <tr class="cart_menu">
@@ -84,7 +84,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 <tbody>
                     <tr>
                         <td class="cart_product">
-                         <p><img style="width:200px;" src="{{url('images',$cartItem->options->img)}}" class="card-img-top bmw" ></p> 
+                         <p><img style="width:200px;" src="{{url('images',$cartItem->options->img)}}" class="card-img-top bmw" ></p>
                         </td>
                         <td class="cart_description">
                             <a href="{{url('/product_details')}}/{{$cartItem->id}}">
@@ -109,7 +109,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                         </td>
                     </tr>
                 <?php $count++;?>
-            </tbody>  
+            </tbody>
             @endforeach
         </table>
 
