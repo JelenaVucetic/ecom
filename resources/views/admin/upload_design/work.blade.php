@@ -97,6 +97,11 @@
     </div>
     <div class="product-options">
         <p>PhoneCase options</p>
+        <form method="post" id="upload-form" enctype="multipart/form-data">
+         {{ csrf_field() }}
+        <input type="file" name="file1" id="file1">
+        <input type="submit" value="Upload" name="submit">
+        </form>
         <div class="color-choose">
         
             <div class="container">
@@ -116,6 +121,7 @@
                     <button id="repeat">Repeat</button>
                     <button id="none">None</button>
                     <button id="repeat-vertical">Repeat vertical</button>
+                    <button id="delete">Delete</button>
                 </div>
               </div>
         </div>
@@ -304,17 +310,24 @@ var imgElement = document.getElementById('myImage');
  var oldWidth = 0;
  var checkForScale = false;
  var padding = 0;
- 
+ var imageChange = false;
  var image1 = document.getElementById("logo-canvas");
 var canvas3 = new fabric.Canvas('c3');
 var imgElement = document.getElementById('myImage');
- fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+var object = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+
+load(object);
+
+function load(object){
+ fabric.Image.fromURL(object, function(img) {
     img.set({
     
     });
     img.scaleToWidth(250);
     
     canvas3.add(img);
+
+    
  
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
@@ -332,7 +345,7 @@ var imgElement = document.getElementById('myImage');
        
     var patternSourceCanvas = new fabric.StaticCanvas();
     patternSourceCanvas.add(img);
-    
+    alert(img);
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
@@ -458,6 +471,7 @@ var rect = new fabric.Rect({
     // Scale option for Phone case
     $('#scale-control').on('input', function () {
       $(this).trigger('change');
+     // alert(img);
       sleep(100).then(() => {
       img.scale(parseFloat($(this).val())).setCoords();
       //  Repeat Vertical
@@ -468,7 +482,7 @@ var rect = new fabric.Rect({
         console.log($(this).val());
 
         if(oldWidth==img.getScaledWidth()){
-         
+         canvas3.requestRenderAll();
         }else{
           oldWidth=img.getScaledWidth();
       img.set({
@@ -539,8 +553,6 @@ var rect = new fabric.Rect({
         canvas3.requestRenderAll();     
    }) 
         }
-
-
         }else{
           canvas3.requestRenderAll();
         }
@@ -549,10 +561,6 @@ var rect = new fabric.Rect({
     });
      //  Close repeat vertical
       
-   
-
-  
-  
   // Align Vertical option for Phone case
   $('#alignVertically').on('click', function(){
     img.centerV(); 
@@ -570,10 +578,43 @@ var rect = new fabric.Rect({
     image1.src = canvas3.toDataURL();
 })
   });
+
+  $('#upload-form').on('submit' , function(event){
+    checkForScale = false;
+    imageChange = true;
+    canvas3.remove(img);
+    canvas3.clear();
+    canvas3.requestRenderAll();
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+        
+        sleep(300).then(() => {
+          object = "";
+       object ="/image/" + data.upload_image;
+        load(object);
+        });
+      }
+    });
+  });
+
 });
   
+}
+
     
 </script>
+
+
+
+
 
 <script>
 // Canvas for T-Shirt
