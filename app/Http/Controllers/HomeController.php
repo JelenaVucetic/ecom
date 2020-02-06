@@ -136,6 +136,36 @@ class HomeController extends Controller
         return back();
     }
 
+    public function addStar(Request $request) 
+    {
+        $stars=$_POST['value'];
+        $product_id=$_POST['product_id'];
+       $user_id=$_POST['user_id'];
+      $counter = DB::table('review_star')->select('product_id' ,DB::raw('count(*) as total'))
+      ->where('user_id', $user_id)
+      ->where('product_id', $product_id)
+      ->groupBy('product_id')
+      ->get();
+        
+        foreach($counter as $c){
+        if($c->total>0){
+            DB::table('review_star')
+            ->where('user_id', $user_id)
+            ->where('product_id', $product_id)  // find your user by their email
+        ->limit(1)  // optional - to ensure only one record is updated.
+        ->update(array('size' =>   $stars));
+        }else{
+            DB::table('review_star')->insert([
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+                'size' =>   $stars
+                ]);
+        }
+        }
+       
+    
+        echo 'uspjesno' ;
+    }
 
     public function showReview(){
         $userId = Auth::user()->id;

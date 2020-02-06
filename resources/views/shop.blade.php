@@ -26,7 +26,7 @@
 
                       <div class="d-flex justify-content-between align-items-center">
                           <p class="" style="text-decoration:line-through; color:#333">${{$product->price}}</p>
-                          <img src="{{URL::asset('dist/images/shop/sale.png')}}" alt="..."  style="width:60px">
+                          <img src="" alt="..."  style="width:60px">
                           <p class="">${{$product->spl_price}}</p>
                       </div>
                   @endif

@@ -44,7 +44,6 @@ class ProductsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
-            'category_id' => 'exists:product,id',
             'tags' => 'exists:tags,id',
             'price' => 'required',
             'stock' => 'required',
