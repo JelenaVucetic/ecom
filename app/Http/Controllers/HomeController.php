@@ -112,4 +112,66 @@ class HomeController extends Controller
             echo "&euro;" . $sPrice->p_price;
         }
     }
+
+    public function addReview(Request $request)
+    {
+        $this->validate($request, [
+          
+            'person_name' => 'required|min:3|max:35',
+            'review_title' => 'required|min:3|max:35',
+            'review_content' => 'required|min:3|max:35',
+        ],
+            [
+                'person_name.required' => 'Enter Your Name',
+                'review_title.required' => 'Enter Title',
+                'review_content.required' => 'Enter description',
+            ]);
+        DB::table('reviews')->insert(['person_name' => $request->person_name,
+                                    'product_id' => $request->product_id,
+                                    'review_title' => $request->review_title, 
+                                    'review_content' => $request->review_content,
+                                    'created_at' => date("Y-m-d H:i:s"),
+                                    'updated_at' => date("Y-m-d H:i:s")
+                                    ]);
+        return back();
+    }
+
+    public function addStar(Request $request) 
+    {
+        $stars=$_POST['value'];
+        $product_id=$_POST['product_id'];
+       $user_id=$_POST['user_id'];
+      $counter = DB::table('review_star')->select('product_id' ,DB::raw('count(*) as total'))
+      ->where('user_id', $user_id)
+      ->where('product_id', $product_id)
+      ->groupBy('product_id')
+      ->get();
+        
+        foreach($counter as $c){
+        if($c->total>0){
+            DB::table('review_star')
+            ->where('user_id', $user_id)
+            ->where('product_id', $product_id)  // find your user by their email
+        ->limit(1)  // optional - to ensure only one record is updated.
+        ->update(array('size' =>   $stars));
+        }else{
+            DB::table('review_star')->insert([
+                'user_id' => $user_id,
+                'product_id' => $product_id,
+                'size' =>   $stars
+                ]);
+        }
+        }
+       
+    
+        echo 'uspjesno' ;
+    }
+
+    public function showReview(){
+        $userId = Auth::user()->id;
+        DB::table('users')->join('orders', 'orders.user_id' , '=', 'users.id')
+        ->join('order_product', 'orders.id','=','order_product.order_id')
+        ->where('users.id', $userId)
+        ->where('order_product.order_id', $userId)->get();
+    }
 }

@@ -22,6 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product_details/{id}', 'HomeController@product_details');
 Route::get('selectSize', 'HomeController@selectSize');
 
+
+Route::post('/addReview', 'HomeController@addReview');
+Route::post('/addStar', 'HomeController@addStar');
+
 Route::get('/show_category_product/{id}', 'HomeController@show_category_product');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
@@ -44,6 +48,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::post('/savework', function () {
             return view('/admin/upload_design/savework');
         });
+
+        Route::post('work/action', 'AjaxUploadController@action')->name('ajaxupload.action');
 
         Route::get('EditImage/{id}', 'ProductsController@ImageEditForm')->name('ImageEditForm');
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');

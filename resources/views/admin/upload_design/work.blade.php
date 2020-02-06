@@ -6,11 +6,11 @@
         <input type="file" name="file" id="file">
         <input type="submit" value="Upload" name="submit">
         <span>{{ $errors->first('file')}}</span>
-       
+
     </form>
 
-    
-  
+
+
     {{-- <canvas id="c" width="200" height="300"></canvas> --}}
       <div class="add-work">
         <div class="add-work-title">
@@ -30,7 +30,7 @@
       </div>
 
     <div class="row">
-        
+
       {{-- Phone case html --}}
         <div class="product-column">
         <div class="row-product">
@@ -47,8 +47,8 @@
         <div>
         <button id="edit-product">Edit</button>
         <button id="enabled-product">Disabled</button>
-       
-        
+
+
         </div>
     </div>
 </div>
@@ -75,9 +75,9 @@
         </div>
     </div>
 </div>
- 
+
     </div>
-  
+
 
     {{-- Mugs html --}}
     <div class="product-column">
@@ -98,16 +98,16 @@
             </div>
         </div>
     </div>
-      
+
         </div>
-       
+
     </div>
 
 
 
         {{-- Canvas edit for Phone Case --}}
 <div id="product3" class="img-div" data-value="1" style="display:none">
-    
+
     <div id="app3" >
         <canvas id="c3" width="200" height="300"></canvas>
     </div>
@@ -119,16 +119,16 @@
         <input type="submit" value="Upload" name="submit">
         </form>
         <div class="color-choose">
-        
+
             <div class="container">
                 <div class="output" id="output"></div>
-            
+
                 <div class="result-wrp">
-                   <p>Choose a color</p> 
+                   <p>Choose a color</p>
                   <input type="color" id="color">
                 </div>
                 <label>
-                    <span>Scale:</span> 
+                    <span>Scale:</span>
                     <input type="range" id="scale-control"  value="0.05" min="0.005" max="0.5" step="0.005">
                 </label>
                 <button id="alignVertically">Vertically</button>
@@ -160,16 +160,16 @@
         <div class="product-options1">
             <p>T-shirt options</p>
             <div class="color-choose">
-            
+
                 <div class="container">
                     <div class="output" id="output"></div>
-                
+
                     <div class="result-wrp">
-                       <p>Choose a color</p> 
+                       <p>Choose a color</p>
                       <input type="color" id="color1">
                     </div>
                     <label>
-                        <span>Scale:</span> 
+                        <span>Scale:</span>
                         <input type="range" id="scale-control1"  value="0.05" min="0.01" max="0.5" step="0.005">
                     </label>
                     <button id="alignVertically1">Vertically</button>
@@ -190,16 +190,16 @@
             <div class="product-options2">
                 <p>Mug options</p>
                 <div class="color-choose">
-                
+
                     <div class="container">
                         <div class="output" id="output"></div>
-                    
+
                         <div class="result-wrp">
-                           <p>Choose a color</p> 
+                           <p>Choose a color</p>
                           <input type="color" id="color2">
                         </div>
                         <label>
-                            <span>Scale:</span> 
+                            <span>Scale:</span>
                             <input type="range" id="scale-control2"  value="0.05" min="0.01" max="0.5" step="0.005">
                         </label>
                         <button id="alignVertically2">Vertically</button>
@@ -234,7 +234,7 @@
               </div>
           </div>
       </div>
- 
+
           </div>
           <div id="product6" class="img-div" data-value="1" style="display:none">
             <div id="app6" >
@@ -243,16 +243,16 @@
             <div class="product-options3">
                 <p>Hoodie options</p>
                 <div class="color-choose">
-                
+
                     <div class="container">
                         <div class="output" id="output"></div>
-                    
+
                         <div class="result-wrp">
-                           <p>Choose a color</p> 
+                           <p>Choose a color</p>
                           <input type="color" id="color3">
                         </div>
                         <label>
-                            <span>Scale:</span> 
+                            <span>Scale:</span>
                             <input type="range" id="scale-control3"  value="0.05" min="0.01" max="0.5" step="0.005">
                         </label>
                         <button id="alignVertically3">Vertically</button>
@@ -273,8 +273,8 @@
 `
 
 
- 
- 
+
+
 <script>
 var canvas = new fabric.Canvas('c');
 var imgElement = document.getElementById('myImage');
@@ -283,12 +283,12 @@ var imgElement = document.getElementById('myImage');
     if( extension !="svg"){
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;} ?>"  , function(img) {
     img.set({
-    
+
     });
     img.scaleToHeight(200);
     img.scaleToWidth(200);
     canvas.add(img);
-}); 
+});
     }else{
 fabric.loadSVGFromURL("/image/<?php if(!empty($image)){echo $image;} ?>", function(img, options) {
   var img = fabric.util.groupSVGElements(img, options);
@@ -300,7 +300,7 @@ var canvas1 = new fabric.Canvas('c1');
 var imgElement = document.getElementById('myImage');
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
     img.set({
-    
+
     });
     img.scaleToHeight(200);
     img.scaleToWidth(200);
@@ -310,9 +310,9 @@ var canvas2 = new fabric.Canvas('c2');
 var imgElement = document.getElementById('myImage');
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
     img.set({
-    
+
     });
-    
+
     img.scaleToHeight(200);
     img.scaleToWidth(200);
     canvas2.add(img);
@@ -338,14 +338,11 @@ load(object);
 function load(object){
  fabric.Image.fromURL(object, function(img) {
     img.set({
-    
+
     });
     img.scaleToWidth(250);
-    
-    canvas3.add(img);
 
-    
- 
+    canvas3.add(img);
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
       checkForScale = false;
@@ -355,42 +352,42 @@ function load(object){
         img.set({
             'left': 0
         });
-    canvas3.clear(); 
+    canvas3.clear();
     canvas3.requestRenderAll();
     sleep(100).then(() => {
     img.scaleToWidth(100);
-       
+
     var patternSourceCanvas = new fabric.StaticCanvas();
     patternSourceCanvas.add(img);
-    alert(img);
+
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + padding,
           height: img.getScaledHeight() + padding
-         
-        }); 
+
+        });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      
+
     });
-   
+
 var rect = new fabric.Rect({
         width: 5000,
         height: 5000,
         left: 0,
-        fill: pattern, 
+        fill: pattern,
         objectCaching: false
     });
     canvas3.add(rect);
-    
+
     rect.center().setCoords();
     image1.src = canvas3.toDataURL();
     canvas3.requestRenderAll();
-   }) 
+   })
     });
 
 
@@ -402,65 +399,65 @@ var rect = new fabric.Rect({
         img.set({
             'left': 0
         });
-    canvas3.clear(); 
+    canvas3.clear();
     canvas3.requestRenderAll();
    sleep(100).then(() => {
     img.scaleToWidth(100);
-       
+
     var patternSourceCanvas = new fabric.StaticCanvas();
     patternSourceCanvas.add(img);
-    
+
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + img.getScaledWidth(),
           height: img.getScaledHeight() + padding
-         
-        }); 
+
+        });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      
+
     });
-    
+
      var pattern1 = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + img.getScaledWidth(),
           height: img.getScaledHeight() + padding
         });
-        
+
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
       offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
-      offsetY: img.getScaledHeight()/2 
-    });  
+      offsetY: img.getScaledHeight()/2
+    });
 
 var rect = new fabric.Rect({
         width: 5000,
         height: 5000,
         left: img.getScaledWidth(),
-        fill: pattern, 
+        fill: pattern,
         objectCaching: false
     });
-  
+
     canvas3.add(rect);
-    
+
       var rect1 = new fabric.Rect({
         width: 5000,
         height: 5000,
         left:0,
-        fill: pattern1, 
+        fill: pattern1,
         objectCaching: false
-    });  
-   
-    
-   
-    canvas3.add(rect1); 
+    });
+
+
+
+    canvas3.add(rect1);
     rect.center().setCoords();
     rect1.center().setCoords();
     image1.src = canvas3.toDataURL();
@@ -469,21 +466,21 @@ var rect = new fabric.Rect({
           canvas: canvas3,
         });
         canvas3.setActiveObject(sel);
-        canvas3.requestRenderAll();     
-   }) 
-  
+        canvas3.requestRenderAll();
+   })
+
 
 });
 
     $('#delete').on('click', function(){
-   
+
     });
- 
+
     // None option for Phone case
     $('#none').on('click', function(){
-      
+
         checkForScale = false;
-        canvas3.clear(); 
+        canvas3.clear();
         img.scaleToWidth(100);
         canvas3.add(img);
         image1.src = canvas3.toDataURL();
@@ -492,7 +489,6 @@ var rect = new fabric.Rect({
     // Scale option for Phone case
     $('#scale-control').on('input', function () {
       $(this).trigger('change');
-     // alert(img);
       sleep(100).then(() => {
       img.scale(parseFloat($(this).val())).setCoords();
       //  Repeat Vertical
@@ -512,19 +508,19 @@ var rect = new fabric.Rect({
         img.set({
             'left': 0
         });
-     
-    
+
+
     canvas3.requestRenderAll();
    sleep(100).then(() => {
     var patternSourceCanvas = new fabric.StaticCanvas();
-    patternSourceCanvas.add(img); 
+    patternSourceCanvas.add(img);
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + img.getScaledWidth(),
           height: img.getScaledHeight() + padding
-        }); 
+        });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
@@ -541,39 +537,41 @@ var rect = new fabric.Rect({
       },
       repeat: 'repeat',
       offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
-      offsetY: img.getScaledHeight()/2 
-    });  
+      offsetY: img.getScaledHeight()/2
+    });
 
 var rect = new fabric.Rect({
         width: 5000,
         height: 5000,
         left: img.getScaledWidth(),
-        fill: pattern, 
+        fill: pattern,
         objectCaching: false
     });
     canvas3.add(rect);
-    
+
       var rect1 = new fabric.Rect({
         width: 5000,
         height: 5000,
         left:0,
-        fill: pattern1, 
+        fill: pattern1,
         objectCaching: false
-    });  
-    canvas3.add(rect1); 
+    });
+    canvas3.add(rect1);
 
     rect.center().setCoords();
     rect1.center().setCoords();
     image1.src = canvas3.toDataURL();
     canvas3.requestRenderAll();
-   
+
           var sel = new fabric.ActiveSelection(canvas3.getObjects(), {
           canvas: canvas3,
         });
         canvas3.setActiveObject(sel);
-        canvas3.requestRenderAll();     
-   }) 
+        canvas3.requestRenderAll();
+   })
         }
+
+
         }else{
           canvas3.requestRenderAll();
         }
@@ -581,16 +579,16 @@ var rect = new fabric.Rect({
       })
     });
      //  Close repeat vertical
-      
+
   // Align Vertical option for Phone case
   $('#alignVertically').on('click', function(){
-    img.centerV(); 
+    img.centerV();
     sleep(100).then(() => {
     img.setCoords();
     image1.src = canvas3.toDataURL();
     })
   });
-  
+
   // Align Horizontal option for Phone case
   $('#alignHorizontally').on('click', function(){
     img.centerH();
@@ -618,35 +616,31 @@ var rect = new fabric.Rect({
       cache: false,
       processData: false,
       success: function(data){
-        
-        
+
+
        object = " ";
        object ="/image/" + data.upload_image;
         load(object);
-       
+
       }
     });
   });
 
 });
-  
+
 }
 
-    
+
 </script>
-
-
-
-
 
 <script>
 // Canvas for T-Shirt
 var canvas4 = new fabric.Canvas('c4');
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
     img.set({
-    
+
     });
-    
+
     img.scaleToWidth(250);
     canvas4.add(img);
     var image2 = document.getElementById("logo-canvas1");
@@ -656,10 +650,10 @@ var canvas4 = new fabric.Canvas('c4');
       img.scale(parseFloat($(this).val())).setCoords();
       canvas4.requestRenderAll();
   });
-   
+
     // Align Vertical option for T-shirt
   $('#alignVertically1').on('click', function(){
-    img.centerV(); 
+    img.centerV();
     sleep(100).then(() => {
     img.setCoords();
     image2.src = canvas4.toDataURL();
@@ -674,7 +668,7 @@ var canvas4 = new fabric.Canvas('c4');
 })
   });
 });
-</script> 
+</script>
 <script>
 // Canvas for Mugs
 var canvas5 = new fabric.Canvas('c5');
@@ -682,16 +676,16 @@ var oldWidth1 = 0;
  var checkForScale1 = false;
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
     img.set({
-    
+
     });
-    
+
     img.scaleToWidth(250);
     canvas5.add(img);
     var image3 = document.getElementById("logo-canvas2");
     // None option for Mugs
     $('#none1').on('click', function(){
         checkForScale1 = false;
-        canvas5.clear(); 
+        canvas5.clear();
         img.scaleToWidth(100);
         canvas5.add(img);
         image3.src = canvas5.toDataURL();
@@ -702,7 +696,7 @@ var oldWidth1 = 0;
       checkForScale1 = false;
       img.set({ 'top' : 0});
       img.set({ 'left' : 0});
-      canvas5.clear();   
+      canvas5.clear();
     var patternSourceCanvas = new fabric.StaticCanvas();
     patternSourceCanvas.add(img);
     patternSourceCanvas.renderAll();
@@ -716,7 +710,7 @@ var oldWidth1 = 0;
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat'
-    }); 
+    });
     var rect = new fabric.Rect({
         width: 5000,
         height: 5000,
@@ -738,65 +732,65 @@ var oldWidth1 = 0;
         img.set({
             'left': 0
         });
-    canvas5.clear(); 
+    canvas5.clear();
     canvas5.requestRenderAll();
    sleep(100).then(() => {
     img.scaleToWidth(100);
-       
+
     var patternSourceCanvas = new fabric.StaticCanvas();
     patternSourceCanvas.add(img);
-    
+
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + img.getScaledWidth(),
           height: img.getScaledHeight() + padding
-         
-        }); 
+
+        });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      
+
     });
-    
+
      var pattern1 = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + img.getScaledWidth(),
           height: img.getScaledHeight() + padding
         });
-        
+
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
       offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
-      offsetY: img.getScaledHeight()/2 
-    });  
+      offsetY: img.getScaledHeight()/2
+    });
 
 var rect = new fabric.Rect({
         width: 5000,
         height: 5000,
         left: img.getScaledWidth(),
-        fill: pattern, 
+        fill: pattern,
         objectCaching: false
     });
-  
+
     canvas5.add(rect);
-    
+
       var rect1 = new fabric.Rect({
         width: 5000,
         height: 5000,
         left:0,
-        fill: pattern1, 
+        fill: pattern1,
         objectCaching: false
-    });  
-   
-    
-   
-    canvas5.add(rect1); 
+    });
+
+
+
+    canvas5.add(rect1);
     rect.center().setCoords();
     rect1.center().setCoords();
     image3.src = canvas5.toDataURL();
@@ -805,8 +799,8 @@ var rect = new fabric.Rect({
           canvas: canvas5,
         });
         canvas5.setActiveObject(sel);
-        canvas5.requestRenderAll();     
-   }) 
+        canvas5.requestRenderAll();
+   })
 
     });
 
@@ -819,7 +813,7 @@ var rect = new fabric.Rect({
       canvas5.requestRenderAll(); */
 
 
-      // 
+      //
       sleep(100).then(() => {
       img.scale(parseFloat($(this).val())).setCoords();
       //  Repeat Vertical
@@ -830,7 +824,7 @@ var rect = new fabric.Rect({
         console.log($(this).val());
 
         if(oldWidth1==img.getScaledWidth()){
-         
+
         }else{
           oldWidth1=img.getScaledWidth();
       img.set({
@@ -839,19 +833,19 @@ var rect = new fabric.Rect({
         img.set({
             'left': 0
         });
-     
-    
+
+
     canvas5.requestRenderAll();
    sleep(100).then(() => {
     var patternSourceCanvas = new fabric.StaticCanvas();
-    patternSourceCanvas.add(img); 
+    patternSourceCanvas.add(img);
     patternSourceCanvas.renderAll();
     var pattern2 = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
           width: img.getScaledWidth() + img.getScaledWidth(),
           height: img.getScaledHeight() + padding
-        }); 
+        });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
@@ -868,38 +862,38 @@ var rect = new fabric.Rect({
       },
       repeat: 'repeat',
       offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
-      offsetY: img.getScaledHeight()/2 
-    });  
+      offsetY: img.getScaledHeight()/2
+    });
 
 var rect2 = new fabric.Rect({
         width: 5000,
         height: 5000,
         left: img.getScaledWidth(),
-        fill: pattern2, 
+        fill: pattern2,
         objectCaching: false
     });
     canvas5.add(rect2);
-    
+
       var rect3 = new fabric.Rect({
         width: 5000,
         height: 5000,
         left:0,
-        fill: pattern3, 
+        fill: pattern3,
         objectCaching: false
-    });  
-    canvas5.add(rect3); 
+    });
+    canvas5.add(rect3);
 
     rect2.center().setCoords();
     rect3.center().setCoords();
     image3.src = canvas5.toDataURL();
     canvas5.requestRenderAll();
-   
+
           var sel = new fabric.ActiveSelection(canvas5.getObjects(), {
           canvas: canvas5,
         });
         canvas5.setActiveObject(sel);
-        canvas5.requestRenderAll();     
-   }) 
+        canvas5.requestRenderAll();
+   })
         }
 
 
@@ -912,7 +906,7 @@ var rect2 = new fabric.Rect({
 
     // Align Vertical option for Mugs
   $('#alignVertically2').on('click', function(){
-    img.centerV(); 
+    img.centerV();
     sleep(100).then(() => {
     img.setCoords();
     image3.src = canvas5.toDataURL();
@@ -927,17 +921,17 @@ var rect2 = new fabric.Rect({
 })
   });
 });
-</script> 
+</script>
 
 <script>
 // Canvas for Hoodie
 var canvas6 = new fabric.Canvas('c6');
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
     img.set({
-    
+
     });
-    
-   
+
+
     img.scaleToWidth(250);
     canvas6.add(img);
     var image4 = document.getElementById("logo-canvas3");
@@ -947,10 +941,10 @@ var canvas6 = new fabric.Canvas('c6');
       img.scale(parseFloat($(this).val())).setCoords();
       canvas6.requestRenderAll();
   });
-   
+
     // Align Vertical option for Hoodie
   $('#alignVertically3').on('click', function(){
-    img.centerV(); 
+    img.centerV();
     sleep(100).then(() => {
     img.setCoords();
     image4.src = canvas6.toDataURL();
@@ -997,13 +991,12 @@ function doCapture(){
     if( el.getAttribute('value')=='0'){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
-            alert(imgData);
-            var nameProduct = title+ " " + el.getAttribute('name');
+            var nameProduct = el.getAttribute('name');
             $.ajax({
                     url: 'savework',
                     type: 'post',
-                    headers: {  
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                          } ,
                     dataType: 'text',
                     data: {
@@ -1017,9 +1010,9 @@ function doCapture(){
                     }
                 });
         });
-      
+
     }
 })
-}  </script>  
+}  </script>
 
 @endsection
