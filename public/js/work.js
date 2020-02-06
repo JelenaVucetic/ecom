@@ -14,6 +14,7 @@ $(document).ready(function(){
             $('#proizvod').removeClass('disabledbutton');
             $( "#proizvod" ).attr( "value" , 0 );
             $('#enabled-product').html('Enabled');
+            
         }else{
             $('#proizvod').addClass('disabledbutton');
             $( "#proizvod" ).attr( "value", 1 );

@@ -11,14 +11,30 @@
 
     
   
-    <canvas id="c" width="200" height="300"></canvas>
+    {{-- <canvas id="c" width="200" height="300"></canvas> --}}
+      <div class="add-work">
+        <div class="add-work-title">
+          <label>Title</label>
+          <input type="text" placeholder="Title" id="title">
+        </div>
+
+        <div class="add-work-tags">
+          <label>Tags</label>
+          <input type="text" placeholder="Tags" id="tags">
+        </div>
+
+        <div class="add-work-description">
+          <label>Description</label>
+          <input type="text" placeholder="Description" id="description">
+        </div>
+      </div>
 
     <div class="row">
         
       {{-- Phone case html --}}
         <div class="product-column">
         <div class="row-product">
-        <div id="proizvod" class="save-picture disabledbutton" value="1">
+        <div id="proizvod" class="save-picture disabledbutton" name="Phone Case" value="1">
             <div class="background-div">
         <img id="logo-canvas" src="/image/<?php if(!empty($image)){echo $image;} ?>">
         <img class="overlay-panel" src="/images/phonecase.png">
@@ -43,7 +59,7 @@
 {{-- T-shirt html --}}
 <div class="product-column">
     <div class="row-product">
-        <div id="proizvod1" class="save-picture disabledbutton" value="1">
+        <div id="proizvod1" class="save-picture disabledbutton" name="T-shirt" value="1">
             <div class="background-div1">
         <img id="logo-canvas1" src="/image/<?php if(!empty($image)){echo $image;} ?>">
         <img class="overlay-panel" src="/images/t-shirt.png">
@@ -66,7 +82,7 @@
     {{-- Mugs html --}}
     <div class="product-column">
         <div class="row-product">
-            <div id="proizvod2" class="save-picture disabledbutton" value="1">
+            <div id="proizvod2" class="save-picture disabledbutton" name="Mugs" value="1">
                 <div class="background-div2">
             <img id="logo-canvas2" src="/image/<?php if(!empty($image)){echo $image;} ?>">
             <img class="overlay-panel" src="/images/mugs.png">
@@ -202,7 +218,7 @@
         {{-- Hoodie html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod3" class="save-picture disabledbutton" name="hoodie" value="1">
+              <div id="proizvod3" class="save-picture disabledbutton" name="Hoodie" value="1">
                   <div class="background-div3">
               <img id="logo-canvas3" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/hoodie.jpg">
@@ -214,7 +230,7 @@
               </span>
               <div>
               <button id="edit-product3">Edit</button>
-              <button id="enabled-product3" onclick="">Disabled</button>
+              <button id="enabled-product3">Disabled</button>
               </div>
           </div>
       </div>
@@ -317,6 +333,7 @@ var imgElement = document.getElementById('myImage');
 var object = "/image/<?php if(!empty($image)){echo $image;}  ?>";
 
 load(object);
+
 
 function load(object){
  fabric.Image.fromURL(object, function(img) {
@@ -457,10 +474,14 @@ var rect = new fabric.Rect({
   
 
 });
+
+    $('#delete').on('click', function(){
    
+    });
  
     // None option for Phone case
     $('#none').on('click', function(){
+      
         checkForScale = false;
         canvas3.clear(); 
         img.scaleToWidth(100);
@@ -582,7 +603,9 @@ var rect = new fabric.Rect({
   $('#upload-form').on('submit' , function(event){
     checkForScale = false;
     imageChange = true;
-    canvas3.remove(img);
+    img.scaleToWidth(0);
+   // canvas3.remove(img);
+  //  canvas3.requestRenderAll();
     canvas3.clear();
     canvas3.requestRenderAll();
     event.preventDefault();
@@ -596,11 +619,11 @@ var rect = new fabric.Rect({
       processData: false,
       success: function(data){
         
-        sleep(300).then(() => {
-          object = "";
+        
+       object = " ";
        object ="/image/" + data.upload_image;
         load(object);
-        });
+       
       }
     });
   });
@@ -966,12 +989,16 @@ const sleep = (milliseconds) => {
 }
 function doCapture(){
     window.scrollTo(0,0);
+    var title = document.getElementById('title').value;
+    var tags = document.getElementById('tags').value;
+    var description = document.getElementById('description').value;
     var els = document.getElementsByClassName("save-picture");
     Array.prototype.forEach.call(els, function(el) {
     if( el.getAttribute('value')=='0'){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
-            var nameProduct = el.getAttribute('name');
+            alert(imgData);
+            var nameProduct = title+ " " + el.getAttribute('name');
             $.ajax({
                     url: 'savework',
                     type: 'post',
@@ -981,7 +1008,9 @@ function doCapture(){
                     dataType: 'text',
                     data: {
                         image : imgData,
-                        name: nameProduct
+                        name: nameProduct,
+                        tag : tags,
+                        description1 : description
                     },
                     success:function(msg){
                         console.log(msg);

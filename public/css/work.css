@@ -333,3 +333,8 @@
     .save-picture{
         z-index: 1;
     }
+
+    .add-work{
+        width: 50%;
+        height: 400px;
+    }
