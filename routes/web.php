@@ -28,6 +28,8 @@ Route::post('/addStar', 'HomeController@addStar');
 
 Route::get('/show_category_product/{id}', 'HomeController@show_category_product');
 
+Route::get('/search', 'HomeController@search')->name('search');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', function() {
             return view('admin.index');

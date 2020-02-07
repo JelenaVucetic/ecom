@@ -2,7 +2,7 @@
 
 @section('content')
 <section style="padding:100px">
-
+@include('layouts.error')
 @if(isset($products))
 <div class="album py-5 bg-light">
     <div class="container">

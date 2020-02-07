@@ -174,4 +174,23 @@ class HomeController extends Controller
         ->where('users.id', $userId)
         ->where('order_product.order_id', $userId)->get();
     }
+
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'query' => 'required|min:3'
+        ],
+            [
+                'query.required' => 'Unesite nesto',
+                'query.min' => 'Mora da ima vise od 3 karaktera'
+            ]);
+        $query = $request->input('query');
+       /*  $products = DB::table('product')->where('name', 'like',  "%$query%")
+                                        ->orWhere('description','like', "%$query%")
+                                        ->get(); */
+
+        $products = Product::search($query)->paginate(20);
+        return view('search-results', compact('products'));
+    }
 }

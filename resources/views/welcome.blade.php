@@ -5,10 +5,9 @@
 <main role="main">
 
   @include('layouts.hero')
-
+  @include('layouts.error')
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
           <div class="row">
               @forelse($products as $product)
@@ -36,7 +35,6 @@
                   <h3>No products</h3>
               @endforelse
           </div>
-
       </div>
     </div>
   </div>

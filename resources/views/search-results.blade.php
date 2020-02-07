@@ -1,12 +1,10 @@
 @extends('layouts.master')
-
 @section('content')
-
-<main role="main">
-
- @include('layouts.hero')
- @include('layouts.error')
-  <div class="album py-5 bg-light">
+<section style="margin:100px;">  
+   <h1>Search Results</h1>
+   <p>result(s) for '{{ request()->input('query') }}'</p>
+    @include('layouts.error')
+   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
           @forelse($products as $product)
@@ -34,10 +32,10 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-primpary">
-                      <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart"> View product</a>
+                      <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart">View product</a>
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-primpary">
-                      <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart"> Add to cart</a>
+                      <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart">Add to cart</a>
                   </button>
                 </div>
                 <small class="text-muted">9 mins</small>
@@ -51,6 +49,5 @@
       </div>
     </div>
   </div>
-  @include('recommends')
-</main>
+</section>
 @endsection
