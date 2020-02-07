@@ -12,23 +12,7 @@
 
 
     {{-- <canvas id="c" width="200" height="300"></canvas> --}}
-      <div class="add-work">
-        <div class="add-work-title">
-          <label>Title</label>
-          <input type="text" placeholder="Title" id="title">
-        </div>
-
-        <div class="add-work-tags">
-          <label>Tags</label>
-          <input type="text" placeholder="Tags" id="tags">
-        </div>
-
-        <div class="add-work-description">
-          <label>Description</label>
-          <input type="text" placeholder="Description" id="description">
-        </div>
-      </div>
-
+  
     <div class="row">
 
       {{-- Phone case html --}}
@@ -266,7 +250,26 @@
 
     </div>
     <div class="save-work">
+ 
+        <div class="add-work">
+          <div class="add-work-title">
+            <label>Title</label>
+            <input type="text" placeholder="Title" id="title">
+          </div>
+  
+          <div class="add-work-tags">
+            <label>Tags</label>
+            <input type="text" placeholder="Tags" id="tags">
+          </div>
+  
+          <div class="add-work-description">
+            <label>Description</label>
+            <input type="text" placeholder="Description" id="description">
+          </div>
+        </div>
         <button id="capture" onclick="doCapture();">Sacuvaj</button>
+    
+       
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -991,19 +994,26 @@ function doCapture(){
     if( el.getAttribute('value')=='0'){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
-            var nameProduct = el.getAttribute('name');
+            var originalName = el.getAttribute('name');
+            alert(originalName);
+            var nameProduct = title + " " + el.getAttribute('name');
             $.ajax({
-                    url: 'savework',
+                    url: '{{route("ajaxupload.save")}}',
                     type: 'post',
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                          } ,
-                    dataType: 'text',
+                   
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     data: {
                         image : imgData,
                         name: nameProduct,
                         tag : tags,
-                        description1 : description
+                        description1 : description,
+                        originalName1 : originalName,
                     },
                     success:function(msg){
                         console.log(msg);
