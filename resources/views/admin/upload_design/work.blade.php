@@ -1000,20 +1000,18 @@ function doCapture(){
             $.ajax({
                     url: '{{route("ajaxupload.save")}}',
                     type: 'post',
-                    headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                         } ,
-                   
+                  
                     dataType: "JSON",
-                    contentType: false,
+                  /*   contentType: false,
                     cache: false,
-                    processData: false,
+                    processData: false, */
                     data: {
                         image : imgData,
                         name: nameProduct,
                         tag : tags,
                         description1 : description,
                         originalName1 : originalName,
+                        "_token":"{{csrf_token()}}",
                     },
                     success:function(msg){
                         console.log(msg);
