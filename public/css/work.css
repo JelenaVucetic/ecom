@@ -25,6 +25,13 @@
      #c6{
         border: 1px solid gray;
      }
+
+     #c7{
+        border: 1px solid gray;
+     }
+     #c8{
+        border: 1px solid gray;
+     }
     .products{
         display: flex;
         justify-content: space-evenly;
@@ -142,6 +149,26 @@
         padding-right: 30px;
         margin: 20px 50px;
     }
+
+    #app7 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+    #app8 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
     #app2 img{
         width: 30px;
         position: relative;
@@ -195,6 +222,25 @@
     border: 1px black solid;
 }
 
+#logo-canvas4{
+    position: relative;
+    top: 70px;
+    left: -5px;
+    width: 110px;
+    height: 150px;
+    z-index: 1;
+    border: 1px black solid;
+}
+
+#logo-canvas5{
+    position: relative;
+    top: 98px;
+    width: 110px;
+    height: 100px;
+    z-index: 1;
+    border: 1px black solid;
+}
+
 .product-options{
     z-index: 1;
 }
@@ -215,6 +261,22 @@
     padding: 9px;
 }
 .product-options3{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options4{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options5{
     z-index: 1;
     position: absolute;
     left: 300px;
@@ -263,6 +325,22 @@
     padding-top: 10px;
 }
 
+#proizvod4{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod5{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
 .background-div{
     width: 300px;
     height: 300px;
@@ -279,6 +357,11 @@
 }
 
 .background-div3{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div4{
     width: 300px;
     height: 300px;
 }

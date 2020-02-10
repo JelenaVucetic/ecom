@@ -34,12 +34,12 @@ class AjaxUploadController extends Controller
     function save(Request $request){
         $data = $request->all();
        
-        $title = $data['name'];
+      $title = $data['name'];
       $image = $data['image'];;
       $tags = $data['tag'];
       $description = $data['description1'];
       $original = $data['originalName1'];
-       // dd($image);
+       
 
 $price = 0;
 
@@ -54,16 +54,12 @@ if($original=='Phone Case'){
 }else{
     $price = 0;
 }
-$image = "";
-
-if(isset($image[1])){
-    $image = explode(";" , $image)[1];
+ 
+    $image = explode(";" , $image)[1];  
     $image = explode("," , $image)[1];
-}
+    $image = str_replace(" ", "+", $image);
 
-$image = str_replace(" ", "+", $image);
-
-$image = base64_decode($image);
+    $image = base64_decode($image);
 
 $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $name = mt_rand(1000000, 9999999)

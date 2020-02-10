@@ -218,8 +218,51 @@
               </div>
           </div>
       </div>
-
           </div>
+
+             {{-- Long Sleeve html --}}
+        <div class="product-column">
+          <div class="row-product">
+              <div id="proizvod4" class="save-picture disabledbutton" name="Long Sleeve" value="1">
+                  <div class="background-div4">
+              <img id="logo-canvas4" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+              <img class="overlay-panel" src="/images/longSleeve.jpg">
+                  </div>
+              </div>
+          <div class="preview-info">
+              <span class="preview-name">
+                  Long Sleeve
+              </span>
+              <div>
+              <button id="edit-product4">Edit</button>
+              <button id="enabled-product4">Disabled</button>
+              </div>
+          </div>
+      </div>
+          </div>
+
+              {{-- Graphic T-Shirt Dresses html --}}
+        <div class="product-column">
+          <div class="row-product">
+              <div id="proizvod5" class="save-picture disabledbutton" name="Long Sleeve" value="1">
+                  <div class="background-div4">
+              <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+              <img class="overlay-panel" src="/images/longSleeve.jpg">
+                  </div>
+              </div>
+          <div class="preview-info">
+              <span class="preview-name">
+                  Long Sleeve
+              </span>
+              <div>
+              <button id="edit-product5">Edit</button>
+              <button id="enabled-product5">Disabled</button>
+              </div>
+          </div>
+      </div>
+          </div>
+
+          {{-- Canvas edit for Hoodie --}}
           <div id="product6" class="img-div" data-value="1" style="display:none">
             <div id="app6" >
                 <canvas id="c6" width="200" height="300"></canvas>
@@ -245,6 +288,61 @@
                 </div>
             </div>
         </div>
+
+         {{-- Canvas edit for Long Sleeve --}}
+         <div id="product7" class="img-div" data-value="1" style="display:none">
+          <div id="app7" >
+              <canvas id="c7" width="200" height="300"></canvas>
+          </div>
+          <div class="product-options4">
+              <p>Long Sleeve options</p>
+              <div class="color-choose">
+
+                  <div class="container">
+                      <div class="output" id="output"></div>
+
+                      <div class="result-wrp">
+                         <p>Choose a color</p>
+                        <input type="color" id="color4">
+                      </div>
+                      <label>
+                          <span>Scale:</span>
+                          <input type="range" id="scale-control4"  value="0.05" min="0.01" max="0.5" step="0.005">
+                      </label>
+                      <button id="alignVertically4">Vertically</button>
+                      <button id="alignHorizontally4">Horizontally</button>
+                    </div>
+              </div>
+          </div>
+      </div>
+
+      
+         {{-- Canvas edit for Graphic T-Shirt Dresses --}}
+         <div id="product8" class="img-div" data-value="1" style="display:none">
+          <div id="app8" >
+              <canvas id="c8" width="200" height="300"></canvas>
+          </div>
+          <div class="product-options5">
+              <p>Long Sleeve options</p>
+              <div class="color-choose">
+
+                  <div class="container">
+                      <div class="output" id="output"></div>
+
+                      <div class="result-wrp">
+                         <p>Choose a color</p>
+                        <input type="color" id="color5">
+                      </div>
+                      <label>
+                          <span>Scale:</span>
+                          <input type="range" id="scale-control5"  value="0.05" min="0.01" max="0.5" step="0.005">
+                      </label>
+                      <button id="alignVertically5">Vertically</button>
+                      <button id="alignHorizontally5">Horizontally</button>
+                    </div>
+              </div>
+          </div>
+      </div>
 
 
 
@@ -814,9 +912,6 @@ var rect = new fabric.Rect({
       $(this).trigger('change');
      /*  img.scale(parseFloat($(this).val())).setCoords();
       canvas5.requestRenderAll(); */
-
-
-      //
       sleep(100).then(() => {
       img.scale(parseFloat($(this).val())).setCoords();
       //  Repeat Vertical
@@ -964,6 +1059,83 @@ var canvas6 = new fabric.Canvas('c6');
 });
 </script>
 
+
+<script>
+  // Canvas for Long Sleeve
+  var canvas7 = new fabric.Canvas('c7');
+   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+      img.set({
+  
+      });
+  
+  
+      img.scaleToWidth(250);
+      canvas7.add(img);
+      var image5 = document.getElementById("logo-canvas4");
+      // Scale option for T-shirt
+      $('#scale-control4').on('input', function () {
+        $(this).trigger('change');
+        img.scale(parseFloat($(this).val())).setCoords();
+        canvas7.requestRenderAll();
+    });
+  
+      // Align Vertical option for Hoodie
+    $('#alignVertically4').on('click', function(){
+      img.centerV();
+      sleep(100).then(() => {
+      img.setCoords();
+      image5.src = canvas7.toDataURL();
+      })
+    });
+    // Align Horizontal option for Hoodie
+    $('#alignHorizontally4').on('click', function(){
+      img.centerH();
+      sleep(100).then(() => {
+      img.setCoords();
+      image5.src = canvas7.toDataURL();
+  })
+    });
+  });
+  </script>
+
+<script>
+  // Canvas for Graphic T-Shirt Dresses
+  var canvas8 = new fabric.Canvas('c8');
+   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+      img.set({
+  
+      });
+  
+  
+      img.scaleToWidth(250);
+      canvas8.add(img);
+      var image6 = document.getElementById("logo-canvas5");
+      // Scale option for T-shirt
+      $('#scale-control5').on('input', function () {
+        $(this).trigger('change');
+        img.scale(parseFloat($(this).val())).setCoords();
+        canvas8.requestRenderAll();
+    });
+  
+      // Align Vertical option for Hoodie
+    $('#alignVertically5').on('click', function(){
+      img.centerV();
+      sleep(100).then(() => {
+      img.setCoords();
+      image6.src = canvas8.toDataURL();
+      })
+    });
+    // Align Horizontal option for Hoodie
+    $('#alignHorizontally5').on('click', function(){
+      img.centerH();
+      sleep(100).then(() => {
+      img.setCoords();
+      image6.src = canvas8.toDataURL();
+  })
+    });
+  });
+  </script>
+
 <script>
 function enable(num, divValue){
     var br = num;
@@ -995,7 +1167,7 @@ function doCapture(){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
-            alert(originalName);
+            alert(imgData);
             var nameProduct = title + " " + el.getAttribute('name');
             $.ajax({
                     url: '{{route("ajaxupload.save")}}',

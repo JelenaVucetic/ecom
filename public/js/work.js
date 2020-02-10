@@ -85,6 +85,49 @@ $(document).ready(function(){
     });
 
 
+          // Enable and edit Long Sleeve
+          $('#edit-product4').click(function() {
+            if(document.getElementById('product7').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product7').style.display = 'flex';
+            }else{
+                document.getElementById('product7').style.display = 'none';
+            }
+        });
+        $('#enabled-product4').click(function(){
+            if($('#proizvod4').hasClass('disabledbutton')){
+                $('#proizvod4').removeClass('disabledbutton');
+                $( "#proizvod4" ).attr( "value" , 0 );
+                $('#enabled-product4').html('Enabled');
+            }else{
+                $('#proizvod4').addClass('disabledbutton');
+                $( "#proizvod4" ).attr( "value" , 1 );
+                $('#enabled-product4').html('Disabled');
+            }
+        });
+
+         // Enable and edit Long Sleeve
+         $('#edit-product5').click(function() {
+            if(document.getElementById('product8').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product8').style.display = 'flex';
+            }else{
+                document.getElementById('product8').style.display = 'none';
+            }
+        });
+        $('#enabled-product5').click(function(){
+            if($('#proizvod5').hasClass('disabledbutton')){
+                $('#proizvod5').removeClass('disabledbutton');
+                $( "#proizvod5" ).attr( "value" , 0 );
+                $('#enabled-product5').html('Enabled');
+            }else{
+                $('#proizvod5').addClass('disabledbutton');
+                $( "#proizvod5" ).attr( "value" , 1 );
+                $('#enabled-product5').html('Disabled');
+            }
+        });
+
+
     // Close other canvas edit options
     function closeCanvas(){
         var els = document.getElementsByClassName("img-div");
@@ -114,6 +157,16 @@ $(document).ready(function(){
         var image4 = document.getElementById("logo-canvas3");
         image4.src = canvas6.toDataURL();
     });
+      // canvas on change show hoodie product
+      $('#product7').mouseup(function(){
+        var image5 = document.getElementById("logo-canvas4");
+        image5.src = canvas7.toDataURL();
+    });
+        // canvas on change show Graphic T-Shirt Dresses product
+        $('#product8').mouseup(function(){
+            var image6 = document.getElementById("logo-canvas5");
+            image6.src = canvas8.toDataURL();
+        });
 
     // Change phone case color
     var colorInput = document.querySelector('#color');
@@ -135,6 +188,17 @@ $(document).ready(function(){
     colorInput3.addEventListener('input', ()=>{
       $('.background-div3').css("background-color", colorInput3.value);
     });
+
+     // Change Long Sleeve color
+     var colorInput4 = document.querySelector('#color4');
+     colorInput4.addEventListener('input', ()=>{
+       $('.background-div4').css("background-color", colorInput4.value);
+     });
+      // Change Graphic T-Shirt Dresses color
+      var colorInput5 = document.querySelector('#color5');
+      colorInput5.addEventListener('input', ()=>{
+        $('.background-div5').css("background-color", colorInput5.value);
+      });
 
     
 });
