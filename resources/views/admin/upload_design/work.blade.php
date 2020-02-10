@@ -338,8 +338,8 @@ var object = "/image/<?php if(!empty($image)){echo $image;}  ?>";
 load(object);
 
 
-function load(object){
- fabric.Image.fromURL(object, function(img) {
+function load(objects){
+ fabric.Image.fromURL(objects, function(img) {
     img.set({
 
     });
@@ -605,8 +605,8 @@ var rect = new fabric.Rect({
     checkForScale = false;
     imageChange = true;
     img.scaleToWidth(0);
-   // canvas3.remove(img);
-  //  canvas3.requestRenderAll();
+    canvas3.remove(img);
+    canvas3.requestRenderAll();
     canvas3.clear();
     canvas3.requestRenderAll();
     event.preventDefault();
@@ -621,9 +621,9 @@ var rect = new fabric.Rect({
       success: function(data){
 
 
-       object = " ";
-       object ="/image/" + data.upload_image;
-        load(object);
+       var object1 = "";
+       object1 ="/image/" + data.upload_image;
+        load(object1);
 
       }
     });
