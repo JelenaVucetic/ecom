@@ -11,7 +11,7 @@
 
 
 
-    {{-- <canvas id="c" width="200" height="300"></canvas> --}}
+    
   
     <div class="row">
 
@@ -244,15 +244,15 @@
               {{-- Graphic T-Shirt Dresses html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod5" class="save-picture disabledbutton" name="Long Sleeve" value="1">
+              <div id="proizvod5" class="save-picture disabledbutton" name="Graphic T-Shirt Dresses" value="1">
                   <div class="background-div4">
               <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/longSleeve.jpg">
+              <img class="overlay-panel" src="/images/noSleeveShirt.png">
                   </div>
               </div>
           <div class="preview-info">
               <span class="preview-name">
-                  Long Sleeve
+                Graphic T-Shirt Dresses
               </span>
               <div>
               <button id="edit-product5">Edit</button>
@@ -323,7 +323,7 @@
               <canvas id="c8" width="200" height="300"></canvas>
           </div>
           <div class="product-options5">
-              <p>Long Sleeve options</p>
+              <p> Graphic T-Shirt Dresses options</p>
               <div class="color-choose">
 
                   <div class="container">
@@ -344,9 +344,46 @@
           </div>
       </div>
 
+               {{-- Stickers html --}}
+               <div class="product-column">
+                <div class="row-product">
+                    <div id="proizvod6" class="save-picture disabledbutton" name="Stickers" value="1">
+                        <div class="background-div5">
+                    <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                    <img class="overlay-panel" src="/images/noSleeveShirt.png">
+                        </div>
+                    </div>
+                <div class="preview-info">
+                    <span class="preview-name">
+                      Graphic T-Shirt Dresses
+                    </span>
+                    <div>
+                    <button id="edit-product6">Edit</button>
+                    <button id="enabled-product6">Disabled</button>
+                    </div>
+                </div>
+            </div>
+                </div>
 
 
+
+
+                  {{-- Canvas edit for Stickers --}}
+         <div id="product9" class="img-div" data-value="1" style="display:none">
+          <div id="app9" >
+              <canvas id="c9" width="200" height="300"></canvas>
+          </div>
+          <div class="product-options5">
+              <p> Graphic T-Shirt Dresses options</p>
+            
+      </div>
+
+
+         </div>
     </div>
+
+
+
     <div class="save-work">
  
         <div class="add-work">
@@ -371,7 +408,56 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-`
+` 
+<script>
+  var canvas10 = new fabric.Canvas('c9');
+//  var ctx = canvas10.getContext("2d");
+var img1=new Image();
+
+img1.onload=start;
+
+
+
+
+
+img1.src="../image/<?php if(!empty($image)){echo $image;}  ?>";
+
+
+function start(){
+  var stickerCanvas=stickerEffect(img1,20);
+  var imgInstance = new fabric.Image(stickerCanvas,{})
+  
+  canvas10.add(imgInstance);
+
+}
+
+function stickerEffect(img1,grow){
+  var canvas11=document.createElement("canvas");
+ // canvas11.width = 200;
+ // canvas11.height = 200;
+  var ctx1=canvas11.getContext("2d");
+  var canvas12=document.createElement("canvas");
+ // canvas12.width = 200;
+ // canvas12.height = 200;
+   // img1.width = 180;
+   // img1.height = 180;
+  var ctx2=canvas12.getContext("2d");
+ canvas12.width=img1.width+grow*2;
+  canvas12.height=img1.height+grow*2;
+  ctx1.drawImage(img1,grow,grow);
+  ctx2.shadowColor='red';
+  ctx2.shadowBlur=2;
+  for(var i=0;i<grow;i++){
+    ctx2.drawImage(canvas11,0,0);
+    ctx1.drawImage(canvas12,0,0);
+  }
+  ctx2.shadowColor='rgba(0,0,0,0)';   
+  ctx2.drawImage(img1,grow,grow);
+  return(canvas12);
+}
+
+//start();
+</script>
 
 
 
@@ -744,6 +830,7 @@ var canvas4 = new fabric.Canvas('c4');
 
     img.scaleToWidth(250);
     canvas4.add(img);
+    
     var image2 = document.getElementById("logo-canvas1");
     // Scale option for T-shirt
     $('#scale-control1').on('input', function () {

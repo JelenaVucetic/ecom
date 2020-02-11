@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator,Redirect,Response,File;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ImageController extends Controller
 {
@@ -22,11 +23,19 @@ class ImageController extends Controller
         ['file.required' => 'Fajl mora biti: jpeg, png, svg, jpg, ico']
     );
 
-        $file = $request->file('file');
         
-        $file->move('image', $file->getClientOriginalName());
+
+        $file = $request->file('file');
         $image =  $file->getClientOriginalName();
-    
+
+        
+
+        $file->move('image', $file->getClientOriginalName());
+
+
+
+      
+        
         $path = pathinfo($image);
         $ext = $path['extension'];
 

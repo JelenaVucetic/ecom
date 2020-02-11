@@ -106,7 +106,7 @@ $(document).ready(function(){
             }
         });
 
-         // Enable and edit Long Sleeve
+         // Enable and edit Graphic T-Shirt Dresses
          $('#edit-product5').click(function() {
             if(document.getElementById('product8').style.display == 'none'){
                 closeCanvas();
@@ -126,6 +126,29 @@ $(document).ready(function(){
                 $('#enabled-product5').html('Disabled');
             }
         });
+
+         // Enable and edit Stickers
+         $('#edit-product6').click(function() {
+            if(document.getElementById('product9').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product9').style.display = 'flex';
+            }else{
+                document.getElementById('product9').style.display = 'none';
+            }
+        });
+        $('#enabled-product6').click(function(){
+            if($('#proizvod6').hasClass('disabledbutton')){
+                $('#proizvod6').removeClass('disabledbutton');
+                $( "#proizvod6" ).attr( "value" , 0 );
+                $('#enabled-product6').html('Enabled');
+            }else{
+                $('#proizvod6').addClass('disabledbutton');
+                $( "#proizvod6" ).attr( "value" , 1 );
+                $('#enabled-product6').html('Disabled');
+            }
+        });
+
+
 
 
     // Close other canvas edit options

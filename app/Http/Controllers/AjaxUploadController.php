@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use DB;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AjaxUploadController extends Controller
 {
@@ -13,11 +14,29 @@ class AjaxUploadController extends Controller
         $validation = Validator::make($request->all(), [
             'file1' => 'required|mimes:jpeg,png,jpg,svg,ico|max:2048',
         ]);
+
+        dd("OK");
+
         if($validation->passes()){
 
-            $file = $request->file('file1');
+         
+      
+            if($request->hasFile('file1')) {
+                $image       = $request->file('image');
+                $filename    = $image->getClientOriginalName();
+                $image_resize = Image::make($image->getRealPath())->resize(200, 200, function ($c) {
+                    $c->aspectRatio();
+                    $c->upsize();
+                });
+
+                
+                $image_resize->save(public_path('images/' .$filename));
+            
+            }
+           
+             $file = $request->file('file1');
             $file->move('image', $file->getClientOriginalName());
-            $image =  $file->getClientOriginalName();
+            $image =  $file->getClientOriginalName(); 
 
             return response()->json([
                 'message' => 'Image uploaded',
