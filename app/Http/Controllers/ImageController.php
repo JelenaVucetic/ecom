@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator,Redirect,Response,File;
 use Illuminate\Support\Facades\Input;
-use Intervention\Image\ImageManagerStatic as Image;
+//use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Facades\Image;
 
 class ImageController extends Controller
 {
@@ -18,24 +19,28 @@ class ImageController extends Controller
     public function upload(Request $request){
           
         $this->validate($request, [
-            'file' => 'required|mimes:jpeg,png,jpg,svg,ico|max:2048',
-        ],
-        ['file.required' => 'Fajl mora biti: jpeg, png, svg, jpg, ico']
-    );
+            'file' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
 
-        
+        ],
+        ['file.required' => 'Morate izabrati fajl',
+         'file.mimes' => 'Fajl mora biti: jpeg, png, jpg, gif']
+    );
 
         $file = $request->file('file');
         $image =  $file->getClientOriginalName();
-
-        
-
         $file->move('image', $file->getClientOriginalName());
+        $image1 = Image::make(public_path('image/' . $image))->resize(200,150, function($constraint){
+            $constraint->aspectRatio();
+        });
+        $image1->save();
 
 
 
-      
-        
+
+
+       /*  $file = $request->file('file');
+        $image =  $file->getClientOriginalName();
+        $file->move('image', $file->getClientOriginalName()); */
         $path = pathinfo($image);
         $ext = $path['extension'];
 

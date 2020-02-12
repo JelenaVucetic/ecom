@@ -149,6 +149,49 @@ $(document).ready(function(){
         });
 
 
+         // Enable and edit Notes
+         $('#edit-product7').click(function() {
+            if(document.getElementById('product10').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product10').style.display = 'flex';
+            }else{
+                document.getElementById('product10').style.display = 'none';
+            }
+        });
+        $('#enabled-product7').click(function(){
+            if($('#proizvod7').hasClass('disabledbutton')){
+                $('#proizvod7').removeClass('disabledbutton');
+                $( "#proizvod7" ).attr( "value" , 0 );
+                $('#enabled-product7').html('Enabled');
+            }else{
+                $('#proizvod7').addClass('disabledbutton');
+                $( "#proizvod7" ).attr( "value" , 1 );
+                $('#enabled-product7').html('Disabled');
+            }
+        });
+
+          // Enable and edit Clock
+          $('#edit-product8').click(function() {
+            if(document.getElementById('product11').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product11').style.display = 'flex';
+            }else{
+                document.getElementById('product11').style.display = 'none';
+            }
+        });
+        $('#enabled-product8').click(function(){
+            if($('#proizvod8').hasClass('disabledbutton')){
+                $('#proizvod8').removeClass('disabledbutton');
+                $( "#proizvod8" ).attr( "value" , 0 );
+                $('#enabled-product8').html('Enabled');
+            }else{
+                $('#proizvod8').addClass('disabledbutton');
+                $( "#proizvod8" ).attr( "value" , 1 );
+                $('#enabled-product8').html('Disabled');
+            }
+        });
+
+
 
 
     // Close other canvas edit options
@@ -190,6 +233,17 @@ $(document).ready(function(){
             var image6 = document.getElementById("logo-canvas5");
             image6.src = canvas8.toDataURL();
         });
+        // canvas on change show Notes
+        $('#product10').mouseup(function(){
+            var image11 = document.getElementById("logo-canvas7");
+            image11.src = canvas13.toDataURL();
+        });
+
+         // canvas on change show Clock
+         $('#product11').mouseup(function(){
+            var image12 = document.getElementById("logo-canvas8");
+            image12.src = canvas14.toDataURL();
+        });
 
     // Change phone case color
     var colorInput = document.querySelector('#color');
@@ -222,6 +276,18 @@ $(document).ready(function(){
       colorInput5.addEventListener('input', ()=>{
         $('.background-div5').css("background-color", colorInput5.value);
       });
+
+      // Change Graphic T-Shirt Dresses color
+      var colorInput6 = document.querySelector('#color6');
+      colorInput6.addEventListener('input', ()=>{
+        $('.background-div6').css("background-color", colorInput6.value);
+      });
+
+        // Change Clock color
+        var colorInput7 = document.querySelector('#color7');
+        colorInput7.addEventListener('input', ()=>{
+          $('.background-div7').css("background-color", colorInput7.value);
+        });
 
     
 });

@@ -7,21 +7,27 @@
     #c{
     border: 1px solid gray;
     }
+
     #c1{
     border: 1px solid gray;
     }
+
     #c2{
     border: 1px solid gray;
     }
+
     #c3{
     border: 1px solid gray;
     }
+
     #c4{
         border: 1px solid gray;
         }
+
     #c5{
         border: 1px solid gray;
      }
+
      #c6{
         border: 1px solid gray;
      }
@@ -29,7 +35,20 @@
      #c7{
         border: 1px solid gray;
      }
+
      #c8{
+        border: 1px solid gray;
+     }
+
+     #c9{
+        border: 1px solid gray;
+     }
+
+     #c10{
+        border: 1px solid gray;
+     }
+
+     #c11{
         border: 1px solid gray;
      }
 
@@ -184,6 +203,27 @@
         padding-right: 30px;
         margin: 20px 50px;
     }
+
+    #app10 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+    #app11 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
     #app2 img{
         width: 30px;
         position: relative;
@@ -259,6 +299,18 @@
     max-height: 300px;
 }
 
+#logo-canvas7{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#logo-canvas8{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
 .product-options{
     z-index: 1;
 }
@@ -295,6 +347,22 @@
 }
 
 .product-options5{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options6{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options7{
     z-index: 1;
     position: absolute;
     left: 300px;
@@ -367,6 +435,22 @@
     padding-top: 10px;
 }
 
+#proizvod7{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod8{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
 .background-div{
     width: 300px;
     height: 300px;
@@ -388,6 +472,16 @@
 }
 
 .background-div4{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div6{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div7{
     width: 300px;
     height: 300px;
 }
@@ -420,6 +514,7 @@
   .row{
       display: flex;
       flex-wrap: wrap;
+      width: 100%;
   }
 
   .product-options{
@@ -435,7 +530,7 @@
   }
 
   .img-div{
-    margin-bottom: 100px;
+    margin-bottom: 200px;
     width: 100%;
     }
   

@@ -349,13 +349,13 @@
                 <div class="row-product">
                     <div id="proizvod6" class="save-picture disabledbutton" name="Stickers" value="1">
                         <div class="background-div5">
-                    <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                    <img class="overlay-panel" src="/images/noSleeveShirt.png">
+                    <img id="logo-canvas6" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                    
                         </div>
                     </div>
                 <div class="preview-info">
                     <span class="preview-name">
-                      Graphic T-Shirt Dresses
+                      Stickers
                     </span>
                     <div>
                     <button id="edit-product6">Edit</button>
@@ -365,21 +365,137 @@
             </div>
                 </div>
 
+                  {{-- Notes html --}}
+        <div class="product-column">
+          <div class="row-product">
+              <div id="proizvod7" class="save-picture disabledbutton" name="Notes" value="1">
+                  <div class="background-div6">
+              <img id="logo-canvas7" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+              <img class="overlay-panel" src="/images/notes.png">
+                  </div>
+              </div>
+          <div class="preview-info">
+              <span class="preview-name">
+                  Notes
+              </span>
+              <div>
+              <button id="edit-product7">Edit</button>
+              <button id="enabled-product7">Disabled</button>
+              </div>
+          </div>
+      </div>
+          </div>
+
+
+                      {{-- Clock html --}}
+        <div class="product-column">
+          <div class="row-product">
+              <div id="proizvod8" class="save-picture disabledbutton" name="Clock" value="1">
+                  <div class="background-div7">
+              <img id="logo-canvas8" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+              <img class="overlay-panel" src="/images/clock.png">
+                  </div>
+              </div>
+          <div class="preview-info">
+              <span class="preview-name">
+                  Clock
+              </span>
+              <div>
+              <button id="edit-product8">Edit</button>
+              <button id="enabled-product8">Disabled</button>
+              </div>
+          </div>
+      </div>
+          </div>
+
+
 
 
 
                   {{-- Canvas edit for Stickers --}}
          <div id="product9" class="img-div" data-value="1" style="display:none">
           <div id="app9" >
-              <canvas id="c9" width="200" height="300"></canvas>
+              <canvas id="c9" width="300" height="300"></canvas>
           </div>
-          <div class="product-options5">
-              <p> Graphic T-Shirt Dresses options</p>
+          <div class="product-options6">
+              <p>Stickers options</p>
             
       </div>
-
-
          </div>
+
+          {{-- Canvas edit for Notes --}}
+<div id="product10" class="img-div" data-value="1" style="display:none">
+
+  <div id="app10" >
+      <canvas id="c10" width="200" height="300"></canvas>
+  </div>
+  <div class="product-options7">
+      <p>Notes options</p>
+      <div class="color-choose">
+
+          <div class="container">
+              <div class="output" id="output"></div>
+
+              <div class="result-wrp">
+                 <p>Choose a color</p>
+                <input type="color" id="color6">
+              </div>
+              <label>
+                  <span>Scale:</span>
+                  <input type="range" id="scale-control6"  value="0.05" min="0.005" max="0.5" step="0.005">
+              </label>
+              <button id="alignVertically6">Vertically</button>
+              <button id="alignHorizontally6">Horizontally</button>
+              <div class="repeat-option">
+                  <button id="repeat2">Repeat</button>
+                  <button id="none2">None</button>
+                  <button id="repeat-vertical2">Repeat vertical</button>
+                  <button id="delete">Delete</button>
+              </div>
+            </div>
+      </div>
+  </div>
+  </div>
+
+
+
+          {{-- Canvas edit for Clock --}}
+<div id="product11" class="img-div" data-value="1" style="display:none">
+
+  <div id="app11" >
+      <canvas id="c11" width="200" height="300"></canvas>
+  </div>
+  <div class="product-options8">
+      <p>Clock options</p>
+      <div class="color-choose">
+
+          <div class="container">
+              <div class="output" id="output"></div>
+
+              <div class="result-wrp">
+                 <p>Choose a color</p>
+                <input type="color" id="color7">
+              </div>
+              <label>
+                  <span>Scale:</span>
+                  <input type="range" id="scale-control7"  value="0.05" min="0.005" max="0.5" step="0.005">
+              </label>
+              <button id="alignVertically7">Vertically</button>
+              <button id="alignHorizontally7">Horizontally</button>
+              <div class="repeat-option">
+                  <button id="repeat3">Repeat</button>
+                  <button id="none3">None</button>
+                  <button id="repeat-vertical3">Repeat vertical</button>
+                  <button id="delete">Delete</button>
+              </div>
+            </div>
+      </div>
+  </div>
+  </div>
+
+
+
+
     </div>
 
 
@@ -408,7 +524,11 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-` 
+    <script>
+   
+   
+    </script>
+`   @include('admin.upload_design.product_canvas')
 <script>
   var canvas10 = new fabric.Canvas('c9');
 //  var ctx = canvas10.getContext("2d");
@@ -421,29 +541,24 @@ img1.onload=start;
 
 
 img1.src="../image/<?php if(!empty($image)){echo $image;}  ?>";
-
+var image10 = document.getElementById("logo-canvas6");
 
 function start(){
   var stickerCanvas=stickerEffect(img1,20);
   var imgInstance = new fabric.Image(stickerCanvas,{})
-  
   canvas10.add(imgInstance);
+  image10.src = canvas10.toDataURL();
+  canvas10.requestRenderAll();
 
 }
 
 function stickerEffect(img1,grow){
   var canvas11=document.createElement("canvas");
- // canvas11.width = 200;
- // canvas11.height = 200;
   var ctx1=canvas11.getContext("2d");
   var canvas12=document.createElement("canvas");
- // canvas12.width = 200;
- // canvas12.height = 200;
-   // img1.width = 180;
-   // img1.height = 180;
   var ctx2=canvas12.getContext("2d");
- canvas12.width=img1.width+grow*2;
-  canvas12.height=img1.height+grow*2;
+  canvas11.width=canvas12.width=img1.width+grow*2;
+  canvas11.height=canvas12.height=img1.height+grow*2;
   ctx1.drawImage(img1,grow,grow);
   ctx2.shadowColor='red';
   ctx2.shadowBlur=2;
