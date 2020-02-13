@@ -179,7 +179,12 @@ function responseMessage(msg) {
         <p>{{$review->review_content}}</p>
     @endforeach
 <?php 
-     $userId = Auth::user()->id;
+   if (Auth::check()) {
+    $userId = Auth::user()->id;
+   }
+    else {
+          $userId=0;
+}
       $counter = DB::table('users')->select('name' ,DB::raw('count(*) as total'))->join('orders', 'orders.user_id' , '=', 'users.id')
         ->join('order_product', 'orders.id','=','order_product.order_id')
         ->where('users.id', $userId)

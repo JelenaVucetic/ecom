@@ -22,7 +22,7 @@
         img.scaleToWidth(250);
     
         canvas13.add(img);
-         // Repeat option for Phone case
+   
         $('#repeat2').on('click', function(){
           checkForScale1 = false;
         img.set({
@@ -155,7 +155,7 @@
     
         });
     
-        // None option for Phone case
+
         $('#none2').on('click', function(){
     
             checkForScale1 = false;
@@ -165,7 +165,7 @@
             image11.src = canvas13.toDataURL();
             canvas13.requestRenderAll();
         });
-        // Scale option for Phone case
+  
         $('#scale-control6').on('input', function () {
           $(this).trigger('change');
           sleep(100).then(() => {
@@ -259,7 +259,7 @@
         });
          //  Close repeat vertical
     
-      // Align Vertical option for Phone case
+   
       $('#alignVertically6').on('click', function(){
         img.centerV();
         sleep(100).then(() => {
@@ -268,7 +268,7 @@
         })
       });
     
-      // Align Horizontal option for Phone case
+   
       $('#alignHorizontally6').on('click', function(){
         img.centerH();
         sleep(100).then(() => {
@@ -314,7 +314,7 @@
 
 
 <script>
-    // Canvas for Notes
+    // Canvas for Clock
     var oldWidth2 = 0;
     var checkForScale2 = false;
     var padding2 = 0;
@@ -333,7 +333,7 @@
        img.scaleToWidth(250);
    
        canvas14.add(img);
-        // Repeat option for Phone case
+       
        $('#repeat3').on('click', function(){
          checkForScale2 = false;
        img.set({
@@ -466,7 +466,7 @@
    
        });
    
-       // None option for Phone case
+    
        $('#none3').on('click', function(){
    
            checkForScale2 = false;
@@ -476,7 +476,7 @@
            image12.src = canvas14.toDataURL();
            canvas14.requestRenderAll();
        });
-       // Scale option for Phone case
+
        $('#scale-control7').on('input', function () {
          $(this).trigger('change');
          sleep(100).then(() => {
@@ -570,7 +570,7 @@
        });
         //  Close repeat vertical
    
-     // Align Vertical option for Phone case
+
      $('#alignVertically7').on('click', function(){
        img.centerV();
        sleep(100).then(() => {
@@ -579,7 +579,7 @@
        })
      });
    
-     // Align Horizontal option for Phone case
+
      $('#alignHorizontally7').on('click', function(){
        img.centerH();
        sleep(100).then(() => {
@@ -620,6 +620,119 @@
    
    }
    
-   
    </script>
+   
+   <script>
+    // Canvas for Termos
+    var canvas15 = new fabric.Canvas('c12');
+     fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+        img.set({
     
+        });
+    
+        img.scaleToWidth(250);
+        canvas15.add(img);
+        
+        var image13 = document.getElementById("logo-canvas9");
+  
+        $('#scale-control8').on('input', function () {
+          $(this).trigger('change');
+          img.scale(parseFloat($(this).val())).setCoords();
+          canvas15.requestRenderAll();
+      });
+    
+ 
+      $('#alignVertically8').on('click', function(){
+        img.centerV();
+        sleep(100).then(() => {
+        img.setCoords();
+        image13.src = canvas15.toDataURL();
+        })
+      });
+
+      $('#alignHorizontally8').on('click', function(){
+        img.centerH();
+        sleep(100).then(() => {
+        img.setCoords();
+        image13.src = canvas15.toDataURL();
+    })
+      });
+    });
+    </script>
+
+
+<script>
+  // Canvas for Ceger
+  var canvas16 = new fabric.Canvas('c13');
+   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+      img.set({
+  
+      });
+  
+      img.scaleToWidth(250);
+      canvas16.add(img);
+      
+      var image14 = document.getElementById("logo-canvas10");
+
+      $('#scale-control9').on('input', function () {
+        $(this).trigger('change');
+        img.scale(parseFloat($(this).val())).setCoords();
+        canvas16.requestRenderAll();
+    });
+  
+
+    $('#alignVertically9').on('click', function(){
+      img.centerV();
+      sleep(100).then(() => {
+      img.setCoords();
+      image14.src = canvas16.toDataURL();
+      })
+    });
+
+    $('#alignHorizontally9').on('click', function(){
+      img.centerH();
+      sleep(100).then(() => {
+      img.setCoords();
+      image14.src = canvas16.toDataURL();
+  })
+    });
+  });
+  </script>
+
+<script>
+  // Canvas for Poster
+  var canvas17 = new fabric.Canvas('c14');
+   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+      img.set({
+  
+      });
+  
+      img.scaleToWidth(250);
+      canvas17.add(img);
+      
+      var image15 = document.getElementById("logo-canvas11");
+
+      $('#scale-control10').on('input', function () {
+        $(this).trigger('change');
+        img.scale(parseFloat($(this).val())).setCoords();
+        canvas17.requestRenderAll();
+    });
+  
+
+    $('#alignVertically10').on('click', function(){
+      img.centerV();
+      sleep(100).then(() => {
+      img.setCoords();
+      image15.src = canvas17.toDataURL();
+      })
+    });
+
+    $('#alignHorizontally10').on('click', function(){
+      img.centerH();
+      sleep(100).then(() => {
+      img.setCoords();
+      image15.src = canvas17.toDataURL();
+  })
+    });
+  });
+  </script>

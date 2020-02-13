@@ -52,6 +52,18 @@
         border: 1px solid gray;
      }
 
+     #c12{
+        border: 1px solid gray;
+     }
+
+     #c13{
+        border: 1px solid gray;
+     }
+
+     #c14{
+        border: 1px solid gray;
+     }
+
      #design-canvas{
          border:1px solid gray;
         }
@@ -224,6 +236,37 @@
         margin: 20px 50px;
     }
 
+    #app12 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+    #app13 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+    #app14 {
+        width: 200px;
+        height: 200px;
+        left: 0px;
+        top: 0px;
+        display: inline-block;
+        padding-right: 30px;
+        margin: 20px 50px;
+    }
+
+
     #app2 img{
         width: 30px;
         position: relative;
@@ -311,6 +354,24 @@
     max-height: 300px;
 }
 
+#logo-canvas9{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#logo-canvas10{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+#logo-canvas11{
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+}
+
 .product-options{
     z-index: 1;
 }
@@ -363,6 +424,30 @@
 }
 
 .product-options7{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options8{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options9{
+    z-index: 1;
+    position: absolute;
+    left: 300px;
+    border: 1px solid gray;
+    padding: 9px;
+}
+
+.product-options10{
     z-index: 1;
     position: absolute;
     left: 300px;
@@ -451,6 +536,30 @@
     padding-top: 10px;
 }
 
+#proizvod9{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod10{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
+#proizvod11{
+    margin-top: 10px;
+    width: 300px;
+    position: relative;
+    min-height: 300px;
+    padding-top: 10px;
+}
+
 .background-div{
     width: 300px;
     height: 300px;
@@ -482,6 +591,21 @@
 }
 
 .background-div7{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div8{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div9{
+    width: 300px;
+    height: 300px;
+}
+
+.background-div10{
     width: 300px;
     height: 300px;
 }

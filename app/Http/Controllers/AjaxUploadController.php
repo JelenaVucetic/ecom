@@ -91,7 +91,7 @@ file_put_contents("images/". $string . ".png", $image);
 
 
 DB::table('product')->insert([
-'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=>'images/'.$string.'.png'
+'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png'
 ]); 
 
 

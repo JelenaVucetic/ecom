@@ -495,6 +495,159 @@
 
 
 
+                     {{-- Termos html --}}
+                     <div class="product-column">
+                      <div class="row-product">
+                          <div id="proizvod9" class="save-picture disabledbutton" name="Termos" value="1">
+                              <div class="background-div8">
+                          <img id="logo-canvas9" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                          <img class="overlay-panel" src="/images/termos.png">
+                              </div>
+                          </div>
+                      <div class="preview-info">
+                          <span class="preview-name">
+                              Termos
+                          </span>
+                          <div>
+                          <button id="edit-product9">Edit</button>
+                          <button id="enabled-product9">Disabled</button>
+                          </div>
+                      </div>
+                  </div>
+                      </div>
+
+                         {{-- Ceger html --}}
+                     <div class="product-column">
+                      <div class="row-product">
+                          <div id="proizvod10" class="save-picture disabledbutton" name="Ceger" value="1">
+                              <div class="background-div9">
+                          <img id="logo-canvas10" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                          <img class="overlay-panel" src="/images/ceger.png">
+                              </div>
+                          </div>
+                      <div class="preview-info">
+                          <span class="preview-name">
+                              Ceger
+                          </span>
+                          <div>
+                          <button id="edit-product10">Edit</button>
+                          <button id="enabled-product10">Disabled</button>
+                          </div>
+                      </div>
+                  </div>
+                      </div>
+
+                                    {{-- Poster html --}}
+                     <div class="product-column">
+                      <div class="row-product">
+                          <div id="proizvod11" class="save-picture disabledbutton" name="Poster" value="1">
+                              <div class="background-div10">
+                          <img id="logo-canvas11" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                          <img class="overlay-panel" src="/images/poster.png">
+                              </div>
+                          </div>
+                      <div class="preview-info">
+                          <span class="preview-name">
+                              Poster
+                          </span>
+                          <div>
+                          <button id="edit-product11">Edit</button>
+                          <button id="enabled-product11">Disabled</button>
+                          </div>
+                      </div>
+                  </div>
+                      </div>
+
+
+
+
+                                {{-- Canvas edit for Termos --}}
+<div id="product12" class="img-div" data-value="1" style="display:none">
+
+  <div id="app12" >
+      <canvas id="c12" width="200" height="300"></canvas>
+  </div>
+  <div class="product-options8">
+      <p>Termos options</p>
+      <div class="color-choose">
+
+          <div class="container">
+              <div class="output" id="output"></div>
+
+              <div class="result-wrp">
+                 <p>Choose a color</p>
+                <input type="color" id="color8">
+              </div>
+              <label>
+                  <span>Scale:</span>
+                  <input type="range" id="scale-control8"  value="0.05" min="0.005" max="0.5" step="0.005">
+              </label>
+              <button id="alignVertically8">Vertically</button>
+              <button id="alignHorizontally8">Horizontally</button>
+            </div>
+      </div>
+  </div>
+  </div>
+
+
+
+   {{-- Canvas edit for Ceger --}}
+<div id="product13" class="img-div" data-value="1" style="display:none">
+
+  <div id="app13" >
+      <canvas id="c13" width="200" height="300"></canvas>
+  </div>
+  <div class="product-options9">
+      <p>Ceger options</p>
+      <div class="color-choose">
+
+          <div class="container">
+              <div class="output" id="output"></div>
+
+              <div class="result-wrp">
+                 <p>Choose a color</p>
+                <input type="color" id="color9">
+              </div>
+              <label>
+                  <span>Scale:</span>
+                  <input type="range" id="scale-control9"  value="0.05" min="0.005" max="0.5" step="0.005">
+              </label>
+              <button id="alignVertically9">Vertically</button>
+              <button id="alignHorizontally9">Horizontally</button>
+            </div>
+      </div>
+  </div>
+  </div>
+
+
+
+    {{-- Canvas edit for Poster --}}
+<div id="product14" class="img-div" data-value="1" style="display:none">
+
+  <div id="app14" >
+      <canvas id="c14" width="200" height="300"></canvas>
+  </div>
+  <div class="product-options10">
+      <p>Poster options</p>
+      <div class="color-choose">
+
+          <div class="container">
+              <div class="output" id="output"></div>
+
+              <div class="result-wrp">
+                 <p>Choose a color</p>
+                <input type="color" id="color10">
+              </div>
+              <label>
+                  <span>Scale:</span>
+                  <input type="range" id="scale-control10"  value="0.05" min="0.005" max="0.5" step="0.005">
+              </label>
+              <button id="alignVertically10">Vertically</button>
+              <button id="alignHorizontally10">Horizontally</button>
+            </div>
+      </div>
+  </div>
+  </div>
 
     </div>
 

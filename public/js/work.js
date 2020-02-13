@@ -191,6 +191,70 @@ $(document).ready(function(){
             }
         });
 
+          // Enable and edit Termos
+          $('#edit-product9').click(function() {
+            if(document.getElementById('product12').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product12').style.display = 'flex';
+            }else{
+                document.getElementById('product12').style.display = 'none';
+            }
+        });
+        $('#enabled-product9').click(function(){
+            if($('#proizvod9').hasClass('disabledbutton')){
+                $('#proizvod9').removeClass('disabledbutton');
+                $( "#proizvod9" ).attr( "value" , 0 );
+                $('#enabled-product9').html('Enabled');
+            }else{
+                $('#proizvod9').addClass('disabledbutton');
+                $( "#proizvod9" ).attr( "value" , 1 );
+                $('#enabled-product9').html('Disabled');
+            }
+        });
+
+            // Enable and edit Ceger
+            $('#edit-product10').click(function() {
+                if(document.getElementById('product13').style.display == 'none'){
+                    closeCanvas();
+                    document.getElementById('product13').style.display = 'flex';
+                }else{
+                    document.getElementById('product13').style.display = 'none';
+                }
+            });
+            $('#enabled-product10').click(function(){
+                if($('#proizvod10').hasClass('disabledbutton')){
+                    $('#proizvod10').removeClass('disabledbutton');
+                    $( "#proizvod10" ).attr( "value" , 0 );
+                    $('#enabled-product10').html('Enabled');
+                }else{
+                    $('#proizvod10').addClass('disabledbutton');
+                    $( "#proizvod10" ).attr( "value" , 1 );
+                    $('#enabled-product10').html('Disabled');
+                }
+            });
+
+              // Enable and edit Poster
+              $('#edit-product11').click(function() {
+                if(document.getElementById('product14').style.display == 'none'){
+                    closeCanvas();
+                    document.getElementById('product14').style.display = 'flex';
+                }else{
+                    document.getElementById('product14').style.display = 'none';
+                }
+            });
+            $('#enabled-product11').click(function(){
+                if($('#proizvod11').hasClass('disabledbutton')){
+                    $('#proizvod11').removeClass('disabledbutton');
+                    $( "#proizvod11" ).attr( "value" , 0 );
+                    $('#enabled-product11').html('Enabled');
+                }else{
+                    $('#proizvod11').addClass('disabledbutton');
+                    $( "#proizvod11" ).attr( "value" , 1 );
+                    $('#enabled-product11').html('Disabled');
+                }
+            });
+
+
 
 
 
@@ -245,6 +309,24 @@ $(document).ready(function(){
             image12.src = canvas14.toDataURL();
         });
 
+          // canvas on change show Termos
+          $('#product12').mouseup(function(){
+            var image13 = document.getElementById("logo-canvas9");
+            image13.src = canvas15.toDataURL();
+        });
+
+         // canvas on change show Ceger
+         $('#product13').mouseup(function(){
+            var image14 = document.getElementById("logo-canvas10");
+            image14.src = canvas16.toDataURL();
+        });
+
+         // canvas on change show Poster
+         $('#product14').mouseup(function(){
+            var image15 = document.getElementById("logo-canvas11");
+            image15.src = canvas17.toDataURL();
+        });
+
     // Change phone case color
     var colorInput = document.querySelector('#color');
     colorInput.addEventListener('input', ()=>{
@@ -288,6 +370,25 @@ $(document).ready(function(){
         colorInput7.addEventListener('input', ()=>{
           $('.background-div7').css("background-color", colorInput7.value);
         });
+
+         // Change Termos color
+         var colorInput8 = document.querySelector('#color8');
+         colorInput8.addEventListener('input', ()=>{
+           $('.background-div8').css("background-color", colorInput8.value);
+         });
+
+         
+         // Change Ceger color
+         var colorInput9 = document.querySelector('#color9');
+         colorInput9.addEventListener('input', ()=>{
+           $('.background-div9').css("background-color", colorInput9.value);
+         });
+
+          // Change Poster color
+          var colorInput10 = document.querySelector('#color10');
+          colorInput10.addEventListener('input', ()=>{
+            $('.background-div10').css("background-color", colorInput10.value);
+          });
 
     
 });

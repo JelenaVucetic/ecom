@@ -36,11 +36,6 @@ class ImageController extends Controller
 
 
 
-
-
-       /*  $file = $request->file('file');
-        $image =  $file->getClientOriginalName();
-        $file->move('image', $file->getClientOriginalName()); */
         $path = pathinfo($image);
         $ext = $path['extension'];
 
