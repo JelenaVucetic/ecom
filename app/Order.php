@@ -20,7 +20,6 @@ class Order extends Model
     public static function createOrder() {
         if (Auth::check()) {
           $user = Auth::user();
-          //dd($user);
 
           
         $order = $user->orders()->create([

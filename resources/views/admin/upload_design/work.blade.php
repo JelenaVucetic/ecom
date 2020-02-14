@@ -1057,7 +1057,6 @@ var rect = new fabric.Rect({
     checkForScale = false;
     imageChange = true;
     img.scaleToWidth(0);
-    canvas3.remove(img);
     canvas3.requestRenderAll();
     canvas3.clear();
     canvas3.requestRenderAll();
@@ -1071,11 +1070,10 @@ var rect = new fabric.Rect({
       cache: false,
       processData: false,
       success: function(data){
-
-
-       var object1 = "";
-       object1 ="/image/" + data.upload_image;
-        load(object1);
+       var object2 = "";
+       object2 ="/image/" + data.upload_image;
+       alert(img);
+        load(object2);
 
       }
     });
@@ -1084,6 +1082,11 @@ var rect = new fabric.Rect({
 });
 
 }
+
+/*  $('#upload-form').on('submit' ,function(){
+  canvas3.remove(img);
+}); */
+
 
 
 </script>
@@ -1522,16 +1525,13 @@ function doCapture(){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
-            alert(imgData);
+           // alert(imgData);
             var nameProduct = title + " " + el.getAttribute('name');
             $.ajax({
                     url: '{{route("ajaxupload.save")}}',
                     type: 'post',
                   
                     dataType: "JSON",
-                  /*   contentType: false,
-                    cache: false,
-                    processData: false, */
                     data: {
                         image : imgData,
                         name: nameProduct,

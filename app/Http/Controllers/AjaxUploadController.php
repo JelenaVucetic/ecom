@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use DB;
-use Intervention\Image\ImageManagerStatic as Image;
+use App\Tag;
+//use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Facades\Image;
 
 class AjaxUploadController extends Controller
 {
@@ -15,28 +17,40 @@ class AjaxUploadController extends Controller
             'file1' => 'required|mimes:jpeg,png,jpg,svg,ico|max:2048',
         ]);
 
-        dd("OK");
 
         if($validation->passes()){
 
-         
-      
-            if($request->hasFile('file1')) {
-                $image       = $request->file('image');
-                $filename    = $image->getClientOriginalName();
-                $image_resize = Image::make($image->getRealPath())->resize(50, 50, function ($c) {
-                    $c->aspectRatio();
-                    $c->upsize();
-                });
+            $file = $request->file('file1');
 
-                
-                $image_resize->save(public_path('images/' .$filename));
             
-            }
-           
-             $file = $request->file('file1');
             $file->move('image', $file->getClientOriginalName());
-            $image =  $file->getClientOriginalName(); 
+            $image =  $file->getClientOriginalName();
+
+           
+            
+                $filename    = $image;
+               
+                $image_resize = Image::make(public_path('image/'. $image))->resize(200, 150, function ($c) {
+                    $c->aspectRatio();
+                });
+                
+
+                $image_resize->save();
+                
+
+
+
+              /*   $file = $request->file('file');
+                $image =  $file->getClientOriginalName();
+                $file->move('image', $file->getClientOriginalName());
+                $image1 = Image::make(public_path('image/' . $image))->resize(200,150, function($constraint){
+                    $constraint->aspectRatio();
+                });
+                $image1->save(); */
+            
+            
+           
+            
 
             return response()->json([
                 'message' => 'Image uploaded',
@@ -58,6 +72,8 @@ class AjaxUploadController extends Controller
       $tags = $data['tag'];
       $description = $data['description1'];
       $original = $data['originalName1'];
+
+     
        
 
 $price = 0;
@@ -90,11 +106,38 @@ $string = str_shuffle($name);
 file_put_contents("images/". $string . ".png", $image);
 
 
-DB::table('product')->insert([
+
+ DB::table('product')->insert([
 'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png'
 ]); 
 
+$products = DB::table('product')->where([
+    ['name', '=' , $title],
+    ['image', '=', $string.'.png']
+])->get();
 
+ $productId = 0;
+ foreach($products as $product){
+    $productId =  $product->id;
+ }
+
+
+$tagsComma = explode("," , $tags);
+
+foreach($tagsComma as $tag){
+    Tag::firstOrCreate([
+        'name'=> $tag,
+        ]); 
+    $tagId = DB::table('tags')->where('name',$tag)->get('id');    
+        foreach($tagId as $Id){
+            
+        DB::table('product_tag')->insert([
+            'product_id'=> $productId,
+            'tag_id'=> $Id->id
+            ]); 
+        }
+
+}
 
 echo 'Done';
 
