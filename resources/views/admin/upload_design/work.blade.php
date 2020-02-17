@@ -724,7 +724,7 @@ function stickerEffect(img1,grow){
   return(canvas12);
 }
 
-//start();
+
 </script>
 
 
@@ -786,41 +786,46 @@ var imgElement = document.getElementById('myImage');
 var canvas3 = new fabric.Canvas('c3');
 var imgElement = document.getElementById('myImage');
 var object = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+var imageForCanvas;
 
-load(object);
+
+  load(object);
+
+
 
 
 function load(objects){
  fabric.Image.fromURL(objects, function(img) {
-    img.set({
+    
+    imageForCanvas = img;
+    imageForCanvas.set({
 
     });
-    img.scaleToWidth(250);
-
-    canvas3.add(img);
+    imageForCanvas.scaleToWidth(250);
+    canvas3.add(imageForCanvas);
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
       checkForScale = false;
-    img.set({
+      imageForCanvas.set({
             'top': 0
         });
-        img.set({
+        imageForCanvas.set({
             'left': 0
         });
     canvas3.clear();
     canvas3.requestRenderAll();
     sleep(100).then(() => {
-    img.scaleToWidth(100);
+      imageForCanvas.scaleToWidth(100);
 
     var patternSourceCanvas = new fabric.StaticCanvas();
-    patternSourceCanvas.add(img);
+    patternSourceCanvas.add(imageForCanvas);
 
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
-          width: img.getScaledWidth() + padding,
-          height: img.getScaledHeight() + padding
+          width: imageForCanvas.getScaledWidth() + padding,
+          height: imageForCanvas.getScaledHeight() + padding
 
         });
         patternSourceCanvas.renderAll();
@@ -831,8 +836,8 @@ function load(objects){
     });
 
 var rect = new fabric.Rect({
-        width: 5000,
-        height: 5000,
+        width: 10000,
+        height: 10000,
         left: 0,
         fill: pattern,
         objectCaching: false
@@ -848,26 +853,26 @@ var rect = new fabric.Rect({
 
     $('#repeat-vertical').on('click', function(){
       checkForScale = true;
-      img.set({
+      imageForCanvas.set({
             'top': 0
         });
-        img.set({
+        imageForCanvas.set({
             'left': 0
         });
     canvas3.clear();
     canvas3.requestRenderAll();
    sleep(100).then(() => {
-    img.scaleToWidth(100);
+    imageForCanvas.scaleToWidth(100);
 
     var patternSourceCanvas = new fabric.StaticCanvas();
-    patternSourceCanvas.add(img);
+    patternSourceCanvas.add(imageForCanvas);
 
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
-          width: img.getScaledWidth() + img.getScaledWidth(),
-          height: img.getScaledHeight() + padding
+          width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+          height: imageForCanvas.getScaledHeight() + padding
 
         });
         patternSourceCanvas.renderAll();
@@ -880,22 +885,22 @@ var rect = new fabric.Rect({
      var pattern1 = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
-          width: img.getScaledWidth() + img.getScaledWidth(),
-          height: img.getScaledHeight() + padding
+          width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+          height: imageForCanvas.getScaledHeight() + padding
         });
 
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
-      offsetY: img.getScaledHeight()/2
+      offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/8,
+      offsetY: imageForCanvas.getScaledHeight()/2
     });
 
 var rect = new fabric.Rect({
-        width: 5000,
-        height: 5000,
-        left: img.getScaledWidth(),
+        width: 10000,
+        height: 10000,
+        left: imageForCanvas.getScaledWidth(),
         fill: pattern,
         objectCaching: false
     });
@@ -903,8 +908,8 @@ var rect = new fabric.Rect({
     canvas3.add(rect);
 
       var rect1 = new fabric.Rect({
-        width: 5000,
-        height: 5000,
+        width: 10000,
+        height: 10000,
         left:0,
         fill: pattern1,
         objectCaching: false
@@ -927,9 +932,7 @@ var rect = new fabric.Rect({
 
 });
 
-    $('#delete').on('click', function(){
-
-    });
+    
 
     // None option for Phone case
     $('#none').on('click', function(){
@@ -937,7 +940,7 @@ var rect = new fabric.Rect({
         checkForScale = false;
         canvas3.clear();
         img.scaleToWidth(100);
-        canvas3.add(img);
+        canvas3.add(imageForCanvas);
         image1.src = canvas3.toDataURL();
         canvas3.requestRenderAll();
     });
@@ -945,7 +948,7 @@ var rect = new fabric.Rect({
     $('#scale-control').on('input', function () {
       $(this).trigger('change');
       sleep(100).then(() => {
-      img.scale(parseFloat($(this).val())).setCoords();
+        imageForCanvas.scale(parseFloat($(this).val())).setCoords();
       //  Repeat Vertical
 
         if(checkForScale==true){
@@ -953,14 +956,14 @@ var rect = new fabric.Rect({
        canvas3.clear();
         console.log($(this).val());
 
-        if(oldWidth==img.getScaledWidth()){
+        if(oldWidth==imageForCanvas.getScaledWidth()){
          canvas3.requestRenderAll();
         }else{
-          oldWidth=img.getScaledWidth();
-      img.set({
+          oldWidth=imageForCanvas.getScaledWidth();
+          imageForCanvas.set({
             'top': 0
         });
-        img.set({
+        imageForCanvas.set({
             'left': 0
         });
 
@@ -973,8 +976,8 @@ var rect = new fabric.Rect({
     var pattern = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
-          width: img.getScaledWidth() + img.getScaledWidth(),
-          height: img.getScaledHeight() + padding
+          width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+          height: imageForCanvas.getScaledHeight() + padding
         });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
@@ -984,29 +987,29 @@ var rect = new fabric.Rect({
      var pattern1 = new fabric.Pattern({
       source: function() {
         patternSourceCanvas.setDimensions({
-          width: img.getScaledWidth() + img.getScaledWidth(),
-          height: img.getScaledHeight() + padding
+          width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+          height: imageForCanvas.getScaledHeight() + padding
         });
         patternSourceCanvas.renderAll();
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
-      offsetY: img.getScaledHeight()/2
+      offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/8,
+      offsetY: imageForCanvas.getScaledHeight()/2
     });
 
 var rect = new fabric.Rect({
-        width: 5000,
-        height: 5000,
-        left: img.getScaledWidth(),
+        width: 10000,
+        height: 10000,
+        left: imageForCanvas.getScaledWidth(),
         fill: pattern,
         objectCaching: false
     });
     canvas3.add(rect);
 
       var rect1 = new fabric.Rect({
-        width: 5000,
-        height: 5000,
+        width: 10000,
+        height: 10000,
         left:0,
         fill: pattern1,
         objectCaching: false
@@ -1030,7 +1033,7 @@ var rect = new fabric.Rect({
         }else{
           canvas3.requestRenderAll();
         }
-        console.log("width: " + img.getScaledWidth());
+        console.log("width: " + imageForCanvas.getScaledWidth());
       })
     });
      //  Close repeat vertical
@@ -1056,7 +1059,8 @@ var rect = new fabric.Rect({
   $('#upload-form').on('submit' , function(event){
     checkForScale = false;
     imageChange = true;
-    img.scaleToWidth(0);
+   // img.scaleToWidth(0);
+    //canvas3.remove(img);
     canvas3.requestRenderAll();
     canvas3.clear();
     canvas3.requestRenderAll();
@@ -1072,14 +1076,16 @@ var rect = new fabric.Rect({
       success: function(data){
        var object2 = "";
        object2 ="/image/" + data.upload_image;
-       alert(img);
         load(object2);
-
       }
     });
   });
 
 });
+
+$('#delete').on('click', function(){
+      canvas3.remove(imageForCanvas);
+    });
 
 }
 
@@ -1225,7 +1231,7 @@ var oldWidth1 = 0;
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
+      offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
       offsetY: img.getScaledHeight()/2
     });
 
@@ -1317,7 +1323,7 @@ var rect = new fabric.Rect({
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
+      offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
       offsetY: img.getScaledHeight()/2
     });
 

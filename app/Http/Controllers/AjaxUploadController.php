@@ -25,32 +25,12 @@ class AjaxUploadController extends Controller
             
             $file->move('image', $file->getClientOriginalName());
             $image =  $file->getClientOriginalName();
-
-           
-            
                 $filename    = $image;
                
                 $image_resize = Image::make(public_path('image/'. $image))->resize(200, 150, function ($c) {
                     $c->aspectRatio();
                 });
-                
-
                 $image_resize->save();
-                
-
-
-
-              /*   $file = $request->file('file');
-                $image =  $file->getClientOriginalName();
-                $file->move('image', $file->getClientOriginalName());
-                $image1 = Image::make(public_path('image/' . $image))->resize(200,150, function($constraint){
-                    $constraint->aspectRatio();
-                });
-                $image1->save(); */
-            
-            
-           
-            
 
             return response()->json([
                 'message' => 'Image uploaded',
@@ -126,7 +106,7 @@ $tagsComma = explode("," , $tags);
 
 foreach($tagsComma as $tag){
     Tag::firstOrCreate([
-        'name'=> $tag,
+        'name'=> $tag . " " . $original,
         ]); 
     $tagId = DB::table('tags')->where('name',$tag)->get('id');    
         foreach($tagId as $Id){
