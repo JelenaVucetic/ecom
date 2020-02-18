@@ -37,9 +37,9 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
+ 
         $formInput = $request->except('image');
-        //dd($formInput);
+        
 
         $this->validate($request, [
             'name' => 'required',

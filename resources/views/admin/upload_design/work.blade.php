@@ -113,7 +113,7 @@
                 </div>
                 <label>
                     <span>Scale:</span>
-                    <input type="range" id="scale-control"  value="0.05" min="0.005" max="0.5" step="0.005">
+                    <input type="range" id="scale-control"  value="1.5" min="0.005" max="1.5" step="0.005">
                 </label>
                 <button id="alignVertically">Vertically</button>
                 <button id="alignHorizontally">Horizontally</button>
@@ -143,6 +143,13 @@
         </div>
         <div class="product-options1">
             <p>T-shirt options</p>
+
+            <form method="post" id="upload-form1" enctype="multipart/form-data">
+              {{ csrf_field() }}
+             <input type="file" name="file1" id="file1">
+             <input type="submit" value="Upload" name="submit">
+             </form>
+
             <div class="color-choose">
 
                 <div class="container">
@@ -154,7 +161,7 @@
                     </div>
                     <label>
                         <span>Scale:</span>
-                        <input type="range" id="scale-control1"  value="0.05" min="0.01" max="0.5" step="0.005">
+                        <input type="range" id="scale-control1"   value="1.5" min="0.005" max="1.5" step="0.005">
                     </label>
                     <button id="alignVertically1">Vertically</button>
                     <button id="alignHorizontally1">Horizontally</button>
@@ -184,7 +191,7 @@
                         </div>
                         <label>
                             <span>Scale:</span>
-                            <input type="range" id="scale-control2"  value="0.05" min="0.01" max="0.5" step="0.005">
+                            <input type="range" id="scale-control2"  value="1.5" min="0.005" max="1.5" step="0.005">
                         </label>
                         <button id="alignVertically2">Vertically</button>
                         <button id="alignHorizontally2">Horizontally</button>
@@ -280,7 +287,7 @@
                         </div>
                         <label>
                             <span>Scale:</span>
-                            <input type="range" id="scale-control3"  value="0.05" min="0.01" max="0.5" step="0.005">
+                            <input type="range" id="scale-control3"  value="1.5" min="0.005" max="1.5" step="0.005">
                         </label>
                         <button id="alignVertically3">Vertically</button>
                         <button id="alignHorizontally3">Horizontally</button>
@@ -307,7 +314,7 @@
                       </div>
                       <label>
                           <span>Scale:</span>
-                          <input type="range" id="scale-control4"  value="0.05" min="0.01" max="0.5" step="0.005">
+                          <input type="range" id="scale-control4"   value="1.5" min="0.005" max="1.5" step="0.005">
                       </label>
                       <button id="alignVertically4">Vertically</button>
                       <button id="alignHorizontally4">Horizontally</button>
@@ -335,7 +342,7 @@
                       </div>
                       <label>
                           <span>Scale:</span>
-                          <input type="range" id="scale-control5"  value="0.05" min="0.01" max="0.5" step="0.005">
+                          <input type="range" id="scale-control5"   value="1.5" min="0.005" max="1.5" step="0.005">
                       </label>
                       <button id="alignVertically5">Vertically</button>
                       <button id="alignHorizontally5">Horizontally</button>
@@ -442,7 +449,7 @@
               </div>
               <label>
                   <span>Scale:</span>
-                  <input type="range" id="scale-control6"  value="0.05" min="0.005" max="0.5" step="0.005">
+                  <input type="range" id="scale-control6"   value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <button id="alignVertically6">Vertically</button>
               <button id="alignHorizontally6">Horizontally</button>
@@ -478,7 +485,7 @@
               </div>
               <label>
                   <span>Scale:</span>
-                  <input type="range" id="scale-control7"  value="0.05" min="0.005" max="0.5" step="0.005">
+                  <input type="range" id="scale-control7"  value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <button id="alignVertically7">Vertically</button>
               <button id="alignHorizontally7">Horizontally</button>
@@ -580,7 +587,7 @@
               </div>
               <label>
                   <span>Scale:</span>
-                  <input type="range" id="scale-control8"  value="0.05" min="0.005" max="0.5" step="0.005">
+                  <input type="range" id="scale-control8"   value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <button id="alignVertically8">Vertically</button>
               <button id="alignHorizontally8">Horizontally</button>
@@ -610,7 +617,7 @@
               </div>
               <label>
                   <span>Scale:</span>
-                  <input type="range" id="scale-control9"  value="0.05" min="0.005" max="0.5" step="0.005">
+                  <input type="range" id="scale-control9"  value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <button id="alignVertically9">Vertically</button>
               <button id="alignHorizontally9">Horizontally</button>
@@ -640,7 +647,7 @@
               </div>
               <label>
                   <span>Scale:</span>
-                  <input type="range" id="scale-control10"  value="0.05" min="0.005" max="0.5" step="0.005">
+                  <input type="range" id="scale-control10"   value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <button id="alignVertically10">Vertically</button>
               <button id="alignHorizontally10">Horizontally</button>
@@ -734,7 +741,6 @@ function stickerEffect(img1,grow){
 var canvas = new fabric.Canvas('c');
 var imgElement = document.getElementById('myImage');
  var extension = "<?php if(!empty($ext)){echo $ext;} ?>";
-    console.log(extension);
     if( extension !="svg"){
  fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;} ?>"  , function(img) {
     img.set({
@@ -796,13 +802,15 @@ var imageForCanvas;
 
 function load(objects){
  fabric.Image.fromURL(objects, function(img) {
-    
+  
     imageForCanvas = img;
+
     imageForCanvas.set({
 
     });
     imageForCanvas.scaleToWidth(250);
     canvas3.add(imageForCanvas);
+    alert(canvas3.getObjects());
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
       checkForScale = false;
@@ -861,6 +869,7 @@ var rect = new fabric.Rect({
         });
     canvas3.clear();
     canvas3.requestRenderAll();
+    alert(canvas3.getObjects());
    sleep(100).then(() => {
     imageForCanvas.scaleToWidth(100);
 
@@ -941,6 +950,8 @@ var rect = new fabric.Rect({
         canvas3.clear();
         img.scaleToWidth(100);
         canvas3.add(imageForCanvas);
+
+        
         image1.src = canvas3.toDataURL();
         canvas3.requestRenderAll();
     });
@@ -954,7 +965,6 @@ var rect = new fabric.Rect({
         if(checkForScale==true){
 
        canvas3.clear();
-        console.log($(this).val());
 
         if(oldWidth==imageForCanvas.getScaledWidth()){
          canvas3.requestRenderAll();
@@ -971,7 +981,7 @@ var rect = new fabric.Rect({
     canvas3.requestRenderAll();
    sleep(100).then(() => {
     var patternSourceCanvas = new fabric.StaticCanvas();
-    patternSourceCanvas.add(img);
+    patternSourceCanvas.add(imageForCanvas);
     patternSourceCanvas.renderAll();
     var pattern = new fabric.Pattern({
       source: function() {
@@ -1059,11 +1069,12 @@ var rect = new fabric.Rect({
   $('#upload-form').on('submit' , function(event){
     checkForScale = false;
     imageChange = true;
-   // img.scaleToWidth(0);
-    //canvas3.remove(img);
     canvas3.requestRenderAll();
     canvas3.clear();
+    canvas3.dispose();
+    canvas3 = new fabric.Canvas('c3');
     canvas3.requestRenderAll();
+    
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
@@ -1083,15 +1094,11 @@ var rect = new fabric.Rect({
 
 });
 
-$('#delete').on('click', function(){
-      canvas3.remove(imageForCanvas);
-    });
+
 
 }
 
-/*  $('#upload-form').on('submit' ,function(){
-  canvas3.remove(img);
-}); */
+
 
 
 
@@ -1100,7 +1107,12 @@ $('#delete').on('click', function(){
 <script>
 // Canvas for T-Shirt
 var canvas4 = new fabric.Canvas('c4');
- fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+var TshirtObject = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+loadTshirt(TshirtObject);
+
+
+function loadTshirt(objects){
+ fabric.Image.fromURL(objects, function(img) {
     img.set({
 
     });
@@ -1120,7 +1132,7 @@ var canvas4 = new fabric.Canvas('c4');
   $('#alignVertically1').on('click', function(){
     img.centerV();
     sleep(100).then(() => {
-    img.setCoords();
+    //img.setCoords();
     image2.src = canvas4.toDataURL();
     })
   });
@@ -1128,11 +1140,41 @@ var canvas4 = new fabric.Canvas('c4');
   $('#alignHorizontally1').on('click', function(){
     img.centerH();
     sleep(100).then(() => {
-    img.setCoords();
+   // img.setCoords();
     image2.src = canvas4.toDataURL();
 })
   });
+
+
+  $('#upload-form1').on('submit' , function(event){
+   // imageChange = true;
+    canvas4.requestRenderAll();
+    canvas4.clear();
+    canvas4.dispose();
+    canvas4 = new fabric.Canvas('c4');
+    canvas4.requestRenderAll();
+    
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+       var object2 = "";
+       object2 ="/image/" + data.upload_image;
+        loadTshirt(object2);
+      }
+    });
+  });
+
+
+
 });
+}
 </script>
 <script>
 // Canvas for Mugs
