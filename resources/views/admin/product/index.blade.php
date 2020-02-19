@@ -76,7 +76,7 @@
             </td>
             <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-success btn small">Edit</a></td>
             {!! Form::open(['method' => 'DELETE', 'action' => ['ProductsController@destroy', $product->id ]]) !!}
-            <td> {!! Form::submit('Delete Product', ['class'=> 'btn btn-danger col-sm-6']) !!} </td>
+            <td> <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger col-sm-6">Delete</button></td>
             {!! Form::close() !!}
         </tr>
             <?php $count++ ?>

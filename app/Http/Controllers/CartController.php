@@ -14,16 +14,30 @@ class CartController extends Controller
     {
         $cartItems = Cart::content();
        //dd($cartItems);
-        return view('cart.index', compact('cartItems'));
+       $countTotal=0;
+       foreach($cartItems as $c) {
+         $countTotal = $c->qty + $countTotal;
+       }
+
+       if( $countTotal >= 3 &&  $countTotal < 5 ) {
+         $cartSubTotal = Cart::subtotal() * 0.9;
+        } elseif ( $countTotal >= 5 ) {
+            $cartSubTotal = Cart::subtotal() * 0.8;
+        } else {
+            $cartSubTotal = Cart::subtotal();
+        } 
+
+        return view('cart.index', compact('cartItems', 'cartSubTotal'));
     }
 
-    public function addItem($id)
+    public function addItem(Request $request, $id)
     {
         $product = Product::find($id);
         if($product->spl_price==0) {
-            Cart::add( $id, $product->name, 1, $product->price, 0, ['img'=> $product->image, 'stock' => $product->stock]);
+         $cart= Cart::add( $id, $product->name, 1, $product->price, 0, ['img'=> $product->image, 'stock' => $product->stock]);
+ 
         } else {
-            Cart::add( $id, $product->name, 1, $product->spl_price, 0, ['img'=> $product->image, 'stock' => $product->stock]);
+        $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, ['img'=> $product->image, 'stock' => $product->stock]);
         }
 
         return back();
@@ -40,20 +54,28 @@ class CartController extends Controller
         $qty = $request->qty;
         $proId = $request->proId;
         $rowId = $request->rowId;
+        $item = Cart::get($rowId);
         Cart::update($rowId, $qty);
         $cartItems = Cart::content();
-//dd($cartItems);
-        return view('cart.upCart', compact('cartItems'))->with('status', 'cart updated');
-      /*   $product = Product::find($proId);
-        $stock = $product->stock;
+         $countTotal=0;
+        foreach($cartItems as $c) {
+          $countTotal = $c->qty + $countTotal;
+        }
+      // return view('cart.upCart', compact('cartItems'))->with('status', 'cart updated');
 
-        if($qty<$stock) {
-            $msg = 'Cart is updated';
-            Cart::update($id, $request->qty);
-            return back()->with('status', $msg);
+        if( $countTotal >= 3 &&  $countTotal < 5 ) {
+            $cartSubTotal = Cart::subtotal() * 0.9;
+        } elseif ( $countTotal >= 5 ) {
+            $cartSubTotal = Cart::subtotal() * 0.8;
         } else {
-            $msg = 'Please check your qty is it morew than product stock';
-            return back()-> with('error', $msg);
-        } */
+            $cartSubTotal = Cart::subtotal();
+        } 
+
+        return response()->json([
+            "qty" =>  $qty,
+            'subtotal' => $item->subtotal(),
+            'cartTotal' => $cartSubTotal
+        ]); 
     }
 }
+ 

@@ -18,12 +18,14 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
         type: 'get',
-        dataType: 'html',
+        dataType: 'json',
         url: '<?php echo url('/cart/updateCart');?>/'+proId,
         data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
-        success: function (response) {
-            console.log(response);
-            $('#updateDiv').html(response);
+        success: function (data) {
+           // $('#updateDiv').html(response);
+            $('#upCart<?php echo $i;?>').html(data.qty);
+            $('#subtotal<?php echo $i;?>').html(data.subtotal);
+            $('#cartTotal').html(data.cartTotal);
         }
     });
 
@@ -102,7 +104,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                                            autocomplete="off" style="text-align:center; max-width:50px; "  MIN="1" MAX="1000">
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total-price">{{ $cartItem->subtotal }}</p>
+                            <p class="cart_total-price" id="subtotal<?php echo $count;?>">{{ $cartItem->subtotal }}</p>
                         </td>
                         <td class="cart_delete">
                             <button class="btn btn-primary"><a href="{{ url('/cart/remove') }}/{{ $cartItem->rowId }}" class="cart_quantity_delete" style="background-color: red;">x</a></button>
@@ -128,7 +130,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Cart Sub Total <span>$ {{ Cart::subtotal() }}</span></li>
+                            <li>Cart Sub Total <span id="cartTotal"> {{  $cartSubTotal }}</span></li>
                             <li>Tax <span>$ {{ Cart::tax() }}</span></li>
                             <li>Shipping cost <span>Free</span></li>
                             <li>Total <span>$ {{ Cart::total() }}</span></li>
