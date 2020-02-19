@@ -31,7 +31,10 @@ class AjaxUploadController extends Controller
                     $c->aspectRatio();
                 });
                 $image_resize->save();
-
+              /*   dd(response()->json([
+                    'message' => 'Image uploaded',
+                    'upload_image' => $image
+                ])); */
             return response()->json([
                 'message' => 'Image uploaded',
                 'upload_image' => $image

@@ -93,7 +93,7 @@
 <div id="product3" class="img-div" data-value="1" style="display:none">
 
     <div id="app3" >
-        <canvas id="c3" width="200" height="300"></canvas>
+        <canvas id="c3" width="250" height="300"></canvas>
     </div>
     <div class="product-options">
         <p>PhoneCase options</p>
@@ -139,7 +139,7 @@
               {{-- Canvas edit for T-shirt --}}
     <div id="product4" class="img-div" data-value="1" style="display:none">
         <div id="app4" >
-            <canvas id="c4" width="200" height="300"></canvas>
+            <canvas id="c4" width="250" height="300"></canvas>
         </div>
         <div class="product-options1">
             <p>T-shirt options</p>
@@ -161,7 +161,7 @@
                     </div>
                     <label>
                         <span>Scale:</span>
-                        <input type="range" id="scale-control1"   value="1.5" min="0.005" max="1.5" step="0.005">
+                        <input type="range" id="scale-control1"   value="1.5" min="0.005" max="2" step="0.005">
                     </label>
                     <button id="alignVertically1">Vertically</button>
                     <button id="alignHorizontally1">Horizontally</button>
@@ -176,7 +176,7 @@
          {{-- Canvas edit for Mugs --}}
          <div id="product5" class="img-div" data-value="1" style="display:none">
             <div id="app5" >
-                <canvas id="c5" width="200" height="300"></canvas>
+                <canvas id="c5" width="250" height="300"></canvas>
             </div>
             <div class="product-options2">
                 <p>Mug options</p>
@@ -272,7 +272,7 @@
           {{-- Canvas edit for Hoodie --}}
           <div id="product6" class="img-div" data-value="1" style="display:none">
             <div id="app6" >
-                <canvas id="c6" width="200" height="300"></canvas>
+                <canvas id="c6" width="250" height="300"></canvas>
             </div>
             <div class="product-options3">
                 <p>Hoodie options</p>
@@ -299,7 +299,7 @@
          {{-- Canvas edit for Long Sleeve --}}
          <div id="product7" class="img-div" data-value="1" style="display:none">
           <div id="app7" >
-              <canvas id="c7" width="200" height="300"></canvas>
+              <canvas id="c7" width="250" height="300"></canvas>
           </div>
           <div class="product-options4">
               <p>Long Sleeve options</p>
@@ -327,7 +327,7 @@
          {{-- Canvas edit for Graphic T-Shirt Dresses --}}
          <div id="product8" class="img-div" data-value="1" style="display:none">
           <div id="app8" >
-              <canvas id="c8" width="200" height="300"></canvas>
+              <canvas id="c8" width="250" height="300"></canvas>
           </div>
           <div class="product-options5">
               <p> Graphic T-Shirt Dresses options</p>
@@ -434,7 +434,7 @@
 <div id="product10" class="img-div" data-value="1" style="display:none">
 
   <div id="app10" >
-      <canvas id="c10" width="200" height="300"></canvas>
+      <canvas id="c10" width="250" height="300"></canvas>
   </div>
   <div class="product-options7">
       <p>Notes options</p>
@@ -470,7 +470,7 @@
 <div id="product11" class="img-div" data-value="1" style="display:none">
 
   <div id="app11" >
-      <canvas id="c11" width="200" height="300"></canvas>
+      <canvas id="c11" width="250" height="300"></canvas>
   </div>
   <div class="product-options8">
       <p>Clock options</p>
@@ -572,7 +572,7 @@
 <div id="product12" class="img-div" data-value="1" style="display:none">
 
   <div id="app12" >
-      <canvas id="c12" width="200" height="300"></canvas>
+      <canvas id="c12" width="250" height="300"></canvas>
   </div>
   <div class="product-options8">
       <p>Termos options</p>
@@ -602,7 +602,7 @@
 <div id="product13" class="img-div" data-value="1" style="display:none">
 
   <div id="app13" >
-      <canvas id="c13" width="200" height="300"></canvas>
+      <canvas id="c13" width="250" height="300"></canvas>
   </div>
   <div class="product-options9">
       <p>Ceger options</p>
@@ -632,7 +632,7 @@
 <div id="product14" class="img-div" data-value="1" style="display:none">
 
   <div id="app14" >
-      <canvas id="c14" width="200" height="300"></canvas>
+      <canvas id="c14" width="250" height="300"></canvas>
   </div>
   <div class="product-options10">
       <p>Poster options</p>
@@ -753,7 +753,7 @@ var imgElement = document.getElementById('myImage');
     }else{
 fabric.loadSVGFromURL("/image/<?php if(!empty($image)){echo $image;} ?>", function(img, options) {
   var img = fabric.util.groupSVGElements(img, options);
-  img.scaleToWidth(250);
+  //img.scaleToWidth(250);
   canvas.add(img).renderAll();
 });
 }
@@ -808,9 +808,11 @@ function load(objects){
     imageForCanvas.set({
 
     });
-    imageForCanvas.scaleToWidth(250);
+    //imageForCanvas.scaleToWidth(250);
     canvas3.add(imageForCanvas);
-    alert(canvas3.getObjects());
+    imageForCanvas.center();
+    image1.src = canvas3.toDataURL();
+    canvas3.requestRenderAll();
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
       checkForScale = false;
@@ -1043,7 +1045,7 @@ var rect = new fabric.Rect({
         }else{
           canvas3.requestRenderAll();
         }
-        console.log("width: " + imageForCanvas.getScaledWidth());
+       
       })
     });
      //  Close repeat vertical
@@ -1086,6 +1088,7 @@ var rect = new fabric.Rect({
       processData: false,
       success: function(data){
        var object2 = "";
+       console.log(data.upload_image);
        object2 ="/image/" + data.upload_image;
         load(object2);
       }
@@ -1108,6 +1111,7 @@ var rect = new fabric.Rect({
 // Canvas for T-Shirt
 var canvas4 = new fabric.Canvas('c4');
 var TshirtObject = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+var image2 = document.getElementById("logo-canvas1");
 loadTshirt(TshirtObject);
 
 
@@ -1117,10 +1121,11 @@ function loadTshirt(objects){
 
     });
 
-    img.scaleToWidth(250);
+   // img.scaleToWidth(250);
     canvas4.add(img);
-    
-    var image2 = document.getElementById("logo-canvas1");
+    img.center();
+    image2.src = canvas4.toDataURL();
+    canvas4.requestRenderAll();
     // Scale option for T-shirt
     $('#scale-control1').on('input', function () {
       $(this).trigger('change');
@@ -1186,9 +1191,12 @@ var oldWidth1 = 0;
 
     });
 
-    img.scaleToWidth(250);
+    //img.scaleToWidth(250);
     canvas5.add(img);
     var image3 = document.getElementById("logo-canvas2");
+    img.center();
+    image3.src = canvas5.toDataURL();
+    canvas5.requestRenderAll();
     // None option for Mugs
     $('#none1').on('click', function(){
         checkForScale1 = false;
@@ -1436,9 +1444,12 @@ var canvas6 = new fabric.Canvas('c6');
     });
 
 
-    img.scaleToWidth(250);
+   // img.scaleToWidth(250);
     canvas6.add(img);
     var image4 = document.getElementById("logo-canvas3");
+    img.center();
+    image4.src = canvas6.toDataURL();
+    canvas6.requestRenderAll();
     // Scale option for T-shirt
     $('#scale-control3').on('input', function () {
       $(this).trigger('change');
@@ -1475,9 +1486,12 @@ var canvas6 = new fabric.Canvas('c6');
       });
   
   
-      img.scaleToWidth(250);
+     // img.scaleToWidth(250);
       canvas7.add(img);
       var image5 = document.getElementById("logo-canvas4");
+      img.center();
+      image5.src = canvas7.toDataURL();
+      canvas7.requestRenderAll();
       // Scale option for T-shirt
       $('#scale-control4').on('input', function () {
         $(this).trigger('change');
@@ -1513,9 +1527,12 @@ var canvas6 = new fabric.Canvas('c6');
       });
   
   
-      img.scaleToWidth(250);
+     // img.scaleToWidth(250);
       canvas8.add(img);
       var image6 = document.getElementById("logo-canvas5");
+      img.center();
+      image6.src = canvas8.toDataURL();
+      canvas8.requestRenderAll();
       // Scale option for T-shirt
       $('#scale-control5').on('input', function () {
         $(this).trigger('change');
