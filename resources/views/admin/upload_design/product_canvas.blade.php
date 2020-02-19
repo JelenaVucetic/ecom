@@ -19,10 +19,12 @@
         img.set({
     
         });
-        img.scaleToWidth(250);
+       // img.scaleToWidth(250);
     
         canvas13.add(img);
-   
+        img.center();
+        image11.src = canvas13.toDataURL();
+        canvas13.requestRenderAll();
         $('#repeat2').on('click', function(){
           checkForScale1 = false;
         img.set({
@@ -330,10 +332,12 @@
        img.set({
    
        });
-       img.scaleToWidth(250);
+      // img.scaleToWidth(250);
    
        canvas14.add(img);
-       
+       img.center();
+      image12.src = canvas14.toDataURL();
+      canvas14.requestRenderAll();
        $('#repeat3').on('click', function(){
          checkForScale2 = false;
        img.set({
@@ -486,7 +490,7 @@
            if(checkForScale2==true){
    
           canvas14.clear();
-           console.log($(this).val());
+           
    
            if(oldWidth2==img.getScaledWidth()){
             canvas14.requestRenderAll();
@@ -630,11 +634,13 @@
     
         });
     
-        img.scaleToWidth(250);
+      //  img.scaleToWidth(250);
         canvas15.add(img);
         
         var image13 = document.getElementById("logo-canvas9");
-  
+        img.center();
+        image13.src = canvas15.toDataURL();
+        canvas15.requestRenderAll();
         $('#scale-control8').on('input', function () {
           $(this).trigger('change');
           img.scale(parseFloat($(this).val())).setCoords();
@@ -669,11 +675,13 @@
   
       });
   
-      img.scaleToWidth(250);
+     // img.scaleToWidth(250);
       canvas16.add(img);
       
       var image14 = document.getElementById("logo-canvas10");
-
+      img.center();
+      image14.src = canvas16.toDataURL();
+      canvas16.requestRenderAll();
       $('#scale-control9').on('input', function () {
         $(this).trigger('change');
         img.scale(parseFloat($(this).val())).setCoords();
@@ -707,11 +715,13 @@
   
       });
   
-      img.scaleToWidth(250);
+      //img.scaleToWidth(250);
       canvas17.add(img);
       
       var image15 = document.getElementById("logo-canvas11");
-
+      img.center();
+      image15.src = canvas17.toDataURL();
+      canvas17.requestRenderAll();
       $('#scale-control10').on('input', function () {
         $(this).trigger('change');
         img.scale(parseFloat($(this).val())).setCoords();
