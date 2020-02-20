@@ -9,6 +9,6 @@ class Address extends Model
     //
     protected $table = 'address';
     protected $primaryKey = 'id';
-    protected $fillable = ['firstname', 'lastname', 'email', 'street', 'zip', 'city'];
+    protected $fillable = ['order_id', 'firstname', 'lastname', 'email', 'street', 'zip', 'city'];
 
 }
