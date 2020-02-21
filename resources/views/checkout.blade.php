@@ -39,7 +39,7 @@
             <td class="cart_product">
                 <a href="{{url('/product_details')}}/{{$cartItem->id}}"><img src="{{$cartItem->options->img}}" alt="" width="200px"></a>
             </td>
-            {!! Form::open(['url' => ['cart/update',$cartItem->rowId], 'method'=>'put']) !!}
+        
             <td class="cart_description">
                 <h4><a href="{{url('/product_details')}}/{{$cartItem->id}}" style="color:blue">{{$cartItem->name}}</a></h4>
                 <p>Product ID: {{$cartItem->id}}</p>
@@ -54,12 +54,12 @@
                     <input type="number" size="2" value="{{$cartItem->qty}}" name="qty" id="upCart<?php echo $count;?>"
                             autocomplete="off" style="text-align:center; max-width:50px; "  MIN="1" MAX="30">
                     <br>
-                    <input type="submit" class="btn btn-primary" value="Update" styel="margin:5px">
-                {!! Form::close() !!}        
+        
+                     
                 </div>
             </td>
             <td class="cart_total">
-                <p class="cart_total_price">${{$cartItem->subtotal}}</p>
+                <p class="cart_total_price" id='subtotal<?php echo $count;?>'>${{$cartItem->subtotal}}</p>
             </td>
             <td class="cart_delete">
                 <a class="cart_quantity_delete" style="background-color:red"
@@ -147,7 +147,7 @@
                 <h6 class="text-uppercase">Order Summary</h6>
                 <p>Shipping and additional costs are calculated based on values you have entered</p>
                 <ul class="order-menu list-unstyled">
-                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>${{Cart::subtotal()}}</strong></li>
+                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">${{$cartSubTotal}}</strong></li>
                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>$10.00</strong></li>
                 <li class="d-flex justify-content-between"><span>Tax</span><strong>${{Cart::tax()}}</strong></li>
                 <li class="d-flex justify-content-between"><span>Total</span><strong class="text-primary price-total">${{Cart::total()}}</strong></li>
@@ -156,5 +156,38 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function(){
+<?php for($i=1;$i<20;$i++){?>
+
+$('#upCart<?php echo $i;?>').on('change keyup', function(){
+    var newqty = $('#upCart<?php echo $i;?>').val();
+    var rowId = $('#rowId<?php echo $i;?>').val();
+    var proId = $('#proId<?php echo $i;?>').val();
+    if(newqty <=0)
+    {
+        alert('enter only valid quantity')
+    } else {
+       $.ajax({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        type: 'get',
+        dataType: 'json',
+        url: '<?php echo url('/cart/updateCart');?>/'+proId,
+        data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
+        success: function (data) {
+           // $('#updateDiv').html(response);
+            $('#upCart<?php echo $i;?>').html(data.qty);
+            $('#subtotal<?php echo $i;?>').html(data.subtotal);
+            $('#cartTotal').html('$' + data.cartTotal);
+        }
+    });
+
+     }
+    });
+  <?php } ?>
+});
+    </script>
 </section>
 @endsection

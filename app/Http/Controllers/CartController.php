@@ -67,10 +67,13 @@ class CartController extends Controller
             $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
             $cartSubTotal = Cart::subtotal() * 0.8;
+          //  Cart::update('subtotal' => $cartSubTotal);
         } else {
             $cartSubTotal = Cart::subtotal();
         } 
-
+        
+       
+       // dd(Cart::content());
         return response()->json([
             "qty" =>  $qty,
             'subtotal' => $item->subtotal(),
