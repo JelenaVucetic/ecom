@@ -13,7 +13,6 @@ class AdminController extends Controller
     public function index() {
 
         $data = DB::table('address')
-        ->join('users', 'users.id', '=', 'address.user_id')
         ->join('orders', 'orders.id', '=', 'address.order_id')
         ->join('order_product', 'order_product.order_id', '=', 'orders.id')
         ->join('product', 'product.id', '=', 'order_product.product_id')

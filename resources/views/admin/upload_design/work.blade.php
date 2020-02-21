@@ -180,6 +180,13 @@
             </div>
             <div class="product-options2">
                 <p>Mug options</p>
+
+                <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" id="file1">
+                 <input type="submit" value="Upload" name="submit">
+                 </form>
+
                 <div class="color-choose">
 
                     <div class="container">
@@ -276,6 +283,11 @@
             </div>
             <div class="product-options3">
                 <p>Hoodie options</p>
+                <form method="post" id="upload-form3" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" id="file1">
+                 <input type="submit" value="Upload" name="submit">
+                 </form>
                 <div class="color-choose">
 
                     <div class="container">
@@ -303,6 +315,11 @@
           </div>
           <div class="product-options4">
               <p>Long Sleeve options</p>
+              <form method="post" id="upload-form4" enctype="multipart/form-data">
+                {{ csrf_field() }}
+               <input type="file" name="file1" id="file1">
+               <input type="submit" value="Upload" name="submit">
+               </form>
               <div class="color-choose">
 
                   <div class="container">
@@ -331,6 +348,11 @@
           </div>
           <div class="product-options5">
               <p> Graphic T-Shirt Dresses options</p>
+              <form method="post" id="upload-form5" enctype="multipart/form-data">
+                {{ csrf_field() }}
+               <input type="file" name="file1" id="file1">
+               <input type="submit" value="Upload" name="submit">
+               </form>
               <div class="color-choose">
 
                   <div class="container">
@@ -1185,8 +1207,11 @@ function loadTshirt(objects){
 // Canvas for Mugs
 var canvas5 = new fabric.Canvas('c5');
 var oldWidth1 = 0;
+var object3 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
  var checkForScale1 = false;
- fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+ loadMugs(object3);
+ function loadMugs(objects){
+ fabric.Image.fromURL(objects, function(img) {
     img.set({
 
     });
@@ -1324,17 +1349,12 @@ var rect = new fabric.Rect({
     // Scale option for Mugs
     $('#scale-control2').on('input', function () {
       $(this).trigger('change');
-     /*  img.scale(parseFloat($(this).val())).setCoords();
-      canvas5.requestRenderAll(); */
       sleep(100).then(() => {
       img.scale(parseFloat($(this).val())).setCoords();
       //  Repeat Vertical
 
         if(checkForScale1==true){
-
        canvas5.clear();
-        console.log($(this).val());
-
         if(oldWidth1==img.getScaledWidth()){
 
         }else{
@@ -1412,7 +1432,7 @@ var rect2 = new fabric.Rect({
         }else{
           canvas5.requestRenderAll();
         }
-        console.log("width: " + img.getScaledWidth());
+        
       })
   });
 
@@ -1432,13 +1452,44 @@ var rect2 = new fabric.Rect({
     image3.src = canvas5.toDataURL();
 })
   });
+
+  $('#upload-form2').on('submit' , function(event){
+   // imageChange = true;
+    canvas5.requestRenderAll();
+    canvas5.clear();
+    canvas5.dispose();
+    canvas5 = new fabric.Canvas('c5');
+    canvas5.requestRenderAll();
+    
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+       var object4 = "";
+       object4 ="/image/" + data.upload_image;
+        loadMugs(object4);
+      }
+    });
+  });
+
 });
+ }
 </script>
 
 <script>
 // Canvas for Hoodie
 var canvas6 = new fabric.Canvas('c6');
- fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+var object5 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+loadHoodie(object5);
+
+function loadHoodie(objects){
+ fabric.Image.fromURL(objects, function(img) {
     img.set({
 
     });
@@ -1473,19 +1524,48 @@ var canvas6 = new fabric.Canvas('c6');
     image4.src = canvas6.toDataURL();
 })
   });
+
+  $('#upload-form3').on('submit' , function(event){
+   // imageChange = true;
+    canvas6.requestRenderAll();
+    canvas6.clear();
+    canvas6.dispose();
+    canvas6 = new fabric.Canvas('c6');
+    canvas6.requestRenderAll();
+    
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+       object5 = "";
+       object5 ="/image/" + data.upload_image;
+        loadHoodie(object5);
+      }
+    });
+  });
 });
+}
 </script>
 
 
 <script>
   // Canvas for Long Sleeve
   var canvas7 = new fabric.Canvas('c7');
-   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+  var object6 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+  loadLongSleeve(object6);
+
+
+  function loadLongSleeve(objects){
+   fabric.Image.fromURL(objects, function(img) {
       img.set({
   
       });
-  
-  
      // img.scaleToWidth(250);
       canvas7.add(img);
       var image5 = document.getElementById("logo-canvas4");
@@ -1515,13 +1595,44 @@ var canvas6 = new fabric.Canvas('c6');
       image5.src = canvas7.toDataURL();
   })
     });
+    $('#upload-form4').on('submit' , function(event){
+   // imageChange = true;
+    canvas7.requestRenderAll();
+    canvas7.clear();
+    canvas7.dispose();
+    canvas7 = new fabric.Canvas('c7');
+    canvas7.requestRenderAll();
+    
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+       object6 = "";
+       object6 ="/image/" + data.upload_image;
+        loadLongSleeve(object6);
+      }
+    });
   });
+
+  });
+  
+}
   </script>
 
 <script>
   // Canvas for Graphic T-Shirt Dresses
   var canvas8 = new fabric.Canvas('c8');
-   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+  var object7 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+  loadGraphicTshirtDresses(object7);
+
+  function loadGraphicTshirtDresses(objects){
+   fabric.Image.fromURL(objects, function(img) {
       img.set({
   
       });
@@ -1556,7 +1667,34 @@ var canvas6 = new fabric.Canvas('c6');
       image6.src = canvas8.toDataURL();
   })
     });
+
+    $('#upload-form5').on('submit' , function(event){
+   // imageChange = true;
+    canvas8.requestRenderAll();
+    canvas8.clear();
+    canvas8.dispose();
+    canvas8 = new fabric.Canvas('c8');
+    canvas8.requestRenderAll();
+    
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+       object7 = "";
+       object7 ="/image/" + data.upload_image;
+        loadGraphicTshirtDresses(object7);
+      }
+    });
   });
+
+  });
+  }
   </script>
 
 <script>
