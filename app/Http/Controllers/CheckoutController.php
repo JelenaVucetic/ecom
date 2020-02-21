@@ -54,8 +54,11 @@ class CheckoutController extends Controller
         } else {
             $userid = '0';
         }
+     
+        $id_order = Order::createOrder();
         
         $address = new Address;
+        $address->order_id = $id_order;
         $address->firstname = $request->firstname;
         $address->lastname = $request->lastname;
         $address->email = $request->email;
@@ -64,9 +67,6 @@ class CheckoutController extends Controller
         $address->city = $request->city;
         $address->user_id = $userid;
         $address->save();
-     
-        
-        Order::createOrder();
       
         
 

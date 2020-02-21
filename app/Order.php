@@ -41,6 +41,7 @@ class Order extends Model
                 'total' => $cartItem->qty * $cartItem->price]);
             $order-> save();
         }
+        return $order->id;
     }
 
 }

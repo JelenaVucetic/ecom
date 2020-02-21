@@ -51,7 +51,7 @@
                 <div class="cart_quantity_button">
                     <input type="hidden" id="rowId<?php echo $count;?>" value="{{$cartItem->rowId}}"/>
                     <input type="hidden" id="proId<?php echo $count;?>" value="{{$cartItem->id}}"/>
-                    <input type="number" size="2" value="{{$cartItem->qty}}" name="qty" id="upCart<?php echo $count;?>"
+                    <input type="number" size="2" value="{{$cartItem->c}}" name="qty" id="upCart<?php echo $count;?>"
                             autocomplete="off" style="text-align:center; max-width:50px; "  MIN="1" MAX="30">
                     <br>
         

@@ -31,10 +31,8 @@ Route::get('/show_category_product/{id}', 'HomeController@show_category_product'
 Route::get('/search', 'HomeController@search')->name('search');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
-        Route::get('/', function() {
-            return view('admin.index');
-        })->name('admin.index');
-
+        Route::get('/', 'AdminController@index');
+                                                //->name('admin.index')
        // Route::post('admin/store', 'AdminController@store');
       //  Route::get('/admin', 'AdminController@index');
 
@@ -73,10 +71,10 @@ Route::get('/checkout', 'CheckoutController@index');
 Route::post('/formvalidate', 'CheckoutController@formvalidate');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-//Route::group(['middleware' => 'auth'], function() {
-    Route::get('/thankyou', function() {
-        return view('profile.thankyou');
-    });
+Route::get('/thankyou', function() {
+    return view('profile.thankyou');
+});
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ProfileController@index');
     Route::get('/orders', 'ProfileController@orders');
