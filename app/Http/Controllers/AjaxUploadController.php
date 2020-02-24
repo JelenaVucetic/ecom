@@ -27,7 +27,7 @@ class AjaxUploadController extends Controller
             $image =  $file->getClientOriginalName();
                 $filename    = $image;
                
-                $image_resize = Image::make(public_path('image/'. $image))->resize(200, 150, function ($c) {
+                $image_resize = Image::make(public_path('image/'. $image))->resize(300, 150, function ($c) {
                     $c->aspectRatio();
                 });
                 $image_resize->save();

@@ -15,12 +15,7 @@
     load(object1);
     
     function load(objects){
-     fabric.Image.fromURL(objects, function(img) {
-        img.set({
-    
-        });
-       // img.scaleToWidth(250);
-    
+     fabric.Image.fromURL(objects, function(img) {    
         canvas13.add(img);
         img.center();
         image11.src = canvas13.toDataURL();

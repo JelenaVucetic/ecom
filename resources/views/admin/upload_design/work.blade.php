@@ -99,7 +99,7 @@
         <p>PhoneCase options</p>
         <form method="post" id="upload-form" enctype="multipart/form-data">
          {{ csrf_field() }}
-        <input type="file" name="file1" id="file1">
+        <input type="file" name="file1" >
         <input type="submit" value="Upload" name="submit">
         </form>
         <div class="color-choose">
@@ -146,7 +146,7 @@
 
             <form method="post" id="upload-form1" enctype="multipart/form-data">
               {{ csrf_field() }}
-             <input type="file" name="file1" id="file1">
+             <input type="file" name="file1" >
              <input type="submit" value="Upload" name="submit">
              </form>
 
@@ -183,7 +183,7 @@
 
                 <form method="post" id="upload-form2" enctype="multipart/form-data">
                   {{ csrf_field() }}
-                 <input type="file" name="file1" id="file1">
+                 <input type="file" name="file1" >
                  <input type="submit" value="Upload" name="submit">
                  </form>
 
@@ -285,7 +285,7 @@
                 <p>Hoodie options</p>
                 <form method="post" id="upload-form3" enctype="multipart/form-data">
                   {{ csrf_field() }}
-                 <input type="file" name="file1" id="file1">
+                 <input type="file" name="file1" >
                  <input type="submit" value="Upload" name="submit">
                  </form>
                 <div class="color-choose">
@@ -317,7 +317,7 @@
               <p>Long Sleeve options</p>
               <form method="post" id="upload-form4" enctype="multipart/form-data">
                 {{ csrf_field() }}
-               <input type="file" name="file1" id="file1">
+               <input type="file" name="file1" >
                <input type="submit" value="Upload" name="submit">
                </form>
               <div class="color-choose">
@@ -350,7 +350,7 @@
               <p> Graphic T-Shirt Dresses options</p>
               <form method="post" id="upload-form5" enctype="multipart/form-data">
                 {{ csrf_field() }}
-               <input type="file" name="file1" id="file1">
+               <input type="file" name="file1">
                <input type="submit" value="Upload" name="submit">
                </form>
               <div class="color-choose">
@@ -448,7 +448,11 @@
           </div>
           <div class="product-options6">
               <p>Stickers options</p>
-            
+              <form method="post" id="upload-form6" enctype="multipart/form-data">
+                {{ csrf_field() }}
+               <input type="file" name="file1">
+               <input type="submit" value="Upload" name="submit">
+               </form>
       </div>
          </div>
 
@@ -713,15 +717,10 @@
 `   @include('admin.upload_design.product_canvas')
 <script>
   var canvas10 = new fabric.Canvas('c9');
-//  var ctx = canvas10.getContext("2d");
-var img1=new Image();
+
+var img1 = new Image();
 
 img1.onload=start;
-
-
-
-
-
 img1.src="../image/<?php if(!empty($image)){echo $image;}  ?>";
 var image10 = document.getElementById("logo-canvas6");
 
@@ -752,6 +751,31 @@ function stickerEffect(img1,grow){
   ctx2.drawImage(img1,grow,grow);
   return(canvas12);
 }
+
+$('#upload-form6').on('submit' , function(event){
+    canvas10.clear();
+    canvas10.dispose();
+    canvas10 = new fabric.Canvas('c9');
+    canvas10.requestRenderAll();
+    event.preventDefault();
+    $.ajax({
+      url: "{{route('ajaxupload.action')}}",
+      method: "post",
+      data: new FormData(this),
+      dataType: "JSON",
+      contentType: false,
+      cache: false,
+      processData: false,
+      success: function(data){
+       
+       img1.src = "";
+       img1.src ="/image/" + data.upload_image;
+       img1.onload = start;
+      }
+    });
+  });
+
+
 
 
 </script>
@@ -826,11 +850,8 @@ function load(objects){
  fabric.Image.fromURL(objects, function(img) {
   
     imageForCanvas = img;
-
-    imageForCanvas.set({
-
-    });
-    //imageForCanvas.scaleToWidth(250);
+    canvas3.setWidth(250);
+    canvas3.setHeight(300);
     canvas3.add(imageForCanvas);
     imageForCanvas.center();
     image1.src = canvas3.toDataURL();
@@ -893,7 +914,7 @@ var rect = new fabric.Rect({
         });
     canvas3.clear();
     canvas3.requestRenderAll();
-    alert(canvas3.getObjects());
+    
    sleep(100).then(() => {
     imageForCanvas.scaleToWidth(100);
 
@@ -1090,15 +1111,16 @@ var rect = new fabric.Rect({
 })
   });
 
-  $('#upload-form').on('submit' , function(event){
+  $('#upload-form').one('submit' , function(event){
     checkForScale = false;
     imageChange = true;
+    canvas3.remove(imageForCanvas);
     canvas3.requestRenderAll();
     canvas3.clear();
     canvas3.dispose();
     canvas3 = new fabric.Canvas('c3');
     canvas3.requestRenderAll();
-    
+    alert(canvas3.getObjects());
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
@@ -1139,11 +1161,8 @@ loadTshirt(TshirtObject);
 
 function loadTshirt(objects){
  fabric.Image.fromURL(objects, function(img) {
-    img.set({
-
-    });
-
-   // img.scaleToWidth(250);
+    canvas4.setWidth(250);
+    canvas4.setHeight(300);
     canvas4.add(img);
     img.center();
     image2.src = canvas4.toDataURL();
@@ -1173,9 +1192,8 @@ function loadTshirt(objects){
   });
 
 
-  $('#upload-form1').on('submit' , function(event){
-   // imageChange = true;
-    canvas4.requestRenderAll();
+  $('#upload-form1').one('submit' , function(event){
+    canvas4.remove(img);
     canvas4.clear();
     canvas4.dispose();
     canvas4 = new fabric.Canvas('c4');
@@ -1212,11 +1230,8 @@ var object3 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
  loadMugs(object3);
  function loadMugs(objects){
  fabric.Image.fromURL(objects, function(img) {
-    img.set({
-
-    });
-
-    //img.scaleToWidth(250);
+    canvas5.setWidth(250);
+    canvas5.setHeight(300);
     canvas5.add(img);
     var image3 = document.getElementById("logo-canvas2");
     img.center();
@@ -1453,9 +1468,12 @@ var rect2 = new fabric.Rect({
 })
   });
 
-  $('#upload-form2').on('submit' , function(event){
-   // imageChange = true;
-    canvas5.requestRenderAll();
+  $('#upload-form2').one('submit' , function(event){
+    canvas5.remove(img);
+    /* canvas5.remove(rect);
+    canvas5.remove(rect1);
+    canvas5.remove(rect2);
+    canvas5.remove(rect3); */
     canvas5.clear();
     canvas5.dispose();
     canvas5 = new fabric.Canvas('c5');
@@ -1490,12 +1508,8 @@ loadHoodie(object5);
 
 function loadHoodie(objects){
  fabric.Image.fromURL(objects, function(img) {
-    img.set({
-
-    });
-
-
-   // img.scaleToWidth(250);
+    canvas6.setWidth(250);
+    canvas6.setHeight(300);
     canvas6.add(img);
     var image4 = document.getElementById("logo-canvas3");
     img.center();
@@ -1525,9 +1539,8 @@ function loadHoodie(objects){
 })
   });
 
-  $('#upload-form3').on('submit' , function(event){
-   // imageChange = true;
-    canvas6.requestRenderAll();
+  $('#upload-form3').one('submit' , function(event){
+    canvas6.remove(img);
     canvas6.clear();
     canvas6.dispose();
     canvas6 = new fabric.Canvas('c6');
@@ -1563,10 +1576,8 @@ function loadHoodie(objects){
 
   function loadLongSleeve(objects){
    fabric.Image.fromURL(objects, function(img) {
-      img.set({
-  
-      });
-     // img.scaleToWidth(250);
+      canvas7.setWidth(250);
+      canvas7.setHeight(300);
       canvas7.add(img);
       var image5 = document.getElementById("logo-canvas4");
       img.center();
@@ -1595,9 +1606,8 @@ function loadHoodie(objects){
       image5.src = canvas7.toDataURL();
   })
     });
-    $('#upload-form4').on('submit' , function(event){
-   // imageChange = true;
-    canvas7.requestRenderAll();
+    $('#upload-form4').one('submit' , function(event){
+    canvas7.remove(img);
     canvas7.clear();
     canvas7.dispose();
     canvas7 = new fabric.Canvas('c7');
@@ -1627,18 +1637,17 @@ function loadHoodie(objects){
 
 <script>
   // Canvas for Graphic T-Shirt Dresses
-  var canvas8 = new fabric.Canvas('c8');
+  
   var object7 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+  var canvas8 = new fabric.Canvas('c8');
   loadGraphicTshirtDresses(object7);
 
   function loadGraphicTshirtDresses(objects){
    fabric.Image.fromURL(objects, function(img) {
-      img.set({
-  
-      });
-  
-  
-     // img.scaleToWidth(250);
+      
+      canvas8.setWidth(250);
+      canvas8.setHeight(300);
+      
       canvas8.add(img);
       var image6 = document.getElementById("logo-canvas5");
       img.center();
@@ -1668,14 +1677,12 @@ function loadHoodie(objects){
   })
     });
 
-    $('#upload-form5').on('submit' , function(event){
-   // imageChange = true;
-    canvas8.requestRenderAll();
+    $('#upload-form5').one('submit' , function(event){
+    canvas8.remove(img);
     canvas8.clear();
     canvas8.dispose();
     canvas8 = new fabric.Canvas('c8');
     canvas8.requestRenderAll();
-    
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
