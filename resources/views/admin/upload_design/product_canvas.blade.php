@@ -109,7 +109,7 @@
             return patternSourceCanvas.getElement();
           },
           repeat: 'repeat',
-          offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
+          offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
           offsetY: img.getScaledHeight()/2
         });
     
@@ -212,7 +212,7 @@
             return patternSourceCanvas.getElement();
           },
           repeat: 'repeat',
-          offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
+          offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
           offsetY: img.getScaledHeight()/2
         });
     
@@ -422,7 +422,7 @@
            return patternSourceCanvas.getElement();
          },
          repeat: 'repeat',
-         offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
+         offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
          offsetY: img.getScaledHeight()/2
        });
    
@@ -525,7 +525,7 @@
            return patternSourceCanvas.getElement();
          },
          repeat: 'repeat',
-         offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
+         offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
          offsetY: img.getScaledHeight()/2
        });
    

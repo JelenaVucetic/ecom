@@ -839,6 +839,7 @@ var canvas3 = new fabric.Canvas('c3');
 var imgElement = document.getElementById('myImage');
 var object = "/image/<?php if(!empty($image)){echo $image;}  ?>";
 var imageForCanvas;
+var sel;
 
 
   load(object);
@@ -856,6 +857,7 @@ function load(objects){
     imageForCanvas.center();
     image1.src = canvas3.toDataURL();
     canvas3.requestRenderAll();
+    
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
       checkForScale = false;
@@ -947,7 +949,7 @@ var rect = new fabric.Rect({
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/8,
+      offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/4,
       offsetY: imageForCanvas.getScaledHeight()/2
     });
 
@@ -984,7 +986,10 @@ var rect = new fabric.Rect({
    })
 
 
+
 });
+
+
 
     
 
@@ -1049,7 +1054,7 @@ var rect = new fabric.Rect({
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/8,
+      offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/4,
       offsetY: imageForCanvas.getScaledHeight()/2
     });
 
@@ -1076,7 +1081,7 @@ var rect = new fabric.Rect({
     image1.src = canvas3.toDataURL();
     canvas3.requestRenderAll();
 
-          var sel = new fabric.ActiveSelection(canvas3.getObjects(), {
+           sel = new fabric.ActiveSelection(canvas3.getObjects(), {
           canvas: canvas3,
         });
         canvas3.setActiveObject(sel);
@@ -1114,7 +1119,7 @@ var rect = new fabric.Rect({
   $('#upload-form').one('submit' , function(event){
     checkForScale = false;
     imageChange = true;
-    canvas3.remove(imageForCanvas);
+   // canvas3.remove(canvas3.getObjects());
     canvas3.requestRenderAll();
     canvas3.clear();
     canvas3.dispose();
@@ -1321,7 +1326,7 @@ var object3 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
+      offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
       offsetY: img.getScaledHeight()/2
     });
 
@@ -1408,7 +1413,7 @@ var rect = new fabric.Rect({
         return patternSourceCanvas.getElement();
       },
       repeat: 'repeat',
-      offsetX:  img.getScaledWidth() + img.getScaledWidth()/8,
+      offsetX:  img.getScaledWidth() + img.getScaledWidth()/4,
       offsetY: img.getScaledHeight()/2
     });
 
@@ -1470,10 +1475,6 @@ var rect2 = new fabric.Rect({
 
   $('#upload-form2').one('submit' , function(event){
     canvas5.remove(img);
-    /* canvas5.remove(rect);
-    canvas5.remove(rect1);
-    canvas5.remove(rect2);
-    canvas5.remove(rect3); */
     canvas5.clear();
     canvas5.dispose();
     canvas5 = new fabric.Canvas('c5');

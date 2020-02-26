@@ -29,7 +29,7 @@ class ImageController extends Controller
         $file = $request->file('file');
         $image =  $file->getClientOriginalName();
         $file->move('image', $file->getClientOriginalName());
-        $image1 = Image::make(public_path('image/' . $image))->resize(200,150, function($constraint){
+        $image1 = Image::make(public_path('image/' . $image))->resize(150,100, function($constraint){
             $constraint->aspectRatio();
         });
         $image1->save();
