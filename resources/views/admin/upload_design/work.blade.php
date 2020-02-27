@@ -1119,11 +1119,23 @@ var rect = new fabric.Rect({
   $('#upload-form').one('submit' , function(event){
     checkForScale = false;
     imageChange = true;
-   // canvas3.remove(canvas3.getObjects());
-    canvas3.requestRenderAll();
+    canvas3.remove(canvas3.getObjects());
+    canvas3 = null;
+    $('#c3').hide();
+    if(canvas3){
+      canvas3.clear();
+      canvas3 = null;
+    }
+    $('#c3').siblings('.upper-canvas').remove();
+    $('#c3').parent('.canvas-container').before($('#c3'));
+   // $('.canvas-container').remove();
+
+    //
+  /*   canvas3.requestRenderAll();
     canvas3.clear();
-    canvas3.dispose();
+    canvas3.dispose(); */
     canvas3 = new fabric.Canvas('c3');
+    $('#c3').show();
     canvas3.requestRenderAll();
     alert(canvas3.getObjects());
     event.preventDefault();
