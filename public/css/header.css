@@ -53,7 +53,7 @@ padding-left: 0rem;
 padding-right: 0rem;
 }
 
-.container{
+.mycontainer{
     padding-left: 0px;
     padding-right: 0px;
     max-width: 100%;
@@ -87,37 +87,50 @@ padding-right: 0rem;
     transform: translate3d(-225px, 66px, 0px)!important;
 }
 
-.searchI{
+.searchIDiv{
     width: 600px;
 }
-.searchI input {
+.searchI {
     -webkit-transition:  0.5s;
     transition:  0.5s;
     background: #F5F5F5;
     border: 0 none;
     color: #8B8B8B;
     width:400px;
-    padding: 6px 15px 6px 35px;
-    -webkit-border-radius: 20px;
+    padding: 6px 2px 6px 10px;
+        -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-    /* margin:3px 80px; */
+    height: 31px;
+}
+.searchI input{
+    background: #F5F5F5;
+    border: 0 none;
+    color: #8B8B8B;
+    width:300px;
+    padding: 0;
+    float: left;
+    outline: none;
 }
 
-.searchI input:hover{
+.searchI:hover{
  
   
 /*     padding-right:80px;  
     margin-right:35px; */
     outline: none;
-    width: 500px;
+    width: 450px;
     margin-left: 0px;
 
 }
 .searchI i{
-position: absolute;
-padding: 10px;
+
 /* color: green; */
 min-width: 50px;
-text-align: center;
+float: right;
 }
+.searchI input:active{
+   border: none;
+}
+
+

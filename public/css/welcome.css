@@ -1,0 +1,234 @@
+
+.welcome-image{
+    width: 100%;
+    margin: auto;
+}
+
+.welcome-image img{
+    width: 100%;
+}
+
+.myRow{
+    display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .welcome-shop{
+        width: 100%;
+        margin: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+.shop-product{
+    margin-left: 7%;
+}
+
+.shop-product p{
+    font-family: Fira Sans;
+    color: #404040;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.shop-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-evenly !important;
+    width: 100%;
+    margin: auto;
+ }
+
+.box{
+    width: 25%;
+    position: relative;
+}
+
+.box img{
+    width: 100%;
+    position: relative;
+}
+.box button{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    border-radius: 20px;
+   background-color: #FFFFFF; 
+   width: 45%;
+   font-family: Fira Sans;
+   color: #404040;
+   border: none;
+}
+
+.site-quality{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-evenly !important;
+    width: 100%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.site-box{
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+}
+
+.site-box p{
+    margin-bottom: 0px;
+    font-family: Fira Sans;
+}
+
+.bold{
+    font-size: 17px;
+    font: bold;
+    font-weight: bold;
+}
+
+.design-icon{
+    background-image: url('/site-images/Authentic-Icon.svg');
+    background-repeat: no-repeat;
+    width: 70px;
+    height: 62px;
+}
+
+.design-text{
+    width: 70%;
+}
+
+.delivery-icon{
+    background-image: url('/site-images/iconfinder_Express_mail_3615754.svg');
+    background-repeat: no-repeat;
+    width: 90px;
+    height: 62px;
+}
+
+.delivery-text{
+    width: 70%;
+}
+
+.quality-icon{
+    background-image: url('/site-images/Ikonica High Quality.svg');
+    background-repeat: no-repeat;
+    width: 85px;
+    height: 62px;
+}
+
+.quality-text{
+    width: 70%;
+}
+
+.gifts{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-evenly !important;
+}
+
+.gifts-for-him{
+    width: 40%;
+    position: relative;
+}
+
+.gifts-for-her{
+    width: 40%;
+    position: relative;
+}
+
+.gift-image{
+    height: 300px;
+    position: relative;
+    width: 100%;
+}
+
+#male{
+    width: 20px;
+    height: 31px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#female{
+    width: 18px;
+    height: 22px;
+    position: absolute;
+    top: 16px;
+    left: 10px;
+}
+
+.gifts button{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    border-radius: 20px;
+   background-color: #FFFFFF; 
+   width: 45%;
+   font-family: Fira Sans;
+   color: #404040;
+   border: none;
+}
+
+.accessories{
+    margin-top: 50px;
+    width: 87%;
+    margin: auto;
+}
+
+.accessories p{
+    font-family: Fira Sans;
+    color: #404040;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.row img{
+ width: 100%;
+}
+
+.my-main-div{
+    width: 70%;
+    margin: auto;
+}
+
+
+.myContainer{
+    width: 100%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    }
+    .myRowAcc{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        -webkit-justify-content: space-evenly !important;
+        width: 100%;
+        margin: auto;
+        padding-bottom: 20px;
+        margin-top: 50px;
+    }
+
+    .myRowAcc1{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        -webkit-justify-content: space-evenly !important;
+        width: 100%;
+        margin: auto;
+        padding-bottom: 20px;
+        margin-top: 10px;
+    }
+    .box img{
+        width: 100%;
+        position: relative;
+    }

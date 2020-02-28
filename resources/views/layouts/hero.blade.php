@@ -1,16 +1,22 @@
 <section class="jumbotron text-center">
-    <div class="container">
+    <div class="mycontainer">
         <div class="logo-section">
         <div class="logo-image">  
         <img src="/site-images/U1.png" alt="Urban one">    
         </div>
 
         <form action="{{ route('search') }}" class="form-inline ml-auto" method="get" >
-            <div class="d-flex justify-content-between align-items-center searchI">
+       {{--      <div class="d-flex justify-content-between align-items-center searchI">
             <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search" ><i class="fa fa-search" aria-hidden="true"></i>
 
             <button class="btn btn-outline-success" type="submit">Search</button>
+            </div> --}}
+            <div class="searchIDiv">
+            <div class="searchI">
+              <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search" ><i class="fa fa-search" aria-hidden="true"></i>
+
             </div>
+          </div>
           </form>
          
           <li class="nav-item dropdown" id="cart">
