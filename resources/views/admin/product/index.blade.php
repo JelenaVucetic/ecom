@@ -51,14 +51,13 @@
         <tbody>
         <?php $count=1; ?>
         @forelse($products as $product)
-
         <tr>
             <th scope="row"> {{$product->id}}</th>
             <td> {{ $product->name }} </td>
             <td>{{ $product->description }}</td>
             <td><img src="{{url('images', $product->image)}}" alt="" style="width:100px;height:100px;"></td>
             <td>{{ $product->price }}</td>
-            <td>category</td>
+            <td> {{$product->category_id}}</td>
             <td>  @foreach($product->tags as $tag)
                     <a href="/admin/product?tag={{$tag->name}}">{{ $tag->name }}</a>
                 @endforeach

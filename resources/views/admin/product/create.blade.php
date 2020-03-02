@@ -61,13 +61,6 @@
                       @enderror
                     </div>
                     <div class="form-group">
-                        {{ Form::label('stock', 'Stock') }}
-                        {{ Form::text('stock', null, array('class' => 'form-control')) }}
-                        @error('stock')
-                      <p class="help is-danger">{{ $errors->first('stock')}}</p>
-                      @enderror
-                    </div>
-                    <div class="form-group">
                         {{ Form::label('image', 'Image') }}
                         {{ Form::file('image', null, array('class' => 'form-control')) }}
                         @error('image')

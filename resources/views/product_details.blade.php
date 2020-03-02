@@ -132,7 +132,6 @@ function responseMessage(msg) {
                                 </div>
                             @endif
                             </span>
-                            <p><b>Availability:</b> {{ $product->stock}} In Stock</p>
                         <?php $sizes = DB::table('products_properties')->where('pro_id', $product->id)->get(); ?>
                             <select name="size" id="size">
                                 @foreach($sizes as $size)

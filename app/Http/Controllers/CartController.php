@@ -34,10 +34,10 @@ class CartController extends Controller
     {
         $product = Product::find($id);
         if($product->spl_price==0) {
-         $cart= Cart::add( $id, $product->name, 1, $product->price, 0, ['img'=> $product->image, 'stock' => $product->stock]);
+         $cart= Cart::add( $id, $product->name, 1, $product->price, 0, ['img'=> $product->image]);
  
         } else {
-        $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, ['img'=> $product->image, 'stock' => $product->stock]);
+        $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, ['img'=> $product->image]);
         }
 
         return back();

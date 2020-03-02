@@ -5,7 +5,7 @@
         <label>Select image to upload:</label>
         <input type="file" name="file" id="file">
         <input type="submit" value="Upload" name="submit">
-        <span>{{ $errors->first('file')}}</span>
+        @include('layouts.error')
 
     </form>
 
@@ -684,21 +684,16 @@
 
     </div>
 
-
-
     <div class="save-work">
- 
         <div class="add-work">
           <div class="add-work-title">
             <label>Title</label>
             <input type="text" placeholder="Title" id="title">
           </div>
-  
           <div class="add-work-tags">
             <label>Tags</label>
             <input type="text" placeholder="Tags" id="tags">
           </div>
-  
           <div class="add-work-description">
             <label>Description</label>
             <input type="text" placeholder="Description" id="description">

@@ -37,8 +37,7 @@
                                         <a href="">{{ $child->name }} </a>
 
                                         <div class="button-group d-flex">
-                                            <button type="button" class="btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal" data-id="{{ $child->id }}" data-name="{{ $child->name }}">Edit</button>
-
+                                            <a href="{{route('category.edit', $child->id)}}" class="btn btn-success btn small">Edit</a>
                                             <form action="{{ route('category.destroy', $child->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

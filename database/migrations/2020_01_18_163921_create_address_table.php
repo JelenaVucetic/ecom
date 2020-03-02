@@ -22,6 +22,7 @@ class CreateAddressTable extends Migration
             $table->string('street');
             $table->integer('zip');
             $table->integer('user_id');
+            $table->integer('order_id');
             $table->string('city');
             $table->timestamps();
         });

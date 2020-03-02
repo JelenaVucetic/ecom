@@ -13,17 +13,22 @@ class ProductsController extends Controller
     //
     public function index()
     {
-        if(request('tag'))
+  /*       if(request('tag'))
         {
             $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
             $products = Tag::where('name', request('tag'))->firstOrFail()->products;
+            
 
-           // dd($products);
-        } else {
-            $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')->get();
+
+           dd($products);
+        } else { */
+           /*  $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')
+            ->rightJoin('product_tag', 'product_tag.product_id', '=', 'categories.id')->get(); */
             $products = Product::all();
-        }
-
+            
+         //   dd($products);
+    /*     }
+ */
         return view('admin.product.index', compact('products'));
     }
 
@@ -46,7 +51,6 @@ class ProductsController extends Controller
             'description' => 'required',
             'tags' => 'exists:tags,id',
             'price' => 'required',
-            'stock' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:10000',
             'spl_price' => 'required'
         ]);

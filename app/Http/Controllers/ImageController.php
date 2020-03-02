@@ -19,11 +19,12 @@ class ImageController extends Controller
     public function upload(Request $request){
           
         $this->validate($request, [
-            'file' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048|jfif',
 
         ],
         ['file.required' => 'Morate izabrati fajl',
-         'file.mimes' => 'Fajl mora biti: jpeg, png, jpg, gif']
+         'file.mimes' => 'Fajl mora biti: jpeg, png, jpg, gif',
+         'file.jfif' => 'Fajl mora biti: jpeg, png, jpg, gif']
     );
 
         $file = $request->file('file');

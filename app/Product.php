@@ -11,11 +11,11 @@ class Product extends Model
     //
     protected $table = 'product';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'price', 'image', 'spl_price', 'category_id', 'stock'];
+    protected $fillable = ['name', 'description', 'price', 'image', 'spl_price', 'category_id'];
 
     protected $searchable = [
         /**
-         * Columns and their priority in search results.
+         * Columns and their priority in search results
          * Columns with higher values are more important.
          * Columns with equal values have equal importance.
          *
@@ -35,7 +35,7 @@ class Product extends Model
         return $this->belongToMany('Category', 'categories');
     }
  */
-    public function category()
+    public function categories()
     {
         return $this->belongsTo(Category::class);
     }

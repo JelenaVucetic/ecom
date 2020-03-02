@@ -92,7 +92,6 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                             <a href="{{url('/product_details')}}/{{$cartItem->id}}">
                             <h4><a href="{{url('/product_details')}}/{{$cartItem->id}}" style="color:blue">{{$cartItem->name}}</a></h4>
                             <p>Product ID: {{$cartItem->id}}</p>
-                            <p>Only {{$cartItem->options->stock}} left</p>
                         </td>
                         <td class="cart_price">
                             <p>${{$cartItem->price}}</p>
