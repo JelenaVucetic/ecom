@@ -14,30 +14,27 @@ use App\Product;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@welcome');
 
-Route::get('/shop', 'HomeController@shop');
+
+Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/product_details/{id}', 'HomeController@product_details');
 Route::get('selectSize', 'HomeController@selectSize');
 
-
 Route::post('/addReview', 'HomeController@addReview');
 Route::post('/addStar', 'HomeController@addStar');
 
-Route::get('/show_category_product/{id}', 'HomeController@show_category_product');
-
 Route::get('/search', 'HomeController@search')->name('search');
+
+Route::resource('category', 'CategoriesController');
+
+Route::post('/categories/{category}', 'HomeController@ajaxUpload');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', 'AdminController@index');
-                                                //->name('admin.index')
-       // Route::post('admin/store', 'AdminController@store');
-      //  Route::get('/admin', 'AdminController@index');
-
         Route::resource('product', 'ProductsController');
-        Route::resource('category', 'CategoriesController');
+   
         Route::resource('tag', 'TagsController');
 
         Route::get('work', 'ImageController@index');
@@ -65,7 +62,6 @@ Route::get('/cart/addItem/{id}', 'CartController@addItem');
 Route::get('/cart/updateCart/{id}', 'CartController@updateCart')->name('updateCart');
 
 Route::get('/cart/remove/{id}', 'CartController@destroy');
-
 
 Route::get('/checkout', 'CheckoutController@index');
 Route::post('/formvalidate', 'CheckoutController@formvalidate');

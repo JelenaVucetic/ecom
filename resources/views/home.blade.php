@@ -38,6 +38,6 @@
       </div>
     </div>
   </div>
-
+  @include('recommends')
 </main>
 @endsection

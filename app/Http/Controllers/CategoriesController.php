@@ -9,16 +9,22 @@ use Illuminate\Support\Facades\DB;
 
 class CategoriesController extends Controller
 {
+
+    public function __construct() 
+    {
+        $this->middleware('admin', ['except' => ['index', 'show']]); 
+    }
     //
     public function index() {
         $categories = Category::where('parent_id',NULL)->get();
         $products = Product::all();
         return view('admin.category.index', compact(['categories', 'products']));
     }
-/*
+
     public function create() {
-        return view('admin.category.create');
-    } */
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('admin.category.create', compact('categories'));
+    } 
 
     public function store(Request $request) {
         $this->validate($request, [
@@ -29,11 +35,18 @@ class CategoriesController extends Controller
         return back()->withSuccess('You have successfully created a Category!');
     }
 
+
+   
+
     public function show($id) {
         $products = Category::find($id)->products;
         $categories = Category::where('parent_id',NULL)->get();
 
-        return view('admin.category.index', compact(['categories', 'products']));
+        /* return response()->json([
+            'prodcuts' => $products,
+            'categories' => $categories
+         ]);  */
+        return view('admin.category.show', compact(['categories', 'products']));
     }
 
     public function edit($id) {
@@ -59,4 +72,6 @@ class CategoriesController extends Controller
         Category::findOrFail($id)->delete();
         return redirect()->back();
     }
+
+  
 }

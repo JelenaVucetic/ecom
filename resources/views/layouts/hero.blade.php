@@ -69,7 +69,7 @@
             @if ($category->children)
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             @foreach ($category->children as $child)
-                <a class="dropdown-item" href="{{url('/show_category_product')}}/{{$child->id}}">{{ ucwords($child->name) }}</a>
+                <a class="dropdown-item" href="{{route('category.show',$child->id)}}">{{ ucwords($child->name) }}</a>
                 @endforeach
             </div>
             @endif

@@ -28,7 +28,13 @@
         <li class="nav-item">
         <a class="nav-link" href="{{route('category.index')}}">
             <span data-feather="layers"></span>
-           Category
+           Categories
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{route('category.create')}}">
+            <span data-feather="shopping-cart"></span>
+           Add Category
         </a>
         </li>
         <li class="nav-item">
