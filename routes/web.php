@@ -29,8 +29,6 @@ Route::get('/search', 'HomeController@search')->name('search');
 
 Route::resource('category', 'CategoriesController');
 
-Route::post('/categories/{category}', 'HomeController@ajaxUpload');
-
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', 'AdminController@index');
         Route::resource('product', 'ProductsController');

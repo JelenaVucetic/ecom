@@ -41,14 +41,6 @@ class HomeController extends Controller
         return view('welcome', compact('products', 'categories'));
     }
 
-    public function ajaxUpload(Request $request) {
-        $id = $request->id;
-        $products = Category::find($id)->products;
-        $categories = Category::where('parent_id',NULL)->get();
-        dd($products);
-        return view('admin.category.show', compact(['categories', 'products']));
-    }
-
     public function product_details($id)
     {
       /*   $products = Product::findOrFail($id);
