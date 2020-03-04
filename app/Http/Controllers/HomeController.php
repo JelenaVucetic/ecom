@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Wishlist;
+use App\Design;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Recommends;
@@ -30,8 +31,9 @@ class HomeController extends Controller
     public function index()
     {
         $products = Product::all();
+        $designs = Design::orderBy('id', 'desc')->paginate(7);
         $categories = Category::where('parent_id',NULL)->get();
-        return view('home', compact('products', 'categories'));
+        return view('home', compact('products', 'categories', 'designs'));
     }
 
     public function welcome()

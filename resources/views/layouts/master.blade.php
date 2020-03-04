@@ -18,7 +18,7 @@
     <script src="/js/jQuery.js"></script>
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/welcome.css">
-    <script src="/js/category.js"></script>
+    <link rel="stylesheet" href="/css/cardDesign.css">
     </head>
     <body>
     @include('layouts.header')

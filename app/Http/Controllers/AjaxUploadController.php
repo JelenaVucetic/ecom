@@ -55,6 +55,8 @@ class AjaxUploadController extends Controller
       $tags = $data['tag'];
       $description = $data['description1'];
       $original = $data['originalName1'];
+      $originalImagePath = $data['originalImagePath'];
+
 
      
        
@@ -88,10 +90,20 @@ $string = str_shuffle($name);
 
 file_put_contents("images/". $string . ".png", $image);
 
+ 
+$row = DB::table('design')->where('name',  $originalImagePath)->first();
+
+if($row==null){
+    $idDesign = DB::table('design')->insertGetId([
+        'name' => $originalImagePath
+    ]);  
+} else {
+    $idDesign = $row->id;
+}
 
 
  DB::table('product')->insert([
-'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png'
+'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign
 ]); 
 
 $products = DB::table('product')->where([

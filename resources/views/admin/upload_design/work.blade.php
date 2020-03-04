@@ -1738,6 +1738,8 @@ function doCapture(){
     var tags = document.getElementById('tags').value;
     var description = document.getElementById('description').value;
     var els = document.getElementsByClassName("save-picture");
+    var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
+    alert(originalImagePath);
     Array.prototype.forEach.call(els, function(el) {
     if( el.getAttribute('value')=='0'){
         html2canvas(el).then(function (canvas){
@@ -1756,6 +1758,7 @@ function doCapture(){
                         tag : tags,
                         description1 : description,
                         originalName1 : originalName,
+                        originalImagePath: originalImagePath,
                         "_token":"{{csrf_token()}}",
                     },
                     success:function(msg){

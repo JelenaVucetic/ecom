@@ -1,0 +1,23 @@
+
+
+.design-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-justify-content: space-evenly !important;
+    width: 100%;
+    margin: auto;
+}
+
+.design-box{
+ width: 15%;
+}
+
+.design-box img{
+    width: 100%;
+}
+
+.design-for-you{
+    width: 90%;
+    margin: auto;
+}

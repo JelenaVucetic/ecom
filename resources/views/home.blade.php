@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 
@@ -6,6 +6,26 @@
 <main role="main">
 
 @include('layouts.hero')
+
+<div class="design-for-you">
+  <h2>Designs picked for you</h2>
+<div class="design-row">
+  @foreach ($designs as $design)
+  <div class="design-box">
+<img src="/image/{{$design->name}}">
+  </div>
+  <div class="count-product">
+    <p>Proizvoda
+    @php
+        $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count();
+      echo $count;
+      @endphp
+      </p>
+  </div>
+  @endforeach
+</div>
+
+</div>
 
   <div class="album py-5 bg-light">
     <div class="container">

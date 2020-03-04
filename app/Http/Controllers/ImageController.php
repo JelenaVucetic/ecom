@@ -30,12 +30,14 @@ class ImageController extends Controller
         $file = $request->file('file');
         $image =  $file->getClientOriginalName();
         $file->move('image', $file->getClientOriginalName());
-        $image1 = Image::make(public_path('image/' . $image))->resize(150,100, function($constraint){
-            $constraint->aspectRatio();
-        });
+        $image1 = Image::make(public_path('image/' . $image));
+        if($image1->width() > 400) {
+            $image1->resize(200,100, function($constraint){
+                $constraint->aspectRatio();
+            }); 
+        }
+
         $image1->save();
-
-
 
         $path = pathinfo($image);
         $ext = $path['extension'];
