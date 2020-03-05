@@ -28,9 +28,16 @@ class ImageController extends Controller
     );
 
         $file = $request->file('file');
-        $image =  $file->getClientOriginalName();
-        $file->move('image', $file->getClientOriginalName());
+        $imageName =  $file->getClientOriginalName();
+        $filename = pathinfo($imageName, PATHINFO_FILENAME);
+        
+        $extension =  $request->file('file')->getClientOriginalExtension();
+       // dd($extension);
+        $image = $filename . "_" . time() . ".".$extension;
+      
+        $file->move('image/', $image);
         $image1 = Image::make(public_path('image/' . $image));
+
         if($image1->width() > 400) {
             $image1->resize(200,100, function($constraint){
                 $constraint->aspectRatio();
@@ -39,10 +46,8 @@ class ImageController extends Controller
 
         $image1->save();
 
-        $path = pathinfo($image);
-        $ext = $path['extension'];
 
-        return view('admin.upload_design.work', compact(['image', 'ext']));
+        return view('admin.upload_design.work', compact(['image']));
 
 }
   

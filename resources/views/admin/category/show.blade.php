@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-@include('layouts.hero')
 
 <section>
 @include('layouts.error')
