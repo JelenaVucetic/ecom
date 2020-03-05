@@ -93,15 +93,7 @@ function responseMessage(msg) {
 }
 </script>
 
-
-<div class="container align-vertical hero">
-    <div class="row">
-        <div class="col-md-5 text-left">
-
-        </div>
-    </div>
-</div>
-<section id="index-amazon" style="padding:200px">
+<section id="index-amazon">
     <div class="amazon">
         <div class="container">
             <div class="row">
@@ -253,15 +245,5 @@ function responseMessage(msg) {
     </div>
     @endforeach
 </section>
-<div class="no-padding-top section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="" class="load-more"> <i class="fa fa-ellipsis-h"></i> </a>
-
-            </div>
-        </div>
-    </div>
-</div>
 @include('recommends')
 @endsection

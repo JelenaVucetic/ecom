@@ -61,13 +61,15 @@ class HomeController extends Controller
         }
 
         $Products = DB::table('product')->where('id', $id)->get();
-        return view('product_details', compact('Products'));
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('product_details', compact('Products', 'categories'));
     }
 
     public function viewWishlist()
     {
         $Products = DB::table('wishlist')->leftJoin('product', 'wishlist.pro_id', '=', 'product.id')->get();
-        return view('wishlist', compact('Products'));
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('wishlist', compact('Products', 'categories'));
     }
 
     public function wishlist(Request $request)
@@ -79,8 +81,8 @@ class HomeController extends Controller
         $wishlist->save();
 
         $Products = DB::table('product')->where('id', $request->pro_id)->get();
-
-        return view('product_details', compact('Products'));
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('product_details', compact('Products', 'categories'));
     }
 
     public function destroy($id) {
@@ -178,6 +180,7 @@ class HomeController extends Controller
                                         ->get(); */
 
         $products = Product::search($query)->paginate(20);
-        return view('search-results', compact('products'));
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('search-results', compact('products', 'categories'));
     }
 }

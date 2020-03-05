@@ -3,8 +3,6 @@
 @section('content')
 
 <main role="main">
-
-  @include('layouts.hero')
   @include('layouts.error')
 
     <div class="my-main-div">
@@ -120,7 +118,7 @@
                                           <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart"> Add to cart</a>
                                       </button>
                                   </div>
-                                  <small class="text-muted">9 mins</small>
+                                  <small>9 mins</small>
                               </div>
                           </div>
                       </div>
@@ -132,5 +130,56 @@
     </div>
   </div>
 
+<!--   About urban web   -->
+
+    <div class="about-urban">
+        <div class="about-urban-box">
+            <div>
+                <img src="" alt="">
+                <h6>Free Shipping</h6>
+                <p>Available as Standard or <br> Express delivery</p>
+                <a href="">Learn more</a>
+            </div>
+            <div>
+                <img src="" alt="">
+                <h6>Secure Payments</h6>
+                <p>100% Secure payments for <br> all your orders</p>
+                <a href="">Learn more</a>
+            </div>
+            <div>
+                <img src="" alt="">
+                <h6>Free Return</h6>
+                <p>Exchange or money back <br> guarantee for all orders</p>
+                <a href="">Learn more</a>
+            </div>
+            <div>
+                <img src="" alt="">
+                <h6>Local Support</h6>
+                <p>24/7 Dedicated support</p>
+                <a href="">Learn more</a>
+            </div>
+        </div>
+    </div>
+
+<!--  Subscribe   -->
+
+    <div class="subscribe">
+        <div class="subscribe-box">
+            <div class="subscribe-info">
+                <img src="/site-images/Subscribe1.svg" alt="">
+                <h5>10% off, promos and the latest <br> news and designs!</h5>
+            </div>
+            <form action="">
+                <input id="subscribe-email" type="emial" placeholder="Your E-Mail adress" >
+                <input id="submit-image" type="image" src="/site-images/iconfinder_Essentials_send_paper_plane_5298753.svg" alt="Submit Form"  />
+            </form>
+        </div>
+        <div class="subscribe-bottom">
+            <div>
+                <p>EUR - English</p>
+                <p>Mature content: Visible</p>
+            </div>
+        </div>
+    </div>
 </main>
 @endsection

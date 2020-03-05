@@ -45,12 +45,21 @@
 .box{
     width: 25%;
     position: relative;
+    overflow: hidden;
 }
 
 .box img{
     width: 100%;
     position: relative;
+    max-width: 100%;
+    transition: all 1.0s;
+    transform: scale(1);
 }
+
+.box:hover img{
+    transform: scale(1.1);
+}
+
 .box button{
     position: absolute;
     top: 90%;
@@ -133,20 +142,22 @@
     -webkit-justify-content: space-evenly !important;
 }
 
-.gifts-for-him{
+.gifts-for-him, .gifts-for-her{
     width: 40%;
     position: relative;
-}
-
-.gifts-for-her{
-    width: 40%;
-    position: relative;
+    overflow: hidden;
 }
 
 .gift-image{
     height: 300px;
     position: relative;
     width: 100%;
+    max-width: 100%;
+    transition: all 1.0s;
+    transform: scale(1);
+}
+.gifts-for-him:hover .gift-image, .gifts-for-her:hover .gift-image {
+    transform: scale(1.1);
 }
 
 #male{
@@ -232,3 +243,96 @@
         width: 100%;
         position: relative;
     }
+
+
+.about-urban {
+    width: 100%;
+    height: 300px;
+    background: #231F20;
+    padding: 50px;
+    margin-bottom: 100px;
+}
+
+.about-urban-box {
+    display: flex;
+    width: 70%;
+    height: 300px;
+    margin: auto;
+    justify-content: space-around;
+    background: white;
+    text-align: center;
+    box-shadow: 0px 10px 20px #0000000D;
+}
+
+.about-urban-box h6 {
+    color: #404040;
+}
+
+.about-urban-box p {
+    color: #8B8B8B;
+}
+
+.about-urban-box a {
+    color: #404040;
+    text-decoration:none;
+}
+
+.subscribe {
+    width: 100%;
+}
+
+.subscribe-box {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+}
+
+.subscribe-info {
+    display:flex;
+    align-items: center;
+}
+
+.subscribe-info h5{
+    padding: 0 20px;
+    color: #E7667C;
+}
+
+#submit-image {
+    background: #404040;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.subscribe form {
+    padding: 20px 0;
+    display: flex;
+}
+
+#subscribe-email {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: none;
+    width: 200px;
+    padding: 0 10px;
+    margin: 0 10px;
+}
+
+.subscribe-bottom {
+    border-top: 2px solid #404040;
+}
+
+.subscribe-bottom div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.subscribe-bottom div p {
+    padding-top: 10px;
+    padding-right: 30px;
+    color: #404040;
+    font-weight: 600;
+}

@@ -8,37 +8,34 @@
         <form action="{{ route('search') }}" class="form-inline ml-auto" method="get" >
             <div class="searchIDiv">
             <div class="searchI">
-              <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search" ><i class="fa fa-search" aria-hidden="true"></i>
-
+              <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search design and products" ><i class="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>
           </form>
-         
+          <div style="display: flex; align-items: center;">
+          <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
           <li class="nav-item dropdown" id="cart">
             <a class="nav-link " href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="dropdown-menu" aria-labelledby="dropdown01" id="dropdownCart" style="width:350px;">
+            <div class="dropdown-menu" aria-labelledby="dropdown01" id="dropdownCart" style="background:white; border: 1px solid lightgray;">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="badge badge-secondary badge-pill">{{Cart::count()}}</span>
-              <span class="text-muted">Total: ({{Cart::total()}})</span>
+              <span >Total: ({{Cart::total()}})</span>
             </h4>
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-muted">Your cart</span>
+            <h4>
+             Your cart
             </h4>
           <ul class="list-group mb-3">
             <?php $cartItems = Cart::content();?>
                 @foreach($cartItems as $cartItem)
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-              <div class="col-md-6">
-              <div>
+            <li class="list-group-item">
+
                 <img  class="dropdownimage" src="{{url('images',$cartItem->options->img)}}"  class="img-responsive dropdownimage" style="width:50px" />
-              </div>
-            </div>
-              <div class="col-md-6">
-              <h6 class="my-0">Name: {{$cartItem->name}}</h6>
-              <span class="text-muted">Price: {{$cartItem->price}}</span>
+
+              <h6>Name: {{$cartItem->name}}</h6>
+              <span>Price: {{$cartItem->price}}</span>
             </br>
-              <small class="text-muted foat-right">Qty: {{$cartItem->qty}}</small>
-            </div>
+              <small>Qty: {{$cartItem->qty}}</small>
+
             </li>
               @endforeach
             <li class="list-group-item d-flex justify-content-between">
@@ -46,6 +43,7 @@
               <a class="btn btn-primary float-right" href="{{url('/cart')}}">View Cart</a>
             </li>
             </ul>
+         </div>
         </div>
         </div>
     </a>

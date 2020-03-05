@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<section style="margin:100px;">  
+
+<section>  
    <h1>Search Results</h1>
    <p>result(s) for '{{ request()->input('query') }}'</p>
     @include('layouts.error')
@@ -38,7 +39,7 @@
                       <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart">Add to cart</a>
                   </button>
                 </div>
-                <small class="text-muted">9 mins</small>
+                <small>9 mins</small>
               </div>
             </div>
           </div>

@@ -1,15 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-
-
 <main role="main">
-
-@include('layouts.hero')
-
-<div class="design-for-you">
-  <h2>Designs picked for you</h2>
-<div class="design-row">
+  <div class="design-for-you">
+    <h2>Designs picked for you</h2>
+  <div class="design-row">
   @foreach ($designs as $design)
   <div class="design-box">
 <img src="/image/{{$design->name}}">
@@ -26,10 +21,8 @@
 </div>
 
 </div>
-
   <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
           @forelse($products as $product)
         <div class="col-md-4">
@@ -47,7 +40,7 @@
                       <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart"> Add to cart</a>
                   </button>                
                 </div>
-                <small class="text-muted">9 mins</small>
+                <small>9 mins</small>
               </div>
             </div>
           </div>
