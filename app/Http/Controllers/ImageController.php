@@ -34,18 +34,19 @@ class ImageController extends Controller
         $extension =  $request->file('file')->getClientOriginalExtension();
        // dd($extension);
         $image = $filename . "_" . time() . ".".$extension;
-      
-        $file->move('image/', $image);
-        $image1 = Image::make(public_path('image/' . $image));
+        $file->move('design/', $image);
 
-        if($image1->width() > 400) {
-            $image1->resize(200,100, function($constraint){
+        $image1 = Image::make(public_path('design/' . $image));
+       
+
+         if($image1->width() > 400) {
+            $image1->resize(300,null, function($constraint){
                 $constraint->aspectRatio();
             }); 
         }
-
-        $image1->save();
-
+           
+        $image1->save('image/' . $image1->basename); 
+ 
 
         return view('admin.upload_design.work', compact(['image']));
 
