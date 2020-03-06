@@ -40,6 +40,9 @@ class HomeController extends Controller
     {
         $products = Product::orderBy('id', 'desc')->paginate(20);
         $categories = Category::where('parent_id',NULL)->get();
+     
+     /*    $cat = Product::find(73);
+        dd($cat->category->name); */
         return view('welcome', compact('products', 'categories'));
     }
 

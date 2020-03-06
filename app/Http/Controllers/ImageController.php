@@ -40,7 +40,7 @@ class ImageController extends Controller
        
 
          if($image1->width() > 400) {
-            $image1->resize(300,null, function($constraint){
+            $image1->resize(200,null, function($constraint){
                 $constraint->aspectRatio();
             }); 
         }

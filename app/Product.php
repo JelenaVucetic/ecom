@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
+
 class Product extends Model
 {
     use SearchableTrait;
@@ -35,7 +36,7 @@ class Product extends Model
         return $this->belongToMany('Category', 'categories');
     }
  */
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Category::class);
     }

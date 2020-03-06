@@ -62,6 +62,7 @@ class AjaxUploadController extends Controller
        
 
 $price = 0;
+$category = 0;
 
 if($original=='Phone Case'){
     $price = 10;

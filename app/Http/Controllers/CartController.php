@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = Cart::content();
+        $categories = Category::where('parent_id',NULL)->get();
        //dd($cartItems);
        $countTotal=0;
        foreach($cartItems as $c) {
@@ -27,7 +29,7 @@ class CartController extends Controller
             $cartSubTotal = Cart::subtotal();
         } 
 
-        return view('cart.index', compact('cartItems', 'cartSubTotal'));
+        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories'));
     }
 
     public function addItem(Request $request, $id)

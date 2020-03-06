@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\DB;
 use App\Address;
 use App\Order;
 use App\Product;
+use App\Category;
 use Hash;
 class ProfileController extends Controller
 {
     //
     public function index() {
-        return view('profile.index');
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('profile.index', compact('categories'));
     }
 
     public function orders() {

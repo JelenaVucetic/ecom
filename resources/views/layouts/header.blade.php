@@ -17,7 +17,13 @@
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <?php if(Auth::check()) {?>
             <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+
+                 @if(Auth::user()->isAdmin())
+                 <a class="dropdown-item" href="{{ url('/admin') }}">Admin</a>
+                @else
             <a class="dropdown-item" href="{{ url('/profile') }}">Profile</a>
+          @endif
+        
           <?php } else { ?>
             <a class="dropdown-item"href="{{ url('/login') }}">Login</a>
           <?php } ?>

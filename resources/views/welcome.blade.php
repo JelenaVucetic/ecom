@@ -103,13 +103,24 @@
     <div class="container">
       <div class="myRow">
               @forelse($products as $product)
-                  <div class="col-md-4">
-                      <div class="card mb-4 shadow-sm">
+              <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart">
+                  <div class="col-md-3">
+                      <div class="card mb-3 shadow-sm">
                           <img src="{{ url('images', $product->image) }}" class="card-img" alt="">
-                          <div class="card-body">
+                        </div>
+                          <div class="my-card-body">
                               <p class="card-text">{{ $product->name }}</p>
-                              <p class="card-text">{{ $product->description }}</p>
-                              <div class="d-flex justify-content-between align-items-center">
+                          </a>
+                              <?php
+                                  $pro_cat = App\Product::find($product->id);
+                                    if($pro_cat->category != null){
+                               ?>
+                                   <p class="card-text">{{ $pro_cat->category->name }}</p>
+                                <?php
+                                    }
+                                  ?>
+                             
+                          {{--     <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
                                       <button type="button" class="btn btn-sm btn-outline-primpary">
                                           <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart"> View product</a>
@@ -119,10 +130,10 @@
                                       </button>
                                   </div>
                                   <small>9 mins</small>
-                              </div>
+                              </div> --}}
                           </div>
                       </div>
-                  </div>
+                  
               @empty
                   <h3>No products</h3>
               @endforelse

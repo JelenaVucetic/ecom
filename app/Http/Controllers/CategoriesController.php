@@ -40,6 +40,7 @@ class CategoriesController extends Controller
 
     public function show($id) {
         $products = Category::find($id)->products;
+        
         $categories = Category::where('parent_id',NULL)->get();
 
         /* return response()->json([

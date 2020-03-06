@@ -8,6 +8,10 @@
     width: 100%;
 }
 
+.col-md-3{
+    margin-top: 35px;
+}
+
 .myRow{
     display: -ms-flexbox;
         display: flex;
