@@ -254,6 +254,27 @@ $(document).ready(function(){
                 }
             });
 
+             // Enable and edit New T-shirt
+             $('#edit-product12').click(function() {
+                if(document.getElementById('product15').style.display == 'none'){
+                    closeCanvas();
+                    document.getElementById('product15').style.display = 'flex';
+                }else{
+                    document.getElementById('product15').style.display = 'none';
+                }
+            });
+            $('#enabled-product12').click(function(){
+                if($('#proizvod12').hasClass('disabledbutton')){
+                    $('#proizvod12').removeClass('disabledbutton');
+                    $( "#proizvod12" ).attr( "value" , 0 );
+                    $('#enabled-product12').html('Enabled');
+                }else{
+                    $('#proizvod12').addClass('disabledbutton');
+                    $( "#proizvod12" ).attr( "value" , 1 );
+                    $('#enabled-product12').html('Disabled');
+                }
+            });
+
 
 
 
@@ -326,6 +347,13 @@ $(document).ready(function(){
             var image15 = document.getElementById("logo-canvas11");
             image15.src = canvas17.toDataURL();
         });
+
+          // canvas on change show Poster
+          $('#product15').mouseup(function(){
+            var image16 = document.getElementById("logo-canvas12");
+            image16.src = canvas18.toDataURL();
+        });
+
 
     // Change phone case color
     var colorInput = document.querySelector('#color');

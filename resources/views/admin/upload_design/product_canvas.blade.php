@@ -741,3 +741,43 @@
     });
   });
   </script>
+
+<script>
+  // Canvas for Poster
+  var canvas18 = new fabric.Canvas('c15');
+   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+      img.set({
+  
+      });
+  
+      //img.scaleToWidth(250);
+      canvas18.add(img);
+      
+      var image16 = document.getElementById("logo-canvas12");
+      img.center();
+      image16.src = canvas18.toDataURL();
+      canvas18.requestRenderAll();
+      $('#scale-control11').on('input', function () {
+        $(this).trigger('change');
+        img.scale(parseFloat($(this).val())).setCoords();
+        canvas18.requestRenderAll();
+    });
+  
+
+    $('#alignVertically11').on('click', function(){
+      img.centerV();
+      sleep(100).then(() => {
+      img.setCoords();
+      image16.src = canvas18.toDataURL();
+      })
+    });
+
+    $('#alignHorizontally11').on('click', function(){
+      img.centerH();
+      sleep(100).then(() => {
+      img.setCoords();
+      image16.src = canvas18.toDataURL();
+  })
+    });
+  });
+  </script>

@@ -56,10 +56,36 @@ class AjaxUploadController extends Controller
       $description = $data['description1'];
       $original = $data['originalName1'];
       $originalImagePath = $data['originalImagePath'];
+      $canvasImage = $data['canvasImage'];
+      dd($canvasImage);
+ /*      if($canvasImage!=null && $canvasImage!=0){
+        $canvasImage = explode(";" ,  $canvasImage)[1];  
+        $canvasImage = explode("," ,  $canvasImage)[1];
+        $canvasImage = str_replace(" ", "+",  $canvasImage);
+        $canvasImage = base64_decode( $canvasImage);
+        $characters1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name1 = mt_rand(1000000, 9999999)
+        . mt_rand(1000000, 9999999)
+        . $characters1[rand(0, strlen($characters1) - 1)];
+        $string1 = str_shuffle($name1);
+        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
+    } */
 
-
-     
-       
+    
+    if($canvasImage!=="0"){
+        
+       if( $canvasImage = explode(";" ,  $canvasImage)[1]){
+        $canvasImage = explode("," ,  $canvasImage)[1];
+        $canvasImage = str_replace(" ", "+",  $canvasImage);
+        $canvasImage = base64_decode( $canvasImage);
+        $characters1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name1 = mt_rand(1000000, 9999999)
+        . mt_rand(1000000, 9999999)
+        . $characters1[rand(0, strlen($characters1) - 1)];
+        $string1 = str_shuffle($name1);
+        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
+    } 
+    }
 
 $price = 0;
 $category = 0;
