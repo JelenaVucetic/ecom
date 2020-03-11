@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         });
 
         Route::post('work/action', 'AjaxUploadController@action')->name('ajaxupload.action');
+        Route::get('/upload_mockup', 'ImageController@display_mockup');
+        Route::post('/upload_mockup', 'ImageController@upload_final_mockup');
 
         Route::get('EditImage/{id}', 'ProductsController@ImageEditForm')->name('ImageEditForm');
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');

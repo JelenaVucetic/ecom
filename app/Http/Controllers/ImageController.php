@@ -51,6 +51,16 @@ class ImageController extends Controller
         return view('admin.upload_design.work', compact(['image']));
 
 }
+
+public function display_mockup(){
+
+    return view('admin.upload_design.upload_mockup');
+}
+
+public function upload_final_mockup(Request $request){
+    dd($request->image);
+
+}
   
       
 }

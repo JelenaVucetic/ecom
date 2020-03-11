@@ -31,10 +31,7 @@ class AjaxUploadController extends Controller
                     $c->aspectRatio();
                 });
                 $image_resize->save();
-              /*   dd(response()->json([
-                    'message' => 'Image uploaded',
-                    'upload_image' => $image
-                ])); */
+              
             return response()->json([
                 'message' => 'Image uploaded',
                 'upload_image' => $image
@@ -57,8 +54,9 @@ class AjaxUploadController extends Controller
       $original = $data['originalName1'];
       $originalImagePath = $data['originalImagePath'];
       $canvasImage = $data['canvasImage'];
-      dd($canvasImage);
- /*      if($canvasImage!=null && $canvasImage!=0){
+
+      
+      if($canvasImage!==null && $canvasImage!=="0"){
         $canvasImage = explode(";" ,  $canvasImage)[1];  
         $canvasImage = explode("," ,  $canvasImage)[1];
         $canvasImage = str_replace(" ", "+",  $canvasImage);
@@ -69,10 +67,10 @@ class AjaxUploadController extends Controller
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string1 = str_shuffle($name1);
         file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    } */
+    } 
 
     
-    if($canvasImage!=="0"){
+ /*    if($canvasImage!=="0"){
         
        if( $canvasImage = explode(";" ,  $canvasImage)[1]){
         $canvasImage = explode("," ,  $canvasImage)[1];
@@ -85,7 +83,7 @@ class AjaxUploadController extends Controller
         $string1 = str_shuffle($name1);
         file_put_contents("canvas/". $string1 . ".png", $canvasImage);
     } 
-    }
+    } */
 
 $price = 0;
 $category = 0;

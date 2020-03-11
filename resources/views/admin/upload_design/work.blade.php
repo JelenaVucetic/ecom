@@ -45,7 +45,7 @@
     <div class="row-product">
         <div id="proizvod1" class="save-picture disabledbutton" name="T-shirt" data-canvas="canvas4" value="1">
             <div class="background-div1">
-        <img id="logo-canvas1" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+        <img id="logo-canvas1" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
         <img class="overlay-panel" src="/images/t-shirt.png">
             </div>
         </div>
@@ -685,7 +685,7 @@
 
   
                                     {{-- New T-shirt Girl html --}}
-                                    <div class="product-column" style="width:70%;">
+                                      <div class="product-column" style="width:70%;">
                                       <div class="row-product" style="width:100%;">
                                           <div id="proizvod12" class="save-picture disabledbutton" name="Poster" value="1">
                                               <div class="background-div11">
@@ -702,7 +702,7 @@
                                           <button id="enabled-product12">Disabled</button>
                                           </div>
                                       </div>
-                                  </div>
+                                      </div>
                                       </div>
 
 
@@ -1800,28 +1800,40 @@ function doCapture(){
     var description = document.getElementById('description').value;
     var els = document.getElementsByClassName("save-picture");
     var mockUpCanvas = document.getElementById("canvasMockUp");
-    var canvasImage = "0";
+    
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
     Array.prototype.forEach.call(els, function(el) {
+      var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
       var canvasAtr = el.getAttribute('data-canvas');
-      
+
         if(canvasAtr=="canvas4"){
           canvasImage = canvas4.toDataURL();
+          $.ajax({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/admin/upload_mockup',
+            type: 'post',
+            dataType: 'JSON',
+            data: {
+              image: canvasImage
+            },
+            success:function(msg){
+              console.log(msg);
+            }
+          });
         }else{
           canvasImage = "0";
         }
        
         html2canvas(el).then(function (canvas){
-         
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
-           // alert(imgData);
             var nameProduct = title + " " + el.getAttribute('name');
             $.ajax({
                     url: '{{route("ajaxupload.save")}}',
                     type: 'post',
-                  
                     dataType: "JSON",
                     data: {
                         image : imgData,
@@ -1834,7 +1846,7 @@ function doCapture(){
                         "_token":"{{csrf_token()}}",
                     },
                     success:function(msg){
-                        console.log(msg);
+                        console.log(msg + "Dobro");
                     }
                 });
         });
