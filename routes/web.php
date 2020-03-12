@@ -40,14 +40,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
         Route::post('work/action', 'AjaxUploadController@action')->name('ajaxupload.action');
         Route::post('work/save', 'AjaxUploadController@save')->name('ajaxupload.save');
-
         Route::post('/savework', function () {
             return view('/admin/upload_design/savework');
         });
 
         Route::post('work/action', 'AjaxUploadController@action')->name('ajaxupload.action');
+        
         Route::get('/upload_mockup', 'ImageController@display_mockup');
         Route::post('/upload_mockup', 'ImageController@upload_final_mockup');
+     
+        Route::post('/upload_final', 'ImageController@final_mockup')->name('upload_final');
+
 
         Route::get('EditImage/{id}', 'ProductsController@ImageEditForm')->name('ImageEditForm');
         Route::post('editProImage', 'ProductsController@editProImage')->name('editProImage');

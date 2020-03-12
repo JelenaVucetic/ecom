@@ -758,7 +758,7 @@
             <input type="text" placeholder="Description" id="description">
           </div>
         </div>
-        <button id="capture" onclick="doCapture();">Sacuvaj</button>
+        <button id="capture" onclick="doCapture(); finalMockup();">Sacuvaj</button>
     
        
     </div>
@@ -1792,6 +1792,32 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
+function finalMockup(){
+  var els = document.getElementsByClassName("save-picture");
+  Array.prototype.forEach.call(els, function(el) {
+  var canvasAtr  = el.getAttribute('data-canvas');
+  if(canvasAtr=="canvas4"){
+          canvasImage = canvas4.toDataURL();
+          $.ajax({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/admin/upload_mockup',
+            type: 'post',
+            dataType: 'text',
+            data: {
+              image: canvasImage
+            },
+            success:function(msg){
+              console.log("oks");
+            }
+          });
+        }else{
+          canvasImage = "0";
+        }
+  });
+}
+
 
 function doCapture(){
     window.scrollTo(0,0);
@@ -1805,27 +1831,9 @@ function doCapture(){
     Array.prototype.forEach.call(els, function(el) {
       var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
-      var canvasAtr = el.getAttribute('data-canvas');
+      
 
-        if(canvasAtr=="canvas4"){
-          canvasImage = canvas4.toDataURL();
-          $.ajax({
-            headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '/admin/upload_mockup',
-            type: 'post',
-            dataType: 'JSON',
-            data: {
-              image: canvasImage
-            },
-            success:function(msg){
-              console.log(msg);
-            }
-          });
-        }else{
-          canvasImage = "0";
-        }
+        
        
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
@@ -1834,7 +1842,7 @@ function doCapture(){
             $.ajax({
                     url: '{{route("ajaxupload.save")}}',
                     type: 'post',
-                    dataType: "JSON",
+                    dataType: "text",
                     data: {
                         image : imgData,
                         name: nameProduct,
@@ -1846,7 +1854,10 @@ function doCapture(){
                         "_token":"{{csrf_token()}}",
                     },
                     success:function(msg){
-                        console.log(msg + "Dobro");
+                        console.log( "Dobro");
+                    }, 
+                    error: function(msg) {
+                      console.log("Lose");
                     }
                 });
         });

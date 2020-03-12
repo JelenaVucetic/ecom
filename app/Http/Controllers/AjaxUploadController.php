@@ -46,6 +46,7 @@ class AjaxUploadController extends Controller
 
     function save(Request $request){
         $data = $request->all();
+  
        
       $title = $data['name'];
       $image = $data['image'];;
@@ -112,7 +113,6 @@ $name = mt_rand(1000000, 9999999)
     . $characters[rand(0, strlen($characters) - 1)];
 
 $string = str_shuffle($name);
-
 file_put_contents("images/". $string . ".png", $image);
 
  
@@ -162,5 +162,7 @@ foreach($tagsComma as $tag){
 echo 'Done';
 
     }
+
+
 
 }

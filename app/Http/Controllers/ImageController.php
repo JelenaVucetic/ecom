@@ -52,15 +52,39 @@ class ImageController extends Controller
 
 }
 
-public function display_mockup(){
-
-    return view('admin.upload_design.upload_mockup');
+public function display_mockup(Request $request){
+    $image = $request->image;
+    return view('admin.upload_design.upload_mockup', compact('image'));
 }
 
 public function upload_final_mockup(Request $request){
-    dd($request->image);
-
+    $image = $request->image;
+    return view('admin.upload_design.upload_mockup', compact('image'));
 }
+
+
+public function final_mockup(Request $request){
+    
+    $image = $request->image;
+    
   
+      $image = explode(";" , $image)[1];   
+    
+     $image = explode("," , $image)[1]; 
+      $image = str_replace(" ", "+", $image); 
+       $image = base64_decode($image); 
+       
+       $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";     
+       $name = mt_rand(1000000, 9999999)  
+        . mt_rand(1000000, 9999999)  
+         . $characters[rand(0, strlen($characters) - 1)];     
+       $string = str_shuffle($name);  
+ 
+        file_put_contents("final_image/". $string . ".png", $image);
       
+        echo 'uploaded'; 
+    
+   }
+
+
 }
