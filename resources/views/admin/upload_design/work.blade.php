@@ -9,8 +9,9 @@
 
     </form>
 
-
     
+   
+    <img id="proba" src="/images/empty-cart.png">
   
     <div class="row">
 
@@ -684,12 +685,13 @@
 
   
                                     {{-- New T-shirt Girl html --}}
+                                    <canvas id="canvasProduct" width=620 height=400></canvas>
                                       <div class="product-column" style="width:70%;">
                                       <div class="row-product" style="width:100%;">
                                           <div id="proizvod12" class="save-picture disabledbutton" name="Poster" value="1">
-                                              <div class="background-div11">
-                                          <img id="logo-canvas12" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                                          <img class="overlay-panel" src="/images/Maska.png">
+                                              <div class="background-div11 containerMask">
+                                          <img id="logo-canvas12 " class="transform" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                                          <img class="overlay-panel " src="/images/Maska.png">
                                               </div>
                                           </div>
                                       <div class="preview-info">
@@ -739,7 +741,7 @@
     </div>
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
     <div id="background-div12" style=" height: 300px; width: 300px;">
-      <img id="logo-canvas13" src="{{$image}}">
+       <img id="logo-canvas13" src="{{$image}}"> 
       <img class="overlay-panel" src="/images/Majica-zenska-mockup.png" style="top:0px!important; width: 800px; height: 800px;">
   </div>
 </div>
@@ -769,7 +771,109 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
-     
+     var img = new Image();  img.onload = go;
+    img.src = "http://i.imgur.com/EWoZkZm.jpg";
+
+function go() {
+  var me = this,
+    //  stepEl = document.querySelector("input"),
+   //   stepTxt = document.querySelector("span"),
+      c = document.getElementById("canvasProduct"),
+      ctx = c.getContext("2d"),
+      corners = [
+        {x: 100, y: 20},           // ul
+        {x: 520, y: 20},           // ur
+        {x: 520, y: 380},          // br
+        {x: 100, y: 380},          // bl
+      ],
+      radius = 10, cPoint, timer,  // for mouse handling
+      step = 4;                    // resolution
+
+  update();
+
+  // render image to quad using current settings
+  function render() {
+		
+    var p1, p2, p3, p4,y1c, y2c, y1n, y2n,
+        w = img.width - 1,         // -1 to give room for the "next" points
+        h = img.height - 1;
+
+    ctx.clearRect(0, 0, c.width, c.height);
+
+    for(y = 0; y < h; y += step) {
+      for(x = 0; x < w; x += step) {
+        y1c = lerp(corners[0], corners[3],  y / h);
+        y2c = lerp(corners[1], corners[2],  y / h);
+        y1n = lerp(corners[0], corners[3], (y + step) / h);
+        y2n = lerp(corners[1], corners[2], (y + step) / h);
+
+        // corners of the new sub-divided cell p1 (ul) -> p2 (ur) -> p3 (br) -> p4 (bl)
+        p1 = lerp(y1c, y2c,  x / w);
+        p2 = lerp(y1c, y2c, (x + step) / w);
+        p3 = lerp(y1n, y2n, (x + step) / w);
+        p4 = lerp(y1n, y2n,  x / w);
+        ctx.drawImage(img, x, y, step, step,  p1.x, p1.y, // get most coverage for w/h:
+            Math.ceil(Math.max(step, Math.abs(p2.x - p1.x), Math.abs(p4.x - p3.x))) + 1,
+            Math.ceil(Math.max(step, Math.abs(p1.y - p4.y), Math.abs(p2.y - p3.y))) + 1)
+      }
+    }
+  }
+  
+  function lerp(p1, p2, t) {
+    return {
+      x: p1.x + (p2.x - p1.x) * t, 
+      y: p1.y + (p2.y - p1.y) * t}
+  }
+
+  /* Stuff for demo: -----------------*/
+  function drawCorners() {
+    ctx.strokeStyle = "#09f"; 
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    // border
+    for(var i = 0, p; p = corners[i++];) ctx[i ? "lineTo" : "moveTo"](p.x, p.y);
+    ctx.closePath();
+    // circular handles
+    for(i = 0; p = corners[i++];) {
+      ctx.moveTo(p.x + radius, p.y); 
+      ctx.arc(p.x, p.y, radius, 0, 6.28);
+    }
+    ctx.stroke()
+  }
+	
+  function getXY(e) {
+    var r = c.getBoundingClientRect();
+    return {x: e.clientX - r.left, y: e.clientY - r.top}
+  }
+	
+  function inCircle(p, pos) {
+    var dx = pos.x - p.x,
+        dy = pos.y - p.y;
+    return dx*dx + dy*dy <= radius * radius
+  }
+
+  // handle mouse
+  c.onmousedown = function(e) {
+    var pos = getXY(e);
+    for(var i = 0, p; p = corners[i++];) {if (inCircle(p, pos)) {cPoint = p; break}}
+  }
+  window.onmousemove = function(e) {
+    if (cPoint) {
+      var pos = getXY(e);
+      cPoint.x = pos.x; cPoint.y = pos.y;
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(update.bind(me))
+    }
+  }
+  window.onmouseup = function() {cPoint = null}
+  
+ /*  stepEl.oninput = function() {
+    stepTxt.innerHTML = (step = Math.pow(2, +this.value));
+    update();
+  } */
+  
+  function update() {render(); drawCorners()}
+}
    
     </script>
 `   @include('admin.upload_design.product_canvas')
