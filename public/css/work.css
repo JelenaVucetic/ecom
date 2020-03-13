@@ -382,6 +382,15 @@
     max-height: 300px;
 }
 
+#logo-canvas13{
+    position: relative;
+    max-width: 228px;
+    max-height: 280px;
+    margin-left: 160px;
+    margin-top: 150px;
+    transform: translate(85%, 75%);
+}
+
 .product-options{
     z-index: 1;
     margin-left: 120px;
@@ -598,6 +607,12 @@
     padding-top: 10px;
 }
 
+#proizvod13{
+    width: 800px;
+    position: relative;
+    min-height: 800px;
+}
+
 .background-div{
     width: 300px;
     height: 300px;
@@ -651,6 +666,11 @@
 .background-div11{
     width: 300px;
     height: 300px;
+}
+
+.background-div12{
+    height: 1000px;
+    width: 1000px;
 }
 
 .container {

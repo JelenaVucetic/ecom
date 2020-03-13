@@ -127,7 +127,7 @@ if($row==null){
 }
 
 
- DB::table('product')->insert([
+ $idProduct = DB::table('product')->insertGetId([
 'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign
 ]); 
 
@@ -159,7 +159,7 @@ foreach($tagsComma as $tag){
 
 }
 
-echo 'Done';
+echo $idProduct;
 
     }
 

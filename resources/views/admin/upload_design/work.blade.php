@@ -10,7 +10,6 @@
     </form>
 
 
-
     
   
     <div class="row">
@@ -690,7 +689,7 @@
                                           <div id="proizvod12" class="save-picture disabledbutton" name="Poster" value="1">
                                               <div class="background-div11">
                                           <img id="logo-canvas12" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                                          <img class="overlay-panel" src="/images/Majica-zenska-mockup.png">
+                                          <img class="overlay-panel" src="/images/Maska.png">
                                               </div>
                                           </div>
                                       <div class="preview-info">
@@ -738,10 +737,13 @@
 
 
     </div>
-
-    <div>
-      <img id="canvasMockUp" src="">
-    </div>
+    <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
+    <div id="background-div12" style=" height: 300px; width: 300px;">
+      <img id="logo-canvas13" src="{{$image}}">
+      <img class="overlay-panel" src="/images/Majica-zenska-mockup.png" style="top:0px!important; width: 800px; height: 800px;">
+  </div>
+</div>
+    
 
     <div class="save-work">
         <div class="add-work">
@@ -758,10 +760,12 @@
             <input type="text" placeholder="Description" id="description">
           </div>
         </div>
-        <button id="capture" onclick="doCapture(); finalMockup();">Sacuvaj</button>
+        <button id="capture" onclick="doCapture();">Sacuvaj</button>
     
        
     </div>
+
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
@@ -838,7 +842,7 @@ $('#upload-form6').on('submit' , function(event){
 
 
 <script>
-var canvas = new fabric.Canvas('c');
+/* var canvas = new fabric.Canvas('c');
 var imgElement = document.getElementById('myImage');
  var extension = "<?php if(!empty($ext)){echo $ext;} ?>";
     if( extension !="svg"){
@@ -877,7 +881,7 @@ var imgElement = document.getElementById('myImage');
     img.scaleToHeight(200);
     img.scaleToWidth(200);
     canvas2.add(img);
-});
+}); */
 </script>
 
 
@@ -1792,13 +1796,19 @@ const sleep = (milliseconds) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
 }
 
-function finalMockup(){
+function finalMockup(prodId){
+  window.scrollTo(0,0);
   var els = document.getElementsByClassName("save-picture");
   Array.prototype.forEach.call(els, function(el) {
   var canvasAtr  = el.getAttribute('data-canvas');
   if(canvasAtr=="canvas4"){
           canvasImage = canvas4.toDataURL();
-          $.ajax({
+          $("#logo-canvas13").attr("src", canvasImage);
+          var mockupGirl = document.getElementById('proizvod13');
+          mockupGirl.style.display = "block";
+          html2canvas(mockupGirl).then(function (canvas){
+            var imgData = canvas.toDataURL("image/png" , 0.9);
+            $.ajax({
             headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
@@ -1806,12 +1816,15 @@ function finalMockup(){
             type: 'post',
             dataType: 'text',
             data: {
-              image: canvasImage
+              image: imgData,
+              id : prodId,
             },
             success:function(msg){
               console.log("oks");
             }
           });
+          });
+        
         }else{
           canvasImage = "0";
         }
@@ -1831,10 +1844,6 @@ function doCapture(){
     Array.prototype.forEach.call(els, function(el) {
       var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
-      
-
-        
-       
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
@@ -1854,7 +1863,7 @@ function doCapture(){
                         "_token":"{{csrf_token()}}",
                     },
                     success:function(msg){
-                        console.log( "Dobro");
+                        finalMockup(msg);
                     }, 
                     error: function(msg) {
                       console.log("Lose");

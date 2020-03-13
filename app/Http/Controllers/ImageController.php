@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator,Redirect,Response,File;
+use DB;
 use Illuminate\Support\Facades\Input;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
@@ -58,8 +59,32 @@ public function display_mockup(Request $request){
 }
 
 public function upload_final_mockup(Request $request){
+
+    $id = $request->id;
     $image = $request->image;
-    return view('admin.upload_design.upload_mockup', compact('image'));
+    $image = explode(";" , $image)[1];   
+  
+   $image = explode("," , $image)[1]; 
+    $image = str_replace(" ", "+", $image); 
+     $image = base64_decode($image); 
+     
+     $characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";     
+     $name = mt_rand(1000000, 9999999)  
+      . mt_rand(1000000, 9999999)  
+       . $characters[rand(0, strlen($characters) - 1)];     
+     $string = str_shuffle($name);  
+
+      file_put_contents("final_image/". $string . ".png", $image);
+    
+
+      DB::table('images')->insert([
+        'name'=> $string.'.png',
+        'product_id'=> $id
+        ]); 
+
+        echo 'Kreirani proizvodi';
+   /*  $image = $request->image;
+    return view('admin.upload_design.upload_mockup', compact('image')); */
 }
 
 
