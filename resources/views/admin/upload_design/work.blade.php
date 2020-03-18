@@ -739,13 +739,14 @@
 
 
     </div>
+    @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
     <div id="background-div12" style=" height: 300px; width: 300px;">
        <img id="logo-canvas13" src="{{$image}}"> 
       <img class="overlay-panel" src="/images/Majica-zenska-mockup.png" style="top:0px!important; width: 800px; height: 800px;">
   </div>
 </div>
-    
+    @endif
 
     <div class="save-work">
         <div class="add-work">

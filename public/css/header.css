@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: auto;
+    margin: 30px auto;
 }
 
 .logo-section form{
@@ -60,7 +60,7 @@ padding-right: 0rem;
 }
 
 .category{
-    margin-top: 40px;
+    margin-top: 20px;
     background: #F5F5F5;
     height: 50px;
 }

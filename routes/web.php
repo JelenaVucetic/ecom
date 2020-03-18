@@ -66,13 +66,10 @@ Route::get('/cart/updateCart/{id}', 'CartController@updateCart')->name('updateCa
 
 Route::get('/cart/remove/{id}', 'CartController@destroy');
 
-Route::get('/checkout', 'CheckoutController@index');
 Route::post('/formvalidate', 'CheckoutController@formvalidate');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/thankyou', function() {
-    return view('profile.thankyou');
-});
+Route::get('/thankyou', 'CheckoutController@thankyou');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ProfileController@index');

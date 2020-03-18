@@ -6,29 +6,16 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Address;
 use App\Order;
+use App\Category;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    //
-    public function index()
-    {
-        $cartItems = Cart::content();
-        $countTotal=0;
-        foreach($cartItems as $c) {
-          $countTotal = $c->qty + $countTotal;
-        }
- 
-        if( $countTotal >= 3 &&  $countTotal < 5 ) {
-          $cartSubTotal = Cart::subtotal() * 0.9;
-         } elseif ( $countTotal >= 5 ) {
-             $cartSubTotal = Cart::subtotal() * 0.8;
-         } else {
-             $cartSubTotal = Cart::subtotal();
-         } 
-         
-        return view('checkout', compact('cartItems', 'cartSubTotal'));
+    public function thankyou() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('profile.thankyou', compact('categories'));
     }
+
     public function formvalidate(Request $request)
     {
         $this->validate($request, [

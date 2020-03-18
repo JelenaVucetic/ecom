@@ -39,7 +39,6 @@
             </li>
               @endforeach
             <li class="list-group-item d-flex justify-content-between">
-              <a class="btn btn-primary" href="{{url('/')}}/checkout">Check Out</a>
               <a class="btn btn-primary float-right" href="{{url('/cart')}}">View Cart</a>
             </li>
             </ul>

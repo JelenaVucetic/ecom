@@ -15,12 +15,12 @@ class CartController extends Controller
     {
         $cartItems = Cart::content();
         $categories = Category::where('parent_id',NULL)->get();
+        $oldPrice =  Cart::subtotal();
        //dd($cartItems);
        $countTotal=0;
        foreach($cartItems as $c) {
          $countTotal = $c->qty + $countTotal;
        }
-
        if( $countTotal >= 3 &&  $countTotal < 5 ) {
          $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
@@ -29,7 +29,7 @@ class CartController extends Controller
             $cartSubTotal = Cart::subtotal();
         } 
 
-        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories'));
+        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice'));
     }
 
     public function addItem(Request $request, $id)
@@ -59,6 +59,8 @@ class CartController extends Controller
         $item = Cart::get($rowId);
         Cart::update($rowId, $qty);
         $cartItems = Cart::content();
+        $oldPrice =  Cart::subtotal();
+
          $countTotal=0;
         foreach($cartItems as $c) {
           $countTotal = $c->qty + $countTotal;
@@ -73,13 +75,14 @@ class CartController extends Controller
         } else {
             $cartSubTotal = Cart::subtotal();
         } 
-        
        
        // dd(Cart::content());
         return response()->json([
             "qty" =>  $qty,
             'subtotal' => $item->subtotal(),
-            'cartTotal' => $cartSubTotal
+            'cartTotal' => $cartSubTotal,
+            'oldPrice' =>  $oldPrice,
+            'countTotal' => $countTotal
         ]); 
     }
 }
