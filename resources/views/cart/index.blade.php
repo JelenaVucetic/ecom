@@ -150,16 +150,16 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 </ul>
             <div class="tab-content">
                 <div id="address" class="active tab-block">
-                <form action="{{url('/')}}/formvalidate" method="post">
-               @csrf
+                <h1>Shipping details</h1>
+                <form  id="payment_form"  action="{{url('/')}}/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;">
+                @csrf
+                <input type="hidden" name="transaction_token" id="transaction_token" />
                     <div class="row">
-                    <h1>Shopper Information</h1>
                     <div class="form-group col-md-6">
                         <label for="firstname" class="form-label">First Name</label> 
                         <input id="firstname" type="text" name="firstname" placeholder="First Name"  value="{{ old('firstname') }}" class="form-control">
                         <br>
                         <span style="color:red">{{ $errors->first('firstname') }}</span>     
-                         
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastname" class="form-label">Last Name</label>
@@ -170,6 +170,12 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                     <div class="form-group col-md-6">
                         <label for="email" class="form-label">Email</label>
                         <input id="email" type="email" name="email" placeholder="Email" value="{{ old('email') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('email') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input id="phone" type="text" name="phone" placeholder="Phone Number (e.g. 068/123-123)" value="{{ old('phone') }}" class="form-control">
                         <br>
                         <span style="color:red">{{ $errors->first('email') }}</span>
                     </div>
@@ -185,22 +191,40 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                         <br>
                         <span style="color:red">{{ $errors->first('zip') }}</span>
                     </div>
-                        <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label for="city" class="form-label">City Name</label>                   
                         <input id="city" type="text" name="city" placeholder="City Name" value="{{ old('city') }}" class="form-control">
                         <br>
                         <span style="color:red">{{ $errors->first('city') }}</span>
                     </div>
                     <hr>
-                        <!-- <span>
-                            <input type="radio" name="pay" value="COD" checked="checked"> COD
-                        </span>
-                        <span>
-                            <input type="radio" name="pay" value="paypal"> PayPal                     
-                        </span>                         
-                        <span> -->
+                    <div class="row">
+                        <h3>Payment info</h3>
+                            <div>
+                                <label for="number_div">Card number</label>
+                                <div id="number_div" style="height: 35px; width: 200px;">
+                               <!--  4111 1111 1111 1111 -->
+                                </div>
+                            </div> 
+                            <div >
+                                <label for="cvv_div">CVV</label>
+                                <div id="cvv_div" style="height: 35px; width: 200px;">
+                              <!--   111 -->
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="exp_month">Month</label>
+                                <input type="text" id="exp_month" name="exp_month" />
+                            </div>
+                            <div>
+                                <label for="exp_year">Year</label>
+                                <input type="text" id="exp_year" name="exp_year" />
+                            </div>
+                    </div>
+                   
                         <br>
-                        <input type="submit" value="Continue" class="btn btn-primary btn-sm">
+                        <input type="submit" value="Submit" class="btn btn-primary btn-sm">
                     </div>
                 </form>
                 </div>
@@ -209,6 +233,12 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             
         </div>
     </div>
+   </section>
+
+   <!-- Payment -->
+
+   <section>
+    
    </section>
 @endif
 

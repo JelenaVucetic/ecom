@@ -18,22 +18,28 @@ class CheckoutController extends Controller
 
     public function formvalidate(Request $request)
     {
+        $categories = Category::where('parent_id',NULL)->get();
         $this->validate($request, [
           
-            'firstname' => 'required|min:3|max:35',
-            'lastname' => 'required|min:3|max:35',
+            'firstname' => 'required|min:2|max:35',
+            'lastname' => 'required|min:2|max:35',
             'email' => 'required|email',
+            'phone' => 'required|max:12',
             'street' => 'required|min:3|max:35',
             'zip' => 'required|regex:/\b\d{5}\b/',
-            'city' => 'required|min:3|max:35'
+            'city' => 'required|min:2|max:35'
         ],
             [
                 'firstname.required' => 'Enter First Name',
                 'lastname.required' => 'Enter Last Name',
-                'email.required' => 'Pleaste enter valid email',
-                'street.required' => 'Enter Street',
-                'zip.required' => 'Zip is not valid',
-                'city.required' => 'Enter City',
+                'email.required' => 'Please enter your email',
+                'email.email' => 'Your email is not valid',
+                'phone.required' => 'Please enter your phone number',
+                'phone.max' => 'Your phone number cannot have more then 12 characters',
+                'street.required' => 'Please enter your street name',
+                'zip.required' => 'Please enter your zip',
+                'zip.reges' => 'Zip must have 5 digits',
+                'city.required' => 'Please enter your city name',
             ]);
 
         if (Auth::check()) {
@@ -49,6 +55,7 @@ class CheckoutController extends Controller
         $address->firstname = $request->firstname;
         $address->lastname = $request->lastname;
         $address->email = $request->email;
+        $address->phone = $request->phone;
         $address->street = $request->street;
         $address->zip = $request->zip;
         $address->city = $request->city;
@@ -59,9 +66,9 @@ class CheckoutController extends Controller
 
         Cart::destroy();
         if(Auth::user()) {
-            return view('profile.index');
+            return view('profile.index', compact('categories'));
         } else {
-            return view('profile.thankyou');
+            return view('profile.thankyou', compact('categories'));
         }
       
     }
