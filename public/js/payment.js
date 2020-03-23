@@ -32,6 +32,7 @@ function interceptSubmit() {
            function(token, cardData) { //success callback function
                $('#transaction_token').val(token); //store the transaction token
                $('#payment_form').get(0).submit(); //submit the form
+               alert('Success occurred');
            }, 
            function(errors) { //error callback function
             console.log(errors);
