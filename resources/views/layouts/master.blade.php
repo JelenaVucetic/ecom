@@ -20,6 +20,10 @@
         <link rel="stylesheet" href="/css/welcome.css">
         <link rel="stylesheet" href="/css/cardDesign.css">
         <link rel="stylesheet" href="/css/footer.css">
+
+       <!--  Payment script -->
+       <script data-main="payment-js" src="https://asxgw.paymentsandbox.cloud/js/integrated/payment.1.2.min.js"></script>
+
     </head>
     <body>
     @include('layouts.header')
@@ -27,6 +31,8 @@
     @yield('content')
     @include('layouts.footer')
 
-    </body>
+
     
+
+    </body>
 </html>

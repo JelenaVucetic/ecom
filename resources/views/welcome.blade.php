@@ -119,8 +119,7 @@
                                 <?php
                                     }
                                   ?>
-                             
-                          {{--     <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
                                       <button type="button" class="btn btn-sm btn-outline-primpary">
                                           <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart"> View product</a>
@@ -130,7 +129,7 @@
                                       </button>
                                   </div>
                                   <small>9 mins</small>
-                              </div> --}}
+                               </div> 
                           </div>
                       </div>
                   

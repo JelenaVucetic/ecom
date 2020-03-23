@@ -25,7 +25,10 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
            // $('#updateDiv').html(response);
             $('#upCart<?php echo $i;?>').html(data.qty);
             $('#subtotal<?php echo $i;?>').html(data.subtotal);
-            $('#cartTotal').html(data.cartTotal);
+            $('#cartTotal').html(data.cartTotal) ;
+            $('#cartTotal1').html(data.cartTotal);
+            $('#oldPrice').html(data.oldPrice);
+            $('#countTotal').html(data.countTotal);
         }
     });
 
@@ -35,28 +38,22 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
 });
 </script>
 
-<?php if ($cartItems->isEmpty()) { ?>
+@if($cartItems->isEmpty()) 
 
-<section id="cart_items" style="padding-top:200px">
-    <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="{{url('/')}}">Home</a></li>
-                <li class="active">Shopping Cart</li>
-            </ol>
-        </div>
-        <div><img src="{{asset('/images/empty-cart.png')}}"/></div>
-    </div>
-</section>
-<?php } else { ?>
 <section id="cart_items">
     <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="{{url('/')}}"></a></li>
-                <li class="active">Shopping Cart</li>
-            </ol>
+        <img src="{{asset('/images/empty-cart.png')}}"/>
+    </div>
+</section>
+@else 
+<section id="cart_items">
+    <div class="container">
+        <div style="text-align:center">
+            <h2>Your shopping cart</h2>
+            <p>Order three products and get 10% off</p>
+            <p>Order five products and get 20% off</p>
         </div>
+         
         <div id="updateDiv">
 
         @if(session('status'))
@@ -83,6 +80,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             </thead>
          <?php $count =1;?>
             @foreach($cartItems as $cartItem)
+
                 <tbody>
                     <tr>
                         <td class="cart_product">
@@ -121,27 +119,127 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
 </section> <!--/#cart_items-->
     <section id="do_action">
         <div class="container">
-            <div class="heading">
-                <h3>What would you like to do next?</h3>
-                <p>Choose if you have a discount code or reward points you want to use</p>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="total_area">
-                        <ul>
-                            <li>Cart Sub Total <span id="cartTotal"> {{  $cartSubTotal }}</span></li>
-                            <li>Tax <span>$ {{ Cart::tax() }}</span></li>
-                            <li>Shipping cost <span>Free</span></li>
-                            <li>Total <span>$ {{ Cart::total() }}</span></li>
-                        </ul>
-                        <a class="btn btn-default update" href="">Update</a>
-                        <a class="btn btn-default check-out" href="{{ url('/checkout') }}" >Check Out</a>
-                    </div>
-                </div>
+            <div class="block-body order-summary" style="width: 50%; margin: 30px auto;">
+                <h6 class="text-uppercase">Order Summary</h6>
+                <p>Free Shipping</p>
+                <ul class="order-menu list-unstyled">
+                    <li class="d-flex justify-content-between">
+                        <span id="countTotal">{{$countTotal}}</span> <span> items</span>
+                       <!--  odje treba neko if -->
+                        <span id="oldPrice">${{ $oldPrice }}</span> 
+                        <strong id="cartTotal1">${{$cartSubTotal}}</strong>
+                    </li>
+                    <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
+                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">${{$cartSubTotal}}</strong></li>
+                </ul>
             </div>
         </div>
     </section>
-<?php } ?>
+   <!--  Checkout -->
 
+   <section class="checkout">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="checkout1.html" class="nav-link active">Address</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link disabled">Delivery Method </a></li>
+                    <li class="nav-item"><a href="#" class="nav-link disabled">Payment Method </a></li>
+                    <li class="nav-item"><a href="#" class="nav-link disabled">Order Review</a></li>
+                </ul>
+            <div class="tab-content">
+                <div id="address" class="active tab-block">
+                <h1>Shipping details</h1>
+                <form  id="payment_form"  action="{{url('/')}}/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;">
+                @csrf
+                <input type="hidden" name="transaction_token" id="transaction_token" />
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="firstname" class="form-label">First Name</label> 
+                        <input id="firstname" type="text" name="firstname" placeholder="First Name"  value="{{ old('firstname') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('firstname') }}</span>     
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastname" class="form-label">Last Name</label>
+                        <input id="lastname" type="text" name="lastname" placeholder="Last Name" value="{{ old('lastname') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('lastname') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input id="email" type="email" name="email" placeholder="Email" value="{{ old('email') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('email') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input id="phone" type="text" name="phone" placeholder="Phone Number (e.g. 068/123-123)" value="{{ old('phone') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('email') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="street" class="form-label">Street Address</label>
+                        <input id="street" type="text" name="street" placeholder="Street Address" value="{{ old('street') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('street') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="zip" class="form-label">Zip Code</label>
+                        <input id="zip" type="text" name="zip" placeholder="Zip Code" value="{{ old('zip') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('zip') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="city" class="form-label">City Name</label>                   
+                        <input id="city" type="text" name="city" placeholder="City Name" value="{{ old('city') }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('city') }}</span>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <h3>Payment info</h3>
+                            <div>
+                                <label for="number_div">Card number</label>
+                                <div id="number_div" style="height: 35px; width: 200px;"></div>
+                            </div> 
+                            <div >
+                                <label for="cvv_div">CVV</label>
+                                <div id="cvv_div" style="height: 35px; width: 200px;"></div>
+                            </div>
+
+                            <div>
+                                <label for="exp_month">Month</label>
+                                <input type="text" id="exp_month" name="exp_month" />
+                            </div>
+                            <div>
+                                <label for="exp_year">Year</label>
+                                <input type="text" id="exp_year" name="exp_year" />
+                            </div>
+                    </div>
+                   
+                        <br>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+                    </div>
+                </form>
+                </div>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+   </section>
+
+   <!-- Payment -->
+
+   <section>
+    
+   </section>
+@endif
+
+
+
+<script src="/js/payment.js"></script>
 
 @endsection

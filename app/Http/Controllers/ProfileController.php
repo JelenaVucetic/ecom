@@ -19,11 +19,12 @@ class ProfileController extends Controller
     }
 
     public function orders() {
+        $categories = Category::where('parent_id',NULL)->get();
         $user_id = Auth::user()->id;
         $orders = DB::table('order_product')->leftJoin('product', 'product.id', '=', 'order_product.product_id')->
                     leftJoin('orders', 'orders.id', '=', 'order_product.order_id')->
                     where('orders.user_id', '=', $user_id)->get();
-        return view('profile.orders', compact('orders'));
+        return view('profile.orders', compact('orders', 'categories'));
     }
 
     public function address() {
