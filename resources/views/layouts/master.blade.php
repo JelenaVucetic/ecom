@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/css/footer.css">
 
        <!--  Payment script -->
-       <script data-main="payment-js" src="https://asxgw.com/js/integrated/payment.1.2.min.js"></script>
+       <script data-main="payment-js" src="https://asxgw.paymentsandbox.cloud/js/integrated/payment.1.2.min.js"></script>
 
     </head>
     <body>
@@ -31,51 +31,8 @@
     @yield('content')
     @include('layouts.footer')
 
-    <script type="text/javascript">
-    var payment = new PaymentJs();
-    var publicIntegrationKey = 'Etl3lMjFydB0a2tloU09';
-    /* var numberDiv = document.getElementById('number_div').innerHTML;
-    var cvvDiv = document.getElementById('cvv_div').innerHTML; */
-    payment.init(publicIntegrationKey, 'number_div','cvv_div', function(payment) {
-        payment.setNumberStyle({ 
-            'border': '1px solid red', 
-            'width': '150px' 
-        });
-        payment.setCvvStyle({ 
-            'border': '1px solid red', 
-            'width': '150px' 
-         });
-        payment.numberOn('input', function(data) {
-            alert('A number was entered');
-        });
-        payment.initRiskScript({type:'kount'});
-    });
-
-
-    function interceptSubmit() {
-    var data = {
-        first_name: $('#firstname').val(),
-        last_name: $('#lastname').val(),
-        month: $('#exp_month').val(),
-        year: $('#exp_year').val(),
-        email: $('#email').val()
-    };
-    payment.tokenize(
-        data, //additional data, MUST include card_holder (or first_name & last_name), month and year
-        function(token, cardData) { //success callback function
-            $('#transaction_token').val(token); //store the transaction token
-            $('#payment_form').get(0).submit(); //submit the form
-        }, 
-        function(errors) { //error callback function
-            alert('Errors occurred');
-            //render error information here
-        }
-    );
-}
-    </script>
 
     
 
     </body>
-    
 </html>

@@ -202,15 +202,11 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                         <h3>Payment info</h3>
                             <div>
                                 <label for="number_div">Card number</label>
-                                <div id="number_div" style="height: 35px; width: 200px;">
-                               <!--  4111 1111 1111 1111 -->
-                                </div>
+                                <div id="number_div" style="height: 35px; width: 200px;"></div>
                             </div> 
                             <div >
                                 <label for="cvv_div">CVV</label>
-                                <div id="cvv_div" style="height: 35px; width: 200px;">
-                              <!--   111 -->
-                                </div>
+                                <div id="cvv_div" style="height: 35px; width: 200px;"></div>
                             </div>
 
                             <div>
@@ -242,5 +238,8 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
    </section>
 @endif
 
+
+
+<script src="/js/payment.js"></script>
 
 @endsection
