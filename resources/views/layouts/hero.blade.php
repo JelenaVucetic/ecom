@@ -19,7 +19,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01" id="dropdownCart" style="background:white; border: 1px solid lightgray;">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
               <span class="badge badge-secondary badge-pill">{{Cart::count()}}</span>
-              <span >Total: ({{Cart::total()}})</span>
+              <span >Total: ({{Cart::subtotal()}})</span>
             </h4>
             <h4>
              Your cart

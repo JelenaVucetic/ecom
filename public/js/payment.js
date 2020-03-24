@@ -30,6 +30,7 @@ function interceptSubmit() {
        payment.tokenize(
            data, //additional data, MUST include card_holder (or first_name & last_name), month and year
            function(token, cardData) { //success callback function
+            console.log(cardData);
                $('#transaction_token').val(token); //store the transaction token
                $('#payment_form').get(0).submit(); //submit the form
                alert('Success occurred');
