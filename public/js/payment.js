@@ -31,9 +31,9 @@ function interceptSubmit() {
            data, //additional data, MUST include card_holder (or first_name & last_name), month and year
            function(token, cardData) { //success callback function
             console.log(cardData);
+            console.log(token);
                $('#transaction_token').val(token); //store the transaction token
                $('#payment_form').get(0).submit(); //submit the form
-               alert('Success occurred');
            }, 
            function(errors) { //error callback function
             console.log(errors);
