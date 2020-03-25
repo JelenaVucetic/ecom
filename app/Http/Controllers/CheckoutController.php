@@ -82,6 +82,7 @@ class CheckoutController extends Controller
     
         // send the transaction
         $result = $client->debit($debit);
+      
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
