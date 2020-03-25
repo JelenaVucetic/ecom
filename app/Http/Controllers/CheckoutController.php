@@ -23,6 +23,8 @@ class CheckoutController extends Controller
 
     public function formvalidate(Request $request)
     {
+        dd($request);
+        $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
         $this->validate($request, [
           
@@ -69,11 +71,14 @@ class CheckoutController extends Controller
         
         $debit->setTransactionId($merchantTransactionId)
             ->setSuccessUrl('http://ecom.example/thankyou')
-            ->setCancelUrl('http://ecom.example/thankyou')
-            ->setCallbackUrl('http://ecom.example/thankyou')
+            ->setCancelUrl('http://ecom.example/')
+            ->setCallbackUrl('http://ecom.example/')
             ->setAmount(10.00)
             ->setCurrency('EUR')
-            ->setCustomer($customer);
+            ->setCustomer($customer)
+            ->addExtraData('3dsecure', 'MANDATORY');
+
+         
 
         //if token acquired via payment.js
         if (isset($token)) {
@@ -86,7 +91,7 @@ class CheckoutController extends Controller
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
-  
+            
             if ($result->getReturnType() == Result::RETURN_TYPE_ERROR) {
                 //error handling
                 
@@ -136,11 +141,11 @@ class CheckoutController extends Controller
         
 
         Cart::destroy();
-        if(Auth::user()) {
+       /*  if(Auth::user()) {
             return view('profile.index', compact('categories'));
         } else {
             return view('profile.thankyou', compact('categories'));
-        }
+        } */
       
     }
 
