@@ -13,7 +13,6 @@ use Exchange\Client\Data\Customer;
 use Exchange\Client\Transaction\Debit;
 use Exchange\Client\Transaction\Result;
 
-
 class CheckoutController extends Controller
 {
     public function thankyou() {
@@ -21,9 +20,13 @@ class CheckoutController extends Controller
         return view('profile.thankyou', compact('categories'));
     }
 
+    public function error() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('error', compact('categories'));
+    }
+
     public function formvalidate(Request $request)
     {
-        dd($request);
         $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
         $this->validate($request, [
@@ -51,7 +54,6 @@ class CheckoutController extends Controller
 
         // Include the autoloader (if not already done via Composer autoloader)
         require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
-
         // Instantiate the "Exchange\Client\Client" with your credentials
         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
 
@@ -71,23 +73,22 @@ class CheckoutController extends Controller
         
         $debit->setTransactionId($merchantTransactionId)
             ->setSuccessUrl('http://ecom.example/thankyou')
-            ->setCancelUrl('http://ecom.example/')
-            ->setCallbackUrl('http://ecom.example/')
+            ->setCancelUrl('http://ecom.example/error')
+            ->setErrorUrl('http://ecom.example/error')
+            ->setCallbackUrl('http://ecom.example/cart')
             ->setAmount(10.00)
             ->setCurrency('EUR')
             ->setCustomer($customer)
-            ->addExtraData('3dsecure', 'MANDATORY');
-
-         
+            ->addExtraData('3dsecure', 'OFF');
 
         //if token acquired via payment.js
         if (isset($token)) {
         $debit->setTransactionToken($token);
         }
-    
+
         // send the transaction
         $result = $client->debit($debit);
-      
+
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
