@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Address;
@@ -12,18 +13,61 @@ use Exchange\Client\Client;
 use Exchange\Client\Data\Customer;
 use Exchange\Client\Transaction\Debit;
 use Exchange\Client\Transaction\Result;
+use Exchange\Client\StatusApi\StatusRequestData;
 
 class CheckoutController extends Controller
 {
+
     public function thankyou() {
         $categories = Category::where('parent_id',NULL)->get();
+        
+        dd($statusResult);
+
         return view('profile.thankyou', compact('categories'));
     }
 
     public function error() {
         $categories = Category::where('parent_id',NULL)->get();
+
+
         return view('error', compact('categories'));
     }
+
+    public function cancel() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('cancel', compact('categories'));
+    }
+
+    public function callback() {
+        dd('here');
+        $categories = Category::where('parent_id',NULL)->get();
+        
+        require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
+
+        $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
+
+        $client->validateCallbackWithGlobals();
+        $callbackResult = $client->readCallback(file_get_contents('php://input'));
+
+        $myTransactionId = $callbackResult->getTransactionId();
+        $gatewayTransactionId = $callbackResult->getReferenceId();
+
+        if ($callbackResult->getResult() == Result::RESULT_OK) {
+            //payment ok
+            echo "here";
+            dd('here');
+            //finishCart();
+
+        } elseif ($callbackResult->getResult() == Result::RESULT_ERROR) {
+            //payment failed, handle errors
+            $errors = $callbackResult->getErrors();
+            dd('not there, here');
+        }
+
+        echo "OK";
+        die;
+    }
+
 
     public function formvalidate(Request $request)
     {
@@ -58,28 +102,24 @@ class CheckoutController extends Controller
         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
 
         $customer = new Customer();
-        $customer->setBillingCountry("MN")
-                ->setFirstName('John')
-                ->setLastName('Smith')
-                ->setEmail('john@smith.com')
-                ->setIpAddress('123.123.123.123');
-        // ->setEmail("customer@email.test");
+        $customer->setBillingCountry("ME")
+                ->setFirstName($request->firstname)
+                ->setLastName($request->lastname)
+                ->setEmail($request->email)
+                ->setIpAddress(request()->ip());
 
         $debit = new Debit();
-
-
         // define your transaction ID: e.g. 'myId-'.date('Y-m-d').'-'.uniqid()
-        $merchantTransactionId = 'myId'.date('Y-m-d').'-'.uniqid(); // must be unique
-        
+        $merchantTransactionId = 'myId'.date('Y-m-d').'-'.uniqid(); 
+
         $debit->setTransactionId($merchantTransactionId)
             ->setSuccessUrl('http://ecom.example/thankyou')
-            ->setCancelUrl('http://ecom.example/error')
+            ->setCancelUrl('http://ecom.example/cancel')
             ->setErrorUrl('http://ecom.example/error')
-            ->setCallbackUrl('http://ecom.example/cart')
-            ->setAmount(10.00)
+            ->setCallbackUrl('http://ecom.example/callback')
+            ->setAmount($request->amount)
             ->setCurrency('EUR')
-            ->setCustomer($customer)
-            ->addExtraData('3dsecure', 'OFF');
+            ->setCustomer($customer);
 
         //if token acquired via payment.js
         if (isset($token)) {
@@ -101,7 +141,6 @@ class CheckoutController extends Controller
             
             } elseif ($result->getReturnType() == Result::RETURN_TYPE_REDIRECT) {
                 //redirect the user
-                
                 header('Location: '.$result->getRedirectUrl());
                 die;
                 

@@ -11,4 +11,5 @@ class Address extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['order_id', 'firstname', 'lastname', 'email', 'street', 'zip', 'city'];
 
+
 }

@@ -71,6 +71,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/thankyou', 'CheckoutController@thankyou');
 Route::get('/error', 'CheckoutController@error');
+Route::get('/callback', 'CheckoutController@callback');
+Route::get('/cancel', 'CheckoutController@cancel');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ProfileController@index');

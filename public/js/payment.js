@@ -25,6 +25,7 @@ function interceptSubmit() {
        var data = {
            first_name: $('#firstname').val(),
            last_name: $('#lastname').val(),
+           card_holder: $('#card_holder').val(),
            month: $('#exp_month').val(),
            year: $('#exp_year').val(),
            email: $('#email').val()
@@ -38,6 +39,7 @@ function interceptSubmit() {
            }, 
            function(errors) { //error callback function
             console.log(errors);
+            $('#cardHolderError').html(' ');
             $('#monthError').html(' ');
             $('#yearError').html(' ');
             $('#cardError').html(' ');
@@ -66,6 +68,12 @@ function interceptSubmit() {
                         $('#cvvError').html(errors[i].message);
                     } else {
                         $('#cvvError').html(' ');
+                    }
+                } else if (errors[i].attribute== 'card_holder') {
+                    if(errors[i].message) {
+                        $('#cardHolderError').html(errors[i].message);
+                    } else {
+                        $('#cardHolderError').html(' ');
                     }
                 } else {
                     console.log('ok')

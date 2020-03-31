@@ -32,6 +32,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             $('#cartTotalSecond').html(data.cartTotal);
             $('#cartTotal1Second').html(data.cartTotal);
             $('#countTotalSecond').html(data.countTotal);
+            $('#amount').val(data.cartTotal);
         }
     });
 
@@ -53,8 +54,8 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
     <div class="container">
         <div style="text-align:center">
             <h2>Your shopping cart</h2>
-            <p>Order three products and get 10% off</p>
-            <p>Order five products and get 20% off</p>
+            <p>Order <strong>three</strong> products and get 10% off</p>
+            <p>Order <strong>five</strong> products and get 20% off</p>
         </div>
          
         <div id="updateDiv">
@@ -128,8 +129,9 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                 <ul class="order-menu list-unstyled">
                     <li class="">
                         <span id="countTotal">{{$countTotal}}</span> <span> items</span>
-                       <!--  odje treba neko if -->
+                     
                        <strong id="cartTotal1"  style="float: right;">${{$cartSubTotal}}</strong>
+                         <!--  odje treba neko if -->
                         <span id="oldPrice"  style="float: right;">${{ $oldPrice }}</span> 
                     </li>
                     <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
@@ -144,9 +146,10 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
     <div class="container">
         <div style="width: 50%; margin: 30px auto;">
             <h6 class="text-uppercase">1. What are your shipping details?</h6>
-            <form  id="payment_form"  action="{{url('/')}}/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;">
+            <form  id="payment_form"  action="{{url('/')}}/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
             @csrf
             <input type="hidden" name="transaction_token" id="transaction_token" />
+            <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal}}">
                 <div class="row">
                 <div class="form-group col-md-6">
                     <label for="firstname" class="form-label">First Name</label> 
@@ -197,15 +200,23 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                     <div class="card card-body">
                         <div>
                             <ul class="order-menu list-unstyled">
+                                <li class="d-flex justify-content-between"><span>Order Number:</span><strong>XYZ-0001</strong></li>
+                                <li class="d-flex justify-content-between"><span>Company</span><strong>Urban One</strong></li>
                                 <li>
                                     <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
                                     <strong id="cartTotal1Second" style="float: right;">${{$cartSubTotal}}</strong>
                                 </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
                                 <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">${{$cartSubTotal}}</strong></li>
+                                <p>Prikaz logotipa omogućenih metoda plaćanja</p>
                             </ul>
                         </div>
-                        <div class="payment" style="width: 100%;margin: auto;">
+                        <div class="payment" style="width: 50%;margin: auto;">
+                            <div class="form-group col-md-6" class="form-label">
+                                <label for="card_holder">Card holder</label>
+                                <input type="text" id="card_holder" name="card_holder" placeholder="e.g. John Doe" value="{{ old('card_holder') }}" required />
+                                <span id="cardHolderError" style="color:red"></span>
+                            </div>
                             <div  class="form-group col-md-6">
                                 <label for="number_div" class="form-label">Card number</label>
                                 <div id="number_div" style="height: 35px; width: 200px;"></div>
@@ -219,13 +230,18 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
 
                             <div  class="form-group col-md-6">
                                 <label for="exp_month" class="form-label">Month</label>
-                                <input type="text" id="exp_month" name="exp_month" />
+                                <input type="text" id="exp_month" name="exp_month" value="{{ old('exp_month') }}"  placeholder="e.g. 05" required />
                                 <span id="monthError" style="color:red"></span>
                             </div>
                             <div  class="form-group col-md-6">
                                 <label for="exp_year" class="form-label">Year</label>
-                                <input type="text" id="exp_year" name="exp_year" />
+                                <input type="text" id="exp_year" name="exp_year" value="{{ old('exp_year') }}" placeholder="e.g. 23"  required/>
                                 <span id="yearError" style="color:red"></span>
+                            </div>
+                            <div  class="form-group col-md-6">
+                                <label for="agreement" class="form-label">I agree to the payment terms</label>
+                                <input type="checkbox" id="agreement" name="agreement" required>
+                           <!--      <span id="yearError" style="color:red"></span> -->
                             </div>
                         </div>
                         <br>
