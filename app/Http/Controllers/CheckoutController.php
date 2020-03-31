@@ -20,9 +20,6 @@ class CheckoutController extends Controller
 
     public function thankyou() {
         $categories = Category::where('parent_id',NULL)->get();
-        
-        dd($statusResult);
-
         return view('profile.thankyou', compact('categories'));
     }
 
@@ -39,7 +36,9 @@ class CheckoutController extends Controller
     }
 
     public function callback() {
-        dd('here');
+        file_put_contents('C:\xampp\htdocs\www\ecom\resources/views/test.txt',  file_get_contents('php://input'), FILE_APPEND );
+        file_put_contents('C:\xampp\htdocs\www\ecom\resources/views/test.txt',  'test' ,FILE_APPEND );
+
         $categories = Category::where('parent_id',NULL)->get();
         
         require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
@@ -47,25 +46,22 @@ class CheckoutController extends Controller
         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
 
         $client->validateCallbackWithGlobals();
+      
         $callbackResult = $client->readCallback(file_get_contents('php://input'));
 
         $myTransactionId = $callbackResult->getTransactionId();
-        $gatewayTransactionId = $callbackResult->getReferenceId();
-
+        $gatewayTransactionId = $callbackResult->getReferenceId(); 
+ 
         if ($callbackResult->getResult() == Result::RESULT_OK) {
             //payment ok
             echo "here";
-            dd('here');
             //finishCart();
 
         } elseif ($callbackResult->getResult() == Result::RESULT_ERROR) {
             //payment failed, handle errors
             $errors = $callbackResult->getErrors();
-            dd('not there, here');
         }
 
-        echo "OK";
-        die;
     }
 
 
