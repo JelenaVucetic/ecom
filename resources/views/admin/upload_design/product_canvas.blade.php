@@ -742,10 +742,10 @@
   });
   </script>
 
-<script>
+{{-- <script>
   // Canvas for Poster
   var canvas18 = new fabric.Canvas('c15');
-   fabric.Image.fromURL("/image/<?php if(!empty($image)){echo $image;}  ?>", function(img) {
+   fabric.Image.fromURL("/image/", function(img) {
       img.set({
   
       });
@@ -780,4 +780,4 @@
   })
     });
   });
-  </script>
+  </script> --}}

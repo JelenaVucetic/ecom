@@ -46,7 +46,7 @@ class AjaxUploadController extends Controller
 
     function save(Request $request){
         $data = $request->all();
-  
+       
        
       $title = $data['name'];
       $image = $data['image'];;
@@ -57,7 +57,7 @@ class AjaxUploadController extends Controller
       $canvasImage = $data['canvasImage'];
 
       
-      if($canvasImage!==null && $canvasImage!=="0"){
+       if($canvasImage!==null && $canvasImage!=="0"){
         $canvasImage = explode(";" ,  $canvasImage)[1];  
         $canvasImage = explode("," ,  $canvasImage)[1];
         $canvasImage = str_replace(" ", "+",  $canvasImage);
@@ -67,8 +67,10 @@ class AjaxUploadController extends Controller
         . mt_rand(1000000, 9999999)
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string1 = str_shuffle($name1);
+        $string1 .=  round(microtime(true) * 1000);
+        
         file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    } 
+    }  
 
     
  /*    if($canvasImage!=="0"){
@@ -100,7 +102,7 @@ if($original=='Phone Case'){
 }else{
     $price = 0;
 }
- 
+    $checkImage = $image;
     $image = explode(";" , $image)[1];  
     $image = explode("," , $image)[1];
     $image = str_replace(" ", "+", $image);
@@ -113,6 +115,8 @@ $name = mt_rand(1000000, 9999999)
     . $characters[rand(0, strlen($characters) - 1)];
 
 $string = str_shuffle($name);
+$string .=  round(microtime(true) * 1000);
+
 file_put_contents("images/". $string . ".png", $image);
 
  
@@ -159,7 +163,7 @@ foreach($tagsComma as $tag){
 
 }
 
-echo $idProduct;
+echo $checkImage;
 
     }
 
