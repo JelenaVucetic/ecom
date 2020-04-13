@@ -51,7 +51,7 @@ class CheckoutController extends Controller
 
         $myTransactionId = $callbackResult->getTransactionId();
         $gatewayTransactionId = $callbackResult->getReferenceId(); 
- 
+        
         if ($callbackResult->getResult() == Result::RESULT_OK) {
             //payment ok
             echo "here";
