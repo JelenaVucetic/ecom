@@ -1,4 +1,6 @@
-
+a {
+    text-decoration: none !important;
+}
 #myNavbar{
     background: #231F20 0% 0% no-repeat padding-box;
     opacity: 1;
@@ -24,7 +26,7 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: 30px auto;
+    margin: 30px auto 0px;
 }
 
 .logo-section form{
@@ -51,6 +53,7 @@ display: flex;
 background: #FFFFFF;
 padding-left: 0rem;
 padding-right: 0rem;
+margin-bottom: 0rem;
 }
 
 .mycontainer{
@@ -65,8 +68,17 @@ padding-right: 0rem;
     height: 50px;
 }
 
+.category button:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.category button {
+    transition: none;
+}
+
 .main-categories{
-   width: 80%;
+   width: 65%;
    margin: auto;
    padding-top: 6px;
 }
@@ -160,3 +172,9 @@ padding-right: 0rem;
     background: transparent;
     color: #8B8B8B;
 }
+
+@media (min-width: 576px) {
+    .jumbotron {
+        padding: 2rem 0rem;
+    }
+} 

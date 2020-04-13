@@ -14,7 +14,7 @@ use App\Product;
 
 Auth::routes();
 
-
+Route::get('/test', 'HomeController@test');
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -69,7 +69,7 @@ Route::get('/cart/remove/{id}', 'CartController@destroy');
 Route::post('/formvalidate', 'CheckoutController@formvalidate');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Route::get('/thankyou', 'CheckoutController@thankyou');
+Route::get('/payment_info', 'CheckoutController@payment_info');
 Route::get('/error', 'CheckoutController@error');
 Route::post('/callback', 'CheckoutController@callback');
 Route::get('/cancel', 'CheckoutController@cancel');

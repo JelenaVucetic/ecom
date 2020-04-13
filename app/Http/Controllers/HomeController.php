@@ -23,6 +23,10 @@ class HomeController extends Controller
        // $this->middleware('auth');
     }
 
+    public function test() {
+        return view('test');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -30,15 +34,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(20);
-        $designs = Design::orderBy('id', 'desc')->paginate(7);
+        $products = Product::orderBy('id', 'desc')->paginate(28);
+        $designs = Design::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
         return view('home', compact('products', 'categories', 'designs'));
     }
 
     public function welcome()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(20);
+        $products = Product::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
      
      /*    $cat = Product::find(73);

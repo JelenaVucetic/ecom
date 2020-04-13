@@ -1,23 +1,39 @@
 @extends('layouts.master')
 
 @section('content')
-<main role="main">
+<div class="container-fluid">
   <div class="design-for-you">
     <h2>Designs picked for you</h2>
-  <div class="design-row">
+  </div>
+
+<div class="slick-wrapper">
+  <div id="slick2">
   @foreach ($designs as $design)
-  <div class="design-box">
-<img src="/image/{{$design->name}}">
-  </div>
-  <div class="count-product">
-    <p>Proizvoda
-    @php
-        $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count();
-      echo $count;
-      @endphp
-      </p>
-  </div>
-  @endforeach
+		<div class="slide-item">
+      
+
+      <div class="design-box">
+        <img src="/image/{{$design->name}}">
+        <div class="count-product">
+          <p>Proizvoda
+          <?php
+              $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count(); ?>
+            <span>{{$count}}</span>
+          </p>
+      </div>
+      </div>
+      
+
+    </div>
+    @endforeach
+	</div>
+</div>
+
+</div>
+  
+
+
+
 </div>
 
 </div>
@@ -52,5 +68,5 @@
     </div>
   </div>
   @include('recommends')
-</main>
+</div>
 @endsection
