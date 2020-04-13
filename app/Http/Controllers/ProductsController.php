@@ -25,7 +25,7 @@ class ProductsController extends Controller
            /*  $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')
             ->rightJoin('product_tag', 'product_tag.product_id', '=', 'categories.id')->get(); */
             $products = Product::all();
-            
+
          //   dd($products);
     /*     }
  */

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<callback xmlns="http://asxgw.paymentsandbox.cloud/Schema/V2/Callback">
+  <result>ERROR</result>
+  <referenceId>b365c80659e72cbd0faf</referenceId>
+  <transactionId>myId2020-04-10-5e90aaf51d003</transactionId>
+  <purchaseId>20200410-b365c80659e72cbd0faf</purchaseId>
+  <transactionType>DEBIT</transactionType>
+  <paymentMethod>Creditcard</paymentMethod>
+  <amount>10.00</amount>
+  <currency>EUR</currency>
+  <errors>
+    <error>
+      <message>The transaction was declined</message>
+      <code>2003</code>
+      <adapterMessage>Test decline</adapterMessage>
+      <adapterCode>transaction_declined</adapterCode>
+    </error>
+  </errors>
+  <returnData type="creditcardData">
+    <creditcardData>
+      <type>visa</type>
+      <cardHolder>fsdfsd</cardHolder>
+      <expiryMonth>05</expiryMonth>
+      <expiryYear>2023</expiryYear>
+      <firstSixDigits>424242</firstSixDigits>
+      <lastFourDigits>4242</lastFourDigits>
+      <fingerprint>lRw/pWMd1KjJVG9d62UXqJoVwUP/iaNdo1qrRTynQIhtMZhGBuqYEttdBhUwgP8qv4L4knvRCDefPzxImM8bog</fingerprint>
+      <binBrand>VISA</binBrand>
+      <binType>CREDIT</binType>
+      <binLevel>CLASSIC</binLevel>
+      <binCountry>GB</binCountry>
+      <threeDSecure>MANDATORY</threeDSecure>
+      <eci>05</eci>
+    </creditcardData>
+  </returnData>
+  <customerData>
+    <firstName>da</firstName>
+    <lastName>da</lastName>
+    <billingCountry>ME</billingCountry>
+    <email>da@gmail.com</email>
+    <emailVerified>false</emailVerified>
+    <ipAddress>46.33.207.72</ipAddress>
+  </customerData>
+</callback>

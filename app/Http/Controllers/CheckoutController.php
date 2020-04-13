@@ -14,19 +14,21 @@ use Exchange\Client\Data\Customer;
 use Exchange\Client\Transaction\Debit;
 use Exchange\Client\Transaction\Result;
 use Exchange\Client\StatusApi\StatusRequestData;
+use Laravie\Parser\Xml\Reader;
+use Laravie\Parser\Xml\Document;
+use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
 
-    public function thankyou() {
+    public function payment_info() {
         $categories = Category::where('parent_id',NULL)->get();
-        return view('profile.thankyou', compact('categories'));
+        $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
+        return view('payment_info', compact('categories', 'payment'));
     }
 
     public function error() {
-        $categories = Category::where('parent_id',NULL)->get();
-
-
+        $categories = Category::where('parent_id',NULL)->get();     
         return view('error', compact('categories'));
     }
 
@@ -36,9 +38,6 @@ class CheckoutController extends Controller
     }
 
     public function callback() {
-        file_put_contents('C:\xampp\htdocs\www\ecom\resources/views/test.txt',  file_get_contents('php://input'), FILE_APPEND );
-        file_put_contents('C:\xampp\htdocs\www\ecom\resources/views/test.txt',  'test' ,FILE_APPEND );
-
         $categories = Category::where('parent_id',NULL)->get();
         
         require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
@@ -52,18 +51,76 @@ class CheckoutController extends Controller
         $myTransactionId = $callbackResult->getTransactionId();
         $gatewayTransactionId = $callbackResult->getReferenceId(); 
         
+<<<<<<< HEAD
         if ($callbackResult->getResult() == Result::RESULT_OK) {
             //payment ok
             echo "here";
+=======
+        $xml = simplexml_load_file('php://input');
+        $card_type = (string) $xml->returnData->creditcardData->type;
+        $card_holder = (string) $xml->returnData->creditcardData->cardHolder;
+        $expiry_month = (string) $xml->returnData->creditcardData->expiryMonth;
+        $expiry_year = (string) $xml->returnData->creditcardData->expiryYear;
+        $first_six_digits = (string) $xml->returnData->creditcardData->firstSixDigits;
+        $last_four_digits = (string) $xml->returnData->creditcardData->lastFourDigits;
+         
+        file_put_contents('/home/khhua5brw593/public_html/urbanone.me/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
+ 
+        if ($callbackResult->getResult() == 'OK') {
+             DB::table('payment_info')->insert([
+                    'result' => $callbackResult->getResult(),
+                    'reference_id' => $callbackResult->getReferenceId(),
+                    'transaction_id' =>  $callbackResult->getTransactionId(),
+                    'purchase_id' => $callbackResult->getPurchaseId(),
+                    'transaction_type'  => $callbackResult->getTransactionType(),
+                    'payment_method' => $callbackResult->getPaymentMethod(),
+                    'amount' => $callbackResult->getAmount(),
+                    'currency' => $callbackResult->getCurrency(),
+                    'message' => 'dummy',
+                    'code' =>'dummy',
+                    'card_type' => $card_type,
+                    'card_holder' =>  $card_holder,
+                    'expiry_month' =>  $expiry_month,
+                    'expiry_year' => $expiry_year,
+                    'first_six_digits' => $first_six_digits,
+                    'last_four_digits' => $last_four_digits
+                ]);
+>>>>>>> b2769463908aee7f4e8f09e89b956367bae4a776
             //finishCart();
 
-        } elseif ($callbackResult->getResult() == Result::RESULT_ERROR) {
+            Cart::destroy();
+               
+        } elseif ($callbackResult->getResult() == 'ERROR') {
             //payment failed, handle errors
-            $errors = $callbackResult->getErrors();
+             
+            $message = (string) $xml->errors->error->message;
+            $code = (string) $xml->errors->error->code;
+            
+            DB::table('payment_info')->insert([
+                'result' => $callbackResult->getResult(),
+                'reference_id' => $callbackResult->getReferenceId(),
+                'transaction_id' =>  $callbackResult->getTransactionId(),
+                'purchase_id' => $callbackResult->getPurchaseId(),
+                'transaction_type'  => $callbackResult->getTransactionType(),
+                'payment_method' => $callbackResult->getPaymentMethod(),
+                'amount' => $callbackResult->getAmount(),
+                'currency' => $callbackResult->getCurrency(),
+                'message' =>  $message,
+                'code' => $code,
+                'card_type' => $card_type,
+                'card_holder' =>  $card_holder,
+                'expiry_month' =>  $expiry_month,
+                'expiry_year' => $expiry_year,
+                'first_six_digits' => $first_six_digits,
+                'last_four_digits' => $last_four_digits
+            ]);
+                
+        } else {
+            echo "OK";
         }
-
+        
+         
     }
-
 
     public function formvalidate(Request $request)
     {
@@ -109,10 +166,10 @@ class CheckoutController extends Controller
         $merchantTransactionId = 'myId'.date('Y-m-d').'-'.uniqid(); 
 
         $debit->setTransactionId($merchantTransactionId)
-            ->setSuccessUrl('http://ecom.example/thankyou')
-            ->setCancelUrl('http://ecom.example/cancel')
-            ->setErrorUrl('http://ecom.example/error')
-            ->setCallbackUrl('http://ecom.example/callback')
+            ->setSuccessUrl('https://urbanone.me/thankyou')
+            ->setCancelUrl('https://urbanone.me/cancel')
+            ->setErrorUrl('https://urbanone.me/thankyou')
+            ->setCallbackUrl('https://urbanone.me/callback')
             ->setAmount($request->amount)
             ->setCurrency('EUR')
             ->setCustomer($customer);
@@ -124,7 +181,6 @@ class CheckoutController extends Controller
 
         // send the transaction
         $result = $client->debit($debit);
-
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
@@ -174,9 +230,7 @@ class CheckoutController extends Controller
         $address->user_id = $userid;
         $address->save();
       
-        
-
-        Cart::destroy();
+      
        /*  if(Auth::user()) {
             return view('profile.index', compact('categories'));
         } else {

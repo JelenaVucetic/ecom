@@ -1855,6 +1855,7 @@ $("#capture").click(function(event){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
             var nameProduct = title + " " + el.getAttribute('name');
+            
             $.ajax({
                      headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1885,7 +1886,7 @@ $("#capture").click(function(event){
     }
   
 },time)
-time += 5000;
+time += 3000;
 
 });
 
