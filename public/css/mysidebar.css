@@ -1,0 +1,16 @@
+.nav-item{
+    width: 100%;
+    }
+    
+    .pmd-sidebar.pmd-sidebar-open{
+        margin-top: 65px;
+    }
+    
+.side-dropdown{
+    width: 100%;
+}    
+
+.dropdown-relative{
+    position: relative!important;
+    top: -45px!important;
+}

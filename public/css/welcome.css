@@ -436,6 +436,17 @@
        left: 15%;
    }
 
+   #mySideNav{
+       display: block!important;
+   }
+   #pmd-main{
+       display: block!important;
+   }
+
+   #myNavbar{
+       display: none!important;
+   }
+
 
 }
 

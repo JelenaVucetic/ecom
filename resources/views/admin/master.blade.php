@@ -24,7 +24,8 @@
 </head>
 <body>
 
-  @include('admin.admin_header')
+   @include('admin.admin_header')
+  @include('layouts.sidenav')
   <div class="container-fluid" style="padding-top:50px;">
     <div class="row">
     @include('admin.includes.sidenav')
@@ -33,4 +34,5 @@
   </div>
 
 </body>
+
 </html>
