@@ -10,6 +10,7 @@ use App\Design;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Recommends;
+use Image;
 
 class HomeController extends Controller
 {
@@ -34,10 +35,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(28);
+
         $designs = Design::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
-        return view('home', compact('products', 'categories', 'designs'));
+        $products = Product::orderBy('id', 'desc')->paginate(28);
+
+        $tShirts = DB::table('product')
+                ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+                ->join('categories', 'categories.id', '=', 'product.category_id')
+                ->where('categories.name', '=', 'T-shirt')
+                ->get();
+
+        $cases = DB::table('product')
+                ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+                ->join('categories', 'categories.id', '=', 'product.category_id')
+                ->where('categories.name', '=', 'Cases')
+                ->get();
+
+        $hoodies = DB::table('product')
+                ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+                ->join('categories', 'categories.id', '=', 'product.category_id')
+                ->where('categories.name', '=', 'Hoodie & Sweatshirts')
+                ->get();
+
+
+
+        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies'));
     }
 
     public function welcome()
@@ -52,8 +75,10 @@ class HomeController extends Controller
 
     public function product_details($id)
     {
-      /*   $products = Product::findOrFail($id);
-        return view('product_details', compact('products')); */
+        
+        $product = DB::table('product')->where('id', $id)->first();
+        $categories = Category::where('parent_id',NULL)->get();
+        $design = DB::table('design')->where('id', $product->design_id)->first();
 
         if(Auth::check()) {
             $recommends = new Recommends;
@@ -67,9 +92,7 @@ class HomeController extends Controller
             $recommends->save();
         }
 
-        $Products = DB::table('product')->where('id', $id)->get();
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('product_details', compact('Products', 'categories'));
+        return view('product_details', compact('product', 'categories', 'design'));
     }
 
     public function viewWishlist()
@@ -87,9 +110,11 @@ class HomeController extends Controller
 
         $wishlist->save();
 
-        $Products = DB::table('product')->where('id', $request->pro_id)->get();
+        $product = DB::table('product')->where('id', $request->pro_id)->first();
         $categories = Category::where('parent_id',NULL)->get();
-        return view('product_details', compact('Products', 'categories'));
+        $design = DB::table('design')->where('id', $product->design_id)->first();
+        
+        return view('product_details', compact('product', 'categories', 'design'));
     }
 
     public function destroy($id) {
@@ -136,29 +161,28 @@ class HomeController extends Controller
     {
         $stars=$_POST['value'];
         $product_id=$_POST['product_id'];
-       $user_id=$_POST['user_id'];
-      $counter = DB::table('review_star')->select('product_id' ,DB::raw('count(*) as total'))
-      ->where('user_id', $user_id)
-      ->where('product_id', $product_id)
-      ->groupBy('product_id')
-      ->get();
-        
-        foreach($counter as $c){
-        if($c->total>0){
-            DB::table('review_star')
-            ->where('user_id', $user_id)
-            ->where('product_id', $product_id)  // find your user by their email
-        ->limit(1)  // optional - to ensure only one record is updated.
-        ->update(array('size' =>   $stars));
-        }else{
-            DB::table('review_star')->insert([
-                'user_id' => $user_id,
-                'product_id' => $product_id,
-                'size' =>   $stars
-                ]);
+        $user_id=$_POST['user_id'];
+        $counter = DB::table('review_star')
+                    ->select('product_id' ,DB::raw('count(*) as total'))
+                    ->where('user_id', $user_id)
+                    ->where('product_id', $product_id)
+                    ->groupBy('product_id')
+                    ->first();
+            var_dump($counter);
+
+    if(isset($counter)) {
+        DB::table('review_star')
+                ->where('user_id', $user_id)
+                ->where('product_id', $product_id)  // find your user by their email
+                ->limit(1)  // optional - to ensure only one record is updated.
+                ->update(array('size' =>   $stars));
+    } else {
+        DB::table('review_star')->insert([
+            'user_id' => $user_id,
+            'product_id' => $product_id,
+            'size' =>   $stars
+            ]);
         }
-        }
-       
     
         echo 'uspjesno' ;
     }

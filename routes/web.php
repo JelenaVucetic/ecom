@@ -61,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 );
 
 Route::get('/cart', 'CartController@index');
-Route::get('/cart/addItem/{id}', 'CartController@addItem');
+Route::post('/cart/addItem/{id}', 'CartController@addItem');
 Route::get('/cart/updateCart/{id}', 'CartController@updateCart')->name('updateCart');
 
 Route::get('/cart/remove/{id}', 'CartController@destroy');

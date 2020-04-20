@@ -50,10 +50,9 @@ display: flex;
     height: 60px;
 }
 .jumbotron{
-background: #FFFFFF;
-padding-left: 0rem;
-padding-right: 0rem;
-margin-bottom: 0rem;
+    background: #FFFFFF;
+    padding-top: 0 !important;
+    margin-bottom: 0rem;
 }
 
 .mycontainer{
@@ -89,7 +88,7 @@ margin-bottom: 0rem;
     opacity: 1;
 }
 
-#cart{
+/* #cart{
     background-image: url('/site-images/03 Shopping-cart.svg');
     background-repeat: no-repeat;
     background-position: center;
@@ -103,7 +102,7 @@ margin-bottom: 0rem;
 #dropdownCart{
     transform: translate3d(-225px, 66px, 0px)!important;
     width: 350px;
-}
+} */
 
 .searchIDiv{
     width: 600px;

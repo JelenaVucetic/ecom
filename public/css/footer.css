@@ -47,3 +47,35 @@
     color: #8B8B8B;
     padding: 0 10px;
 }
+
+
+@media (max-width: 767px) {  
+    .footer-content {
+        width: 100%; 
+        flex-direction: column;
+    }
+
+    .footer-content div {
+        padding: 15px 10px;
+    }
+
+    .footer-bootom {
+        display: block; 
+        padding: 15px;
+        margin-bottom: 0px; 
+    }
+
+    .footer-bottom-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .footer-bootom a {
+        padding: 0; 
+    }
+
+    .footer-bootom span {
+        padding: 0; 
+    }
+}

@@ -26,15 +26,16 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>Ime</th>
-              <th>Prezime</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
               <th>Email</th>
-              <th>Ulica</th>
-              <th>Grad</th>
+              <th>Street</th>
+              <th>City</th>
               <th>Zip</th>
-              <th>Ime proizvoda</th>
-              <th>Kolicina</th>
-              <th>Ukupno</th>
+              <th>Product name</th>
+              <th>Size</th>
+              <th>Quantity</th>
+              <th>Total</th>
             </tr>
           </thead>
           <tbody>
@@ -47,6 +48,7 @@
               <td>{{$row->city}}</td>
               <td>{{$row->zip}}</td>
               <td>{{$row->name}}</td>
+              <td>{{$row->size}}</td>
               <td>{{$row->qty}}</td>
               <td>{{$row->total}}</td>
             </tr>

@@ -14,32 +14,8 @@
           </form>
           <div style="display: flex; align-items: center;">
           <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
-          <li class="nav-item dropdown" id="cart">
-            <a class="nav-link " href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <div class="dropdown-menu" aria-labelledby="dropdown01" id="dropdownCart" style="background:white; border: 1px solid lightgray;">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="badge badge-secondary badge-pill">{{Cart::count()}}</span>
-              <span >Total: ({{Cart::subtotal()}})</span>
-            </h4>
-            <h4>
-             Your cart
-            </h4>
-          <ul class="list-group mb-3">
-            <?php $cartItems = Cart::content();?>
-                @foreach($cartItems as $cartItem)
-            <li class="list-group-item">
-
-                <img  class="dropdownimage" src="{{url('images',$cartItem->options->img)}}"  class="img-responsive dropdownimage" style="width:50px" />
-
-              <h6>Name: {{$cartItem->name}}</h6>
-              <span>Price: {{$cartItem->price}}</span>
-            </br>
-              <small>Qty: {{$cartItem->qty}}</small>
-
-            </li>
-              @endforeach
-            <li class="list-group-item d-flex justify-content-between">
-              <a class="btn btn-primary float-right" href="{{url('/cart')}}">View Cart</a>
+            <li style="list-style:none;">
+              <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt=""></a> 
             </li>
             </ul>
          </div>
@@ -53,12 +29,12 @@
       @foreach($categories as $category)
         <div class="dropdown ">
             <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <a href="" style="color:#404040;"> {{ ucwords($category->name) }}</a> 
+            <a href="" style="color:#404040;"> {{($category->name) }}</a> 
             </button>
             @if ($category->children)
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background:white; color:#231f20!important">
             @foreach ($category->children as $child)
-                <a class="dropdown-item" style=" color:#231f20!important;" href="{{route('category.show',$child->id)}}">{{ ucwords($child->name) }}</a>
+                <a class="dropdown-item" style=" color:#231f20!important;" href="{{route('category.show',$child->id)}}">{{($child->name) }}</a>
                 @endforeach
             </div>
             @endif

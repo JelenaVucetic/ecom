@@ -70,33 +70,40 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             {{session('error')}}
         </div>
         @endif
-        <div class="table-responsive cart_info">
-        <table class="table table-condensed">
+
+        <div class="table-responsive-md cart_info">
+        <table class="">
             <thead>
-                <tr class="cart_menu">
-                    <td class="image">Image</td>
-                    <td class="description">Product</td>
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="total">Total</td>
+                <tr class="cart-header">
+                    <td class="image" scope="col" >ITEM</td>
+                    <td class="description" scope="col"></td>
+                    <td class="price" scope="col">PRICE</td>
+                    <td class="quantity" scope="col">QTY</td>
+                    <td class="total" scope="col">TOTAL</td>
                     <td></td>
                 </tr>
             </thead>
          <?php $count =1;?>
             @foreach($cartItems as $cartItem)
-
                 <tbody>
-                    <tr>
+                    <tr scope="row">
                         <td class="cart_product">
-                         <p><img style="width:200px;" src="{{url('images',$cartItem->options->img)}}" class="card-img-top bmw" ></p>
+                         <p><img style="width:150px;" src="{{url('images',$cartItem->options->img)}}" class="card-img-top bmw"></p>
                         </td>
                         <td class="cart_description">
-                            <a href="{{url('/product_details')}}/{{$cartItem->id}}">
-                            <h4><a href="{{url('/product_details')}}/{{$cartItem->id}}" style="color:blue">{{$cartItem->name}}</a></h4>
-                            <p>Product ID: {{$cartItem->id}}</p>
+                            <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
+                             <?php if($cartItem->options->size !== null) : ?>           
+                            <span>{{$cartItem->options->size}}</span>
+                             <?php endif;
+                             if($cartItem->options->color !== null) :?>           
+                            <span>{{ $cartItem->options->color}}</span>
+                             <?php endif;
+                              if($cartItem->options->color !== null) :?>     
+                            <span>{{ $cartItem->options->print}}</span>
+                              <?php endif; ?>
                         </td>
                         <td class="cart_price">
-                            <p>${{$cartItem->price}}</p>
+                            <p>{{$cartItem->price}}&euro;</p>
                         </td>
                         <td class="cart_quantity">
                             <input type="hidden" id="rowId<?php echo $count;?>" value="{{$cartItem->rowId}}"/>
@@ -108,7 +115,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                             <p class="cart_total-price" id="subtotal<?php echo $count;?>">{{ $cartItem->subtotal }}</p>
                         </td>
                         <td class="cart_delete">
-                            <button class="btn btn-primary"><a href="{{ url('/cart/remove') }}/{{ $cartItem->rowId }}" class="cart_quantity_delete" style="background-color: red;">x</a></button>
+                            <button><a href="{{ url('/cart/remove') }}/{{ $cartItem->rowId }}">x</a></button>
                         </td>
                     </tr>
                 <?php $count++;?>

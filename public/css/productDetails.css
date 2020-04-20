@@ -1,0 +1,421 @@
+.desctop-product {
+    display: flex;
+}
+
+.right {
+    background: #F5F5F5;
+    padding: 29px 15px;
+}
+
+.right p {
+    color: #8B8B8B;
+}
+
+.wishlist input[type="submit"] {
+    position: absolute;
+    top: 20px;
+    right: 17px;
+    background: url('/site-images/srce.svg') no-repeat;
+    background-size: cover;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 1;
+    height: 58px;
+    width: 57px;
+}
+.wishlist input[type="submit"]:hover {
+    position: absolute;
+    top: 20px;
+    right: 17px;
+    background: url('/site-images/1 srce - hover.svg') no-repeat;
+    background-size: cover;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 1;
+    height: 58px;
+    width: 57px;
+}
+
+.wishlist #disable {
+    position: absolute;
+    top: 20px;
+    right: 17px;
+    background: url('/site-images/1 srce - hover.svg') no-repeat;
+    background-size: cover;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 1;
+    height: 58px;
+    width: 57px;
+}
+
+.select-size {
+    margin: 20px 0;
+}
+
+.s-size,
+.m-size,
+.l-size,
+.xl-size,
+.xxl-size,
+.xxxl-size {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+}
+
+
+.s-size span,
+.s-size input,
+.m-size span,
+.m-size input,
+.l-size span,
+.l-size input,
+.xl-size span,
+.xl-size input,
+.xxl-size span,
+.xxl-size input,
+.xxxl-size span,
+.xxxl-size input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.s-size input[type="radio"],
+.m-size input[type="radio"],
+.l-size input[type="radio"],
+.xl-size input[type="radio"],
+.xxl-size input[type="radio"],
+.xxxl-size input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+  width: 0px;
+}
+
+.s-size input[type="radio"]:checked+span,
+.m-size input[type="radio"]:checked+span,
+.l-size input[type="radio"]:checked+span,
+.xl-size input[type="radio"]:checked+span,
+.xxl-size input[type="radio"]:checked+span,
+.xxxl-size input[type="radio"]:checked+span,
+.Checked+span {
+    background: #E6003A;
+    color: white;
+    border: none;
+}
+
+.s-size span,
+.l-size span {
+    background: white;
+    color: #404040;
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+
+.m-size span {
+    background: white;
+    color: #404040;
+    border: 1px solid #DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 8px;
+    padding-top: 2px;
+}
+
+.xl-size span   {
+    background: white;
+    color: #404040;
+    border: 1px solid #DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 8px;
+    padding-top: 3px;
+}
+
+
+.xxl-size span,
+.xxxl-size span   {
+    background: white;
+    color: #404040;
+    border: 1px solid #DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 2px;
+    padding-top: 2px;
+}
+
+.s-size span:hover,
+.m-size span:hover,
+.l-size span:hover,
+.xl-size span:hover,
+.xxl-size span:hover,
+.xxxl-size span:hover {
+  background: #E6003A;
+  color: white;
+  border: none;
+}
+
+
+.select-color {
+    margin: 20px 0;
+}
+
+.black{
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.white {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+}
+
+
+.black-border {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 17px;
+    position: relative;
+}
+
+.black input[type="radio"],
+.white input[type="radio"] {
+    opacity: 0.01;
+    z-index: 100;   
+    width: 0px;
+  }
+
+.black input,
+.white input,
+.black span,
+.white span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+.black span {
+    background: black;
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+} 
+
+.white span {
+    background: white;
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+}
+
+
+.print-location {
+    margin: 20px 0;
+}
+
+
+.front {
+    width: 100px;
+    text-align: center;
+    height: 33px;
+    position: relative;
+}
+
+.back {
+    margin-left: -5px;
+    width: 100px;
+    text-align: center;
+    height: 33px;
+    position: relative;
+}
+
+.front input[type="radio"],
+.back input[type="radio"] {
+    opacity: 0.01;
+    z-index: 100;   
+    width: 0px;
+  }
+
+.front span,
+.back span,
+.front input,
+.back input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+.back span{
+    background: white;
+    color: black;
+    border-radius: 0px 20px 20px 0px;
+    padding-top: 5px;
+    cursor: pointer;
+    z-index: 90;
+} 
+
+.front span {
+    background: white;
+    color: black;
+    border-radius: 20px 0px 0px 20px;
+    padding-top: 5px;
+    cursor: pointer;
+    z-index: 90;
+} 
+
+.front span:hover,
+.back span:hover {
+    background: black;
+    color: white;
+    border: none;
+  }
+
+.front input[type="radio"]:checked+span,
+.back input[type="radio"]:checked+span,
+.Checked+span {
+    background: black;
+    color: white;
+    border: none;
+}
+
+
+.btn-add-to-cart {
+    width: 55%;
+    background: red;
+    text-align: center;
+    border-radius: 20px;
+    height: 35px;
+    padding-top: 5px;
+}
+
+.btn-add-to-cart p {
+    color: white;
+}
+
+.view-size-guid {
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #DEDEDE;
+    padding: 10px 15px;
+    margin: 20px 0;
+    margin-left: -15px;
+    margin-right: -15px;
+
+    display: flex;
+    align-items: center;
+}
+
+.view-size-guid a {
+    white-space: nowrap;
+    color: #404040;
+}
+
+.view-size-guid img {
+    width: 35px;
+    margin-left: 10px;
+}
+
+
+.delivery div{
+    display: flex;
+    align-items: center;
+}
+
+.delivery div img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+.delivery p {
+    margin-bottom: 0;
+}
+
+#exampleModalLabel {
+    text-align: center;
+}
+
+#exampleModal .modal-header {
+    display: block; 
+    border-bottom: none;
+}
+
+#exampleModal .modal-body {
+    padding: 1rem 3rem;
+    border-bottom: none;
+}
+
+#exampleModal .modal-footer {
+    display: block; 
+    padding: 0; 
+    border-top: none; 
+}
+
+#modal-add div {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    background: red;
+    border-radius: 30px;
+}
+
+#modal-add p {
+   padding: 5px 0;
+   color: white;
+}
+
+#exampleModal .modal-footer p {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.phone-model,
+.case-style {
+    margin: 20px 0;
+}
+
+.phone-model select,
+.case-style select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #8B8B8B;
+    border-radius: 5px;
+    color: #8B8B8B;
+    outline: none;
+}

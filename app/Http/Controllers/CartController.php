@@ -36,12 +36,10 @@ class CartController extends Controller
     {
         $product = Product::find($id);
         if($product->spl_price==0) {
-         $cart= Cart::add( $id, $product->name, 1, $product->price, 0, ['img'=> $product->image]);
- 
+            $cart= Cart::add( $id, $product->name, 1, $product->price, 0, ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print]);
         } else {
-        $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, ['img'=> $product->image]);
+            $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print]);
         }
-
         return back();
     }
 

@@ -1,9 +1,14 @@
+.fixed-top {
+     position: relative !important; 
+     z-index: 1 !important; 
+}
+
 .nav-item{
     width: 100%;
     }
     
     .pmd-sidebar.pmd-sidebar-open{
-        margin-top: 65px;
+        z-index: 5;
     }
     
 .side-dropdown{
@@ -13,4 +18,8 @@
 .dropdown-relative{
     position: relative!important;
     top: -45px!important;
+}
+
+.navbar-brand img {
+    width: 100px;
 }

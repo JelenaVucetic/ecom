@@ -259,3 +259,4 @@ var pmdSidebar = function ($) {
 	return pmdSidebar;
 
 } (jQuery)();
+

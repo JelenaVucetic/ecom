@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
-            	<!-- favicon --> 
-	 <link rel="icon" href="http://propeller.in/assets/images/favicon.ico" type="image/x-icon"> 
+
 	
      <!-- Bootstrap --> 
    {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />   --}}
@@ -54,10 +53,13 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
         <script src="/js/jQuery.js"></script>
+        <script src="/js/myJs.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/welcome.css">
         <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="/css/cart.css">
+        <link rel="stylesheet" href="/css/productDetails.css">
         <link rel="stylesheet" href="/css/footer.css">
 
        <!--  Payment script -->
@@ -69,6 +71,7 @@
     @include('layouts.sidenav') 
     @include('layouts.hero')
     @yield('content')
+    @include('layouts.subscribe')
     @include('layouts.footer')
 
     </body>
