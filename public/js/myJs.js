@@ -1,0 +1,261 @@
+/* Checkout page */
+$('#review-and-pay').on('click', function(){
+    $('#hide-review').html(' ');
+});
+
+/* Reviews and stars */
+
+
+$(document).ready(function(){
+  
+    /* 1. Visualizing things on Hover - See next part for action on click */
+    $('#stars li').on('mouseover', function(){
+      var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+     
+      // Now highlight all the stars that's not after the current hovered star
+      $(this).parent().children('li.star').each(function(e){
+        if (e < onStar) {
+          $(this).addClass('hover');
+        }
+        else {
+          $(this).removeClass('hover');
+        }
+      });
+      
+    }).on('mouseout', function(){
+      $(this).parent().children('li.star').each(function(e){
+        $(this).removeClass('hover');
+      });
+    });
+    
+    /* 2. Action to perform on click */
+    $('#stars li').on('click', function(){
+      var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+      var stars = $(this).parent().children('li.star');
+      
+      for (i = 0; i < stars.length; i++) {
+        $(stars[i]).removeClass('selected');
+      }
+      
+      for (i = 0; i < onStar; i++) {
+        $(stars[i]).addClass('selected');
+      }
+      
+      // JUST RESPONSE (Not needed)
+      var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+      var msg = "";
+      if (ratingValue > 1) {
+          msg = "Thanks! You rated this " + ratingValue + " stars.";
+      }
+      else {
+          msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+      }
+      responseMessage(msg);
+      var proDum = $('#proDum').val();
+      var userId = $('#user_id').val()
+  
+      $.ajax({
+          headers: {  
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                  } ,
+        type: 'post',
+        dataType: 'html',
+        url: '/addStar',
+        data: { value:ratingValue, product_id: proDum, user_id: userId},
+        success: function(response) {
+            console.log(response)
+        }
+    });
+      
+    });
+  });
+  
+  function responseMessage(msg) {
+    $('.success-box').fadeIn(200);  
+    $('.success-box div.text-message').html("<span>" + msg + "</span>");
+  }
+
+
+
+/*   Adding to cart with size */
+
+function addToCartAjax(size, color, print, phoneModel, caseStyle) {
+    var proDum = $('#proDum').val();
+    var parent =  $('#btn-add-to-cart');
+    var p = $('#test');
+    var modalAddBtn = $('#modal-add');
+    $.ajax({
+        headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+        type: 'post',
+        dataType: 'html',
+        url: '/cart/addItem/' + proDum,
+        data: {
+          size: size,
+          color: color,
+          print: print,
+          phoneModel: phoneModel,
+          caseStyle: caseStyle
+        },
+        beforeSend: function() {
+              modalAddBtn.attr('data-dismiss', 'modal');
+              p.html("Adding ... ");
+              p.wavyText({
+                prefixes: ['-ms-','-webkit-','-o-','-moz-',''],
+                transition_speed:'1s',
+                keyframes: {
+                 '0': ['1px','inherit'],
+                  '20': ['7px','inherit'], 
+                  '40': ['8px','inherit'],
+                  '60': ['9px','inherit'], 
+                  '80': ['10px','inherit'],
+                 '100': ['0','inherit'] 
+                },
+  
+                });
+          },
+        success: function(response) {
+          parent.css("background-color", "lightgreen");
+          p.html("Added");
+          setTimeout(function(){
+            parent.css("background-color", '#E6003A');
+            p.html("Add to cart");
+          },2000);
+        }
+    });
+  }
+
+  
+
+$(document).ready(function(){
+    $('#add').on('click', function(){
+        var phoneModel = $( ".cases option:selected" ).val()
+        var caseStyle = $( ".cases-style option:selected" ).val()
+        var parent = $(this).parent();
+        var size = $('.size-class:checked').val();
+        var color = $('.color-class:checked').val();
+        var print = $('.print-class:checked').val();
+        $('#btn-add-to-cart').removeAttr('data-toggle');
+        $('#btn-add-to-cart').removeAttr('data-target');
+        var pro_cat = $('#pro_cat').val();
+        if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+          $('#btn-add-to-cart').attr('data-toggle', 'modal');
+          $('#btn-add-to-cart').attr('data-target', '#exampleModal');
+
+          $('#modal-add').css('cursor', "no-drop");
+          $('#modal-add div').css('background', "lightgray");
+          $('#modal-add').unbind();
+          $("input[name='size']").change(function(){
+            $('#modal-add').bind("click", function(){
+              var size =  $("input[name='size']:checked").val();
+              addToCartAjax(size, color, print, phoneModel, caseStyle ); 
+            });
+              $('#modal-add').css('cursor', "pointer");
+              $('#modal-add div').css('background', "#E6003A");
+          });
+        } else {
+            addToCartAjax(size, color, print, phoneModel, caseStyle);
+          }  
+      }); 
+}); 
+
+/* 
+$(document).ready(function(){
+  $('#phone-add').on('click', function(){
+     var parent = $(this).parent();
+      var size = $('.size-class:checked').val();
+      var color = $('.color-class:checked').val();
+      var print = $('.print-class:checked').val();
+      $('#btn-add-to-cart').removeAttr('data-toggle');
+      $('#btn-add-to-cart').removeAttr('data-target');
+      var pro_cat = $('#pro_cat').val();
+      if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+        $('#btn-add-to-cart').attr('data-toggle', 'modal');
+        $('#btn-add-to-cart').attr('data-target', '#exampleModal');
+
+        $('#modal-add').css('cursor', "no-drop");
+        $('#modal-add div').css('background', "lightgray");
+        $('#modal-add').unbind();
+        $("input[name='size']").change(function(){
+          $('#modal-add').bind("click", function(){
+            var size =  $("input[name='size']:checked").val();
+            addToCartAjax(size, color, print); 
+          });
+            $('#modal-add').css('cursor', "pointer");
+            $('#modal-add div').css('background', "#E6003A");
+        });
+      } else {
+          addToCartAjax(size, color, print);
+        }  
+    }); 
+}); 
+
+ */
+/* Style of select  */
+
+// Iterate over each select element
+$('select').each(function () {
+
+  // Cache the number of options
+  var $this = $(this),
+      numberOfOptions = $(this).children('option').length;
+
+  // Hides the select element
+  $this.addClass('s-hidden');
+
+  // Wrap the select element in a div
+  $this.wrap('<div class="select"></div>');
+
+  // Insert a styled div to sit over the top of the hidden select element
+  $this.after('<div class="styledSelect"></div>');
+
+  // Cache the styled div
+  var $styledSelect = $this.next('div.styledSelect');
+
+  // Show the first select option in the styled div
+  $styledSelect.text($this.children('option').eq(0).text());
+
+  // Insert an unordered list after the styled div and also cache the list
+  var $list = $('<ul />', {
+      'class': 'options'
+  }).insertAfter($styledSelect);
+
+  // Insert a list item into the unordered list for each select option
+  for (var i = 0; i < numberOfOptions; i++) {
+      $('<li />', {
+          text: $this.children('option').eq(i).text(),
+          rel: $this.children('option').eq(i).val()
+      }).appendTo($list);
+  }
+
+  // Cache the list items
+  var $listItems = $list.children('li');
+
+  // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+  $styledSelect.click(function (e) {
+      e.stopPropagation();
+      $('div.styledSelect.active').each(function () {
+          $(this).removeClass('active').next('ul.options').hide();
+      });
+      $(this).toggleClass('active').next('ul.options').toggle();
+  });
+
+  // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+  // Updates the select element to have the value of the equivalent option
+  $listItems.click(function (e) {
+      e.stopPropagation();
+      $styledSelect.text($(this).text()).removeClass('active');
+      $this.val($(this).attr('rel'));
+      $list.hide();
+      /* alert($this.val()); Uncomment this for demonstration! */
+  });
+
+  // Hides the unordered list when clicking outside of it
+  $(document).click(function () {
+      $styledSelect.removeClass('active');
+      $list.hide();
+  });
+
+});
+

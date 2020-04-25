@@ -1,3 +1,24 @@
+.empty-cart-title {
+    text-align: center;
+    padding: 20px;
+    border-bottom: 1px solid #8B8B8B;
+    width: 80%;
+    margin: auto;
+    color: #404040;
+}
+
+.empty-cart-description {
+    text-align: center;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    color: #8B8B8B;
+}
+
+.empty-cart-description img {
+    padding: 40px 0;
+}
+
 .cart_info table {
     margin: 20px auto;
     border-top: 1px solid #8B8B8B;
@@ -46,4 +67,161 @@
 
 .cart_description a{
     color: #8B8B8B;
+}
+
+.account {
+    margin: 30px 0;
+    display: flex;
+    align-items: center;
+    box-shadow: 0.5px 1px 1.5px 0.7px lightgrey;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.account img {
+    width: 45px;
+}
+
+.account p {
+    margin: 0;
+    color: #8B8B8B;
+}
+
+.account-right {
+    padding-left: 20px;
+}
+
+.account-right a {
+    color: #404040;
+}
+
+.account-right a:hover {
+    color: #E6003A;
+}
+
+.shipping-details {
+    width: 40%; 
+    margin: 50px auto;
+}
+
+.shipping-details-title {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.number-one {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #E6003A;
+    color: white;
+    border-radius: 15px;
+    padding: 3px;
+    padding-left: 5px;
+    font-weight: 700;
+    margin: 0 10px;
+}
+
+.shipping-details h6 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #404040;
+}
+
+.shipping-details-form input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    outline: none;    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    outline: none;
+    color: #404040;
+}
+
+
+.shipping-details-form input:focus {
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #404040;
+}
+
+.continue {
+    text-align: center;
+}
+
+#review-and-pay {
+    width: 33%;
+    margin-bottom: 40px;
+    border: none;
+    border-radius: 5px;
+    background: #E6003A;
+    color: white;
+    padding: 5px;
+}
+
+.card {
+    border: none;
+}
+
+.payment h6 {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 18px;
+    color: #404040;
+}
+
+.payment div {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    outline: none;    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    outline: none;
+    color: #404040;
+}
+
+
+.payment iframe {
+    width: 100%;
+    border: none;
+    min-height: 30px;
+    max-height: 40px;
+}
+
+.payment input:focus{
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #404040;
+}
+
+.submit-button {
+    width: 33%;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    background: #E6003A;
+    color: white;
+    padding: 5px;
+}
+
+@media (max-width: 767px) {  
+    .empty-cart-title {
+        width: 100%;
+    }
+
+    .empty-cart-description {
+        width: 100%;
+    }
 }

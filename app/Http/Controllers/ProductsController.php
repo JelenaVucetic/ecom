@@ -25,11 +25,11 @@ class ProductsController extends Controller
            /*  $products = DB::table('categories')->rightJoin('product', 'product.category_id', '=', 'categories.id')
             ->rightJoin('product_tag', 'product_tag.product_id', '=', 'categories.id')->get(); */
             $products = Product::all();
-
+            $categories = Category::where('parent_id',NULL)->get();
          //   dd($products);
     /*     }
  */
-        return view('admin.product.index', compact('products'));
+        return view('admin.product.index', compact('products', 'categories'));
     }
 
     public function create()

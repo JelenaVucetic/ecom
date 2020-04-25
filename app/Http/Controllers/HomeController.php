@@ -49,7 +49,9 @@ class HomeController extends Controller
         $cases = DB::table('product')
                 ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
                 ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'Cases')
+                ->where('categories.name', '=', 'Samsung Cases') 
+                ->orWhere('categories.name', '=', 'Iphone Cases')
+                ->orWhere('categories.name', '=', 'Huawei Cases')
                 ->get();
 
         $hoodies = DB::table('product')
@@ -122,7 +124,7 @@ class HomeController extends Controller
         return back()->with('msg', 'item removed from wishlist');
     }
 
-    public function selectSize(Request $request)
+/*     public function selectSize(Request $request)
     {
         $proDum = $request->proDum;
         $size = $request->size;
@@ -132,7 +134,7 @@ class HomeController extends Controller
         foreach($s_price as $sPrice) {
             echo "&euro;" . $sPrice->p_price;
         }
-    }
+    } */
 
     public function addReview(Request $request)
     {

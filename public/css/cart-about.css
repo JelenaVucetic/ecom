@@ -1,0 +1,22 @@
+.cart-about {
+    height: auto;
+    background: none;
+    margin-bottom: 0;
+}
+
+.cart-about-box {
+    width: 80%;
+    box-shadow: none;
+}
+
+
+@media (max-width: 767px) {  
+    .cart-about {
+       padding: 0;
+    }
+    
+    .cart-about-box {
+        width: 100%;
+    }
+    
+}

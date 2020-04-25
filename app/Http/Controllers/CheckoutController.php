@@ -47,7 +47,7 @@ class CheckoutController extends Controller
         $client->validateCallbackWithGlobals();
       
         $callbackResult = $client->readCallback(file_get_contents('php://input'));
-
+        
         $myTransactionId = $callbackResult->getTransactionId();
         $gatewayTransactionId = $callbackResult->getReferenceId(); 
         
@@ -83,7 +83,8 @@ class CheckoutController extends Controller
             //finishCart();
 
             Cart::destroy();
-               
+            return response('OK', 200)
+                  ->header('Content-Type', 'text/plain');   
         } elseif ($callbackResult->getResult() == 'ERROR') {
             //payment failed, handle errors
              
@@ -108,7 +109,8 @@ class CheckoutController extends Controller
                 'first_six_digits' => $first_six_digits,
                 'last_four_digits' => $last_four_digits
             ]);
-                
+            return response('OK', 200)
+            ->header('Content-Type', 'text/plain');   
         } else {
             echo "OK";
         }

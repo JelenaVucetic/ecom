@@ -11,10 +11,10 @@ class Order extends Model
     //
     protected $table = 'orders';
     protected $primarykey='id';
-    protected $fillable = ['total', 'status', 'size', 'color', 'print'];
+    protected $fillable = ['total', 'status', 'size', 'color', 'print', 'phone_model', 'case_style'];
 
     public function orderFields() {
-        return $this->belongsToMany(Product::class)->withPivot('qty', 'total', 'size', 'color', 'print')->withTimestamps();
+        return $this->belongsToMany(Product::class)->withPivot('qty', 'total', 'size', 'color', 'print', 'phone_model', 'case_style')->withTimestamps();
     }
 
     public static function createOrder() {
@@ -41,7 +41,9 @@ class Order extends Model
                 'total' => $cartItem->qty * $cartItem->price,
                 'size' => $cartItem->options->size,
                 'color' => $cartItem->options->color,
-                'print' => $cartItem->options->print ]);
+                'print' => $cartItem->options->print,
+                'phone_model' => $cartItem->options->phoneModel,
+                'case_style' => $cartItem->options->caseStyle  ]);
             $order-> save();
         }
         return $order->id;

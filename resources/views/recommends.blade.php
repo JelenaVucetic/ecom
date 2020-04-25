@@ -15,7 +15,7 @@ if(Auth::check()){
          ->groupBy('pro_id','name','image','price')   
          ->where('uid',Auth::user()->id)
          ->inRandomOrder()
-        ->take(7)
+        ->take(18)
         ->get();
 }else{
  $products2 = DB::table('recommends')
@@ -24,19 +24,20 @@ if(Auth::check()){
          ->distinct('recommends.pro_id')  
          ->groupBy('pro_id','name','image','price')  
          ->inRandomOrder()
-        ->take(7)
+        ->take(18)
         ->get();
 }    
 ?>
-<div >
-<h1>Recomended for you</h1>
-    
-                @foreach($products2 as $p)
+<div>
+    <h1>Recomended for you</h1>
 
-                <div class="slide-item">
-                <div class="product">
-                    <a href="{{ url('/product_details', [$p->pro_id]) }}" class="">
-                        <div class="">
+    <div class="slick-wrapper">
+    <div id="slick7">
+    @foreach($products2 as $p)
+        <div class="slide-item">
+            <div class="product">
+                <a href="{{ url('/product_details', [$p->pro_id]) }}" class="">
+                    <div class="">
                             <div class="">
                                 <img src="{{ url('images', $p->image) }}" class="" alt="">
                             </div>
@@ -58,31 +59,9 @@ if(Auth::check()){
                     </a> 
                 </div>
             </div>
-
-
-
-
-        <!--     <div class="col-sm-4">
-                <div class="product-image-wrapper">
-                    <div class="single-products">
-                        <div class="productinfo text-center">
-                          
-                                <img  style="width:200px;height:200px;" src="{{url('images',$p->image)}}" alt="" />
-                            <h2>${{$p->price}}</h2>
-                            <p> {{$p->name}}</p>
-                            <a href="{{url('/cart/addItem')}}/{{$p->pro_id}}" class="btn btn-default add-to-cart">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to cart</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div> -->
-            @endforeach
-            
+        @endforeach
         </div>
     </div>
-     
 </div>
 
 

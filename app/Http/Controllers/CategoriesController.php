@@ -36,7 +36,6 @@ class CategoriesController extends Controller
     }
 
 
-   
 
     public function show($id) {
         $products = Category::find($id)->products;

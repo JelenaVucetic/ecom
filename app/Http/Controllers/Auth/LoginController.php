@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use App\Category;
 class LoginController extends Controller
 {
     /*
@@ -41,4 +41,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm() {
+        $categories = Category::where('parent_id',NULL)->get();
+
+        return view('auth.login', compact('categories'));
+    } 
 }

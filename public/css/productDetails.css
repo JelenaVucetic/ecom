@@ -65,19 +65,20 @@
     margin: 20px 0;
 }
 
+.xs-size,
 .s-size,
 .m-size,
 .l-size,
 .xl-size,
-.xxl-size,
-.xxxl-size {
+.xxl-size {
     margin: 0 5px 0 0;
     width: 33px;
     height: 33px;
     position: relative;
 }
 
-
+.xs-size span,
+.xs-size input,
 .s-size span,
 .s-size input,
 .m-size span,
@@ -87,9 +88,7 @@
 .xl-size span,
 .xl-size input,
 .xxl-size span,
-.xxl-size input,
-.xxxl-size span,
-.xxxl-size input {
+.xxl-size input {
   display: block;
   position: absolute;
   top: 0;
@@ -98,27 +97,38 @@
   bottom: 0;
 }
 
+.xs-size input[type="radio"],
 .s-size input[type="radio"],
 .m-size input[type="radio"],
 .l-size input[type="radio"],
 .xl-size input[type="radio"],
-.xxl-size input[type="radio"],
-.xxxl-size input[type="radio"] {
+.xxl-size input[type="radio"] {
   opacity: 0.01;
   z-index: 100;
   width: 0px;
 }
 
+.xs-size input[type="radio"]:checked+span,
 .s-size input[type="radio"]:checked+span,
 .m-size input[type="radio"]:checked+span,
 .l-size input[type="radio"]:checked+span,
 .xl-size input[type="radio"]:checked+span,
-.xxl-size input[type="radio"]:checked+span,
-.xxxl-size input[type="radio"]:checked+span,
+.xxl-size input[type="radio"]:checked+span
 .Checked+span {
     background: #E6003A;
     color: white;
     border: none;
+}
+
+.xs-size span   {
+    background: white;
+    color: #404040;
+    border: 1px solid #DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 7px;
+    padding-top: 3px;
 }
 
 .s-size span,
@@ -130,7 +140,7 @@
     cursor: pointer;
     z-index: 90;
     padding-left: 10px;
-    padding-top: 2px;
+    padding-top: 3px;
 }
 
 .m-size span {
@@ -156,8 +166,7 @@
 }
 
 
-.xxl-size span,
-.xxxl-size span   {
+.xxl-size span {
     background: white;
     color: #404040;
     border: 1px solid #DEDEDE;
@@ -168,12 +177,12 @@
     padding-top: 2px;
 }
 
+.xs-size span:hover 
 .s-size span:hover,
 .m-size span:hover,
 .l-size span:hover,
 .xl-size span:hover,
-.xxl-size span:hover,
-.xxxl-size span:hover {
+.xxl-size span:hover{
   background: #E6003A;
   color: white;
   border: none;
@@ -418,4 +427,102 @@
     border-radius: 5px;
     color: #8B8B8B;
     outline: none;
+}
+
+.phone-product {
+    display: none;
+}
+
+.slick-dots {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+}
+
+.slick-dots button {
+    text-indent: -9999em;
+    margin: 2px;
+    border: none;
+    border-radius: 10px;
+    width: 15px;
+    height: 15px;
+}
+.slick-dots .slick-active button {
+    background: #404040;
+    text-indent: -9999em;
+}
+
+
+/* Select style */
+
+.s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+}
+.select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    color:#404040;
+    border:1px solid #ccc;
+    width: 90%;
+    height: 35px;
+    border-radius: 7px;
+}
+.styledSelect {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.styledSelect:after {
+    content:"";
+    width:0;
+    height:0;
+    border:5px solid transparent;
+    border-color:black transparent transparent transparent;
+    position:absolute;
+    top:9px;
+    right:6px;
+}
+.styledSelect:active, .styledSelect.active {
+}
+.options {
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    margin:0 0;
+    padding:0 0;
+    background: #F5F5F5;
+    list-style:none;
+    border:1px solid #ccc;
+    -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.options li {
+    padding:0 6px;
+    margin:0 0;
+    padding:0 10px;
+}
+.options li:hover {
+    background-color:#8B8B8B;
+}
+
+
+@media (max-width: 767px) {  
+    .desctop-product {
+        display: none;
+    }
+
+    .phone-product {
+        display: block;
+    }
 }

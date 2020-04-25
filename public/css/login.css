@@ -1,0 +1,121 @@
+.new-card {
+    margin-bottom: 100px;
+}
+
+.login-header {
+    background: none;
+    text-align: center;
+    font-size: 22px;
+    border-bottom: 1px solid #8B8B8B;
+    color: #404040;
+}
+
+.login-header p {
+    margin: 0;
+    font-size: 17px;
+    color: #404040;
+}
+
+.login-header a {
+    font-size: 17px;
+    color: #404040;
+}
+
+
+.login-filds {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #404040;
+}
+
+.login-filds div {
+    width: 50%;
+}
+
+.login-filds div input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    outline: none;    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    outline: none;
+    color: #404040;
+}
+
+.login-filds div input:focus{
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #404040;
+}
+
+.login-filds label {
+    width: 50%;
+    color: #404040;
+}
+
+.login-footer {
+    display: flex;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-between;
+    color: #404040;
+    padding: 10px;
+}
+
+.login-footer a {
+    font-size: 16px;
+    color: #404040;
+}
+
+.button-for-login {
+    text-align: center;
+}
+
+.button-for-login button {
+    width: 50%;
+    margin: 20px;
+    border-radius: 20px;
+    background: #E7667C;
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 5px;
+}
+
+.button-for-login button:hover {
+    background: rgb(201, 70, 92);
+}
+
+.button-for-login button:focus {
+    background: rgb(201, 70, 92);
+    border: none;
+    outline: none;
+}
+
+
+@media (max-width: 940px) {  
+    .new-card {
+        margin-bottom: 50px;
+    }    
+
+    .login-filds div {
+        width: 80%;
+    }
+
+    .login-filds label {
+        width: 80%
+    }
+    .login-footer {
+        width: 80%;
+    }
+
+    .button-for-login button {
+        width: 80%;
+    }
+}

@@ -25,7 +25,7 @@
           @endif
         
           <?php } else { ?>
-            <a class="dropdown-item"href="{{ url('/login') }}">Login</a>
+            <a class="dropdown-item" href="{{ url('/login') }}">Login</a>
           <?php } ?>
         </div>
       </li>

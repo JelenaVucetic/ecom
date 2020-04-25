@@ -3,22 +3,38 @@ var publicIntegrationKey = 'Etl3lMjFydB0a2tloU09';
 //var numberDiv = document.getElementById('number_div');
 //var cvvDiv = document.getElementById('cvv_div');  
 payment.init('Etl3lMjFydB0a2tloU09', 'number_div', 'cvv_div', function(payment) {
+    var focusStyle = {
+        'outline': 'none',
+        'box-shadow': 'none',
+        'border-bottom': '1px solid #404040'
+      };
+
     payment.setNumberStyle({ 
         //'border': '1px solid red', 
-        'width': '178px',
-        'height': '30px'
+        'width': '100%',
+        'height': '30px',
+        'border-top': 'none',
+        'border-left': 'none',
+        'border-right': 'none'
     });
     payment.setCvvStyle({
        // 'border': '1px solid red', 
-       'width': '178px',
-       'height': '30px'
+       'width': '100%',
+       'height': '30px',
+       'border-top': 'none',
+       'border-left': 'none',
+       'border-right': 'none'
      });
-    payment.numberOn('input', function(data) {
-       // console.log(data);
-    })
-    payment.cvvOn('input', function(data) {
-        //console.log(data);
-    })
+  
+     // Focus events
+        payment.numberOn('focus', function() {
+            numberFocused = true;
+            payment.setNumberStyle(focusStyle);
+        });
+        payment.cvvOn('focus', function() {
+            cvvFocused = true;
+            payment.setCvvStyle(focusStyle);
+        });
    
 });
 function interceptSubmit() {

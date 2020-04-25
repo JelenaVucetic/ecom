@@ -167,5 +167,5 @@
     </div>
   </div>
 </div>
-
+@include('layouts.subscribe')
 @endsection
