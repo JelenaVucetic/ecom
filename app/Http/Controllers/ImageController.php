@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator,Redirect,Response,File;
 use DB;
+use App\Category;
 use Illuminate\Support\Facades\Input;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
@@ -14,11 +15,12 @@ use Intervention\Image\Facades\Image;
 class ImageController extends Controller
 {
     public function index() {
-        return view('admin.upload_design.work');
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('admin.upload_design.work', compact('categories'));
     }
   
     public function upload(Request $request){
-          
+        $categories = Category::where('parent_id',NULL)->get();
         $this->validate($request, [
             'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048|jfif',
 
@@ -49,7 +51,7 @@ class ImageController extends Controller
         $image1->save('image/' . $image1->basename); 
  
 
-        return view('admin.upload_design.work', compact(['image']));
+        return view('admin.upload_design.work', compact(['image','categories']));
 
 }
 

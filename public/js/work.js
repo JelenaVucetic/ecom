@@ -14,11 +14,12 @@ $(document).ready(function(){
             $('#proizvod').removeClass('disabledbutton');
             $( "#proizvod" ).attr( "value" , 0 );
             $('#enabled-product').html('Enabled');
-            
+            $('#enabled-product').addClass('enable');
         }else{
             $('#proizvod').addClass('disabledbutton');
             $( "#proizvod" ).attr( "value", 1 );
             $('#enabled-product').html('Disabled');
+            $('#enabled-product').removeClass('enable');
         }
     }); 
     // Enable and edit T-Shirt
@@ -35,10 +36,12 @@ $(document).ready(function(){
             $('#proizvod1').removeClass('disabledbutton');
             $( "#proizvod1" ).attr( "value" , 0 );
             $('#enabled-product1').html('Enabled');
+            $('#enabled-product1').addClass('enable');
         }else{
             $('#proizvod1').addClass('disabledbutton');
             $( "#proizvod1" ).attr( "value" , 1 );
             $('#enabled-product1').html('Disabled');
+            $('#enabled-product1').removeClass('enable');
         }
     });
 
@@ -56,10 +59,12 @@ $(document).ready(function(){
             $('#proizvod2').removeClass('disabledbutton');
             $( "#proizvod2" ).attr( "value" , 0 );
             $('#enabled-product2').html('Enabled');
+            $('#enabled-product2').addClass('enable');
         }else{
             $('#proizvod2').addClass('disabledbutton');
             $( "#proizvod2" ).attr( "value" , 1 );
             $('#enabled-product2').html('Disabled');
+            $('#enabled-product2').removeClass('enable');
         }
     });
     
@@ -77,10 +82,12 @@ $(document).ready(function(){
             $('#proizvod3').removeClass('disabledbutton');
             $( "#proizvod3" ).attr( "value" , 0 );
             $('#enabled-product3').html('Enabled');
+            $('#enabled-product3').addClass('enable');
         }else{
             $('#proizvod3').addClass('disabledbutton');
             $( "#proizvod3" ).attr( "value" , 1 );
             $('#enabled-product3').html('Disabled');
+            $('#enabled-product3').removeClass('enable');
         }
     });
 
@@ -99,10 +106,12 @@ $(document).ready(function(){
                 $('#proizvod4').removeClass('disabledbutton');
                 $( "#proizvod4" ).attr( "value" , 0 );
                 $('#enabled-product4').html('Enabled');
+                $('#enabled-product4').addClass('enable');
             }else{
                 $('#proizvod4').addClass('disabledbutton');
                 $( "#proizvod4" ).attr( "value" , 1 );
                 $('#enabled-product4').html('Disabled');
+                $('#enabled-product4').removeClass('enable');
             }
         });
 
@@ -120,10 +129,12 @@ $(document).ready(function(){
                 $('#proizvod5').removeClass('disabledbutton');
                 $( "#proizvod5" ).attr( "value" , 0 );
                 $('#enabled-product5').html('Enabled');
+                $('#enabled-product5').addClass('enable');
             }else{
                 $('#proizvod5').addClass('disabledbutton');
                 $( "#proizvod5" ).attr( "value" , 1 );
                 $('#enabled-product5').html('Disabled');
+                $('#enabled-product5').removeClass('enable');
             }
         });
 
@@ -141,10 +152,12 @@ $(document).ready(function(){
                 $('#proizvod6').removeClass('disabledbutton');
                 $( "#proizvod6" ).attr( "value" , 0 );
                 $('#enabled-product6').html('Enabled');
+                $('#enabled-product6').addClass('enable');
             }else{
                 $('#proizvod6').addClass('disabledbutton');
                 $( "#proizvod6" ).attr( "value" , 1 );
                 $('#enabled-product6').html('Disabled');
+                $('#enabled-product6').removeClass('enable');
             }
         });
 
@@ -163,10 +176,12 @@ $(document).ready(function(){
                 $('#proizvod7').removeClass('disabledbutton');
                 $( "#proizvod7" ).attr( "value" , 0 );
                 $('#enabled-product7').html('Enabled');
+                $('#enabled-product7').addClass('enable');
             }else{
                 $('#proizvod7').addClass('disabledbutton');
                 $( "#proizvod7" ).attr( "value" , 1 );
                 $('#enabled-product7').html('Disabled');
+                $('#enabled-product7').removeClass('enable');
             }
         });
 
@@ -184,10 +199,12 @@ $(document).ready(function(){
                 $('#proizvod8').removeClass('disabledbutton');
                 $( "#proizvod8" ).attr( "value" , 0 );
                 $('#enabled-product8').html('Enabled');
+                $('#enabled-product8').addClass('enable');
             }else{
                 $('#proizvod8').addClass('disabledbutton');
                 $( "#proizvod8" ).attr( "value" , 1 );
                 $('#enabled-product8').html('Disabled');
+                $('#enabled-product8').removeClass('enable');
             }
         });
 
@@ -205,10 +222,12 @@ $(document).ready(function(){
                 $('#proizvod9').removeClass('disabledbutton');
                 $( "#proizvod9" ).attr( "value" , 0 );
                 $('#enabled-product9').html('Enabled');
+                $('#enabled-product9').addClass('enable');
             }else{
                 $('#proizvod9').addClass('disabledbutton');
                 $( "#proizvod9" ).attr( "value" , 1 );
                 $('#enabled-product9').html('Disabled');
+                $('#enabled-product9').removeClass('enable');
             }
         });
 
@@ -226,10 +245,12 @@ $(document).ready(function(){
                     $('#proizvod10').removeClass('disabledbutton');
                     $( "#proizvod10" ).attr( "value" , 0 );
                     $('#enabled-product10').html('Enabled');
+                    $('#enabled-product10').addClass('enable');
                 }else{
                     $('#proizvod10').addClass('disabledbutton');
                     $( "#proizvod10" ).attr( "value" , 1 );
                     $('#enabled-product10').html('Disabled');
+                    $('#enabled-product10').removeClass('enable');
                 }
             });
 
@@ -247,10 +268,12 @@ $(document).ready(function(){
                     $('#proizvod11').removeClass('disabledbutton');
                     $( "#proizvod11" ).attr( "value" , 0 );
                     $('#enabled-product11').html('Enabled');
+                    $('#enabled-product11').addClass('enable');
                 }else{
                     $('#proizvod11').addClass('disabledbutton');
                     $( "#proizvod11" ).attr( "value" , 1 );
                     $('#enabled-product11').html('Disabled');
+                    $('#enabled-product11').removeClass('enable');
                 }
             });
 
@@ -268,10 +291,12 @@ $(document).ready(function(){
                     $('#proizvod12').removeClass('disabledbutton');
                     $( "#proizvod12" ).attr( "value" , 0 );
                     $('#enabled-product12').html('Enabled');
+                    $('#enabled-product12').addClass('enable');
                 }else{
                     $('#proizvod12').addClass('disabledbutton');
                     $( "#proizvod12" ).attr( "value" , 1 );
                     $('#enabled-product12').html('Disabled');
+                    $('#enabled-product12').removeClass('enable');
                 }
             });
 

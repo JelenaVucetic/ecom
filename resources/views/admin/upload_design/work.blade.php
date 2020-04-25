@@ -29,8 +29,8 @@
             PhoneCase
         </span>
         <div>
-        <button id="edit-product">Edit</button>
-        <button id="enabled-product">Disabled</button>
+        <button id="edit-product" class="edit-button">Edit</button>
+        <button id="enabled-product" class="enable-button">Disabled</button>
 
 
         </div>
@@ -54,8 +54,8 @@
             T-Shirt
         </span>
         <div>
-        <button id="edit-product1">Edit</button>
-        <button id="enabled-product1" onclick="">Disabled</button>
+        <button id="edit-product1" class="edit-button">Edit</button>
+        <button id="enabled-product1" class="enable-button" onclick="">Disabled</button>
         </div>
     </div>
 </div>
@@ -77,8 +77,8 @@
                 Mug
             </span>
             <div>
-            <button id="edit-product2">Edit</button>
-            <button id="enabled-product2" onclick="">Disabled</button>
+            <button id="edit-product2" class="edit-button">Edit</button>
+            <button id="enabled-product2" class="enable-button" onclick="">Disabled</button>
             </div>
         </div>
     </div>
@@ -90,6 +90,7 @@
 
 
         {{-- Canvas edit for Phone Case --}}
+        
 <div id="product3" class="img-div" data-value="1" style="display:none">
 
     <div id="app3" >
@@ -127,7 +128,7 @@
         </div>
     </div>
     </div>
-
+        
 
 
 
@@ -227,8 +228,8 @@
                   Hoodie
               </span>
               <div>
-              <button id="edit-product3">Edit</button>
-              <button id="enabled-product3">Disabled</button>
+              <button id="edit-product3" class="edit-button">Edit</button>
+              <button id="enabled-product3" class="enable-button">Disabled</button>
               </div>
           </div>
       </div>
@@ -248,8 +249,8 @@
                   Long Sleeve
               </span>
               <div>
-              <button id="edit-product4">Edit</button>
-              <button id="enabled-product4">Disabled</button>
+              <button id="edit-product4" class="edit-button">Edit</button>
+              <button id="enabled-product4" class="enable-button">Disabled</button>
               </div>
           </div>
       </div>
@@ -269,8 +270,8 @@
                 Graphic T-Shirt Dresses
               </span>
               <div>
-              <button id="edit-product5">Edit</button>
-              <button id="enabled-product5">Disabled</button>
+              <button id="edit-product5" class="edit-button">Edit</button>
+              <button id="enabled-product5" class="enable-button">Disabled</button>
               </div>
           </div>
       </div>
@@ -387,8 +388,8 @@
                       Stickers
                     </span>
                     <div>
-                    <button id="edit-product6">Edit</button>
-                    <button id="enabled-product6">Disabled</button>
+                    <button id="edit-product6" class="edit-button">Edit</button>
+                    <button id="enabled-product6" class="enable-button">Disabled</button>
                     </div>
                 </div>
             </div>
@@ -408,8 +409,8 @@
                   Notes
               </span>
               <div>
-              <button id="edit-product7">Edit</button>
-              <button id="enabled-product7">Disabled</button>
+              <button id="edit-product7" class="edit-button">Edit</button>
+              <button id="enabled-product7" class="enable-button">Disabled</button>
               </div>
           </div>
       </div>
@@ -430,8 +431,8 @@
                   Clock
               </span>
               <div>
-              <button id="edit-product8">Edit</button>
-              <button id="enabled-product8">Disabled</button>
+              <button id="edit-product8" class="edit-button">Edit</button>
+              <button id="enabled-product8" class="enable-button">Disabled</button>
               </div>
           </div>
       </div>
@@ -542,8 +543,8 @@
                               Termos
                           </span>
                           <div>
-                          <button id="edit-product9">Edit</button>
-                          <button id="enabled-product9">Disabled</button>
+                          <button id="edit-product9" class="edit-button">Edit</button>
+                          <button id="enabled-product9" class="enable-button">Disabled</button>
                           </div>
                       </div>
                   </div>
@@ -563,8 +564,8 @@
                               Ceger
                           </span>
                           <div>
-                          <button id="edit-product10">Edit</button>
-                          <button id="enabled-product10">Disabled</button>
+                          <button id="edit-product10" class="edit-button">Edit</button>
+                          <button id="enabled-product10" class="enable-button">Disabled</button>
                           </div>
                       </div>
                   </div>
@@ -584,8 +585,8 @@
                               Poster
                           </span>
                           <div>
-                          <button id="edit-product11">Edit</button>
-                          <button id="enabled-product11">Disabled</button>
+                          <button id="edit-product11" class="edit-button">Edit</button>
+                          <button id="enabled-product11" class="enable-button">Disabled</button>
                           </div>
                       </div>
                   </div>
