@@ -27,11 +27,6 @@ class CheckoutController extends Controller
         return view('payment_info', compact('categories', 'payment'));
     }
 
-    public function error() {
-        $categories = Category::where('parent_id',NULL)->get();     
-        return view('error', compact('categories'));
-    }
-
     public function cancel() {
         $categories = Category::where('parent_id',NULL)->get();
         return view('cancel', compact('categories'));
@@ -83,8 +78,10 @@ class CheckoutController extends Controller
             //finishCart();
 
             Cart::destroy();
+
             return response('OK', 200)
-                  ->header('Content-Type', 'text/plain');   
+                  ->header('Content-Type', 'text/plain');  
+
         } elseif ($callbackResult->getResult() == 'ERROR') {
             //payment failed, handle errors
              
@@ -109,13 +106,13 @@ class CheckoutController extends Controller
                 'first_six_digits' => $first_six_digits,
                 'last_four_digits' => $last_four_digits
             ]);
+            
             return response('OK', 200)
             ->header('Content-Type', 'text/plain');   
         } else {
             echo "OK";
         }
-        
-         
+             
     }
 
     public function formvalidate(Request $request)
@@ -144,8 +141,8 @@ class CheckoutController extends Controller
                 'zip.reges' => 'Zip must have 5 digits',
                 'city.required' => 'Please enter your city name',
             ]);
-
-      /*   // Include the autoloader (if not already done via Composer autoloader)
+/* 
+         // Include the autoloader (if not already done via Composer autoloader)
         require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
@@ -162,9 +159,9 @@ class CheckoutController extends Controller
         $merchantTransactionId = 'myId'.date('Y-m-d').'-'.uniqid(); 
 
         $debit->setTransactionId($merchantTransactionId)
-            ->setSuccessUrl('https://urbanone.me/thankyou')
+            ->setSuccessUrl('https://urbanone.me/payment_info')
             ->setCancelUrl('https://urbanone.me/cancel')
-            ->setErrorUrl('https://urbanone.me/thankyou')
+            ->setErrorUrl('https://urbanone.me/payment_info')
             ->setCallbackUrl('https://urbanone.me/callback')
             ->setAmount($request->amount)
             ->setCurrency('EUR')
@@ -202,9 +199,11 @@ class CheckoutController extends Controller
             
                 //finishCart();
             }
-        }
-
- */
+        } else {
+            $categories = Category::where('parent_id',NULL)->get();
+            $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
+            return view('profile.thankyou', compact('categories', 'payment'));
+        } */
 
         if (Auth::check()) {
             $userid = Auth::user()->id;

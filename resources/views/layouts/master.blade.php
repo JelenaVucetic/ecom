@@ -62,6 +62,7 @@
         <link rel="stylesheet" href="/css/productDetails.css">
         <link rel="stylesheet" href="/css/login.css">
         <link rel="stylesheet" href="/css/footer.css">
+        <link rel="stylesheet" href="/css/modal.css">
         @yield('cart-about-style.css')
        <!--  Payment script -->
 

@@ -361,6 +361,9 @@
     margin-left: 10px;
 }
 
+.delivery {
+    margin: 20px 0;
+}
 
 .delivery div{
     display: flex;
@@ -415,12 +418,14 @@
 }
 
 .phone-model,
-.case-style {
+.case-style,
+.choose-size {
     margin: 20px 0;
 }
 
 .phone-model select,
-.case-style select {
+.case-style select,
+.choose-size select {
     width: 100%;
     padding: 5px;
     border: 1px solid #8B8B8B;
@@ -496,6 +501,7 @@
     display:none;
     position:absolute;
     top:100%;
+    z-index: 999;
     right:0;
     left:0;
     margin:0 0;
@@ -514,6 +520,19 @@
 }
 .options li:hover {
     background-color:#8B8B8B;
+}
+
+.custom {
+    margin: 20px 0;
+}
+
+.custom input {
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #8B8B8B;
+    width: 90%;
+    height: 35px;
+    padding: 0 10px
 }
 
 

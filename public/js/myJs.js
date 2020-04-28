@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 /*   Adding to cart with size */
 
-function addToCartAjax(size, color, print, phoneModel, caseStyle) {
+function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var p = $('#test');
@@ -96,7 +96,10 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle) {
           color: color,
           print: print,
           phoneModel: phoneModel,
-          caseStyle: caseStyle
+          caseStyle: caseStyle,
+          customCase: customCase,
+          posterSize: posterSize,
+          pictureSize: pictureSize
         },
         beforeSend: function() {
               modalAddBtn.attr('data-dismiss', 'modal');
@@ -126,19 +129,23 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle) {
     });
   }
 
-  
-
 $(document).ready(function(){
     $('#add').on('click', function(){
-        var phoneModel = $( ".cases option:selected" ).val()
-        var caseStyle = $( ".cases-style option:selected" ).val()
+        $('#btn-add-to-cart').removeAttr('data-toggle');
+        $('#btn-add-to-cart').removeAttr('data-target');
+        
+        var phoneModel = $( ".cases option:selected" ).val();
+        var caseStyle = $( ".cases-style option:selected" ).val();
+        var posterSize = $( ".poster-size option:selected" ).val();
+        var pictureSize = $( ".picture-size option:selected" ).val();
         var parent = $(this).parent();
         var size = $('.size-class:checked').val();
         var color = $('.color-class:checked').val();
         var print = $('.print-class:checked').val();
-        $('#btn-add-to-cart').removeAttr('data-toggle');
-        $('#btn-add-to-cart').removeAttr('data-target');
+        var customCase = $("#custom").val();
+
         var pro_cat = $('#pro_cat').val();
+
         if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
@@ -149,16 +156,71 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(size, color, print, phoneModel, caseStyle ); 
+              addToCartAjax(size, color, print); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
-        } else {
-            addToCartAjax(size, color, print, phoneModel, caseStyle);
+        } else if(pro_cat == "Custom" && !customCase) {
+          alert('unesi teks');
+        } 
+        else {
+            addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
           }  
       }); 
 }); 
+
+$(document).ready(function(){
+  $('#picture-custom').css('display', "none");
+  var pro_cat = $('#pro_cat').val();
+  $('.options li').on('click', function() {
+    var pictureSize = $( "#picture option:selected" ).val();
+    if(pro_cat == "Pictures" && pictureSize == 'custom') {
+      $('#picture-custom').css('display', "block");
+    }
+  });
+});
+/* $(document).ready(function(){
+  var proDum = $('#proDum').val();
+  $('.options li').on('click', function() {
+    $('#price_b2').html(result);
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+      url: "/product_price/" + proDum,
+      method: 'post',
+      data: {
+          pro_id: proDum,
+          sizeSelected: $(this).html()
+      },
+      success: function(result){
+        location.reload();
+      }
+      }); 
+
+  });
+}); */
+
+/* $(document).ready(function(){
+  var proDum = $('#proDum').val();
+
+    $('#posters').change(function() {
+alert('fds');
+    $.ajax({
+      url: "/product_details" + proDum,
+      method: 'post',
+      data: {
+          sizeSelected: $(this).val(),
+      },
+      success: function(result){
+          $('.alert').show();
+          $('.alert').html(result.success);
+      }
+      }); 
+
+  });
+});  */
 
 /* 
 $(document).ready(function(){
@@ -192,6 +254,8 @@ $(document).ready(function(){
 }); 
 
  */
+
+
 /* Style of select  */
 
 // Iterate over each select element

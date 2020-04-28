@@ -81,6 +81,7 @@ class HomeController extends Controller
         $product = DB::table('product')->where('id', $id)->first();
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
+        $poster_size = ' ';
 
         if(Auth::check()) {
             $recommends = new Recommends;
@@ -94,7 +95,7 @@ class HomeController extends Controller
             $recommends->save();
         }
 
-        return view('product_details', compact('product', 'categories', 'design'));
+        return view('product_details', compact('product', 'categories', 'design', 'poster_size'));
     }
 
     public function viewWishlist()
@@ -145,9 +146,9 @@ class HomeController extends Controller
             'review_content' => 'required|min:3|max:35',
         ],
             [
-                'person_name.required' => 'Enter Your Name',
-                'review_title.required' => 'Enter Title',
-                'review_content.required' => 'Enter description',
+                'person_name.required' => 'Please enter your name.',
+                'review_title.required' => 'Please enter review title.',
+                'review_content.required' => 'Please enter review description',
             ]);
         DB::table('reviews')->insert(['person_name' => $request->person_name,
                                     'product_id' => $request->product_id,
@@ -204,8 +205,8 @@ class HomeController extends Controller
             'query' => 'required|min:3'
         ],
             [
-                'query.required' => 'Unesite nesto',
-                'query.min' => 'Mora da ima vise od 3 karaktera'
+                'query.required' => 'Please fill in this field.',
+                'query.min' => 'Your search must have more than three caracters.'
             ]);
         $query = $request->input('query');
        /*  $products = DB::table('product')->where('name', 'like',  "%$query%")
@@ -216,4 +217,10 @@ class HomeController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         return view('search-results', compact('products', 'categories'));
     }
+/* 
+    public function product_price(Request $request) {
+        $poster_size = $request->sizeSelected;
+        
+        return view('product_details', compact('poster_size'));
+    } */
 }

@@ -92,6 +92,8 @@ class ProductsController extends Controller
         $category_id = $request->cat_id;
         $description = $request->description;
         $price = $request->price;
+        $priceB2 = $request->price_b2;
+        $priceB1 = $request->price_b1;
         $spl_price = $request->spl_price;
 
 
@@ -100,7 +102,11 @@ class ProductsController extends Controller
             'category_id' => $category_id,
             'description' => $description,
             'price'=> $price,
-            'spl_price' => $spl_price
+            'price_b2'=> $priceB2,
+            'price_b1'=> $priceB1,
+            'price'=> $price,
+            'spl_price' => $spl_price,
+            'updated_at' => date("Y-m-d H:i:s")
         ]);
 
         return redirect()->back()->with('status', 'Product updated!');
