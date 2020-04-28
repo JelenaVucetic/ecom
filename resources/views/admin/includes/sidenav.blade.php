@@ -1,5 +1,7 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
     <div class="sidebar-sticky">
+    <h1>Gajoza, ovo ispod je ikonica!</h1>
+    <i class="fa fa-heart-o fa-2x"></i>
     <ul class="nav flex-column">
         <li class="nav-item">
         <a class="nav-link active" href="/admin">
