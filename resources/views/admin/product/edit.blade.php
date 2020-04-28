@@ -64,6 +64,20 @@
                       @enderror
                     </div>
                     <div class="form-group">
+                        {{ Form::label('price_b2', 'Price B2') }}
+                        {{ Form::text('price_b2', $product->price_b2 , array('class' => 'form-control')) }}
+                    @error('price_b2')
+                      <p class="help is-danger" style="color:red;">{{ $errors->first('price_b2')}}</p>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('price_b1', 'Price B1') }}
+                        {{ Form::text('price_b1', $product->price_b1 , array('class' => 'form-control')) }}
+                    @error('price_b2')
+                      <p class="help is-danger" style="color:red;">{{ $errors->first('price_b1')}}</p>
+                      @enderror
+                    </div>
+                    <div class="form-group">
                         {{ Form::label('image', 'Image') }}
                         {{ Form::file('image', null, array('class' => 'form-control')) }}
                      @error('image')

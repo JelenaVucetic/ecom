@@ -14,16 +14,14 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = Cart::content();
-    
         $categories = Category::where('parent_id',NULL)->get();
         $oldPrice =  Cart::subtotal();
-       //dd($cartItems);
-       $countTotal=0;
-       foreach($cartItems as $c) {
-         $countTotal = $c->qty + $countTotal;
-       }
-       if( $countTotal >= 3 &&  $countTotal < 5 ) {
-         $cartSubTotal = Cart::subtotal() * 0.9;
+        $countTotal=0;
+        foreach($cartItems as $c) {
+            $countTotal = $c->qty + $countTotal;
+        }
+        if( $countTotal >= 3 &&  $countTotal < 5 ) {
+            $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
             $cartSubTotal = Cart::subtotal() * 0.8;
         } else {
@@ -39,11 +37,13 @@ class CartController extends Controller
         if($product->spl_price==0) {
             $cart= Cart::add( $id, $product->name, 1, $product->price, 0,
                          ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
-                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle  ]);
+                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
+                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize   ]);
         } else {
             $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, 
                         ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
-                        'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle ]);
+                        'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
+                        'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize  ]);
         }
         return back();
     }

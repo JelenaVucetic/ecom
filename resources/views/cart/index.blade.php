@@ -117,6 +117,15 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                               @if($cartItem->options->caseStyle !== null) 
                             <span>{{ $cartItem->options->caseStyle}}</span>
                               @endif
+                              @if($cartItem->options->customCase !== null) 
+                            <span>{{ $cartItem->options->customCase}}</span>
+                              @endif
+                              @if($cartItem->options->posterSize !== null) 
+                            <span>{{ $cartItem->options->posterSize}}</span>
+                              @endif
+                              @if($cartItem->options->pictureSize !== null) 
+                            <span>{{ $cartItem->options->pictureSize}}</span>
+                              @endif
                         </td>
                         <td class="cart_price">
                             <p>{{$cartItem->price}}&euro;</p>

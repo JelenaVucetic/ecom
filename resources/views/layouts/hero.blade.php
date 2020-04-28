@@ -8,7 +8,7 @@
         <form action="{{ route('search') }}" class="form-inline ml-auto" method="get" >
             <div class="searchIDiv">
             <div class="searchI">
-              <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search design and products" ><i class="fa fa-search" aria-hidden="true"></i>
+              <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search design and products" required><i class="fa fa-search" aria-hidden="true"></i>
             </div>
           </div>
           </form>
@@ -33,9 +33,9 @@
             </button>
             @if ($category->children)
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background:white; color:#231f20!important">
-            @foreach ($category->children as $child)
+              @foreach ($category->children as $child)
                 <a class="dropdown-item" style=" color:#231f20!important;" href="{{route('category.show',$child->id)}}">{{($child->name) }}</a>
-                @endforeach
+              @endforeach
             </div>
             @endif
         </div>

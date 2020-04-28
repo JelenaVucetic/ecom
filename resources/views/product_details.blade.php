@@ -2,62 +2,9 @@
 
 @section('content')
   <div class="container-fluid">
-
-  <div id="my-modal-form" >
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Please choose a size</h5>
-                  </div>
-                  <div class="modal-body">
-                  <div class="select-size">
-                      <h5>Size</h5>
-                        <label class="xs-size">
-                            <input type="radio" name="size" id="xs" value="XS" class="size-modal">
-                            <span>3XL</span>
-                        </label>
-                        <label class="s-size">
-                            <input type="radio" name="size" id='s' value="S" class="size-modal">
-                            <span>S</span>
-                        </label>
-                        <label class="m-size">
-                            <input type="radio" name="size" id="m" value="M" class="size-modal">
-                            <span>M</span>
-                        </label>
-                        <label class="l-size">
-                            <input type="radio" name="size" id='l' value="L" class="size-modal">
-                            <span>L</span>
-                        </label>
-                        <label class="xl-size">
-                            <input type="radio" name="size" id='xl' value="XL" class="size-modal">
-                            <span>XL</span>
-                        </label>
-                        <label class="xxl-size">
-                            <input type="radio" name="size" id="xxl" value="2XL" class="size-modal">
-                            <span>2XL</span>
-                        </label>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                    <a id="modal-add" style="cursor:pointer;"> 
-                      <div>
-                        <p>Add to cart</p>
-                      </div>
-                    </a>
-                    <p>
-                    Returns are free and easy. <br>
-                    Because you need to be happy. We all do.
-                    </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-      <!--  For Phone -->
+  @include('modals.size_modal')
+  @include('modals.view_size_guid_modal')
+<!--  For Phone -->
 
   <div class="phone-product">
    <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light" style="padding: 10px;margin: 0 -15px;">
@@ -93,116 +40,8 @@
               </div>
           </div>
       </div>
-      <?php $pro_cat = App\Product::find($product->id); ?>
-      @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
-          <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
-          <div class="select-size">
-            <h5>Size</h5>
-              <label class="xs-size">
-                  <input type="radio" name="size" id="xs" value="XS" class="size-class test">
-                  <span>XS</span>
-              </label>
-              <label class="s-size">
-                  <input type="radio" name="size" id='s' value="S" class="size-class test">
-                  <span>S</span>
-              </label>
-              <label class="m-size">
-                  <input type="radio" name="size" id="m" value="M" class="size-class test">
-                  <span>M</span>
-              </label>
-              <label class="l-size">
-                  <input type="radio" name="size" id='l' value="L" class="size-class test">
-                  <span>L</span>
-              </label>
-              <label class="xl-size">
-                  <input type="radio" name="size" id='xl' value="XL" class="size-class test">
-                  <span>XL</span>
-              </label>
-              <label class="xxl-size">
-                  <input type="radio" name="size" id="xxl" value="2XL" class="size-class test">
-                  <span>2XL</span>
-              </label>
-          </div>
-
-          <div class="select-color">
-            <h5>Color</h5>
-              <label class="black">
-                  <div class="black-border">
-                    <input type="radio" name="color" class="color-class" value="black" >
-                    <span></span>
-                  </div>               
-              </label>
-              <label class="white">
-                  <input type="radio" name="color" value="white"  class="color-class" checked>
-                  <span></span>
-              </label>
-          </div>
-
-          <div class="print-location">
-            <h5>Print location</h5>
-              <label class="front selected">
-                  <input type="radio" name="print" value="front" class="print-class" checked>
-                  <span>Front</span>              
-              </label>
-              <label class="back">
-                  <input type="radio" name="print" value="back" class="print-class">
-                  <span>Back</span>
-              </label>
-          </div>
-          @elseif($pro_cat->category->name == "Samsung Cases")
-          <div class="phone-model">
-            <h5>Model</h5>
-            <select class="cases" id='samsung'>
-              <option value="Samsung Galaxy S20">Samsung Galaxy S20</option>
-              <option value="Samsung Galaxy S20+">Samsung Galaxy S20+</option>
-            </select>
-          </div>
-
-          <div class="case-style">
-            <h5>Case style</h5>
-            <select class="cases-style" id=''>
-              <option value="Transparent">Transparent</option>
-              <option value="Black">Black</option>
-            </select>
-          </div>
-          @elseif($pro_cat->category->name == "Iphone Cases")
-          <div class="phone-model">
-            <h5>Model</h5>
-            <select class="cases" id=''>
-              <option value="iPhone XI Pro">iPhone XI Pro</option>
-              <option value="iPhone XI Pro Plus">iPhone XI Pro Plus</option>
-            </select>
-          </div>
-
-          <div class="case-style">
-            <h5>Case style</h5>
-            <select  class="cases-style" id='caseStyle'>
-              <option value="Transparent">Transparent</option>
-              <option value="Black">Black</option>
-            </select>
-          </div>
-
-          @elseif($pro_cat->category->name == "Huawei Cases")
-          <div class="phone-model">
-            <h5>Model</h5>
-            <select  class="cases" id=''>
-              <option value="Huawei P20">Huawei P20</option>
-            </select>
-          </div>
-          <div class="case-style">
-            <h5>Case style</h5>
-            <select  class="cases-style" id='caseStyle'>
-              <option value="Transparent">Transparent</option>
-              <option value="Black">Black</option>
-            </select>
-          </div>
-         
-          @else 
-          <button></button>
-          @endif
-
-   </div>
-
+</div>
+<!-- end for phone -->
 
   <!--   For Desctop -->
     <div class="row desctop-product">
@@ -241,25 +80,22 @@
       </div>
       <div class="col-3 right">
         <h4 class="product-title">{{ $product->name}}</h4>
-        <?php
-            $pro_cat = App\Product::find($product->id);
-            if($pro_cat->category != null){
-        ?>
-            <h5>{{ $pro_cat->category->name }}</h5>
-        <?php } ?>
-        <p>Designed by <strong>Urban One</strong></p>
+        <?php $pro_cat = App\Product::find($product->id); ?>
+        <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
+          <h5>{{ $pro_cat->category->name }}</h5>
+          <p>Designed by <strong>Urban One</strong></p>
 
-        <span id="price">
-          @if($product->spl_price==0)
-              <input type="hidden" value="<?php echo $product->price;?>">
-              <h4><span id="price">&euro; {{ $product->price}} </span></h4>
-          @else
-              <div class="d-flex justify-content-between align-items-center">
-                <input type="hidden" value="<?php echo $product->spl_price;?>" name="newPrice">
-                <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
-                <p class="">&euro;{{$product->spl_price}}</p>
-              </div>
-          @endif
+          <span id="price">
+            @if($product->spl_price==0)
+                <input type="hidden" value="<?php echo $product->price;?>">
+                <h4><span id="price">&euro; {{ $product->price}} </span></h4>
+            @else
+                <div class="d-flex justify-content-between align-items-center">
+                  <input type="hidden" value="<?php echo $product->spl_price;?>" name="newPrice">
+                  <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
+                  <p class="">&euro;{{$product->spl_price}}</p>
+                </div>
+            @endif
           </span>
 
           @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
@@ -317,6 +153,12 @@
                   <span>Back</span>
               </label>
           </div>
+
+          <div class="view-size-guid">
+              <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+              <img src="/site-images/Layer_1_1_.svg" alt="">
+          </div>
+
           @elseif($pro_cat->category->name == "Samsung Cases")
           <div class="phone-model">
             <h5>Model</h5>
@@ -364,7 +206,71 @@
               <option value="Black">Black</option>
             </select>
           </div>
-         
+
+          @elseif($pro_cat->category->name == "Custom")
+            <div class="custom">
+                <h6>Enter your phone model</h6>
+                <input type="text" id="custom">
+            </div>
+          @elseif($pro_cat->category->name == "Posters")
+          <div class="choose-size">
+            <h5>Size</h5>
+            <select class="poster-size" id='posters'>
+              <option value="A3">A3</option>
+              <option value="B1">B1</option>
+              <option value="B2">B2</option>
+            </select>
+          </div>
+
+          <div class="select-color">
+            <h5>Frame color</h5>
+              <label class="black">
+                  <div class="black-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>               
+              </label>
+              <label class="white">
+                  <input type="radio" name="color" value="white"  class="color-class" checked>
+                  <span></span>
+              </label>
+          </div>
+
+          <div class="view-size-guid">
+              <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+              <img src="/site-images/Layer_1_1_.svg" alt="">
+          </div>
+          @elseif($pro_cat->category->name == "Wallpaper")
+            <div class="custom">
+                <h6>Enter your wallpaper size</h6>
+                <input type="text" id="wallpaper">
+            </div>
+
+            <div class="view-size-guid">
+              <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+              <img src="/site-images/Layer_1_1_.svg" alt="">
+            </div>
+
+            @elseif($pro_cat->category->name == "Pictures")
+            <div class="choose-size">
+              <h5>Size</h5>
+              <select class="picture-size" id='picture'>
+                <option value="B2">B2</option>
+                <option value="B1">B1</option>
+                <option value="custom">Custom</option>
+              </select>
+            </div>
+
+            <div id='picture-custom' class="custom">
+                <h6>Enter your picture size</h6>
+                <input type="text" id="picture">
+            </div>
+
+            <div class="view-size-guid">
+              <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+              <img src="/site-images/Layer_1_1_.svg" alt="">
+            </div>
+
           @else 
           <button></button>
           @endif
@@ -376,13 +282,6 @@
             </div>
           </a>
 
-          
-
-          <div class="view-size-guid">
-              <a href=""> <h5> View size guid</h5></a>
-              <img src="/site-images/Layer_1_1_.svg" alt="">
-          </div>
-
           <div class="delivery">
             <div>
               <h5>Delivery</h5>
@@ -390,9 +289,7 @@
             </div>
             <p>Post Express by 24 April</p>
             <p>Standard 24 - 28 April</p>
-          </div>
-
-        
+          </div>    
         </div>
     </div>
 
