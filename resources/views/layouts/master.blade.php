@@ -66,11 +66,17 @@
         <link rel="stylesheet" href="/css/login.css">
         <link rel="stylesheet" href="/css/footer.css">
         <link rel="stylesheet" href="/css/modal.css">
+        <link rel="stylesheet" href="/css/privacyPolicy.css">
+        <link rel="stylesheet" href="/css/contact.css">
+        <link rel="stylesheet" href="/css/copyright.css">
+        <link rel="stylesheet" href="/css/shipping.css">
         @yield('cart-about-style.css')
+        @yield('changed_header')
        <!--  Payment script -->
 
        <script data-main="payment-js" src="https://asxgw.paymentsandbox.cloud/js/integrated/payment.1.2.min.js"></script>
        
+       <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
     </head>
     <body>
     @include('layouts.header') 

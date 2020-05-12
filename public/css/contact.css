@@ -1,0 +1,130 @@
+.contact {
+  width: 70%;
+}
+#side {
+    display: flex;
+    flex-direction: column;
+   /*  border-left: 1px solid #707070; */
+    position: relative;
+}
+
+#side:after {
+    content: "";
+    background: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40%;
+    width: 1px;
+  }
+
+#side div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#side div a {
+    color: #404040;
+    font-size: 20px;
+}
+
+.contact-form {
+  padding-left: 90px;
+}
+
+.contact-form h4 {
+    font-size: 20px;
+    color: #404040;
+}
+
+.contact-form div {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0;
+}
+
+.contact-form form {
+    margin: 40px 0;
+}
+
+.contact-form div input {
+    outline: none;
+    height: 50px;
+    border: 1px solid #8B8B8B;
+}
+
+.contact-form div textarea {
+    outline: none;
+    height: 130px;
+}
+
+.contact-form label {
+    color: #707070;
+}
+
+.contact-form p {
+    color: #CBCBCB;
+}
+
+.contact-form form button {
+    width: 20%;
+    height: 35px;
+    border-radius: 30px;
+    border: none;
+    background: #000000;
+    color: white;
+    margin: auto;
+}
+
+.custom-input {
+    color: transparent;
+    height: 70px !important;
+  }
+  .custom-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-input::before {
+    content: 'Add file or drop files here';
+    color: #8B8B8B;
+    display: inline-block;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 500;
+    font-size: 15px;
+    width: 100%;
+    height: 70px;
+    margin: 2% 40%; 
+  }
+/*   .custom-input:hover::before {
+    border-color: black;
+  } */
+  .custom-input:active {
+    outline: 0;
+  }
+/*   .custom-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  } */
+
+@media (max-width: 767px) {  
+  .contact {
+    width: 100%;
+  }
+  .contact-form {
+    margin: 30px 0;
+    padding-left: 20px;
+  }
+  .custom-input::before {
+    margin: 5% 19%;
+  }
+
+  
+  #side:after {
+    display: none;
+  }
+}

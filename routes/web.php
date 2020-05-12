@@ -29,6 +29,13 @@ Route::post('/addStar', 'HomeController@addStar');
 
 Route::get('/search', 'HomeController@search')->name('search');
 
+Route::get('/privacy_policy', 'HomeController@privacyPolicy');
+Route::get('/how_to_order', 'HomeController@howToOrder');
+Route::get('/shipping_and_handling', 'HomeController@shipping');
+Route::get('/help_center', 'HomeController@helpCenter');
+Route::get('/copyright', 'HomeController@copyright');
+Route::get('/contact_us', 'HomeController@contact');
+
 Route::resource('category', 'CategoriesController');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {

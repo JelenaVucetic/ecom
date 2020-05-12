@@ -1,0 +1,35 @@
+.shipping {
+    width: 70%;
+    margin-top: 20px;
+}
+
+.shipping h4 {
+    color: #404040;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.shipping p {
+    color: #707070;
+    font-size: 14px;
+}
+
+.shipping-right {
+    padding-left: 50px;
+}
+
+.shipping-right div {
+    margin: 30px 0;
+}
+
+@media (max-width: 767px) {  
+    .shipping {
+        width: 100%;
+    }
+    .shipping-right {
+        padding-left: 20px;
+    }
+    #side:after {
+        display: none;
+      }
+}
