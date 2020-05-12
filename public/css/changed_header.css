@@ -1,0 +1,16 @@
+.category {
+    display: none;
+}
+
+.hero-right {
+    display: none;
+}
+
+.mycontainer {
+    border-bottom: 1px solid;
+    padding-bottom: 30px;
+}
+
+.searchIDiv {
+    width: 500px;
+}

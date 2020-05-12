@@ -1,0 +1,23 @@
+body {
+    font-family: 'Fira Sans', sans-serif !important;
+}
+
+.policy h4 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #404040;
+    margin-bottom: 20px;
+}
+
+.policy p {
+    color: #707070;
+    line-height: 18px;
+}
+
+.policy span {
+    font-weight: 600;
+}
+
+.policy div {
+    margin: 40px 0;
+}
