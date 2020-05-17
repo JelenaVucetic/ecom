@@ -323,3 +323,14 @@ $('select').each(function () {
 
 });
 
+
+
+/* average rating star */
+
+$(document).ready(function(){
+    $(".rateyo").rateYo({
+      starWidth: "40px",
+      ratedFill: "#000000",
+      spacing: "10px", 
+    }).rateYo('option', 'readOnly', true);
+})
