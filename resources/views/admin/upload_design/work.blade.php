@@ -96,12 +96,13 @@
         {{-- Canvas edit for Phone Case --}}
         
 <div id="product3" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">PhoneCase options</h2>
   <div class="product-wrap">
     <div id="app3" >
         <canvas id="c3" width="250" height="300"></canvas>
     </div>
     <div class="product-options">
-        <p>PhoneCase options</p>
+      
       {{--   <form method="post" id="upload-form" enctype="multipart/form-data">
          {{ csrf_field() }}
         <input type="file" name="file1" >
@@ -121,8 +122,8 @@
                     <input type="range" id="scale-control"  value="1.5" min="0.005" max="1.5" step="0.005">
                 </label>
                 <div class="align">
-                <button id="alignVertically" class="btn-option">Vertically</button>
-                <button id="alignHorizontally" class="btn-option"><i class="fa fa-arrows-alt-v"></i>Horizontally</button>
+                <button id="alignVertically" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                <button id="alignHorizontally" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                 </div>
                 <div class="repeat-option btn-group">
                     <button id="repeat" class="repeat-opt">Repeat</button>
@@ -145,12 +146,13 @@
 
               {{-- Canvas edit for T-shirt --}}
     <div id="product4" class="img-div" data-value="1" style="display:none">
+      <h2 class="option-title">T-shirt options</h2>
       <div class="product-wrap">
         <div id="app4" >
             <canvas id="c4" width="250" height="300"></canvas>
         </div>
         <div class="product-options1">
-            <p>T-shirt options</p>
+            
 
           {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -172,8 +174,8 @@
                         <input type="range" id="scale-control1"   value="1.5" min="0.005" max="2" step="0.005">
                     </label>
                     <div class="align">
-                    <button id="alignVertically1" class="btn-option">Vertically</button>
-                    <button id="alignHorizontally1" class="btn-option">Horizontally</button>
+                    <button id="alignVertically1" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                    <button id="alignHorizontally1" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                     </div>
                   </div>
             </div>
@@ -185,12 +187,12 @@
 
          {{-- Canvas edit for Mugs --}}
          <div id="product5" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Mug options</h2>
           <div class="product-wrap">
             <div id="app5" >
                 <canvas id="c5" width="250" height="300"></canvas>
             </div>
             <div class="product-options2">
-                <p>Mug options</p>
 
                {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
                   {{ csrf_field() }}
@@ -212,8 +214,8 @@
                             <input type="range" id="scale-control2"  value="1.5" min="0.005" max="1.5" step="0.005">
                         </label>
                         <div class="align">
-                        <button id="alignVertically2" class="btn-option">Vertically</button>
-                        <button id="alignHorizontally2" class="btn-option">Horizontally</button>
+                        <button id="alignVertically2" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally2" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                         </div>
                         <div class="repeat-option">
                           <button id="repeat1" class="repeat-opt">Repeat</button>
@@ -291,12 +293,12 @@
 
           {{-- Canvas edit for Hoodie --}}
           <div id="product6" class="img-div" data-value="1" style="display:none">
+            <h2 class="option-title">Hoodie options</h2>
             <div class="product-wrap">
             <div id="app6" >
                 <canvas id="c6" width="250" height="300"></canvas>
             </div>
             <div class="product-options3">
-                <p>Hoodie options</p>
                 {{-- <form method="post" id="upload-form3" enctype="multipart/form-data">
                   {{ csrf_field() }}
                  <input type="file" name="file1" >
@@ -316,8 +318,8 @@
                             <input type="range" id="scale-control3"  value="1.5" min="0.005" max="1.5" step="0.005">
                         </label>
                         <div class="align">
-                        <button id="alignVertically3" class="btn-option">Vertically</button>
-                        <button id="alignHorizontally3" class="btn-option">Horizontally</button>
+                        <button id="alignVertically3" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally3" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                         </div>
                       </div>
                 </div>
@@ -327,12 +329,12 @@
 
          {{-- Canvas edit for Long Sleeve --}}
          <div id="product7" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Long Sleeve options</h2>
           <div class="product-wrap">
           <div id="app7" >
               <canvas id="c7" width="250" height="300"></canvas>
           </div>
           <div class="product-options4">
-              <p>Long Sleeve options</p>
             {{--   <form method="post" id="upload-form4" enctype="multipart/form-data">
                 {{ csrf_field() }}
                <input type="file" name="file1" >
@@ -352,8 +354,8 @@
                           <input type="range" id="scale-control4"   value="1.5" min="0.005" max="1.5" step="0.005">
                       </label>
                       <div class="align">
-                      <button id="alignVertically4" class="btn-option">Vertically</button>
-                      <button id="alignHorizontally4" class="btn-option">Horizontally</button>
+                      <button id="alignVertically4" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                      <button id="alignHorizontally4" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                       </div>
                     </div>
               </div>
@@ -364,12 +366,12 @@
       
          {{-- Canvas edit for Graphic T-Shirt Dresses --}}
          <div id="product8" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Graphic T-shirt Dresses options</h2>
           <div class="product-wrap">
           <div id="app8" >
               <canvas id="c8" width="250" height="300"></canvas>
           </div>
           <div class="product-options5">
-              <p> Graphic T-Shirt Dresses options</p>
            {{--    <form method="post" id="upload-form5" enctype="multipart/form-data">
                 {{ csrf_field() }}
                <input type="file" name="file1">
@@ -389,8 +391,8 @@
                           <input type="range" id="scale-control5"   value="1.5" min="0.005" max="1.5" step="0.005">
                       </label>
                       <div class="align">
-                      <button id="alignVertically5" class="btn-option">Vertically</button>
-                      <button id="alignHorizontally5" class="btn-option">Horizontally</button>
+                      <button id="alignVertically5" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                      <button id="alignHorizontally5" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                       </div>
                     </div>
               </div>
@@ -484,12 +486,12 @@
 
           {{-- Canvas edit for Notes --}}
 <div id="product10" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Notes options</h2>
   <div class="product-wrap">
   <div id="app10" >
       <canvas id="c10" width="250" height="300"></canvas>
   </div>
   <div class="product-options7">
-      <p>Notes options</p>
       <div class="color-choose">
 
           <div class="container">
@@ -504,8 +506,8 @@
                   <input type="range" id="scale-control6"   value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <div class="align">
-              <button id="alignVertically6" class="btn-option">Vertically</button>
-              <button id="alignHorizontally6" class="btn-option">Horizontally</button>
+              <button id="alignVertically6" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+              <button id="alignHorizontally6" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
               </div>
               <div class="repeat-option">
                   <button id="repeat2" class="repeat-opt">Repeat</button>
@@ -522,12 +524,12 @@
 
           {{-- Canvas edit for Clock --}}
 <div id="product11" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Clock options</h2>
   <div class="product-wrap">
   <div id="app11" >
       <canvas id="c11" width="250" height="300"></canvas>
   </div>
   <div class="product-options8">
-      <p>Clock options</p>
       <div class="color-choose">
 
           <div class="container">
@@ -542,8 +544,8 @@
                   <input type="range" id="scale-control7"  value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <div class="align">
-              <button id="alignVertically7" class="btn-option">Vertically</button>
-              <button id="alignHorizontally7" class="btn-option">Horizontally</button>
+              <button id="alignVertically7" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+              <button id="alignHorizontally7" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
               </div>
               <div class="repeat-option">
                   <button id="repeat3" class="repeat-opt">Repeat</button>
@@ -626,12 +628,12 @@
 
                                 {{-- Canvas edit for Termos --}}
 <div id="product12" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Termos options</h2>
   <div class="product-wrap">
   <div id="app12" >
       <canvas id="c12" width="250" height="300"></canvas>
   </div>
   <div class="product-options8">
-      <p>Termos options</p>
       <div class="color-choose">
 
           <div class="container">
@@ -646,8 +648,8 @@
                   <input type="range" id="scale-control8"   value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <div class="align">
-              <button id="alignVertically8" class="btn-option">Vertically</button>
-              <button id="alignHorizontally8" class="btn-option">Horizontally</button>
+              <button id="alignVertically8" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+              <button id="alignHorizontally8" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
               </div>
             </div>
       </div>
@@ -658,12 +660,12 @@
 
    {{-- Canvas edit for Ceger --}}
 <div id="product13" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Ceger options</h2>
   <div class="product-wrap">
   <div id="app13" >
       <canvas id="c13" width="250" height="300"></canvas>
   </div>
   <div class="product-options9">
-      <p>Ceger options</p>
       <div class="color-choose">
 
           <div class="container">
@@ -678,8 +680,8 @@
                   <input type="range" id="scale-control9"  value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <div class="align">
-              <button id="alignVertically9" class="btn-option">Vertically</button>
-              <button id="alignHorizontally9" class="btn-option">Horizontally</button>
+              <button id="alignVertically9" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+              <button id="alignHorizontally9" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
               </div>
             </div>
       </div>
@@ -690,12 +692,12 @@
 
     {{-- Canvas edit for Poster --}}
 <div id="product14" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Poster options</h2>
   <div class="product-wrap">
   <div id="app14" >
       <canvas id="c14" width="250" height="300"></canvas>
   </div>
   <div class="product-options10">
-      <p>Poster options</p>
       <div class="color-choose">
 
           <div class="container">
@@ -710,8 +712,8 @@
                   <input type="range" id="scale-control10"   value="1.5" min="0.005" max="1.5" step="0.005">
               </label>
               <div class="align">
-              <button id="alignVertically10" class="btn-option">Vertically</button>
-              <button id="alignHorizontally10" class="btn-option">Horizontally</button>
+              <button id="alignVertically10" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+              <button id="alignHorizontally10" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
               <div>
             </div>
       </div>
@@ -1285,6 +1287,7 @@ function loadTshirt(objects){
     // Scale option for T-shirt
     $('#scale-control1').on('input', function () {
       $(this).trigger('change');
+      alert($(this).val());
       img.scale(parseFloat($(this).val())).setCoords();
       canvas4.requestRenderAll();
   });
