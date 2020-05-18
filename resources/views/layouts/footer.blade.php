@@ -14,12 +14,11 @@
         </div>
         <div>
           <p>Help</p>
-          <a href="">Delivery</a>  <br>
-          <a href="">Returns</a> <br>
-          <a href="">Help Center</a> <br>
-          <a href="">Guidelines</a> <br>
-          <a href="">Copyright</a> <br>
-          <a href="">Contact Us</a>
+          <a href="/how_to_order">How to order</a>  <br>
+          <a href="/shipping_and_handling">Shipping & Handling</a> <br>
+          <a href="/help_center">Help Center</a> <br>
+          <a href="/copyright">Copyright</a> <br>
+          <a href="/contact_us">Contact Us</a>
         </div>
         <div>
           <p>Social</p>
@@ -37,9 +36,21 @@
       </div>
       <div class="footer-bottom-info" >
         <a href="">User Agreement</a>
-        <a href="">Privacy Policy</a>
+        <a href="/privacy_policy">Privacy Policy</a>
         <span>UrbanOne uses cookies: Cookie policy</span>
       </div>
     </div>
+  </div>
+  <div class="footer-icons">
+    <img src="/site-images/Layer_x0020_1.svg" alt="">
+    <img src="/site-images/15 maestro.svg" alt="">
+    <img src="/site-images/15 master.svg" alt="">
+    <img src="/site-images/15 visa.svg" alt="">
+    <img src="/site-images/15 visaelectron.png" alt="">
+  </div>
+  <div class="footer-icons-second">
+    <img src="/site-images/14 Monargo-logo.svg" alt="">
+    <img src="/site-images/Mask Group 2.svg" alt="">
+    <p>© Urban One. All Rights Reserved</p>
   </div>
 </footer>

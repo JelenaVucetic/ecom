@@ -66,11 +66,22 @@
         <link rel="stylesheet" href="/css/login.css">
         <link rel="stylesheet" href="/css/footer.css">
         <link rel="stylesheet" href="/css/modal.css">
+        <link rel="stylesheet" href="/css/privacyPolicy.css">
+        <link rel="stylesheet" href="/css/contact.css">
+        <link rel="stylesheet" href="/css/copyright.css">
+        <link rel="stylesheet" href="/css/shipping.css">
         @yield('cart-about-style.css')
-       <!--  Payment script -->
+        @yield('changed_header')
+        @yield('phone-css')
 
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" rel="stylesheet"/>
+
+
+       <!--  Payment script -->
        <script data-main="payment-js" src="https://asxgw.paymentsandbox.cloud/js/integrated/payment.1.2.min.js"></script>
        
+       <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
     </head>
     <body>
     @include('layouts.header') 
@@ -99,6 +110,7 @@
 <!-- Propeller Dropdown js -->
 <script type="text/javascript" language="javascript" src="/js/dropdown.js"></script>
 <script src="/js/wavytext.js"></script>
+@yield('rateYo')
 <script src="/js/myJs.js"></script>
 
 </html>

@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\DB;
 use App\Recommends;
 use Image;
 
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 class HomeController extends Controller
 {
     /**
@@ -25,8 +28,24 @@ class HomeController extends Controller
     }
 
     public function test() {
+        $process = new Process('magick convert  C:\xampp\htdocs\www\ecom\public\images\shirt_design.jpg  
+        -crop 192x144+90+105
+        -blur 0x6
+        -colorspace gray
+        -auto-level
+        C:\xampp\htdocs\www\ecom\public\images\shirt5_design.png ');
+
+		$process->run();
+		if (!$process->isSuccessful()) {
+		    throw new ProcessFailedException($process);
+		}
+        echo $process->getOutput();
+        
+
         return view('test');
+        
     }
+
 
     /**
      * Show the application dashboard.
@@ -223,4 +242,34 @@ class HomeController extends Controller
         
         return view('product_details', compact('poster_size'));
     } */
+
+    public function privacyPolicy() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('privacy_policy', compact('categories'));
+    }
+
+    public function howToOrder() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('how_to_order', compact('categories'));
+    }
+
+    public function shipping() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('shipping', compact('categories'));
+    }
+    
+    public function helpCenter() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('help_center', compact('categories'));
+    }
+ 
+    public function copyright() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('copyright', compact('categories'));
+    }
+
+    public function contact() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('contact_us', compact('categories'));
+    }
 }

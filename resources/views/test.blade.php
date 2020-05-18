@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
 <body>
-
-<?php
-if (file_exists('C:\xampp\htdocs\www\ecom\resources\views\test.xml')) {
-    $xml = simplexml_load_file('C:\xampp\htdocs\www\ecom\resources\views\test.xml');
-   dd($xml->returnData->creditcardData->type);
-} else {
-    exit('Failed to open test.xml.');
-}
-
-
-?>
-
+    <img src="\images\shirt2_design.png" alt="">
+    <img src="\images\shirt3_design.png" alt="">
+    <img src="\images\shirt4_design.png" alt="">
+    <img src="\images\shirt5_design.png" alt="">
+    echo exec('whoami');
 </body>
 </html>

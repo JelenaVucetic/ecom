@@ -1,12 +1,17 @@
 @extends('layouts.master')
 
+@section('phone-css')
+    <link rel="stylesheet" href="/css/product-details-phone.css">
+@endsection
+
 @section('content')
-  <div class="container-fluid">
+<div class="container-fluid">
   @include('modals.size_modal')
   @include('modals.view_size_guid_modal')
+  @include('modals.reviews_modal')
 <!--  For Phone -->
 
-  <div class="phone-product">
+<div class="phone-product">
    <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-light" style="padding: 10px;margin: 0 -15px;">
       <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;">
           <div>
@@ -28,6 +33,34 @@
 
 
       <div class="slick-wrapper">
+
+        <div class="wishlist-phone">
+          <?php
+                $wishData = DB::table('wishlist')
+                                ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
+                                ->where('wishlist.pro_id', '=', $product->id)->get();
+               // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
+               $count = 0;
+               if(Auth::user()) {
+                  $count = DB::table('wishlist')
+                  ->join('product', 'product.id', '=', 'wishlist.pro_id')
+                  ->where('wishlist.pro_id', '=', $product->id)
+                  ->where('wishlist.user_id' ,'=' , Auth::user()->id)
+                  ->count();
+               }
+                
+            ?>
+            <?php if($count == "0") { ?>
+                {!! Form::open(['route' => 'addToWishlist', 'method' => 'post']) !!}
+                <input type="hidden" value="{{$product->id}}" name="pro_id">
+                <br>
+                <input type="submit" value=" ">
+                {!! Form::close() !!}
+            <?php } else { ?>
+              <input type="submit" value=" " id="disable">
+            <?php } ?>
+        </div>
+
           <div id="slick8">
               <div class="slide-item">
                 <img src="{{url('design', $design->name)}}"> 
@@ -40,10 +73,188 @@
               </div>
           </div>
       </div>
+      <?php $pro_cat = App\Product::find($product->id); ?>
+      @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
+      <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
+      <div class="select-size">
+        <h5>Size</h5>
+          <label class="xs-size">
+              <input type="radio" name="size" id="xs" value="XS" class="size-class test">
+              <span>XS</span>
+          </label>
+          <label class="s-size">
+              <input type="radio" name="size" id='s' value="S" class="size-class test">
+              <span>S</span>
+          </label>
+          <label class="m-size">
+              <input type="radio" name="size" id="m" value="M" class="size-class test">
+              <span>M</span>
+          </label>
+          <label class="l-size">
+              <input type="radio" name="size" id='l' value="L" class="size-class test">
+              <span>L</span>
+          </label>
+          <label class="xl-size">
+              <input type="radio" name="size" id='xl' value="XL" class="size-class test">
+              <span>XL</span>
+          </label>
+          <label class="xxl-size">
+              <input type="radio" name="size" id="xxl" value="2XL" class="size-class test">
+              <span>2XL</span>
+          </label>
+      </div>
+
+      <div class="select-color">
+        <h5>Color</h5>
+          <label class="black">
+              <div class="black-border">
+                <input type="radio" name="color" class="color-class" value="black" >
+                <span></span>
+              </div>               
+          </label>
+          <label class="white">
+              <input type="radio" name="color" value="white"  class="color-class" checked>
+              <span></span>
+          </label>
+      </div>
+
+      <div class="print-location">
+        <h5>Print location</h5>
+          <label class="front">
+              <input type="radio" name="print" value="front" class="print-class" checked>
+              <span>Front</span>              
+          </label>
+          <label class="back">
+              <input type="radio" name="print" value="back" class="print-class">
+              <span>Back</span>
+          </label>
+      </div>
+
+      <div class="view-size-guid">
+          <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+          <img src="/site-images/Layer_1_1_.svg" alt="">
+      </div>
+
+      @elseif($pro_cat->category->name == "Samsung Cases")
+      <div class="phone-model">
+        <h5>Model</h5>
+        <select class="cases" id='samsung'>
+          <option value="Samsung Galaxy S20">Samsung Galaxy S20</option>
+          <option value="Samsung Galaxy S20+">Samsung Galaxy S20+</option>
+        </select>
+      </div>
+
+      <div class="case-style">
+        <h5>Case style</h5>
+        <select class="cases-style" id=''>
+          <option value="Transparent">Transparent</option>
+          <option value="Black">Black</option>
+        </select>
+      </div>
+      @elseif($pro_cat->category->name == "Iphone Cases")
+      <div class="phone-model">
+        <h5>Model</h5>
+        <select class="cases" id=''>
+          <option value="iPhone XI Pro">iPhone XI Pro</option>
+          <option value="iPhone XI Pro Plus">iPhone XI Pro Plus</option>
+        </select>
+      </div>
+
+      <div class="case-style">
+        <h5>Case style</h5>
+        <select  class="cases-style" id='caseStyle'>
+          <option value="Transparent">Transparent</option>
+          <option value="Black">Black</option>
+        </select>
+      </div>
+
+      @elseif($pro_cat->category->name == "Huawei Cases")
+      <div class="phone-model">
+        <h5>Model</h5>
+        <select  class="cases" id=''>
+          <option value="Huawei P20">Huawei P20</option>
+        </select>
+      </div>
+      <div class="case-style">
+        <h5>Case style</h5>
+        <select  class="cases-style" id='caseStyle'>
+          <option value="Transparent">Transparent</option>
+          <option value="Black">Black</option>
+        </select>
+      </div>
+
+      @elseif($pro_cat->category->name == "Custom")
+        <div class="custom">
+            <h6>Enter your phone model</h6>
+            <input type="text" id="custom">
+        </div>
+      @elseif($pro_cat->category->name == "Posters")
+      <div class="choose-size">
+        <h5>Size</h5>
+        <select class="poster-size" id='posters'>
+          <option value="A3">A3</option>
+          <option value="B1">B1</option>
+          <option value="B2">B2</option>
+        </select>
+      </div>
+
+      <div class="select-color">
+        <h5>Frame color</h5>
+          <label class="black">
+              <div class="black-border">
+                <input type="radio" name="color" class="color-class" value="black" >
+                <span></span>
+              </div>               
+          </label>
+          <label class="white">
+              <input type="radio" name="color" value="white"  class="color-class" checked>
+              <span></span>
+          </label>
+      </div>
+
+      <div class="view-size-guid">
+          <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+          <img src="/site-images/Layer_1_1_.svg" alt="">
+      </div>
+      @elseif($pro_cat->category->name == "Wallpaper")
+        <div class="custom">
+            <h6>Enter your wallpaper size</h6>
+            <input type="text" id="wallpaper">
+        </div>
+
+        <div class="view-size-guid">
+          <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+          <img src="/site-images/Layer_1_1_.svg" alt="">
+        </div>
+
+        @elseif($pro_cat->category->name == "Pictures")
+        <div class="choose-size">
+          <h5>Size</h5>
+          <select class="picture-size" id='picture'>
+            <option value="B2">B2</option>
+            <option value="B1">B1</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+
+        <div id='picture-custom' class="custom">
+            <h6>Enter your picture size</h6>
+            <input type="text" id="picture">
+        </div>
+
+        <div class="view-size-guid">
+          <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+          <img src="/site-images/Layer_1_1_.svg" alt="">
+        </div>
+
+      @else 
+      <button></button>
+      @endif
+
 </div>
 <!-- end for phone -->
 
-  <!--   For Desctop -->
+<!--   For Desctop -->
     <div class="row desctop-product">
       <div class="col-3 left">
         <img style="width:50%"  src="{{url('design', $design->name)}}"> 
@@ -240,6 +451,7 @@
               <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
               <img src="/site-images/Layer_1_1_.svg" alt="">
           </div>
+
           @elseif($pro_cat->category->name == "Wallpaper")
             <div class="custom">
                 <h6>Enter your wallpaper size</h6>
@@ -295,30 +507,59 @@
 
 
  <!--   Displaying reviews -->
-    <?php $reviews = DB::table('reviews')->where('product_id', $product->id)->get(); ?>
-        @foreach($reviews as $review)
-          <ul>
-            <li>{{$review->review_title}}</li>
-            <li>{{$review->person_name}}</li>
-            <li>{{date('F j, Y', strtotime($review->created_at))}}, {{date('H: i', strtotime($review->created_at))}}</li>
-          </ul>
-          <p>{{$review->review_content}}</p>
-        @endforeach
-    <?php 
-   if(Auth::check()) {
-    $userId = Auth::user()->id;
-    $counter = DB::table('users')->select('name' ,DB::raw('count(*) as total'))
-          ->join('orders', 'orders.user_id' , '=', 'users.id')
-          ->join('order_product', 'orders.id','=','order_product.order_id')
-          ->where('users.id', $userId)
-          ->where('order_product.product_id', $product->id)
-          ->groupBy('name')
-          ->first(); 
-      if( isset($counter) && $counter->total>0){
-    ?>
-       
-  <div>
+    @php 
+        $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first(); 
+     
+        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get(); 
+        if(empty($reviewsStar)) {
+          $totalStar = 0;
+          foreach ($reviewsStar as $item) {
+            $size = $item->size;
+            $totalStar = $totalStar + $size;
+          }
+          
+          $average = round($totalStar / count($reviewsStar),1);
+        }
+    @endphp 
+     @if(isset($review))
+        <div class="display-review">
+            <div class="average-review">
+              <h5>Reviews</h5>
+              <div>
+                  <div class="rateyo"
+                      data-rateyo-rating="{{ $average }}"
+                      data-rateyo-num-stars="5">
+                  </div>
+              </div>
+              <p>Average review for this <br> product is {{$average}}</p>
+            </div>
+            <div class="latest-review">
+                <h5>Lates review</h5>
+                <p>star icons </p>
+                <p><strong>{{$review->review_title}}</strong> 
+                  <br>  
+                  <span> by {{$review->person_name}}, on {{date('F j, Y', strtotime($review->created_at))}} </span>
+                </p>
+                <p>{{$review->review_content}}</p>
+                <a href=""  data-toggle="modal" data-target="#reviews-modal">+ Read all reviews</a>
+            </div>
+        </div>
+      @endif
 
+<?php 
+if(Auth::check()) {
+  $userId = Auth::user()->id;
+  $counter = DB::table('users')->select('name' ,DB::raw('count(*) as total'))
+        ->join('orders', 'orders.user_id' , '=', 'users.id')
+        ->join('order_product', 'orders.id','=','order_product.order_id')
+        ->where('users.id', $userId)
+        ->where('order_product.product_id', $product->id)
+        ->groupBy('name')
+        ->first(); 
+    if( isset($counter) && $counter->total>0){
+  ?>
+       
+<div>
 <!--   Rating section -->
 <section class='rating-widget'>
   <h3>Write Your Review</h3>
@@ -376,4 +617,12 @@
 @include('recommends')
 @include('layouts.about_urban_web')
 @include('layouts.subscribe')
+
+
+@endsection
+
+@section('rateYo')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
 @endsection

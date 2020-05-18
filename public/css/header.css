@@ -104,6 +104,8 @@ display: flex;
     width: 350px;
 } */
 
+
+
 .searchIDiv{
     width: 600px;
 }
@@ -170,6 +172,11 @@ display: flex;
 .dropdown-item:hover {
     background: transparent;
     color: #8B8B8B;
+}
+
+.hero-right {
+    display: flex;
+    align-items: center;
 }
 
 @media (min-width: 576px) {
