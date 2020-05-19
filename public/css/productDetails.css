@@ -210,12 +210,21 @@
 }
 
 
-.black-border {
+.white-border {
     width: 30px;
     height: 30px;
     border: 1px solid white;
     border-radius: 17px;
     position: relative;
+}
+
+.black-border {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 17px;
+    position: relative;
+    padding: 16px;
 }
 
 .black input[type="radio"],
@@ -343,7 +352,6 @@
     border-top: 1px solid #DEDEDE;
     border-bottom: 1px solid #DEDEDE;
     padding: 10px 15px;
-    margin: 20px 0;
     margin-left: -15px;
     margin-right: -15px;
 
@@ -530,7 +538,7 @@
     border-radius: 5px;
     outline: none;
     border: 1px solid #8B8B8B;
-    width: 90%;
+    width: 100%;
     height: 35px;
     padding: 0 10px
 }
@@ -583,6 +591,30 @@
     stroke-width:20;
   }
 
+.rateyoPhone  .jq-ry-normal-group svg {
+fill: white !important;
+stroke:black;
+stroke-width:20;
+}
+
+.display-review-link {
+    color: #404040;
+    text-decoration: none;
+}
+
+.display-review-phone {
+    border-bottom:1px solid #DEDEDE;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 7px 15px;
+}
+
+.display-review-phone img {
+    width: 35px;
+    position: absolute;
+    right: 0;
+}
+
 @media (max-width: 767px) {  
     .desctop-product {
         display: none;
@@ -590,5 +622,9 @@
 
     .phone-product {
         display: block;
+    }
+
+    .display-review {
+        display: none;
     }
 }

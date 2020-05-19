@@ -82,7 +82,9 @@ $(document).ready(function(){
 function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
+    var parent1 =  $('#btn-add-to-cart-phone');
     var p = $('#test');
+    var p1 = $('#test-phone');
     var modalAddBtn = $('#modal-add');
     $.ajax({
         headers: {
@@ -104,7 +106,8 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, po
         beforeSend: function() {
               modalAddBtn.attr('data-dismiss', 'modal');
               p.html("Adding ... ");
-              p.wavyText({
+              p1.html("Adding ... ");
+              /* p.wavyText({
                 prefixes: ['-ms-','-webkit-','-o-','-moz-',''],
                 transition_speed:'1s',
                 keyframes: {
@@ -115,15 +118,18 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, po
                   '80': ['10px','inherit'],
                  '100': ['0','inherit'] 
                 },
-  
-                });
+                });*/
           },
         success: function(response) {
           parent.css("background-color", "lightgreen");
+          parent1.css("background-color", "lightgreen");
           p.html("Added");
+          p1.html("Added");
           setTimeout(function(){
             parent.css("background-color", '#E6003A');
+            parent1.css("background-color", '#E6003A');
             p.html("Add to cart");
+            p1.html("Add to cart");
           },2000);
         }
     });
@@ -140,12 +146,23 @@ $(document).ready(function(){
         var pictureSize = $( ".picture-size option:selected" ).val();
         var parent = $(this).parent();
         var size = $('.size-class:checked').val();
-        var color = $('.color-class:checked').val();
+       
         var print = $('.print-class:checked').val();
         var customCase = $("#custom").val();
 
         var pro_cat = $('#pro_cat').val();
+        var price = $('#product_price').val();
 
+  /*       var a = $('#width').val();
+        var b = $('#height').val();
+
+        if (a.match("^([1-9][0-9]*)$") && b.match("^([1-9][0-9]*)$") ) {
+          c = ((a*b) * price).toFixed(2)
+        } else {
+           alert("Please enter numeric with and height");
+        }
+
+ */
         if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
@@ -171,6 +188,25 @@ $(document).ready(function(){
 }); 
 
 $(document).ready(function(){
+  $('.black div').removeClass( "white-border");
+  $('.black span').css('border', "none");
+  $('.white test').addClass( "black-border")
+
+
+  $('input[type=radio][name=color]').change(function() {
+
+  if(this.value == 'white'){
+    $('.black div').removeClass( "white-border");
+    $('#black span').css('border', "none");
+    $('.white div').addClass( "black-border")
+  } else {
+    $('.black div').addClass( "white-border");
+    $('.black span').css('border', "1px solid #DEDEDE;");
+    $('.white div').removeClass( "black-border")
+  }
+
+});
+
   $('#picture-custom').css('display', "none");
   var pro_cat = $('#pro_cat').val();
   $('.options li').on('click', function() {
@@ -334,3 +370,71 @@ $(document).ready(function(){
       spacing: "10px", 
     }).rateYo('option', 'readOnly', true);
 })
+
+
+
+$(document).ready(function(){
+  $(".rateyoPhone").rateYo({
+    starWidth: "15px",
+    ratedFill: "#000000",
+    spacing: "5px", 
+  }).rateYo('option', 'readOnly', true);
+})
+
+
+
+
+
+/* Phone js */
+
+$(document).ready(function(){
+  $('#phone-add').on('click', function(){
+      $('#btn-add-to-cart-phone').removeAttr('data-toggle');
+      $('#btn-add-to-cart-phone').removeAttr('data-target');
+      
+      var phoneModel = $( ".cases option:selected" ).val();
+      var caseStyle = $( ".cases-style option:selected" ).val();
+      var posterSize = $( ".poster-size option:selected" ).val();
+      var pictureSize = $( ".picture-size option:selected" ).val();
+      var parent = $(this).parent();
+      var size = $('.size-class:checked').val();
+      var color = $('.color-class:checked').val();
+      var print = $('.print-class:checked').val();
+      var customCase = $("#custom").val();
+
+      var pro_cat = $('#pro_cat').val();
+      var price = $('#product_price').val();
+
+/*       var a = $('#width').val();
+      var b = $('#height').val();
+
+      if (a.match("^([1-9][0-9]*)$") && b.match("^([1-9][0-9]*)$") ) {
+        c = ((a*b) * price).toFixed(2)
+      } else {
+         alert("Please enter numeric with and height");
+      }
+
+*/
+      if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+        $('#btn-add-to-cart-phone').attr('data-toggle', 'modal');
+        $('#btn-add-to-cart-phone').attr('data-target', '#exampleModal');
+
+        $('#modal-add').css('cursor', "no-drop");
+        $('#modal-add div').css('background', "lightgray");
+        $('#modal-add').unbind();
+        $("input[name='size']").change(function(){
+          $('#modal-add').bind("click", function(){
+            var size =  $("input[name='size']:checked").val();
+            addToCartAjax(size, color, print); 
+          });
+            $('#modal-add').css('cursor', "pointer");
+            $('#modal-add div').css('background', "#E6003A");
+        });
+      } else if(pro_cat == "Custom" && !customCase) {
+        alert('unesi teks');
+      } 
+      else {
+          addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+        }  
+    }); 
+}); 

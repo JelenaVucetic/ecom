@@ -101,6 +101,40 @@ class HomeController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
+        $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first(); 
+        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get(); 
+        $countReviews = DB::table('reviews')->where('product_id', $product->id)->get();
+
+        $numberOfReviews = count($countReviews);
+
+        if(!$reviewsStar->isEmpty()) {
+          $totalStar = 0;
+          foreach ($reviewsStar as $item) {
+            $size = $item->size;
+            $totalStar = $totalStar + $size;
+          }
+          
+          $average = round($totalStar / count($reviewsStar),1);
+        } else {
+            $average = 1;
+        }
+
+        if(Auth::check()) {
+            $user = Auth::id();
+            $createReview = DB::table('reviews')->where('user_id', $user)->where('product_id', $product->id)->first();
+
+            $counter = DB::table('users')->select('name' ,DB::raw('count(*) as total'))
+            ->join('orders', 'orders.user_id' , '=', 'users.id')
+            ->join('order_product', 'orders.id','=','order_product.order_id')
+            ->where('users.id', $user)
+            ->where('order_product.product_id', $product->id)
+            ->groupBy('name')
+            ->first(); 
+
+
+        } else {
+            $createReview = null;
+        }
 
         if(Auth::check()) {
             $recommends = new Recommends;
@@ -114,7 +148,7 @@ class HomeController extends Controller
             $recommends->save();
         }
 
-        return view('product_details', compact('product', 'categories', 'design', 'poster_size'));
+        return view('product_details', compact('product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews'));
     }
 
     public function viewWishlist()
@@ -171,6 +205,7 @@ class HomeController extends Controller
             ]);
         DB::table('reviews')->insert(['person_name' => $request->person_name,
                                     'product_id' => $request->product_id,
+                                    'user_id' => $request->userId,
                                     'review_title' => $request->review_title, 
                                     'review_content' => $request->review_content,
                                     'created_at' => date("Y-m-d H:i:s"),

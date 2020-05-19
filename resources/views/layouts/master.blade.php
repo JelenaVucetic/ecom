@@ -6,10 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Laravel</title>
 
-	
-     <!-- Bootstrap --> 
-   {{-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />   --}}
-     
+
      <!-- Example docs (CSS for helping component example file)-->
     <link href="https://propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
    
@@ -45,7 +42,7 @@
         <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/5star.css">
 
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+       <!--  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet"> -->
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
        
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
