@@ -28,18 +28,7 @@ class HomeController extends Controller
     }
 
     public function test() {
-        $process = new Process('magick convert  C:\xampp\htdocs\www\ecom\public\images\shirt_design.jpg  
-        -crop 192x144+90+105
-        -blur 0x6
-        -colorspace gray
-        -auto-level
-        C:\xampp\htdocs\www\ecom\public\images\shirt5_design.png ');
-
-		$process->run();
-		if (!$process->isSuccessful()) {
-		    throw new ProcessFailedException($process);
-		}
-        echo $process->getOutput();
+       
         
 
         return view('test');

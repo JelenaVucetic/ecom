@@ -438,3 +438,12 @@ $(document).ready(function(){
         }  
     }); 
 }); 
+
+
+
+/* Close dropdown on click */
+
+$("#closeDropdown").click(function(event) {
+  event.preventDefault();
+  $(this).closest(".dropdown-menu").prev().dropdown("toggle");
+});

@@ -12,6 +12,8 @@
 @php 
     if(Auth::check()) {
             $userId = Auth::id();
+    } else {
+        $userId = 0;
     }
 @endphp      
             <div>
