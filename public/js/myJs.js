@@ -146,6 +146,7 @@ $(document).ready(function(){
         var pictureSize = $( ".picture-size option:selected" ).val();
         var parent = $(this).parent();
         var size = $('.size-class:checked').val();
+        var color = $('.color-class:checked').val();
        
         var print = $('.print-class:checked').val();
         var customCase = $("#custom").val();

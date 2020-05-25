@@ -259,6 +259,9 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                             </ul>
                         </div>
                         <div class="payment">
+                            <div style="width:100%;">
+                                <img style="width: 300px; margin:auto;" src="\site-images\visa-mastercard-horizontal.svg" alt="">
+                            </div>                         
                             <h6>What are your credit card details?</h6>
                             <div class="form-group" class="form-label">
                                 <label for="card_holder">Card holder</label>

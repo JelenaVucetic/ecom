@@ -11,10 +11,10 @@
           @if(Auth::check())
           <div class="hello-user">
             <p>Hello  {{ ucfirst(Auth::user()->name)  }} </p>
-            <a href="" data-placement="bottom" title="View your profile" data-toggle="dropdown"><img src="/site-images/profil.svg" alt=""></a>
-            <div class="dropdown-menu">
+            <a href="" data-placement="bottom" title="View your profile"><img src="/site-images/profil.svg" alt=""></a>
+        {{--     <div class="dropdown-menu">
               <h1>dropdown</h1>
-            </div>
+            </div> --}}
             
             <a class="dropdown-item" href="" data-toggle="dropdown" id="dropdownMenuButton" >Logout</a>       
             <div class="dropdown-menu closeDrop" aria-labelledby="dropdownMenuButton">
