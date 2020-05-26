@@ -9,6 +9,9 @@
   @include('modals.size_modal')
   @include('modals.view_size_guid_modal')
   @include('modals.reviews_modal')
+  @include('modals.write_review_modal')
+
+
 <!--  For Phone -->
 
 <div class="phone-product">
@@ -22,11 +25,11 @@
             @endif
           </div>
           <div style="width: 50%;">
-           <!--   <a id="phone-add" style="cursor:pointer;"> 
-              <div class="btn-add-to-cart" id="btn-add-to-cart" style="width: inherit;">
-                <p id="test">Add to cart</p>
+           <a id="phone-add" style="cursor:pointer;"> 
+              <div class="btn-add-to-cart" id="btn-add-to-cart-phone" style="width: inherit;">
+                <p id="test-phone">Add to cart</p>
               </div>
-            </a>   -->
+            </a>   
           </div>
       </div>
     </nav>
@@ -73,6 +76,15 @@
               </div>
           </div>
       </div>
+      <div class="delivery">
+        <div>
+          <h5>Delivery</h5>
+          <img src="/site-images/iconfinder_173_Ensign_Flag_Nation_montenegro_2634361.svg" alt="">
+        </div>
+        <p>Post Express by 24 April</p>
+        <p>Standard 24 - 28 April</p>
+      </div>    
+
       <?php $pro_cat = App\Product::find($product->id); ?>
       @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
       <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
@@ -107,14 +119,16 @@
       <div class="select-color">
         <h5>Color</h5>
           <label class="black">
-              <div class="black-border">
+              <div  class="white-border">
                 <input type="radio" name="color" class="color-class" value="black" >
                 <span></span>
               </div>               
           </label>
           <label class="white">
+            <div class="black-border">
               <input type="radio" name="color" value="white"  class="color-class" checked>
               <span></span>
+            </div>    
           </label>
       </div>
 
@@ -197,18 +211,19 @@
           <option value="B2">B2</option>
         </select>
       </div>
-
       <div class="select-color">
-        <h5>Frame color</h5>
+        <h5>Color</h5>
           <label class="black">
-              <div class="black-border">
+              <div  class="white-border">
                 <input type="radio" name="color" class="color-class" value="black" >
                 <span></span>
               </div>               
           </label>
           <label class="white">
+            <div class="black-border">
               <input type="radio" name="color" value="white"  class="color-class" checked>
               <span></span>
+            </div>    
           </label>
       </div>
 
@@ -246,16 +261,52 @@
           <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
           <img src="/site-images/Layer_1_1_.svg" alt="">
         </div>
-
+        @elseif($pro_cat->category->name == "Tapete")
+        <div class="custom">
+              <h6>Enter width:</h6>
+              <input type="text" id="width" placeholder="e.g  5">
+          </div>
+        <div class="custom">
+            <h6>Enter height:</h6>
+            <input type="text" id="height" placeholder="e.g  6">
+        </div>
       @else 
       <button></button>
+      @endif
+
+      @if (isset($review))
+
+      <a href="" class="display-review-link" data-toggle="modal" data-target="#reviews-modal">
+        <div class="display-review-phone">
+          <img src="/site-images/about-right-arrow.png" alt="">
+          <div>
+            {{ $numberOfReviews }} Reviews
+          </div>
+          <div style="display: flex;">
+            <p style="margin-bottom:0;">{{$average}}</p>
+            <div class="rateyoPhone"
+                data-rateyo-rating="{{ $average }}"
+                data-rateyo-num-stars="5">
+            </div>
+          </div>
+        </div>
+      </a>
+      @endif
+      
+
+      @if( isset($counter) && $counter->total>0 && $createReview === null)
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeReviewModal">
+          Write your review
+        </button> 
       @endif
 
 </div>
 <!-- end for phone -->
 
 <!--   For Desctop -->
-    <div class="row desctop-product">
+  <div class="row desctop-product">
       <div class="col-3 left">
         <img style="width:50%"  src="{{url('design', $design->name)}}"> 
         <img src="{{url('images', $product->image)}}"> 
@@ -298,8 +349,8 @@
 
           <span id="price">
             @if($product->spl_price==0)
-                <input type="hidden" value="<?php echo $product->price;?>">
-                <h4><span id="price">&euro; {{ $product->price}} </span></h4>
+                <input id="product_price" type="hidden" value="<?php echo $product->price;?>">
+                <h4><span>&euro; {{ $product->price}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center">
                   <input type="hidden" value="<?php echo $product->spl_price;?>" name="newPrice">
@@ -342,14 +393,16 @@
           <div class="select-color">
             <h5>Color</h5>
               <label class="black">
-                  <div class="black-border">
+                  <div  class="white-border">
                     <input type="radio" name="color" class="color-class" value="black" >
                     <span></span>
                   </div>               
               </label>
               <label class="white">
+                <div class="black-border">
                   <input type="radio" name="color" value="white"  class="color-class" checked>
                   <span></span>
+                </div>    
               </label>
           </div>
 
@@ -433,17 +486,19 @@
             </select>
           </div>
 
-          <div class="select-color">
-            <h5>Frame color</h5>
+           <div class="select-color">
+            <h5>Color</h5>
               <label class="black">
-                  <div class="black-border">
+                  <div  class="white-border">
                     <input type="radio" name="color" class="color-class" value="black" >
                     <span></span>
                   </div>               
               </label>
               <label class="white">
+                <div class="black-border">
                   <input type="radio" name="color" value="white"  class="color-class" checked>
                   <span></span>
+                </div>    
               </label>
           </div>
 
@@ -482,7 +537,15 @@
               <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
               <img src="/site-images/Layer_1_1_.svg" alt="">
             </div>
-
+          @elseif($pro_cat->category->name == "Tapete")
+          <div class="custom">
+                <h6>Enter width:</h6>
+                <input type="text" id="width" placeholder="e.g  5">
+            </div>
+            <div class="custom">
+                <h6>Enter height:</h6>
+                <input type="text" id="height" placeholder="e.g  6">
+            </div>
           @else 
           <button></button>
           @endif
@@ -501,26 +564,19 @@
             </div>
             <p>Post Express by 24 April</p>
             <p>Standard 24 - 28 April</p>
-          </div>    
+          </div>   
+
+          @if( isset($counter) && $counter->total>0 && $createReview === null)
+              <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeReviewModal">
+              Write your review
+            </button> 
+          @endif
         </div>
     </div>
 
 
  <!--   Displaying reviews -->
-    @php 
-        $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first(); 
-     
-        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get(); 
-        if(empty($reviewsStar)) {
-          $totalStar = 0;
-          foreach ($reviewsStar as $item) {
-            $size = $item->size;
-            $totalStar = $totalStar + $size;
-          }
-          
-          $average = round($totalStar / count($reviewsStar),1);
-        }
-    @endphp 
      @if(isset($review))
         <div class="display-review">
             <div class="average-review">
@@ -546,73 +602,6 @@
         </div>
       @endif
 
-<?php 
-if(Auth::check()) {
-  $userId = Auth::user()->id;
-  $counter = DB::table('users')->select('name' ,DB::raw('count(*) as total'))
-        ->join('orders', 'orders.user_id' , '=', 'users.id')
-        ->join('order_product', 'orders.id','=','order_product.order_id')
-        ->where('users.id', $userId)
-        ->where('order_product.product_id', $product->id)
-        ->groupBy('name')
-        ->first(); 
-    if( isset($counter) && $counter->total>0){
-  ?>
-       
-<div>
-<!--   Rating section -->
-<section class='rating-widget'>
-  <h3>Write Your Review</h3>
-    <!-- Rating Stars Box -->
-    <div class='rating-stars'>
-      <ul id='stars'>
-        <li class='star' title='Poor' data-value='1'>
-          <i class='fa fa-star fa-fw'></i>
-        </li>
-        <li class='star' title='Fair' data-value='2'>
-          <i class='fa fa-star fa-fw'></i>
-        </li>
-        <li class='star' title='Good' data-value='3'>
-          <i class='fa fa-star fa-fw'></i>
-        </li>
-        <li class='star' title='Excellent' data-value='4'>
-          <i class='fa fa-star fa-fw'></i>
-        </li>
-        <li class='star' title='WOW!!!' data-value='5'>
-          <i class='fa fa-star fa-fw'></i>
-        </li>
-      </ul>
-    </div>
-  
-  <div class='success-box'>
-    <div class='clearfix'></div>
-    <img alt='tick image'style="width:30px" src='data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA0MjYuNjY3IDQyNi42NjciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQyNi42NjcgNDI2LjY2NzsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiM2QUMyNTk7IiBkPSJNMjEzLjMzMywwQzk1LjUxOCwwLDAsOTUuNTE0LDAsMjEzLjMzM3M5NS41MTgsMjEzLjMzMywyMTMuMzMzLDIxMy4zMzMgIGMxMTcuODI4LDAsMjEzLjMzMy05NS41MTQsMjEzLjMzMy0yMTMuMzMzUzMzMS4xNTcsMCwyMTMuMzMzLDB6IE0xNzQuMTk5LDMyMi45MThsLTkzLjkzNS05My45MzFsMzEuMzA5LTMxLjMwOWw2Mi42MjYsNjIuNjIyICBsMTQwLjg5NC0xNDAuODk4bDMxLjMwOSwzMS4zMDlMMTc0LjE5OSwzMjIuOTE4eiIvPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K'/>
-    <div class='text-message'></div>
-    <div class='clearfix'></div>
-  </div>
-  <input type='hidden' id="user_id"  value="<?php echo  $userId ?>">
-            
-        <form action="{{url('/addReview')}}" method="post">
-
-        {{ csrf_field() }}
-            <span>
-                <input type="hidden" name="product_id" value="{{$product->id}}">
-                <input type="text" name="person_name" placeholder="Your Name"/>
-                <span style="color:red">{{ $errors->first('person_name') }}</span>     
-                <input type="text", name="review_title" placeholder="Title"/>
-                <span style="color:red">{{ $errors->first('review_title') }}</span> 
-            </span><br>
-            <textarea name="review_content" ></textarea> 
-            <span style="color:red">{{ $errors->first('review_content') }}</span> 
-            <br>
-            <b>Rating: </b>  <br>
-            <button type="submit" class="btn btn-success">
-                Submit
-            </button>
-        </form>
-    </div>
-    </div>
-  <?php }} ?>
 </div>
 @include('recommends')
 @include('layouts.about_urban_web')

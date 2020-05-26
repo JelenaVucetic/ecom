@@ -46,7 +46,8 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ]
+        ],
+        "files": ["vendor/allsecure-pay/php-exchange/initClientAutoload.php"]
     },
     "autoload-dev": {
         "psr-4": {

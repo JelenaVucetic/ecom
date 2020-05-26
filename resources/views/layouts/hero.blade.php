@@ -27,17 +27,15 @@
 <div class="category">     
     <div style="display: flex;justify-content: space-around;" class="main-categories">
       @foreach($categories as $category)
-        <div class="dropdown ">
-            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <a href="" style="color:#404040;"> {{($category->name) }}</a> 
-            </button>
-            @if ($category->children)
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background:white; color:#231f20!important">
+        <div class="dropdown">
+          <span  style="color:#404040;"> {{($category->name) }}</span>
+          @if ($category->children)
+            <div class="dropdown-content">
               @foreach ($category->children as $child)
-                <a class="dropdown-item" style=" color:#231f20!important;" href="{{route('category.show',$child->id)}}">{{($child->name) }}</a>
+              <a style=" color:#231f20!important;" href="{{route('category.show',$child->id)}}">{{($child->name) }}</a>
               @endforeach
             </div>
-            @endif
+          @endif
         </div>
         @endforeach
         <div class="dropdown">

@@ -8,29 +8,40 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-      <?php if(Auth::check()) {?>
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name}}</a>
-          <?php } else { ?>
-            <a class="dropdown-item" href="{{ url('/login') }}">Login</a>
-            <li class="list-inline-item"> <a  class="dropdown-item"  href="{{ route('register') }}">Signup</a> </li>
-          <?php } ?>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <?php if(Auth::check()) {?>
-            <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
-
-                 @if(Auth::user()->isAdmin())
-                 <a class="dropdown-item" href="{{ url('/admin') }}">Admin</a>
-                @else
+          @if(Auth::check())
+          <div class="hello-user">
+            <p>Hello  {{ ucfirst(Auth::user()->name)  }} </p>
+            <a href="" data-placement="bottom" title="View your profile"><img src="/site-images/profil.svg" alt=""></a>
+        {{--     <div class="dropdown-menu">
+              <h1>dropdown</h1>
+            </div> --}}
+            
+            <a class="dropdown-item" href="" data-toggle="dropdown" id="dropdownMenuButton" >Logout</a>       
+            <div class="dropdown-menu closeDrop" aria-labelledby="dropdownMenuButton">
+              <p>We are sorry you are logging <br> out.</p>
+              <div class="logout-img">
+                <img src="/site-images/Imoticon.svg" alt="">
+              </div>
+              <p>Are you sure?</p>
+              <div class="yes-no">
+                <a class="dropdown-item" href="{{ url('/logout') }}">Yes</a>
+                <a href="" id="closeDropdown">No</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            
+            @if(Auth::user()->isAdmin())
+              <a class="dropdown-item" href="{{ url('/admin') }}">Admin</a>
+            @else
             <a class="dropdown-item" href="{{ url('/profile') }}">Profile</a>
-          @endif
-        
-          <?php } else { ?>
-            <a class="dropdown-item" href="{{ url('/login') }}">Login</a>
-          <?php } ?>
+            @endif
         </div>
+          @else
+              <a id="user-login" class="dropdown-item" href="{{ url('/login') }}">Login</a>
+              <li class="list-inline-item"> <a  class="dropdown-item"  href="{{ route('register') }}">Signup</a> </li>
+         @endif
       </li>
-
-
-    
   </ul>
 </nav>

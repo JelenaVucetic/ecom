@@ -7,10 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <img src="\images\shirt2_design.png" alt="">
-    <img src="\images\shirt3_design.png" alt="">
-    <img src="\images\shirt4_design.png" alt="">
-    <img src="\images\shirt5_design.png" alt="">
-    echo exec('whoami');
+   @php
+       $var= 'false';
+       if($var) {
+           echo 'true';
+       }
+       else {
+           echo 'false';
+       }
+   @endphp
 </body>
 </html>
