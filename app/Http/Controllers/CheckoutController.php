@@ -35,7 +35,7 @@ class CheckoutController extends Controller
     public function callback() {
         $categories = Category::where('parent_id',NULL)->get();
         
-        require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
+        //require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
 
         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
 
@@ -141,9 +141,9 @@ class CheckoutController extends Controller
                 'zip.reges' => 'Zip must have 5 digits',
                 'city.required' => 'Please enter your city name',
             ]);
-/* 
+
          // Include the autoloader (if not already done via Composer autoloader)
-        require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
+       // require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
 
@@ -174,6 +174,13 @@ class CheckoutController extends Controller
 
         // send the transaction
         $result = $client->debit($debit);
+
+
+        $statusRequestData = new StatusRequestData();
+        $statusRequestData->setMerchantTransactionId($merchantTransactionId);
+        $statusResult = $client->sendStatusRequest($statusRequestData);
+        dd($statusResult);
+        
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
@@ -201,9 +208,10 @@ class CheckoutController extends Controller
             }
         } else {
             $categories = Category::where('parent_id',NULL)->get();
-            $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
-            return view('profile.thankyou', compact('categories', 'payment'));
-        } */
+            $errorData = $statusResult->getFirstError();
+			$code = $errorData->getCode();
+            return view('error_payment_info', compact('categories', 'code'));
+        }
 
         if (Auth::check()) {
             $userid = Auth::user()->id;

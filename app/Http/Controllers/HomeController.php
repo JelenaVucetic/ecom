@@ -28,11 +28,7 @@ class HomeController extends Controller
     }
 
     public function test() {
-       
-        
-
-        return view('test');
-        
+        return view('test');      
     }
 
 
@@ -93,7 +89,7 @@ class HomeController extends Controller
         $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first(); 
         $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get(); 
         $countReviews = DB::table('reviews')->where('product_id', $product->id)->get();
-
+        $counter = null;
         $numberOfReviews = count($countReviews);
 
         if(!$reviewsStar->isEmpty()) {
