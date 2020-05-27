@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-
+use App\Category;
 
 class ForgotPasswordController extends Controller
 {
@@ -20,4 +20,10 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+    public function showLinkRequestForm() {
+        $categories = Category::where('parent_id',NULL)->get();
+
+        return view('auth.passwords.email', compact('categories'));
+    } 
 }

@@ -23,7 +23,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             },
         type: 'get',
         dataType: 'json',
-        url: '<?php echo url('/cart/updateCart');?>/'+proId,
+        url: '/cart/updateCart/'+proId,
         data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
         success: function (data) {
            // $('#updateDiv').html(response);
@@ -37,6 +37,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             $('#cartTotal1Second').html(data.cartTotal);
             $('#countTotalSecond').html(data.countTotal);
             $('#amount').val(data.cartTotal);
+             $("#number_cart_items").html(data.cartCount); 
         }
     });
 
@@ -260,7 +261,7 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                         </div>
                         <div class="payment">
                             <div style="width:100%;">
-                                <img style="width: 300px; margin:auto;" src="\site-images\visa-mastercard-horizontal.svg" alt="">
+                                <img style="width: 300px; margin:auto;  " src="\site-images\visa-mastercard-horizontal.svg" alt="">
                             </div>                         
                             <h6>What are your credit card details?</h6>
                             <div class="form-group" class="form-label">

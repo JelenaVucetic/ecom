@@ -125,6 +125,7 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, po
           parent1.css("background-color", "lightgreen");
           p.html("Added");
           p1.html("Added");
+          $("#number_cart_items").html(response);
           setTimeout(function(){
             parent.css("background-color", '#E6003A');
             parent1.css("background-color", '#E6003A');

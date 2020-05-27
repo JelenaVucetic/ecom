@@ -45,7 +45,8 @@ class CartController extends Controller
                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize  ]);
         }
-        return back();
+        echo Cart::count();
+       
     }
 
     public function destroy($id)
@@ -63,6 +64,7 @@ class CartController extends Controller
         Cart::update($rowId, $qty);
         $cartItems = Cart::content();
         $oldPrice =  Cart::subtotal();
+         $cartCount =  Cart::count(); 
 
          $countTotal=0;
         foreach($cartItems as $c) {
@@ -85,7 +87,8 @@ class CartController extends Controller
             'subtotal' => $item->subtotal(),
             'cartTotal' => $cartSubTotal,
             'oldPrice' =>  $oldPrice,
-            'countTotal' => $countTotal
+            'countTotal' => $countTotal,
+            'cartCount' => $cartCount 
         ]); 
     }
 }

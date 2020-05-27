@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Recommends;
 use Image;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -73,7 +74,6 @@ class HomeController extends Controller
     {
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
-     
      /*    $cat = Product::find(73);
         dd($cat->category->name); */
         return view('welcome', compact('products', 'categories'));

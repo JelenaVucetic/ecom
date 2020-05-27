@@ -11,9 +11,16 @@
   
     </div>
         <!-- Navbar Right icon -->
-       <div class="pmd-ml-auto-icon float-right"> <a href="javascript:void(0);" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect"><i class="material-icons pmd-sm md-light">search</i></a>
-        <a href=""><i class="fa fa-heart"></i></a>
-        <a href=""><i class="fa fa-shopping-cart"></i></a>
+       <div class="pmd-ml-auto-icon float-right">
+        <div class="hero-right">
+          <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
+            <li style="list-style:none;">
+              <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt="">
+                <span id="number_cart_items">{{ Cart::count() }}</span></a> 
+             
+            </li>
+            </ul>
+         </div>
         </div> 
         <!-- /.navbar-collapse -->
     </div>
