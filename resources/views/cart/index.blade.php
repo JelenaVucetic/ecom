@@ -7,48 +7,84 @@
 @section('content')
 <script>
 $(document).ready(function(){
-<?php for($i=1;$i<20;$i++){?>
+for( let i=1;i<20;i++) {
+    $('#upCart'+i).on('change keyup', function(){
+        var newqty = $('#upCart'+i).val();
+        var rowId = $('#rowId'+i).val();
+        var proId = $('#proId'+i).val();
+        if(newqty <=0)
+        {
+            alert('enter only valid quantity')
+        } else {
+        $.ajax({
+            headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+            type: 'get',
+            dataType: 'json',
+            url: '/cart/updateCart/'+proId,
+            data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
+            success: function (data) {
+                $('#upCart'+i).html(data.qty);
+                $('#subtotal'+i).html(data.subtotal);
+                $('#cartTotal').html(data.cartTotal);
+                $('#cartTotal1').html(data.cartTotal);
+                $('#oldPrice').html(data.oldPrice);
+                $('#countTotal').html(data.countTotal);
+                $('#cartTotalSecond').html(data.cartTotal);
+                $('#cartTotal1Second').html(data.cartTotal);
+                $('#countTotalSecond').html(data.countTotal);
+                $('#amount').val(data.cartTotal);
+                $("#number_cart_items").html(data.cartCount); 
+            }
+        });
 
-$('#upCart<?php echo $i;?>').on('change keyup', function(){
-    var newqty = $('#upCart<?php echo $i;?>').val();
-    var rowId = $('#rowId<?php echo $i;?>').val();
-    var proId = $('#proId<?php echo $i;?>').val();
-    if(newqty <=0)
-    {
-        alert('enter only valid quantity')
-    } else {
-       $.ajax({
-        headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-        type: 'get',
-        dataType: 'json',
-        url: '/cart/updateCart/'+proId,
-        data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
-        success: function (data) {
-           // $('#updateDiv').html(response);
-            $('#upCart<?php echo $i;?>').html(data.qty);
-            $('#subtotal<?php echo $i;?>').html(data.subtotal);
-            $('#cartTotal').html(data.cartTotal);
-            $('#cartTotal1').html(data.cartTotal);
-            $('#oldPrice').html(data.oldPrice);
-            $('#countTotal').html(data.countTotal);
-            $('#cartTotalSecond').html(data.cartTotal);
-            $('#cartTotal1Second').html(data.cartTotal);
-            $('#countTotalSecond').html(data.countTotal);
-            $('#amount').val(data.cartTotal);
-             $("#number_cart_items").html(data.cartCount); 
         }
-    });
-
-     }
-    });
-  <?php } ?>
+        });
+   };
 });
+</script>
+<script>
+    $(document).ready(function(){
+    for( let i=1;i<20;i++) {
+        $('#upCartPhone'+i).on('change keyup', function(){
+            var newqty = $('#upCartPhone'+i).val();
+            var rowId = $('#rowIdPhone'+i).val();
+            var proId = $('#proIdPhone'+i).val();
+            if(newqty <=0)
+            {
+                alert('enter only valid quantity')
+            } else {
+            $.ajax({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                type: 'get',
+                dataType: 'json',
+                url: '/cart/updateCart/'+proId,
+                data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
+                success: function (data) {
+                    $('#upCartPhone'+i).html(data.qty);
+                    $('#subtotalPhone'+i).html(data.subtotal);
+                    $('#cartTotal').html(data.cartTotal);
+                    $('#cartTotal1').html(data.cartTotal);
+                    $('#oldPrice').html(data.oldPrice);
+                    $('#countTotal').html(data.countTotal);
+                    $('#cartTotalSecond').html(data.cartTotal);
+                    $('#cartTotal1Second').html(data.cartTotal);
+                    $('#countTotalSecond').html(data.countTotal);
+                    $('#amount').val(data.cartTotal);
+                    $("#number_cart_items_phone").html(data.cartCount); 
+                }
+            });
+    
+            }
+            });
+       };
+    });
 </script>
 
 @if($cartItems->isEmpty()) 
-
 <section id="cart_items">
     <div class="container">
         <div class="empty-cart-title">
@@ -68,8 +104,80 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
             <p>Order <strong>three</strong> products and get 10% off</p>
             <p>Order <strong>five</strong> products and get 20% off</p>
         </div>
-         
-        <div id="updateDiv">
+
+
+       {{-- Phone --}}  
+        
+       <div id="updateDivPhone">
+
+        @if(session('status'))
+            <div class="alert alert-success">
+                {{session('status')}}
+            </div>
+        @endif
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+        @endif
+
+        <div class="" style=" border-top:1px solid gray; border-bottom: 1px solid gray;">
+    
+         <?php $var =1;?>
+            @foreach($cartItems as $cartItem)
+            <div class="row-product" style="margin: 30px 0;">
+                <div>
+                    <img style="width:150px;" src="{{url('images',$cartItem->options->img)}}" class="">
+                </div>
+                    <div>
+                        <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
+                        @if($cartItem->options->size !== null)          
+                        <span>{{$cartItem->options->size}}</span>
+                        @endif
+                        @if($cartItem->options->color !== null)         
+                        <span>, {{ $cartItem->options->color}}</span>
+                        @endif
+                        @if($cartItem->options->color !== null) 
+                        <span>, {{ $cartItem->options->print}}</span>
+                        @endif
+                        @if($cartItem->options->phoneModel !== null) 
+                        <span>{{ $cartItem->options->phoneModel}}</span>
+                        @endif
+                        @if($cartItem->options->caseStyle !== null) 
+                        <span>{{ $cartItem->options->caseStyle}}</span>
+                        @endif
+                        @if($cartItem->options->customCase !== null) 
+                        <span>{{ $cartItem->options->customCase}}</span>
+                        @endif
+                        @if($cartItem->options->posterSize !== null) 
+                        <span>{{ $cartItem->options->posterSize}}</span>
+                        @endif
+                        @if($cartItem->options->pictureSize !== null) 
+                        <span>{{ $cartItem->options->pictureSize}}</span>
+                        @endif
+                        <input type="hidden" id="rowIdPhone<?php echo $var;?>" value="{{$cartItem->rowId}}"/>
+                        <input type="hidden" id="proIdPhone<?php echo $var;?>" value="{{$cartItem->id}}"/>
+                        <div class="quantity">
+                            <input value="{{$cartItem->qty}}" name="qty" id="upCartPhone<?php echo $var;?>" type="number" min="1" max="100" step="1" value="1">
+                        </div> <br>
+                        <div class="cart_total" style="margin-top: 30px;">
+                            <p class="cart_total-price" id="subtotalPhone<?php echo $var;?>">{{ $cartItem->subtotal }}&euro;</p>
+                        </div>
+                   
+                    </div>
+                    <div class="cart_delete">
+                        <button><a href="{{ url('/cart/remove') }}/{{ $cartItem->rowId }}">x</a></button>
+                    </div>
+                    <?php $var++;?>
+                </div>
+            @endforeach
+           
+        </div>
+        </div>
+
+       {{--  End phone  --}}
+
+      <div id="updateDiv">
 
         @if(session('status'))
             <div class="alert alert-success">
@@ -150,13 +258,13 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
         </table>
 
         </div>
-    <!-- End of Updatediv</div> -->
+    <!-- End of Updatediv -->
     </div>
 </div>
 </section> <!--/#cart_items-->
     <section id="do_action">
         <div class="container">
-            <div class="block-body order-summary" style="width: 40%; margin: 50px auto; font-size: 17px;">
+            <div class="block-body order-summary">
                 <ul class="order-menu list-unstyled">
                     <li>
                         <span id="countTotal">{{$countTotal}}</span> <span> items</span>
@@ -256,7 +364,6 @@ $('#upCart<?php echo $i;?>').on('change keyup', function(){
                                 </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
                                 <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">${{$cartSubTotal}}</strong></li>
-                                <p>Prikaz logotipa omogućenih metoda plaćanja</p>
                             </ul>
                         </div>
                         <div class="payment">

@@ -16,8 +16,7 @@
           <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
             <li style="list-style:none;">
               <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt="">
-                <span id="number_cart_items">{{ Cart::count() }}</span></a> 
-             
+                <span id="number_cart_items_phone">{{ Cart::count() }}</span></a>         
             </li>
             </ul>
          </div>
