@@ -256,6 +256,44 @@ class HomeController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         return view('search-results', compact('products', 'categories'));
     }
+
+    public function showCategoryProduct(Request $request){
+       
+        $category = Category::where('name',$request->category)->first('id');
+         $categoryId = $category->id;
+         $products = Product::where('category_id',$categoryId)->get();
+        $output = '';
+         foreach($products as $product){
+            $output.= " <div class='product'>".
+          "<a href='/product_details/".$product->id ."'  class=''>".
+                "<div class=''>".
+                "    <div class=''>".
+                      "  <img src='/images/".$product->image ." ' class='' alt=''>".
+                  "  </div>".
+                   " <div class=''>".
+                       " <p class=''> ".$product->name." </p>";
+                        
+                            $pro_cat = Product::find($product->id);
+                            if($pro_cat->category != null){
+                        
+                                $output.="<p class=''>". $pro_cat->category->name ."</p>";
+                            }
+                        if($product->spl_price==0){
+                        $output.="<p>".$product->price."&euro;</p>";
+                        }else{
+                        $output.=" <p>".$product->spl_price."&euro;</p>";
+                        }
+                        $output.=" </div>       </div>   </a>     </div>     " ;
+   
+         }
+
+         if($products){
+            echo $output;
+         }else{
+             echo "No products";
+         }
+         
+    }
 /* 
     public function product_price(Request $request) {
         $poster_size = $request->sizeSelected;

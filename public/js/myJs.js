@@ -486,3 +486,49 @@ jQuery('.quantity').each(function() {
   });
 
 });
+
+
+/* Categories sidebar */
+
+
+  
+
+  $("#1").attr("aria-expanded","true");
+  if($("#1").hasClass("collapsed")){
+    $("#1").removeClass("collapsed");
+  }
+  $("#1").next("ul").addClass("show");
+  
+
+  
+
+  function showCategory(number){
+
+    alert(number);
+  }
+
+
+
+  var elements = document.getElementsByClassName("side-category");
+
+  var myFunction = function() {
+      var attribute = this.getAttribute("data-myattribute");
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'html',
+      url: '/category_search',
+      data: { category:attribute},
+      success: function(response) {
+          $("#content").html(response);
+      }
+  });
+  };
+  
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].addEventListener('click', myFunction, false);
+      
+  }
+

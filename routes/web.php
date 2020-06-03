@@ -27,6 +27,8 @@ Route::get('selectSize', 'HomeController@selectSize');
 Route::post('/addReview', 'HomeController@addReview');
 Route::post('/addStar', 'HomeController@addStar');
 
+Route::post('/category_search', 'HomeController@showCategoryProduct');
+
 Route::get('/search', 'HomeController@search')->name('search');
 
 Route::get('/privacy_policy', 'HomeController@privacyPolicy');

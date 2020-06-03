@@ -66,7 +66,7 @@
           <div class="product">
             <a href="{{ url('/product_details', [$tshirt->id]) }}" class="">
               <div class="">
-                <div class="">
+                <div  class="img-div">
                     <img src="{{ url('images', $tshirt->image) }}" class="" alt="">
                 </div>
                 <div class="">
