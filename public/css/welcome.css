@@ -400,7 +400,20 @@
  */
 
 
+.img-div{
+    display: inline-block;
+    overflow: hidden; 
+}
 
+.img-div img {
+    display: block;
+    transition: transform .4s;  
+}
+
+.img-div:hover img {
+    transform: scale(1.1);
+    transform-origin: 50% 50%;
+}
 
 @media (max-width: 1200px) { 
     .box1-img-holder,

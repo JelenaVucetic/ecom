@@ -147,7 +147,7 @@
                 <div class="product">
                     <a href="{{ url('/product_details', [$product->id]) }}" class="">
                         <div class="">
-                            <div class="">
+                            <div class="img-div">
                                 <img src="{{ url('images', $product->image) }}" class="" alt="">
                             </div>
                             <div class="">

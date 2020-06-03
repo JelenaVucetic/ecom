@@ -67,6 +67,7 @@
         <link rel="stylesheet" href="/css/contact.css">
         <link rel="stylesheet" href="/css/copyright.css">
         <link rel="stylesheet" href="/css/shipping.css">
+        <link rel="stylesheet" href="/css/categories.css">
         @yield('cart-about-style.css')
         @yield('changed_header')
         @yield('phone-css')

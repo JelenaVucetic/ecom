@@ -37,7 +37,10 @@ class CategoriesController extends Controller
 
 
 
-    public function show($id) {
+    public function show(Request $request,$id) {
+        
+        $number = substr($request->fullUrl(),-1);
+    
         $products = Category::find($id)->products;
         
         $categories = Category::where('parent_id',NULL)->get();
@@ -46,7 +49,7 @@ class CategoriesController extends Controller
             'prodcuts' => $products,
             'categories' => $categories
          ]);  */
-        return view('admin.category.show', compact(['categories', 'products']));
+        return view('admin.category.show', compact(['categories', 'products','number']));
     }
 
     public function edit($id) {

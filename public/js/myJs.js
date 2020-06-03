@@ -125,6 +125,8 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, po
           parent1.css("background-color", "lightgreen");
           p.html("Added");
           p1.html("Added");
+          $("#number_cart_items").html(response);
+          $("#number_cart_items_phone").html(response);
           setTimeout(function(){
             parent.css("background-color", '#E6003A');
             parent1.css("background-color", '#E6003A');
@@ -448,3 +450,85 @@ $("#closeDropdown").click(function(event) {
   event.preventDefault();
   $(this).closest(".dropdown-menu").prev().dropdown("toggle");
 });
+
+
+
+
+jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+jQuery('.quantity').each(function() {
+  var spinner = jQuery(this),
+    input = spinner.find('input[type="number"]'),
+    btnUp = spinner.find('.quantity-up'),
+    btnDown = spinner.find('.quantity-down'),
+    min = input.attr('min'),
+    max = input.attr('max');
+
+  btnUp.click(function() {
+    var oldValue = parseFloat(input.val());
+    if (oldValue >= max) {
+      var newVal = oldValue;
+    } else {
+      var newVal = oldValue + 1;
+    }
+    spinner.find("input").val(newVal);
+    spinner.find("input").trigger("change");
+  });
+
+  btnDown.click(function() {
+    var oldValue = parseFloat(input.val());
+    if (oldValue <= min) {
+      var newVal = oldValue;
+    } else {
+      var newVal = oldValue - 1;
+    }
+    spinner.find("input").val(newVal);
+    spinner.find("input").trigger("change");
+  });
+
+});
+
+
+/* Categories sidebar */
+
+
+  
+
+  $("#1").attr("aria-expanded","true");
+  if($("#1").hasClass("collapsed")){
+    $("#1").removeClass("collapsed");
+  }
+  $("#1").next("ul").addClass("show");
+  
+
+  
+
+  function showCategory(number){
+
+    alert(number);
+  }
+
+
+
+  var elements = document.getElementsByClassName("side-category");
+
+  var myFunction = function() {
+      var attribute = this.getAttribute("data-myattribute");
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'html',
+      url: '/category_search',
+      data: { category:attribute},
+      success: function(response) {
+          $("#content").html(response);
+      }
+  });
+  };
+  
+  for (var i = 0; i < elements.length; i++) {
+      elements[i].addEventListener('click', myFunction, false);
+      
+  }
+
