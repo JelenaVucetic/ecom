@@ -258,7 +258,6 @@ class HomeController extends Controller
     }
 
     public function showCategoryProduct(Request $request){
-       
         $category = Category::where('name',$request->category)->first('id');
          $categoryId = $category->id;
          $products = Product::where('category_id',$categoryId)->get();
@@ -292,6 +291,9 @@ class HomeController extends Controller
          }else{
              echo "No products";
          }
+
+       /*   return response()
+            ->json(['output' => $output, 'number' => $number]); */
          
     }
 /* 

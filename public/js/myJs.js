@@ -492,12 +492,13 @@ jQuery('.quantity').each(function() {
 
 
   
-
-  $("#1").attr("aria-expanded","true");
-  if($("#1").hasClass("collapsed")){
-    $("#1").removeClass("collapsed");
+  var url = window.location.href;     
+  var number = url.charAt(url.length-1);
+  $("#"+number).attr("aria-expanded","true");
+  if($("#"+number).hasClass("collapsed")){
+    $("#"+number).removeClass("collapsed");
   }
-  $("#1").next("ul").addClass("show");
+  $("#"+number).next("ul").addClass("show");
   
 
   
@@ -512,7 +513,9 @@ jQuery('.quantity').each(function() {
   var elements = document.getElementsByClassName("side-category");
 
   var myFunction = function() {
-      var attribute = this.getAttribute("data-myattribute");
+      var attribute = this.getAttribute("data-myattribute")
+      var number = this.getAttribute("data-id");
+      var category = this.getAttribute("data-category");
       $.ajax({
         headers: {  
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
@@ -520,9 +523,11 @@ jQuery('.quantity').each(function() {
       type: 'post',
       dataType: 'html',
       url: '/category_search',
-      data: { category:attribute},
+      data: { category:attribute, number:number},
       success: function(response) {
           $("#content").html(response);
+          attribute = attribute.replace(/ /g,"");
+           history.replaceState({page: "http://ecom.example/category/"}, "", category + "?" + attribute +"="  + number); 
       }
   });
   };

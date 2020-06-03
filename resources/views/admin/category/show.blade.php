@@ -22,7 +22,7 @@
                         @if($category->children)
                             @foreach ($category->children as $child)
                             <li>
-                                <a class="side-category" data-myattribute="{{ $child->name }}">{{ $child->name }}</a> 
+                            <a class="side-category" data-category="{{$child->id}}" data-id="{{$counter}}" data-myattribute="{{ $child->name }}">{{ $child->name }}</a> 
                             </li>
                            
                             @endforeach
