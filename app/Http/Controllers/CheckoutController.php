@@ -145,7 +145,7 @@ class CheckoutController extends Controller
          // Include the autoloader (if not already done via Composer autoloader)
        // require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
-        $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
+       /*  $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
 
         $customer = new Customer();
         $customer->setBillingCountry("ME")
@@ -212,7 +212,7 @@ class CheckoutController extends Controller
 			$code = $errorData->getCode();
             return view('error_payment_info', compact('categories', 'code'));
         }
-
+ */
         if (Auth::check()) {
             $userid = Auth::user()->id;
         } else {

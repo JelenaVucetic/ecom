@@ -11,7 +11,7 @@
           @if(Auth::check())
           <div class="hello-user">
             <p>Hello  {{ ucfirst(Auth::user()->name)  }} </p>
-            <a href="" data-placement="bottom" title="View your profile"><img src="/site-images/profil.svg" alt=""></a>
+            <a href="/profile" data-placement="bottom" title="View your profile"><img src="/site-images/profil.svg" alt=""></a>
         {{--     <div class="dropdown-menu">
               <h1>dropdown</h1>
             </div> --}}

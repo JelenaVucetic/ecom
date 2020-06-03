@@ -15,23 +15,31 @@ class ProfileController extends Controller
     //
     public function index() {
         $categories = Category::where('parent_id',NULL)->get();
-        return view('profile.index', compact('categories'));
-    }
-
-    public function orders() {
-        $categories = Category::where('parent_id',NULL)->get();
         $user_id = Auth::user()->id;
+
         $orders = DB::table('order_product')->leftJoin('product', 'product.id', '=', 'order_product.product_id')->
                     leftJoin('orders', 'orders.id', '=', 'order_product.order_id')->
                     where('orders.user_id', '=', $user_id)->get();
-        return view('profile.orders', compact('orders', 'categories'));
+        return view('profile.index', compact('categories', 'orders'));
     }
 
+
+
     public function address() {
+        $categories = Category::where('parent_id',NULL)->get();
+
         $user_id = Auth::user()->id;
-        $address_data = DB::table('address')->where('user_id', '=', $user_id)->orderby('id', 'DESC')->get();
+
+        $user = Address::where('user_id', '=',  $user_id)->first();
+        if ($user === null) {
+            return view('profile.fill-address', compact('address_data', 'categories'));
+        } else {
+            $address_data = DB::table('address')->where('user_id', '=', $user_id)->orderby('id', 'DESC')->get();
         //dd( $address_data);
-        return view('profile.address', compact('address_data'));
+            return view('profile.address', compact('address_data', 'categories'));
+        }
+
+       
     }
 
     public function updateAddress(Request $request) {
@@ -42,6 +50,7 @@ class ProfileController extends Controller
             'firstname' => 'required|min:3|max:35',
             'lastname' => 'required|min:3|max:35',
             'email' => 'required|email',
+            'phone' => 'required',
             'street' => 'required|min:3|max:35',
             'zip' => 'required|regex:/\b\d{5}\b/',
             'city' => 'required|min:3|max:35'
@@ -50,6 +59,7 @@ class ProfileController extends Controller
                 'firstname.required' => 'Enter First Name',
                 'lastname.required' => 'Enter Last Name',
                 'email.required' => 'Pleaste enter valid email',
+                'phone.required' => 'Plese enter your phone number',
                 'street.required' => 'Enter Street',
                 'zip.required' => 'Zip is not valid',
                 'city.required' => 'Enter City',

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<section id="cart_items" style="padding:200px;">
+<section id="cart_items">
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
@@ -37,6 +37,12 @@
                         <input id="email" type="email" name="email" placeholder="Email" value="{{ $value->email }}" class="form-control">
                         <br>
                         <span style="color:red">{{ $errors->first('email') }}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input id="phone" type="text" name="phone" placeholder="Phone" value="{{ $value->phone }}" class="form-control">
+                        <br>
+                        <span style="color:red">{{ $errors->first('phone') }}</span>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="street" class="form-label">Street Address</label>
