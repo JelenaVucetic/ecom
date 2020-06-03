@@ -1,0 +1,19 @@
+
+.dropdown-toggle{
+    color: #231F20!important;
+    font-weight: bold;
+}
+
+.side-category{
+    color: #8B8B8B!important;
+    cursor: pointer;
+}
+
+.list-unstyled{
+    margin-left: 20px;
+} 
+
+.dropdown-toggle::after {
+    margin-left: 0.955em;
+    vertical-align: .055em;
+}

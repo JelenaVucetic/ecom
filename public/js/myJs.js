@@ -490,7 +490,19 @@ jQuery('.quantity').each(function() {
 
 /* Categories sidebar */
 
-
+  var bold = $(".id-hidden").val();
+  boldCategory(bold);
+  function boldCategory(id){
+    var category_bold = document.getElementsByClassName("side-category");
+    for(var i=0;i<category_bold.length;i++){
+      if(id == category_bold[i].getAttribute("data-category")){
+        category_bold[i].style.fontWeight = "bold";
+      }else{
+        category_bold[i].style.fontWeight = "400";
+      }
+     
+    }
+  }
   
   var url = window.location.href;     
   var number = url.charAt(url.length-1);
@@ -503,11 +515,7 @@ jQuery('.quantity').each(function() {
 
   
 
-  function showCategory(number){
-
-    alert(number);
-  }
-
+  
 
 
   var elements = document.getElementsByClassName("side-category");
@@ -516,6 +524,8 @@ jQuery('.quantity').each(function() {
       var attribute = this.getAttribute("data-myattribute")
       var number = this.getAttribute("data-id");
       var category = this.getAttribute("data-category");
+      $("#category-paragraph").text("");
+      $("#category-paragraph").text(attribute);
       $.ajax({
         headers: {  
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
@@ -527,7 +537,8 @@ jQuery('.quantity').each(function() {
       success: function(response) {
           $("#content").html(response);
           attribute = attribute.replace(/ /g,"");
-           history.replaceState({page: "http://ecom.example/category/"}, "", category + "?" + attribute +"="  + number); 
+           history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number); 
+           boldCategory(category);
       }
   });
   };
