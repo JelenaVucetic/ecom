@@ -286,10 +286,10 @@ class HomeController extends Controller
    
          }
 
-         if($products){
+         if(count($products)>0){
             echo $output;
          }else{
-             echo "No products";
+             echo "<h3>No products</h3>";
          }
 
        /*   return response()

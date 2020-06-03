@@ -35,7 +35,7 @@
             @php
               $string = (string) str_replace(' ', '', $child->name);
             @endphp
-            <a style=" color:#231f20!important;" class="child" href="{{route('category.show',[$child->id, $string => $no])}}" onclick="showCategory($no)">{{($child->name) }}</a>
+            <a style=" color:#231f20!important;" class="child" href="{{route('category.show',[$child->id, $string => $no])}}" >{{($child->name) }}</a>
             @endforeach
           </div>      
          @endif

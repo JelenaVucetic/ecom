@@ -44,12 +44,13 @@ class CategoriesController extends Controller
         $products = Category::find($id)->products;
         
         $categories = Category::where('parent_id',NULL)->get();
-
+        $cat = Category::where('id',$id)->first("name");
+        $cat = $cat->name;
         /* return response()->json([
             'prodcuts' => $products,
             'categories' => $categories
          ]);  */
-        return view('admin.category.show', compact(['categories', 'products','number']));
+        return view('admin.category.show', compact(['categories', 'products','number', 'cat' , 'id']));
     }
 
     public function edit($id) {
