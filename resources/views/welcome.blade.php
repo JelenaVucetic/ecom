@@ -133,23 +133,7 @@
 
     <div>
 
-    @foreach($categories as $category)
-                 <ul>
-                            <li>{{$category->name}}</li>
-                            @if(count($category->children))
-                             
-                                @foreach($category->children as $chield)
-                                <li>{{$chield->name}}</li>
-                                    @if(count($chield->children))
-                                        
-                                        @foreach($chield->children as $chield)
-                                            <p>{{$chield->name}}</p>
-                                        @endforeach
-                                    @endif
-                                @endforeach
-                            @endif 
-                        </ul>
-        @endforeach
+ 
 
     </div>
 
