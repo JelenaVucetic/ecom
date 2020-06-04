@@ -1,23 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-<section id="cart_items" style="padding:200px;">
+<section id="cart_items">
     <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="{{url('/profile')}}">Profile</a></li>
-                <li class="active">My Address</li>
-            </ol>
-        </div>
         @if(session('msg'))
         <div class="alert alert-info"> {{session('msg')}} </div>
         @endif
         <div class="row">
             @include('profile.menu') 
             <div class="col-md-8">
-                <h3><span style="color:green">{{ucwords(Auth::user()->name)}}</span>, Your Address</h3>
+                <h4 style="margin-bottom:40px;"> <strong> {{ucwords(Auth::user()->name)}}</strong>, please fill in your information.</h4>
                 <div class="container">
-                    <form  id="payment_form"  action="" method="POST"  class='test-form'>
+                    <form  id="payment_form"  action="{{ url('createAddress') }}" method="POST"  class='test-form' style="width:60%">
                         @csrf
                             <div class="shipping-details-form">
                                 <div class="">
@@ -63,6 +57,9 @@
                                     <span style="color:red">{{ $errors->first('city') }}</span>
                                 </div>
                             </div>
+                            <div style="text-align:center; margin-bottom:50px;" >
+                                <input type="submit" value="Submit" class="submit-button">
+                            </div>                          
                     </form>
                 </div>
             </div>       

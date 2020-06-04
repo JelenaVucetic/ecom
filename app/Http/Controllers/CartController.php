@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Address;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -28,7 +30,19 @@ class CartController extends Controller
             $cartSubTotal = Cart::subtotal();
         } 
 
-        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice'));
+        $ads = null;
+
+        if(Auth::check()) {
+            $ads = Address::where('user_id', '=', Auth::user()->id)->orderby('id', 'DESC')->first();
+            if($ads) {
+                $ads = $ads;
+            } else {
+                $ads = null;
+            }
+        }
+
+
+        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads'));
     }
 
     public function addItem(Request $request, $id)

@@ -88,6 +88,7 @@ Route::get('/cancel', 'CheckoutController@cancel');
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ProfileController@index');
     Route::get('/address', 'ProfileController@address');
+    Route::post('/createAddress', 'ProfileController@createAddress')->name('createAddress');
     Route::post('/updateAddress', 'ProfileController@updateAddress');
     Route::get('/password', 'ProfileController@password');
     Route::post('/updatePassword', 'ProfileController@updatePassword');
