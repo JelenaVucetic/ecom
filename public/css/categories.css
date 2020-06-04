@@ -9,6 +9,11 @@
     cursor: pointer;
 }
 
+.side-category-gender{
+    color: #8B8B8B!important;
+    cursor: pointer;
+}
+
 .list-unstyled{
     margin-left: 20px;
 } 
@@ -16,4 +21,20 @@
 .dropdown-toggle::after {
     margin-left: 0.955em;
     vertical-align: .055em;
+}
+
+.gender{
+    width: 100px;
+    height: 30px;
+    background-color: #231F20;
+    border-radius: 20px;
+    margin-left: 20px;
+    color: white;
+    padding-top: 3px;
+    padding-left: 18px;
+}
+
+.gender i{
+    padding-left: 5px;
+    padding-top: 5px;
 }

@@ -303,6 +303,9 @@ $(document).ready(function(){
 
 
 
+           
+ 
+
 
     // Close other canvas edit options
     function closeCanvas(){

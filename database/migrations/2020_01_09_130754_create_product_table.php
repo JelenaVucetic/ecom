@@ -21,6 +21,7 @@ class CreateProductTable extends Migration
             $table->string('price');
             $table->string('image');
             $table->string('spl_price');
+            $table->string('gender')->nullable();
             $table->timestamps();
         });
     }

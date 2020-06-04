@@ -25,6 +25,9 @@
    
      <!-- Propeller navbar -->
      <link href="/css/navbar.css" type="text/css" rel="stylesheet"/>
+
+     <!-- Icons -->
+     <script src="https://kit.fontawesome.com/920ab36000.js" crossorigin="anonymous"></script>
      
      <!-- Propeller button  -->
      <link href="/css/button.css" type="text/css" rel="stylesheet"/>
