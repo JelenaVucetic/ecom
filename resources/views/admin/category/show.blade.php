@@ -8,8 +8,10 @@
 <div class="row">
 <div class="col-3" style=" padding-left: 35px;">
 </div>
-<div class="col-9" style="padding: 0 0;">
-    <p id="category-paragraph" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
+<div class="col-9" style="padding: 0 0; display:flex;">
+    <p id="category-paragraph" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
+    <div class="gender" id="male-div" data-value="male" style="display: none;">Male <i class="fas fa-times" id="male-x"></i></div>
+    <div class="gender" id="female-div" data-value="female" style="display: none;">Female <i class="fas fa-times" id="female-x"></i></div>
     </div>
 </div>
 <div class="row" style="margin:0">
@@ -20,6 +22,15 @@
             </div>
         
             <ul class="list-unstyled components">
+                <a href="#homeSubmenu"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gender</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                    <li>
+                        <a class="side-category-gender" data-value="male">Male</a>
+                    </li>
+                    <li>
+                        <a class="side-category-gender" data-value="female">Female</a>
+                    </li>
+                </ul>
                 <?php $counter = 0; ?>
                 @foreach($categories as $category)
                 <li class="" style="    margin-bottom: 10px;">

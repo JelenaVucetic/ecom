@@ -45,9 +45,10 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
+        
         $data = $request->all();
        
-       
+      
       $title = $data['name'];
       $image = $data['image'];;
       $tags = $data['tag'];
@@ -55,7 +56,7 @@ class AjaxUploadController extends Controller
       $original = $data['originalName1'];
       $originalImagePath = $data['originalImagePath'];
       $canvasImage = $data['canvasImage'];
-
+      $gender = $data['gedner'];
       
        if($canvasImage!==null && $canvasImage!=="0"){
         $canvasImage = explode(";" ,  $canvasImage)[1];  
@@ -132,7 +133,7 @@ if($row==null){
 
 
  $idProduct = DB::table('product')->insertGetId([
-'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign
+'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender
 ]); 
 
 $products = DB::table('product')->where([

@@ -514,6 +514,50 @@ jQuery('.quantity').each(function() {
   
 
   
+$(".side-category-gender").on("click" ,function(){
+  var genders_div = document.getElementsByClassName("gender");
+  for(var i = 0;i<genders_div.length;i++){
+    if(genders_div[i].getAttribute("data-value") == this.getAttribute("data-value")){
+      genders_div[i].style.display = "block";
+      sendGender( this.getAttribute("data-value"));
+     
+    }else{
+      genders_div[i].style.display = "none";
+    }
+  }
+});
+
+ $("#male-x").on("click", function(){
+  document.getElementById("male-div").style.display = "none";
+  sendGender(null);
+});
+ 
+$("#female-x").on("click", function(){
+  document.getElementById("female-div").style.display = "none";
+  sendGender(null);
+});
+
+
+ function sendGender(gender){
+      var attribute = $("#category-paragraph").attr("data-myattribute");
+      var number = $("#category-paragraph").attr("data-id");
+      $("#category-paragraph").text("");
+      $("#category-paragraph").text(attribute);
+      $("#category-paragraph").attr("data-myattribute",attribute);
+      $("#category-paragraph").attr("data-id",number);
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'html',
+      url: '/category_search',
+      data: { category:attribute, number:number, gender:gender},
+      success: function(response) {
+          $("#content").html(response);
+      }
+  });
+} 
 
   
 
@@ -521,11 +565,13 @@ jQuery('.quantity').each(function() {
   var elements = document.getElementsByClassName("side-category");
 
   var myFunction = function() {
-      var attribute = this.getAttribute("data-myattribute")
+      var attribute = this.getAttribute("data-myattribute");
       var number = this.getAttribute("data-id");
       var category = this.getAttribute("data-category");
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
+      $("#category-paragraph").attr("data-myattribute",attribute);
+      $("#category-paragraph").attr("data-id",category);
       $.ajax({
         headers: {  
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  

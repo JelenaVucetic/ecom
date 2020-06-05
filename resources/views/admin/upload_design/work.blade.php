@@ -22,7 +22,7 @@
       {{-- Phone case html --}}
         <div class="product-column">
         <div class="row-product">
-        <div id="proizvod" class="save-picture disabledbutton" name="Phone Case" data-canvas="canvas3" value="1">
+        <div id="proizvod" class="save-picture disabledbutton" data-category="" name="Phone Case" data-canvas="canvas3" value="1">
             <div class="background-div">
         <img id="logo-canvas" src="/image/<?php if(!empty($image)){echo $image;} ?>">
         <img class="overlay-panel" src="/images/phonecase.png">
@@ -802,7 +802,16 @@
             <label>Description</label>
             <textarea type="text" placeholder="Description" id="description"></textarea>
           </div>
+          
         </div>
+        <div class="ram-checkbox">
+          <input type="radio" id="female-check" name="gender"  value="female">
+          <label for="vehicle1"> Female</label><br>
+          <input type="radio"  id="male-check"   name="gender" value="male">
+          <label for="vehicle2"> Male</label><br>
+          <input type="radio" id="unisex-check"  name="gender" value="unisex">
+          <label for="vehicle3"> Unisex</label><br>
+          </div>
         <button id="capture" {{-- onclick="doCapture();" --}}>Save work</button>
     
        
@@ -1883,6 +1892,8 @@ $("#capture").click(function(event){
     var description = document.getElementById('description').value;
     var els = document.getElementsByClassName("save-picture");
     var mockUpCanvas = document.getElementById("canvasMockUp");
+    var gender = $('input[name=gender]:checked').val();
+ 
     
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
     Array.prototype.forEach.call(els, function(el) {
@@ -1897,7 +1908,7 @@ $("#capture").click(function(event){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
             var nameProduct = title + " " + el.getAttribute('name');
-            
+            alert(originalName);
             $.ajax({
                      headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1913,7 +1924,7 @@ $("#capture").click(function(event){
                         originalName1 : originalName,
                         originalImagePath: originalImagePath,
                         canvasImage : canvasImage,
-                       
+                       gedner : gender
                     },
                     success:function(msg){
                       console.log(msg);
