@@ -527,6 +527,39 @@ $(".side-category-gender").on("click" ,function(){
   }
 });
 
+$("#man-mobile").on("click", function(){
+  
+  if($("#category-paragraph").attr("data-gender") == "male"){
+    sendGender(null);
+    $(this).prop("checked", false);
+    $("#span-man").css("background", "white")
+    $("#span-man").css("color", "black")
+  }else{
+    sendGenderMobile("male");
+    $(this).prop("checked", true);
+    $("#span-woman").css("background", "white")
+    $("#span-woman").css("color", "black")
+    $("#span-man").css("background", "black")
+    $("#span-man").css("color", "white")
+  }
+});
+
+$("#woman-mobile").on("click", function(){
+  if($("#category-paragraph").attr("data-gender") == "female"){
+    sendGender(null);
+    $(this).prop("checked", false);
+    $("#span-woman").css("background", "white")
+    $("#span-woman").css("color", "black")
+  }else{
+    sendGenderMobile("female");
+    $(this).prop("checked", true);
+    $("#span-man").css("background", "white")
+    $("#span-man").css("color", "black")
+    $("#span-woman").css("background", "black")
+    $("#span-woman").css("color", "white")
+  }
+});
+
  $("#male-x").on("click", function(){
   document.getElementById("male-div").style.display = "none";
   sendGender(null);
@@ -537,6 +570,24 @@ $("#female-x").on("click", function(){
   sendGender(null);
 });
 
+
+  function sendGenderMobile(gender){
+    var attribute = $("#category-paragraph").attr("data-myattribute");
+    var number = $("#category-paragraph").attr("data-id");
+    $.ajax({
+      headers: {  
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+              } ,
+    type: 'post',
+    dataType: 'html',
+    url: '/category_search',
+    data: { category:attribute, number:number, gender:gender},
+    success: function(response) {
+        $("#content").html(response);
+        $("#category-paragraph").attr("data-gender", gender);
+    }
+});
+  }
 
  function sendGender(gender){
       var attribute = $("#category-paragraph").attr("data-myattribute");
@@ -555,6 +606,7 @@ $("#female-x").on("click", function(){
       data: { category:attribute, number:number, gender:gender},
       success: function(response) {
           $("#content").html(response);
+          $("#category-paragraph").attr("data-gender", gender);
       }
   });
 } 

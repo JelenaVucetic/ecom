@@ -45,7 +45,7 @@
       @endphp
         @endforeach
       <div class="dropdown">
-        <button class="btn " type="button" id="dropdownMenuButtonSpecialPrice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn " type="button" id="dropdownMenuButtonSpecialPrice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: none;">
         <a href="" style="color:#404040;"> Special price</a> 
         </button> 
       </div>

@@ -5,17 +5,34 @@
 <section>
 @include('layouts.error')
 @if(isset($products))
-<div class="row">
+<div class="row" id="cat-show-paragraph">
 <div class="col-3" style=" padding-left: 35px;">
 </div>
 <div class="col-9" style="padding: 0 0; display:flex;">
-    <p id="category-paragraph" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
-    <div class="gender" id="male-div" data-value="male" style="display: none;">Male <i class="fas fa-times" id="male-x"></i></div>
-    <div class="gender" id="female-div" data-value="female" style="display: none;">Female <i class="fas fa-times" id="female-x"></i></div>
+    <p id="category-paragraph" data-gender="" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
+    <div class="gender" id="male-div" data-value="male" style="display: none;">Man <i class="fas fa-times" id="male-x"></i></div>
+    <div class="gender" id="female-div" data-value="female" style="display: none;">Woman <i class="fas fa-times" id="female-x"></i></div>
     </div>
 </div>
+<div style="text-align: center">
+      {{--   <div>
+        <a class="side-category-gender" id="round-btn" data-value="male" >Male  <i class="fas fa-plus"></i></a>
+        </div>
+        <p></p>
+        <a class="side-category-gender" data-value="female" style="color: black!important">Female   <i class="fas fa-plus"></i></a> --}}
+        <div id="mobile-gender" style="display: none;">
+              <label class="man-label" id="man-mobile">
+                  <input type="radio"  id="check-man" name="print"  class="print-class">
+                  <span style="border: 1px solid;" id="span-man">Man</span>              
+              </label>
+              <label class="woman-label" id="woman-mobile">
+                  <input type="radio" id="check-woman" name="print" class="print-class">
+                  <span style="border: 1px solid;" id="span-woman">Woman</span>
+              </label>
+          </div>
+</div>
 <div class="row" style="margin:0">
-    <div class="col-3" style=" padding-left: 35px;">
+    <div class="col-3" style=" padding-left: 120px;">
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Category</h3>
@@ -25,10 +42,10 @@
                 <a href="#homeSubmenu"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gender</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a class="side-category-gender" data-value="male">Male</a>
+                        <a class="side-category-gender" data-value="male">Man</a>
                     </li>
                     <li>
-                        <a class="side-category-gender" data-value="female">Female</a>
+                        <a class="side-category-gender" data-value="female">Woman</a>
                     </li>
                 </ul>
                 <?php $counter = 0; ?>
@@ -54,10 +71,15 @@
     </div>
 
     
-    <div id="content" class="col-9" style="padding: 0 0;">
-       
+    
+       <?php $no = 0; ?>
+       <div id="content" class="row products-category" style="padding: 0 0; display:flex; width: 75%;">
         @forelse($products as $product)
-        <div class="product">
+        {{-- @if($no % 4 == 0) --}}
+        
+        {{-- @endif --}}
+        
+        <div class="product col-sm-6 col-md-3 col-6">
             <a href="{{ url('/product_details', [$product->id]) }}" class="">
                 <div class="">
                     <div  class="img-div">
@@ -80,10 +102,14 @@
                 </div>
             </a> 
         </div>
+     {{--    @if($no % 4 ==0)
+    </div>
+    @endif --}}
+    <?php $no++ ?>
         @empty
             <h3>No products</h3>
         @endforelse
-  </div>
+</div>
 
 </div>
 

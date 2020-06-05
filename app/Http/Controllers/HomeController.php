@@ -275,10 +275,10 @@ class HomeController extends Controller
         
         $output = '';
          foreach($products as $product){
-            $output.= " <div class='product'>".
+            $output.= " <div class='product col-sm-6 col-md-3 col-6'>".
           "<a href='/product_details/".$product->id ."'  class=''>".
                 "<div class=''>".
-                "    <div class=''>".
+                "    <div class='img-div'>".
                       "  <img src='/images/".$product->image ." ' class='' alt=''>".
                   "  </div>".
                    " <div class=''>".
