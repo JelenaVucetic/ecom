@@ -12,6 +12,7 @@ use App\Category;
 use App\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Support\Facades\Hash;    
+use Image;
 class ProfileController extends Controller
 {
     //
@@ -34,6 +35,7 @@ class ProfileController extends Controller
 
         $user = Address::where('user_id', '=',  $user_id)->first();
         if ($user === null) {
+            $address_data = null;
             return view('profile.fill-address', compact('address_data', 'categories'));
         } else {
             $address_data = DB::table('address')->where('user_id', '=', $user_id)->orderby('id', 'DESC')->first();
@@ -130,5 +132,31 @@ class ProfileController extends Controller
    
         return back()->with('msg', 'You have change your password successfuly!');
 
+    }
+
+    public function profilImage() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('profile.add_avatar', compact('categories'));
+    }
+
+    public function updateProfilImage(Request $request) {
+        // Handle the user upload of avatar
+    	if($request->hasFile('avatar')){
+            $width = 300; 
+            $height = 100;
+    		$avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            $img = Image::make($avatar);
+           
+            $img->height() > $img->width() ? $width=null : $height=null;
+    		$img->resize($width, $height, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save( public_path('/avatars/' . $filename ) );
+    		$user = Auth::user();
+    		$user->avatar = $filename;
+    		$user->save();
+    	}
+
+    	return back();;
     }
 }

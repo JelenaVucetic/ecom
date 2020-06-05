@@ -11,7 +11,7 @@
             <div class="col-md-8">
                 <h4 style="margin-bottom:40px;"> <strong> {{ucwords(Auth::user()->name)}}</strong>, please fill in your information.</h4>
                 <div class="container">
-                    <form  id="payment_form"  action="{{ url('createAddress') }}" method="POST"  class='test-form' style="width:60%">
+                    <form  id="payment_form"  action="{{ url('createAddress') }}" method="POST"  class='test-form fill-address'>
                         @csrf
                             <div class="shipping-details-form">
                                 <div class="">
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div style="text-align:center; margin-bottom:50px;" >
-                                <input type="submit" value="Submit" class="submit-button">
+                                <input type="submit" value="Submit" class="submit-button" style="width: 150px;">
                             </div>                          
                     </form>
                 </div>

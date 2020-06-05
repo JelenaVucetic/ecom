@@ -1,3 +1,52 @@
-.profile-nav a{
+.avatar {
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.1) 0 1px 2px;
+    background-color: #fff;
+    padding: 16px;
+}
 
+.avatar h3 {
+    border-bottom: solid 1px #d6dadf;
+    margin-bottom: 32px;
+    padding: 0 0 16px;
+}
+
+.avatar div {
+    display: flex;
+}
+
+.avatar-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 45%;
+    width: 150px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    background: #E6003A;
+    color: white;
+    padding: 5px;
+}
+
+.avatar p {
+    margin-top: 2rem;
+    font-size: 14px;
+}
+
+.avatar form {
+    width: 60%;
+}
+
+.password-form {
+    width: 60%;
+}
+@media (max-width: 767px) {  
+    .avatar-btn {
+        position: inherit;
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+    .password-form {
+        width: 100%;
+    }
 }

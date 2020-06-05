@@ -32,6 +32,12 @@
     role="navigation">
           <nav class="sidebar-nav">
             <ul>
+              @if(Auth::check())
+              <li> 
+                {{ ucfirst(Auth::user()->name)  }}
+                <a href="/profile" data-placement="bottom" title="View your profile"><img src="/site-images/profil.svg" alt=""></a>
+              </li>
+              @endif
             @foreach($categories as $category)
               <li>
                 <a href="#"><i class="ion-bag"></i> <span>{{ ucwords($category->name) }}</span></a>
