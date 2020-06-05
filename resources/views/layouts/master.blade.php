@@ -72,6 +72,7 @@
         <link rel="stylesheet" href="/css/shipping.css">
         <link rel="stylesheet" href="/css/categories.css">
         <link rel="stylesheet" href="/css/profile.css">
+        <link rel="stylesheet" href="/css/address.css">
         @yield('cart-about-style.css')
         @yield('changed_header')
         @yield('phone-css')

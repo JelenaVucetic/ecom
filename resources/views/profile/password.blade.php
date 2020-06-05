@@ -16,7 +16,7 @@
                 <p class="text-danger">{{ $error }}</p>
             @endforeach 
             
-                <div class="shipping-details-form" style="width:60%">
+                <div class="shipping-details-form password-form">
                     <div class="" style="margin:20px 0;">
                         <label for="password" class="form-label" style="margin-bottom:0;">Current Password</label>
                         <input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
@@ -33,7 +33,7 @@
                     </div>
 
                     <div style="text-align:center; margin-bottom:50px;">
-                        <button type="submit" class="submit-button">
+                        <button type="submit" class="submit-button" style="width: 150px;">
                             Update Password
                         </button>
                     </div>

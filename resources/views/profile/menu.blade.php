@@ -4,5 +4,6 @@
         <a href="{{url('/wishlist')}}" class="nav-link"><span>Wishlist ({{App\wishlist::count()}})</span> </a>
         <a href="{{url('/address')}}" class="nav-link">My address</a>
         <a href="{{url('/password')}}" class="nav-link">Change Password</a>
+        <a href="{{url('/profile_image')}}" class="nav-link">Your profil image</a>
     </nav>
 </div>

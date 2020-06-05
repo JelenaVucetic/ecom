@@ -13,7 +13,7 @@
                 <div class="container">
                     {!! Form::open(['url' => 'updateAddress', 'method'=> 'post']) !!}
 
-                    <div class="shipping-details-form" style="width:60%">
+                    <div class="shipping-details-form address">
                         <div class="">
                             <label for="firstname" class="form-label">First Name</label> 
                             <input id="firstname" type="text" name="firstname" placeholder="e.g. John"  value="{{ $address_data->firstname }}" class="form-control">
@@ -56,9 +56,10 @@
                             <br>
                             <span style="color:red">{{ $errors->first('city') }}</span>
                         </div>
+                        
                     </div>
-                    <div style="width:60%;margin:auto; margin-bottom:50px;" >
-                        <input type="submit" value="Submit" class="submit-button">
+                    <div class="address-btn">
+                        <input type="submit" value="Submit" class="submit-button" style="width: 150px;">
                     </div>      
 
                     {!! Form::close() !!}

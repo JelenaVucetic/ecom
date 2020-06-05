@@ -88,6 +88,8 @@ Route::get('/cancel', 'CheckoutController@cancel');
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/profile', 'ProfileController@index');
     Route::get('/address', 'ProfileController@address');
+    Route::get('/profile_image', 'ProfileController@profilImage');
+    Route::post('/profile_image', 'ProfileController@updateProfilImage');
     Route::post('/createAddress', 'ProfileController@createAddress')->name('createAddress');
     Route::post('/updateAddress', 'ProfileController@updateAddress');
     Route::get('/password', 'ProfileController@password');
