@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\DB;
-
+use Image;
 class CategoriesController extends Controller
 {
 
@@ -28,10 +28,34 @@ class CategoriesController extends Controller
 
     public function store(Request $request) {
         $this->validate($request, [
-            'name'  => 'required|min:3|max:255|string'
+            'name'  => 'required|min:3|max:255|string',
+            'image' => 'required',
+            'cover_image' => 'required'
         ]);
 
-        Category::create($request->all());
+        if($request->hasFile('image')){
+    		$image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $img = Image::make($image);
+           
+    		$img->save( public_path('/site-images/' . $filename ) );
+        }
+
+        if($request->hasFile('cover_image')){
+    		$cover_image = $request->file('cover_image');
+            $filename_cover = time() . 'second' . '.' . $cover_image->getClientOriginalExtension();
+            $cover_img = Image::make($cover_image);
+           
+    		$cover_img->save( public_path('/site-images/' . $filename_cover ) );
+    
+        }
+
+          DB::table('categories')->insert([
+            'name' => $request->input('name'),
+            'image' => $filename,
+            'cover_image' => $filename_cover,
+            'updated_at' => date("Y-m-d H:i:s")
+        ]);
         return back()->withSuccess('You have successfully created a Category!');
     }
 

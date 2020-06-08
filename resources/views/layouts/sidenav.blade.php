@@ -1,3 +1,5 @@
+@include('modals.searchModal')
+
 <nav class="navbar pmd-navbar fixed-top pmd-z-depth navbar-expand-md" id="mySideNav" style="display:none;">
     <div class="container-fluid"> 
     <!-- Sidebar Toggle Button-->
@@ -6,7 +8,7 @@
     <a href="javascript:void(0);" data-target="basicSidebar" data-placement="left"
     data-position="fixed" is-open="true" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect float-left margin-r8 pmd-sidebar-toggle"
     is-open-width="1000"><i class="material-icons md-light" style="color:#231F20">menu</i></a>
-    <i class="fa fa-search"></i>
+    <i class="fa fa-search" data-toggle="modal" data-target="#searchModal"></i>
     <a class="navbar-brand" href="/"><img src="/site-images/U1.png" alt="Urban one"></a>
   
     </div>
@@ -31,31 +33,49 @@
     <aside id="basicSidebar" class="pmd-sidebar pmd-z-depth sidenav"
     role="navigation">
           <nav class="sidebar-nav">
-            <ul>
-              @if(Auth::check())
-              <li> 
-                {{ ucfirst(Auth::user()->name)  }}
-                <a href="/profile" data-placement="bottom" title="View your profile"><img src="/site-images/profil.svg" alt=""></a>
-              </li>
-              @endif
-            @foreach($categories as $category)
+            <ul>     
               <li>
-                <a href="#"><i class="ion-bag"></i> <span>{{ ucwords($category->name) }}</span></a>
-                @if($category->children)
-                <ul class="nav-flyout">
-                @foreach ($category->children as $child)
+                <a href="#"><img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 26px;height: 26px;object-fit: cover;border-radius: 50%;"> <span>{{ ucfirst(Auth::user()->name)  }}</span></a>
+                <ul class="nav-flyout" style="width: 83%;">
+                  <li><img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 100%;object-fit: cover;"></li>
                   <li>
-                    <a href="{{route('category.show',$child->id)}}"><i class="ion-ios-color-filter-outline"></i>{{ ucwords($child->name) }}</a>
-                    </li>
-                    @endforeach  
-                 
+                    <a href="{{url('/profile')}}">My Orders</a>
+                  </li>
+                  <li> 
+                    <a href="{{url('/wishlist')}}"><span>Wishlist ({{App\wishlist::count()}})</span> </a>
+                  </li>
+                  <li>
+                    <a href="{{url('/address')}}" >My address</a>
+                  </li>
+                  <li>
+                    <a href="{{url('/password')}}">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="{{url('/profile_image')}}">Your profil image</a>
+                  </li>
                 </ul>
-                @endif
-              </li>
-              @endforeach
-                </ul>
-              </li>
-            </ul>
+              </li>  
+              @foreach($categories as $category)
+                <li>
+                  <div style=" display: flex;">
+                     <img src="/site-images/{{$category->image}}" alt="" style="width:50px;height: 50px;margin: auto 5px;">
+                    <a href="#"><i class="ion-bag"></i> <span>{{ ucwords($category->name) }}</span></a>
+                  </div>
+                    @if($category->children)
+                      <ul class="nav-flyout">
+                        <li>
+                          <img src="/site-images/{{$category->cover_image}}" alt="" style="width: 100%;">
+                        </li>
+                        @foreach ($category->children as $child)
+                          <li>
+                            <a href="{{route('category.show',$child->id)}}"><i class="ion-ios-color-filter-outline"></i>{{ ucwords($child->name) }}</a>
+                          </li>
+                        @endforeach           
+                      </ul>
+                    @endif
+                </li>
+                @endforeach
+              </ul>
           </nav>
     </aside>
    

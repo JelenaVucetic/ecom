@@ -82,7 +82,7 @@ Nav-Flyout
   position: absolute;
   background-color: white;
   z-index: 9;
-  left: 2.5em;
+  left: 3.3em;
   top: 0;
   height: 100vh;
   -moz-transform: translateX(100%);
@@ -412,3 +412,59 @@ Hover
 }
 
 /*# sourceMappingURL=sidebar.css.map */
+
+#phone-search-input {
+  padding: 5px;
+  border: 1px solid #8B8B8B;
+  border-radius: 5px;
+  outline: none;
+}
+
+#phone-search-input:focus {
+  border: 1px solid #231F20;  
+  border-radius: 5px;
+}
+
+.tshirt-cat {
+  background-image: url('/site-images/tshirt-cat.jpg');
+}
+
+.cases-cat {
+  background-image: url('/site-images/stickers-cat.jpg');
+}
+
+.gifts-cat {
+  background-image: url('/site-images/mask-cat.jpg');
+}
+
+.tshirt-cat, 
+.cases-cat,
+.gifts-cat {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+    height: 150px;
+    margin: 10px 0;
+}
+
+.tshirt-cat a {
+    position: absolute;
+    top: 12%;
+    left: 10%;
+    color: white;
+  }
+
+.cases-cat a {
+    position: absolute;
+    top: 33%;
+    left: 10%;
+    color: white;
+
+}
+.gifts-cat a {
+    position: absolute;
+    top: 54%;
+    left: 10%;
+    color: white;
+}
