@@ -9,40 +9,28 @@
     <div class="container">
       <div class="row">
           @forelse($products as $product)
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-              <img src="{{ url('images', $product->image) }}" class="card-img" alt="">
-            <div class="card-body">
-                <p class="card-text">{{ $product->name }}</p>
-              <p class="card-text">{{ $product->description }}</p>
-                <p id="price">
-                  @if($product->spl_price==0)
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="card-text">${{$product->price}}</p>
-                        <p class="card-text"></p>
+          <div class="product">
+            <a href="{{ url('/product_details', [$product->id]) }}" class="">
+                <div class="">
+                    <div class="img-div">
+                        <img src="{{ url('images', $product->image) }}" class="" alt="">
                     </div>
-                         @else
-
-                      <div class="d-flex justify-content-between align-items-center">
-                          <p class="" style="text-decoration:line-through; color:#333">${{$product->price}}</p>
-                          <img src="" alt="..."  style="width:60px">
-                          <p class="">${{$product->spl_price}}</p>
-                      </div>
-                  @endif
-                </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-primpary">
-                      <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart">View product</a>
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-primpary">
-                      <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart">Add to cart</a>
-                  </button>
+                    <div class="">
+                        <p class="">{{ $product->name }}</p>
+                        <?php
+                            $pro_cat = App\Product::find($product->id);
+                            if($pro_cat->category != null){
+                        ?>
+                            <p class="">{{ $pro_cat->category->name }}</p>
+                        <?php } ?>
+                        @if($product->spl_price==0)
+                            <p>{{ $product->price}}&euro;</p>
+                        @else
+                            <p>{{$product->spl_price}}&euro;</p>
+                        @endif
+                    </div>
                 </div>
-                <small>9 mins</small>
-              </div>
-            </div>
-          </div>
+            </a> 
         </div>
         @empty
         <h3>No products</h3>

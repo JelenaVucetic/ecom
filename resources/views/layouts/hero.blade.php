@@ -5,13 +5,26 @@
             <a href="/"> <img src="/site-images/U1.png" alt="Urban one">    </a>
           </div>
 
-          <form action="{{ route('search') }}" class="form-inline ml-auto" method="get" >
-              <div class="searchIDiv">
-              <div class="searchI">
-                <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search design and products" required><i class="fa fa-search" aria-hidden="true"></i>
-              </div>
+          @if(Request::path() === 'search')
+          <form class="form-inline ml-auto">
+            <div class="searchIDiv">
+            <div class="searchI">
+              <input type="text" name="query1" id="query1" class="" value="{{ request()->input('query1') }}" placeholder="Search design and products" required><i class="fa fa-search" aria-hidden="true"></i>
             </div>
-            </form>
+          </div>
+          </form>
+         
+          @else
+          <form action="{{ route('search') }}" class="form-inline ml-auto" method="get" >
+            <div class="searchIDiv">
+            <div class="searchI">
+              <input type="text" name="query" id="query" class="" value="{{ request()->input('query') }}" placeholder="Search design and products" required><i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+          </div>
+          </form>
+          @endif
+
+        
             <div class="hero-right">
             <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
               <li style="list-style:none;">

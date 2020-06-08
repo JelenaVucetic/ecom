@@ -30,6 +30,7 @@ Route::post('/addStar', 'HomeController@addStar');
 Route::post('/category_search', 'HomeController@showCategoryProduct');
 
 Route::get('/search', 'HomeController@search')->name('search');
+Route::post('/search', 'HomeController@searchProduct');
 
 Route::get('/privacy_policy', 'HomeController@privacyPolicy');
 Route::get('/how_to_order', 'HomeController@howToOrder');
@@ -94,7 +95,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/updateAddress', 'ProfileController@updateAddress');
     Route::get('/password', 'ProfileController@password');
     Route::post('/updatePassword', 'ProfileController@updatePassword');
-    Route::post('addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
+    Route::post('/addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
     Route::get('/wishlist', 'HomeController@viewWishlist');
+    
     Route::get('/removeWishList/{id}', 'HomeController@destroy');
 });

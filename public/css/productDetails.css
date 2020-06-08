@@ -44,6 +44,12 @@
     width: 57px;
 }
 
+.hoverd{
+    
+    background: url('/site-images/1 srce - hover.svg') no-repeat!important;
+   
+}
+
 .wishlist #disable {
     position: absolute;
     top: 20px;

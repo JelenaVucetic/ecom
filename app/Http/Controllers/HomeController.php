@@ -147,16 +147,18 @@ class HomeController extends Controller
     {
         $wishlist = new Wishlist;
         $wishlist->user_id = Auth::user()->id;
-        $wishlist->pro_id = $request->pro_id;
+        $wishlist->pro_id = $request->id;
 
         $wishlist->save();
 
-        $product = DB::table('product')->where('id', $request->pro_id)->first();
+        $product = DB::table('product')->where('id', $request->id)->first();
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
         
-        return view('product_details', compact('product', 'categories', 'design'));
-    }
+        echo "OK";
+        /* return view('product_details', compact('product', 'categories', 'design'));
+     */
+}
 
     public function destroy($id) {
         DB::table('wishlist')->where('pro_id', '=', $id)->delete();
@@ -314,6 +316,41 @@ class HomeController extends Controller
         
         return view('product_details', compact('poster_size'));
     } */
+
+    public function searchProduct(Request $request){
+        $products = Product::search($request->data)->paginate(20);
+        $output = '';
+        foreach($products as $product){
+           $output.= " <div class='product'>".
+         "<a href='/product_details/".$product->id ."'  class=''>".
+               "<div class=''>".
+               "    <div class='img-div'>".
+                     "  <img src='/images/".$product->image ." ' class='' alt=''>".
+                 "  </div>".
+                  " <div class=''>".
+                      " <p class=''> ".$product->name." </p>";
+                       
+                           $pro_cat = Product::find($product->id);
+                           if($pro_cat->category != null){
+                       
+                               $output.="<p class=''>". $pro_cat->category->name ."</p>";
+                           }
+                       if($product->spl_price==0){
+                       $output.="<p>".$product->price."&euro;</p>";
+                       }else{
+                       $output.=" <p>".$product->spl_price."&euro;</p>";
+                       }
+                       $output.=" </div>       </div>   </a>     </div>     " ;
+  
+        }
+
+        if(count($products)>0){
+            echo $output;
+         }else{
+             echo "<h3>No products</h3>";
+         }
+
+    }
 
     public function privacyPolicy() {
         $categories = Category::where('parent_id',NULL)->get();

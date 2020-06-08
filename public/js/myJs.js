@@ -646,3 +646,41 @@ $("#female-x").on("click", function(){
       
   }
 
+
+    $("#query1").keyup(function (){
+      var data = $("#query1").val();
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'html',
+      url: '/search',
+      data: { data:data},
+      success: function(response) {
+        $(".row").html(response);
+        history.replaceState({page: window.location.hostname+"/search"}, "", "/search?query="  + data); 
+      }
+  });
+    })
+
+    $("#sendWishList").on("click", function(){
+      var id = $("#productID").val();
+     
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'html',
+      url: '/addToWishlist',
+      data: { id:id},
+      success: function(response) {
+      if(response == "OK"){
+        $("#sendWishList").addClass("hoverd");
+      }
+      }
+  });
+    });
+
+

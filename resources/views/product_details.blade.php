@@ -54,11 +54,11 @@
                 
             ?>
             <?php if($count == "0") { ?>
-                {!! Form::open(['route' => 'addToWishlist', 'method' => 'post']) !!}
+               
                 <input type="hidden" value="{{$product->id}}" name="pro_id">
                 <br>
-                <input type="submit" value=" ">
-                {!! Form::close() !!}
+                <input type="submit" value=" " >
+                
             <?php } else { ?>
               <input type="submit" value=" " id="disable">
             <?php } ?>
@@ -305,7 +305,7 @@
 </div>
 <!-- end for phone -->
 
-<!--   For Desctop -->
+<!--   For Desktop -->
   <div class="row desctop-product">
       <div class="col-3 left">
         <img style="width:50%"  src="{{url('design', $design->name)}}"> 
@@ -330,11 +330,11 @@
                 
             ?>
             <?php if($count == "0") { ?>
-                {!! Form::open(['route' => 'addToWishlist', 'method' => 'post']) !!}
-                <input type="hidden" value="{{$product->id}}" name="pro_id">
+               
+                <input type="hidden" value="{{$product->id}}" id="productID" name="pro_id">
                 <br>
-                <input type="submit" value=" ">
-                {!! Form::close() !!}
+                <input class="" type="submit" value=" " id="sendWishList">
+                
             <?php } else { ?>
               <input type="submit" value=" " id="disable">
             <?php } ?>
