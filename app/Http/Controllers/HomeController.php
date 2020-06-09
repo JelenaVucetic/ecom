@@ -270,9 +270,16 @@ class HomeController extends Controller
 
     public function showCategoryProduct(Request $request){
         
-        $category = Category::where('name',$request->category)->first('id');
+        $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
+         $all = Category::where('parent_id', $parentId = Category::where('name', $category->name)
+                ->value('id'))
+                ->pluck('id')
+                ->all();
+                
          if($request->gender){
+             if($category->parent_id){
+
             $products = Product::where([
                 ['category_id',$categoryId],
                 ['gender', $request->gender]
@@ -280,8 +287,24 @@ class HomeController extends Controller
                     ['category_id',$categoryId],
                     ['gender', 'unisex']
                 ])->get();
+            }else{
+                $products = Product::whereIn([
+                    ['category_id',$all],
+                    ['gender', $request->gender]
+                    ])->orWhereIn([
+                        ['category_id',$all],
+                        ['gender', 'unisex']
+                    ])->get();
+            }
          }else{
-            $products = Product::where('category_id',$categoryId)->get();
+             if($category->parent_id){
+                $products = Product::where('category_id',$categoryId)->get();
+             }else{
+                $products = Product::whereIn(
+                        'category_id',$all
+                    )->get();
+             }
+           
          }
         
         $output = '';

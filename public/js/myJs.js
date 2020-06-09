@@ -504,7 +504,7 @@ jQuery('.quantity').each(function() {
     }
   }
   
-  var url = window.location.href;     
+  var url = window.location.href;    
   var number = url.charAt(url.length-1);
   $("#"+number).attr("aria-expanded","true");
   if($("#"+number).hasClass("collapsed")){

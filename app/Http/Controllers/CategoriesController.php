@@ -62,7 +62,7 @@ class CategoriesController extends Controller
 
 
     public function show(Request $request,$id) {
-        
+        //dd($request);
         $number = substr($request->fullUrl(),-1);
     
         $products = Category::find($id)->products;
@@ -74,7 +74,19 @@ class CategoriesController extends Controller
             'prodcuts' => $products,
             'categories' => $categories
          ]);  */
-        return view('admin.category.show', compact(['categories', 'products','number', 'cat' , 'id']));
+
+               
+        $clothingIds = Category::where('parent_id', $parentId = Category::where('name', $cat)
+                ->value('id'))
+                ->pluck('id')
+                ->all();
+                if(is_int($number)){
+
+                }
+        $mainCategory = Category::where("id",$id)->first();
+        $clothingProducts =  Product::whereIn('category_id', $clothingIds)->get();
+            
+        return view('admin.category.show', compact('categories', 'products','number', 'cat' , 'id', 'clothingProducts', 'mainCategory'));
     }
 
     public function edit($id) {
