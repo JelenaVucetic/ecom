@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Address;
 
-class CreateAddressTable extends Migration
+class CreateUserAddressTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +13,7 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('user_address', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('firstname');
             $table->string('lastname');
@@ -22,9 +21,8 @@ class CreateAddressTable extends Migration
             $table->string('phone');
             $table->string('street');
             $table->integer('zip');
-            $table->integer('user_id');
-            $table->integer('order_id');
             $table->string('city');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -36,6 +34,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('user_address');
     }
 }

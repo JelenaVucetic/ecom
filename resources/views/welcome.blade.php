@@ -17,13 +17,13 @@
             <div class="col-6 col-md-4">
                 <div class="box-container">
                     <div class="box1-img-holder"></div>
-                    <button>Shop T-Shirts</button>        
+                    <button><a href="/category/{{$shirtsCat->id}}" style="color: inherit;">  Shop T-Shirts</a></button>        
                 </div>       
             </div>
             <div class="col-6 col-md-4">
                 <div class="box-container">
                     <div class="box2-img-holder"></div>
-                    <button>Shop Cases</button> 
+                    <button><a href="/category/{{$casesCat->id}}" style="color: inherit;"> Shop Cases</a></button> 
                 </div>              
             </div>
             <div id="box3" class="col-12 col-md-4">

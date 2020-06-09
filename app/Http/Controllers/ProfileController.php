@@ -33,12 +33,13 @@ class ProfileController extends Controller
 
         $user_id = Auth::user()->id;
 
-        $user = Address::where('user_id', '=',  $user_id)->first();
+        $user = DB::table('user_address')->where('user_id', '=',  $user_id)->first();
+
         if ($user === null) {
             $address_data = null;
             return view('profile.fill-address', compact('address_data', 'categories'));
         } else {
-            $address_data = DB::table('address')->where('user_id', '=', $user_id)->orderby('id', 'DESC')->first();
+            $address_data = DB::table('user_address')->where('user_id', '=', $user_id)->orderby('id', 'DESC')->first();
         //dd( $address_data);
             return view('profile.address', compact('address_data', 'categories'));
         }
@@ -49,8 +50,7 @@ class ProfileController extends Controller
     public function createAddress(Request $request) {
         $categories = Category::where('parent_id',NULL)->get();
 
-        $this->validate($request, [
-          
+        $this->validate($request, [ 
             'firstname' => 'required|min:3|max:35',
             'lastname' => 'required|min:3|max:35',
             'email' => 'required|email',
@@ -71,7 +71,7 @@ class ProfileController extends Controller
         
         $userid = Auth::user()->id;
 
-        DB::table('address')->insert([
+        DB::table('user_address')->insert([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'email' => $request->email,
@@ -83,16 +83,13 @@ class ProfileController extends Controller
             'created_at' => now()
         ]);
 
-         $address_data = DB::table('address')->where('user_id', '=', $userid)->orderby('id', 'DESC')->first();
+         $address_data = DB::table('user_address')->where('user_id', '=', $userid)->orderby('id', 'DESC')->first();
         //dd( $address_data);
         return view('profile.address', compact('address_data', 'categories'));
     }
 
     public function updateAddress(Request $request) {
-        //echo 'here is query for updating address';
-        //dd($request->firstname);
         $this->validate($request, [
-          
             'firstname' => 'required|min:3|max:35',
             'lastname' => 'required|min:3|max:35',
             'email' => 'required|email',
@@ -112,7 +109,7 @@ class ProfileController extends Controller
             ]);
         
         $userid = Auth::user()->id;
-        DB::table('address')->where('user_id', $userid)->update($request->except('_token'));
+        DB::table('user_address')->where('user_id', $userid)->update($request->except('_token'));
         return back()->with('msg', 'Your address has been updated');
     }
 

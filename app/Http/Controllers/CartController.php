@@ -33,7 +33,7 @@ class CartController extends Controller
         $ads = null;
 
         if(Auth::check()) {
-            $ads = Address::where('user_id', '=', Auth::user()->id)->orderby('id', 'DESC')->first();
+            $ads = DB::table('user_address')->where('user_id', '=', Auth::user()->id)->orderby('id', 'DESC')->first();
             if($ads) {
                 $ads = $ads;
             } else {

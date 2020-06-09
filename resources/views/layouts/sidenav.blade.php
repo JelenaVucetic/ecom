@@ -37,14 +37,18 @@
               <li>
                 @if (Auth::check())
                 <a href="#"><img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 26px;height: 26px;object-fit: cover;border-radius: 50%;"> <span>{{ ucfirst(Auth::user()->name)  }}</span></a>
+                @else 
+                <div style="display: flex;">
+                  <a href="{{ url('/login') }}">Login</a>
+                  <a href="{{ route('register') }}">Signup</a>
+                </div>        
                 @endif
-               
-                <ul class="nav-flyout" style="width: 83%;">
-                  @if (Auth::check())
+                @if (Auth::check())
+                <ul class="nav-flyout" style="width: 83%;">            
                   <li>
                     <img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 100%;object-fit: cover;">
                   </li>
-                  @endif
+                  
                   <li>
                     <a href="{{url('/profile')}}">My Orders</a>
                   </li>
@@ -60,7 +64,11 @@
                   <li>
                     <a href="{{url('/profile_image')}}">Your profil image</a>
                   </li>
+                  <li>
+                    <a href="{{ url('/logout') }}">Yes</a>
+                  </li>
                 </ul>
+                @endif
               </li>  
               @foreach($categories as $category)
                 <li>

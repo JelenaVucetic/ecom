@@ -32,12 +32,30 @@ class HomeController extends Controller
         return view('test');      
     }
 
-
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
+    public function welcome()
+    {
+        $products = Product::orderBy('id', 'desc')->paginate(28);
+        $categories = Category::where('parent_id',NULL)->get();
+
+        $shirtsCat = DB::table('product')
+                ->join('categories', 'categories.id', '=', 'product.category_id')
+                ->where('categories.name', '=', 'T-shirt')
+                ->first();
+        $casesCat = DB::table('product')
+                ->join('categories', 'categories.id', '=', 'product.category_id')
+                ->where('categories.name', '=', 'Samsung Cases')
+                ->first();
+                dd($casesCat);
+
+        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat'));
+    }
+
     public function index()
     {
 
@@ -68,15 +86,6 @@ class HomeController extends Controller
 
 
         return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies'));
-    }
-
-    public function welcome()
-    {
-        $products = Product::orderBy('id', 'desc')->paginate(28);
-        $categories = Category::where('parent_id',NULL)->get();
-     /*    $cat = Product::find(73);
-        dd($cat->category->name); */
-        return view('welcome', compact('products', 'categories'));
     }
 
     public function product_details($id)
