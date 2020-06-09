@@ -40,15 +40,19 @@
           $no = 0;
       @endphp
       @foreach($categories as $category)
+      @php
+        $string1 = (string) str_replace(' ', '', $category->name);
+      @endphp
       <div class="dropdown">
         <button class="dropbtn"> {{ ($category->name) }}</button>
         @if ($category->children)
           <div class="dropdown-content">
+          <a  href="{{route('category.show',[$category->id, $string1 => $no])}}" data-name="{{$category->name}}" data-id="{{$category->id}}"> All</a>
             @foreach ($category->children as $child)
-            @php
-              $string = (string) str_replace(' ', '', $child->name);
-            @endphp
-            <a style=" color:#231f20!important;" class="child" href="{{route('category.show',[$child->id, $string => $no])}}" >{{($child->name) }}</a>
+              @php
+                $string = (string) str_replace(' ', '', $child->name);
+              @endphp
+              <a style=" color:#231f20!important;" class="child" href="{{route('category.show',[$child->id, $string => $no])}}" >{{($child->name) }}</a>
             @endforeach
           </div>      
          @endif
