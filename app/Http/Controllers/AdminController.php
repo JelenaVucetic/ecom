@@ -22,7 +22,6 @@ class AdminController extends Controller
         'address.street', 'address.zip','address.user_id' , 'address.city', 
         'product.name', 'order_product.qty', 'order_product.total', 'order_product.size')
          ->get();
-        // dd($data);
 
         return view('admin.index', compact('data', 'categories'));
     }

@@ -51,7 +51,7 @@ class HomeController extends Controller
                 ->join('categories', 'categories.id', '=', 'product.category_id')
                 ->where('categories.name', '=', 'Samsung Cases')
                 ->first();
-                dd($casesCat);
+                
 
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat'));
     }
