@@ -35,9 +35,16 @@
           <nav class="sidebar-nav">
             <ul>     
               <li>
+                @if (Auth::check())
                 <a href="#"><img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 26px;height: 26px;object-fit: cover;border-radius: 50%;"> <span>{{ ucfirst(Auth::user()->name)  }}</span></a>
+                @endif
+               
                 <ul class="nav-flyout" style="width: 83%;">
-                  <li><img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 100%;object-fit: cover;"></li>
+                  @if (Auth::check())
+                  <li>
+                    <img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 100%;object-fit: cover;">
+                  </li>
+                  @endif
                   <li>
                     <a href="{{url('/profile')}}">My Orders</a>
                   </li>
