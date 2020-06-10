@@ -7,6 +7,7 @@
 .side-category{
     color: #8B8B8B!important;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .side-category-gender{
@@ -108,6 +109,8 @@
     }
     #content{
         width: 100%!important;
+        margin-left: 0;
+        margin-right: 0;
     }
     #cat-show-paragraph{
         margin-left: 10px;

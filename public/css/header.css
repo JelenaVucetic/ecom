@@ -9,6 +9,7 @@ a {
 
 .nav-item .dropdown{
     float:right;
+    
 }
 
 .hello-user {
@@ -129,6 +130,10 @@ display: flex;
     opacity: 1;
 }
 
+.dropdown:nth-child(1) {
+    min-width: 170px;
+}
+
 /* #cart{
     background-image: url('/site-images/03 Shopping-cart.svg');
     background-repeat: no-repeat;
@@ -238,6 +243,7 @@ display: flex;
   .dropdown {
     position: relative;
     display: inline-block;
+    white-space: nowrap;
   }
   
   .dropdown-content {

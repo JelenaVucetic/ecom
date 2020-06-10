@@ -520,7 +520,6 @@ $(".side-category-gender").on("click" ,function(){
     if(genders_div[i].getAttribute("data-value") == this.getAttribute("data-value")){
       genders_div[i].style.display = "block";
       sendGender( this.getAttribute("data-value"));
-     
     }else{
       genders_div[i].style.display = "none";
     }
