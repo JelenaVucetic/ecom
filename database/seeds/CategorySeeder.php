@@ -39,13 +39,13 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 6,
-            'name'=> 'T-shirt',
+            'name'=> 'T-shirts',
             'parent_id' => 1
         ]);
 
         Category::create([
             'id' => 7,
-            'name'=> 'Polo Shirt',
+            'name'=> 'Polo Shirts',
             'parent_id' => 1
         ]);
 
@@ -93,7 +93,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 15,
-            'name'=> 'Wallpaper',
+            'name'=> 'Wallpapers',
             'parent_id' => 3
         ]);
 
@@ -111,7 +111,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 18,
-            'name'=> 'Coaster',
+            'name'=> 'Coasters',
             'parent_id' => 4
         ]);
 
@@ -135,7 +135,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 22,
-            'name'=> 'Backpack',
+            'name'=> 'Backpacks',
             'parent_id' => 4
         ]);
 
@@ -147,7 +147,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 24,
-            'name'=> 'Sack',
+            'name'=> 'Sacks',
             'parent_id' => 4
         ]);
 
