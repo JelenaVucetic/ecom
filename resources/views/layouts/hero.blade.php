@@ -37,7 +37,7 @@
 <div class="category">     
   <div style="display: flex;justify-content: space-around; align-items: center;" class="main-categories">
       @php
-          $no = 0;
+          $no = 1;
       @endphp
       @foreach($categories as $category)
       @php

@@ -5,13 +5,13 @@
 <section>
 @include('layouts.error')
 @if(isset($products))
-<div class="row" id="cat-show-paragraph">
-<div class="col-3" style=" padding-left: 35px;">
-</div>
-<div class="col-9" style="padding: 0 0; display:flex;">
-    <p id="category-paragraph" data-gender="" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
-    <div class="gender" id="male-div" data-value="male" style="display: none;">Man <i class="fas fa-times" id="male-x"></i></div>
-    <div class="gender" id="female-div" data-value="female" style="display: none;">Woman <i class="fas fa-times" id="female-x"></i></div>
+<div class="row" id="cat-show-paragraph" style="margin:0;"> 
+    <div class="col-3" style=" padding-left: 35px;">
+    </div>
+    <div class="col-9" style="padding: 0 0; display:flex;">
+        <p id="category-paragraph" data-gender="" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
+        <div class="gender" id="male-div" data-value="male" style="display: none;">Man <i class="fas fa-times" id="male-x"></i></div>
+        <div class="gender" id="female-div" data-value="female" style="display: none;">Woman <i class="fas fa-times" id="female-x"></i></div>
     </div>
 </div>
 <div style="text-align: center">
@@ -48,14 +48,14 @@
                         <a class="side-category-gender" data-value="female">Woman</a>
                     </li>
                 </ul>
-                <?php $counter = 0; ?>
+                <?php $counter = 1; ?>
                 @foreach($categories as $category)
                 <li class="" style="margin-bottom: 10px;">
-                <a href="#homeSubmenu{{$counter}}" id="{{$counter}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ $category->name }}</a>
+                    <a href="#homeSubmenu{{$counter}}" id="{{$counter}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">{{ $category->name }}</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu{{$counter}}">
-                                <li>
-                                <a class="side-category" data-category="{{$category->id}}" data-id="{{$counter}}" data-myattribute="{{ $category->name }}" >All {{ $category->name }}</a> 
-                            </li>
+                        <li>
+                            <a class="side-category" data-category="{{$category->id}}" data-id="{{$counter}}" data-myattribute="{{ $category->name }}" >All {{ $category->name }}</a> 
+                        </li>
                         @if($category->children)
                             @foreach ($category->children as $child)
                             <input type="hidden" class="id-hidden" value="{{$id}}">

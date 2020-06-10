@@ -43,17 +43,50 @@ class HomeController extends Controller
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
 
-        $shirtsCat = DB::table('product')
-                ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'T-shirt')
+        $shirtsCat = DB::table('categories')
+                ->where('categories.name', '=', 'T-shirts')
                 ->first();
-        $casesCat = DB::table('product')
-                ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'Samsung Cases')
+
+        $casesCat = DB::table('categories')
+                ->where('categories.name', '=', 'Cases')
+                ->first();
+
+        $picturesCat = DB::table('categories')
+                ->where('categories.name', '=', 'Pictures')
+                ->first();
+
+        $giftsForHimCat = DB::table('categories')
+                ->where('categories.name', '=', 'Gifts For Him')
+                ->first();
+
+        $giftsForHerCat = DB::table('categories')
+                ->where('categories.name', '=', 'Gifts For Her')
+                ->first();
+
+        $mugsCat = DB::table('categories')
+                ->where('categories.name', '=', 'Mugs')
+                ->first();
+
+        $coastersCat = DB::table('categories')
+                ->where('categories.name', '=', 'Coasters')
+                ->first();
+
+        $clocksCat = DB::table('categories')
+                ->where('categories.name', '=', 'Clocks')
+                ->first();
+
+        $sacksCat = DB::table('categories')
+                ->where('categories.name', '=', 'Sacks')
+                ->first();
+
+        $magnetsCat = DB::table('categories')
+                ->where('categories.name', '=', 'Magnets')
                 ->first();
                 
-
-        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat'));
+        $notebooksCat = DB::table('categories')
+                ->where('categories.name', '=', 'Notebooks')
+                ->first();
+        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'picturesCat', 'giftsForHimCat', 'giftsForHerCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'notebooksCat'));
     }
 
     public function index()
