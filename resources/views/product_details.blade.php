@@ -86,7 +86,7 @@
       </div>    
 
       <?php $pro_cat = App\Product::find($product->id); ?>
-      @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
+      @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
       <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
       <div class="select-size">
         <h5>Size</h5>
@@ -360,7 +360,7 @@
             @endif
           </span>
 
-          @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
+          @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
           <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
           <div class="select-size">
             <h5>Size</h5>
