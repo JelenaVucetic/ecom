@@ -7,7 +7,7 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown"  style="min-width: 50px!important;">
           @if(Auth::check())
           <div class="hello-user">
             <p>Hello  {{ ucfirst(Auth::user()->name)  }} </p>
@@ -39,7 +39,7 @@
             @endif
         </div>
           @else
-              <a id="user-login" class="dropdown-item" href="{{ url('/login') }}">Login</a>
+              <a id="user-login" class="dropdown-item" href="{{ url('/login') }}" style="min-width: 50px!important;">Login</a>
               <li class="list-inline-item"> <a  class="dropdown-item"  href="{{ route('register') }}">Signup</a> </li>
          @endif
       </li>

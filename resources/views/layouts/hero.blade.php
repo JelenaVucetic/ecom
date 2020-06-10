@@ -47,7 +47,7 @@
         <button class="dropbtn"> {{ ($category->name) }}</button>
         @if ($category->children)
           <div class="dropdown-content">
-          <a  href="{{route('category.show',[$category->id, $string1 => $no])}}" data-name="{{$category->name}}" data-id="{{$category->id}}"> All</a>
+          <a  href="{{route('category.show',[$category->id, $string1 => $no])}}" data-name="{{$category->name}}" data-id="{{$category->id}}"> All {{$category->name}}</a>
             @foreach ($category->children as $child)
               @php
                 $string = (string) str_replace(' ', '', $child->name);

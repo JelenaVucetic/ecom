@@ -32,7 +32,7 @@
           </div>
 </div>
 <div class="row" style="margin:0">
-    <div class="col-3" style=" padding-left: 120px;">
+    <div class="col-3" style=" padding-left: 80px;">
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>Category</h3>
