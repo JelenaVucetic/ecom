@@ -18,6 +18,7 @@ Route::get('/test', 'HomeController@test');
 
 Route::get('/', 'HomeController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/specialprice', 'HomeController@specialPrice');
 
 Route::get('/product_details/{id}', 'HomeController@product_details');
 /* Route::post('/product_price/{id}', 'HomeController@product_price'); */

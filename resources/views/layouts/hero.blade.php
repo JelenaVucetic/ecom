@@ -28,9 +28,11 @@
             <div class="hero-right">
             <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
               <li style="list-style:none;">
-                <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt="">
-                  <span id="number_cart_items">{{ Cart::count() }}</span>
-                </a> 
+                <div style="position: relative;width: 50px;">
+                  <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt="">
+                    <span id="number_cart_items">{{ Cart::count() }}</span>
+                  </a> 
+                </div>            
               </li>
         </div>
     </div>
@@ -61,11 +63,11 @@
         $no++;
       @endphp
         @endforeach
-      <div class="dropdown">
-        <button class="btn " type="button" id="dropdownMenuButtonSpecialPrice" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="text-transform: none;">
-        <a href="" style="color:#404040;"> Special price</a> 
-        </button> 
+        <a href="/specialprice"> 
+          <button class="btn " type="button" id="dropdownMenuButtonSpecialPrice" style="white-space: nowrap; text-transform:none;" >
+            Special price
+          </button> 
+        </a> 
       </div>
-    </div>
   </div>
 </section>

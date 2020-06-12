@@ -90,9 +90,10 @@ class CategoriesController extends Controller
     }
 
     public function edit($id) {
+        $categories = Category::where('parent_id',NULL)->get();
         $category = Category::findOrFail($id);
 
-        return view('admin.category.edit', compact('category'));
+        return view('admin.category.edit', compact('category', 'categories'));
     }
 
     public function update(Request $request, $id) {
@@ -102,8 +103,33 @@ class CategoriesController extends Controller
 
         $name = $request->name;
 
+        if($request->hasFile('image')){
+    		$image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $img = Image::make($image);
+           
+            $img->save( public_path('/site-images/' . $filename ) );
+            
+            
         DB::table('categories')->where('id', $catId)->update([
-            'name' => $name
+            'image' => $filename
+        ]);
+        }
+
+        if($request->hasFile('cover_image')){
+    		$cover_image = $request->file('cover_image');
+            $filename_cover = time() . 'second' . '.' . $cover_image->getClientOriginalExtension();
+            $cover_img = Image::make($cover_image);
+           
+            $cover_img->save( public_path('/site-images/' . $filename_cover ) );
+
+            DB::table('categories')->where('id', $catId)->update([
+                'cover_image' => $filename_cover
+            ]);
+        }
+
+        DB::table('categories')->where('id', $catId)->update([
+            'name' => $name,
         ]);
         return redirect()->back()->with('status', 'Category updated!');
     }

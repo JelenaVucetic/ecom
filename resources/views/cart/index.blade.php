@@ -134,6 +134,9 @@ for( let i=1;i<20;i++) {
                         @if($cartItem->options->size !== null)          
                         <span>{{$cartItem->options->size}}</span>
                         @endif
+                        @if($cartItem->options->kidssize !== null) 
+                        <span>{{ $cartItem->options->kidssize}}</span>
+                          @endif
                         @if($cartItem->options->color !== null)         
                         <span>, {{ $cartItem->options->color}}</span>
                         @endif
@@ -214,6 +217,9 @@ for( let i=1;i<20;i++) {
                              @if($cartItem->options->size !== null)          
                             <span>{{$cartItem->options->size}}</span>
                              @endif
+                             @if($cartItem->options->kidssize !== null) 
+                             <span>{{ $cartItem->options->kidssize}}</span>
+                               @endif
                              @if($cartItem->options->color !== null)         
                             <span>, {{ $cartItem->options->color}}</span>
                             @endif
@@ -235,6 +241,7 @@ for( let i=1;i<20;i++) {
                               @if($cartItem->options->pictureSize !== null) 
                             <span>{{ $cartItem->options->pictureSize}}</span>
                               @endif
+                             
                         </td>
                         <td class="cart_price">
                             <p>{{$cartItem->price}}&euro;</p>

@@ -4,7 +4,7 @@
         <div class="about-urban-info">
             <img src="/site-images/12 High qualitys - ikonica.svg" alt="">
             <div>
-                <h6>High qualitys</h6>
+                <h6>High quality</h6>
                 <p>Available as Standard or <br> Express delivery</p>
             </div>
             <a class="learn-more" href="">Learn more</a>

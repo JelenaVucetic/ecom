@@ -1,24 +1,26 @@
 @include('modals.searchModal')
 
-<nav class="navbar pmd-navbar fixed-top pmd-z-depth navbar-expand-md" id="mySideNav" style="display:none;">
+<nav class="navbar pmd-navbar fixed-top pmd-z-depth navbar-expand-md" id="mySideNav" style="display:none; padding:0;">
     <div class="container-fluid"> 
     <!-- Sidebar Toggle Button-->
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header" style="display: flex;width: 75%;align-items: center;justify-content: space-between;">
-    <a href="javascript:void(0);" data-target="basicSidebar" data-placement="left"
-    data-position="fixed" is-open="true" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect float-left margin-r8 pmd-sidebar-toggle"
-    is-open-width="1000"><i class="material-icons md-light" style="color:#231F20">menu</i></a>
-    <i class="fa fa-search" data-toggle="modal" data-target="#searchModal"></i>
-    <a class="navbar-brand" href="/"><img src="/site-images/U1.png" alt="Urban one"></a>
+    <div class="navbar-header" style="display: flex;width: 71%;align-items: center;justify-content: space-between;">
+      <a href="javascript:void(0);" data-target="basicSidebar" data-placement="left"
+      data-position="fixed" is-open="true" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect float-left margin-r8 pmd-sidebar-toggle"
+      is-open-width="1000"><i class="material-icons md-light" style="color:#231F20">menu</i></a>
+      <i class="fa fa-search" data-toggle="modal" data-target="#searchModal" style="margin-right: 30px;"></i>
+      <a class="navbar-brand" href="/" style="margin-right: 0;"><img src="/site-images/U1.png" alt="Urban one"></a>
   
     </div>
         <!-- Navbar Right icon -->
-       <div class="pmd-ml-auto-icon float-right">
+       <div class="pmd-ml-auto-icon float-right" style="width: 95px">
         <div class="hero-right">
           <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
             <li style="list-style:none;">
-              <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt="">
+              <div style='position: relative;'>
+                <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/03 Shopping-cart.svg" alt="">
                 <span id="number_cart_items_phone">{{ Cart::count() }}</span></a>         
+              </div>        
             </li>
             </ul>
          </div>
@@ -31,7 +33,7 @@
   <div class="pmd-sidebar-overlay"></div>
     <!-- Left sidebar -->
     <aside id="basicSidebar" class="pmd-sidebar pmd-z-depth sidenav"
-    role="navigation">
+    role="navigation" style="z-index: 9999;">
           <nav class="sidebar-nav">
             <ul>     
               <li>

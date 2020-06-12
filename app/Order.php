@@ -11,10 +11,10 @@ class Order extends Model
     //
     protected $table = 'orders';
     protected $primarykey='id';
-    protected $fillable = ['total', 'status', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size'];
+    protected $fillable = ['total', 'status', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size', 'kids_size'];
 
     public function orderFields() {
-        return $this->belongsToMany(Product::class)->withPivot('qty', 'total', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size')->withTimestamps();
+        return $this->belongsToMany(Product::class)->withPivot('qty', 'total', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size', 'kids_size')->withTimestamps();
     }
     public static function createOrder() {
         if (Auth::check()) {
@@ -45,7 +45,8 @@ class Order extends Model
                 'case_style' => $cartItem->options->caseStyle,
                 'custom_case' => $cartItem->options->customCase,
                 'poster_size' => $cartItem->options->posterSize,
-                'picture_size' => $cartItem->options->pictureSize   ]);
+                'picture_size' => $cartItem->options->pictureSize,
+                'kids_size' => $cartItem->options->kidssize   ]);
             $order-> save();
         }
         return $order->id;

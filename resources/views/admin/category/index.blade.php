@@ -1,7 +1,7 @@
 @extends('admin.master')
 
 @section('content')
-<div class="navbar" style="width:30%">
+<div class="navbar" style="width:80%">
     <table class="table table-dark">
         <thead>
             <tr>

@@ -274,6 +274,20 @@ display: flex;
     background: #E6003A;
     color: white;
     border-radius: 30px;
+    right: -5px;
+    bottom: 18px;
+}
+
+#number_cart_items_phone {
+    position: absolute;
+    background: #E6003A;
+    color: white;
+    border-radius: 12px;
+    right: -13px;
+    bottom: 14px;
+    height: 24px;
+    min-width: 25px;
+    padding: 1px 0px 4px 6px;
 }
 @media (min-width: 576px) {
     .jumbotron {

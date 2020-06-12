@@ -621,6 +621,179 @@ stroke-width:20;
     right: 0;
 }
 
+
+
+.size2,
+.size4,
+.size6,
+.size8,
+.size10,
+.size12 {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+}
+
+.size2 span,
+.size2 input,
+.size4 span,
+.size4 input,
+.size6 span,
+.size6 input,
+.size8 span,
+.size8 input,
+.size10 span,
+.size10 input,
+.size12 span,
+.size12 input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.size2 input[type="radio"],
+.size4 input[type="radio"],
+.size6 input[type="radio"],
+.size8 input[type="radio"],
+.size10 input[type="radio"],
+.size12 input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+  width: 0px;
+}
+
+.size2 input[type="radio"]:checked+span,
+.size4 input[type="radio"]:checked+span,
+.size6 input[type="radio"]:checked+span,
+.size8 input[type="radio"]:checked+span,
+.size10 input[type="radio"]:checked+span,
+.size12 input[type="radio"]:checked+span,
+.Checked+span {
+    background: #E6003A;
+    color: white;
+    border: none;
+}
+
+.size10 span,
+.size12 span  {
+    background: white;
+    color: #404040;
+    border: 1px solid #DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 7px;
+    padding-top: 3px;
+}
+
+.size2 span,
+.size4 span,
+.size6 span,
+.size8 span {
+    background: white;
+    color: #404040;
+    border: 1px solid #DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+.size2 span:hover, 
+.size4 span:hover,
+.size6 span:hover,
+.size8 span:hover,
+.size10 span:hover,
+.size12 span:hover{
+  background: #E6003A;
+  color: white;
+  border: none;
+
+}
+
+
+.blue,
+.pink {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.white {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+}
+
+
+.white-border {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 17px;
+    position: relative;
+}
+
+.black-border {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 17px;
+    position: relative;
+    padding: 16px;
+}
+
+.pink input[type="radio"],
+.white input[type="radio"],
+.blue input[type="radio"] {
+    opacity: 0.01;
+    z-index: 100;   
+    width: 0px;
+  }
+
+.pink input,
+.white input,
+.blue input,
+.pink span,
+.white span,
+.blue span{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+.blue span {
+    background: blue;
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+} 
+.pink span {
+    background: pink;
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+}
+.white span {
+    background: white;
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+}
+
 @media (max-width: 767px) {  
     .desctop-product {
         display: none;

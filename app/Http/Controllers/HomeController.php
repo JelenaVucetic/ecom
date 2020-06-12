@@ -309,10 +309,10 @@ class HomeController extends Controller
                 ->value('id'))
                 ->pluck('id')
                 ->all();
-                
+              
          if($request->gender){
              if($category->parent_id){
-
+                /* dd($request->gender,$category->parent_id); */
             $products = Product::where([
                 ['category_id',$categoryId],
                 ['gender', $request->gender]
@@ -321,13 +321,9 @@ class HomeController extends Controller
                     ['gender', 'unisex']
                 ])->get();
             }else{
-                $products = Product::whereIn([
-                    ['category_id',$all],
-                    ['gender', $request->gender]
-                    ])->orWhereIn([
-                        ['category_id',$all],
-                        ['gender', 'unisex']
-                    ])->get();
+                $products = Product::
+                whereIn('category_id',$all)->where('gender', $request->gender)
+                    ->orWhereIn( 'category_id',$all)->where('gender', 'unisex')->get();
             }
          }else{
              if($category->parent_id){
@@ -445,5 +441,13 @@ class HomeController extends Controller
     public function contact() {
         $categories = Category::where('parent_id',NULL)->get();
         return view('contact_us', compact('categories'));
+    }
+
+    public function specialPrice() {
+        $categories = Category::where('parent_id',NULL)->get();
+
+        $products = Product::where('spl_price' , '!=' , 0)->get();
+
+        return view('specialprice', compact('categories', 'products'));
     }
 }

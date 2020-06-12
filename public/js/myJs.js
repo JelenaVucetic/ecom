@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 /*   Adding to cart with size */
 
-function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
+function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var parent1 =  $('#btn-add-to-cart-phone');
@@ -95,6 +95,7 @@ function addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, po
         url: '/cart/addItem/' + proDum,
         data: {
           size: size,
+          kidssize: kidssize,
           color: color,
           print: print,
           phoneModel: phoneModel,
@@ -149,7 +150,7 @@ $(document).ready(function(){
         var parent = $(this).parent();
         var size = $('.size-class:checked').val();
         var color = $('.color-class:checked').val();
-       
+        var kidssize = $('.kids-size-class:checked').val();
         var print = $('.print-class:checked').val();
         var customCase = $("#custom").val();
 
@@ -166,7 +167,7 @@ $(document).ready(function(){
         }
 
  */
-        if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+        if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
 
@@ -176,7 +177,23 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(size, color, print); 
+              addToCartAjax(kidssize, size, color, print); 
+            });
+              $('#modal-add').css('cursor', "pointer");
+              $('#modal-add div').css('background', "#E6003A");
+          });
+        } else if (pro_cat == "Kids T-Shirts" && kidssize == null) {
+          $('#btn-add-to-cart').attr('data-toggle', 'modal');
+          $('#btn-add-to-cart').attr('data-target', '#exampleModal');
+
+          $('#modal-add').css('cursor', "no-drop");
+          $('#modal-add div').css('background', "lightgray");
+          $('#modal-add').unbind();
+          $("input[name='kids-size']").change(function(){
+            $('#modal-add').bind("click", function(){
+              var kidssize =  $("input[name='kids-size']:checked").val();
+              alert(kidssize);
+              addToCartAjax(kidssize); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
@@ -185,11 +202,32 @@ $(document).ready(function(){
           alert('unesi teks');
         } 
         else {
-            addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+            addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
           }  
       }); 
 }); 
+/* $(document).ready(function(){
+  $('.pink div').removeClass( "white-border");
+  $('.blue div').removeClass( "white-border");
+  $('.pink span').css('border', "none");
+  $('.blue span').css('border', "none");
+  $('.white test').addClass( "black-border")
 
+
+  $('input[type=radio][name=kidscolor]').change(function() {
+
+    if(this.value == 'white'){
+      $('.black div').removeClass( "white-border");
+      $('#black span').css('border', "none");
+      $('.white div').addClass( "black-border")
+    } else {
+      $('.black div').addClass( "white-border");
+      $('.black span').css('border', "1px solid #DEDEDE;");
+      $('.white div').removeClass( "black-border")
+    }
+  });
+});
+ */
 $(document).ready(function(){
   $('.black div').removeClass( "white-border");
   $('.black span').css('border', "none");
@@ -209,6 +247,7 @@ $(document).ready(function(){
   }
 
 });
+
 
   $('#picture-custom').css('display', "none");
   var pro_cat = $('#pro_cat').val();
@@ -401,6 +440,7 @@ $(document).ready(function(){
       var pictureSize = $( ".picture-size option:selected" ).val();
       var parent = $(this).parent();
       var size = $('.size-class:checked').val();
+      var kidssize = $('.kids-size-class:checked').val();
       var color = $('.color-class:checked').val();
       var print = $('.print-class:checked').val();
       var customCase = $("#custom").val();
@@ -408,17 +448,7 @@ $(document).ready(function(){
       var pro_cat = $('#pro_cat').val();
       var price = $('#product_price').val();
 
-/*       var a = $('#width').val();
-      var b = $('#height').val();
-
-      if (a.match("^([1-9][0-9]*)$") && b.match("^([1-9][0-9]*)$") ) {
-        c = ((a*b) * price).toFixed(2)
-      } else {
-         alert("Please enter numeric with and height");
-      }
-
-*/
-      if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+      if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
         $('#btn-add-to-cart-phone').attr('data-toggle', 'modal');
         $('#btn-add-to-cart-phone').attr('data-target', '#exampleModal');
 
@@ -428,7 +458,22 @@ $(document).ready(function(){
         $("input[name='size']").change(function(){
           $('#modal-add').bind("click", function(){
             var size =  $("input[name='size']:checked").val();
-            addToCartAjax(size, color, print); 
+            addToCartAjax(kidssize, size, color, print); 
+          });
+            $('#modal-add').css('cursor', "pointer");
+            $('#modal-add div').css('background', "#E6003A");
+        });
+      } else if (pro_cat == "Kids T-Shirts" && kidssize == null) {
+        $('#btn-add-to-cart-phone').attr('data-toggle', 'modal');
+        $('#btn-add-to-cart-phone').attr('data-target', '#exampleModal');
+
+        $('#modal-add').css('cursor', "no-drop");
+        $('#modal-add div').css('background', "lightgray");
+        $('#modal-add').unbind();
+        $("input[name='kids-size']").change(function(){
+          $('#modal-add').bind("click", function(){
+            var kidssize =  $("input[name='kids-size']:checked").val();
+            addToCartAjax(kidssize); 
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
@@ -437,7 +482,7 @@ $(document).ready(function(){
         alert('unesi teks');
       } 
       else {
-          addToCartAjax(size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+          addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
         }  
     }); 
 }); 

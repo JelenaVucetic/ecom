@@ -8,6 +8,36 @@
             <h5 class="modal-title" id="exampleModalLabel">Please choose a size</h5>
             </div>
             <div class="modal-body">
+                @php $pro_cat = App\Product::find($product->id); @endphp
+                @if ($pro_cat->category->name == "Kids T-Shirts")
+                <div class="select-size">
+                    <h5>Size</h5>
+                      <label class="size2">
+                          <input type="radio" name="kids-size" id="s2" value="2" class="kids-size-class">
+                          <span>2</span>
+                      </label>
+                      <label class="size4">
+                          <input type="radio" name="kids-size" id="s4" value="4" class="kids-size-class">
+                          <span>4</span>
+                      </label>
+                      <label class="size6">
+                          <input type="radio" name="kids-size" id="s6" value="6" class="kids-size-class">
+                          <span>6</span>
+                      </label>
+                      <label class="size8">
+                          <input type="radio" name="kids-size" id="s8" value="8" class="kids-size-class">
+                          <span>8</span>
+                      </label>
+                      <label class="size10">
+                          <input type="radio" name="kids-size" id="s10" value="10" class="kids-size-class">
+                          <span>10</span>
+                      </label>
+                      <label class="size12">
+                          <input type="radio" name="kids-size" id="s12" value="12" class="kids-size-class">
+                          <span>12</span>
+                      </label>
+                  </div>
+                @else
             <div class="select-size">
                 <h5>Size</h5>
                 <label class="xs-size">
@@ -35,7 +65,9 @@
                     <span>2XL</span>
                 </label>
             </div>
+            @endif
             </div>
+            
             <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
             <a id="modal-add" style="cursor:pointer;"> 

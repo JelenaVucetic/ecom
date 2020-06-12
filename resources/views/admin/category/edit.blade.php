@@ -15,6 +15,17 @@
                     {{ Form::label('name', 'Name') }}
                     {{ Form::text('name', $category->name , array('class' => 'form-control', 'required' => '')) }}
                 </div>
+            </div>
+    
+                <div class="form-gr col-md-4">
+                    <label for="image">Image</label>
+                    <input type="file" name="image">
+                </div>
+
+                <div class="form-gr col-md-4">
+                    <label for="cover_image">Cover Image</label>
+                    <input type="file" name="cover_image">
+                </div>
                 {{ Form::submit('Submit', array('class' => 'btn btn-primary')) }}
                 {{ Form::close() }}
             </div>
