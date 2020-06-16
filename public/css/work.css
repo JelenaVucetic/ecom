@@ -175,6 +175,10 @@
         border: 3px solid #ff596f;
     }
 
+    #loader{
+        text-align: center;
+    }
+
     .add-work-h2{
         font-size: 40px;
     font-weight: 600;

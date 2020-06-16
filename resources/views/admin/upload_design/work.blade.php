@@ -2,6 +2,11 @@
 @section('content')
 
   <div class="upload-work-form">
+    <!-- Image loader -->
+<div id='loader' style='display: none;'>
+  <img src='/site-images/3.gif' width='62px' height='62px'>
+</div>
+<!-- Image loader -->
   <h2 class="add-work-h2">Add new work</h2>
     <form  action="/admin/work" method="post"  id="form-change"  enctype="multipart/form-data">
         @csrf
@@ -1893,10 +1898,21 @@ $("#capture").click(function(event){
     var els = document.getElementsByClassName("save-picture");
     var mockUpCanvas = document.getElementById("canvasMockUp");
     var gender = $('input[name=gender]:checked').val();
- 
-    
+    var count = 0;
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
+   
     Array.prototype.forEach.call(els, function(el) {
+      if( el.getAttribute('value')=='0'){
+        count++;
+      }
+    });
+  
+    $("#loader").show();
+    $('body').css("opacity" , 0.3);
+    $('body').css("pointer-events" , "none");
+   var number = 0;
+    Array.prototype.forEach.call(els, function(el) {
+      
       event.preventDefault();
      
      setTimeout(function(){
@@ -1925,16 +1941,30 @@ $("#capture").click(function(event){
                         canvasImage : canvasImage,
                        gedner : gender
                     },
+                    beforeSend: function(){
+                      // Show image container
+                     
+                    },
                     success:function(msg){
                       console.log(msg);
                        // finalMockup(msg);
+                       
                     }, 
                     error: function(msg) {
                       console.log(msg);
+                    
+                    },
+                    complete: function(msg){
+                      
                     }
                 });
         });
-
+    }
+    number++;
+    if(count==number){
+      $("#loader").hide(); 
+      $('body').css("opacity" , 1);
+      $('body').css("pointer-events" , "all");
     }
   
 },time)
@@ -1942,6 +1972,8 @@ time += 3000;
 
 });
 
+
+  
 });
 
 /* function doCapture(){
