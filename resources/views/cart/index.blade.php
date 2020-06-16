@@ -136,11 +136,14 @@ for( let i=1;i<20;i++) {
                         @endif
                         @if($cartItem->options->kidssize !== null) 
                         <span>{{ $cartItem->options->kidssize}}</span>
-                          @endif
+                        @endif
+                        @if($cartItem->options->kidscolor !== null)         
+                        <span>, {{ $cartItem->options->kidscolor}}</span>
+                        @endif
                         @if($cartItem->options->color !== null)         
                         <span>, {{ $cartItem->options->color}}</span>
                         @endif
-                        @if($cartItem->options->color !== null) 
+                        @if($cartItem->options->print !== null) 
                         <span>, {{ $cartItem->options->print}}</span>
                         @endif
                         @if($cartItem->options->phoneModel !== null) 
@@ -219,11 +222,14 @@ for( let i=1;i<20;i++) {
                              @endif
                              @if($cartItem->options->kidssize !== null) 
                              <span>{{ $cartItem->options->kidssize}}</span>
-                               @endif
+                            @endif
+                            @if($cartItem->options->kidscolor !== null)         
+                            <span>, {{ $cartItem->options->kidscolor}}</span>
+                            @endif
                              @if($cartItem->options->color !== null)         
                             <span>, {{ $cartItem->options->color}}</span>
                             @endif
-                              @if($cartItem->options->color !== null) 
+                              @if($cartItem->options->print !== null) 
                             <span>, {{ $cartItem->options->print}}</span>
                               @endif
                               @if($cartItem->options->phoneModel !== null) 
@@ -276,12 +282,12 @@ for( let i=1;i<20;i++) {
                     <li>
                         <span id="countTotal">{{$countTotal}}</span> <span> items</span>
                      
-                        <strong id="cartTotal1"  style="float: right;">${{$cartSubTotal}}</strong>
+                        <strong id="cartTotal1"  style="float: right;">&euro;{{$cartSubTotal}}</strong>
                         <!--  odje treba neko if -->
-                        <span id="oldPrice"  style="float: right;">${{ $oldPrice }}</span> 
+                        <span id="oldPrice"  style="float: right;">&euro;{{ $oldPrice }}</span> 
                     </li>
                     <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
-                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">${{$cartSubTotal}}</strong></li>
+                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">&euro;{{$cartSubTotal}}</strong></li>
                 </ul>
                 @if(!Auth::user())
                 <div class="account">
@@ -367,10 +373,10 @@ for( let i=1;i<20;i++) {
                                 <li class="d-flex justify-content-between"><span>Company</span><strong>Urban One</strong></li>
                                 <li>
                                     <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
-                                    <strong id="cartTotal1Second" style="float: right;">${{$cartSubTotal}}</strong>
+                                    <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
                                 </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
-                                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">${{$cartSubTotal}}</strong></li>
+                                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal}}</strong></li>
                             </ul>
                         </div>
                         <div class="payment">
