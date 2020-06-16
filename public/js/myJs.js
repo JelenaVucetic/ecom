@@ -77,9 +77,9 @@ $(document).ready(function(){
 
 
 
-/*   Adding to cart with size */
+/*   Adding to cart */
 
-function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
+function addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var parent1 =  $('#btn-add-to-cart-phone');
@@ -96,6 +96,7 @@ function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, cust
         data: {
           size: size,
           kidssize: kidssize,
+          kidscolor: kidscolor,
           color: color,
           print: print,
           phoneModel: phoneModel,
@@ -108,18 +109,6 @@ function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, cust
               modalAddBtn.attr('data-dismiss', 'modal');
               p.html("Adding ... ");
               p1.html("Adding ... ");
-              /* p.wavyText({
-                prefixes: ['-ms-','-webkit-','-o-','-moz-',''],
-                transition_speed:'1s',
-                keyframes: {
-                 '0': ['1px','inherit'],
-                  '20': ['7px','inherit'], 
-                  '40': ['8px','inherit'],
-                  '60': ['9px','inherit'], 
-                  '80': ['10px','inherit'],
-                 '100': ['0','inherit'] 
-                },
-                });*/
           },
         success: function(response) {
           parent.css("background-color", "lightgreen");
@@ -151,9 +140,9 @@ $(document).ready(function(){
         var size = $('.size-class:checked').val();
         var color = $('.color-class:checked').val();
         var kidssize = $('.kids-size-class:checked').val();
+        var kidscolor = $('.kids-color-class:checked').val();
         var print = $('.print-class:checked').val();
         var customCase = $("#custom").val();
-
         var pro_cat = $('#pro_cat').val();
         var price = $('#product_price').val();
 
@@ -177,7 +166,7 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(kidssize, size, color, print); 
+              addToCartAjax(kidssize, kidscolor,  size, color, print); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
@@ -192,42 +181,49 @@ $(document).ready(function(){
           $("input[name='kids-size']").change(function(){
             $('#modal-add').bind("click", function(){
               var kidssize =  $("input[name='kids-size']:checked").val();
-              alert(kidssize);
-              addToCartAjax(kidssize); 
+              addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
-        } else if(pro_cat == "Custom" && !customCase) {
+        } else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
+          addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
+        } 
+        else if(pro_cat == "Custom" && !customCase) {
           alert('unesi teks');
         } 
         else {
-            addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+            addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
           }  
       }); 
+
 }); 
-/* $(document).ready(function(){
-  $('.pink div').removeClass( "white-border");
-  $('.blue div').removeClass( "white-border");
-  $('.pink span').css('border', "none");
-  $('.blue span').css('border', "none");
-  $('.white test').addClass( "black-border")
-
-
+ $(document).ready(function(){
+  $('.pink div').removeClass( "black-border");
+  $('.blue div').removeClass( "black-border");
+  $('.whitePink div').removeClass( "black-border");
   $('input[type=radio][name=kidscolor]').change(function() {
-
     if(this.value == 'white'){
-      $('.black div').removeClass( "white-border");
-      $('#black span').css('border', "none");
+      $('.pink div').removeClass( "black-border");
+      $('.blue div').removeClass( "black-border");
       $('.white div').addClass( "black-border")
-    } else {
-      $('.black div').addClass( "white-border");
-      $('.black span').css('border', "1px solid #DEDEDE;");
+    } else if(this.value == 'pink'){
+      $('.pink div').addClass( "black-border")
+      $('.blue div').removeClass( "black-border");
       $('.white div').removeClass( "black-border")
+    } else if(this.value == 'white and blue') {
+      $('.whiteBlue div').addClass( "black-border")
+      $('.whitePink div').removeClass( "black-border")
+    } else {
+      $('.pink div').removeClass( "black-border")
+      $('.blue div').addClass( "black-border");
+      $('.white div').removeClass( "black-border")
+      $('.whiteBlue div').removeClass( "black-border")
+      $('.whitePink div').addClass( "black-border")
     }
   });
 });
- */
+
 $(document).ready(function(){
   $('.black div').removeClass( "white-border");
   $('.black span').css('border', "none");
@@ -258,81 +254,16 @@ $(document).ready(function(){
     }
   });
 });
-/* $(document).ready(function(){
-  var proDum = $('#proDum').val();
-  $('.options li').on('click', function() {
-    $('#price_b2').html(result);
-    $.ajax({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-      url: "/product_price/" + proDum,
-      method: 'post',
-      data: {
-          pro_id: proDum,
-          sizeSelected: $(this).html()
-      },
-      success: function(result){
-        location.reload();
-      }
-      }); 
 
-  });
-}); */
-
-/* $(document).ready(function(){
-  var proDum = $('#proDum').val();
-
-    $('#posters').change(function() {
-alert('fds');
-    $.ajax({
-      url: "/product_details" + proDum,
-      method: 'post',
-      data: {
-          sizeSelected: $(this).val(),
-      },
-      success: function(result){
-          $('.alert').show();
-          $('.alert').html(result.success);
-      }
-      }); 
-
-  });
-});  */
-
-/* 
 $(document).ready(function(){
-  $('#phone-add').on('click', function(){
-     var parent = $(this).parent();
-      var size = $('.size-class:checked').val();
-      var color = $('.color-class:checked').val();
-      var print = $('.print-class:checked').val();
-      $('#btn-add-to-cart').removeAttr('data-toggle');
-      $('#btn-add-to-cart').removeAttr('data-target');
-      var pro_cat = $('#pro_cat').val();
-      if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-shirt" && size == null) || (pro_cat == "Polo Shirt" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
-        $('#btn-add-to-cart').attr('data-toggle', 'modal');
-        $('#btn-add-to-cart').attr('data-target', '#exampleModal');
-
-        $('#modal-add').css('cursor', "no-drop");
-        $('#modal-add div').css('background', "lightgray");
-        $('#modal-add').unbind();
-        $("input[name='size']").change(function(){
-          $('#modal-add').bind("click", function(){
-            var size =  $("input[name='size']:checked").val();
-            addToCartAjax(size, color, print); 
-          });
-            $('#modal-add').css('cursor', "pointer");
-            $('#modal-add div').css('background', "#E6003A");
-        });
+    $("input[name='print").change(function(){
+      if($('.print-class:checked').val() == 'back') {
+      $('.front span ').css( {'background' :'white', 'color':'black'});
       } else {
-          addToCartAjax(size, color, print);
-        }  
-    }); 
-}); 
-
- */
-
+        $('.front span ').css( {'background' :'black', 'color':'white'});
+      }
+    });
+});
 
 /* Style of select  */
 
@@ -441,6 +372,7 @@ $(document).ready(function(){
       var parent = $(this).parent();
       var size = $('.size-class:checked').val();
       var kidssize = $('.kids-size-class:checked').val();
+      var kidscolor = $('.kids-color-class:checked').val();
       var color = $('.color-class:checked').val();
       var print = $('.print-class:checked').val();
       var customCase = $("#custom").val();
@@ -473,16 +405,18 @@ $(document).ready(function(){
         $("input[name='kids-size']").change(function(){
           $('#modal-add').bind("click", function(){
             var kidssize =  $("input[name='kids-size']:checked").val();
-            addToCartAjax(kidssize); 
+            addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
         });
-      } else if(pro_cat == "Custom" && !customCase) {
+      }  else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
+        addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
+      }   else if(pro_cat == "Custom" && !customCase) {
         alert('unesi teks');
       } 
       else {
-          addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+        addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
         }  
     }); 
 }); 
