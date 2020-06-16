@@ -61,6 +61,7 @@ class CartController extends Controller
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor   ]);
         }
+
         echo Cart::count();
        
     }
