@@ -165,18 +165,24 @@
  
        <div class="select-color">
          <h5>Color</h5>
-           <label class="black">
-               <div  class="white-border">
-                 <input type="radio" name="color" class="color-class" value="black" >
-                 <span></span>
-               </div>               
-           </label>
            <label class="white">
              <div class="black-border">
-               <input type="radio" name="color" value="white"  class="color-class" checked>
+               <input type="radio" name="color" value="white"  class="kids-color-class" checked>
                <span></span>
              </div>    
            </label>
+           <label class="pink">
+             <div class="black-border">
+               <input type="radio" name="color" class="kids-color-class" value="pink" >
+               <span></span>
+             </div>               
+         </label>
+         <label class="blue">
+           <div  class="black-border">
+             <input type="radio" name="color" class="kids-color-class" value="blue" >
+             <span></span>
+           </div>               
+       </label>
        </div>
  
        <div class="print-location">
@@ -196,7 +202,30 @@
            <img src="/site-images/Layer_1_1_.svg" alt="">
        </div>
  
- 
+       @elseif($pro_cat->category->name == "Kids Bibs" )
+       <div class="select-size">
+         <h5>Size</h5>
+           <label class="size2">
+               <input type="radio" name="kids-size" id="s2" value="UNI" class="kids-size-class" checked>
+               <span style="padding-left: 4px;">Uni</span>
+           </label>
+       </div>
+          
+       <div class="select-color">
+         <h5>Color</h5>
+           <label class="white whiteBlue" >
+             <div class="black-border">
+               <input type="radio" name="color" value="white and blue"  class="kids-color-class" checked>
+               <span style=" background: linear-gradient( -45deg, blue, blue 49%, white 49%, white 51%, rgb(253, 251, 251) 51% );"></span>
+             </div>    
+           </label>
+           <label class="white whitePink">
+             <div class="black-border">
+               <input type="radio" name="color" class="kids-color-class" value="white and pink" >
+               <span style=" background: linear-gradient( -45deg, rgb(245, 240, 242), rgb(247, 243, 245) 49%, white 49%, white 51%, rgb(255, 138, 216) 51% );"></span>
+             </div>               
+         </label>
+       </div>
  
        @elseif($pro_cat->category->name == "Samsung Cases")
        <div class="phone-model">
@@ -319,8 +348,50 @@
              <h6>Enter height:</h6>
              <input type="text" id="height" placeholder="e.g  6">
          </div>
+         @elseif($pro_cat->category->name == "Thermos") 
+         <div class="select-color">
+           <h5>Color</h5>
+             <label class="black">
+               <div class="white-border-thermos">
+                 <input type="radio" name="color" class="color-class" value="black" checked >
+                 <span></span>
+               </div>               
+           </label>
+         </div>
+         @elseif($pro_cat->category->name == "Sacks") 
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white whiteRed" >
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white and red"  class="kids-color-class" checked>
+                    <span style=" background: linear-gradient( -45deg, rgb(248, 28, 28), rgb(245, 31, 31) 49%, white 49%, white 51%, rgb(253, 251, 251) 51% );"></span>
+                  </div>    
+                </label>
+                <label class="white whiteBlack">
+                  <div class="black-border">
+                    <input type="radio" name="color" class="kids-color-class" value="white and black" >
+                    <span style=" background: linear-gradient( -45deg, rgb(245, 240, 242), rgb(247, 243, 245) 49%, white 49%, rgb(10, 9, 9) 51%, rgb(12, 5, 10) 51% );"></span>
+                  </div>               
+              </label>
+            </div>
+        @elseif($pro_cat->category->name == "Clocks") 
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>    
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>               
+              </label>
+            </div>
        @else 
-       <button></button>
+       <button style="display:none"></button>
        @endif
  
        @if (isset($review))
