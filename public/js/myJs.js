@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 /*   Adding to cart */
 
-function addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
+function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var parent1 =  $('#btn-add-to-cart-phone');
@@ -96,7 +96,6 @@ function addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, case
         data: {
           size: size,
           kidssize: kidssize,
-          kidscolor: kidscolor,
           color: color,
           print: print,
           phoneModel: phoneModel,
@@ -138,9 +137,8 @@ $(document).ready(function(){
         var pictureSize = $( ".picture-size option:selected" ).val();
         var parent = $(this).parent();
         var size = $('.size-class:checked').val();
-        var color = $('.color-class:checked').val();
+        var color =$('input[name="color"]:checked').val();
         var kidssize = $('.kids-size-class:checked').val();
-        var kidscolor = $('.kids-color-class:checked').val();
         var print = $('.print-class:checked').val();
         var customCase = $("#custom").val();
         var pro_cat = $('#pro_cat').val();
@@ -166,7 +164,7 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(kidssize, kidscolor,  size, color, print); 
+              addToCartAjax(kidssize, size, color, print); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
@@ -181,19 +179,19 @@ $(document).ready(function(){
           $("input[name='kids-size']").change(function(){
             $('#modal-add').bind("click", function(){
               var kidssize =  $("input[name='kids-size']:checked").val();
-              addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
+              addToCartAjax(kidssize,  null, color, print, null, null, null, null, null); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
         } else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-          addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
+          addToCartAjax(kidssize, null, color, print, null, null, null, null, null); 
         } 
         else if(pro_cat == "Custom" && !customCase) {
           alert('unesi teks');
         } 
         else {
-            addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+            addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
           }  
       }); 
 
@@ -202,7 +200,7 @@ $(document).ready(function(){
   $('.pink div').removeClass( "black-border");
   $('.blue div').removeClass( "black-border");
   $('.whitePink div').removeClass( "black-border");
-  $('input[type=radio][name=kidscolor]').change(function() {
+  $('input[type=radio][name=color]').change(function() {
     if(this.value == 'white'){
       $('.pink div').removeClass( "black-border");
       $('.blue div').removeClass( "black-border");
@@ -223,6 +221,8 @@ $(document).ready(function(){
     }
   });
 });
+
+
 
 $(document).ready(function(){
   $('.black div').removeClass( "white-border");
@@ -263,6 +263,19 @@ $(document).ready(function(){
         $('.front span ').css( {'background' :'black', 'color':'white'});
       }
     });
+});
+
+$(document).ready(function(){
+  $('.whiteBlack div').removeClass( "black-border");
+  $('input[type=radio][name=color]').change(function() {
+    if(this.value == 'white and black'){
+      $('.whiteRed div').removeClass( "black-border");
+      $('.whiteBlack div').addClass( "black-border")
+    }  else {
+      $('.whiteRed div').addClass( "black-border");
+      $('.whiteBlack div').removeClass( "black-border")
+    }
+  });
 });
 
 /* Style of select  */
@@ -372,8 +385,7 @@ $(document).ready(function(){
       var parent = $(this).parent();
       var size = $('.size-class:checked').val();
       var kidssize = $('.kids-size-class:checked').val();
-      var kidscolor = $('.kids-color-class:checked').val();
-      var color = $('.color-class:checked').val();
+      var color =$('input[name="color"]:checked').val();
       var print = $('.print-class:checked').val();
       var customCase = $("#custom").val();
 
@@ -405,18 +417,18 @@ $(document).ready(function(){
         $("input[name='kids-size']").change(function(){
           $('#modal-add').bind("click", function(){
             var kidssize =  $("input[name='kids-size']:checked").val();
-            addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
+            addToCartAjax(kidssize, null, color, print, null, null, null, null, null); 
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
         });
       }  else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-        addToCartAjax(kidssize, kidscolor, null, null, print, null, null, null, null, null); 
+        addToCartAjax(kidssize, null, color, print, null, null, null, null, null); 
       }   else if(pro_cat == "Custom" && !customCase) {
         alert('unesi teks');
       } 
       else {
-        addToCartAjax(kidssize, kidscolor, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+        addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
         }  
     }); 
 }); 

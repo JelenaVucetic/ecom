@@ -40,7 +40,6 @@ class Order extends Model
                 'total' => $cartItem->qty * $cartItem->price,
                 'size' => $cartItem->options->size,
                 'color' => $cartItem->options->color,
-                'color' => $cartItem->options->kidscolor,
                 'print' => $cartItem->options->print,
                 'phone_model' => $cartItem->options->phoneModel,
                 'case_style' => $cartItem->options->caseStyle,
@@ -50,6 +49,7 @@ class Order extends Model
                 'kids_size' => $cartItem->options->kidssize   ]);
             $order-> save();
         }
+
         return $order->id;
     }
 
