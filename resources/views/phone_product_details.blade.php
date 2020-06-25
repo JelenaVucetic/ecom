@@ -239,7 +239,7 @@
  
        <div class="case-style">
          <h5>Case style</h5>
-         <select class="cases-style" id=''>
+         <select class="phone-cases-style" id=''>
            <option value="Transparent">Transparent</option>
            <option value="Black">Black</option>
          </select>
@@ -279,8 +279,15 @@
        @elseif($pro_cat->category->name == "Custom")
          <div class="custom">
              <h6>Enter your phone model</h6>
-             <input type="text" id="custom">
+             <input type="text" class="custom2">
          </div>
+         <div class="case-style">
+          <h5>Case style</h5>
+          <select  class="cases-style" id='caseStyle'>
+            <option value="Transparent">Transparent</option>
+            <option value="Black">Black</option>
+          </select>
+        </div>
        @elseif($pro_cat->category->name == "Posters")
        <div class="choose-size">
          <h5>Size</h5>

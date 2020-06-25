@@ -11,48 +11,111 @@
   @include('modals.reviews_modal')
   @include('modals.write_review_modal')
 
+  <nav id="phone-nav" class="navbar navbar-expand-sm sticky-top navbar-light bg-light" style="padding: 10px;margin: 0 -15px;">
+    <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;">
+        <div>
+          @if($product->spl_price==0)
+              <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;" >{{ $product->price }}&euro;</p>
+          @else
+              <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;">{{ $product->spl_price }}&euro;</p>
+          @endif
+        </div>
+        <div style="width: 50%;">
+         <a id="phone-add" style="cursor:pointer;"> 
+            <div class="btn-add-to-cart" id="btn-add-to-cart-phone" style="width: inherit;">
+              <p id="test-phone">Add to cart</p>
+            </div>
+          </a>   
+        </div>
+    </div>
+  </nav>
+
 
 <!--  For Phone -->
-  @include('phone_product_details')
+{{--   @include('phone_product_details') --}}
 <!-- end for phone -->
 
 <!--   For Desktop -->
   <div class="row desctop-product">
-      <div class="col-3 left">
-        <img style="width:50%"  src="{{url('design', $design->name)}}"> 
-        <img src="{{url('images', $product->image)}}"> 
-      </div>
-      <div class="col-6 middle">
-        <img src="{{url('images', $product->image)}}">
-        <div class="wishlist">
-          <?php
-                $wishData = DB::table('wishlist')
-                                ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
-                                ->where('wishlist.pro_id', '=', $product->id)->get();
-               // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
-               $count = 0;
-               if(Auth::user()) {
-                  $count = DB::table('wishlist')
-                  ->join('product', 'product.id', '=', 'wishlist.pro_id')
-                  ->where('wishlist.pro_id', '=', $product->id)
-                  ->where('wishlist.user_id' ,'=' , Auth::user()->id)
-                  ->count();
-               }
-                
-            ?>
-            <?php if($count == "0") { ?>
-               
-                <input type="hidden" value="{{$product->id}}" id="productID" name="pro_id">
-                <br>
-                <input class="" type="submit" value=" " id="sendWishList">
-                
-            <?php } else { ?>
-              <input type="submit" value=" " id="disable">
-            <?php } ?>
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+        <div id="desctop-left">
+          <img style="width:50%"  src="{{url('design', $design->name)}}"> 
+          <img src="{{url('images', $product->image)}}"> 
         </div>
       </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <div id="desctop-middle">
+          <img src="{{url('images', $product->image)}}">
+          <div class="wishlist">
+            <?php
+                  $wishData = DB::table('wishlist')
+                                  ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
+                                  ->where('wishlist.pro_id', '=', $product->id)->get();
+                // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
+                $count = 0;
+                if(Auth::user()) {
+                    $count = DB::table('wishlist')
+                    ->join('product', 'product.id', '=', 'wishlist.pro_id')
+                    ->where('wishlist.pro_id', '=', $product->id)
+                    ->where('wishlist.user_id' ,'=' , Auth::user()->id)
+                    ->count();
+                }
+                  
+              ?>
+              <?php if($count == "0") { ?>
+                
+                  <input type="hidden" value="{{$product->id}}" id="productID" name="pro_id">
+                  <br>
+                  <input class="" type="submit" value=" " id="sendWishList">
+                  
+              <?php } else { ?>
+                <input type="submit" value=" " id="disable">
+              <?php } ?>
+          </div>
+        </div>
+    </div>
+    <div class="slick-wrapper" id="phone-middle">
+      <div class="wishlist-phone">
+        <?php
+              $wishData = DB::table('wishlist')
+                              ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
+                              ->where('wishlist.pro_id', '=', $product->id)->get();
+                             
+             // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
+             $count = 0;
+             if(Auth::user()) {
+                $count = DB::table('wishlist')
+                ->join('product', 'product.id', '=', 'wishlist.pro_id')
+                ->where('wishlist.pro_id', '=', $product->id)
+                ->where('wishlist.user_id' ,'=' , Auth::user()->id)
+                ->count();
+             }
+              
+          ?>
+          <?php if($count == "0") { ?>
+             
+              <input type="hidden" value="{{$product->id}}" id="productID"  name="pro_id">
+              <br>
+              <input type="submit" value=" " id="phoneSendWishList">
+              
+          <?php } else { ?>
+            <input type="submit" value=" " id="disable">
+          <?php } ?>
+      </div>
 
-      <div class="col-3 right">
+        <div id="slick8">
+            <div class="slide-item">
+              <img src="{{url('design', $design->name)}}"> 
+            </div>
+            <div class="slide-item">
+              <img src="{{url('images', $product->image)}}"> 
+            </div>
+            <div class="slide-item">
+              <img src="{{url('images', $product->image)}}"> 
+            </div>
+        </div>
+    </div>
+      <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12">
         <h4 class="product-title">{{ $product->name}}</h4>
         <?php $pro_cat = App\Product::find($product->id); ?>
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
@@ -116,6 +179,18 @@
                   <span></span>
                 </div>               
             </label>
+            <label class="red">
+              <div class="black-border">
+                <input type="radio" name="color" value="red"  class="color-class">
+                <span></span>
+              </div>    
+            </label>
+            <label class="navy">
+              <div  class="white-border">
+                <input type="radio" name="color" class="color-class" value="navy" >
+                <span></span>
+              </div>               
+          </label>
           </div>
 
           <div class="print-location">
@@ -138,7 +213,7 @@
           @elseif($pro_cat->category->name == "Samsung Cases")
           <div class="phone-model">
             <h5>Model</h5>
-            <select class="cases" id='samsung'>
+            <select class="cases">
               <option value="Samsung Galaxy S20">Samsung Galaxy S20</option>
               <option value="Samsung Galaxy S20+">Samsung Galaxy S20+</option>
             </select>
@@ -146,15 +221,16 @@
 
           <div class="case-style">
             <h5>Case style</h5>
-            <select class="cases-style" id=''>
+            <select class="cases-style">
               <option value="Transparent">Transparent</option>
               <option value="Black">Black</option>
             </select>
           </div>
+          
           @elseif($pro_cat->category->name == "Iphone Cases")
           <div class="phone-model">
             <h5>Model</h5>
-            <select class="cases" id=''>
+            <select class="cases">
               <option value="iPhone XI Pro">iPhone XI Pro</option>
               <option value="iPhone XI Pro Plus">iPhone XI Pro Plus</option>
             </select>
@@ -186,7 +262,14 @@
           @elseif($pro_cat->category->name == "Custom")
             <div class="custom">
                 <h6>Enter your phone model</h6>
-                <input type="text" id="custom">
+                <input type="text" class="custom1">
+            </div>
+            <div class="case-style">
+              <h5>Case style</h5>
+              <select  class="cases-style" id='caseStyle'>
+                <option value="Transparent">Transparent</option>
+                <option value="Black">Black</option>
+              </select>
             </div>
           @elseif($pro_cat->category->name == "Posters")
           <div class="choose-size">
@@ -425,6 +508,30 @@
                 </div>               
             </label>
           </div>
+          @elseif($pro_cat->category->name == "Towels")
+            <div class="choose-size">
+              <h5>Size</h5>
+              <select class="picture-size" id='towels'>
+                <option value="100x150">100x150</option>
+                <option value="50x100">50x100</option>
+              </select>
+            </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>    
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>               
+              </label>
+            </div>
+
           @else 
           <button style="display:none"></button>
           @endif

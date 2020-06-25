@@ -140,21 +140,11 @@ $(document).ready(function(){
         var color =$('input[name="color"]:checked').val();
         var kidssize = $('.kids-size-class:checked').val();
         var print = $('.print-class:checked').val();
-        var customCase = $("#custom").val();
+        var customCase = $(".custom1").val();
         var pro_cat = $('#pro_cat').val();
         var price = $('#product_price').val();
 
-  /*       var a = $('#width').val();
-        var b = $('#height').val();
-
-        if (a.match("^([1-9][0-9]*)$") && b.match("^([1-9][0-9]*)$") ) {
-          c = ((a*b) * price).toFixed(2)
-        } else {
-           alert("Please enter numeric with and height");
-        }
-
- */
-        if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+        if((pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
 
@@ -227,19 +217,36 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.black div').removeClass( "white-border");
   $('.black span').css('border', "none");
+  $('.navy div').removeClass( "white-border");
+  $('.navy span').css('border', "none");
   $('.white test').addClass( "black-border")
-
+  $('.red div').removeClass( "black-border")
 
   $('input[type=radio][name=color]').change(function() {
-
   if(this.value == 'white'){
     $('.black div').removeClass( "white-border");
-    $('#black span').css('border', "none");
+    $('.navy div').removeClass( "white-border");
+    $('.navy span').css('border', "none");
+    $('.black span').css('border', "none");
     $('.white div').addClass( "black-border")
+  } else if(this.value == 'red') {
+    $('.white div').removeClass( "black-border")
+    $('.black div').removeClass( "white-border");
+    $('.red div').addClass( "black-border");
+  } else if( this.value == 'navy' ) {
+    $('.navy div').addClass( "white-border");
+    $('.navy span').css('border', "1px solid #DEDEDE;");
+    $('.white div').removeClass( "black-border")
+    $('.red div').removeClass( "black-border")
+    $('.black div').removeClass( "white-border");
+    $('.black span').css('border', "none");
   } else {
     $('.black div').addClass( "white-border");
     $('.black span').css('border', "1px solid #DEDEDE;");
     $('.white div').removeClass( "black-border")
+    $('.red div').removeClass( "black-border")
+    $('.navy div').removeClass( "white-border");
+    $('.navy span').css('border', "none");
   }
 
 });

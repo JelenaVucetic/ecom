@@ -207,6 +207,14 @@
     border: 1px solid black;
     border-radius: 20px;
 }
+.navy {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 20px;
+}
 
 .white {
     margin: 0 5px 0 0;
@@ -214,6 +222,13 @@
     height: 33px;
     position: relative;
 }
+
+.red {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+} 
 .white-border-thermos {
     width: 30px;
     height: 30px;
@@ -223,8 +238,8 @@
 }
 
 .white-border {
-    width: 30px;
-    height: 30px;
+    width: 31px;
+    height: 31px;
     border: 1px solid white;
     border-radius: 17px;
     position: relative;
@@ -240,7 +255,9 @@
 }
 
 .black input[type="radio"],
-.white input[type="radio"] {
+.white input[type="radio"],
+.red input[type="radio"],
+.navy input[type="radio"]  {
     opacity: 0.01;
     z-index: 100;   
     width: 0px;
@@ -248,6 +265,10 @@
 
 .black input,
 .white input,
+.navy input,
+.navy span,
+.red input,
+.red span,
 .black span,
 .white span {
     display: block;
@@ -264,6 +285,13 @@
     cursor: pointer;
     z-index: 90;
 } 
+.navy span {
+    background: rgb(13, 1, 32);
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+} 
 
 .white span {
     background: white;
@@ -273,6 +301,12 @@
     z-index: 90;
 }
 
+.red span {
+    background: rgb(248, 24, 24);
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+}
 
 .print-location {
     margin: 20px 0;
@@ -790,16 +824,63 @@ stroke-width:20;
     z-index: 90;
 }
 
-@media (max-width: 767px) {  
-    .desctop-product {
-        display: none;
-    }
+#phone-nav {
+    display:none;
+}
 
-    .phone-product {
+#add {
+    display:block;
+}
+
+#price {
+    display: block;
+}
+
+#desctop-middle {
+    display: block;
+}
+
+#phone-middle {
+    display: none;
+}
+
+#desctop-left {
+    display: block;
+}
+@media (max-width: 767px) {  
+       .desctop-product {
+            display: block;
+        } 
+        .col-3{
+            display: block;
+        }
+        #phone-nav {
+            display: block;
+        }
+        
+        #add {
+            display:none;
+        }
+
+        #price {
+            display: none;
+        }
+
+        #desctop-middle {
+            display: none;
+        }
+        
+        #phone-middle {
+            display: block;
+        }
+        #desctop-left {
+            display: none;
+        }
+  /*   .phone-product {
         display: block;
     }
 
     .display-review {
         display: none;
-    }
+    } */
 }
