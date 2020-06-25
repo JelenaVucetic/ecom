@@ -180,7 +180,7 @@ class HomeController extends Controller
 
     public function viewWishlist()
     {
-        $Products = DB::table('wishlist')->leftJoin('product', 'wishlist.pro_id', '=', 'product.id')->get();
+        $Products = DB::table('wishlist')->leftJoin('product', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get();
         $categories = Category::where('parent_id',NULL)->get();
         return view('wishlist', compact('Products', 'categories'));
     }
@@ -191,13 +191,17 @@ class HomeController extends Controller
         $wishlist->user_id = Auth::user()->id;
         $wishlist->pro_id = $request->id;
 
-        $wishlist->save();
+        if($wishlist->save()){
+            echo "OK";
+        }else{
+            echo "BAD";
+        }
 
-        $product = DB::table('product')->where('id', $request->id)->first();
+      /*   $product = DB::table('product')->where('id', $request->id)->first();
         $categories = Category::where('parent_id',NULL)->get();
-        $design = DB::table('design')->where('id', $product->design_id)->first();
+        $design = DB::table('design')->where('id', $product->design_id)->first(); */
         
-        echo "OK";
+        
         /* return view('product_details', compact('product', 'categories', 'design'));
      */
 }

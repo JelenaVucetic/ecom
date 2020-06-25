@@ -27,6 +27,7 @@
                  $wishData = DB::table('wishlist')
                                  ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
                                  ->where('wishlist.pro_id', '=', $product->id)->get();
+                                
                 // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
                 $count = 0;
                 if(Auth::user()) {
@@ -40,9 +41,9 @@
              ?>
              <?php if($count == "0") { ?>
                 
-                 <input type="hidden" value="{{$product->id}}" name="pro_id">
+                 <input type="hidden" value="{{$product->id}}" id="productID"  name="pro_id">
                  <br>
-                 <input type="submit" value=" " >
+                 <input type="submit" value=" " id="phoneSendWishList">
                  
              <?php } else { ?>
                <input type="submit" value=" " id="disable">
