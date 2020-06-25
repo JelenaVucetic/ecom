@@ -27,7 +27,7 @@
       {{-- Phone case html --}}
         <div class="product-column">
         <div class="row-product">
-        <div id="proizvod" class="save-picture disabledbutton" data-category="" name="Phone Case" data-canvas="canvas3" value="1">
+        <div id="proizvod" class="save-picture disabledbutton" data-category="12" name="Phone Case" data-canvas="canvas3" value="1">
             <div class="background-div">
         <img id="logo-canvas" src="/image/<?php if(!empty($image)){echo $image;} ?>">
         <img class="overlay-panel" src="/images/phonecase.png">
@@ -52,7 +52,7 @@
 {{-- T-shirt html --}}
 <div class="product-column">
     <div class="row-product">
-        <div id="proizvod1" class="save-picture disabledbutton" name="T-shirt" data-canvas="canvas4" value="1">
+        <div id="proizvod1" class="save-picture disabledbutton" data-category="7" name="T-shirt" data-canvas="canvas4" value="1">
             <div class="background-div1">
         <img id="logo-canvas1" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
         <img class="overlay-panel" src="/images/t-shirt.png">
@@ -75,7 +75,7 @@
     {{-- Mugs html --}}
     <div class="product-column">
         <div class="row-product">
-            <div id="proizvod2" class="save-picture disabledbutton" name="Mugs" data-canvas="canvas5" value="1">
+            <div id="proizvod2" class="save-picture disabledbutton"  data-category="21" name="Mugs" data-canvas="canvas5" value="1">
                 <div class="background-div2">
             <img id="logo-canvas2" src="/image/<?php if(!empty($image)){echo $image;} ?>">
             <img class="overlay-panel" src="/images/mugs.png">
@@ -236,7 +236,7 @@
         {{-- Hoodie html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod3" class="save-picture disabledbutton" name="Hoodie" data-canvas="canvas6" value="1">
+              <div id="proizvod3" class="save-picture disabledbutton"  data-category="10" name="Hoodie" data-canvas="canvas6" value="1">
                   <div class="background-div3">
               <img id="logo-canvas3" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/hoodie.jpg">
@@ -257,7 +257,7 @@
              {{-- Long Sleeve html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod4" class="save-picture disabledbutton" name="Long Sleeve" data-canvas="canvas7" value="1">
+              <div id="proizvod4" class="save-picture disabledbutton"  data-category="8" name="Long Sleeve" data-canvas="canvas7" value="1">
                   <div class="background-div4">
               <img id="logo-canvas4" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/longSleeve.jpg">
@@ -278,7 +278,7 @@
               {{-- Graphic T-Shirt Dresses html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod5" class="save-picture disabledbutton" name="Graphic T-Shirt Dresses" data-canvas="canvas8" value="1">
+              <div id="proizvod5" class="save-picture disabledbutton"  data-category="9" name="Graphic T-Shirt Dresses" data-canvas="canvas8" value="1">
                   <div class="background-div4">
               <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/noSleeveShirt.png">
@@ -407,7 +407,7 @@
                {{-- Stickers html --}}
                <div class="product-column">
                 <div class="row-product">
-                    <div id="proizvod6" class="save-picture disabledbutton" name="Stickers" data-canvas="canvas9" value="1">
+                    <div id="proizvod6" class="save-picture disabledbutton"  data-category="27" name="Stickers" data-canvas="canvas9" value="1">
                         <div class="background-div5">
                     <img id="logo-canvas6" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                     
@@ -428,7 +428,7 @@
                   {{-- Notes html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod7" class="save-picture disabledbutton" name="Notes" data-canvas="canvas10" value="1">
+              <div id="proizvod7" class="save-picture disabledbutton"  data-category="26" name="Notes" data-canvas="canvas10" value="1">
                   <div class="background-div6">
               <img id="logo-canvas7" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/notes.png">
@@ -450,7 +450,7 @@
                       {{-- Clock html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod8" class="save-picture disabledbutton" name="Clock" data-canvas="canvas11" value="1">
+              <div id="proizvod8" class="save-picture disabledbutton"  data-category="24" name="Clock" data-canvas="canvas11" value="1">
                   <div class="background-div7">
               <img id="logo-canvas8" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/clock.png">
@@ -568,7 +568,7 @@
                      {{-- Termos html --}}
                      <div class="product-column">
                       <div class="row-product">
-                          <div id="proizvod9" class="save-picture disabledbutton" name="Termos"  data-canvas="canvas12" value="1">
+                          <div id="proizvod9" class="save-picture disabledbutton"  data-category="20" name="Termos"  data-canvas="canvas12" value="1">
                               <div class="background-div8">
                           <img id="logo-canvas9" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                           <img class="overlay-panel" src="/images/termos.png">
@@ -589,7 +589,7 @@
                          {{-- Ceger html --}}
                      <div class="product-column">
                       <div class="row-product">
-                          <div id="proizvod10" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1">
+                          <div id="proizvod10" class="save-picture disabledbutton"  data-category="22" name="Ceger"  data-canvas="canvas13" value="1">
                               <div class="background-div9">
                           <img id="logo-canvas10" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                           <img class="overlay-panel" src="/images/ceger.png">
@@ -610,7 +610,7 @@
                                     {{-- Poster html --}}
                      <div class="product-column">
                       <div class="row-product">
-                          <div id="proizvod11" class="save-picture disabledbutton" name="Poster"  data-canvas="canvas14" value="1">
+                          <div id="proizvod11" class="save-picture disabledbutton"  data-category="15" name="Poster"  data-canvas="canvas14" value="1">
                               <div class="background-div10">
                           <img id="logo-canvas11" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                           <img class="overlay-panel" src="/images/poster.png">
@@ -1923,6 +1923,7 @@ $("#capture").click(function(event){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
+            var category = el.getAttribute('data-category');
             var nameProduct = title + " " + el.getAttribute('name');
             $.ajax({
                      headers: {
@@ -1939,7 +1940,8 @@ $("#capture").click(function(event){
                         originalName1 : originalName,
                         originalImagePath: originalImagePath,
                         canvasImage : canvasImage,
-                       gedner : gender
+                       gedner : gender,
+                       category : category
                     },
                     beforeSend: function(){
                       // Show image container
