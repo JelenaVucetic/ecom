@@ -654,23 +654,37 @@ $("#female-x").on("click", function(){
   });
     })
 
-    $("#sendWishList").on("click", function(){
+
+    function sendWishList(){
       var id = $("#productID").val();
-     
       $.ajax({
         headers: {  
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
                 } ,
-      type: 'post',
+      method: 'POST',
       dataType: 'html',
-      url: '/addToWishlist',
+      url: "/addToWishlist",
       data: { id:id},
       success: function(response) {
       if(response == "OK"){
         $("#sendWishList").addClass("hoverd");
+      }else if(response == "BAD"){
+      alert("Connection error!");
+      }else{
+        window.location.href = '/login'
       }
-      }
+      }/* ,error : function (jqXHR, textStatus, errorThrown) {
+        window.location.href = '/login';
+    } */
   });
+    }
+
+    $("#sendWishList").on("click", function(){
+      sendWishList();
+    });
+
+    $("#phoneSendWishList").on("click", function(){
+      sendWishList();
     });
 
 

@@ -62,8 +62,7 @@ class ProductsController extends Controller
             $image->move('images', $imageName);
             $formInput['image'] = $imageName;
         }
-
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
         Product::create($formInput)->tags()->attach(request('tags'));
         return redirect()->back();
     }
@@ -77,7 +76,7 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $categories = Category::all();
+        $categories = Category::where('parent_id',NULL)->get();
         $tags = Tag::all();
         return view('admin.product.edit', compact(['product', 'categories', 'tags']));
     }
@@ -120,8 +119,9 @@ class ProductsController extends Controller
 
     public function ImageEditForm($id)
     {
+        $categories = Category::where('parent_id',NULL)->get();
         $product = Product::findOrFail($id);
-        return view('admin.product.ImageEditForm', compact('product'));
+        return view('admin.product.ImageEditForm', compact('product', 'categories'));
     }
 
     public function editProImage(Request $request)

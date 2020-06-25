@@ -87,7 +87,14 @@ Route::get('/error', 'CheckoutController@error');
 Route::post('/callback', 'CheckoutController@callback');
 Route::get('/cancel', 'CheckoutController@cancel');
 
+
 Route::group(['middleware' => 'auth'], function() {
+Route::post('/addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
+});
+
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('/addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
     Route::get('/profile', 'ProfileController@index');
     Route::get('/address', 'ProfileController@address');
     Route::get('/profile_image', 'ProfileController@profilImage');
@@ -96,8 +103,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/updateAddress', 'ProfileController@updateAddress');
     Route::get('/password', 'ProfileController@password');
     Route::post('/updatePassword', 'ProfileController@updatePassword');
-    Route::post('/addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
-    Route::get('/wishlist', 'HomeController@viewWishlist');
     
+    Route::get('/wishlist', 'HomeController@viewWishlist');
     Route::get('/removeWishList/{id}', 'HomeController@destroy');
 });
