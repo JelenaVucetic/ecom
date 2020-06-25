@@ -13,7 +13,7 @@
                     </h2>
 
                     @if ($Products->isEmpty())
-                        sorry, products not found
+                       Products not found
                     @else
                     <div class="row">
                         @foreach($Products as $product)

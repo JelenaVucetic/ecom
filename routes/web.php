@@ -103,7 +103,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/updateAddress', 'ProfileController@updateAddress');
     Route::get('/password', 'ProfileController@password');
     Route::post('/updatePassword', 'ProfileController@updatePassword');
-    
+    Route::get('/my_wishlist', 'ProfileController@myWishlist');
     Route::get('/wishlist', 'HomeController@viewWishlist');
     Route::get('/removeWishList/{id}', 'HomeController@destroy');
 });

@@ -137,6 +137,12 @@ for( let i=1;i<20;i++) {
                         @if($cartItem->options->kidssize !== null) 
                         <span>{{ $cartItem->options->kidssize}}</span>
                         @endif
+                        @if($cartItem->options->posterSize !== null) 
+                        <span>{{ $cartItem->options->posterSize}}</span>
+                        @endif                        
+                        @if($cartItem->options->pictureSize !== null) 
+                        <span>{{ $cartItem->options->pictureSize}}</span>
+                        @endif
                         @if($cartItem->options->kidscolor !== null)         
                         <span>, {{ $cartItem->options->kidscolor}}</span>
                         @endif
@@ -155,12 +161,7 @@ for( let i=1;i<20;i++) {
                         @if($cartItem->options->customCase !== null) 
                         <span>{{ $cartItem->options->customCase}}</span>
                         @endif
-                        @if($cartItem->options->posterSize !== null) 
-                        <span>{{ $cartItem->options->posterSize}}</span>
-                        @endif
-                        @if($cartItem->options->pictureSize !== null) 
-                        <span>{{ $cartItem->options->pictureSize}}</span>
-                        @endif
+                       
                         <input type="hidden" id="rowIdPhone<?php echo $var;?>" value="{{$cartItem->rowId}}"/>
                         <input type="hidden" id="proIdPhone<?php echo $var;?>" value="{{$cartItem->id}}"/>
                         <div class="quantity">
@@ -223,6 +224,12 @@ for( let i=1;i<20;i++) {
                              @if($cartItem->options->kidssize !== null) 
                              <span>{{ $cartItem->options->kidssize}}</span>
                             @endif
+                            @if($cartItem->options->posterSize !== null) 
+                            <span>{{ $cartItem->options->posterSize}}</span>
+                              @endif
+                              @if($cartItem->options->pictureSize !== null) 
+                            <span>{{ $cartItem->options->pictureSize}}</span>
+                              @endif
                             @if($cartItem->options->kidscolor !== null)         
                             <span>, {{ $cartItem->options->kidscolor}}</span>
                             @endif
@@ -241,12 +248,7 @@ for( let i=1;i<20;i++) {
                               @if($cartItem->options->customCase !== null) 
                             <span>{{ $cartItem->options->customCase}}</span>
                               @endif
-                              @if($cartItem->options->posterSize !== null) 
-                            <span>{{ $cartItem->options->posterSize}}</span>
-                              @endif
-                              @if($cartItem->options->pictureSize !== null) 
-                            <span>{{ $cartItem->options->pictureSize}}</span>
-                              @endif
+                             
                              
                         </td>
                         <td class="cart_price">

@@ -170,54 +170,60 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 28,
+            'name'=> 'Towels',
+            'parent_id' => 4
+        ]);
+
+        Category::create([
+            'id' => 29,
             'name'=> 'Gifts For Him',
             'parent_id' => 5
         ]);
 
         Category::create([
-            'id' => 29,
+            'id' => 30,
             'name'=> 'Gifts For Her',
             'parent_id' => 5
         ]);
 
         Category::create([
-            'id' => 30,
+            'id' => 31,
             'name'=> 'Kids T-Shirts',
             'parent_id' => 6
         ]);
 
         Category::create([
-            'id' => 31,
+            'id' => 32,
             'name'=> 'Kids One-Pieces',
             'parent_id' => 6
         ]);
 
         Category::create([
-            'id' => 32,
+            'id' => 33,
             'name'=> 'Kids Clocks',
             'parent_id' => 6
         ]);
 
         Category::create([
-            'id' => 33,
+            'id' => 34,
             'name'=> 'Kids Posters',
             'parent_id' => 6
         ]);
 
         Category::create([
-            'id' => 34,
+            'id' => 35,
             'name'=> 'Kids Mugs',
             'parent_id' => 6
         ]);
 
         Category::create([
-            'id' => 35,
+            'id' => 36,
             'name'=> 'Kids Kits',
             'parent_id' => 6
         ]);
 
         Category::create([
-            'id' => 36,
+            'id' => 37,
             'name'=> 'Kids Bibs',
             'parent_id' => 6
         ]);
