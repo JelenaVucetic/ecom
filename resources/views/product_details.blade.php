@@ -262,7 +262,8 @@
           @elseif($pro_cat->category->name == "Custom")
             <div class="custom">
                 <h6>Enter your phone model</h6>
-                <input type="text" class="custom1">
+                <input type="text" class="custom1" id="input-custom-phone">
+                <button id="custom-phone-model">Save</button>
             </div>
             <div class="case-style">
               <h5>Case style</h5>
@@ -282,19 +283,19 @@
           </div>
 
            <div class="select-color">
-            <h5>Color</h5>
-              <label class="black">
-                  <div  class="white-border">
-                    <input type="radio" name="color" class="color-class" value="black" >
-                    <span></span>
-                  </div>               
-              </label>
+            <h5>Frame Color</h5>
               <label class="white">
                 <div class="black-border">
                   <input type="radio" name="color" value="white"  class="color-class" checked>
                   <span></span>
                 </div>    
               </label>
+              <label class="black">
+                <div  class="white-border">
+                  <input type="radio" name="color" class="color-class" value="black" >
+                  <span></span>
+                </div>               
+            </label>
           </div>
 
           <div class="view-size-guid">
@@ -325,7 +326,8 @@
 
             <div id='picture-custom' class="custom">
                 <h6>Enter your picture size</h6>
-                <input type="text" id="picture">
+                <input type="text" id="picture-custom-size" class="custom-size" placeholder="e.g. 100x80">
+                <button id='save-picture-size'>Save</button>
             </div>
 
             <div class="view-size-guid">
@@ -516,6 +518,22 @@
                 <option value="50x100">50x100</option>
               </select>
             </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>    
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>               
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Notebooks")
             <div class="select-color">
               <h5>Color</h5>
                 <label class="white">

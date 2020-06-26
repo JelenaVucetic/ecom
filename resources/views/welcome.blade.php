@@ -70,14 +70,14 @@
             <div class="box-container">
                 <div class="box10-img-holder"></div>
                 <img id="male" src="/site-images/216-Male.svg">
-                <button><a href="{{route('category.show',[$giftsForHimCat->id, $giftsForHimCat->name => $giftsForHimCat->parent_id ])}}" style="color: inherit;">Gifts for Him</a></button> 
+                <button><a href="/gifts_for_him" style="color: inherit;">Gifts for Him</a></button> 
             </div>
         </div>
         <div class="col-6 gifts-for-her">
             <div class="box-container">
                 <div class="box11-img-holder"></div>
                 <img id="female" src="/site-images/217-Female.svg">
-                <button><a href="{{route('category.show',[$giftsForHerCat->id, $giftsForHerCat->name => $giftsForHerCat->parent_id ])}}" style="color: inherit;">Gifts for Her</a></button> 
+                <button><a href="/gifts_for_her" style="color: inherit;">Gifts for Her</a></button> 
             </div>    
         </div>
     </div>

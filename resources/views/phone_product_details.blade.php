@@ -20,48 +20,7 @@
      </nav>
  
  
-       <div class="slick-wrapper">
- 
-         <div class="wishlist-phone">
-           <?php
-                 $wishData = DB::table('wishlist')
-                                 ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
-                                 ->where('wishlist.pro_id', '=', $product->id)->get();
-                                
-                // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
-                $count = 0;
-                if(Auth::user()) {
-                   $count = DB::table('wishlist')
-                   ->join('product', 'product.id', '=', 'wishlist.pro_id')
-                   ->where('wishlist.pro_id', '=', $product->id)
-                   ->where('wishlist.user_id' ,'=' , Auth::user()->id)
-                   ->count();
-                }
-                 
-             ?>
-             <?php if($count == "0") { ?>
-                
-                 <input type="hidden" value="{{$product->id}}" id="productID"  name="pro_id">
-                 <br>
-                 <input type="submit" value=" " id="phoneSendWishList">
-                 
-             <?php } else { ?>
-               <input type="submit" value=" " id="disable">
-             <?php } ?>
-         </div>
- 
-           <div id="slick8">
-               <div class="slide-item">
-                 <img src="{{url('design', $design->name)}}"> 
-               </div>
-               <div class="slide-item">
-                 <img src="{{url('images', $product->image)}}"> 
-               </div>
-               <div class="slide-item">
-                 <img src="{{url('images', $product->image)}}"> 
-               </div>
-           </div>
-       </div>
+      
        <div class="delivery">
          <div>
            <h5>Delivery</h5>

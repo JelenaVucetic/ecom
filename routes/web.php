@@ -33,6 +33,9 @@ Route::post('/category_search', 'HomeController@showCategoryProduct');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::post('/search', 'HomeController@searchProduct');
 
+Route::get('/gifts_for_him', 'HomeController@giftsForHim');
+Route::get('/gifts_for_her', 'HomeController@giftsForHer');
+
 Route::get('/privacy_policy', 'HomeController@privacyPolicy');
 Route::get('/how_to_order', 'HomeController@howToOrder');
 Route::get('/shipping_and_handling', 'HomeController@shipping');

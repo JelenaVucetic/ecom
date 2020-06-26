@@ -230,6 +230,9 @@ for( let i=1;i<20;i++) {
                               @if($cartItem->options->pictureSize !== null) 
                             <span>{{ $cartItem->options->pictureSize}}</span>
                               @endif
+                              @if($cartItem->options->customSize !== null) 
+                              <span>,{{ $cartItem->options->customSize}}</span>
+                                @endif
                             @if($cartItem->options->kidscolor !== null)         
                             <span>, {{ $cartItem->options->kidscolor}}</span>
                             @endif

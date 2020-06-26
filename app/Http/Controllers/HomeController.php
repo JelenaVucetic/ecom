@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-       // $this->middleware('auth');
+        //Maknuti komentar ispod
+        //$this->middleware('auth', ['only' => ['index']]);
     }
 
     public function test() {
@@ -44,7 +45,7 @@ class HomeController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
 
         $shirtsCat = DB::table('categories')
-                ->where('categories.name', '=', 'T-shirts')
+                ->where('categories.name', '=', 'T-Shirts')
                 ->first();
 
         $casesCat = DB::table('categories')
@@ -53,14 +54,6 @@ class HomeController extends Controller
 
         $picturesCat = DB::table('categories')
                 ->where('categories.name', '=', 'Pictures')
-                ->first();
-
-        $giftsForHimCat = DB::table('categories')
-                ->where('categories.name', '=', 'Gifts For Him')
-                ->first();
-
-        $giftsForHerCat = DB::table('categories')
-                ->where('categories.name', '=', 'Gifts For Her')
                 ->first();
 
         $mugsCat = DB::table('categories')
@@ -86,7 +79,7 @@ class HomeController extends Controller
         $notebooksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Notebooks')
                 ->first();
-        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'picturesCat', 'giftsForHimCat', 'giftsForHerCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'notebooksCat'));
+        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'picturesCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'notebooksCat'));
     }
 
     public function index()
@@ -99,7 +92,7 @@ class HomeController extends Controller
         $tShirts = DB::table('product')
                 ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
                 ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'T-shirt')
+                ->where('categories.name', '=', 'T-Shirts')
                 ->get();
 
         $cases = DB::table('product')
@@ -113,7 +106,7 @@ class HomeController extends Controller
         $hoodies = DB::table('product')
                 ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
                 ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'Hoodie & Sweatshirts')
+                ->where('categories.name', '=', 'Hoodies & Sweatshirts')
                 ->get();
 
 
@@ -415,6 +408,87 @@ class HomeController extends Controller
              echo "<h3>No products</h3>";
          }
 
+    }
+
+    public function giftsForHim() {
+        $categories = Category::where('parent_id',NULL)->get();
+
+        $shirts = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','T-Shirts')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+       
+        $casesIds = Category::where('parent_id', $parentId = Category::where('name', 'Cases')
+        ->value('id'))
+        ->pluck('id')
+        ->all();
+        $casesProducts =  Product::whereIn('category_id', $casesIds)->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })->get();
+
+        $wallArtIds = Category::where('parent_id', $parentId = Category::where('name', 'Wall ART')
+        ->value('id'))
+        ->pluck('id')
+        ->all();
+        $wallProducts =  Product::whereIn('category_id', $wallArtIds)->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })->get();
+
+        $makeupBags = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Makeup Bags')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $mugs = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Mugs')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $bags = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Bags')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $clocks = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Clocks')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $notebooks = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Notebooks')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        return view('gifts_for_him', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'bags', 'clocks', 'notebooks'));
+    }
+
+    public function giftsForHer() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('gifts_for_her', compact('categories'));
     }
 
     public function privacyPolicy() {

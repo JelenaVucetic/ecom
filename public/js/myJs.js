@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 /*   Adding to cart */
 
-function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize) {
+function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var parent1 =  $('#btn-add-to-cart-phone');
@@ -102,7 +102,8 @@ function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, cust
           caseStyle: caseStyle,
           customCase: customCase,
           posterSize: posterSize,
-          pictureSize: pictureSize
+          pictureSize: pictureSize,
+          customSize: customSize
         },
         beforeSend: function() {
               modalAddBtn.attr('data-dismiss', 'modal');
@@ -135,6 +136,7 @@ $(document).ready(function(){
         var caseStyle = $( ".cases-style option:selected" ).val();
         var posterSize = $( ".poster-size option:selected" ).val();
         var pictureSize = $( ".picture-size option:selected" ).val();
+        var customSize = $('.custom-size').val();
         var parent = $(this).parent();
         var size = $('.size-class:checked').val();
         var color =$('input[name="color"]:checked').val();
@@ -169,19 +171,22 @@ $(document).ready(function(){
           $("input[name='kids-size']").change(function(){
             $('#modal-add').bind("click", function(){
               var kidssize =  $("input[name='kids-size']:checked").val();
-              addToCartAjax(kidssize,  null, color, print, null, null, null, null, null); 
+              addToCartAjax(kidssize,  null, color, print, null, null, null, null, null, null); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
         } else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-          addToCartAjax(kidssize, null, color, print, null, null, null, null, null); 
+          addToCartAjax(kidssize, null, color, print, null, null, null, null, null, null); 
         } 
         else if(pro_cat == "Custom" && !customCase) {
-          alert('unesi teks');
+          alert('Please enter your phone model');
+        } 
+        else if(pro_cat == "Pictures" && pictureSize != 'Custom' && !customSize) {
+          alert('Please enter your size');
         } 
         else {
-            addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize);
+            addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize);
           }  
       }); 
 
@@ -258,9 +263,54 @@ $(document).ready(function(){
     var pictureSize = $( "#picture option:selected" ).val();
     if(pro_cat == "Pictures" && pictureSize == 'custom') {
       $('#picture-custom').css('display', "block");
+    } else {
+      $('#picture-custom').css('display', "none");
     }
+    $("#save-picture-size").click(function(){
+      var attr = $('#picture-custom-size').attr('readonly');
+      if (typeof attr !== typeof undefined && attr !== false) {
+        $("#picture-custom-size").attr("readonly", false); 
+        $("#picture-custom-size").css("background", 'transparent'); 
+        $("#picture-custom-size").css("color", 'black'); 
+        $("#save-picture-size").html('Save'); 
+     } else {
+       if( !$("#picture-custom-size").val()) {
+         alert("Please enter your size")
+       } else {
+          $("#picture-custom-size").attr("readonly", true); 
+          $("#picture-custom-size").css("background", '#F5F5F5'); 
+          $("#picture-custom-size").css("color", '#adacac');
+          $("#save-picture-size").html('Edit'); 
+       }
+     }
+    });
   });
 });
+
+
+
+$(document).ready(function(){
+  $("#custom-phone-model").click(function(){
+    var attr = $('#input-custom-phone').attr('readonly');
+    if (typeof attr !== typeof undefined && attr !== false) {
+      $("#input-custom-phone").attr("readonly", false); 
+      $("#input-custom-phone").css("background", 'transparent'); 
+      $("#input-custom-phone").css("color", 'black'); 
+      $("#custom-phone-model").html('Save'); 
+   } else {
+     if( !$("#input-custom-phone").val()) {
+       alert("Please enter your size")
+     } else {
+        $("#input-custom-phone").attr("readonly", true); 
+        $("#input-custom-phone").css("background", '#F5F5F5'); 
+        $("#input-custom-phone").css("color", '#adacac');
+        $("#custom-phone-model").html('Edit'); 
+     }
+   }
+  });
+});
+
+
 
 $(document).ready(function(){
     $("input[name='print").change(function(){
