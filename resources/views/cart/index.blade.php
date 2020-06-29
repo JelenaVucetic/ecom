@@ -133,34 +133,37 @@ for( let i=1;i<20;i++) {
                         <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
                         @if($cartItem->options->size !== null)          
                         <span>{{$cartItem->options->size}}</span>
-                        @endif
-                        @if($cartItem->options->kidssize !== null) 
-                        <span>{{ $cartItem->options->kidssize}}</span>
+                         @endif
+                         @if($cartItem->options->kidssize !== null) 
+                         <span>{{ $cartItem->options->kidssize}}</span>
                         @endif
                         @if($cartItem->options->posterSize !== null) 
                         <span>{{ $cartItem->options->posterSize}}</span>
-                        @endif                        
-                        @if($cartItem->options->pictureSize !== null) 
+                          @endif
+                          @if($cartItem->options->pictureSize !== null) 
                         <span>{{ $cartItem->options->pictureSize}}</span>
-                        @endif
+                          @endif
+                          @if($cartItem->options->customSize !== null && $cartItem->options->customSize !== 'x') 
+                          <span>,{{ $cartItem->options->customSize}}</span>
+                            @endif
                         @if($cartItem->options->kidscolor !== null)         
                         <span>, {{ $cartItem->options->kidscolor}}</span>
                         @endif
-                        @if($cartItem->options->color !== null)         
+                         @if($cartItem->options->color !== null)         
                         <span>, {{ $cartItem->options->color}}</span>
                         @endif
-                        @if($cartItem->options->print !== null) 
+                          @if($cartItem->options->print !== null) 
                         <span>, {{ $cartItem->options->print}}</span>
-                        @endif
-                        @if($cartItem->options->phoneModel !== null) 
+                          @endif
+                          @if($cartItem->options->phoneModel !== null) 
                         <span>{{ $cartItem->options->phoneModel}}</span>
-                        @endif
-                        @if($cartItem->options->caseStyle !== null) 
+                          @endif
+                          @if($cartItem->options->caseStyle !== null) 
                         <span>{{ $cartItem->options->caseStyle}}</span>
-                        @endif
-                        @if($cartItem->options->customCase !== null) 
+                          @endif
+                          @if($cartItem->options->customCase !== null) 
                         <span>{{ $cartItem->options->customCase}}</span>
-                        @endif
+                          @endif
                        
                         <input type="hidden" id="rowIdPhone<?php echo $var;?>" value="{{$cartItem->rowId}}"/>
                         <input type="hidden" id="proIdPhone<?php echo $var;?>" value="{{$cartItem->id}}"/>
@@ -230,7 +233,7 @@ for( let i=1;i<20;i++) {
                               @if($cartItem->options->pictureSize !== null) 
                             <span>{{ $cartItem->options->pictureSize}}</span>
                               @endif
-                              @if($cartItem->options->customSize !== null) 
+                              @if($cartItem->options->customSize !== null && $cartItem->options->customSize !== 'x') 
                               <span>,{{ $cartItem->options->customSize}}</span>
                                 @endif
                             @if($cartItem->options->kidscolor !== null)         

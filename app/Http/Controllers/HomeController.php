@@ -456,12 +456,12 @@ class HomeController extends Controller
         })
         ->get();
 
-        $bags = DB::table('product')
+        $backpacks = DB::table('product')
         ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
-        ->where('categories.name','Bags')
+        ->where('categories.name','Backpacks')
         ->where(function ($q) {
-            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
         })
         ->get();
 
@@ -483,12 +483,101 @@ class HomeController extends Controller
         })
         ->get();
 
-        return view('gifts_for_him', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'bags', 'clocks', 'notebooks'));
+        return view('gifts_for_him', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'backpacks', 'clocks', 'notebooks'));
     }
 
     public function giftsForHer() {
         $categories = Category::where('parent_id',NULL)->get();
-        return view('gifts_for_her', compact('categories'));
+
+        $shirts = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','T-Shirts')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+       
+        $casesIds = Category::where('parent_id', $parentId = Category::where('name', 'Cases')
+        ->value('id'))
+        ->pluck('id')
+        ->all();
+        $casesProducts =  Product::whereIn('category_id', $casesIds)->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })->get();
+
+        $wallArtIds = Category::where('parent_id', $parentId = Category::where('name', 'Wall ART')
+        ->value('id'))
+        ->pluck('id')
+        ->all();
+        $wallProducts =  Product::whereIn('category_id', $wallArtIds)->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })->get();
+
+        $makeupBags = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Makeup Bags')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $mugs = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Mugs')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $bags = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Bags')
+        ->where(function ($q) {
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $backpacks = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Backpacks')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $notebooks = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Notebooks')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $sacks = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Sacks')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        $magnets = DB::table('product')
+        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        ->join('categories', 'categories.id', 'product.category_id')
+        ->where('categories.name','Magnets')
+        ->where(function ($q) {
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+        })
+        ->get();
+
+        return view('gifts_for_her', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'bags', 'backpacks', 'notebooks','sacks', 'magnets'));
     }
 
     public function privacyPolicy() {

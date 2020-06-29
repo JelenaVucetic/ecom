@@ -514,3 +514,323 @@ $("#slick16").slick({
         },
     ],
 });
+
+$("#slick17").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick18").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick19").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick20").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick21").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick22").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick23").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick24").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick25").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});
+
+$("#slick26").slick({
+    rows: 1,
+    dots: false,
+    arrows: true,
+    infinite: false,
+    loop: false,
+    speed: 300,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    /* prevArrow:
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    nextArrow:
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+         */
+    responsive: [
+        {
+            breakpoint: 992, // mobile breakpoint
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+            },
+        },
+        {
+            breakpoint: 767, // mobile breakpoint
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+            },
+        },
+    ],
+});

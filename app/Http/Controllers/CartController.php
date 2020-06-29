@@ -48,7 +48,14 @@ class CartController extends Controller
     public function addItem(Request $request, $id)
     {
         $product = Product::find($id);
-        if($product->spl_price==0) {
+
+        if($product->category->name == 'Posters' || $product->category->name == 'Pictures' ) {
+            $cart= Cart::add( $id, $product->name, 1, $request->price, 0,
+            ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
+            'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
+            'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
+            'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize]);
+        } else if($product->spl_price==0) {
             $cart= Cart::add( $id, $product->name, 1, $product->price, 0,
                          ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
                          'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
@@ -61,7 +68,6 @@ class CartController extends Controller
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize]);
         }
-
         echo Cart::count();
        
     }

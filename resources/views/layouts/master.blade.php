@@ -76,7 +76,7 @@
         @yield('cart-about-style.css')
         @yield('changed_header')
         @yield('phone-css')
-
+        @yield('slick.css')
       <link href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" rel="stylesheet"/>
 
 
@@ -114,6 +114,7 @@
 <script type="text/javascript" language="javascript" src="/js/dropdown.js"></script>
 <script src="/js/wavytext.js"></script>
 @yield('rateYo')
+
 <script src="/js/myJs.js"></script>
 
 </html>

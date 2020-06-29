@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('slick.css')
+<link rel="stylesheet" href="/css/slick.css">
+@endsection
 @section('content')
 <div class="container-fluid">
     <div class="design-for-you">
@@ -191,12 +193,12 @@
 </div>
 <div class="container-fluid">
     <div class="design-for-you">
-      <h2>Bags</h2>
+      <h2>Backpacks</h2>
     </div>
   
     <div class="slick-wrapper">
       <div id="slick14">
-        @foreach ($bags as $bag)
+        @foreach ($backpacks as $bag)
           <div class="slide-item">
             <div class="product">
               <a href="{{ url('/product_details', [$bag->id]) }}" class="">

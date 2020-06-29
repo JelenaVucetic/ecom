@@ -115,7 +115,7 @@
             </div>
         </div>
     </div>
-      <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12">
+      <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5;">
         <h4 class="product-title">{{ $product->name}}</h4>
         <?php $pro_cat = App\Product::find($product->id); ?>
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
@@ -124,14 +124,22 @@
 
           <span id="price">
             @if($product->spl_price==0)
-                <input id="product_price" type="hidden" value="<?php echo $product->price;?>">
-                <h4><span>&euro; {{ $product->price}} </span></h4>
+                <input id="product_price" type="hidden" value="{{$product->price}}">
+                <h4 id="A3_price"><span>&euro; {{ $product->price}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center">
-                  <input type="hidden" value="<?php echo $product->spl_price;?>" name="newPrice">
+                  <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
                   <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
                   <p class="">&euro;{{$product->spl_price}}</p>
                 </div>
+            @endif
+            @if($product->price_b2 != 0)
+              <input type="hidden" value="{{$product->price_b2}}" name="newPrice">
+              <h4 id="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
+            @endif
+            @if($product->price_b1 != 0)
+              <input type="hidden" value="{{$product->price_b1}}" name="newPrice">
+              <h4 id="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
             @endif
           </span>
 
@@ -276,9 +284,9 @@
           <div class="choose-size">
             <h5>Size</h5>
             <select class="poster-size" id='posters'>
-              <option value="A3">A3</option>
-              <option value="B1">B1</option>
-              <option value="B2">B2</option>
+              <option value="A3" data-price="{{ $product->price}}">A3</option>
+              <option value="B1" data-price="{{ $product->price_b1}}">B1</option>
+              <option value="B2" data-price="{{ $product->price_b2}}">B2</option>
             </select>
           </div>
 
@@ -318,15 +326,16 @@
             <div class="choose-size">
               <h5>Size</h5>
               <select class="picture-size" id='picture'>
-                <option value="B2">B2</option>
-                <option value="B1">B1</option>
-                <option value="custom">Custom</option>
+                <option value="B2" data-price={{$product->price_b2}}>B2</option>
+                <option value="B1"  data-price={{$product->price_b1}}>B1</option>
+                <option id="custom-option" value="custom"  data-price={{$product->price}}>Custom</option>
               </select>
             </div>
 
             <div id='picture-custom' class="custom">
                 <h6>Enter your picture size</h6>
-                <input type="text" id="picture-custom-size" class="custom-size" placeholder="e.g. 100x80">
+                <input type="text" id="picture-custom-width" class="custom-width" placeholder="e.g. 100">
+                <input type="text" id="picture-custom-height" class="custom-height" placeholder="e.g. 80">
                 <button id='save-picture-size'>Save</button>
             </div>
 

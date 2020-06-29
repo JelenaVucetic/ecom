@@ -847,6 +847,14 @@ stroke-width:20;
 #desctop-left {
     display: block;
 }
+
+#B2_price {
+    display: none;
+}
+
+#B1_price {
+    display: none;
+}
 @media (max-width: 767px) {  
        .desctop-product {
             display: block;
