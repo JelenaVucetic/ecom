@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 /*   Adding to cart */
 
-function addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, price) {
+function addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var parent1 =  $('#btn-add-to-cart-phone');
@@ -145,8 +145,8 @@ $(document).ready(function(){
         var print = $('.print-class:checked').val();
         var customCase = $(".custom1").val();
         var pro_cat = $('#pro_cat').val();
-        
-           
+        price = $( ".product_price" ).val();
+
         if((pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
@@ -157,12 +157,14 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(kidssize, size, color, print); 
+              addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
-        } else if (pro_cat == "Kids T-Shirts" && kidssize == null) {
+        } else if(pro_cat == "T-Shirts" || pro_cat == "Polo Shirts" || pro_cat == "Tank Tops"  || pro_cat == "Hoodie & Sweatshirts" && size == null) {
+          addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null);
+        }else if (pro_cat == "Kids T-Shirts" && kidssize == null) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
 
@@ -172,28 +174,20 @@ $(document).ready(function(){
           $("input[name='kids-size']").change(function(){
             $('#modal-add').bind("click", function(){
               var kidssize =  $("input[name='kids-size']:checked").val();
-              addToCartAjax(kidssize,  null, color, print, null, null, null, null, null, null, null); 
+              addToCartAjax(price, kidssize,  null, color, print, null, null, null, null, null, null); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
         } else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-          addToCartAjax(kidssize, null, color, print, null, null, null, null, null, null, null); 
+          addToCartAjax(price, kidssize, null, color, print, null, null, null, null, null, null); 
         } 
         else if(pro_cat == "Custom" && !customCase) {
           alert('Please enter your phone model');
-        } 
-       /*  else if(pro_cat == "Pictures" && pictureSize != 'Custom' && !customSize) {
-          alert('Please enter your size');
-        } */ else if(pro_cat == 'Posters') {
-          var price = $( ".poster-size option:selected" ).attr('data-price');
-          addToCartAjax( kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, price);
-        } else if(pro_cat == 'Pictures') {
-          var price = $( ".picture-size option:selected" ).attr('data-price');
-          addToCartAjax( kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, price);
-        }
-        else {
-            addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, price);
+        } else if (pro_cat == "Wallpapers") {
+          addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize);
+        } else {
+            addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null);
           }  
       }); 
 
@@ -224,7 +218,13 @@ $(document).ready(function(){
   });
 });
 
-
+$(document).ready(function(){ 
+  var pro_cat = $('#pro_cat').val();
+  if(pro_cat == 'Pictures') {
+    var newPrice = $( "#picture option:selected" ).attr('data-price');
+    $(".product_price").val(newPrice)
+  }
+})
 
 $(document).ready(function(){
   $('.black div').removeClass( "white-border");
@@ -270,9 +270,9 @@ $('#picture-custom').css('display', "none");
     var pictureSize = $( "#picture option:selected" ).val();
       if(pro_cat == "Pictures" && pictureSize == 'custom') {
         $('#picture-custom').css('display', "block");
-        $('#B2_price').css('display', 'none')
-        $('#B1_price').css('display', 'none')
-        $('#A3_price').css('display', 'block')
+        $('.B2_price').css('display', 'none')
+        $('.B1_price').css('display', 'none')
+        $('.A3_price').css('display', 'block')
   
         $("#save-picture-size").click(function(){
           var attrWidth = $('#picture-custom-width').attr('readonly');
@@ -288,6 +288,8 @@ $('#picture-custom').css('display', "none");
           } else {
             if( !$("#picture-custom-width").val() || !$("#picture-custom-height").val()) {
               alert("Please enter your picture size")
+            } else if ($("#picture-custom-width").val() == 0 ) {
+              alert('false')
             } else {
                 $("#picture-custom-width").attr("readonly", true); 
                 $("#picture-custom-width").css("background", '#F5F5F5'); 
@@ -297,49 +299,92 @@ $('#picture-custom').css('display', "none");
                 $("#picture-custom-height").css("color", '#adacac');
                 $("#save-picture-size").html('Edit'); 
 
-                var newPrice =  ($("#picture-custom-width").val() * $("#picture-custom-height").val() * $('#product_price').val()) / 100;
-                $('#A3_price span').html(newPrice);
-                $( "#custom-option" ).attr('data-price', newPrice)
+                var newPrice =  ($("#picture-custom-width").val() * $("#picture-custom-height").val() * $('.product_price').val()) / 100;
+                $('.A3_price span').html(newPrice);
+                $("#custom-option").attr('data-price', newPrice)
+                $(".product_price").val(newPrice)
             }
         }
         });
         
       } else if( pro_cat == "Pictures" && pictureSize == 'B2') {
         $('#picture-custom').css('display', "none");
-        $('#B2_price').css('display', 'block')
-        $('#B1_price').css('display', 'none')
-        $('#A3_price').css('display', 'none')
-      } else {
+        $('.B2_price').css('display', 'block')
+        $('.B1_price').css('display', 'none')
+        $('.A3_price').css('display', 'none')
+        var newPrice = $( "#picture option:selected" ).attr('data-price');
+        $(".product_price").val(newPrice)
+      } else if( pro_cat == "Pictures" && pictureSize == 'B1'){
           $('#picture-custom').css('display', "none");
-          $('#B2_price').css('display', 'none')
-          $('#B1_price').css('display', 'block')
-          $('#A3_price').css('display', 'none')
+          $('.B2_price').css('display', 'none')
+          $('.B1_price').css('display', 'block')
+          $('.A3_price').css('display', 'none')
+          var newPrice = $( "#picture option:selected" ).attr('data-price');
+          $(".product_price").val(newPrice)
+        } else {
+          console.log('ok')
         }
+
       if(pro_cat == 'Posters') {
         if( $( ".poster-size option:selected" ).val() == 'B2' ) {
-          $('#A3_price').css('display', 'none')
-          $('#B2_price').css('display', 'block')
-          $('#B1_price').css('display', 'none')
+          $('.A3_price').css('display', 'none')
+          $('.B2_price').css('display', 'block')
+          $('.B1_price').css('display', 'none')
         } else if( $( ".poster-size option:selected" ).val() == 'B1' ) {
-          $('#A3_price').css('display', 'none')
-          $('#B2_price').css('display', 'none')
-          $('#B1_price').css('display', 'block')
+          $('.A3_price').css('display', 'none')
+          $('.B2_price').css('display', 'none')
+          $('.B1_price').css('display', 'block')
         } else {
-          $('#A3_price').css('display', 'block')
-          $('#B2_price').css('display', 'none')
-          $('#B1_price').css('display', 'none')
+          $('.A3_price').css('display', 'block')
+          $('.B2_price').css('display', 'none')
+          $('.B1_price').css('display', 'none')
         }
-
+        var price = $( ".poster-size option:selected" ).attr('data-price');
+        $(".product_price").val(price)
       }
 
+  });
+
+  
+});
+
+$(document).ready(function() {
+  $("#save-wallpaper-size").click(function(){
+    var attrWidth = $('#wallpaper-custom-width').attr('readonly');
+    var attrHeight = $('#wallpaper-custom-height').attr('readonly');
+    if ((typeof attrWidth !== typeof undefined && attrWidth !== false) || (typeof attrHeight !== typeof undefined && attrHeight !== false)) {
+      $("#wallpaper-custom-width").attr("readonly", false); 
+      $("#wallpaper-custom-width").css("background", 'white'); 
+      $("#wallpaper-custom-width").css("color", 'black'); 
+      $("#wallpaper-custom-height").attr("readonly", false); 
+      $("#wallpaper-custom-height").css("background", 'white'); 
+      $("#wallpaper-custom-height").css("color", 'black'); 
+      $("#save-wallpaper-size").html('Save'); 
+    } else {
+      if( !$("#wallpaper-custom-width").val() || !$("#wallpaper-custom-height").val()) {
+        alert("Please enter your wallpaper size")
+      } else {
+          $("#wallpaper-custom-width").attr("readonly", true); 
+          $("#wallpaper-custom-width").css("background", '#F5F5F5'); 
+          $("#wallpaper-custom-width").css("color", '#adacac');
+          $("#wallpaper-custom-height").attr("readonly", true); 
+          $("#wallpaper-custom-height").css("background", '#F5F5F5'); 
+          $("#wallpaper-custom-height").css("color", '#adacac');
+          $("#save-wallpaper-size").html('Edit'); 
+
+          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.product_price').val()) / 100;
+          $('.A3_price span').html(newPrice);
+          $(".product_price").val(newPrice)
+      }
+  }
   });
 });
 
 $(document).ready(function(){
   var pro_cat = $('#pro_cat').val();
   if(pro_cat == "Pictures") {
-    $('#A3_price').css('display', 'none')
-    $('#B2_price').css('display', 'block')
+    $('.A3_price').css('display', 'none')
+    $('.B2_price').css('display', 'block')
   }
 });
 
@@ -503,9 +548,9 @@ $(document).ready(function(){
       var customCase = $("#custom").val();
 
       var pro_cat = $('#pro_cat').val();
+      price = $( ".product_price" ).val();
 
-
-      if((pro_cat == "Urban clothing" && size == null) || (pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
+      if((pro_cat == "T-Shirts" && size == null) || (pro_cat == "Polo Shirts" && size == null) || (pro_cat == "Tank Tops" && size == null ) || (pro_cat == "Hoodie & Sweatshirts" && size == null)) {
         $('#btn-add-to-cart-phone').attr('data-toggle', 'modal');
         $('#btn-add-to-cart-phone').attr('data-target', '#exampleModal');
 
@@ -515,11 +560,13 @@ $(document).ready(function(){
         $("input[name='size']").change(function(){
           $('#modal-add').bind("click", function(){
             var size =  $("input[name='size']:checked").val();
-            addToCartAjax(kidssize, size, color, print); 
+            addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null); 
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
         });
+      } else if(pro_cat == "T-Shirts" || pro_cat == "Polo Shirts" || pro_cat == "Tank Tops"  || pro_cat == "Hoodie & Sweatshirts" && size == null) {
+        addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null);
       } else if (pro_cat == "Kids T-Shirts" && kidssize == null) {
         $('#btn-add-to-cart-phone').attr('data-toggle', 'modal');
         $('#btn-add-to-cart-phone').attr('data-target', '#exampleModal');
@@ -530,24 +577,25 @@ $(document).ready(function(){
         $("input[name='kids-size']").change(function(){
           $('#modal-add').bind("click", function(){
             var kidssize =  $("input[name='kids-size']:checked").val();
-            addToCartAjax(kidssize, null, color, print, null, null, null, null, null, null); 
+            addToCartAjax(price, kidssize,  null, color, print, null, null, null, null, null, null); 
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
         });
       }  else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-        addToCartAjax(kidssize, null, color, print, null, null, null, null, null, null); 
+        addToCartAjax(price, kidssize, null, color, print, null, null, null, null, null, null); 
       }  else if(pro_cat == 'Posters') {
         var price = $( ".poster-size option:selected" ).attr('data-price');
         addToCartAjax( kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, price);
       } else if(pro_cat == 'Pictures') {
         var price = $( ".picture-size option:selected" ).attr('data-price');
         addToCartAjax( kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, price);
-      } else if(pro_cat == "Custom" && !customCase) {
-        alert('unesi teks');
-      } 
-      else {
-        addToCartAjax(kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, price);
+      }  else if(pro_cat == "Custom" && !customCase) {
+        alert('Please enter your phone model');
+      } else if (pro_cat == "Wallpapers") {
+        addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize);
+      } else {
+          addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null);
         }  
     }); 
 }); 

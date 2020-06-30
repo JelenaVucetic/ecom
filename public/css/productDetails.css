@@ -119,7 +119,7 @@
 .m-size input[type="radio"]:checked+span,
 .l-size input[type="radio"]:checked+span,
 .xl-size input[type="radio"]:checked+span,
-.xxl-size input[type="radio"]:checked+span
+.xxl-size input[type="radio"]:checked+span,
 .Checked+span {
     background: #E6003A;
     color: white;
@@ -179,8 +179,8 @@
     border-radius: 20px;
     cursor: pointer;
     z-index: 90;
-    padding-left: 2px;
-    padding-top: 2px;
+    padding-left: 4px;
+    padding-top: 4px;
 }
 
 .xs-size span:hover 
@@ -848,11 +848,11 @@ stroke-width:20;
     display: block;
 }
 
-#B2_price {
+.B2_price {
     display: none;
 }
 
-#B1_price {
+.B1_price {
     display: none;
 }
 @media (max-width: 767px) {  

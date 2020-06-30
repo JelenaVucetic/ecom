@@ -15,6 +15,7 @@
     <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;">
         <div>
           @if($product->spl_price==0)
+
               <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;" >{{ $product->price }}&euro;</p>
           @else
               <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;">{{ $product->spl_price }}&euro;</p>
@@ -124,8 +125,8 @@
 
           <span id="price">
             @if($product->spl_price==0)
-                <input id="product_price" type="hidden" value="{{$product->price}}">
-                <h4 id="A3_price"><span>&euro; {{ $product->price}} </span></h4>
+                <input class="product_price" type="hidden" value="{{$product->price}}">
+                <h4 class="A3_price"><span>&euro; {{ $product->price}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center">
                   <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
@@ -135,15 +136,15 @@
             @endif
             @if($product->price_b2 != 0)
               <input type="hidden" value="{{$product->price_b2}}" name="newPrice">
-              <h4 id="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
+              <h4 class="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
             @endif
             @if($product->price_b1 != 0)
               <input type="hidden" value="{{$product->price_b1}}" name="newPrice">
-              <h4 id="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
+              <h4 class="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
             @endif
           </span>
 
-          @if($pro_cat->category->name == "T-Shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts")
+          @if($pro_cat->category->name == "T-Shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodies & Sweatshirts")
           <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
           <div class="select-size">
             <h5>Size</h5>
@@ -311,10 +312,13 @@
               <img src="/site-images/Layer_1_1_.svg" alt="">
           </div>
 
-          @elseif($pro_cat->category->name == "Wallpaper")
+          @elseif($pro_cat->category->name == "Wallpapers")
             <div class="custom">
-                <h6>Enter your wallpaper size</h6>
-                <input type="text" id="wallpaper">
+                <h6>Enter your wallpaper width</h6>
+                <input type="text" id="wallpaper-custom-width" class="custom-width" placeholder="e.g. 100"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <h6>Enter your wallpaper height</h6>
+                <input type="text" id="wallpaper-custom-height" class="custom-height" placeholder="e.g. 80"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <button id='save-wallpaper-size'>Save</button>
             </div>
 
             <div class="view-size-guid">
@@ -333,9 +337,10 @@
             </div>
 
             <div id='picture-custom' class="custom">
-                <h6>Enter your picture size</h6>
-                <input type="text" id="picture-custom-width" class="custom-width" placeholder="e.g. 100">
-                <input type="text" id="picture-custom-height" class="custom-height" placeholder="e.g. 80">
+                <h6>Enter your picture width</h6>
+                <input type="text" id="picture-custom-width" class="custom-width" placeholder="e.g. 100" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <h6>Enter your picture height</h6>
+                <input type="text" id="picture-custom-height" class="custom-height" placeholder="e.g. 80"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
                 <button id='save-picture-size'>Save</button>
             </div>
 

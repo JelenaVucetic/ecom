@@ -23,13 +23,17 @@ class CartController extends Controller
             $countTotal = $c->qty + $countTotal;
         }
         if( $countTotal >= 3 &&  $countTotal < 5 ) {
-            $cartSubTotal = Cart::subtotal() * 0.9;
-        } elseif ( $countTotal >= 5 ) {
-            $cartSubTotal = Cart::subtotal() * 0.8;
+            $cartSubTotal = strpos(Cart::subtotal(),'.')!==false ? rtrim(rtrim(Cart::subtotal(),'0'),'.') : Cart::subtotal();
+            $cartSubTotal = str_replace( ',', '', $cartSubTotal);
+            $cartSubTotal = $cartSubTotal * 0.9;
+        } elseif ( $countTotal >= 5 ) {   
+            $cartSubTotal = strpos(Cart::subtotal(),'.')!==false ? rtrim(rtrim(Cart::subtotal(),'0'),'.') : Cart::subtotal();
+            $cartSubTotal = str_replace( ',', '', $cartSubTotal);
+            $cartSubTotal = $cartSubTotal * 0.8;
         } else {
             $cartSubTotal = Cart::subtotal();
         } 
-
+      
         $ads = null;
 
         if(Auth::check()) {
@@ -49,14 +53,14 @@ class CartController extends Controller
     {
         $product = Product::find($id);
 
-        if($product->category->name == 'Posters' || $product->category->name == 'Pictures' ) {
+    /*     if($product->category->name == 'Posters' || $product->category->name == 'Pictures') {
             $cart= Cart::add( $id, $product->name, 1, $request->price, 0,
             ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
             'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
             'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
             'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize]);
-        } else if($product->spl_price==0) {
-            $cart= Cart::add( $id, $product->name, 1, $product->price, 0,
+        } else  */if($product->spl_price==0) {
+            $cart= Cart::add( $id, $product->name, 1, $request->price, 0,
                          ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
                          'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                          'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
