@@ -75,7 +75,7 @@
         </div>
     </div>
     <div class="slick-wrapper" id="phone-middle">
-      <div class="wishlist-phone">
+      <div class="wishlist-phone" style="display: none;">
         <?php
               $wishData = DB::table('wishlist')
                               ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
@@ -103,7 +103,7 @@
           <?php } ?>
       </div>
 
-        <div id="slick8">
+        <div id="slick8"    style=" display: none;">
             <div class="slide-item">
               <img src="{{url('design', $design->name)}}"> 
             </div>
