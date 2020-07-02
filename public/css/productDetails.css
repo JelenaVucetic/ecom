@@ -216,6 +216,14 @@
     border-radius: 20px;
 }
 
+.neon {
+    margin: 0 5px 0 0;
+    width: 33px;
+    height: 33px;
+    position: relative;
+    border-radius: 20px;
+}
+
 .white {
     margin: 0 5px 0 0;
     width: 33px;
@@ -257,7 +265,8 @@
 .black input[type="radio"],
 .white input[type="radio"],
 .red input[type="radio"],
-.navy input[type="radio"]  {
+.navy input[type="radio"],
+.neon input[type="radio"]  {
     opacity: 0.01;
     z-index: 100;   
     width: 0px;
@@ -267,6 +276,8 @@
 .white input,
 .navy input,
 .navy span,
+.neon input,
+.neon span,
 .red input,
 .red span,
 .black span,
@@ -293,6 +304,13 @@
     z-index: 90;
 } 
 
+.neon span {
+    background: rgb(192, 159, 247);
+    border: 1px solid#DEDEDE;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 90;
+} 
 .white span {
     background: white;
     border: 1px solid#DEDEDE;

@@ -135,7 +135,7 @@
                 </div>
             @endif
             @if($product->price_b2 != 0)
-              <input type="hidden" value="{{$product->price_b2}}" name="newPrice">
+              <input type="hidden" class="product_b2_price" value="{{$product->price_b2}}" name="newPrice">
               <h4 class="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
             @endif
             @if($product->price_b1 != 0)
@@ -400,6 +400,54 @@
                     <span></span>
                   </div>               
               </label>
+            </div>
+            @elseif($pro_cat->category->name == "Mugs") 
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>    
+                </label>
+                <label class="neon">
+                  <div class="black-border">
+                    <input type="radio" name="color" class="color-class" value="neon" >
+                    <span></span>
+                  </div>               
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Backpacks") 
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="black">
+                    <div  class="white-border">
+                      <input type="radio" name="color" class="color-class" value="black" checked >
+                      <span></span>
+                    </div>               
+                </label>
+                <label class="red">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="red"  class="color-class">
+                    <span></span>
+                  </div>    
+                </label>
+            </div>
+            
+            @elseif($pro_cat->category->name == "Coasters") 
+            <div class="choose-size">
+              <h5>Shape</h5>
+              <select class="coaster-shape" id=''>
+                <option value="Rounded">Rounded</option>
+                <option value="Squared">Squared</option>
+              </select>
+            </div>
+            <div class="choose-size">
+              <h5>Design</h5>
+              <select class="coaster-design" id=''>
+                <option value="Design">Design</option>
+                <option value="Engraving">Engraving</option>
+              </select>
             </div>
 
             @elseif($pro_cat->category->name == "Kids T-Shirts" )

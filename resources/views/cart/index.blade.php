@@ -132,38 +132,44 @@ for( let i=1;i<20;i++) {
                     <div>
                         <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
                         @if($cartItem->options->size !== null)          
-                        <span>{{$cartItem->options->size}}</span>
-                         @endif
-                         @if($cartItem->options->kidssize !== null) 
-                         <span>{{ $cartItem->options->kidssize}}</span>
-                        @endif
-                        @if($cartItem->options->posterSize !== null) 
-                        <span>{{ $cartItem->options->posterSize}}</span>
-                          @endif
-                          @if($cartItem->options->pictureSize !== null) 
-                        <span>{{ $cartItem->options->pictureSize}}</span>
-                          @endif
-                          @if($cartItem->options->customSize !== null && $cartItem->options->customSize !== 'x') 
-                          <span>,{{ $cartItem->options->customSize}}</span>
+                            <span>{{$cartItem->options->size}}</span>
+                             @endif
+                             @if($cartItem->options->kidssize !== null) 
+                             <span>{{ $cartItem->options->kidssize}}</span>
                             @endif
-                        @if($cartItem->options->kidscolor !== null)         
-                        <span>, {{ $cartItem->options->kidscolor}}</span>
-                        @endif
-                         @if($cartItem->options->color !== null)         
-                        <span>, {{ $cartItem->options->color}}</span>
-                        @endif
-                          @if($cartItem->options->print !== null) 
-                        <span>, {{ $cartItem->options->print}}</span>
-                          @endif
-                          @if($cartItem->options->phoneModel !== null) 
-                        <span>{{ $cartItem->options->phoneModel}}</span>
-                          @endif
-                          @if($cartItem->options->caseStyle !== null) 
-                        <span>{{ $cartItem->options->caseStyle}}</span>
-                          @endif
-                          @if($cartItem->options->customCase !== null) 
-                        <span>{{ $cartItem->options->customCase}}</span>
-                          @endif
+                            @if($cartItem->options->posterSize !== null) 
+                            <span>{{ $cartItem->options->posterSize}}</span>
+                              @endif
+                              @if($cartItem->options->pictureSize !== null) 
+                            <span>{{ $cartItem->options->pictureSize}}</span>
+                              @endif
+                            @if($cartItem->options->customSize !== null && $cartItem->options->customSize !== 'undefinedxundefined' && $cartItem->options->customSize !== 'x') 
+                              <span>,{{ $cartItem->options->customSize}}</span>
+                            @endif
+                            @if($cartItem->options->kidscolor !== null)         
+                            <span>, {{ $cartItem->options->kidscolor}}</span>
+                            @endif
+                             @if($cartItem->options->color !== null)         
+                            <span>, {{ $cartItem->options->color}}</span>
+                            @endif
+                              @if($cartItem->options->print !== null) 
+                            <span>, {{ $cartItem->options->print}}</span>
+                              @endif
+                              @if($cartItem->options->phoneModel !== null) 
+                            <span>{{ $cartItem->options->phoneModel}}</span>
+                              @endif
+                              @if($cartItem->options->caseStyle !== null) 
+                            <span>{{ $cartItem->options->caseStyle}}</span>
+                            @endif
+                              @if($cartItem->options->customCase !== null) 
+                            <span>{{ $cartItem->options->customCase}}</span>
+                            @endif
+                              @if($cartItem->options->coasterShape !== null) 
+                              <span>{{ $cartItem->options->coasterShape}},</span>
+                            @endif
+                            @if($cartItem->options->coasterDesign !== null) 
+                            <span>{{ $cartItem->options->coasterDesign}}</span>
+                            @endif
                        
                         <input type="hidden" id="rowIdPhone<?php echo $var;?>" value="{{$cartItem->rowId}}"/>
                         <input type="hidden" id="proIdPhone<?php echo $var;?>" value="{{$cartItem->id}}"/>
@@ -222,38 +228,44 @@ for( let i=1;i<20;i++) {
                         <td class="cart_description">
                             <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
                              @if($cartItem->options->size !== null)          
-                            <span>{{$cartItem->options->size}}</span>
+                            <span>{{$cartItem->options->size}}</span> <br>
                              @endif
                              @if($cartItem->options->kidssize !== null) 
-                             <span>{{ $cartItem->options->kidssize}}</span>
+                             <span>{{ $cartItem->options->kidssize}}</span> <br>
                             @endif
                             @if($cartItem->options->posterSize !== null) 
-                            <span>{{ $cartItem->options->posterSize}}</span>
+                            <span>{{ $cartItem->options->posterSize}}</span> <br>
                               @endif
                               @if($cartItem->options->pictureSize !== null) 
-                            <span>{{ $cartItem->options->pictureSize}}</span>
+                            <span>{{ $cartItem->options->pictureSize}}</span><br>
                               @endif
-                            @if($cartItem->options->customSize !== null && $cartItem->options->customSize !== 'x') 
-                              <span>,{{ $cartItem->options->customSize}}</span>
+                            @if($cartItem->options->customSize !== null && $cartItem->options->customSize !== 'undefinedxundefined' && $cartItem->options->customSize !== 'x') 
+                              <span>{{ $cartItem->options->customSize}}</span><br>
                             @endif
                             @if($cartItem->options->kidscolor !== null)         
-                            <span>, {{ $cartItem->options->kidscolor}}</span>
+                            <span>{{ $cartItem->options->kidscolor}}</span><br>
                             @endif
                              @if($cartItem->options->color !== null)         
-                            <span>, {{ $cartItem->options->color}}</span>
+                            <span>{{ $cartItem->options->color}}</span><br>
                             @endif
                               @if($cartItem->options->print !== null) 
-                            <span>, {{ $cartItem->options->print}}</span>
+                            <span>{{ $cartItem->options->print}}</span><br>
                               @endif
                               @if($cartItem->options->phoneModel !== null) 
-                            <span>{{ $cartItem->options->phoneModel}}</span>
+                            <span>{{ $cartItem->options->phoneModel}}</span><br>
                               @endif
                               @if($cartItem->options->caseStyle !== null) 
-                            <span>{{ $cartItem->options->caseStyle}}</span>
-                              @endif
+                            <span>{{ $cartItem->options->caseStyle}}</span><br>
+                            @endif
                               @if($cartItem->options->customCase !== null) 
-                            <span>{{ $cartItem->options->customCase}}</span>
-                              @endif
+                            <span>{{ $cartItem->options->customCase}}</span><br>
+                            @endif
+                              @if($cartItem->options->coasterShape !== null) 
+                              <span>{{ $cartItem->options->coasterShape}}</span><br>
+                            @endif
+                            @if($cartItem->options->coasterDesign !== null) 
+                            <span>{{ $cartItem->options->coasterDesign}}</span><br>
+                            @endif
                              
                              
                         </td>
