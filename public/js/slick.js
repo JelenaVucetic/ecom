@@ -8,9 +8,9 @@ $("#slick1").slick({
     slidesToShow: 4,
     slidesToScroll: 4,
     prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/computer-icons-png-favpng-etrgGwq5EiCNYP4BpXRR81YhR.jpg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
+        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/388-3889071_img-316009-right-left-arrow-png-transparent-png.png'>",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint

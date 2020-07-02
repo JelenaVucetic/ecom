@@ -368,15 +368,18 @@
     left: -23px;
 }
 
-#left-arrow, #right-arrow {
+#left-arrow {
     width: 30px;
 
 }
 
+#right-arrow {
+    width: 20px;
+}
 .slick-next {
     position: absolute;
-    right: -20px;
-    bottom: 280px;
+    right: 15px;
+    bottom: 335px;
 }
 
 .slick-slide, .slick-slide div {

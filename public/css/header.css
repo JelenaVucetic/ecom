@@ -270,10 +270,10 @@ display: flex;
   
 #number_cart_items {
     position: absolute;
-    width: 27px;
+    width: 24px;
     background: #E6003A;
     color: white;
-    border-radius: 30px;
+    border-radius: 8px;
     right: -5px;
     bottom: 18px;
 }
