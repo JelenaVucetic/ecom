@@ -64,13 +64,15 @@ class CartController extends Controller
                          ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
                          'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                          'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
-                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize]);
+                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
+                         'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign]);
         } else {
             $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, 
                         ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
-                        'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize]);
+                        'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
+                        'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign]);
         }
         echo Cart::count();
        
