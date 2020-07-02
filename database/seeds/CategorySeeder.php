@@ -32,200 +32,184 @@ class CategorySeeder extends Seeder
             'id' => 4,
             'name'=> 'Accesories'
         ]);
-        Category::create([
-            'id' => 5,
-            'name'=> 'Gifts'
-        ]);
 
         Category::create([
-            'id' => 6,
+            'id' => 5,
             'name'=> 'Urban Kids'
         ]);
 
         Category::create([
-            'id' => 7,
+            'id' => 6,
             'name'=> 'T-Shirts',
             'parent_id' => 1
         ]);
 
         Category::create([
-            'id' => 8,
+            'id' => 7,
             'name'=> 'Polo Shirts',
             'parent_id' => 1
         ]);
 
         Category::create([
-            'id' => 9,
+            'id' => 8,
             'name'=> 'Tank Tops',
             'parent_id' => 1
         ]);
 
         Category::create([
-            'id' => 10,
-            'name'=> 'Hoodie & Sweatshirts',
+            'id' => 9,
+            'name'=> 'Hoodies & Sweatshirts',
             'parent_id' => 1
         ]);
 
         Category::create([
-            'id' => 11,
+            'id' => 10,
             'name'=> 'Samsung Cases',
             'parent_id' => 2
         ]);
 
         Category::create([
-            'id' => 12,
+            'id' => 11,
             'name'=> 'Iphone Cases',
             'parent_id' => 2
         ]);
 
         Category::create([
-            'id' => 13,
+            'id' => 12,
             'name'=> 'Huawei Cases',
             'parent_id' => 2
         ]);
 
         Category::create([
-            'id' => 14,
+            'id' => 13,
             'name'=> 'Custom',
             'parent_id' => 2
         ]);
 
         Category::create([
-            'id' => 15,
+            'id' => 14,
             'name'=> 'Posters',
             'parent_id' => 3
         ]);
 
         Category::create([
-            'id' => 16,
+            'id' => 15,
             'name'=> 'Wallpapers',
             'parent_id' => 3
         ]);
 
         Category::create([
-            'id' => 17,
+            'id' => 16,
             'name'=> 'Pictures',
             'parent_id' => 3
         ]);
 
         Category::create([
-            'id' => 18,
+            'id' => 17,
             'name'=> 'Makeup Bags',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 19,
+            'id' => 18,
             'name'=> 'Coasters',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 20,
+            'id' => 19,
             'name'=> 'Thermos',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 21,
+            'id' => 20,
             'name'=> 'Mugs',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 22,
+            'id' => 21,
             'name'=> 'Bags',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 23,
+            'id' => 22,
             'name'=> 'Backpacks',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 24,
+            'id' => 23,
             'name'=> 'Clocks',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 25,
+            'id' => 24,
             'name'=> 'Sacks',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 26,
+            'id' => 25,
             'name'=> 'Notebooks',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 27,
+            'id' => 26,
             'name'=> 'Magnets',
             'parent_id' => 4
         ]);
 
         Category::create([
-            'id' => 28,
+            'id' => 27,
             'name'=> 'Towels',
             'parent_id' => 4
         ]);
 
         Category::create([
+            'id' => 28,
+            'name'=> 'Kids T-Shirts',
+            'parent_id' => 5
+        ]);
+
+        Category::create([
             'id' => 29,
-            'name'=> 'Gifts For Him',
+            'name'=> 'Kids One-Pieces',
             'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 30,
-            'name'=> 'Gifts For Her',
+            'name'=> 'Kids Clocks',
             'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 31,
-            'name'=> 'Kids T-Shirts',
-            'parent_id' => 6
+            'name'=> 'Kids Posters',
+            'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 32,
-            'name'=> 'Kids One-Pieces',
-            'parent_id' => 6
+            'name'=> 'Kids Mugs',
+            'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 33,
-            'name'=> 'Kids Clocks',
-            'parent_id' => 6
+            'name'=> 'Kids Kits',
+            'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 34,
-            'name'=> 'Kids Posters',
-            'parent_id' => 6
-        ]);
-
-        Category::create([
-            'id' => 35,
-            'name'=> 'Kids Mugs',
-            'parent_id' => 6
-        ]);
-
-        Category::create([
-            'id' => 36,
-            'name'=> 'Kids Kits',
-            'parent_id' => 6
-        ]);
-
-        Category::create([
-            'id' => 37,
             'name'=> 'Kids Bibs',
-            'parent_id' => 6
+            'parent_id' => 5
         ]);
     }
 }

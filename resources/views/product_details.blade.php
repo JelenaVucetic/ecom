@@ -15,6 +15,7 @@
     <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;">
         <div>
           @if($product->spl_price==0)
+
               <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;" >{{ $product->price }}&euro;</p>
           @else
               <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;">{{ $product->spl_price }}&euro;</p>
@@ -115,7 +116,7 @@
             </div>
         </div>
     </div>
-      <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12">
+      <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5;">
         <h4 class="product-title">{{ $product->name}}</h4>
         <?php $pro_cat = App\Product::find($product->id); ?>
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
@@ -124,18 +125,26 @@
 
           <span id="price">
             @if($product->spl_price==0)
-                <input id="product_price" type="hidden" value="<?php echo $product->price;?>">
-                <h4><span>&euro; {{ $product->price}} </span></h4>
+                <input class="product_price" type="hidden" value="{{$product->price}}">
+                <h4 class="A3_price"><span>&euro; {{ $product->price}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center">
-                  <input type="hidden" value="<?php echo $product->spl_price;?>" name="newPrice">
+                  <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
                   <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
                   <p class="">&euro;{{$product->spl_price}}</p>
                 </div>
             @endif
+            @if($product->price_b2 != 0)
+              <input type="hidden" value="{{$product->price_b2}}" name="newPrice">
+              <h4 class="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
+            @endif
+            @if($product->price_b1 != 0)
+              <input type="hidden" value="{{$product->price_b1}}" name="newPrice">
+              <h4 class="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
+            @endif
           </span>
 
-          @if($pro_cat->category->name == "T-Shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts")
+          @if($pro_cat->category->name == "T-Shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodies & Sweatshirts")
           <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
           <div class="select-size">
             <h5>Size</h5>
@@ -262,7 +271,8 @@
           @elseif($pro_cat->category->name == "Custom")
             <div class="custom">
                 <h6>Enter your phone model</h6>
-                <input type="text" class="custom1">
+                <input type="text" class="custom1" id="input-custom-phone">
+                <button id="custom-phone-model">Save</button>
             </div>
             <div class="case-style">
               <h5>Case style</h5>
@@ -275,26 +285,26 @@
           <div class="choose-size">
             <h5>Size</h5>
             <select class="poster-size" id='posters'>
-              <option value="A3">A3</option>
-              <option value="B1">B1</option>
-              <option value="B2">B2</option>
+              <option value="A3" data-price="{{ $product->price}}">A3</option>
+              <option value="B1" data-price="{{ $product->price_b1}}">B1</option>
+              <option value="B2" data-price="{{ $product->price_b2}}">B2</option>
             </select>
           </div>
 
            <div class="select-color">
-            <h5>Color</h5>
-              <label class="black">
-                  <div  class="white-border">
-                    <input type="radio" name="color" class="color-class" value="black" >
-                    <span></span>
-                  </div>               
-              </label>
+            <h5>Frame Color</h5>
               <label class="white">
                 <div class="black-border">
                   <input type="radio" name="color" value="white"  class="color-class" checked>
                   <span></span>
                 </div>    
               </label>
+              <label class="black">
+                <div  class="white-border">
+                  <input type="radio" name="color" class="color-class" value="black" >
+                  <span></span>
+                </div>               
+            </label>
           </div>
 
           <div class="view-size-guid">
@@ -302,10 +312,13 @@
               <img src="/site-images/Layer_1_1_.svg" alt="">
           </div>
 
-          @elseif($pro_cat->category->name == "Wallpaper")
+          @elseif($pro_cat->category->name == "Wallpapers")
             <div class="custom">
-                <h6>Enter your wallpaper size</h6>
-                <input type="text" id="wallpaper">
+                <h6>Enter your wallpaper width</h6>
+                <input type="text" id="wallpaper-custom-width" class="custom-width" placeholder="e.g. 100"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <h6>Enter your wallpaper height</h6>
+                <input type="text" id="wallpaper-custom-height" class="custom-height" placeholder="e.g. 80"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <button id='save-wallpaper-size'>Save</button>
             </div>
 
             <div class="view-size-guid">
@@ -317,15 +330,18 @@
             <div class="choose-size">
               <h5>Size</h5>
               <select class="picture-size" id='picture'>
-                <option value="B2">B2</option>
-                <option value="B1">B1</option>
-                <option value="custom">Custom</option>
+                <option value="B2" data-price={{$product->price_b2}}>B2</option>
+                <option value="B1"  data-price={{$product->price_b1}}>B1</option>
+                <option id="custom-option" value="custom"  data-price={{$product->price}}>Custom</option>
               </select>
             </div>
 
             <div id='picture-custom' class="custom">
-                <h6>Enter your picture size</h6>
-                <input type="text" id="picture">
+                <h6>Enter your picture width</h6>
+                <input type="text" id="picture-custom-width" class="custom-width" placeholder="e.g. 100" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <h6>Enter your picture height</h6>
+                <input type="text" id="picture-custom-height" class="custom-height" placeholder="e.g. 80"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                <button id='save-picture-size'>Save</button>
             </div>
 
             <div class="view-size-guid">
@@ -516,6 +532,22 @@
                 <option value="50x100">50x100</option>
               </select>
             </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>    
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>               
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Notebooks")
             <div class="select-color">
               <h5>Color</h5>
                 <label class="white">
