@@ -55,7 +55,7 @@
                     <a href="{{url('/profile')}}">My Orders</a>
                   </li>
                   <li> 
-                    <a href="{{url('/wishlist')}}"><span>Wishlist ({{App\wishlist::count()}})</span> </a>
+                    <a href="{{url('/wishlist')}}"><span>Wishlist</span> </a>
                   </li>
                   <li>
                     <a href="{{url('/address')}}" >My address</a>
@@ -67,7 +67,7 @@
                     <a href="{{url('/profile_image')}}">Your profil image</a>
                   </li>
                   <li>
-                    <a href="{{ url('/logout') }}">Yes</a>
+                    <a href="{{ url('/logout') }}">Logout</a>
                   </li>
                 </ul>
                 @endif
@@ -82,6 +82,9 @@
                       <ul class="nav-flyout">
                         <li>
                           <img src="/site-images/{{$category->cover_image}}" alt="" style="width: 100%;">
+                        </li>
+                        <li>
+                          <a  href="{{route('category.show',$category->id)}}"> All {{$category->name}}</a>
                         </li>
                         @foreach ($category->children as $child)
                           <li>

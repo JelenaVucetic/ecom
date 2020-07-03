@@ -127,4 +127,8 @@
   #side:after {
     display: none;
   }
+
+  .contact-form form button {
+    width: 35%;
+}
 }

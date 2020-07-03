@@ -211,5 +211,16 @@ class CategorySeeder extends Seeder
             'name'=> 'Kids Bibs',
             'parent_id' => 5
         ]);
+        Category::create([
+            'id' => 35,
+            'name'=> 'Puzzles',
+            'parent_id' => 4
+        ]);
+        Category::create([
+            'id' => 36,
+            'name'=> 'Bottle Openers',
+            'parent_id' => 4
+        ]);
+        
     }
 }

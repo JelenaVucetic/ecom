@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="width: 90%;margin:auto">
   <div class="design-for-you">
     <h2>Designs picked for you</h2>
   </div>
@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="container-fluid">
+<div class="container-fluid"  style="width: 90%;margin:auto">
   <div class="design-for-you">
     <h2>Most popular designs - TRENDING</h2>
   </div>
@@ -54,7 +54,7 @@
 
 
 
-<div class="container-fluid">
+<div class="container-fluid"  style="width: 90%;margin:auto">
   <div class="design-for-you">
     <h2>Premium T-shirts</h2>
   </div>
@@ -92,7 +92,7 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid"  style="width: 90%;margin:auto">
   <div class="design-for-you">
     <h2>Phone Cases</h2>
   </div>
@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid"  style="width: 90%;margin:auto">
   <div class="design-for-you">
     <h2>Hoodies </h2>
   </div>

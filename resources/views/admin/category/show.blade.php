@@ -40,7 +40,7 @@
         
             <ul class="list-unstyled components">
                 <a href="#homeSubmenu"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gender</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <ul class="collapse list-unstyled show" id="homeSubmenu">
                     <li>
                         <a class="side-category-gender" data-value="male">Man</a>
                     </li>

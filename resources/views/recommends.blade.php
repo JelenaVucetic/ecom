@@ -28,7 +28,7 @@ if(Auth::check()){
         ->get();
 }    
 ?>
-<div>
+<div style="width:90%; margin: 20px auto;">
     <h1>Recomended for you</h1>
 
     <div class="slick-wrapper">

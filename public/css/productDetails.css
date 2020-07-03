@@ -902,6 +902,24 @@ stroke-width:20;
         #desctop-left {
             display: none;
         }
+
+        .display-review {
+            width: 100%;
+            flex-direction: column;
+        }
+        
+        .average-review {
+            width: 100%; 
+            margin: 0;
+            border-right: none; 
+            border-bottom: 1px solid #CBCBCB;
+        }
+
+        .latest-review {
+            width: 100%;
+            margin: 10px 0;
+        }
+
   /*   .phone-product {
         display: block;
     }

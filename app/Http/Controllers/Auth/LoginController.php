@@ -29,6 +29,14 @@ class LoginController extends Controller
 
     protected $redirectTo ='/admin';
    
+    protected function redirectTo()
+    {
+        if (auth()->user()->admin == 1) {
+            return '/admin';
+        }
+        return '/home';
+    }
+
     protected function home() {
         return view('/');
     }
