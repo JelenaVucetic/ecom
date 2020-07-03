@@ -19,7 +19,6 @@
             <div>
             <!--   Rating section -->
             <section class='rating-widget'>
-              <h3>Write Your Review</h3>
                 <!-- Rating Stars Box -->
                 <div class='rating-stars'>
                   <ul id='stars'>
@@ -55,8 +54,55 @@
 
                         <input type='hidden' name="userId"  value="{{ $userId }}">
                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                        <input type="text" name="person_name" placeholder="Your Name"/>
-                        <span style="color:red">{{ $errors->first('person_name') }}</span>     
+
+                        <div class="form-group row login-filds">
+                          <label for="person_name" class="col-form-label">{{ __('Name') }}</label>
+
+                          <div class="">
+                              <input type="text" class="form-control @error('person_name') is-invalid @enderror" name="person_name" value="{{ old('person_name') }}" required autocomplete="person_name" autofocus>
+
+                              @error('person_name')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row login-filds">
+                          <label for="review_title" class="col-form-label">{{ __('Title') }}</label>
+
+                          <div class="">
+                              <input  type="text" class="form-control @error('review_title') is-invalid @enderror" name="review_title" value="{{ old('review_title') }}" required autocomplete="review_title" autofocus>
+
+                              @error('review_title')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row login-filds">
+                          <label for="review_content" class="col-form-label">{{ __('Content') }}</label>
+
+                          <div class="">
+                              <input type="text" class="form-control @error('review_content') is-invalid @enderror" name="review_content" value="{{ old('review_content') }}" required autocomplete="review_content" autofocus>
+
+                              @error('review_content')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group button-for-login">
+                          <button type="submit">
+                                    {{ __('Submit') }}
+                                </button>
+                        </div>
+{{-- 
+                        <input type="text"  placeholder="Your Name"/>
+                        <span style="color:red">{{ $errors->first('person_name') }}</span>   
                         <input type="text", name="review_title" placeholder="Title"/>
                         <span style="color:red">{{ $errors->first('review_title') }}</span> 
 
@@ -64,9 +110,11 @@
                         <span style="color:red">{{ $errors->first('review_content') }}</span> 
                         <br>
                         <b>Rating: </b>  <br>
+                           
                         <button type="submit" class="btn btn-success">
                             Submit
                         </button>
+                        --}}
                     </form>
                 </div>
                 </div>

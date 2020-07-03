@@ -13,13 +13,32 @@
 
   <nav id="phone-nav" class="navbar navbar-expand-sm sticky-top navbar-light bg-light" style="padding: 10px;margin: 0 -15px;">
     <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;">
-        <div>
-          @if($product->spl_price==0)
+        <div>   
+            @if($product->spl_price==0)
+                <input class="product_price" type="hidden" value="{{$product->price}}">
+                <h4 class="A3_price"><span>&euro; {{ $product->price}} </span></h4>
+            @else
+                <div class="d-flex justify-content-between align-items-center">
+                  <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
+                  <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
+                  <p class="">&euro;{{$product->spl_price}}</p>
+                </div>
+            @endif
+            @if($product->price_b2 != 0)
+              <input type="hidden" class="product_b2_price" value="{{$product->price_b2}}" name="newPrice">
+              <h4 class="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
+            @endif
+            @if($product->price_b1 != 0)
+              <input type="hidden" value="{{$product->price_b1}}" name="newPrice">
+              <h4 class="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
+            @endif
+
+          {{-- @if($product->spl_price==0)
 
               <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;" >{{ $product->price }}&euro;</p>
           @else
               <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;">{{ $product->spl_price }}&euro;</p>
-          @endif
+          @endif --}}
         </div>
         <div style="width: 50%;">
          <a id="phone-add" style="cursor:pointer;"> 
@@ -117,7 +136,7 @@
         </div>
     </div>
       <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5;">
-        <h4 class="product-title">{{ $product->name}}</h4>
+        <h4 class="product-title" style="padding-top: 20px;">{{ $product->name}}</h4>
         <?php $pro_cat = App\Product::find($product->id); ?>
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
           <h5>{{ $pro_cat->category->name }}</h5>
@@ -445,6 +464,20 @@
             <div class="choose-size">
               <h5>Design</h5>
               <select class="coaster-design" id=''>
+                <option value="Design">Design</option>
+                <option value="Engraving">Engraving</option>
+              </select>
+            </div>
+            @elseif($pro_cat->category->name == "Bottle Openers") 
+            <div class="choose-size">
+              <h5>Material</h5>
+              <select class="material" id=''>
+                <option value="Timber">Timber</option>
+              </select>
+            </div>
+            <div class="choose-size">
+              <h5>Design</h5>
+              <select class="opener-design" id=''>
                 <option value="Design">Design</option>
                 <option value="Engraving">Engraving</option>
               </select>

@@ -46,7 +46,7 @@ Route::get('/contact_us', 'HomeController@contact');
 Route::resource('category', 'CategoriesController');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
-        Route::get('/', 'AdminController@index');
+        Route::get('/', 'AdminController@index')->name('dashboard');
         Route::resource('product', 'ProductsController');
    
         Route::resource('tag', 'TagsController');

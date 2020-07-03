@@ -10,14 +10,22 @@
         </div>
         <div class="modal-body">
           <div>
+            @php               
+            $shirtsCat = DB::table('categories')
+                    ->where('categories.name', '=', 'T-Shirts')
+                    ->first();
+          $casesCat = DB::table('categories')
+                ->where('categories.name', '=', 'Cases')
+                ->first();
+            @endphp
               <div class="tshirt-cat">
-                <a href="">T-shirt</a>
+                <a  href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}">T-Shirts</a>
               </div>
               <div class='cases-cat'>
-                  <a href="">Cases</a>
+                  <a  href="{{route('category.show',[ $casesCat->id, $casesCat->name => $casesCat->parent_id ])}}">Cases</a>
               </div>
               <div class="gifts-cat">
-                  <a href="">Gifts</a>
+                  <a href="/gifts_for_him">Gifts</a>
               </div>
           </div>
           <div>

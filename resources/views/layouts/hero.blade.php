@@ -4,7 +4,6 @@
           <div class="logo-image">  
             <a href="/"> <img src="/site-images/U1.png" alt="Urban one">    </a>
           </div>
-
           @if(Request::path() === 'search')
           <form class="form-inline ml-auto">
             <div class="searchIDiv">
@@ -23,9 +22,7 @@
           </div>
           </form>
           @endif
-
-        
-            <div class="hero-right">
+          <div class="hero-right">
             <a class="nav-link" href="/wishlist" style='color:#231F20;'><img style='width:35px;'  onmouseover="this.src='/site-images/4 Favorites - ikonica - HEADER - HOVER.svg'" onmouseout="this.src='/site-images/4 Favorites - ikonica - HEADER.svg'" src="/site-images/4 Favorites - ikonica - HEADER.svg" alt=""></i></a>
               <li style="list-style:none;">
                 <div style="position: relative;width: 50px;">
@@ -34,7 +31,7 @@
                   </a> 
                 </div>            
               </li>
-        </div>
+          </div>
     </div>
 <div class="category">     
   <div style="display: flex;justify-content: space-around; align-items: center;" class="main-categories">

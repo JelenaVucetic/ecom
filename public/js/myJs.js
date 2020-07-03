@@ -193,6 +193,10 @@ $(document).ready(function(){
           var coasterShape = $( ".coaster-shape option:selected" ).val();
           var coasterDesign = $( ".coaster-design option:selected" ).val();
           addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
+        } else if (pro_cat == "Bottle Openers") { 
+          var coasterShape = $( ".material option:selected" ).val();
+          var coasterDesign = $( ".opener-design option:selected" ).val();
+          addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
         } else if (pro_cat == "Mugs") { 
           if (color == 'white') {
             var  price = $( ".product_price" ).val();
@@ -563,7 +567,7 @@ $('select').each(function () {
 
 $(document).ready(function(){
     $(".rateyo").rateYo({
-      starWidth: "40px",
+      starWidth: "30px",
       ratedFill: "#000000",
       spacing: "10px", 
     }).rateYo('option', 'readOnly', true);
@@ -641,7 +645,7 @@ $(document).ready(function(){
         addToCartAjax(price, kidssize, null, color, print, null, null, null, null, null, null); 
       }  else if(pro_cat == 'Posters') {
         var price = $( ".poster-size option:selected" ).attr('data-price');
-        addToCartAjax( kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, price);
+        addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, price);
       }  else if(pro_cat == "Custom" && !customCase) {
         alert('Please enter your phone model');
       } else if (pro_cat == "Wallpapers") {
@@ -652,6 +656,17 @@ $(document).ready(function(){
         var coasterShape = $( ".coaster-shape option:selected" ).val();
         var coasterDesign = $( ".coaster-design option:selected" ).val();
         addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
+      } else if (pro_cat == "Bottle Openers") { 
+        var coasterShape = $( ".material option:selected" ).val();
+        var coasterDesign = $( ".opener-design option:selected" ).val();
+        addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
+      } else if (pro_cat == "Mugs") { 
+        if (color == 'white') {
+          var  price = $( ".product_price" ).val();
+        } else {
+          var price = $('.product_b2_price').val();
+        }
+        addToCartAjax(price, null, null, color, null, null, null, null, null, null, null, null, null);
       }else {
           addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize,null, null, null);
         }  
