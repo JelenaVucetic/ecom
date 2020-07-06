@@ -10,4 +10,7 @@ class Design extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name'];
 
+
+    
+
 }

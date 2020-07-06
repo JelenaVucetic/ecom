@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use DB;
+use App\Image as ImageModel;
 use App\Tag;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
@@ -45,7 +46,6 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
-        
         $data = $request->all();
        
       
@@ -137,6 +137,16 @@ if($row==null){
 'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category
 ]); 
 
+if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
+    ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
+    ImageModel::womanNavyTshirt($idProduct, $originalImagePath);
+}
+
+if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
+
+}
+
+
 $products = DB::table('product')->where([
     ['name', '=' , $title],
     ['image', '=', $string.'.png']
@@ -168,6 +178,9 @@ foreach($tagsComma as $tag){
 echo $checkImage;
 
     }
+
+
+    
 
     function save1(Request $request){
 

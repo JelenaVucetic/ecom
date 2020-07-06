@@ -37,6 +37,7 @@ class ImageController extends Controller
         $extension =  $request->file('file')->getClientOriginalExtension();
        // dd($extension);
         $image = $filename . "_" . time() . ".".$extension;
+        $image = preg_replace('/\s+/', '', $image);
         $file->move('design/', $image);
 
         $image1 = Image::make(public_path('design/' . $image));

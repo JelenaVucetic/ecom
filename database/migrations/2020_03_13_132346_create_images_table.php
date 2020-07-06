@@ -17,6 +17,7 @@ class CreateImagesTable extends Migration
             $table->bigIncrements('id');
             $table->String('name');
             $table->integer('product_id');
+            $table->String('color');
             $table->timestamps();
         });
     }

@@ -1923,6 +1923,7 @@ $("#capture").click(function(event){
         html2canvas(el).then(function (canvas){
             var imgData = canvas.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
+            console.log(originalImagePath);
             var category = el.getAttribute('data-category');
             var nameProduct = title + " " + el.getAttribute('name');
             $.ajax({
@@ -1940,8 +1941,8 @@ $("#capture").click(function(event){
                         originalName1 : originalName,
                         originalImagePath: originalImagePath,
                         canvasImage : canvasImage,
-                       gedner : gender,
-                       category : category
+                        gedner : gender,
+                        category : category
                     },
                     beforeSend: function(){
                       // Show image container
