@@ -140,10 +140,14 @@ if($row==null){
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
     ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
     ImageModel::womanNavyTshirt($idProduct, $originalImagePath);
+    ImageModel::womanRedTshirt($idProduct, $originalImagePath);
+    ImageModel::womanBlackTshirt($idProduct, $originalImagePath);
 }
-
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
 
+}
+if($original=='Phone Case'){
+    ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
 }
 
 
