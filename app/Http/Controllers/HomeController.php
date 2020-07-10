@@ -118,6 +118,25 @@ class HomeController extends Controller
     {
         
         $product = DB::table('product')->where('id', $id)->first();
+        $find_cat = Product::findOrFail($id);
+        if($find_cat->category->name == "T-Shirts"){
+            $imageFront = DB::table('images')->where([
+                ['product_id', "=", $id],
+                ['color' , "=", 'black'],
+                ['position' , "=", 'front'],
+            ])->first();
+                
+            $imageBack = "U-one-3.jpg";
+                
+        }elseif($find_cat->category->name == "Iphone Cases"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,'transparent']
+            ])->first();
+            $imageBack = "Iphone-II-Pro-Bezpozadine1.png";
+           
+        }
+       
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
@@ -168,7 +187,7 @@ class HomeController extends Controller
             $recommends->save();
         }
 
-        return view('product_details', compact('product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews'));
+        return view('product_details', compact('product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack'));
     }
 
     public function viewWishlist()
@@ -617,4 +636,48 @@ class HomeController extends Controller
 
         return view('specialprice', compact('categories', 'products'));
     }
+
+
+
+    public function loadImages(Request $request){
+        if($request->position == 'front'){
+                $image = DB::table('images')->where([
+                    ['product_id', "=", $request->id],
+                    ['color' , "=",$request->color],
+                    ['position' , "=", 'front'],
+                ])->first();
+                $blankImage = 'back'.$request->color.'.jpg';
+        }else{
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color' , "=",$request->color],
+                ['position' , "=", 'back'],
+            ])->first();
+            $blankImage = 'front'.$request->color.'.jpg';
+        }
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }
+
+    public function loadImagesPhone(Request $request){
+      
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color' , "=",$request->color]
+            ])->first();
+           
+            if($request->color=="Black"){
+                $blankImage = 'Iphone-II-Pro-Crna.png';
+            }else{
+                $blankImage = 'Iphone-II-Pro-Bezpozadine1.png';
+            }
+           
+        
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }
+
+
+
+
 }

@@ -59,13 +59,14 @@
   <div class="row desctop-product">
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
         <div id="desctop-left">
+          <input type="hidden" value="{{$imageFront->color}}" id="productColor" display="none" name="pro_color">
           <img style="width:50%"  src="{{url('design', $design->name)}}"> 
-          <img src="{{url('images', $product->image)}}"> 
+          <img id="blank-image" src="{{url('image',$imageBack)}}"> 
         </div>
       </div>
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <div id="desctop-middle">
-          <img src="{{url('images', $product->image)}}">
+          <img id="main-image" src="{{url('image', $imageFront->name)}}">
           <div class="wishlist">
             <?php
                   $wishData = DB::table('wishlist')
@@ -250,8 +251,8 @@
           <div class="case-style">
             <h5>Case style</h5>
             <select class="cases-style">
-              <option value="Transparent">Transparent</option>
-              <option value="Black">Black</option>
+              <option value="transparent">Transparent</option>
+              <option value="black">Black</option>
             </select>
           </div>
           

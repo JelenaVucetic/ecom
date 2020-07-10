@@ -64,6 +64,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         
         Route::get('/upload_mockup', 'ImageController@display_mockup');
         Route::post('/upload_mockup', 'ImageController@upload_final_mockup');
+        
      
         Route::post('/upload_final', 'ImageController@final_mockup')->name('upload_final');
 
@@ -76,6 +77,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
     }
 );
 
+
+Route::post('/load_images', 'HomeController@loadImages');
+Route::post('/load_images_phone', 'HomeController@loadImagesPhone');
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/addItem/{id}', 'CartController@addItem');
 Route::get('/cart/updateCart/{id}', 'CartController@updateCart')->name('updateCart');
