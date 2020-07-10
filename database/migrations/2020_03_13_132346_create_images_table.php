@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->String('name');
             $table->integer('product_id');
             $table->String('color');
+            $table->String('position');
             $table->timestamps();
         });
     }

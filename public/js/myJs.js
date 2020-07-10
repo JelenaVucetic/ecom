@@ -928,3 +928,72 @@ $("#female-x").on("click", function(){
     });
 
 
+    $('input[type=radio][name=print]').change(function() {
+     var position = this.value;
+     var color = $("#productColor").val();
+     var id = $("#productID").val();
+     $.ajax({
+      headers: {  
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+              } ,
+    type: 'post',
+    dataType: 'json',
+    url: '/load_images',
+    data: { position:position, color:color, id:id},
+    success: function(response) {
+       var blank = response['blankImage'];
+       var name = response['image']['name'];
+      $("#main-image").attr("src","../image/" +name); 
+      $("#blank-image").attr("src","../image/" + blank);  
+      $("#productColor").val(response['image']['color']);
+    }
+  });
+  });
+
+  $('input[type=radio][name=color]').change(function() {
+    var position = $('input[type=radio][name=print]:checked').val();
+    var color = this.value;
+    var id = $("#productID").val();
+    $.ajax({
+     headers: {  
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+             } ,
+   type: 'post',
+   dataType: 'json',
+   url: '/load_images',
+   data: { position:position, color:color, id:id},
+   success: function(response) {
+      var blank = response['blankImage'];
+      var name = response['image']['name'];
+     $("#main-image").attr("src","../image/" +name); 
+     $("#blank-image").attr("src","../image/" + blank);  
+     $("#productColor").val(response['image']['color']);
+   }
+ });
+
+
+
+
+ });
+
+ $('.options li').on('click', function() {
+  var color = $( ".cases-style option:selected" ).val();
+  var id = $("#productID").val();
+  $.ajax({
+    headers: {  
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+            } ,
+  type: 'post',
+  dataType: 'json',
+  url: '/load_images_phone',
+  data: { color:color, id:id},
+  success: function(response) {
+     var blank = response['blankImage'];
+     var name = response['image']['name'];
+    $("#main-image").attr("src","../image/" +name); 
+    $("#blank-image").attr("src","../image/" + blank);  
+    $("#productColor").val(response['image']['color']);
+  }
+});
+ });
+ 
