@@ -6,7 +6,7 @@
         </div>
         <form action="">
             <input id="subscribe-email" type="emial" placeholder="Your E-Mail adress" >
-            <input id="submit-image" type="image" src="/site-images/iconfinder_Essentials_send_paper_plane_5298753.svg" alt="Submit Form"  />
+            <input id="submit-image" type="image" onmouseover="this.src='/site-images/Send-ikonica-HOVER.svg'" onmouseout="this.src='/site-images/Send-ikonica.svg'" src="/site-images/Send-ikonica.svg" alt="Submit Form"  />
         </form>
     </div>
     <div class="subscribe-bottom">

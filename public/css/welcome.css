@@ -299,9 +299,6 @@
 }
 
 #submit-image {
-    background: #404040;
-    padding: 5px;
-    border-radius: 30px;
     width: 30px;
 }
 
@@ -364,23 +361,30 @@
 .slick-prev {
     font-size: 0;
     position: absolute;
-    top: 270px;
+    top: 305px;
     left: -23px;
 }
 
-#left-arrow {
+.left-arrow {
     width: 30px;
-
+    cursor: pointer;
 }
 
-#right-arrow {
-    width: 20px;
+.right-arrow {
+    width: 30px;
+    cursor: pointer;
 }
+
 .slick-next {
     position: absolute;
     right: 15px;
-    bottom: 335px;
+    bottom: 305px;
 }
+    
+/*     .right-arrow > .slick-next {
+        position: absolute;
+  
+    } */
 
 .slick-slide, .slick-slide div {
     outline: none;
@@ -524,7 +528,7 @@
 
     .slick-next {
         right: -5px;
-        bottom: 247px;
+        bottom: 288px;
     }
 
     .about-urban {

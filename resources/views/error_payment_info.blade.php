@@ -54,7 +54,7 @@ $error_messages = array(
 );
 ?>
     <section id="cart_items">
-        <div class="container">
+        <div class="container" style="margin: 50px 0;">
             <h3>
             @if (Auth::check()) 
                 <span style="color:green"> {{ucwords(Auth::user()->name)}} </span>, 
@@ -65,8 +65,9 @@ $error_messages = array(
             </h3>
         <div>
             <p><strong>Status:</strong> Error </p>
-            @foreach ($error_messages as $item => $value)
-                @if ($item = $code )
+			@foreach ($error_messages as $item => $value)
+			
+                @if ($item == $code )
                 <p>{{$value}}</p>
                 @endif
             @endforeach

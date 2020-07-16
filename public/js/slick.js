@@ -8,9 +8,9 @@ $("#slick1").slick({
     slidesToShow: 4,
     slidesToScroll: 4,
     prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/computer-icons-png-favpng-etrgGwq5EiCNYP4BpXRR81YhR.jpg'>",
+        "<img  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/388-3889071_img-316009-right-left-arrow-png-transparent-png.png'>",
+        "<img class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -39,11 +39,10 @@ $("#slick2").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        */
+    prevArrow:
+    "<img style='top:60px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -72,11 +71,10 @@ $("#slick3").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        */
+    prevArrow:
+    "<img style='top:60px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -105,11 +103,10 @@ $("#slick4").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        */
+    prevArrow:
+    "<img style='top:80px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -138,11 +135,10 @@ $("#slick5").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+ prevArrow:
+        "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        */
+        "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -172,11 +168,10 @@ $("#slick6").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        */
+    prevArrow:
+    "<img  style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -206,11 +201,10 @@ $("#slick7").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -258,11 +252,10 @@ $("#slick9").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img  style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -290,11 +283,10 @@ $("#slick10").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -322,11 +314,10 @@ $("#slick11").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -354,11 +345,10 @@ $("#slick12").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -386,11 +376,10 @@ $("#slick13").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img  style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -418,11 +407,10 @@ $("#slick14").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -450,11 +438,10 @@ $("#slick15").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img  style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -482,11 +469,10 @@ $("#slick16").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -514,11 +500,10 @@ $("#slick17").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img  style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -546,11 +531,10 @@ $("#slick18").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img  style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px'  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -578,11 +562,10 @@ $("#slick19").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px'  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -610,11 +593,10 @@ $("#slick20").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px'  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -642,11 +624,10 @@ $("#slick21").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'   class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px'  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -674,11 +655,10 @@ $("#slick22").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
-    nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+nextArrow:
+    "<img style='right: 0px;bottom: 200px'  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -706,11 +686,10 @@ $("#slick23").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -738,11 +717,10 @@ $("#slick24").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -770,11 +748,10 @@ $("#slick25").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -802,11 +779,10 @@ $("#slick26").slick({
     speed: 300,
     slidesToShow: 6,
     slidesToScroll: 6,
-    /* prevArrow:
-        "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
+    prevArrow:
+    "<img style='top:90px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-         */
+    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' id='right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
