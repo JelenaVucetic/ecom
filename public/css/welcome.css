@@ -380,13 +380,12 @@
     right: 15px;
     bottom: 305px;
 }
-    /* 
-    #right-arrow > .slick-next {
+    
+/*     .right-arrow > .slick-next {
         position: absolute;
-        right: 5px;
-        bottom: 160px;
-    }
- */
+  
+    } */
+
 .slick-slide, .slick-slide div {
     outline: none;
 }
