@@ -44,6 +44,8 @@ class HomeController extends Controller
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
 
+      /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */
+      
         $shirtsCat = DB::table('categories')
                 ->where('categories.name', '=', 'T-Shirts')
                 ->first();
@@ -122,11 +124,11 @@ class HomeController extends Controller
         if($find_cat->category->name == "T-Shirts"){
             $imageFront = DB::table('images')->where([
                 ['product_id', "=", $id],
-                ['color' , "=", 'black'],
+                ['color' , "=", 'white'],
                 ['position' , "=", 'front'],
             ])->first();
                 
-            $imageBack = "U-one-3.jpg";
+            $imageBack = "U-one-18.jpg";
                 
         }elseif($find_cat->category->name == "Iphone Cases"){
             $imageFront = DB::table('images')->where([

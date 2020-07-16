@@ -145,6 +145,7 @@ if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
     ImageModel::womanRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanBlackBackTshirt($idProduct, $originalImagePath);
+    ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath);
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
 

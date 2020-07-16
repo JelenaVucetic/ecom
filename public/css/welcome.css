@@ -411,12 +411,33 @@
 .img-div img {
     display: block;
     transition: transform .4s;  
+    transform: scale(3.5);
+    margin-top: 66.125%;
+    margin-bottom: -54%;
 }
 
 .img-div:hover img {
-    transform: scale(1.1);
+    transform: scale(3.9);
     transform-origin: 50% 50%;
 }
+
+/* .img-div-phone{
+    display: inline-block;
+    overflow: hidden; 
+} */
+
+.img-div-phone {  
+ 
+    transform: scale(2.5)!important;
+    margin-top: 38.125%!important;
+    margin-bottom: 32%!important;
+}
+
+.img-div-phone:hover  {
+    transform: scale(2.9)!important;
+    transform-origin: 50% 50%!important;
+}
+
 
 @media (max-width: 1200px) { 
     .box1-img-holder,
@@ -563,5 +584,10 @@
         margin-bottom: 0;
         width: 100%;
         text-align: end;
+    }
+
+    
+    #phone-middle div {
+        display: block !important;
     }
 }

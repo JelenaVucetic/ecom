@@ -945,6 +945,8 @@ $("#female-x").on("click", function(){
        var name = response['image']['name'];
       $("#main-image").attr("src","../image/" +name); 
       $("#blank-image").attr("src","../image/" + blank);  
+      $("#main-image-mobile").attr("src","../image/" +name); 
+      $("#blank-image-mobile").attr("src","../image/" + blank);
       $("#productColor").val(response['image']['color']);
     }
   });
@@ -966,13 +968,12 @@ $("#female-x").on("click", function(){
       var blank = response['blankImage'];
       var name = response['image']['name'];
      $("#main-image").attr("src","../image/" +name); 
-     $("#blank-image").attr("src","../image/" + blank);  
+     $("#blank-image").attr("src","../image/" + blank); 
+     $("#main-image-mobile").attr("src","../image/" +name); 
+     $("#blank-image-mobile").attr("src","../image/" + blank);   
      $("#productColor").val(response['image']['color']);
    }
  });
-
-
-
 
  });
 
@@ -991,7 +992,9 @@ $("#female-x").on("click", function(){
      var blank = response['blankImage'];
      var name = response['image']['name'];
     $("#main-image").attr("src","../image/" +name); 
-    $("#blank-image").attr("src","../image/" + blank);  
+    $("#blank-image").attr("src","../image/" + blank);
+    $("#main-image-mobile").attr("src","../image/" +name); 
+    $("#blank-image-mobile").attr("src","../image/" + blank);  
     $("#productColor").val(response['image']['color']);
   }
 });

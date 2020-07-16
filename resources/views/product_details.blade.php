@@ -129,10 +129,10 @@
               <img src="{{url('design', $design->name)}}"> 
             </div>
             <div class="slide-item">
-              <img src="{{url('images', $product->image)}}"> 
+              <img id="main-image-mobile" src="{{url('image', $imageFront->name)}}"> 
             </div>
             <div class="slide-item">
-              <img src="{{url('images', $product->image)}}"> 
+              <img id="blank-image-mobile" src="{{url('image', $imageBack)}}"> 
             </div>
         </div>
     </div>
