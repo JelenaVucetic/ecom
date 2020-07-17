@@ -179,7 +179,6 @@ class CheckoutController extends Controller
         $statusRequestData = new StatusRequestData();
         $statusRequestData->setMerchantTransactionId($merchantTransactionId);
         $statusResult = $client->sendStatusRequest($statusRequestData);
-        dd($statusResult);
         
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
