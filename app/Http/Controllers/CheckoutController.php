@@ -119,8 +119,8 @@ class CheckoutController extends Controller
     {
         $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
-        $this->validate($request, [
-          
+
+        $this->validate($request, [  
             'firstname' => 'required|min:2|max:35',
             'lastname' => 'required|min:2|max:35',
             'email' => 'required|email',
@@ -185,19 +185,19 @@ class CheckoutController extends Controller
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
 
             
-        $id_order = Order::createOrder();
-        
-        $address = new Address;
-        $address->order_id = $id_order;
-        $address->firstname = $request->firstname;
-        $address->lastname = $request->lastname;
-        $address->email = $request->email;
-        $address->phone = $request->phone;
-        $address->street = $request->street;
-        $address->zip = $request->zip;
-        $address->city = $request->city;
-        $address->user_id = $userid;
-        $address->save();
+                $id_order = Order::createOrder();
+                
+                $address = new Address;
+                $address->order_id = $id_order;
+                $address->firstname = $request->firstname;
+                $address->lastname = $request->lastname;
+                $address->email = $request->email;
+                $address->phone = $request->phone;
+                $address->street = $request->street;
+                $address->zip = $request->zip;
+                $address->city = $request->city;
+                $address->user_id = $userid;
+                $address->save();
 
             
             if ($result->getReturnType() == Result::RETURN_TYPE_ERROR) {
