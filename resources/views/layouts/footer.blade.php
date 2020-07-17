@@ -5,8 +5,8 @@
           <p>Shop</p>
           <a href="">Gift guides</a> <br>
           <a href="">Student discount</a><br>
-          <a href="">Login</a><br>
-          <a href="">Sign up</a>
+          <a  href="{{ url('/login') }}">Login</a><br>
+          <a href="{{ route('register') }}">Sign up</a>
         </div>
         <div>
           <p>About</p>
@@ -42,12 +42,29 @@
     </div>
   </div>
   <div class="footer-icons">
-    <img src="/site-images/15 master.svg" alt="">
-    <img src="/site-images/15 visa.svg" alt="">
+    <a href="/mastercard_secure" target="_blank">
+      <img style="width: 100px;" src="\site-images\mc_sc.png" alt="">
+    </a>
+    <a href="https://www.mastercard.us/en-us.html" target="_blank">
+      <img src="/site-images/15 master.svg" alt="">
+    </a>
+    <a href="http://www.maestrocard.com/">
+      <img style="width:80px;" src="/site-images/maestro.svg" alt="" target="_blank">
+    </a>
+    <a href=" https://www.visa.co.uk/about-visa/visa-in-europe.html" target="_blank">
+      <img src="/site-images/15 visa.svg" alt="">
+    </a>   
+    <a href="https://www.visa.ca/en_CA/run-your-business/merchant-resources/verified-by-visa.html" target="_blank"> 
+      <a style="background: white;
+      height: 4px;
+      display: inline-table;
+      border-radius: 3px;" href="/verified_by_visa" target="_blank">      
+        <img style="width: 100px; padding:10px" src="\site-images\vbv.svg" alt="">
+    </a>
     <img src="/site-images/15 visaelectron.png" alt="">
     <a href="https://www.allsecure.rs/" target="_blank"> <img style="width: 100px;padding-top: 8px;" src="/site-images/allsecure-certified.svg" alt=""></a>
     
-    <div style="display: flex;
+   {{--  <div style="display: flex;
     justify-content: space-around;
     width: 18%;
     margin: auto;
@@ -65,11 +82,11 @@
           <img style="width: 100px; padding:10px" src="\site-images\vbv.svg" alt="">
         </div>
       </a>
-    </div>
+    </div> --}}
    
   
   </div>
-  <div class="footer-icons-second">
+  <div class="footer-icons-second" style="margin-top:20px;">
     <img src="/site-images/14 Monargo-logo.svg" alt="">
     <a href="https://www.hipotekarnabanka.com/" target="_blank"><img src="/site-images/Mask Group 2.svg" alt=""></a> 
     <p>© Urban One. All Rights Reserved</p>

@@ -42,7 +42,7 @@
                     <div>
                         <label for="description">Description<span style="color:#E6003A"> *</span></label>
                         <textarea name="description" required></textarea>
-                        <p>Please use this text box above to tell us a little bit more about your query.</p>
+                        <p>Please use this text box above to tell us a little bit more about your request.</p>
                     </div>
                     <div >
                         <label for="file">Attach a photo<span style="color:#E6003A"> *</span></label>

@@ -4,307 +4,391 @@
    <div class="container policy">
        <div>
             <h4>PRIVACY POLICY</h4>
-            <p>Teziste i poslovanje smo stavili na kupcu. Izuzetno nam je bitno da se osjecate sigurno i zasticeno. 
-                Urban One poštuje vašu privatnost i i zaštite ličnih podataka koje nam šaljete kada posjećujete naše web site. 
-                Zato vas molimo da pročitate kako Urban One pod drustvom Monargo obrađuje vaše lične podatke. Svrha Politike privatnosti je da vam na 
-                jednostavan način predstavimo lične podatke koje prikupljamo o vama, na temelju čega i u koje svrhe ih obrađujemo, mogućnosti pregleda 
-                upravljanja postavkama vaše privatnosti i vaša prava u vezi sa ličnim podacima. Politika privatnosti društva Urban One – Monargo doo u 
-                skladu je sa Zakonom o zaštiti podataka o ličnosti ("Sl. list Crne Gore", br. 79/08 od 23.12.2008, 70/09 od 21.10.2009, 44/12 od 09.08.2012) 
-                donijetog dana 17.08.2008. (u nastavku Opšta uredba o zaštiti ličnih podataka) i zakonodavstvom Republike Crne Gore.
+            <p>We put our main focus on the customer. It&#39;s of great importance for us that you feel safe and secure.
+                Urban One respects your privacy and protection of personal data you provide to us when you visit our
+                website. So please read about how Urban One under Monargo processes your personal information. <br> <br>
+                The purpose of the Privacy Policy is to easily present to you the personal information we collect about
+                you, on what basis and for what purposes we process it, the ability to review the management of your
+                privacy settings and your rights regarding personal information.<br> <br>
+                Urban One - Monargo Ltd.&#39;s privacy policy is in accordance with the Law on Personal Data Protection
+                (&quot;Official Gazette of Montenegro&quot;, No. 79/08 of 23.12.2008, 70/09 of 21.10.2009, 44/12 of 09.08 .2012)
+                passed on 08/17/2008. (hereinafter referred to as the General Regulation on the Protection of Personal
+                Data) and the legislation of the Republic of Montenegro.
             </p>
        </div>
        <div>
-           <h4>1. RUKOVODILAC PODATAKA</h4>
-           <p>Odgovoran za ovde opisanu obradu Vaših ličnih podataka u svojstvu rukovaoca podataka je: <br>
-               Monargo d.o.o.<br>
+           <h4>1. Data processor</h4>
+           <p>Responsible for the processing of your personal information described herein as a data processor is: <br>
+                Monargo Ltd.<br>
                 Djoka Mirasevica M3<br>
                 81000 Podgorica<br>
                 E-mail: buy@urbanone.me<br>
-                Na vaša pitanja u vezi s ovom Politikom privatnosti, povjerljivosti vaših ličnih podataka, načina obrade ili na vaše zahtijeve u vezi s ostvarivanjem prava u
-                 vezi s ličnim podacima, odgovoriće vam odgovorna osoba i/ili ovlašćena osoba za zaštitu podataka u društvu Monargo doo – UrbaOne na kontakt adresi
-                  buy@urbanone.me
+                Your questions regarding this Privacy Policy, the confidentiality of your personal information, the
+                processing methods or your claims regarding the exercise of personal data rights will be answered by
+                the responsible person and / or data protection officer at Monargo Ltd. - UrbaOne at
+                buy@urbanone.me.
             </p>
        </div>
        <div>
-           <h4>2. PRAVNE PODLOGE I SVRHE OBRADE</h4>
+           <h4>2. LEGAL BASIS AND PROCESSING PURPOSES</h4>
            <div>
-                <p> <span>2.1. Obrada na temelju ugovora –svrhe</span> <br>
-                    Monargo Doo obrađuje lične podatke za ostvarivanje prava i obaveza iz sklopljenih ugovora, i to: <br>
-                    i) ugovora o prodaji/kupovini proizvoda –omogućene lične podatke kupaca u internet trgovinama na adresi www.urbanone.me (bez obzira na registraciju); <br>
-                ii) ugovora o korišćenju internet ili mobilnih usluga – lične podatke naručitelja usluga (npr. registracija korisničkog računa ); <br>
-                    U okviru ostvarivanja prava i ispunjavanja ugovornih obaveza društvo Monargo obrađuje lične podatke pojedinaca u svrhe identifikacije pojedinca, 
-                    sklapanja ugovora (iako je ugovor o prodaji proizvoda između društva Monargo i kupca u internet trgovini sklopljen u trenutku kada društvo Monargo
-                    kupcu pošalje elektronsku poruku o statusu njegove narudžbine (»narudžbina spremljena/pripremljena za preuzimanje«), smatra se da su lični podaci u
-                    tom slučaju poslati na temelju ugovornog pravnog temelja i u svrhe sklapanja ugovora), za komunikaciju s vama (obavještavanje o izmenjenim opštim uslovima,
-                    novoj verziji mobilne aplikacije, i sl.), za osiguravanje podrške korisnicima (npr. otklanjanje tehničkih poteškoća), a u slučaju kupovine sa svrhom realizacije
-                        narudžbine (nabavka, dostava proizvoda, izdavanje računa, rešavanje eventualnih zahtijeva kupca (reklamacije, garancije)), slanje obavještenja pojedincima u 
-                        vezi s realizacijom narudžbine i eventualne druge svrhe koji su potrebni za realizaciju narudžbine, za spremanje istorije kupovine 
-                        (samo registrovani korisnici), za sprovođenje eventualnih postupaka naplate kao i za vlastite računovodstvene i poreske potrebe.
+                <p> 
+                    Monargo Ltd. collects, records, stores, sends and otherwise processes the personal information it has
+                    about you based on various legal bases and for the purposes set out below. <br> <br>
+                    <span>2.1. Contract Based Processing - purposes</span> <br> <br>
+                    
+                    i)Product Sales / Purchase Agreements - Enabled personal information of customers in online stores at
+                    www.urbanone.me (regardless of registration); <br> <br>
+                ii) Internet or mobile service agreement - personal information of the client (e.g. user account
+                registration) <br> <br>
+                As part of exercising rights and fulfilling contractual obligations, Monargo processes personal data of
+                individuals for the purpose of identifying an individual, entering into a contract (when a contract for the
+                sale of a product between Monargo and the buyer in an online store is made at the time when Monargo
+                sends an email to the buyer about the status of his order (&quot;Order ready / prepared for download&quot;),
+                personal information in this case is deemed to have been sent on the basis of contractual legal basis and
+                for the purpose of contracting), for communication with you (notification of changed general conditions,
+                new version of mobile application, etc.) .) to provide customer support (e.g. technical troubleshooting),
+                and in the case of purchases for the purpose of order fulfillment (procurement, product delivery,
+                invoicing, resolving potential customer requests (complaints, warranties)), sending notices to individuals
+                regarding order realization and any other purposes which are required to complete an order, to save a
+                purchase history (registered users only), to carry out any billing procedures, and for their own
+                accounting and tax purposes.
                 </p> 
             </div>
             <div>
-                <p><span>2.2. Obrada na temelju zakonskih obaveza –svrhe</span> <br>
-                    Društvo Monargo lične podatke obrađuje na temelju zakonskih obveza koji važe za društvo Monargo (npr.određenih poreznih propisa, čuvanje računa, 
-                    čuvanje podataka dobitnika nagradnih igara i sl.).
+                <p><span>2.2. Processing based on legal obligations- purposes</span> <br>
+                    Monargo processes personal information on the basis of legal obligations that apply to Monargo ( e.g.
+                    certain tax regulations, keeping accounts, storing prizewinners&#39; data, etc.).
                 </p>
             </div>
             <div>
-                <p><span>2.3. Obrada na temelju zakonskih interesa –svrhe</span> <br>
-                 Društvo Monargo lične podatke može obrađivati na temelju zakonskih interesa prema kojima nastoji društvo Monargo, osim kada nad takvim interesima prevladaju 
-                 interesi ili temeljna prava i slobode pojedinca na kojeg se odnose lični podaci koji zahtijevaju zaštitu ličnih podataka. Kada se radi o daljoj obradi podataka 
-                 prikupljenih o pojedincu, društvo Monargo obavlja procenu u skladu s Opštom uredbom o zaštiti ličnih podataka. Ovakvo dalje korišćenje podataka u pseudonimiziranom
-                 ili agregiranom (udruženom) obliku predstavlja zakonsku upotrebu podataka za marketinške i ostale poslovne, odnosno tehničke analize društva Monargo. 
-                 Kao dodatna mjera kod nekih oblika daljnje obrade podataka o prometu, može se koristiti i brisanje određenih podataka. Na temelju zakonskog interesa društvo
-                  Monargo može obrađivati podatke u nužno potrebnom i razmijernom opsegu za osiguravanje djelovanja internet usluga posebno sa svrhom sprečavanja neovlašćenog 
-                  pristupa do vašeg korisničkog računa, širenje zlonamjernih kodova, sprečavanje prevara, odn. drugih zloupotreba internet stranica ili mobilne aplikacije kao 
-                  i zaštitu svojih prava intelektualnog vlasništva u vezi s internet uslugama. Na temelju zakonskih interesa društvo Monargo može obrađivati vaše lične podatke 
-                  i u svrhe neposrednog marketinga (u slučaju kupaca), sprečavanja zloupotreba, ostvarivanja zahtijeva ili odbrane od zahtijeva u upravnim i sudskim postupcima. 
+                <p><span>2.3. Processing based on legal interests- purposes</span> <br>
+                    Monargo may process personal data on the basis of the legitimate interests pursued by Monargo,
+                    except where such interests are overridden by the interests or fundamental rights and freedoms of the
+                    data subject who requires the protection of personal data. In the case of further processing of
+                    information collected about an individual, Monargo carries out an assessment in accordance with the
+                    General Regulation on the protection of personal data. Such further use of the data in a pseudonymized
+                    or aggregated form is the legal use of the data for marketing and other business or technical analyzes of <br> <br>
+                    
+                    Monargo. As an additional measure for some forms of further processing of traffic data, the deletion of
+                    certain data can also be used. <br>
+                    Based on a legitimate interest, Monargo may process data to the extent necessary and proportionate to
+                    ensure the operation of the Internet services, specifically to prevent unauthorized access to your
+                    account, spread malicious codes, prevent fraud, etc. other misuse of the Website or mobile application
+                    as well as the protection of your intellectual property rights in connection with the Internet Services.
+                    Based on legal interests, Monargo may process your personal information also for the purposes of direct
+                    marketing (in the case of customers), prevention of abuse, the pursuit of claims or defense against
+                    claims in administrative and legal proceedings.
                 </p>
             </div>
             <div>
-                <p><span>2.4. Obrada na temelju saglasnosti (dozvole) – svrhe</span> <br>
-                    Društvo Monargo obrađuje lične podatke na temelju saglasnosti za obradu ličnih podataka koje pojedinac preda društvu za sledeće svrhe: 
-                    i) za svrhe neposrednog marketinga – prijema obaveštenja. Obavještenja sadrže aktuelne ponude, pogodnosti i/ili pozive na događaje upravitelja i 
-                    njegovih poslovnih partnera, pozive na učestvovanje u nagradnim igrama i takmičenjima i korisne savijete, novosti i podsetnike iz svijeta sporta i
-                        zdravog stila života; <br>
-                    ii) za sprovođenje marketinških analiza i segmentiranja kupaca kao i za slanje prilagođenih ponuda proizvoda i usluga; <br>
-                    iii) za svrhe učestvovanja u nagradnim igrama. <br>
-                    S obzirom na omogućene lične podatke, obaveštenja i prilagođene ponude možete primati putem SMS, MMS na poslati broj telefona,
-                    elektroničkom poštom na poslatu e-adresu, odn. u štampanom obliku na poslatu adresu. Svoju saglasnost možete bilo kada opozvati,
-                    odn. izmijeniti na isti način kao što je saglasnost bila dozvoljena; klikom na dugme'odjava' koji se nalazi na dnu elektroničke poruke;
-                    u postavkama korisničkog računa ili slanjem zahtijeva za opoziv saglasnosti za određene svrhe na adresu buy@urbanone.me. 
-                    Budući da saglasnost uključuje neposredni marketing na temelju profila pojedinca, društvo Monargo može sprovoditi klasificiranje 
-                    pojedinaca u segmente na temelju korišćenja internet stranica društva Monargo za svrhe prilagođenih ponuda usluga i proizvoda.
+                <p><span>2.4. Consent (Permit) Processing - Purpose</span> <br>
+                    The Monargo Company processes personal information on the basis of consent to the processing of
+                    personal data that an individual submits to the company for the following purposes: <br> <br>
+                    i) i) for direct marketing purposes - receipt of notification. The announcements contain current offers,
+                    benefits and / or invitations to the events of the manager and his business partners, invitations to
+                    participate in sweepstakes and competitions, and useful tips, news and reminders from the world of
+                    sports and healthy lifestyles;<br><br>
+                    ii)to conduct marketing analysis and customer segmentation as well as to send customized product and
+                    service offerings; <br> <br>
+                    iii)for the purpose of participating in giveaways. <br> <br>
+                    In view of the personal data provided, you can recieve notifications and personalized offers via SMS,
+                    MMS to a phone number, e-mail to the email address provided, or in hard copy to the address provided. <br><br>
+                    You may revoke or amend your consent at any time in the same manner as the consent was permitted
+                    by clicking on the &#39;unsubscribe&#39; button at the bottom of the email; in your account settings or by sending
+                    a specific consent revocation request to buy@urbanone.me . <br><br>
+                    Since consent includes direct marketing based on an individual&#39;s profile, Monargo may conduct the
+                    classification of individuals into segments based on the use of Monargo&#39;s websites for the purpose of
+                    customized service and product offerings.
                 </p>
             </div>
          </div>
          <div>
-             <h4>3. LIČNI PODACI KOJE PRIKUPLJAMO</h4>
+             <h4>3. PERSONAL DATA WE COLLECT</h4>
              <div>
-                 <p>Društvo Monargo prikuplja različite podatke, uključujući lične podatke sa kojima vas je moguće neposredno ili posredno odrediti (identifikovati), ukoliko se vi ili drugi odluče dijeliti ove lične podatke s društvom Monargo. Podatke primamo na više načina, uključujući kupovinom u internet trgovini, prijavom na e-obaveštenjima (neposredni marketing), registracijom korisničkog računa u internet trgovini, posjetom internet stranica. Lični podaci koje prikupljamo:</p>
-             </div>
-             <div>
-                 <p>I) osnovni lični podaci kao što su ime i prezime, datum rođenja, elektronska adresa, adresa prebivališta (ulica, kućni broj, poštanski broj, mjesto, država), adresa za dostavu (ulica, kućni broj, poštanski broj, mjesto, država), broj telefona i lozinka za osiguravanje zaštite i korišćenja naših usluga;</p>
-             </div>
-             <div>
-                 <p>  II) podatke o kupovini i načinu plaćanja, pri čemu se u slučaju plaćanja u internet trgovini korišćenjem kreditne kartice sadržaj podataka kartice ne skladišti u zbirkama podataka društva Monargo;</p>
-             </div>
-         </div>
-         <div>
-             <h4>4. KOLAČIĆI i srodne tehnologije</h4>
-             <div>
-                 <p>Kada koristite naše internet usluge na vaše računaru se instaliraju kolačići. Opšte, kolačići i srodne tehnologije djeluju tako da se u pretraživač ili uređaj dodeljuju jedinstven broj koji nema nikakvog značenja izvan društva Monargo.</p>
-             </div>
-             <div>
-                 <p>Društvo Monargo koristi ove tehnologije za prilagođavanje iskustva i za pomoć kod osiguravanja sadržaja koji je specifičan za vaše korišćenje. Za upravljanje prikupljenih informacija putem kolačića ili srodnih tehnologija možete koristiti postavke u vašem pretraživaču ili mobilnom uređaju.</p>
-             </div>
-             <div>
-                 <p>Društvo Monargo se obavezuje da će vam omogućiti upravljanje privatnošću i zajedničkim korištenjem, ali ne preuzima odgovornost za pogrešne »Do Not Track« signale putem internet pretraživača. Odbijanje kolačića može prouzrokovati da vam neke funkcije ponuđenih usluga neće biti na raspolaganju.</p>
+                 <p>Monargo collects a variety of information, including personal information, with which you can be
+                    directly or indirectly identified if you or others choose to share this personal information with Monargo.
+                    We receive information in a number of ways, including shopping at an online store, signing up for email
+                    notifications (direct marketing), registering an account at an online store, and visiting websites. <br><br>
+                    The personal information we collect:</p>
+                 <p>i) basic personal information such as first and last name, date of birth, email address, residence address
+                    (street, house number, postal code, place, country), delivery address (street, house number, postal
+                    
+                    code, place, country) , telephone number and password to ensure the protection and use of our
+                    services;</p>
+                 <p>  ii) purchase and payment information, whereby in the case of payments made via credit card, the
+                    contents of the card data are not stored in Monargo&#39;s databases;</p>
              </div>
          </div>
          <div>
-             <h4>5. UPRAVLJANJE POSTAVKAMA U KORISNIČKOM RAČUNU</h4>     
+             <h4>4. COOKIES and related technologies</h4>
              <div>
-                <p><span>5.1. Ažuriranja korisničkog računa</span> <br>
-                    Pojedinac je dužan poslati tačne i potpune podatke. Svoje eventualne izmene ličnih podataka u korisničkom računu internet trgovine ili
-                    mobilne aplikacije registrovani korisnik može ažurirati, prilagoditi, odn. izmijeniti u postavkama korisničkog računa.
+                 <p>When you use our Internet services, cookies are installed on your computer. In general, cookies and
+                    related technologies work by assigning a unique number to a browser or device that has no meaning
+                    outside of Monargo.</p>
+             </div>
+             <div>
+                 <p>Monargo uses these technologies to personalize the experience and to help provide content specific to
+                    your use.</p>
+             </div>
+             <div>
+                 <p>You can use the settings in your browser or mobile device to manage the information collected through
+                    cookies or related technologies. Monargo agrees to allow you to manage your privacy and sharing, but
+                    takes no responsibility for incorrect Do Not Track signals from your Internet browser. Refusing cookies
+                    may cause some features of the services offered to you to be unavailable.</p>
+             </div>
+         </div>
+         <div>
+             <h4>5. MANAGING ITEMS IN THE USER ACCOUNT</h4>     
+             <div>
+                <p><span>5.1. Account updates</span> <br>
+                    It is the responsibility of the individual to submit accurate and complete information. Any registered
+                    changes to personal data in the account of an online store or mobile application may be updated,
+                    adjusted or modified by the registered user in the account settings.
                 </p>
              </div>
              <div>
-                <p><span>5.2. Zatvaranje korisničkog računa </span> <br>
-                    Ukoliko želite zatvoriti vaš korisnički račun internet trgovine ili mobilne aplikacije to možete učiniti bilo kada u kartici
-                     postavki u vašem korisničkom računu (u skladu sa uputstvima na internet stranici koje se povremeno ažuriraju) slanjem zahtijeva 
-                     za zatvaranje korisničkog računa na kontaktnu adresu. Uz pisani zahtev potrebno je priložiti dokaz o identitetu i adresi. 
-                     Račun će biti zatvoren u roku 10 radnih dana nakon prijema pisanog zahtijeva pojedinca i dokaza o njegovoj ispravnostii.
-                      Zatvaranje korisničkog računa internet trgovine ne znači opoziv saglasnosti (odjavu) od primanja obaveštenja i neposrednog marketinga.
-                       Uzmite u obzir činjenicu da neke lične podatke o vama koje obrađujemo na temelju ugovora ne smijemo izbrisati u skladu s propisima 
-                       spodručja poreskog prava i skladištemo ih 10 godina od prijema narudžbe, odnosno rješavanja reklamacije ili povrata proizvoda.
+                <p><span>5.2. Account closure</span> <br>
+                    If you wish to close your online store or mobile application account, you can do so at any time in the
+                    settings tab of your account (following the instructions on the website that is updated from time to
+                    time) by sending a request to close your account at the contact address. A written request must be
+                    accompanied by proof of identity and address. The account will be closed within 10 business days of
+                    admission of the individual&#39;s written request and proof of correctness. <br><br>
+                    Closing an e-commerce account does not mean withdrawing consent (unsubscribing) from receiving
+                    notifications and direct marketing. <br><br>
+                    Please note that some personal information about you that we process under a contract may not be
+                    erased in accordance with tax law regulations and stored for 10 years from receipt of an order, ie
+                    resolution of a complaint or return of a product.
                 </p>
             </div>
          </div>
          <div>
-             <h4>6. OMOGUĆAVANJE LIČNIH PODATAKA</h4>
+             <h4>6. PROVIDING PERSONAL DATA</h4>
              <div>
-                <p><span>6.1. Ugovorni obrađivači</span> <br>
-                     Društvo Monargo može vaše lične podatke omogućiti trećim osobama s kojima ima sklopljene ugovore o obradi ličnih podataka
-                    (u nastavku teksta: ugovorni obrađivači) u svrhe podrške, analize i stalnog poboljšavanja naših usluga, obrade plaćanja ili dostavu narudžbi.
-                     Ugovorni obrađivači imaju pristup samo do onih ličnih podataka koji su im nužno potrebni za osiguravanje usluga koje obavljaju za nas i samo 
-                     u svrhe izvođenja ovih zadataka u naše ime i ne smiju ih koristiti ni za kakve druge svrhe. Ugovorni obrađivači dužni su zaštiti vaše lične podatke. 
-                     Društvo Monargo može sarađivati s ugovornim obrađivačima koji za nas obrađuju statističke podatke o tome kako koristite naše usluge sa svrhom oglašavanja usluga, 
-                     odn. za prikazivanje informacija koje bi mogle biti u vašem interesu Ovakvi obrađivači raspolažu samo sa anonimnim podacima. 
+                <p><span>6.1. Contract handlers</span> <br>
+                    Monargo may provide your personal information to third parties with whom it has contracts for
+                    the processing of personal data (hereinafter referred to as &quot;contractual processors&quot;) for the purpose of
+                    supporting, analyzing and continuously improving our services, processing payments or delivering
+                    orders. Contractors shall have access only to such personal information that is strictly necessary for
+                    them to provide the services they perform for us and only for the purposes of performing these tasks on
+                    our behalf and may not use them for any other purpose. Contractors are required to protect your
+                    personal information. <br><br>
+                    Monargo may work with contractors who process statistics for us about how you use our
+                    services for the purpose of advertising our services, and to display information that may be in your
+                    interest. Such processors have access to anonymous data only.
                 </p>
              </div>
              <div>
-                <p> <span>6.2. Internetske stranice i aplikacije trećih osoba</span> <br>
-                    Vaše lične podatke možemo uz vašu dozvolu dijeliti s aplikacijama trećih osoba ako se odlučite za pristup do naših usluga putem ovakve aplikacije
-                    (npr. Facebook, Google račun). Monargo nije odgovoran za to što treće osobe čine s vašim podacima zato se morate uvijeriti da verujete aplikaciji i da ona ima 
-                    prihvaćene odgovarajuće smjernice za zaštitu ličnih podataka. Na internet mestima društva Monargo postoje veze do internet mjesta koja nisu pod nadzorom društva Monargo. 
-                    Posjetom ovim stranicama možete poslati svoje informacije trećim osobama s kojima društvo Monargo nema sklopljen ugovor o obradi ličnih podataka. Ove internet stranice 
-                    imaju svoju politiku privatnosti u skladu s kojom obrađuju vaše lične podatke. Molimo vas da pročitate njihovu politiku privatnosti, da se upoznate s načinom obrade vaših 
-                    ličnih podataka na internet mjestima trećih osoba koje posjećujete. 
+                <p> <span>6.2. Third-party websites and applications</span> <br>
+                    We may share your personal information with your permission with third-party applications if
+                    you choose to access our services through such an application (e.g., Facebook, Google Account).
+                    Monargo is not responsible for what third parties do with your information, so you must ensure that you
+                    trust the application and that it has appropriate guidelines in place to protect your personal information. <br><br>
+                    There are links to Monargo websites that are not under the control of Monargo. By visiting this
+                    site, you may send your information to third parties with whom Monargo does not have a personal data
+                    processing agreement. These sites have their own privacy policies in which they process your personal
+                    information. Please read their privacy policy, to get acquainted with how they process your personal
+                    information on the websites of third parties you visit.
                 </p>
              </div>
              <div>
-                <p><span>6.3. Zajednički upravitelji</span> <br>
-                     Vaše lične podatke možemo dijeliti s ugovornim partnerima
-                    sa kojima nastupamo u ulozi zajedničkog upravitelja koji u skladu s ovom politikom privatnosti mogu obrađivati vaše lične podatke (npr. primer nagradne igre 
-                    u saradnji s dobavljačima).
+                <p><span>6.3. Joint Managers</span> <br>
+                    We may share your personal information with the contractual partners with whom we act as a joint
+                    manager who, in accordance with this privacy policy, may process your personal information (e.g., a
+                    giveaway in collaboration with suppliers).
                 </p>
              </div>
              <div>
-                 <p><span>6.4. Univerzalno pravno nasledstvo</span> <br>
-                     U slučaju udruživanja ili ako se društvo Monargo uključi u poslovno udruživanje, podijelu ili dođe 
-                    do prenosa djelatnosti na treću osobu, vaše lične podatke možemo prenijeti na treću osobu koja je povezana sa preuzimanjem društva Monargo 
+                 <p><span>6.4. Universal legal succession</span> <br>
+                    In the case of a merger, or if Monargo becomes involved in a business association, division or transfer of
+                business to a third party, your personal data may be transferred to a third party associated with the
+                acquisition of Monargo.
                 </p>
              </div>
              <div>
-                <p><span>6.5. Javna tijela </span> <br>
-                    Bez obzira na odredbe koje se odnose na period skladištenja ličnih podataka prema Politici privatnosti, vaše lične podatke možemo skladištiti na duže periode i slati ih 
-                    trećim osobama kao što su policija, tužilastvo, sud i ostala nadležna državna tijela unutar Crne Gore ili izvan nje ukoliko procijenimo da je ovakvo omogućavanje 
-                    potrebno i da se zasniva na temelju zakona, isključivo za svrhe sprečavanja, istrage, otkrivanja ili progona kaznenih dijela. Vaše lične podatke možemo omogućiti 
-                    državnim organima i kada je to potrebno za ostvarivanje ili odbranu pravnih zahtijeva u sudskom postupku ili u upravnom ili izvan sudskom postupku.
+                <p><span>6.5. Public bodies </span> <br>
+                    Not withstanding the provisions regarding the storage period of personal data under the Privacy Policy,
+                    we may store your personal data for long periods and send it to third parties such as the police,
+                    prosecutor&#39;s office, court and other competent state bodies inside or outside Montenegro if we evaluate
+                    that such enabling is necessary and based on the law solely for the purpose of preventing, investigating,
+                    detecting or prosecuting criminal offenses. We may also release your personal information to public
+                    authorities when necessary to obtain or defend legal claims in court or in administrative or out of court
+                    proceedings.
                 </p>
              </div>
              <div>
-                <p><span>6.6. Slanje podataka u države koje nisu članice EU ili EGP </span> <br>    
-                    U slučaju korišćenja internet usluga izvan država članica EU radi osiguravanja internet usluga poslani se podaci
-                    mogu prenositi, skladištiti ili obrađivati u trećim državama gdje zakonodavstvo s područja zaštite ličnih podataka propisuje drugačije standarde nego u državama 
-                    članicama EU, odn. EGP. Sa korišćenjem usluga u državama izvan EU saglasni se da se lični podaci mogu prenositi,
-                odn. poslati subjektima koji su u trećim državama. Društvo Monargo inače samostalno vaše lične podatke neće iznositi u države izvan EU ili EGP.
+                <p><span>6.6. Sending data to non-EU or EEA countries</span> <br>    
+                    In the case of using internet services outside the EU Member States, the data sent can be transmitted,
+                    stored or processed in third countries where legislation in the field of personal data protection
+                    prescribes different standards than in the EU or EEA Member States. By using the Services in countries
+                    outside the EU, you agree that the personal data may be transferred or transmitted to entities located in    
+                    third countries. Otherwise, Monargo will not personally disclose your personal information to countries
+                    outside the EU or EEA.
                 </p>
              </div>
          </div>
          <div>
-             <h4>7. ROKOVI ČUVANJA LIČNIH PODATAKA</h4>
+             <h4>7. DEADLINES FOR STORING PERSONAL DATA</h4>
               <div>
-                <p> Lične podatke skladištimo onoliko dugo koliko je potrebno za osiguravanje naših usluga, odnosno duže, ukoliko postoje zakonske obveze. 
-                    Lični podaci povezani s vašim korisničkim računom skladište se do zatvaranja računa pri čemu se podaci vezani uz kupovinu koju je korisnik 
-                    realizovao u internet trgovini skladište.
+                <p> We store personal information for as long as is necessary to secure our services, that is, for longer if
+                    there are legal obligations.
                 </p>
               </div>
               <div>
-                <p>Zatvaranje korisničkog računa možete sprovesti sami u postavkama korisničkog računa ili nas zamoliti za brisanje. 
-                    Zatvaranje korisničkog računa i brisanje vaših ličnih podataka može trajati do 10 radnih dana od podnošenja zahtijeva. 
-                    Uzmite u obzir da neke podatke iz zatvorenih računa možemo zadržati u skladu sa zakonom za sprečavanje prevara, za naplatu dugova, rešavanje sporova, 
-                    otklanjanje poteškoća, pomoći kod istraga nadležnih tijela, ostvarivanja uslova korišćenja usluga i donošenja drugih mjera koje dopušta zakon.
-                     Podaci koje zadržimo biće obrađivani u skladu s ovom politikom privatnosti.
+                <p>The personal data associated with your account is stored until the account closes, and the data related
+                    to the purchase made by the user in the online store is stored. You can either close your account
+                    yourself in your account settings or ask us to delete it. Closing your account and deleting your personal
+                    information can take up to 10 business days to complete. Please note that we may retain some
+                    information from closed accounts in accordance with the law for the prevention of fraud, debt
+                    collection, dispute resolution, troubleshooting, assistance with investigations by competent authorities,
+                    the achievement of conditions of use of services and the adoption of other measures permitted by law.
+                    The information we retain will be processed in accordance with this privacy policy.
                 </p>
               </div>
               <div>
-                <p>  Podaci u vezi s plaćanjem kupovine u internet trgovini i povezani kontaktni podaci 
-                    o pojedincima mogu se sa svrhom ispunjavanja ugovornih obaveza čuvati do potpune naplate usluga, odn. do eventualnog isteka roka zastarjelosti u vezi s 
-                    pojedinačnim potraživanjem, koja po zakonu može iznositi do pet godina. U skladu s poreskim propisima izdati računi čuvaju se još 10 godina nakon isteka 
-                    godine u kojoj je izdat račun.
+                <p>  Information regarding payment for online shopping purchases and related contact details of individuals
+                    may be stored for the purpose of fulfilling contractual obligations until full payment of services, or until
+                    the expiration of the statute of limitations on individual claims, which may be up to five years, by law. In
+                    accordance with tax regulations, invoices issued are kept for a further 10 years after the end of the year
+                    in which the invoice was issued.
                 </p>
               </div>
               <div>
-                <p> Lične podatke koji su dobijeni na temelju saglasnosti čuvamo sve do opoziva saglasnosti, ali najviše 5 godina. 
-                    Podatke o vama koji više nisu potrebni za svrhe za koje su bili prikupljeni ili neki drugi način obrađeni mogu biti anonimni i spojeni s drugim podacima 
-                    koji ne omogućavaju određivanje pojedinca za dobijanje uvida u statističke informacije koje su komercijalno korisne za društvo Monargo kao što je
-                    primer statistika korištenja usluga koje pružamo. Ovi lični podaci su anonimni i ne omogućuju povezivanje spojedincem koji bi se mogao odrediti.
+                <p> We keep personal data obtained from consent until the revocation of consent, but for a maximum of 5
+                    years. <br><br>
+                    Information that you no longer need for the purposes for which it was collected or otherwise processed
+                    may be anonymous and combined with other information that does not allow the individual to be
+                    identified as providing statistical information that is commercially useful to Monargo, such as statistics
+                    on the use of the services we provide. This personal information is anonymous and does not allow you
+                    to connect with an identifiable individual.
                 </p>
               </div>
          </div>
          <div>
-             <h4>8. ZAŠTITA LIČNIH PODATAKA</h4>
+             <h4>8. PROTECTION OF PERSONAL DATA</h4>
              <div>
-                <p>  Sprovodimo više tehničkih i organizacijskih mjera za osiguravanje zaštite ličnih podataka tokom prikupljanja, prenosa i skladištenja. 
-                    Društvo Monargo nastoji prikladno zaštititi vaše lične podatke ali ne garantuje potpunu sigurnost ličnih podataka koje nam šaljete i ne odgovaramo za krađu, 
-                    uništenje, gubitak, namejrno ili nenamjerno otkrivanje vaših ličnih podataka ili informacija o vama. Društvo Monargo poštuje opšte prihvaćene standarde za 
-                    zaštitu primljenih informacija tokom prenosa kao i posle prijema, ali niti jedan način elektronskog prenosa ili skladištenja nije 100% siguran, zato ne možemo
-                     garantovati potpunu sigurnost. Društvo Monargo koristi SSL tehnologiju (Secure Sockets Layer) koja osigurava šifriranje ličnih podataka i podataka kreditnih kartica.
-                      Društvo Monargo sarađuje sa preduzećem koje osigurava sigurnost naših usluga i vaših ličnih podataka. Korisnici društva Monargo dodatno su zaštićeni promenom zaštitnog
-                       zida i drugih tehnologija za osiguravanje zaštite podataka.
+                <p>  We implement a number of technical and organizational measures to ensure the protection of personal
+                    data during collection, transfer and storage. Monargo endeavors to appropriately protect your personal
+                    information, but does not guarantee the complete security of the personal information you provide to
+                    us and is not responsible for the theft, destruction, loss, intentional or unintentional disclosure of your
+                    personal information or information about you. Monargo adheres to generally accepted standards for
+                    the protection of information received during transmission as well as after receipt, but no electronic
+                    transmission or storage is 100% secure, so we cannot guarantee complete security. Monargo uses SSL
+                    technology (Secure Sockets Layer) to secure the encryption of personal and credit card information.
+                    Monargo cooperates with a company that ensures the security of our services and your personal
+                    information. Monargo users are additionally protected by changing the firewall and other technologies
+                    to ensure data protection.
                 </p>
              </div>
              <div>
-                 <p>Za zaštitu podataka odgovoran je korisnik s odgovarajućim osiguravanjem zaštite svog mobilnog uređaja ili
-                    računara kao i sa zaštitom korisničkog imena, lozinke i odgovarajućom programskom opremom (antivirusnom) zaštitom vašeg elektroničkog uređaja. Da bismo osigurali
-                     učinkovitost ovih mjera kod sprečavanja neovlašćenog pristupa do vaših ličnih podataka, morate biti svjesni sigurnosnih funkcija koje su vam na raspolaganju putem 
-                     vašeg pretraživača. Koristite pretraživač koji omogućava postavke sigurnosnih funkcija prije nego pošaljete vaše lične podatke ili podatke kreditnih kartica putem 
-                     interneta. U obzir uzmite činjenicu da ukoliko koristite pretraživač koji nema podršku za korištenje SSL tehnologije, da takav prenos ličnih podataka može biti rizičan. 
-                     Većina pretraživača omogućava obavještenje ukoliko se nalazite na internet stranici koja ne osigurava sigurnu vezu ili ukoliko šaljete podatke putem neosigurane veze. 
-                     Društvo Monargo Vam preporučuje da omogućite ove funkcije vašeg pretraživača čime ćete pripomoći sigurnosti vaših ličnih podataka. Takođe možete pratiti adresu na kojoj 
-                     se nalazite (URL). Sigurne internet adrese započinju s https:// umesto http://, zajedno sa simbolom za sigurnu vezu koji koristi vaš pretraživač (obično je to simbol
-                      brave na početku internet adrese). Ovakav simbol ukazuje na korištenje sigurne komunikacije s pretraživačem. Molimo vas da istovremeno provjerite detalje (ispravnost) 
-                      sigurnosnog sertifikata internet mjesta gde se nalazite. <br>
-                      Ograničenje odgovornosti. Društvo Monargo vezuje se na zaštitu ličnih podataka i informacija o vama ali nikakva 
-                    veza putem interneta ne može biti 100% sigurna i ne može garantovati potpunu zaštitu podataka koje nam omogućujete. Vaše lične podatke nam omogućavate na vlastitu 
-                    odgovornost.
+                 <p>Data protection is the responsibility of the user with appropriate protection of his or her mobile device
+                    or computer, as well as protection of the username, password and appropriate software (antivirus)
+                    protection of your electronic device. To ensure that these measures are effective in preventing
+                    unauthorized access to your personal information, you must be aware of the security features available
+                    to you through your browser. Use a browser that provides security feature settings before you submit
+                    your personal or credit card information online. Please note that if you use a browser that does not
+                    support SSL technology, such transfer of personal data may be risky. <br><br>
+                    Most browsers allow notifications if you are on a website that does not provide a secure connection or if
+                    you are submitting information through an unsecured connection. Monargo recommends that you
+                    enable these features of your browser to help keep your personal information secure. You can also track
+                    your address (URL). Secure Internet addresses start with https: // instead of http: //, along with the
+                    secure connection symbol used by your browser (usually the lock symbol at the beginning of the
+                    internet address). Such a symbol indicates the use of secure communication with the browser. Please
+                    check the details (correctness) of your site&#39;s security certificate at the same time. <br><br>
+                    Disclaimer. Monargo is committed to protecting your personal information and information about you,
+                    but no online connection can be 100% secure and cannot guarantee the complete protection of the
+                    information you provide to us. You provide your personal information to us at your own risk.
                  </p>
              </div>
          </div>
          <div>
-             <h4>9. PRAVA POJEDINACA</h4>
+             <h4>9. RIGHTS OF INDIVIDUALS</h4>
              <div>
-                <p> Društvo Monargo osigurava ostvarivanje prava pojedinaca na koje se odnose lični podaci. 
-                    Zahtevi pojedinca u vezi s ostvarivanjem prava mogu se poslati na elektronsku adresu buy@urbanone.me 
-                    ili poštom na adresu Djoka Mirasevica M3 Ruske Kule . Pojedinac je dužan uz zahtijev koji nije poslat sa e-adrese registrovanog korisnika 
-                    priložiti dokaz o identitetu i/ili adresi. Društvo Monargo na vaš će zahtev odgovoriti u skladu s važećim propisima. Pojedinac u vezi s ličnim podacima ima sledeća 
-                    prava:
+                <p> An individual may at any time require Monargo to confirm to him whether the data relating to him is
+                    being processed, if they are processed to allow access to personal data and to be provided with
+                    information regarding the processing of his personal data (e.g. about the purpose of the processing, the
+                    type of the personal data, users, to whom personal data have been or will be sent to, the estimated
+                    storage period, technical and organizational measures for data protection, etc.).
                 </p>
              </div>
              <div>
                  <p>
-                     <span>9.1. Pravo na pristup do podataka</span> <br>
-                     Pojedinac može bilo kada zahtijevati da mu društvo Monargo potvrdi obrađuju li se podaci u vezi s njim, ako se obrađuju da
-                     omogući pristup do ličnih podataka kao i da mu se daju informacije u vezi s obradom njegovih ličnih podataka (npr. o svrsi obrade, vrsti ličnih podataka, korisnicima,
-                      kojima su bili ili će im biti poslati lični podaci, predviđenom razdoblju čuvanja podataka, o tehničko organizacijskim mjerama za zaštitu podataka i sl.).
+                     <span>9.1. Right to access data</span> <br>
+                        An individual may at any time require Monargo to confirm to him whether the data relating to him is
+                        being processed, if they are processed to allow access to personal data and to be provided with
+                        information regarding the processing of his personal data (e.g. about the purpose of the processing, the
+                        type of the personal data, users, to whom personal data have been or will be sent to, the estimated
+                        storage period, technical and organizational measures for data protection, etc.).
                  </p>
              </div>
              <div>
                  <p>
-                     <span>9.2. Pravo na ispravljanje</span> <br>
-                     Pojedinac može bilo kada zahtijevati da mu društvo Monargo omogući ispravljanje netačnih ličnih podataka u vezi s njim i dopunu nepotpunih ličnih podataka.
-                     Registrovani korisnici to mogu učiniti preko postavki svog korisničkog računa u internet trgovini.
+                     <span>9.2. Right to rectify</span> <br>
+                     An individual may at any time request that Monargo enable him to correct inaccurate personal
+                     information concerning him and to supplement incomplete personal information. <br><br>
+                     Registered users can do this through the settings of their online store account.
                  </p>
              </div>
              <div>
                  <p>
-                     <span>9.3. Pravo na brisanje</span> <br>
-                     U skladu s uslovima kako ih detaljnije određuju
-                     važeći propisi, pojedinac može bilo kada zahtijevati da mu društvo Monargo omogući pravo na brisanje ličnih podataka (tzv. pravo za brisanje).
+                     <span>9.3. Right to delete</span> <br>
+                     In accordance with the conditions as further specified by applicable regulations, an individual may at any
+                     time request that Monargo grant him the right to delete personal data (the so-called right to delete).
                  </p>
              </div>
              <div>
                  <p>
-                     <span>9.4. Pravo na ograničavanje obrade</span> <br>
-                     U skladu s uslovima kako ih detaljnije određuju važeći propisi, pojedinac može bilo kada zahtijevati da mu društvo Monargo omogući pravo 
-                     na ograničenje obrade svojih ličnih podataka. Registrovani korisnici internet usluga to mogu učiniti u postavkama svojih korisničkih računa. 
-                     Potrebno je uzeti u obzir da u slučaju ograničenja obrade određenih ličnih podataka možda neće biti moguće osigurati potpunu uslugu.
+                     <span>9.4. Right to restrict processing</span> <br>
+                     In accordance with the conditions as further specified by applicable regulations, an individual may at any
+                     time request that Monargo grant him the right to restrict the processing of his personal information.
+                     Registered Internet service users can do this in their account settings. It should be borne in mind that in
+                     the case of restrictions on the processing of certain personal data, it may not be possible to provide full
+                     service.
                  </p>
              </div>
              <div>
                  <p>
-                     <span>9.5. Pravo na prigovor</span> <br>
-                     U slučaju da društvo Monargo doo obrađuje lične podatke na temelju zakonskih interesa društva Monargo, kao je prikazano gore, 
-                    pojedinac može u određenim slučajevima prigovoriti ovakvoj obradi. Društvo Monargo prestaće obrađivati ove lične podatke, osim ako procijeni da ima utemeljene
-                    i legitimne razloge za nastavak obrade ili ako je obrada potrebna iz pravnih razloga. Prigovor protiv obrade ličnih podataka u svrhe neposrednog marketinga može se 
-                    izvesti i s opozivom saglasnosti za primanje obavještenja tako da klikom na dugme 'odjava' koji se nalazi na dnu elektroničke poruke, odn. da prati uputstva u poslatom 
-                    obavještenju. 
+                     <span>9.5. Right to object</span> <br>
+                        If Monargo Ltd. processes personal data on the basis of Monargo&#39;s legitimate interests, as shown above,
+                        an individual may object to such processing in certain cases. Monargo will cease to process this personal
+                        information unless it determines that it has reasonable and legitimate reasons for proceeding with the
+                        processing or if the processing is necessary for legal reasons. <br><br>
+                        An objection against the processing of personal data for direct marketing purposes can also be raised
+                        with the withdrawal of consent to receive notification by clicking on the &#39;unsubscribe&#39; button located at
+                        the bottom of the electronic message, that is, following the instructions in the sent notification.
                  </p>
              </div>
              <div>
                  <p>
-                     <span>9.6. Opoziv saglasnosti </span> <br>
-                        Pojedinac može bilo kada opozvati saglasnost, u slučajevima kada je dao saglasnost za pojedinu svrhu obrade vaših ličnih
-                        podataka.
-                        Registrovani korisnici mogu opoziv saglasnosti provesti u postavkama korisničkog računa. Opoziv saglasnosti ne utiče na zakonitost obrade ličnih podataka koje 
-                        se sprovodilo do njenog opoziva. 9.7. Pravo na žalbu nadzornom tijelu Pojedinac ima pravo
-                        podneti žalbu ukoliko smatra da se njegovi lični podaci obrađuju u suprotnosti sa važećim propisima koji uređuju zaštitu ličnih podataka.
+                     <span>9.6. Revocation of consent </span> <br>
+                     An individual may revoke consent at any time, in cases where he / she has given consent for the sole
+                     purpose of processing your personal data. <br><br>
+                     Registered users can revoke the consent in the account settings. <br><br>
+                     Revocation of consent does not affect the lawfulness of the processing of personal data that took place
+                     prior to its revocation.
                  </p>
              </div>
+             <div>
+                <p>
+                    <span>9.7. Right of appeal to the supervisory authority </span> <br>
+                    An individual has the right to file a complaint if he / she considers that his / her personal data are
+                    processed in violation of the applicable regulations governing the protection of personal data.
+                </p>
+            </div>
          </div>
          <div>
-             <h4>10. IZMJENE POLITIKE PRIVATNOSTI</h4>
+             <h4>10. PRIVACY POLICY AMENDMENTS</h4>
              <div>
                  <p>
-                    Društvo Monargo doo zadržava pravo na izmJenu politike privatnosti i zakonodavstvo područja zaštite ličnih podataka. Izmjene politike privatnosti pravovremeno 
-                    će biti objavljene na našim internet stranicama. <br> Ukoliko niste saglasni sa politikom
-                     privatnosti molimo vas da prestanete sa korištenjem naših internet usluga i da zatvorite svoj korisnički račun, odn. opozovete predane saglasnosti.
+                    Monargo Ltd. reserves the right to change the privacy policy and legislation of the personal data
+                    protection area. <br><br>
+                    Changes to our privacy policy will be posted on our website in a timely manner. <br><br>
+                    If you do not agree with the privacy policy, please stop using our internet services and close your
+                    account and revoke your submitted consent.
                  </p>
              </div>
          </div>
+       
    </div>
    @include('layouts.subscribe')
 @endsection

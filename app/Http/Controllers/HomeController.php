@@ -679,7 +679,11 @@ class HomeController extends Controller
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }
 
+    public function verifiedByVisa() {
+        return view('verified_by_visa');
+    }
 
-
-
+    public function mastercardSecure() {
+        return view('mastercard_secure');
+    }
 }

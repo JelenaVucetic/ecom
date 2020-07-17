@@ -29,8 +29,11 @@
             </div>
             <div class="col-xs-6 col-sm-9 copy-right">
                 <h4>Copyright</h4>
-                <p>Urban One tim je izrgradjen prvenstveno na postovanju i priznanju umjetnika. <br>
-                    Apsolutno sva autorska prava na ovome sajtu zadrzava Urban One pod drustvom Monargo doo i ukoliko ista budu koristena u bilo koje svrhe od treceg lica koje nema ovlascene pozvacemo se na Zakon o autorskom i srodnim pravima Zakon je objavljen u "Službenom listu CG", br. 37/2011 i 53/2016. Kojim smo zasticeni cime ce dalji slucaj biti predmet Privrednog Suda.</p>
+                <p> <strong>The Urban One team is built primarily on the appreciation and recognition of artists.</strong>  <br>
+                    Absolutely all copyrights on this site are retained by Urban One under the company Monargo Ltd. and, if
+                    they are used for any purpose by a third party who is not authorized, we will refer to the Law on
+                    Copyright and Related Rights. The Law is published in „the Official Gazette of Montenegro“, no. 37/2011
+                    and 53/2016 by which we are protected, so the further case be the subject of the Commercial Court.</p>
                
             </div>
         </div>

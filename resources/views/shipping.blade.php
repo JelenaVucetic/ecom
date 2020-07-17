@@ -29,32 +29,47 @@
             </div>
             <div class="col-xs-6 col-sm-9 shipping-right">
                 <div>
-                    <h4>Can I track my package?</h4>
-                    <p>Da. Kada potvrdite i pošaljete narudžbinu, dobićete e-mail poruku sa potvrdom koja će vam omogućiti pristup podacima o statusu vaše pošiljke.</p>
+                    <h4>Can the package be monitored?</h4>
+                    <p>Yes. When you confirm and submit your order, you will receive a confirmation email that will allow you
+                        to access the status of your shipment.</p>
                 </div>
                 <div>
                     <h4>How can I change my order?</h4>
-                    <p>Ako ste potvrdili narudžbinu i već ste dobili potvrdu putem e-pošte, narudžbinu više nije moguće promijeniti. Ako smatrate da je došlo do greške, predomislili ste se ili želite zamijeniti, ukloniti ili dodati proizvod u narudžbini, kontaktirajte nas na buy@urbanone.me i zatim ćemo, ukoliko bude moguce tj ukoliko nas obavijestite pravovremeno, pokrenuti postupak promjene u narudžbini</p>
+                    <p>If you have confirmed your order and have already received an email confirmation, the order can no
+                        longer be changed. If you believe that an error has occurred, you have changed your mind or want to
+                        replace, remove or add the product to your order, please contact us at buy@urbanone.me and then, if
+                        possible, if you notify us in a timely manner, we will initiate the order change process</p>
                 </div>
                 <div>
-                    <h4>Am I able to change shipping adress after my order has been confirmed?</h4>
-                    <p>Ako ste već primili poruku potvrde e-poštom, više ne možete promijeniti adresu za dostavu. To možemo mi učiniti za vas ali samo ako nas obavjestite o ovoj promjeni pravovremeno, odnosno isti dan kada ste primili poruku potvrde. U tom slučaju, molimo da nas kontaktirate na buy@urbanone.me</p>
+                    <h4>Can I change my shipping address after I have already placed my order?</h4>
+                    <p>If you have already received the confirmation email via email, you can no longer change the shipping
+                        address. We can do this for you, but only if you notify us of this change in a timely manner, or the same
+                        day you received the confirmation message. In that case, please contact us at buy@urbanone.me</p>
                 </div>
                 <div>
-                    <h4>How has my package been delivered?</h4>
-                    <p>Dostava je na adresi koju ste naleli u narudzbenici kurirskom sluzbom ili postom</p>
+                    <h4>What is the shipping method?</h4>
+                    <p>Delivery is at the address you provided in the purchase order by courier or post.</p>
                 </div>
                 <div>
-                    <h4>Shipping cost?</h4>
-                    <p>Troskovi dostave iznose 2.5e za sve gradove Crne Gore. <br> Ukoliko ukupna cifra Vase porudzbine prelazi 35e dostava je besplatna.</p>
+                    <h4>What is the shipping cost?</h4>
+                    <p>Shipping costs are 2.5e for all cities of Montenegro. <br>
+                        If the total number of your order exceeds 35e delivery is free.</p>
                 </div>
                 <div>
-                    <h4>What is an average delivery time?</h4>
-                    <p>Rok dostave za robu kupljenu u internet prodavnici je dva do tri radna dana. Rok počinje kada narudžbinu potvrdi internet prodavnica ili prvog radnog dana nakon podnošenja naloga</p>
+                    <h4>What is the average delivery time?</h4>
+                    <p>For example, if you order product delivery to your home address and: <br>
+                        you have already paid for the order, but at the time of delivery you are not at home, the carrier is
+                        obliged to inform the sender of the inability to deliver the shipment, in which case the sender is obliged
+                        to give the carrier additional instructions. <br>
+                        In case the buyer does not pick up the goods within the agreed time, and wants delivery again, the
+                        buyer will be charged double shipping costs.</p>
                 </div>
                 <div>
-                    <h4>What do I need to know about delivery at the willing adress?</h4>
-                    <p>Na primer, ako naručujete dostavu proizvoda na kućnu adresu a: <br> narudžbinu ste već platili, ali u trenutku dostave niste kod kuće, prevoznik je dužan da obavijesti Pošiljaoca o nemogućnosti uručenja pošiljke, u kom slučaju je Pošiljalac dužan da Prevozniku izda dodatna uputstva. <br> U slučaju da kupac ne preuzme robu u dogovorenom vremenskom roku, a želi ponovo dostavu, kupcu se obračunavaju dvostruki troškovi dostave.</p>
+                    <h4>What does it mean if the product is out of stock?</h4>
+                    <p>This means that the product is currently unavailable. If the product cannot be delivered, the product will
+                        be withdrawn from the online store offer. If you are interested in buying a product that is out of stock,
+                        please contact us and we will check your delivery options or we can recommend a similar product that
+                        may be right for you.</p>
                 </div>
 
             </div>

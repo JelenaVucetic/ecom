@@ -42,6 +42,8 @@ Route::get('/shipping_and_handling', 'HomeController@shipping');
 Route::get('/help_center', 'HomeController@helpCenter');
 Route::get('/copyright', 'HomeController@copyright');
 Route::get('/contact_us', 'HomeController@contact');
+Route::get('/verified_by_visa', 'HomeController@verifiedByVisa');
+Route::get('/mastercard_secure', 'HomeController@mastercardSecure');
 
 Route::resource('category', 'CategoriesController');
 
