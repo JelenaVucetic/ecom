@@ -152,6 +152,7 @@ if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
 }
 if($original=='Phone Case'){
     ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
+    ImageModel::samsungP20PhoneCase($idProduct, $originalImagePath);
 }
 
 

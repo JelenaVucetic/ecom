@@ -300,6 +300,29 @@ $(document).ready(function(){
                 }
             });
 
+                         // Enable and edit Samsung
+                         $('#edit-product14').click(function() {
+                            if(document.getElementById('product16').style.display == 'none'){
+                                closeCanvas();
+                                document.getElementById('product16').style.display = 'flex';
+                            }else{
+                                document.getElementById('product16').style.display = 'none';
+                            }
+                        });
+                        $('#enabled-product14').click(function(){
+                            if($('#proizvod15').hasClass('disabledbutton')){
+                                $('#proizvod15').removeClass('disabledbutton');
+                                $( "#proizvod15" ).attr( "value" , 0 );
+                                $('#enabled-product14').html('Enabled');
+                                $('#enabled-product14').addClass('enable');
+                            }else{
+                                $('#proizvod15').addClass('disabledbutton');
+                                $( "#proizvod15" ).attr( "value" , 1 );
+                                $('#enabled-product14').html('Disabled');
+                                $('#enabled-product14').removeClass('enable');
+                            }
+                        });
+
 
 
 
@@ -382,6 +405,12 @@ $(document).ready(function(){
             image16.src = canvas18.toDataURL();
         });
 
+        $('#product16').mouseup(function(){
+            var image17 = document.getElementById("logo-canvas15");
+            image17.src = canvas19.toDataURL();
+        });
+
+
 
     // Change phone case color
     var colorInput = document.querySelector('#color');
@@ -445,6 +474,12 @@ $(document).ready(function(){
           colorInput10.addEventListener('input', ()=>{
             $('.background-div10').css("background-color", colorInput10.value);
           });
+
+            // Change Poster color
+            var colorInput13 = document.querySelector('#color13');
+            colorInput13.addEventListener('input', ()=>{
+              $('.background-div14').css("background-color", colorInput10.value);
+            });
 
 
           $(document).on("change", "#file", function(e){

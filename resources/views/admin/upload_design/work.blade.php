@@ -21,6 +21,215 @@
     </form>
 
   </div>
+
+  <div class="row">
+
+    {{-- Custom html --}}
+      <div class="product-column">
+      <div class="row-product">
+      <div id="proizvod14" class="save-picture disabledbutton" data-category="13" name="Custom" data-canvas="canvas15" value="1">
+          <div class="background-div13">
+      <img id="logo-canvas14" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+      <img class="overlay-panel" src="/images/phonecase.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+         Custom
+      </span>
+      <div>
+      <button id="edit-product13" class="edit-button">Edit</button>
+      <button id="enabled-product13" class="enable-button">Disabled</button>
+
+
+      </div>
+  </div>
+</div>
+
+
+</div>
+
+{{-- Samsung html --}}
+<div class="product-column">
+  <div class="row-product">
+      <div id="proizvod15" class="save-picture disabledbutton" data-category="10" name="Samsung" data-canvas="canvas16" value="1">
+          <div class="background-div14">
+      <img id="logo-canvas15" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
+      <img class="overlay-panel" src="/images/Samsung-P20-Bezpozadine.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+         Samsung
+      </span>
+      <div>
+      <button id="edit-product14" class="edit-button">Edit</button>
+      <button id="enabled-product14" class="enable-button" onclick="">Disabled</button>
+      </div>
+  </div>
+</div>
+
+  </div>
+
+
+  {{-- Huawei html --}}
+  <div class="product-column">
+      <div class="row-product">
+          <div id="proizvod16" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas17" value="1">
+              <div class="background-div15">
+          <img id="logo-canvas16" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+          <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
+              </div>
+          </div>
+      <div class="preview-info">
+          <span class="preview-name">
+              Huawei
+          </span>
+          <div>
+          <button id="edit-product15" class="edit-button">Edit</button>
+          <button id="enabled-product15" class="enable-button" onclick="">Disabled</button>
+          </div>
+      </div>
+  </div>
+
+      </div>
+
+  </div>
+
+    {{-- Canvas edit for Custom --}}
+        
+<div id="product15" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Custom options</h2>
+  <div class="product-wrap">
+    <div id="app16" >
+        <canvas id="c16" width="250" height="300"></canvas>
+    </div>
+    <div class="product-options12">
+      
+      {{--   <form method="post" id="upload-form" enctype="multipart/form-data">
+         {{ csrf_field() }}
+        <input type="file" name="file1" >
+        <input type="submit" value="Upload" name="submit">
+        </form> --}}
+        <div class="color-choose">
+
+            <div class="container">
+                <div class="output" id="output"></div>
+
+                <div class="result-wrp">
+                   <p>Choose a color</p>
+                  <input type="color" id="color12">
+                </div>
+                <label class="scale-lable">
+                    <span>Scale:</span>
+                    <input type="range" id="scale-control12"  value="1.5" min="0.005" max="1.5" step="0.005">
+                </label>
+                <div class="align">
+                <button id="alignVertically12" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                <button id="alignHorizontally12" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                </div>
+                <div class="repeat-option btn-group">
+                    <button id="repeat4" class="repeat-opt">Repeat</button>
+                    <button id="none4" class="repeat-opt">None</button>
+                    <button id="repeat-vertical4" class="repeat-opt">Repeat vertical</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    </div>
+</div>
+        
+
+
+
+
+
+
+
+
+              {{-- Canvas edit for Samsung --}}
+    <div id="product16" class="img-div" data-value="1" style="display:none">
+      <h2 class="option-title">Samsung options</h2>
+      <div class="product-wrap">
+        <div id="app17" >
+            <canvas id="c17" width="250" height="300"></canvas>
+        </div>
+        <div class="product-options13">
+            
+
+          {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
+              {{ csrf_field() }}
+             <input type="file" name="file1" >
+             <input type="submit" value="Upload" name="submit">
+             </form>
+ --}}
+            <div class="color-choose">
+
+                <div class="container">
+                    <div class="output" id="output"></div>
+
+                    <div class="result-wrp">
+                       <p>Choose a color</p>
+                      <input type="color" id="color13">
+                    </div>
+                    <label  class="scale-lable">
+                        <span>Scale:</span>
+                        <input type="range" id="scale-control13"   value="1.5" min="0.005" max="2" step="0.005">
+                    </label>
+                    <div class="align">
+                    <button id="alignVertically13" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                    <button id="alignHorizontally13" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+         {{-- Canvas edit for Huawei --}}
+         <div id="product17" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Huawei options</h2>
+          <div class="product-wrap">
+            <div id="app18" >
+                <canvas id="c18" width="250" height="300"></canvas>
+            </div>
+            <div class="product-options14">
+
+               {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" >
+                 <input type="submit" value="Upload" name="submit">
+                 </form> --}}
+
+                <div class="color-choose">
+
+                    <div class="container">
+                        <div class="output" id="output"></div>
+
+                        <div class="result-wrp">
+                           <p>Choose a color</p>
+                          <input type="color" id="color14">
+                        </div>
+                        <label  class="scale-lable">
+                            <span>Scale:</span>
+                            <input type="range" id="scale-control14"  value="1.5" min="0.005" max="1.5" step="0.005">
+                        </label>
+                        <div class="align">
+                        <button id="alignVertically14" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally14" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                        </div>
+                        <div class="repeat-option">
+                          <button id="repeat5" class="repeat-opt">Repeat</button>
+                          <button id="none5" class="repeat-opt">None</button>
+                          <button id="repeat-vertical5" class="repeat-opt">Repeat vertical</button>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+         </div>
   
     <div class="row">
 
