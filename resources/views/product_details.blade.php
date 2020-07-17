@@ -50,11 +50,6 @@
     </div>
   </nav>
 
-
-<!--  For Phone -->
-{{--   @include('phone_product_details') --}}
-<!-- end for phone -->
-
 <!--   For Desktop -->
   <div class="row desctop-product">
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
