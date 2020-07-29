@@ -8,9 +8,8 @@
         ->get(); */
 
 if(Auth::check()){
- $products2 = DB::table('recommends')
-         ->leftJoin('product','recommends.pro_id','product.id')
-         ->select('pro_id','name','image','price', 'spl_price', DB::raw('count(*) as total'))
+ $products2 = \App\Product::join('recommends','recommends.pro_id','product.id' )
+         ->select('product.*', DB::raw('count(*) as total'))
          ->distinct('recommends.pro_id')  
          ->groupBy('pro_id','name','image','price')   
          ->where('uid',Auth::user()->id)
@@ -18,14 +17,13 @@ if(Auth::check()){
         ->take(18)
         ->get();
 }else{
- $products2 = DB::table('recommends')
-         ->leftJoin('product','recommends.pro_id','product.id')
-         ->select('pro_id','name','image','price', 'spl_price', DB::raw('count(*) as total'))
+ $products2 = \App\Product::join('recommends','recommends.pro_id','product.id' )
+         ->select('product.*', DB::raw('count(*) as total'))
          ->distinct('recommends.pro_id')  
          ->groupBy('pro_id','name','image','price')  
          ->inRandomOrder()
-        ->take(18)
-        ->get();
+            ->take(18)
+            ->get();
 }    
 ?>
 <div style="width:90%; margin: 20px auto;">
@@ -36,15 +34,42 @@ if(Auth::check()){
     @foreach($products2 as $p)
         <div class="slide-item">
             <div class="product">
-                <a href="{{ url('/product_details', [$p->pro_id]) }}" class="">
+                <a href="{{ url('/product_details', [$p->id]) }}" class="">
                     <div class="">
-                            <div class="">
-                                <img src="{{ url('images', $p->image) }}" class="" alt="">
+                            <div class="img-div">
+                                @if ($p->images)
+                       
+                                @foreach ($p->images as $item)
+                                @if($p->category->name=="T-Shirts")
+                                
+                                  @if ($item->color == "white" && $item->position == "front")
+                                  <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                  @break
+                                  @endif
+                                  @elseif( $p->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                  @break
+                                  @elseif($p->category->name=="Pictures")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                                  @break
+                                  @elseif($p->category->name=="Wallpapers")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                  @break
+                                  @else
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                  @break
+                                  @endif
+                                @endforeach
+                               
+                               @else
+                                <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                @break
+                                @endif
                             </div>
                             <div class="">
                                 <p class="">{{ $p->name }}</p>
                                 <?php
-                                    $pro_cat = App\Product::find($p->pro_id);
+                                    $pro_cat = App\Product::find($p->id);
                                     if($pro_cat->category != null){
                                 ?>
                                     <p class="">{{ $pro_cat->category->name }}</p>

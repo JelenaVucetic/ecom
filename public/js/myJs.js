@@ -520,7 +520,8 @@ $('select').each(function () {
 
   // Insert an unordered list after the styled div and also cache the list
   var $list = $('<ul />', {
-      'class': 'options'
+      'class': 'options',
+
   }).insertAfter($styledSelect);
 
   // Insert a list item into the unordered list for each select option
@@ -846,10 +847,12 @@ $("#female-x").on("click", function(){
 
   var elements = document.getElementsByClassName("side-category");
 
-  var myFunction = function() {
+  var myFunction = function(event) {
+    event.preventDefault();
       var attribute = this.getAttribute("data-myattribute");
       var number = this.getAttribute("data-id");
       var category = this.getAttribute("data-category");
+     
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
       $("#category-paragraph").attr("data-myattribute",attribute);
@@ -863,10 +866,12 @@ $("#female-x").on("click", function(){
       url: '/category_search',
       data: { category:attribute, number:number},
       success: function(response) {
+       
           $("#content").html(response);
           attribute = attribute.replace(/ /g,"");
            history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number); 
            boldCategory(category);
+           
       }
   });
   };
@@ -927,11 +932,12 @@ $("#female-x").on("click", function(){
       sendWishList();
     });
 
-
+// Za majicu print
     $('input[type=radio][name=print]').change(function() {
      var position = this.value;
      var color = $("#productColor").val();
      var id = $("#productID").val();
+     var gender = $("#productGender").val();
      $.ajax({
       headers: {  
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
@@ -939,22 +945,58 @@ $("#female-x").on("click", function(){
     type: 'post',
     dataType: 'json',
     url: '/load_images',
-    data: { position:position, color:color, id:id},
+    data: { position:position, color:color, id:id, gender:gender},
     success: function(response) {
+     
        var blank = response['blankImage'];
        var name = response['image']['name'];
       $("#main-image").attr("src","../image/" +name); 
-      $("#blank-image").attr("src","../site-images/" + blank);  
+      if(response['gender']!="unisex"){
+        $("#blank-image").attr("src","../site-images/" + blank);  
+      }else{
+        $("#blank-image").attr("src","../image/" + blank);  
+      }
+      if(response['gender']!="unisex"){
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
+      }else{
+        $("#blank-image-mobile").attr("src","../image/" + blank);
+      }
       $("#main-image-mobile").attr("src","../image/" +name); 
-      $("#blank-image-mobile").attr("src","../site-images/" + blank);
+     
       $("#productColor").val(response['image']['color']);
     }
   });
   });
 
+  // Za majicu boja
   $('input[type=radio][name=color]').change(function() {
+    var pro_cat = $('#pro_cat').val();
+    if(pro_cat=="Posters"){
+      var id = $("#productID").val();
+      var size = $("#posters option:selected" ).val();
+      var color = this.value;
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'json',
+      url: '/load_images_posters',
+      data: { color:color, pro_cat:pro_cat, size:size, id:id},
+      success: function(response) {
+         var blank = response['blankImage'];
+         var name = response['image']['name'];
+        $("#main-image").attr("src","../image/" +name); 
+        $("#blank-image").attr("src","../site-images/" + blank);
+        $("#main-image-mobile").attr("src","../image/" +name); 
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+        $("#productColor").val(response['image']['color']);
+      }
+    });
+    }else{
     var position = $('input[type=radio][name=print]:checked').val();
     var color = this.value;
+    var gender = $("#productGender").val();
     var id = $("#productID").val();
     $.ajax({
      headers: {  
@@ -963,23 +1005,68 @@ $("#female-x").on("click", function(){
    type: 'post',
    dataType: 'json',
    url: '/load_images',
-   data: { position:position, color:color, id:id},
+   data: { position:position, color:color, id:id, gender:gender},
    success: function(response) {
       var blank = response['blankImage'];
       var name = response['image']['name'];
      $("#main-image").attr("src","../image/" +name); 
-     $("#blank-image").attr("src","../site-images/" + blank); 
+     if(response['gender']!="unisex"){
+      $("#blank-image").attr("src","../site-images/" + blank);  
+    }else{
+      $("#blank-image").attr("src","../image/" + blank);  
+    }
+    if(response['gender']!="unisex"){
+      $("#blank-image-mobile").attr("src","../site-images/" + blank);   
+    }else{
+      $("#blank-image-mobile").attr("src","../image/" + blank);   
+    }
      $("#main-image-mobile").attr("src","../image/" +name); 
-     $("#blank-image-mobile").attr("src","../site-images/" + blank);   
+    
      $("#productColor").val(response['image']['color']);
    }
  });
+  
 
+    }
  });
 
- $('.options li').on('click', function() {
+ //Za telefon
+ 
+
+
+
+ 
+  $('.options li').on('click', function() {
+    var pro_cat = $('#pro_cat').val();
+    var id = $("#productID").val();
+    if(pro_cat=="Posters"){
+      var color = $('input[name="color"]:checked').val();
+      var size = $("#posters option:selected" ).val();
+      $.ajax({
+        headers: {  
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+                } ,
+      type: 'post',
+      dataType: 'json',
+      url: '/load_images_posters',
+      data: { color:color, pro_cat:pro_cat, size:size, id:id},
+      success: function(response) {
+         var blank = response['blankImage'];
+         var name = response['image']['name'];
+        $("#main-image").attr("src","../image/" +name); 
+        $("#blank-image").attr("src","../site-images/" + blank);
+        $("#main-image-mobile").attr("src","../image/" +name); 
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+        $("#productColor").val(response['image']['color']);
+      }
+    });
+    }else if(pro_cat=="Pictures"){
+
+    } else{
   var color = $( ".cases-style option:selected" ).val();
   var id = $("#productID").val();
+  var pro_cat = $("#pro_cat").val();
+  var phoneModel = $( ".cases option:selected" ).val();
   $.ajax({
     headers: {  
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
@@ -987,7 +1074,7 @@ $("#female-x").on("click", function(){
   type: 'post',
   dataType: 'json',
   url: '/load_images_phone',
-  data: { color:color, id:id},
+  data: { color:color, id:id, pro_cat:pro_cat, phoneModel:phoneModel},
   success: function(response) {
      var blank = response['blankImage'];
      var name = response['image']['name'];
@@ -998,5 +1085,11 @@ $("#female-x").on("click", function(){
     $("#productColor").val(response['image']['color']);
   }
 });
+}
  });
+
+
+/*  $('.cases').change(function(){
+  alert($( "cases option:selected" ).val());
+ }); */
  

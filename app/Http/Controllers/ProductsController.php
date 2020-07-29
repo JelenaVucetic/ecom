@@ -5,6 +5,7 @@ use App\Product;
 use App\Category;
 use App\Tag;
 use App\ProductProperty;
+use App\Recommends;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -114,6 +115,7 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         Product::findOrFail($id)->delete();
+        Recommends::where('pro_id', $id)->delete();
         return redirect()->back();
     }
 

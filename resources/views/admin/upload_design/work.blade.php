@@ -27,7 +27,7 @@
     {{-- Custom html --}}
       <div class="product-column">
       <div class="row-product">
-      <div id="proizvod14" class="save-picture disabledbutton" data-category="13" name="Custom" data-canvas="canvas15" value="1">
+      <div id="proizvod14" class="save-picture disabledbutton" data-category="13" name="Custom" data-canvas="canvas16" value="1">
           <div class="background-div13">
       <img id="logo-canvas14" src="/image/<?php if(!empty($image)){echo $image;} ?>">
       <img class="overlay-panel" src="/images/phonecase.png">
@@ -52,7 +52,7 @@
 {{-- Samsung html --}}
 <div class="product-column">
   <div class="row-product">
-      <div id="proizvod15" class="save-picture disabledbutton" data-category="10" name="Samsung" data-canvas="canvas16" value="1">
+      <div id="proizvod15" class="save-picture disabledbutton" data-category="10" name="Samsung" data-canvas="canvas17" value="1">
           <div class="background-div14">
       <img id="logo-canvas15" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
       <img class="overlay-panel" src="/images/Samsung-P20-Bezpozadine.png">
@@ -75,7 +75,7 @@
   {{-- Huawei html --}}
   <div class="product-column">
       <div class="row-product">
-          <div id="proizvod16" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas17" value="1">
+          <div id="proizvod16" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas18" value="1">
               <div class="background-div15">
           <img id="logo-canvas16" src="/image/<?php if(!empty($image)){echo $image;} ?>">
           <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
@@ -220,11 +220,6 @@
                         <button id="alignVertically14" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
                         <button id="alignHorizontally14" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                         </div>
-                        <div class="repeat-option">
-                          <button id="repeat5" class="repeat-opt">Repeat</button>
-                          <button id="none5" class="repeat-opt">None</button>
-                          <button id="repeat-vertical5" class="repeat-opt">Repeat vertical</button>
-                      </div>
                       </div>
                 </div>
             </div>
@@ -363,7 +358,7 @@
       <h2 class="option-title">T-shirt options</h2>
       <div class="product-wrap">
         <div id="app4" >
-            <canvas id="c4" width="250" height="300"></canvas>
+            <canvas id="c4" class="canvas4" width="250" height="300"></canvas>
         </div>
         <div class="product-options1">
             
@@ -937,60 +932,214 @@
 </div>
 </div>
 
-  
-                                    {{-- New T-shirt Girl html --}}
-                                   {{--  <canvas id="canvasProduct" width=620 height=400></canvas> 
-                                      <div class="product-column" style="width:70%;">
-                                      <div class="row-product" style="width:100%;">
-                                          <div id="proizvod12" class="save-picture disabledbutton" name="Poster" value="1">
-                                              <div class="background-div11 containerMask">
-                                          <img id="logo-canvas12 " class="transform" src="/image/ ">
-                                          <img class="overlay-panel " src="/images/Maska.png">
-                                              </div>
-                                          </div>
-                                      <div class="preview-info">
-                                          <span class="preview-name">
-                                              Poster
-                                          </span>
-                                          <div>
-                                          <button id="edit-product12">Edit</button>
-                                          <button id="enabled-product12">Disabled</button>
-                                          </div>
-                                      </div>
-                                      </div>
-                                      </div>
+<div class="row">
 
---}}
+  {{-- Wallpaper html --}}
+    <div class="product-column">
+    <div class="row-product">
+    <div id="proizvod17" class="save-picture disabledbutton" data-category="15" name="Wallpapers" data-canvas="canvas19" value="1">
+        <div class="background-div16">
+    <img id="logo-canvas17" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+    <img class="overlay-panel" src="/images/Poster.png">
+        </div>
+    </div>
+<div class="preview-info">
+    <span class="preview-name">
+      Wallpaper
+    </span>
+    <div>
+    <button id="edit-product16" class="edit-button">Edit</button>
+    <button id="enabled-product16" class="enable-button">Disabled</button>
 
-                                          {{-- Canvas edit for Poster --}}
-{{-- <div id="product15" class="img-div" data-value="1" style="display:none">
 
-  <div id="app15" >
-      <canvas id="c15" width="250" height="300"></canvas>
-  </div>
-  <div class="product-options11">
-      <p>Poster options</p>
-      <div class="color-choose">
+    </div>
+</div>
+</div>
 
-          <div class="container">
-              <div class="output" id="output"></div>
 
-              <div class="result-wrp">
-                 <p>Choose a color</p>
-                <input type="color" id="color11">
-              </div>
-              <label>
-                  <span>Scale:</span>
-                  <input type="range" id="scale-control11"   value="1.5" min="0.005" max="1.5" step="0.005">
-              </label>
-              <button id="alignVertically11">Vertically</button>
-              <button id="alignHorizontally11">Horizontally</button>
+</div>
+
+{{-- Canvas html --}}
+<div class="product-column">
+<div class="row-product">
+    <div id="proizvod18" class="save-picture disabledbutton" data-category="16" name="Canvas" data-canvas="canvas20" value="1">
+        <div class="background-div17">
+    <img id="logo-canvas18" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
+    <img class="overlay-panel" src="/images/Poster.png">
+        </div>
+    </div>
+<div class="preview-info">
+    <span class="preview-name">
+       Canvas
+    </span>
+    <div>
+    <button id="edit-product17" class="edit-button">Edit</button>
+    <button id="enabled-product17" class="enable-button" onclick="">Disabled</button>
+    </div>
+</div>
+</div>
+
+</div>
+
+
+{{-- Sledeci html --}}
+<div class="product-column">
+    <div class="row-product">
+        <div id="proizvod19" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas121" value="1">
+            <div class="background-div18">
+        <img id="logo-canvas19" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+        <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
             </div>
-      </div>
-  </div>
-  </div> --}}
+        </div>
+    <div class="preview-info">
+        <span class="preview-name">
+            Sledeci
+        </span>
+        <div>
+        <button id="edit-product18" class="edit-button">Edit</button>
+        <button id="enabled-product18" class="enable-button" onclick="">Disabled</button>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+</div>
+ {{-- Canvas edit for Wallpaper --}}
+        
+ <div id="product18" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Wallpaper options</h2>
+  <div class="product-wrap">
+    <div id="app19" >
+        <canvas id="c19" width="250" height="300"></canvas>
+    </div>
+    <div class="product-options12">
+      
+      
+        <div class="color-choose">
+
+            <div class="container">
+                <div class="output" id="output"></div>
+
+                <div class="result-wrp">
+                   <p>Choose a color</p>
+                  <input type="color" id="color15">
+                </div>
+                <label class="scale-lable">
+                    <span>Scale:</span>
+                    <input type="range" id="scale-control15"  value="1.5" min="0.005" max="1.5" step="0.005">
+                </label>
+                <div class="align">
+                <button id="alignVertically15" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                <button id="alignHorizontally15" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                </div>
+                <div class="repeat-option btn-group">
+                    <button id="repeat5" class="repeat-opt">Repeat</button>
+                    <button id="none5" class="repeat-opt">None</button>
+                    <button id="repeat-vertical5" class="repeat-opt">Repeat vertical</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    </div>
+</div>
+        
 
 
+
+
+
+
+
+
+              {{-- Canvas edit for Canvas --}}
+    <div id="product19" class="img-div" data-value="1" style="display:none">
+      <h2 class="option-title">Canvas options</h2>
+      <div class="product-wrap">
+        <div id="app20" >
+            <canvas id="c20" width="250" height="300"></canvas>
+        </div>
+        <div class="product-options13">
+            
+
+          {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
+              {{ csrf_field() }}
+             <input type="file" name="file1" >
+             <input type="submit" value="Upload" name="submit">
+             </form>
+ --}}
+            <div class="color-choose">
+
+                <div class="container">
+                    <div class="output" id="output"></div>
+
+                    <div class="result-wrp">
+                       <p>Choose a color</p>
+                      <input type="color" id="color16">
+                    </div>
+                    <label  class="scale-lable">
+                        <span>Scale:</span>
+                        <input type="range" id="scale-control16"   value="1.5" min="0.005" max="2" step="0.005">
+                    </label>
+                    <div class="align">
+                    <button id="alignVertically16" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                    <button id="alignHorizontally16" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                    </div>
+                    <div class="repeat-option btn-group">
+                      <button id="repeat6" class="repeat-opt">Repeat</button>
+                      <button id="none6" class="repeat-opt">None</button>
+                      <button id="repeat-vertical6" class="repeat-opt">Repeat vertical</button>
+                  </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+         {{-- Canvas edit for Huawei --}}
+         <div id="product20" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Huawei options</h2>
+          <div class="product-wrap">
+            <div id="app21" >
+                <canvas id="c21" width="250" height="300"></canvas>
+            </div>
+            <div class="product-options14">
+
+               {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" >
+                 <input type="submit" value="Upload" name="submit">
+                 </form> --}}
+
+                <div class="color-choose">
+
+                    <div class="container">
+                        <div class="output" id="output"></div>
+
+                        <div class="result-wrp">
+                           <p>Choose a color</p>
+                          <input type="color" id="color17">
+                        </div>
+                        <label  class="scale-lable">
+                            <span>Scale:</span>
+                            <input type="range" id="scale-control17"  value="1.5" min="0.005" max="1.5" step="0.005">
+                        </label>
+                        <div class="align">
+                        <button id="alignVertically17" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally17" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                        </div>
+                        <div class="repeat-option btn-group">
+                          <button id="repeat7" class="repeat-opt">Repeat</button>
+                          <button id="none7" class="repeat-opt">None</button>
+                          <button id="repeat-vertical7" class="repeat-opt">Repeat vertical</button>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+         </div>
 
     </div>
     @if(!empty($image))
@@ -1510,7 +1659,6 @@ function loadTshirt(objects){
     // Scale option for T-shirt
     $('#scale-control1').on('input', function () {
       $(this).trigger('change');
-      alert($(this).val());
       img.scale(parseFloat($(this).val())).setCoords();
       canvas4.requestRenderAll();
   });
@@ -1538,6 +1686,7 @@ function loadTshirt(objects){
     canvas4.clear();
     canvas4.dispose();
     canvas4 = new fabric.Canvas('c4');
+
     canvas4.requestRenderAll();
     
     event.preventDefault();
@@ -2129,8 +2278,15 @@ $("#capture").click(function(event){
      
       var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
-        html2canvas(el).then(function (canvas){
-            var imgData = canvas.toDataURL("image/png" , 0.9);
+      canvasPicture = el.getAttribute("data-canvas");
+        html2canvas(el).then(function (canvasA){
+          var numbers = canvasPicture.match(/(\d+)/); 
+          var can = document.getElementById("c" + numbers[0]);
+          
+
+          picture = can.toDataURL("image/png").replace("image/png", "image/octet-stream");
+         
+            var imgData = canvasA.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
             console.log(originalImagePath);
             var category = el.getAttribute('data-category');
@@ -2151,7 +2307,8 @@ $("#capture").click(function(event){
                         originalImagePath: originalImagePath,
                         canvasImage : canvasImage,
                         gedner : gender,
-                        category : category
+                        category : category,
+                        picture : picture
                     },
                     beforeSend: function(){
                       // Show image container

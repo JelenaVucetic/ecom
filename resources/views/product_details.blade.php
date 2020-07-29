@@ -54,14 +54,29 @@
   <div class="row desctop-product">
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
         <div id="desctop-left">
-          <input type="hidden" value="{{$imageFront->color}}" id="productColor" display="none" name="pro_color">
+        
+          <input type="hidden" value="@if($imageFront){{$imageFront->color}}@endif" id="productColor" display="none" name="pro_color">
+          <input type="hidden" value="{{$product->gender}}" id="productGender" display="none" name="pro_gender">
           <img style="width:50%"  src="{{url('design', $design->name)}}"> 
-          <img id="blank-image" src="{{url('image',$imageBack)}}"> 
+
+          @if ($product->gender=="unisex" && $product->category_id == 6)
+         
+          <img id="blank-image" src="{{url('image',$imageBack)}}"> x
+        
+          @elseif(strpos($product->name, "case"))
+            <img id="blank-image" src="{{url('site-images',$imageBack)}}"> 
+          @else
+         
+            <img id="blank-image" src="{{url('site-images',$imageBack)}}"> 
+          @endif
+         
+          
         </div>
       </div>
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <div id="desctop-middle">
           <img id="main-image" src="{{url('image', $imageFront->name)}}">
+         
           <div class="wishlist">
             <?php
                   $wishData = DB::table('wishlist')
@@ -237,7 +252,7 @@
           @elseif($pro_cat->category->name == "Samsung Cases")
           <div class="phone-model">
             <h5>Model</h5>
-            <select class="cases">
+            <select class="cases" id="cases">
               <option value="Samsung Galaxy S20">Samsung Galaxy S20</option>
               <option value="Samsung Galaxy S20+">Samsung Galaxy S20+</option>
             </select>

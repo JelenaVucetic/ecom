@@ -90,14 +90,20 @@ class HomeController extends Controller
         $designs = Design::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
         $products = Product::orderBy('id', 'desc')->paginate(28);
+        $tShirts = Product::where('category_id', 6)->get();
+       
+        $hoodies = Product::where('category_id', 9)->get();
+        $cases1 = Category::where('parent_id', $parentId = Category::where('name', "Cases")
+                ->value('id'))
+                ->pluck('id')
+                ->all();
+                $cases = Product::whereIn('category_id', $cases1)->get();
+  /*     
+        foreach($tShirts as $t) {
+            dd($t->images);
+        } */
 
-        $tShirts = DB::table('product')
-                ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
-                ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'T-Shirts')
-                ->get();
-
-        $cases = DB::table('product')
+  /*       $cases = DB::table('product')
                 ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
                 ->join('categories', 'categories.id', '=', 'product.category_id')
                 ->where('categories.name', '=', 'Samsung Cases') 
@@ -110,7 +116,7 @@ class HomeController extends Controller
                 ->join('categories', 'categories.id', '=', 'product.category_id')
                 ->where('categories.name', '=', 'Hoodies & Sweatshirts')
                 ->get();
-
+ */
 
 
         return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies'));
@@ -118,10 +124,11 @@ class HomeController extends Controller
 
     public function product_details($id)
     {
-        
         $product = DB::table('product')->where('id', $id)->first();
         $find_cat = Product::findOrFail($id);
+
         if($find_cat->category->name == "T-Shirts"){
+            if($product->gender == "female"){
             $imageFront = DB::table('images')->where([
                 ['product_id', "=", $id],
                 ['color' , "=", 'white'],
@@ -129,6 +136,24 @@ class HomeController extends Controller
             ])->first();
                 
             $imageBack = "U-one-18.jpg";
+            }elseif($product->gender == "male"){
+                $imageFront = DB::table('images')->where([
+                    ['product_id', "=", $id],
+                    ['color' , "=", 'white'],
+                    ['position' , "=", 'front'],
+                ])->first();
+                    
+                $imageBack = "U1-Običnamajica-Bijela-Pozadi.jpg";
+            }else{
+                $pictures = DB::table('images')->where([
+                    ['product_id', "=", $id],
+                    ['color' , "=", 'white'],
+                    ['position' , "=", 'front'],
+                ])->get();
+
+               $imageFront = $pictures[0];
+               $imageBack = $pictures[1]->name;
+            }
                 
         }elseif($find_cat->category->name == "Iphone Cases"){
             $imageFront = DB::table('images')->where([
@@ -137,8 +162,51 @@ class HomeController extends Controller
             ])->first();
             $imageBack = "Iphone-II-Pro-Bezpozadine1.png";
            
+        }elseif($find_cat->category->name == "Samsung Cases"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,'transparent']
+            ])->first();
+            $imageBack = "Samsung-P20-Bezpozadine.png";
+        }elseif($find_cat->category->name == "Huawei Cases"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,'transparent']
+            ])->first();
+            $imageBack = "Huawei-P20-Bezpozadinecopy.png";
+        }elseif($find_cat->category->name=="Posters"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size',"=" ,'A3'],
+                ['color', '=', 'white']
+            ])->first();
+            $imageBack = "Poster---Bijeli-Ram---A3.jpg";
+        }elseif($find_cat->category->name=="Pictures"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "Canvas-mockup-thumbnail.png";
+        }elseif($find_cat->category->name=="Wallpapers"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size','=', 'vertical']
+            ])->first();
+            $imageBack = "Tapete-Thumbnail-mockup-2.png";
+        }else {
+         
         }
-       
+
+        $cat = Category::where('id',$find_cat->category->id)->first("name");
+        $cat = $cat->name;
+     
+        $product_category = Category::where('parent_id', $parentId = Category::where('id', $cat)
+                ->value('id'))
+                ->pluck('id')
+                ->all();
+        
+         $mainCategory = Category::where("id",$find_cat->category->id)->first(); 
+        
+
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
@@ -194,8 +262,11 @@ class HomeController extends Controller
 
     public function viewWishlist()
     {
-        $Products = DB::table('wishlist')->leftJoin('product', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get();
+         $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); 
+
+     /*    $Products = Product::leftJoin('wishlist', 'wishlist.pro_id', '=' , 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); */
         $categories = Category::where('parent_id',NULL)->get();
+    
         return view('wishlist', compact('Products', 'categories'));
     }
 
@@ -356,11 +427,38 @@ class HomeController extends Controller
         
         $output = '';
          foreach($products as $product){
+             
             $output.= " <div class='product col-sm-6 col-md-3 col-6'>".
           "<a href='/product_details/".$product->id ."'  class=''>".
                 "<div class=''>".
-                "    <div class='img-div'>".
-                      "  <img src='/images/".$product->image ." ' class='' alt=''>".
+                "    <div class='img-div'>";
+                if($product->images){
+                       
+                foreach ($product->images as $item){
+                if($product->category->name=="T-Shirts"){
+               
+                  if ($item->color == "white" && $item->position == "front"){
+                 $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                  break;
+                }
+                  }elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent"){
+                       $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
+                  break;
+                  }elseif($product->category->name=="Pictures"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-pictures" alt="'.$product->category->name.'">';
+                  break;
+                  }else{
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
+                  break;
+                    }
+                
+               
+            /* }else{
+                $output .=   '<img src="{{ url"image", $item->name) }}" class="" alt="'.$product->category->name.'">';
+            break; */
+            }
+        }
+             $output .=        
                   "  </div>".
                    " <div class=''>".
                        " <p class=''> ".$product->name." </p>";
@@ -642,39 +740,112 @@ class HomeController extends Controller
 
 
     public function loadImages(Request $request){
+        if($request->gender == "female"){
         if($request->position == 'front'){
                 $image = DB::table('images')->where([
                     ['product_id', "=", $request->id],
                     ['color' , "=",$request->color],
                     ['position' , "=", 'front'],
+                    ['gender' , "=", 'female'],
                 ])->first();
-                $blankImage = 'back'.$request->color.'.jpg';
+                $blankImage = 'back'.$request->color.'female.jpg';
         }else{
             $image = DB::table('images')->where([
                 ['product_id', "=", $request->id],
                 ['color' , "=",$request->color],
                 ['position' , "=", 'back'],
+                ['gender' , "=", 'female'],
             ])->first();
-            $blankImage = 'front'.$request->color.'.jpg';
+            $blankImage = 'front'.$request->color.'female.jpg';
         }
 
-        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }elseif($request->gender == "male"){
+        if($request->position == 'front'){
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color' , "=",$request->color],
+                ['position' , "=", 'front'],
+                ['gender' , "=", 'male'],
+            ])->first();
+            $blankImage = 'back'.$request->color.'male.jpg';
+    }else{
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['color' , "=",$request->color],
+            ['position' , "=", 'back'],
+            ['gender' , "=", 'male'],
+        ])->first();
+        $blankImage = 'front'.$request->color.'male.jpg';
+    }
+        
+    }else{
+        $pictures = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['color' , "=", $request->color],
+            ['position' , "=", $request->position],
+        ])->get();
+
+       $image = $pictures[0];
+       $blankImage = $pictures[1]->name;
+    }
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage, 'gender' => $request->gender));
     }
 
     public function loadImagesPhone(Request $request){
       
             $image = DB::table('images')->where([
                 ['product_id', "=", $request->id],
-                ['color' , "=",$request->color]
+                ['color' , "=",$request->color],
+                ['size',"=",$request->phoneModel]
             ])->first();
-           
+
+           if($request->pro_cat=="Iphone Cases"){
+            if($request->phoneModel == "iPhone XI Pro"){
+                    if($request->color=="Black"){
+                        $blankImage = 'Iphone-II-Pro-Crna.png';
+                    }else{
+                        $blankImage = 'Iphone-II-Pro-Bezpozadine1.png';
+                    }
+                }else{
+
+                }
+           }elseif($request->pro_cat=="Samsung Cases"){
+               if($request->phoneModel == "Samsung Galaxy S20"){
+                if($request->color=="black"){
+                    $blankImage = 'SamsungGalaxy-P20-Crna.png';
+                }else{
+                    $blankImage = 'Samsung-P20-Bezpozadine.png';
+                }
+               }else{
+                if($request->color=="black"){
+                    $blankImage = 'Samsung-S20Plus-Crna.png';
+                }else{
+                    $blankImage = 'Samsung-S20Plus-Bezpozadine.png';
+                }
+               }
+         
+           }elseif($request->pro_cat=="Huawei Cases"){
             if($request->color=="Black"){
-                $blankImage = 'Iphone-II-Pro-Crna.png';
+                $blankImage = 'Huawei-P20-Crna.png';
             }else{
-                $blankImage = 'Iphone-II-Pro-Bezpozadine1.png';
+                $blankImage = 'Huawei-P20-Bezpozadinecopy.png';
             }
-           
+           }
+          
         
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }
+
+    public function loadImagesPosters(Request $request){
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['color' , "=",$request->color],
+            ['size',"=",$request->size]
+        ])->first();
+
+        $blankImage = $request->size . $request->color . ".jpg"; 
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }

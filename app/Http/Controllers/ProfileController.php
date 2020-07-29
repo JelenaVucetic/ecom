@@ -158,8 +158,7 @@ class ProfileController extends Controller
     }
 
     public function myWishlist() {
-        $Products = DB::table('wishlist')->leftJoin('product', 'wishlist.pro_id', '=', 'product.id')
-                                        ->where("user_id", "=" , Auth::user()->id)->get();
+        $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); 
         $categories = Category::where('parent_id',NULL)->get();
         return view('profile.my_wishlist', compact('Products', 'categories'));
     }

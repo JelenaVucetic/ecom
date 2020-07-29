@@ -66,9 +66,31 @@
           <div class="product">
             <a href="{{ url('/product_details', [$tshirt->id]) }}" class="">
               <div class="">
-                <div  class="img-div">
-                    <img src="{{ url('images', $tshirt->image) }}" class="" alt="">
-                </div>
+                <div class="img-div">
+                  @if ($tshirt->images)
+                  @foreach ($tshirt->images as $item)
+                  @if($tshirt->category->name=="T-Shirts")
+                     @if ($item->color == "white" && $item->position == "front")
+                    <img src="{{ url('image', $item->name) }}" class="" alt="">
+                    @break
+                    @endif
+                    @elseif( $tshirt->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                    @break
+                    @elseif($tshirt->category->name=="Pictures")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                    @break
+                    @else
+                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                    @break
+                    @endif 
+                  @endforeach
+                 
+                 @else
+                  <img src="{{ url('images', $tshirt->image) }}" class="" alt="">
+                  @break
+                  @endif
+              </div>
                 <div class="">
                     <p class="">{{ $tshirt->name }}</p>
                     <?php
@@ -104,9 +126,32 @@
           <div class="product">
             <a href="{{ url('/product_details', [$case->id]) }}" class="">
               <div class="">
-                <div class="">
-                    <img src="{{ url('images', $case->image) }}" class="" alt="">
-                </div>
+                <div class="img-div">
+                           
+                  @if ($case->images)
+                  @foreach ($case->images as $item)
+                  @if($case->category->name=="T-Shirts")
+                    @if ($item->color == "white" && $item->position == "front")
+                    <img src="{{ url('image', $item->name) }}" class="" alt="">
+                    @break
+                    @endif
+                    @elseif( $case->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                    @break
+                    @elseif($case->category->name=="Pictures")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                    @break
+                    @else
+                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                    @break
+                    @endif
+                  @endforeach
+                 
+                 @else
+                  <img src="{{ url('images', $case->image) }}" class="" alt="">
+                  @break
+                  @endif
+              </div>
                 <div class="">
                     <p class="">{{ $case->name }}</p>
                     <?php
@@ -142,9 +187,35 @@
           <div class="product">
             <a href="{{ url('/product_details', [$hoodie->id]) }}" class="">
               <div class="">
-                <div class="">
-                    <img src="{{ url('images', $hoodie->image) }}" class="" alt="">
-                </div>
+                <div class="img-div">
+                           
+                  @if ($hoodie->images)
+                  @foreach ($hoodie->images as $item)
+                  @if($hoodie->category->name=="T-Shirts")
+                    @if ($item->color == "white" && $item->position == "front")
+                <img src="{{ url('image', $item->name) }}" class="" alt="">
+                    @break
+                    @endif
+                    @elseif( $hoodie->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                    @break
+                    @elseif($hoodie->category->name=="Pictures")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                    @break
+                    @elseif($product->category->name=="Wallpapers")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                    @break
+                    @else
+                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                    @break
+                    @endif
+                  @endforeach
+                 
+                 @else
+                  <img src="{{ url('images', $hoodie->image) }}" class="" alt="">
+                  @break
+                  @endif
+              </div>
                 <div class="">
                     <p class="">{{ $hoodie->name }}</p>
                     <?php

@@ -154,14 +154,26 @@
                                 @if($product->category->name=="T-Shirts")
                                   @if ($item->color == "white" && $item->position == "front")
                                   <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                  @break
                                   @endif
                                   @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
                                   <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                  @break
+                                  @elseif($product->category->name=="Pictures")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                                  @break
+                                  @elseif($product->category->name=="Wallpapers")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                  @break
+                                  @else
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                  @break
                                   @endif
                                 @endforeach
                                
                                @else
                                 <img src="{{ url('images', $product->image) }}" class="" alt="">
+                                @break
                                 @endif
                             </div>
                             <div class="">

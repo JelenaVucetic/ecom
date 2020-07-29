@@ -48,7 +48,23 @@ class AjaxUploadController extends Controller
     function save(Request $request){
         $data = $request->all();
        
-      
+      $picture = $data['picture'];
+
+      if($picture!==null && $picture!=="0"){
+        $picture = explode(";" ,  $picture)[1];  
+        $picture = explode("," ,  $picture)[1];
+        $picture = str_replace(" ", "+",  $picture);
+        $picture = base64_decode( $picture);
+        $characters1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name1 = mt_rand(1000000, 9999999)
+        . mt_rand(1000000, 9999999)
+        . $characters1[rand(0, strlen($characters1) - 1)];
+        $string2 = str_shuffle($name1);
+        $string2 .=  round(microtime(true) * 1000);
+        
+        file_put_contents("canvas_picture/". $string2 . ".png", $picture);
+    }  
+
       $title = $data['name'];
       $image = $data['image'];;
       $tags = $data['tag'];
@@ -101,6 +117,16 @@ if($original=='Phone Case'){
     $price = 12;
 }else if($original=='Hoodie'){
     $price = 25;
+}else if($original == "Poster"){
+    $price = 11;
+    $priceB1 = 18;
+    $priceB2 = 15;
+}else if($original == "Canvas"){
+    $price = 0;
+    $priceB2 = 20;
+    $priceB1 = 28;
+}else if($original == "Wallpapers"){
+    $price = 15;
 }else{
     $price = 0;
 }
@@ -132,10 +158,19 @@ if($row==null){
     $idDesign = $row->id;
 }
 
-
+if($original == "Poster"){
  $idProduct = DB::table('product')->insertGetId([
-'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category
+'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category, 'price_b2' => $priceB2 , 'price_b1' => $priceB1
 ]); 
+ }else if($original == "Canvas"){
+    $idProduct = DB::table('product')->insertGetId([
+        'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category, 'price_b1' => $priceB1, 'price_b2' => $priceB2
+        ]); 
+ }else{
+    $idProduct = DB::table('product')->insertGetId([
+        'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category
+        ]);   
+ }
 
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
     ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
@@ -148,11 +183,42 @@ if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
     ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath);
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
-
+    ImageModel::manWhiteTshirt($idProduct, $originalImagePath);
+    ImageModel::manNavyTshirt($idProduct, $originalImagePath);
+    ImageModel::manRedTshirt($idProduct, $originalImagePath);
+    ImageModel::manBlackTshirt($idProduct, $originalImagePath);
+    ImageModel::manRedBackTshirt($idProduct, $originalImagePath);
+    ImageModel::manNavyBackTshirt($idProduct, $originalImagePath);
+    ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
+    ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath);
 }
 if($original=='Phone Case'){
     ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
+   
+}
+if($original == 'Samsung'){
     ImageModel::samsungP20PhoneCase($idProduct, $originalImagePath);
+    ImageModel::samsungS20PlusPhoneCase($idProduct, $originalImagePath);
+}
+if($original == "Huawei"){
+    ImageModel::huaweiP20($idProduct, $originalImagePath);
+}
+if($original == "Poster"){
+    ImageModel::blackFrameA3($idProduct, $originalImagePath);
+    ImageModel::blackFrameB1($idProduct, $originalImagePath);
+    ImageModel::blackFrameB2($idProduct, $originalImagePath);
+    ImageModel::blackFrameThumb($idProduct, $originalImagePath);
+    ImageModel::whiteFrameA3($idProduct, $originalImagePath);
+    ImageModel::whiteFrameB1($idProduct, $originalImagePath);
+    ImageModel::whiteFrameB2($idProduct, $originalImagePath);
+    ImageModel::whiteFrameThumb($idProduct, $originalImagePath);
+}
+if($original == "Canvas"){
+    ImageModel::canvas($idProduct, $originalImagePath);
+}
+if($original == "Wallpapers"){
+    ImageModel::wallpaperThumb($idProduct, $originalImagePath);
+    ImageModel::wallpaper($idProduct, $originalImagePath);
 }
 
 

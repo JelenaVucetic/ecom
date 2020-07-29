@@ -323,6 +323,74 @@ $(document).ready(function(){
                             }
                         });
 
+          // Enable and edit Samsung
+          $('#edit-product15').click(function() {
+            if(document.getElementById('product17').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product17').style.display = 'flex';
+            }else{
+                document.getElementById('product17').style.display = 'none';
+            }
+        });
+        $('#enabled-product15').click(function(){
+            if($('#proizvod16').hasClass('disabledbutton')){
+                $('#proizvod16').removeClass('disabledbutton');
+                $( "#proizvod16" ).attr( "value" , 0 );
+                $('#enabled-product15').html('Enabled');
+                $('#enabled-product15').addClass('enable');
+            }else{
+                $('#proizvod16').addClass('disabledbutton');
+                $( "#proizvod16" ).attr( "value" , 1 );
+                $('#enabled-product15').html('Disabled');
+                $('#enabled-product15').removeClass('enable');
+            }
+        });
+
+         // Enable and edit Wallpaper
+         $('#edit-product16').click(function() {
+            if(document.getElementById('product18').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product18').style.display = 'flex';
+            }else{
+                document.getElementById('product18').style.display = 'none';
+            }
+        });
+        $('#enabled-product16').click(function(){
+            if($('#proizvod17').hasClass('disabledbutton')){
+                $('#proizvod17').removeClass('disabledbutton');
+                $( "#proizvod17" ).attr( "value" , 0 );
+                $('#enabled-product16').html('Enabled');
+                $('#enabled-product16').addClass('enable');
+            }else{
+                $('#proizvod17').addClass('disabledbutton');
+                $( "#proizvod17" ).attr( "value" , 1 );
+                $('#enabled-product16').html('Disabled');
+                $('#enabled-product16').removeClass('enable');
+            }
+        });
+
+          // Enable and edit Canvas
+          $('#edit-product17').click(function() {
+            if(document.getElementById('product19').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product19').style.display = 'flex';
+            }else{
+                document.getElementById('product19').style.display = 'none';
+            }
+        });
+        $('#enabled-product17').click(function(){
+            if($('#proizvod18').hasClass('disabledbutton')){
+                $('#proizvod18').removeClass('disabledbutton');
+                $( "#proizvod18" ).attr( "value" , 0 );
+                $('#enabled-product17').html('Enabled');
+                $('#enabled-product17').addClass('enable');
+            }else{
+                $('#proizvod18').addClass('disabledbutton');
+                $( "#proizvod18" ).attr( "value" , 1 );
+                $('#enabled-product17').html('Disabled');
+                $('#enabled-product17').removeClass('enable');
+            }
+        });
 
 
 
@@ -343,71 +411,108 @@ $(document).ready(function(){
     $('#product3').mouseup(function(){
         var image = document.getElementById("logo-canvas");
         image.src = canvas3.toDataURL();
+        canvas3.discardActiveObject()
     });
      // canvas on change show t-shirt product
     $('#product4').mouseup(function(){
         var image1 = document.getElementById("logo-canvas1");
         image1.src = canvas4.toDataURL();
+        canvas4.discardActiveObject()
     });
      // canvas on change show mugs product
     $('#product5').mouseup(function(){
         var image2 = document.getElementById("logo-canvas2");
         image2.src = canvas5.toDataURL();
+        canvas5.discardActiveObject()
     });
      // canvas on change show hoodie product
      $('#product6').mouseup(function(){
         var image4 = document.getElementById("logo-canvas3");
         image4.src = canvas6.toDataURL();
+        canvas6.discardActiveObject()
     });
       // canvas on change show hoodie product
       $('#product7').mouseup(function(){
         var image5 = document.getElementById("logo-canvas4");
         image5.src = canvas7.toDataURL();
+        canvas7.discardActiveObject()
     });
         // canvas on change show Graphic T-Shirt Dresses product
         $('#product8').mouseup(function(){
             var image6 = document.getElementById("logo-canvas5");
             image6.src = canvas8.toDataURL();
+            canvas8.discardActiveObject()
         });
         // canvas on change show Notes
         $('#product10').mouseup(function(){
             var image11 = document.getElementById("logo-canvas7");
             image11.src = canvas13.toDataURL();
+            canvas13.discardActiveObject()
         });
 
          // canvas on change show Clock
          $('#product11').mouseup(function(){
             var image12 = document.getElementById("logo-canvas8");
             image12.src = canvas14.toDataURL();
+            canvas14.discardActiveObject()
         });
 
           // canvas on change show Termos
           $('#product12').mouseup(function(){
             var image13 = document.getElementById("logo-canvas9");
             image13.src = canvas15.toDataURL();
+            canvas15.discardActiveObject()
         });
 
          // canvas on change show Ceger
          $('#product13').mouseup(function(){
             var image14 = document.getElementById("logo-canvas10");
             image14.src = canvas16.toDataURL();
+            canvas16.discardActiveObject()
         });
 
          // canvas on change show Poster
          $('#product14').mouseup(function(){
             var image15 = document.getElementById("logo-canvas11");
             image15.src = canvas17.toDataURL();
+            canvas17.discardActiveObject()
         });
 
           // canvas on change show Poster
           $('#product15').mouseup(function(){
             var image16 = document.getElementById("logo-canvas12");
             image16.src = canvas18.toDataURL();
+            canvas18.discardActiveObject()
         });
 
         $('#product16').mouseup(function(){
             var image17 = document.getElementById("logo-canvas15");
             image17.src = canvas19.toDataURL();
+            canvas19.discardActiveObject()
+        });
+
+        $('#product17').mouseup(function(){
+            var image17 = document.getElementById("logo-canvas16");
+            image17.src = canvas20.toDataURL();
+            canvas20.discardActiveObject()
+        });
+
+        $('#product18').mouseup(function(){
+            var image18 = document.getElementById("logo-canvas17");
+            image18.src = canvas21.toDataURL();
+            canvas21.discardActiveObject()
+        });
+
+        $('#product19').mouseup(function(){
+            var image19 = document.getElementById("logo-canvas18");
+            image19.src = canvas22.toDataURL();
+            canvas22.discardActiveObject()
+        });
+
+        $('#product20').mouseup(function(){
+            var image17 = document.getElementById("logo-canvas16");
+            image17.src = canvas20.toDataURL();
+            canvas20.discardActiveObject()
         });
 
 
@@ -475,11 +580,23 @@ $(document).ready(function(){
             $('.background-div10').css("background-color", colorInput10.value);
           });
 
-            // Change Poster color
+            // Change Samsung color
             var colorInput13 = document.querySelector('#color13');
             colorInput13.addEventListener('input', ()=>{
-              $('.background-div14').css("background-color", colorInput10.value);
+              $('.background-div14').css("background-color", colorInput13.value);
             });
+
+              // Change Huawei color
+              var colorInput14 = document.querySelector('#color14');
+              colorInput14.addEventListener('input', ()=>{
+                $('.background-div15').css("background-color", colorInput14.value);
+              });
+
+               // Change Wallpaper color
+               var colorInput15 = document.querySelector('#color15');
+               colorInput15.addEventListener('input', ()=>{
+                 $('.background-div16').css("background-color", colorInput15.value);
+               });
 
 
           $(document).on("change", "#file", function(e){

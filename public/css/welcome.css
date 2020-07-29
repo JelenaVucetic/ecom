@@ -341,7 +341,7 @@
 }
 
 .product {
-    width:200px;
+    width:220px;
     margin-top: 20px;
     padding: 10px;
 }
@@ -410,18 +410,19 @@
 .img-div{
     display: inline-block;
     overflow: hidden; 
+    height: 220px;
 }
 
 .img-div img {
     display: block;
     transition: transform .4s;  
-    transform: scale(3.5);
-    margin-top: 66.125%;
+    transform: scale(3);
+    margin-top: 58.125%;
     margin-bottom: -54%;
 }
 
 .img-div:hover img {
-    transform: scale(3.9);
+    transform: scale(3.3);
     transform-origin: 50% 50%;
 }
 
@@ -432,13 +433,34 @@
 
 .img-div-phone {  
  
-    transform: scale(2.5)!important;
-    margin-top: 38.125%!important;
-    margin-bottom: 32%!important;
+    transform: scale(1.5)!important;
+    margin-top: 8.125%!important;
 }
 
 .img-div-phone:hover  {
-    transform: scale(2.9)!important;
+    transform: scale(1.7)!important;
+    transform-origin: 50% 50%!important;
+}
+
+
+
+.img-div-pictures {  
+    transform: scale(1.2)!important;
+    margin-top: 8.125%!important;
+}
+
+.img-div-wallpapers {  
+    transform: scale(1.7)!important;
+    margin-top: 21.125%!important;
+}
+
+.img-div-wallpapers:hover  {
+    transform: scale(1.9)!important;
+    transform-origin: 50% 50%!important;
+}
+
+.img-div-pictures:hover  {
+    transform: scale(1.4)!important;
     transform-origin: 50% 50%!important;
 }
 
