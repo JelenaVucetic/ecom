@@ -532,8 +532,7 @@ class HomeController extends Controller
     public function giftsForHim() {
         $categories = Category::where('parent_id',NULL)->get();
 
-        $shirts = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $shirts = Product::select('product.*')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','T-Shirts')
         ->where(function ($q) {

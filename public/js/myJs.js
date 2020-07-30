@@ -946,8 +946,11 @@ $("#female-x").on("click", function(){
     dataType: 'json',
     url: '/load_images',
     data: { position:position, color:color, id:id, gender:gender},
+    beforeSend: function(){
+      $("#loading-overlay").show();
+  },
     success: function(response) {
-     
+      $("#loading-overlay").hide(); 
        var blank = response['blankImage'];
        var name = response['image']['name'];
       $("#main-image").attr("src","../image/" +name); 
@@ -964,7 +967,11 @@ $("#female-x").on("click", function(){
       $("#main-image-mobile").attr("src","../image/" +name); 
      
       $("#productColor").val(response['image']['color']);
-    }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      $("#loading-overlay").hide(); 
+      alert("something went wrong");
+  }
   });
   });
 
@@ -983,7 +990,11 @@ $("#female-x").on("click", function(){
       dataType: 'json',
       url: '/load_images_posters',
       data: { color:color, pro_cat:pro_cat, size:size, id:id},
+      beforeSend: function(){
+        $("#loading-overlay").show();
+    },
       success: function(response) {
+        $("#loading-overlay").hide(); 
          var blank = response['blankImage'];
          var name = response['image']['name'];
         $("#main-image").attr("src","../image/" +name); 
@@ -991,7 +1002,11 @@ $("#female-x").on("click", function(){
         $("#main-image-mobile").attr("src","../image/" +name); 
         $("#blank-image-mobile").attr("src","../site-images/" + blank);  
         $("#productColor").val(response['image']['color']);
-      }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        $("#loading-overlay").hide(); 
+        alert("something went wrong");
+    }
     });
     }else{
     var position = $('input[type=radio][name=print]:checked').val();
@@ -1006,7 +1021,11 @@ $("#female-x").on("click", function(){
    dataType: 'json',
    url: '/load_images',
    data: { position:position, color:color, id:id, gender:gender},
+   beforeSend: function(){
+    $("#loading-overlay").show();
+},
    success: function(response) {
+    $("#loading-overlay").hide(); 
       var blank = response['blankImage'];
       var name = response['image']['name'];
      $("#main-image").attr("src","../image/" +name); 
@@ -1023,7 +1042,11 @@ $("#female-x").on("click", function(){
      $("#main-image-mobile").attr("src","../image/" +name); 
     
      $("#productColor").val(response['image']['color']);
-   }
+   },
+   error: function (jqXHR, textStatus, errorThrown) {
+     $("#loading-overlay").hide(); 
+     alert("something went wrong");
+ }
  });
   
 
@@ -1050,7 +1073,11 @@ $("#female-x").on("click", function(){
       dataType: 'json',
       url: '/load_images_posters',
       data: { color:color, pro_cat:pro_cat, size:size, id:id},
+      beforeSend: function(){
+        $("#loading-overlay").show();
+    },
       success: function(response) {
+        $("#loading-overlay").hide(); 
          var blank = response['blankImage'];
          var name = response['image']['name'];
         $("#main-image").attr("src","../image/" +name); 
@@ -1058,7 +1085,11 @@ $("#female-x").on("click", function(){
         $("#main-image-mobile").attr("src","../image/" +name); 
         $("#blank-image-mobile").attr("src","../site-images/" + blank);  
         $("#productColor").val(response['image']['color']);
-      }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        $("#loading-overlay").hide(); 
+        alert("something went wrong");
+    }
     });
     }else if(pro_cat=="Pictures"){
 
@@ -1075,7 +1106,11 @@ $("#female-x").on("click", function(){
   dataType: 'json',
   url: '/load_images_phone',
   data: { color:color, id:id, pro_cat:pro_cat, phoneModel:phoneModel},
+  beforeSend: function(){
+    $("#loading-overlay").show();
+},
   success: function(response) {
+    $("#loading-overlay").hide(); 
      var blank = response['blankImage'];
      var name = response['image']['name'];
     $("#main-image").attr("src","../image/" +name); 
@@ -1083,7 +1118,11 @@ $("#female-x").on("click", function(){
     $("#main-image-mobile").attr("src","../image/" +name); 
     $("#blank-image-mobile").attr("src","../site-images/" + blank);  
     $("#productColor").val(response['image']['color']);
-  }
+  },
+  error: function (jqXHR, textStatus, errorThrown) {
+    $("#loading-overlay").hide(); 
+    alert("something went wrong");
+}
 });
 }
  });

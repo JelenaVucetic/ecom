@@ -52,6 +52,9 @@
 
 <!--   For Desktop -->
   <div class="row desctop-product">
+    <div id="loading-overlay">
+      <div class="loading-icon"></div>
+  </div>  
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
         <div id="desctop-left">
         

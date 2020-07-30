@@ -239,7 +239,7 @@ class Image extends Model
          $imageName1 = "/" .  $image; 
   
          $process1 = new Process('magick convert  '.$path.'\design' . $imageName1 . '
-         -resize 400x400
+         -resize 300x300
          '.$path.'\design' . $imageName1 . '
          '); 
          
@@ -592,7 +592,7 @@ class Image extends Model
          $imageName1 = "/" .  $image; 
   
          $process1 = new Process('magick convert   '.$path.'\design' . $imageName1 . '
-         -resize 400x400
+         -resize 300x300
          '.$path.'\design' . $imageName1 . '
          '); 
          
@@ -2961,7 +2961,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster-CrniRam-A3.jpg"));
      
        
@@ -2988,7 +2988,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-crni-ram.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-crni-ram.png
          ');
@@ -3003,7 +3003,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-crni-ram.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-crni-ram.png ^
         -geometry -340-320 ^
         -compose Multiply -composite ^
@@ -3052,7 +3052,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(700, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Bijeli-Ram---A3.jpg"));
      
        
@@ -3079,7 +3079,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-bijeli-ram.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-bijeli-ram.png
          ');
@@ -3094,7 +3094,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-bijeli-ram.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-bijeli-ram.png ^
         -geometry -700-550 ^
         -compose Multiply -composite ^
@@ -3144,7 +3144,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(800, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Bijeli-Ram---A3---B2---B1---THUMBNAIL.jpg"));
      
        
@@ -3171,7 +3171,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-bijeli-ram-thumb.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-bijeli-ram-thumb.png
          ');
@@ -3186,7 +3186,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-bijeli-ram-thumb.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-bijeli-ram-thumb.png ^
         -geometry -630-550 ^
         -compose Multiply -composite ^
@@ -3234,7 +3234,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(800, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Bijeli-Ram---B1.jpg"));
      
        
@@ -3261,7 +3261,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-bijeli-ram-b1.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-bijeli-ram-b1.png
          ');
@@ -3276,7 +3276,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-bijeli-ram-b1.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-bijeli-ram-b1.png ^
         -geometry -900-550 ^
         -compose Multiply -composite ^
@@ -3324,7 +3324,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(700, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Bijeli-Ram---B2.jpg"));
      
        
@@ -3351,7 +3351,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-bijeli-ram-b2.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-bijeli-ram-b2.png
          ');
@@ -3366,7 +3366,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-bijeli-ram-b2.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-bijeli-ram-b2.png ^
         -geometry -670-820 ^
         -compose Multiply -composite ^
@@ -3416,7 +3416,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(700, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Crni-Ram---A3---B2---B1---THUMBNAIL.jpg"));
      
        
@@ -3443,7 +3443,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-crni-ram-thumb.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-crni-ram-thumb.png
          ');
@@ -3458,7 +3458,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-crni-ram-thumb.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-crni-ram-thumb.png ^
         -geometry -670-650 ^
         -compose Multiply -composite ^
@@ -3506,7 +3506,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(700, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Crni-Ram---B1.jpg"));
      
        
@@ -3533,7 +3533,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-crni-ram-b1.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-crni-ram-b1.png
          ');
@@ -3548,7 +3548,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-crni-ram-b1.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-crni-ram-b1.png ^
         -geometry -270-250 ^
         -compose Multiply -composite ^
@@ -3597,7 +3597,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(550, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $src2 = new \Imagick(public_path("\site-images\Poster---Crni-Ram---B2.jpg"));
      
        
@@ -3624,7 +3624,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-crni-ram-b2.png">';
        
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask-crni-ram-b2.png
          ');
@@ -3639,7 +3639,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask-crni-ram-b2.png">';
        
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-crni-ram-b2.png ^
         -geometry -680-230 ^
         -compose Multiply -composite ^
@@ -4250,7 +4250,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(700, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Canvas-mockup-thumbnail.png"));
         $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
         $src2->writeImage(public_path("\site-images\Canvas-mockup-thumbnail.png"));
@@ -4277,7 +4277,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-canvas.png">';
         
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask_canvas.png
         ');
@@ -4292,7 +4292,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask_canvas.png">';
         
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\canvas_picture'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-canvas.png ^
         -geometry -390-450 ^
         -compose Multiply -composite ^
@@ -4350,9 +4350,9 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(80, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $Y = $src1->getImageHeight()/2;
-        $process = new Process('magick convert '.$path.'/design'.$imageName1.' -roll +0+'. $Y . ' ' .$path.'/image/_orange_270_r.png
+        $process = new Process('magick convert '.$path.'/canvas_picture'.$imageName1.' -roll +0+'. $Y . ' ' .$path.'/image/_orange_270_r.png
    ');
    
    $process->run();
@@ -4362,7 +4362,7 @@ if (!$process8->isSuccessful()) {
    echo $process->getOutput();
    echo '<img src="\image\_orange_270_r.png">';
    
-   $process1 = new Process('magick  montage  '.$path.'/design'.$imageName1.' +clone +clone +clone -tile x4 
+   $process1 = new Process('magick  montage  '.$path.'/canvas_picture'.$imageName1.' +clone +clone +clone -tile x4 
    -geometry +0+0  '.$path.'/image/_1col.png
    ');
    
@@ -4510,9 +4510,9 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(80, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("canvas_picture". $imageName1));
        $Y = $src1->getImageHeight()/2;
-        $process = new Process('magick convert '.$path.'/design'.$imageName1.' -roll +0+'. $Y . ' ' .$path.'/image/_orange_270_r.png
+        $process = new Process('magick convert '.$path.'/canvas_picture'.$imageName1.' -roll +0+'. $Y . ' ' .$path.'/image/_orange_270_r.png
    ');
    
    $process->run();
@@ -4522,7 +4522,7 @@ if (!$process8->isSuccessful()) {
    echo $process->getOutput();
    echo '<img src="\image\_orange_270_r.png">';
    
-   $process1 = new Process('magick  montage  '.$path.'/design'.$imageName1.' +clone +clone +clone -tile x4 
+   $process1 = new Process('magick  montage  '.$path.'/canvas_picture'.$imageName1.' +clone +clone +clone -tile x4 
    -geometry +0+0  '.$path.'/image/_1col.png
    ');
    
