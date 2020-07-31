@@ -48,7 +48,7 @@
                 @if (Auth::check())
                 <ul class="nav-flyout" style="width: 83%;">            
                   <li>
-                    <img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 100%;object-fit: cover;">
+                    <img src="/avatars/{{ Auth::user()->avatar }}" alt="" style="width: 90px;height: initial;object-fit: cover;">
                   </li>
                   
                   <li>
@@ -75,7 +75,7 @@
               @foreach($categories as $category)
                 <li>
                   <div style=" display: flex;">
-                     <img src="/site-images/{{$category->image}}" alt="" style="width:50px;height: 50px;margin: auto 5px;">
+                     <img src="/site-images/{{$category->image}}" alt="" style="width:50px;height: 50px;margin: auto 5px;object-fit: cover;">
                     <a href="#"><i class="ion-bag"></i> <span>{{ ucwords($category->name) }}</span></a>
                   </div>
                     @if($category->children)

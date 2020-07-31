@@ -18,15 +18,21 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 1,
-            'name'=> 'Urban clothing'
+            'name'=> 'Urban clothing',
+            'image' => '1596109198.jpg',
+            'cover_image' => '1596109198second.jpg'
         ]);
         Category::create([
             'id' => 2,
-            'name'=> 'Cases'
+            'name'=> 'Cases',
+            'image' => '1596110174.jpg',
+            'cover_image' => '1596110174second.jpg'
         ]);
         Category::create([
-            'id' => 3,
-            'name'=> 'Wall ART'
+            'id' => 3,  
+            'name'=> 'Wall ART',
+            'image' => '1596110212.jpg',
+            'cover_image' => '1596110212second.jpg'
         ]);
         Category::create([
             'id' => 4,

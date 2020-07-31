@@ -5,7 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>URBANONE</title>
+    
+        <link rel="icon" type="image/png" href="{!! asset('/site-images/favicon-16x16.png') !!}" sizes="16x16">
+        <link rel="icon" type="image/png" href="{!! asset('/site-images/favicon-32x32.png') !!}" sizes="32x32">
+        <link rel="icon" type="image/png" href="{!! asset('/site-images/favicon-96x96.png') !!}" sizes="96x96">
 
+        <link rel="apple-touch-icon" href="older-iPhone.png"> 
+        <link rel="apple-touch-icon" sizes="180x180" href="{!! asset('/site-images/iPhone-6-Plus.png') !!}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{!! asset('/site-images/iPad-Retina.png') !!}">
+        <link rel="apple-touch-icon" sizes="167x167" href="{!! asset('/site-images/iPad-Retina.png') !!}">
+
+        <meta property="og:title" content="URBANONE">
+        <meta property="og:image" content="https://urbanone.me/site-images/1596110174second.jpg">
+        @yield('meta')
 
      <!-- Example docs (CSS for helping component example file)-->
     <link href="https://propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />

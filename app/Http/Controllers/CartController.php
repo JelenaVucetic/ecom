@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\Address;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -15,6 +16,7 @@ class CartController extends Controller
     //
     public function index()
     {
+
         $cartItems = Cart::content();
         $categories = Category::where('parent_id',NULL)->get();
         $oldPrice =  Cart::subtotal();
@@ -45,8 +47,16 @@ class CartController extends Controller
             }
         }
 
+        
+        $latestOrder = Order::orderBy('created_at','DESC')->first();
+        if($latestOrder) {
+            $order_number = 'U1-'.str_pad($latestOrder->id + 1, 6, "0", STR_PAD_LEFT);
+        } else {
+            $order_number = "U1-000001";
+        }
+    
 
-        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads'));
+        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads', 'order_number'));
     }
 
     public function addItem(Request $request, $id)
@@ -93,7 +103,7 @@ class CartController extends Controller
         Cart::update($rowId, $qty);
         $cartItems = Cart::content();
         $oldPrice =  Cart::subtotal();
-         $cartCount =  Cart::count(); 
+        $cartCount =  Cart::count(); 
 
          $countTotal=0;
         foreach($cartItems as $c) {
@@ -104,7 +114,7 @@ class CartController extends Controller
         if( $countTotal >= 3 &&  $countTotal < 5 ) {
             $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
-            $cartSubTotal = Cart::subtotal() * 0.8;
+            $cartSubTotal = (float) Cart::subtotal() * 0.8;
           //  Cart::update('subtotal' => $cartSubTotal);
         } else {
             $cartSubTotal = Cart::subtotal();

@@ -7,7 +7,7 @@
 @section('content')
 <script>
 $(document).ready(function(){
-for( let i=1;i<20;i++) {
+for( let i=1;i<200;i++) {
     $('#upCart'+i).on('change keyup', function(){
         var newqty = $('#upCart'+i).val();
         var rowId = $('#rowId'+i).val();
@@ -46,7 +46,7 @@ for( let i=1;i<20;i++) {
 </script>
 <script>
     $(document).ready(function(){
-    for( let i=1;i<20;i++) {
+    for( let i=1;i<200;i++) {
         $('#upCartPhone'+i).on('change keyup', function(){
             var newqty = $('#upCartPhone'+i).val();
             var rowId = $('#rowIdPhone'+i).val();
@@ -389,7 +389,8 @@ for( let i=1;i<20;i++) {
                     <div class="card card-body">
                         <div>
                             <ul class="order-menu list-unstyled">
-                                <li class="d-flex justify-content-between"><span>Order Number:</span><strong>XYZ-0001</strong></li>
+                                <input type="hidden" value="{{$order_number}}" name="order_number">
+                                <li class="d-flex justify-content-between"><span>Order Number:</span><strong>{{$order_number}}</strong></li>
                                 <li class="d-flex justify-content-between"><span>Company</span><strong>Urban One</strong></li>
                                 <li>
                                     <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
@@ -401,7 +402,7 @@ for( let i=1;i<20;i++) {
                         </div>
                         <div class="payment">
                             <div style="width:100%;">
-                                <img style="width: 300px; margin:auto;  " src="\site-images\visa-mastercard-horizontal.svg" alt="">
+                                <img style="width: 250px; margin:auto;  " src="\site-images\banner-010.png" alt="">
                             </div>                         
                             <h6>What are your credit card details?</h6>
                             <div class="form-group" class="form-label">

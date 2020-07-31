@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('meta')
+  <meta property="og:title" content="URBANONE">
+  <meta property="og:image" content="https://urbanone.me/image/{{$imageFront->name}}">
+@endsection
+
 @section('phone-css')
     <link rel="stylesheet" href="/css/product-details-phone.css">
 @endsection
