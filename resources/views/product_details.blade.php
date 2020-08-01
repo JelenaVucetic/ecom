@@ -401,38 +401,39 @@
                     </div>               
                 </label>
               </div>
-            @elseif($pro_cat->category->name == "Sacks") 
+            @elseif($pro_cat->category->name == "Bags") 
             <div class="select-color">
               <h5>Color</h5>
+              <label class="white whiteBlack">
+                <div class="black-border">
+                  <input type="radio" name="color" class="kids-color-class" value="Black"checked>
+                  <span style=" background: linear-gradient( -45deg, rgb(245, 240, 242), rgb(247, 243, 245) 49%, white 49%, rgb(10, 9, 9) 51%, rgb(12, 5, 10) 51% );"></span>
+                </div>               
+            </label>
                 <label class="white whiteRed" >
                   <div class="black-border">
-                    <input type="radio" name="color" value="white and red"  class="kids-color-class" checked>
+                    <input type="radio" name="color" value="Red"  class="kids-color-class" >
                     <span style=" background: linear-gradient( -45deg, rgb(248, 28, 28), rgb(245, 31, 31) 49%, white 49%, white 51%, rgb(253, 251, 251) 51% );"></span>
                   </div>    
-                </label>
-                <label class="white whiteBlack">
-                  <div class="black-border">
-                    <input type="radio" name="color" class="kids-color-class" value="white and black" >
-                    <span style=" background: linear-gradient( -45deg, rgb(245, 240, 242), rgb(247, 243, 245) 49%, white 49%, rgb(10, 9, 9) 51%, rgb(12, 5, 10) 51% );"></span>
-                  </div>               
-              </label>
+                </label>  
             </div>
 
             @elseif($pro_cat->category->name == "Clocks") 
             <div class="select-color">
               <h5>Color</h5>
+              <label class="black">
+                <div  class="white-border">
+                  <input type="radio" name="color" class="color-class" value="black" checked>
+                  <span></span>
+                </div>               
+            </label>
                 <label class="white">
                   <div class="black-border">
-                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <input type="radio" name="color" value="white"  class="color-class" >
                     <span></span>
                   </div>    
                 </label>
-                <label class="black">
-                  <div  class="white-border">
-                    <input type="radio" name="color" class="color-class" value="black" >
-                    <span></span>
-                  </div>               
-              </label>
+               
             </div>
             @elseif($pro_cat->category->name == "Mugs") 
             <div class="select-color">
@@ -471,8 +472,8 @@
             <div class="choose-size">
               <h5>Shape</h5>
               <select class="coaster-shape" id=''>
-                <option value="Rounded">Rounded</option>
-                <option value="Squared">Squared</option>
+                <option value="Square">Squared</option>
+                <option value="Circle">Rounded</option>
               </select>
             </div>
             <div class="choose-size">
