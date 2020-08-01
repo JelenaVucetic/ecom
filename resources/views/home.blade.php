@@ -11,9 +11,11 @@
       @foreach ($designs as $design)
         <div class="slide-item">
           <div class="design-box">
-            <img src="/image/{{$design->name}}">
+            <div class="design-image">
+              <img src="/image/{{$design->name}}" style="max-witdh:100%;max-height:100%">
+            </div>     
             <div class="count-product">
-              <p>Proizvoda
+              <p>Products
               <?php
                   $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count(); ?>
                 <span>{{$count}}</span>
@@ -34,14 +36,17 @@
 
   <div class="slick-wrapper">
     <div id="slick3">
-      @foreach ($designs as $design)
-        <div class="slide-item">
-          <div class="design-box">
-            <img src="/image/{{$design->name}}">
+      @foreach ($designsRandom as $designsRandom)
+        <div class="slide-item testnovi">
+          <div class="design-box random">
+            <div class="design-image">
+              <img src="/image/{{$designsRandom->name}}" style="max-witdh:100%;max-height:100%">
+            </div>
+          
             <div class="count-product">
-              <p>Proizvoda
+              <p>Products
               <?php
-                  $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count(); ?>
+                  $count = DB::table('product')->where('design_id', $designsRandom->id)->groupBy('design_id')->count(); ?>
                 <span>{{$count}}</span>
               </p>
             </div>
@@ -63,10 +68,10 @@
     <div id="slick4">
       @foreach ($tShirts as $tshirt)
         <div class="slide-item">
-          <div class="product">
+          <div class="product"  id="slick-shirt">
             <a href="{{ url('/product_details', [$tshirt->id]) }}" class="">
               <div class="">
-                <div class="img-div">
+                <div class="img-div" id="slick-shirt-img">
                   @if ($tshirt->images)
                   @foreach ($tshirt->images as $item)
                   @if($tshirt->category->name=="T-Shirts")
@@ -100,9 +105,9 @@
                         <p class="">{{ $pro_cat->category->name }}</p>
                     <?php } ?>
                     @if($tshirt->spl_price==0)
-                        <p>{{ $tshirt->price}}&euro;</p>
+                        <p>From: <span style="font-weight: bold">{{ $tshirt->price}}&euro;</span></p>
                     @else
-                        <p>{{$tshirt->spl_price}}&euro;</p>
+                        <p>Special price:  <span style="font-weight: bold">{{$tshirt->spl_price}}&euro;</span></p>
                     @endif
                 </div>
               </div>
@@ -161,9 +166,9 @@
                         <p class="">{{ $pro_cat->category->name }}</p>
                     <?php } ?>
                     @if($case->spl_price==0)
-                        <p>{{ $case->price}}&euro;</p>
+                        <p>From: <span style="font-weight: bold">{{ $case->price}}&euro;</span></p>
                     @else
-                        <p>{{$case->spl_price}}&euro;</p>
+                        <p>Special price: <span style="font-weight: bold">{{$case->spl_price}}&euro;</span></p>
                     @endif
                 </div>
               </div>
@@ -227,7 +232,7 @@
                     @if($hoodie->spl_price==0)
                         <p>{{ $hoodie->price}}&euro;</p>
                     @else
-                        <p>{{$hoodie->spl_price}}&euro;</p>
+                        <p>Special price: <span style="font-weight: bold">{{$hoodie->spl_price}}&euro;</span></p>
                     @endif
                 </div>
               </div>

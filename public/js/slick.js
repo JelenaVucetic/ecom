@@ -42,13 +42,13 @@ $("#slick2").slick({
     prevArrow:
     "<img style='top:60px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
 nextArrow:
-    "<img style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+    "<img id='test' style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: 4,
+                slidesToScroll: 4,
             },
         },
         {
@@ -74,13 +74,13 @@ $("#slick3").slick({
     prevArrow:
     "<img style='top:60px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
 nextArrow:
-    "<img style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+    "<img  id='test'     style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: 4,
+                slidesToScroll: 4,
             },
         },
         {
@@ -106,13 +106,13 @@ $("#slick4").slick({
     prevArrow:
     "<img style='top:80px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
 nextArrow:
-    "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+    "<img  style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: 4,
+                slidesToScroll: 4,
             },
         },
         {
@@ -138,15 +138,16 @@ $("#slick5").slick({
  prevArrow:
         "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+        "<img id='test1' style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
             settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+                slidesToShow: 4,
+                slidesToScroll: 4,
             },
         },
+        
         {
             breakpoint: 992, // mobile breakpoint
             settings: {
@@ -234,11 +235,11 @@ $("#slick8").slick({
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    /* prevArrow:
+    row:
         "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
     nextArrow:
         "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        */
+        
 });
 
 

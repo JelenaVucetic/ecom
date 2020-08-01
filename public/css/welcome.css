@@ -374,24 +374,26 @@
 .slick-prev {
     font-size: 0;
     position: absolute;
-    top: 305px;
+    top: 320px;
     left: -23px;
 }
 
 .left-arrow {
     width: 30px;
     cursor: pointer;
+    z-index: 9;
 }
 
 .right-arrow {
     width: 30px;
     cursor: pointer;
+    z-index: 9;
 }
 
 .slick-next {
     position: absolute;
     right: 15px;
-    bottom: 305px;
+    bottom: 325px;
 }
     
 /*     .right-arrow > .slick-next {
@@ -478,6 +480,12 @@
 }
 
 
+.design-image {
+    width: 200px;height:200px
+}
+
+
+
 @media (max-width: 1200px) { 
     .box1-img-holder,
     .box2-img-holder,
@@ -503,6 +511,10 @@
 
     .welcome-shop {
          width: 100%; 
+    }
+    .spcial-price-row {
+        width: 95%;
+        margin: auto;
     }
  }
  
@@ -536,7 +548,10 @@
    #myNavbar{
        display: none!important;
    }
-
+   .spcial-price-row {
+    width: 93%;
+    margin: auto;
+}
 }
 
  @media (max-width: 767px) {  
@@ -643,4 +658,37 @@
         padding-left: 5px !important;
      }
 
+     .design-image {
+        width: 160px;
+        height: 160px
+    }
+
+    .design-for-you h2 {
+        font-size: 24px;
+        margin-top: 25px;
+    }
+
+    #test {
+        bottom: 109px !important;
+        right: -20px !important;
+
+    }
+
+    #test1 {
+        right: -10px !important;
+        bottom: 240px !important;
+    }
+
+    #slick-shirt {
+        margin-top:20px; padding: 0 15px;
+    }
+    
+    #slick-shirt-img {
+        height: 170px;
+    }   
+
+    .spcial-price-row {
+        width: 90%;
+        margin: auto;
+    }
 }

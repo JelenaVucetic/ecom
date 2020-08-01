@@ -30,7 +30,7 @@
       <div id="proizvod14" class="save-picture disabledbutton" data-category="13" name="Custom" data-canvas="canvas16" value="1">
           <div class="background-div13">
       <img id="logo-canvas14" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-      <img class="overlay-panel" src="/images/phonecase.png">
+      <img class="overlay-panel" src="/site-images/phonecase.png">
           </div>
       </div>
   <div class="preview-info">
@@ -55,7 +55,7 @@
       <div id="proizvod15" class="save-picture disabledbutton" data-category="10" name="Samsung" data-canvas="canvas17" value="1">
           <div class="background-div14">
       <img id="logo-canvas15" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
-      <img class="overlay-panel" src="/images/Samsung-P20-Bezpozadine.png">
+      <img class="overlay-panel" src="/site-images/Samsung-P20-Bezpozadine.png">
           </div>
       </div>
   <div class="preview-info">
@@ -78,7 +78,7 @@
           <div id="proizvod16" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas18" value="1">
               <div class="background-div15">
           <img id="logo-canvas16" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-          <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
+          <img class="overlay-panel" src="/site-images/Huawei-P20-Bez pozadine copy.png">
               </div>
           </div>
       <div class="preview-info">
@@ -234,7 +234,7 @@
         <div id="proizvod" class="save-picture disabledbutton" data-category="11" name="Phone Case" data-canvas="canvas3" value="1">
             <div class="background-div">
         <img id="logo-canvas" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-        <img class="overlay-panel" src="/images/phonecase.png">
+        <img class="overlay-panel" src="/site-images/phonecase.png">
             </div>
         </div>
     <div class="preview-info">
@@ -259,7 +259,7 @@
         <div id="proizvod1" class="save-picture disabledbutton" data-category="6" name="T-shirt" data-canvas="canvas4" value="1">
             <div class="background-div1">
         <img id="logo-canvas1" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
-        <img class="overlay-panel" src="/images/t-shirt.png">
+        <img class="overlay-panel" src="/site-images/t-shirt.png">
             </div>
         </div>
     <div class="preview-info">
@@ -282,7 +282,7 @@
             <div id="proizvod2" class="save-picture disabledbutton"  data-category="20" name="Mugs" data-canvas="canvas5" value="1">
                 <div class="background-div2">
             <img id="logo-canvas2" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-            <img class="overlay-panel" src="/images/mugs.png">
+            <img class="overlay-panel" src="/site-images/mugs.png">
                 </div>
             </div>
         <div class="preview-info">
@@ -443,7 +443,7 @@
               <div id="proizvod3" class="save-picture disabledbutton"  data-category="9" name="Hoodie" data-canvas="canvas6" value="1">
                   <div class="background-div3">
               <img id="logo-canvas3" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/hoodie.jpg">
+              <img class="overlay-panel" src="/site-images/hoodie.jpg">
                   </div>
               </div>
           <div class="preview-info">
@@ -464,7 +464,7 @@
               <div id="proizvod4" class="save-picture disabledbutton"  data-category="8" name="Long Sleeve" data-canvas="canvas7" value="1">
                   <div class="background-div4">
               <img id="logo-canvas4" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/longSleeve.jpg">
+              <img class="overlay-panel" src="/site-images/longSleeve.jpg">
                   </div>
               </div>
           <div class="preview-info">
@@ -485,7 +485,7 @@
               <div id="proizvod5" class="save-picture disabledbutton"  data-category="7" name="Graphic T-Shirt Dresses" data-canvas="canvas8" value="1">
                   <div class="background-div4">
               <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/noSleeveShirt.png">
+              <img class="overlay-panel" src="/site-images/noSleeveShirt.png">
                   </div>
               </div>
           <div class="preview-info">
@@ -635,7 +635,7 @@
               <div id="proizvod7" class="save-picture disabledbutton"  data-category="25" name="Notes" data-canvas="canvas10" value="1">
                   <div class="background-div6">
               <img id="logo-canvas7" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/notes.png">
+              <img class="overlay-panel" src="/site-images/notes.png">
                   </div>
               </div>
           <div class="preview-info">
@@ -657,7 +657,7 @@
               <div id="proizvod8" class="save-picture disabledbutton"  data-category="23" name="Clocks" data-canvas="canvas11" value="1">
                   <div class="background-div7">
               <img id="logo-canvas8" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/clock.png">
+              <img class="overlay-panel" src="/site-images/clock.png">
                   </div>
               </div>
           <div class="preview-info">
@@ -775,7 +775,7 @@
                           <div id="proizvod9" class="save-picture disabledbutton"  data-category="19" name="Termos"  data-canvas="canvas12" value="1">
                               <div class="background-div8">
                           <img id="logo-canvas9" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                          <img class="overlay-panel" src="/images/termos.png">
+                          <img class="overlay-panel" src="/site-images/termos.png">
                               </div>
                           </div>
                       <div class="preview-info">
@@ -796,7 +796,7 @@
                           <div id="proizvod10" class="save-picture disabledbutton"  data-category="21" name="Bags"  data-canvas="canvas13" value="1">
                               <div class="background-div9">
                           <img id="logo-canvas10" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                          <img class="overlay-panel" src="/images/ceger.png">
+                          <img class="overlay-panel" src="/site-images/ceger.png">
                               </div>
                           </div>
                       <div class="preview-info">
@@ -817,7 +817,7 @@
                           <div id="proizvod11" class="save-picture disabledbutton"  data-category="14" name="Poster"  data-canvas="canvas14" value="1">
                               <div class="background-div10">
                           <img id="logo-canvas11" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                          <img class="overlay-panel" src="/images/poster.png">
+                          <img class="overlay-panel" src="/site-images/poster.png">
                               </div>
                           </div>
                       <div class="preview-info">
@@ -940,7 +940,7 @@
     <div id="proizvod17" class="save-picture disabledbutton" data-category="15" name="Wallpapers" data-canvas="canvas19" value="1">
         <div class="background-div16">
     <img id="logo-canvas17" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-    <img class="overlay-panel" src="/images/Poster.png">
+    <img class="overlay-panel" src="/site-images/Poster.png">
         </div>
     </div>
 <div class="preview-info">
@@ -965,7 +965,7 @@
     <div id="proizvod18" class="save-picture disabledbutton" data-category="16" name="Canvas" data-canvas="canvas20" value="1">
         <div class="background-div17">
     <img id="logo-canvas18" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
-    <img class="overlay-panel" src="/images/Poster.png">
+    <img class="overlay-panel" src="/site-images/Poster.png">
         </div>
     </div>
 <div class="preview-info">
@@ -988,7 +988,7 @@
         <div id="proizvod19" class="save-picture disabledbutton"  data-category="18" name="Coasters" data-canvas="canvas21" value="1">
             <div class="background-div18">
         <img id="logo-canvas19" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-        <img class="overlay-panel" src="/images/Thumbnail krug.png">
+        <img class="overlay-panel" src="/site-images/Thumbnail krug.png">
             </div>
         </div>
     <div class="preview-info">

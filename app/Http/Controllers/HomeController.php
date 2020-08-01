@@ -88,6 +88,7 @@ class HomeController extends Controller
     {
 
         $designs = Design::orderBy('id', 'desc')->paginate(28);
+        $designsRandom = Design::inRandomOrder()->get();
         $categories = Category::where('parent_id',NULL)->get();
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $tShirts = Product::where('category_id', 6)->get();
@@ -119,7 +120,7 @@ class HomeController extends Controller
  */
 
 
-        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies'));
+        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies', 'designsRandom'));
     }
 
     public function product_details($id)
