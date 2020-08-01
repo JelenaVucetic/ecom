@@ -54,7 +54,7 @@ class CheckoutController extends Controller
         $first_six_digits = (string) $xml->returnData->creditcardData->firstSixDigits;
         $last_four_digits = (string) $xml->returnData->creditcardData->lastFourDigits;
          
-        file_put_contents('/home/khhua5brw593/public_html/urbanone.me/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
+        //file_put_contents('/home/khhua5brw593/public_html/urbanone.me/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
  
         if ($callbackResult->getResult() == 'OK') {
              DB::table('payment_info')->insert([
@@ -184,8 +184,8 @@ class CheckoutController extends Controller
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
 
-            
-                $id_order = Order::createOrder();
+
+                $id_order = Order::createOrder($request->order_number);
                 
                 $address = new Address;
                 $address->order_id = $id_order;

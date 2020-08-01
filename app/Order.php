@@ -16,21 +16,24 @@ class Order extends Model
     public function orderFields() {
         return $this->belongsToMany(Product::class)->withPivot('qty', 'total', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size', 'kids_size')->withTimestamps();
     }
-    public static function createOrder() {
+
+    public static function createOrder($order_number) {
         if (Auth::check()) {
           $user = Auth::user();
 
           
         $order = $user->orders()->create([
             'total' => Cart::total(),
-            'status' => 'pending'
+            'status' => 'pending',
+            'order_number' => $order_number
         ]);
     
         } else {
             $order = new Order;
             $order->user_id = 0;
-            $order-> total = Cart::total();
-            $order-> status = 'pending';
+            $order->total = Cart::total();
+            $order->status = 'pending';
+            $order->order_number = $order_number;
             $order->save();
         }
         

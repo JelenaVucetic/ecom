@@ -7,7 +7,7 @@
 
 <div class="my-main-div">
     <div class="welcome-image">
-        <img src="/site-images/Slider-photo.png"> 
+        {{-- <img src="/site-images/baner-maske-lice.jpg">  --}}
     </div>
     <div class="welcome-shop container">
         <div class="shop-product">

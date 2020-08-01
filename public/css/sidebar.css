@@ -113,7 +113,16 @@ Hover
 
 
 
+.nav-flyout li:first-child {
+  height: 100px;
+  text-align: center;
+  width: 100%;
+}
 
+.nav-flyout li img {
+    object-fit: cover;
+    height: 100%;
+}
 
 /*!
  * Propeller v1.3.2 (http://propeller.in): sidebar.css
