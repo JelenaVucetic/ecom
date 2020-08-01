@@ -192,8 +192,24 @@ class HomeController extends Controller
                 ['size','=', 'vertical']
             ])->first();
             $imageBack = "Tapete-Thumbnail-mockup-2.png";
-        }else {
-         
+        }elseif($find_cat->category->name=="Bags") {
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color','=', 'black']
+            ])->first();
+            $imageBack = "Torbacrnaručkamanjam.jpg";
+        }elseif($find_cat->category->name=="Coasters"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size','=', 'square']
+            ])->first();
+            $imageBack = "podmetačkvadratasti.jpg";
+        }elseif($find_cat->category->name=="Clocks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color','=', 'black']
+            ])->first();
+            $imageBack = "CrniSatSite.png";
         }
 
         $cat = Category::where('id',$find_cat->category->id)->first("name");
@@ -789,6 +805,35 @@ class HomeController extends Controller
     }
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage, 'gender' => $request->gender));
+    }
+
+
+    public function loadImagesCoasters(Request $request){
+
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['size' , "=",$request->size]
+        ])->first();
+        $blankImage = "Coaster". $request->size. ".jpg";
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }
+
+    public function loadImagesColor(Request $request){
+        
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['color' , "=",$request->color]
+        ])->first();
+
+        if($request->pro_cat == "Bags"){
+            $blankImage = "Ceger". $request->color. ".jpg";
+        }else{
+            $blankImage = "Clock". $request->color. ".png";
+        }
+        
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }
 
     public function loadImagesPhone(Request $request){

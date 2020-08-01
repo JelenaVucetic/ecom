@@ -393,6 +393,30 @@ $(document).ready(function(){
         });
 
 
+             // Enable and edit Coaster
+             $('#edit-product18').click(function() {
+                if(document.getElementById('product20').style.display == 'none'){
+                    closeCanvas();
+                    document.getElementById('product20').style.display = 'flex';
+                }else{
+                    document.getElementById('product20').style.display = 'none';
+                }
+            });
+            $('#enabled-product18').click(function(){
+                if($('#proizvod19').hasClass('disabledbutton')){
+                    $('#proizvod19').removeClass('disabledbutton');
+                    $( "#proizvod19" ).attr( "value" , 0 );
+                    $('#enabled-product18').html('Enabled');
+                    $('#enabled-product18').addClass('enable');
+                }else{
+                    $('#proizvod19').addClass('disabledbutton');
+                    $( "#proizvod19" ).attr( "value" , 1 );
+                    $('#enabled-product18').html('Disabled');
+                    $('#enabled-product18').removeClass('enable');
+                }
+            });
+
+
 
            
  
@@ -510,9 +534,9 @@ $(document).ready(function(){
         });
 
         $('#product20').mouseup(function(){
-            var image17 = document.getElementById("logo-canvas16");
-            image17.src = canvas20.toDataURL();
-            canvas20.discardActiveObject()
+            var image20 = document.getElementById("logo-canvas19");
+            image20.src = canvas23.toDataURL();
+            canvas23.discardActiveObject()
         });
 
 

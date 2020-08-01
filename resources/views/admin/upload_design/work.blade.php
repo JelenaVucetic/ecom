@@ -654,7 +654,7 @@
                       {{-- Clock html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod8" class="save-picture disabledbutton"  data-category="23" name="Clock" data-canvas="canvas11" value="1">
+              <div id="proizvod8" class="save-picture disabledbutton"  data-category="23" name="Clocks" data-canvas="canvas11" value="1">
                   <div class="background-div7">
               <img id="logo-canvas8" src="/image/<?php if(!empty($image)){echo $image;} ?>">
               <img class="overlay-panel" src="/images/clock.png">
@@ -793,7 +793,7 @@
                          {{-- Ceger html --}}
                      <div class="product-column">
                       <div class="row-product">
-                          <div id="proizvod10" class="save-picture disabledbutton"  data-category="24" name="Ceger"  data-canvas="canvas13" value="1">
+                          <div id="proizvod10" class="save-picture disabledbutton"  data-category="21" name="Bags"  data-canvas="canvas13" value="1">
                               <div class="background-div9">
                           <img id="logo-canvas10" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                           <img class="overlay-panel" src="/images/ceger.png">
@@ -982,18 +982,18 @@
 </div>
 
 
-{{-- Sledeci html --}}
+{{-- Coaster html --}}
 <div class="product-column">
     <div class="row-product">
-        <div id="proizvod19" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas121" value="1">
+        <div id="proizvod19" class="save-picture disabledbutton"  data-category="18" name="Coasters" data-canvas="canvas21" value="1">
             <div class="background-div18">
         <img id="logo-canvas19" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-        <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
+        <img class="overlay-panel" src="/images/Thumbnail krug.png">
             </div>
         </div>
     <div class="preview-info">
         <span class="preview-name">
-            Sledeci
+            Coaster
         </span>
         <div>
         <button id="edit-product18" class="edit-button">Edit</button>
@@ -1098,9 +1098,9 @@
     </div>
 
 
-         {{-- Canvas edit for Huawei --}}
+         {{-- Canvas edit for Coaster --}}
          <div id="product20" class="img-div" data-value="1" style="display:none">
-          <h2 class="option-title">Huawei options</h2>
+          <h2 class="option-title">Coaster options</h2>
           <div class="product-wrap">
             <div id="app21" >
                 <canvas id="c21" width="250" height="300"></canvas>
