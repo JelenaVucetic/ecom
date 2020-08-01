@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <main role="main">
   @include('layouts.error')
 
