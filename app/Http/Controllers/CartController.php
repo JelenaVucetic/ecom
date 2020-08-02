@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    //
     public function index()
     {
 
@@ -46,7 +45,6 @@ class CartController extends Controller
                 $ads = null;
             }
         }
-
         
         $latestOrder = Order::orderBy('created_at','DESC')->first();
         if($latestOrder) {
@@ -55,7 +53,6 @@ class CartController extends Controller
             $order_number = "U1-000001";
         }
     
-
         return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads', 'order_number'));
     }
 
@@ -63,22 +60,89 @@ class CartController extends Controller
     {
         $product = Product::find($id);
 
-    /*     if($product->category->name == 'Posters' || $product->category->name == 'Pictures') {
+        if($product->category->name == "T-Shirts"){
+            if($product->gender == "female"){
+            $imageFront = DB::table('images')->where([
+                ['product_id', "=", $id],
+                ['color' , "=", 'white'],
+                ['position' , "=", 'front'],
+            ])->first();
+                
+            }elseif($product->gender == "male"){
+                $imageFront = DB::table('images')->where([
+                    ['product_id', "=", $id],
+                    ['color' , "=", 'white'],
+                    ['position' , "=", 'front'],
+                ])->first();
+            }else{
+                $pictures = DB::table('images')->where([
+                    ['product_id', "=", $id],
+                    ['color' , "=", 'white'],
+                    ['position' , "=", 'front'],
+                ])->get();
+
+               $imageFront = $pictures[0];
+            }
+                
+        }elseif($find_cat->category->name == "Iphone Cases"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,'transparent']
+            ])->first();
+           
+        }elseif($find_cat->category->name == "Samsung Cases"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,'transparent']
+            ])->first();
+        }elseif($find_cat->category->name == "Huawei Cases"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,'transparent']
+            ])->first();
+        }elseif($find_cat->category->name=="Posters"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size',"=" ,'A3'],
+                ['color', '=', 'white']
+            ])->first();
+        }elseif($find_cat->category->name=="Pictures"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+        }elseif($find_cat->category->name=="Wallpapers"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size','=', 'vertical']
+            ])->first();
+        }elseif($find_cat->category->name=="Bags") {
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color','=', 'black']
+            ])->first();
+        }elseif($find_cat->category->name=="Coasters"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size','=', 'square']
+            ])->first();
+        }elseif($find_cat->category->name=="Clocks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color','=', 'black']
+            ])->first();
+        }
+
+        
+        if($product->spl_price==0) {
             $cart= Cart::add( $id, $product->name, 1, $request->price, 0,
-            ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
-            'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
-            'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
-            'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize]);
-        } else  */if($product->spl_price==0) {
-            $cart= Cart::add( $id, $product->name, 1, $request->price, 0,
-                         ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
+                         ['img'=> $imageFront->name, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
                          'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                          'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                          'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
                          'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign]);
         } else {
             $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0, 
-                        ['img'=> $product->image, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
+                        ['img'=> $imageFront, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
@@ -105,22 +169,19 @@ class CartController extends Controller
         $oldPrice =  Cart::subtotal();
         $cartCount =  Cart::count(); 
 
-         $countTotal=0;
+        $countTotal=0;
         foreach($cartItems as $c) {
           $countTotal = $c->qty + $countTotal;
         }
-      // return view('cart.upCart', compact('cartItems'))->with('status', 'cart updated');
 
         if( $countTotal >= 3 &&  $countTotal < 5 ) {
             $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
             $cartSubTotal = (float) Cart::subtotal() * 0.8;
-          //  Cart::update('subtotal' => $cartSubTotal);
         } else {
             $cartSubTotal = Cart::subtotal();
         } 
        
-       // dd(Cart::content());
         return response()->json([
             "qty" =>  $qty,
             'subtotal' => $item->subtotal(),
