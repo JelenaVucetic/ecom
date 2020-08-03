@@ -417,6 +417,77 @@ $(document).ready(function(){
             });
 
 
+                         // Enable and edit Sacks
+                         $('#edit-product20').click(function() {
+                            if(document.getElementById('product21').style.display == 'none'){
+                                closeCanvas();
+                                document.getElementById('product21').style.display = 'flex';
+                            }else{
+                                document.getElementById('product21').style.display = 'none';
+                            }
+                        });
+                        $('#enabled-product20').click(function(){
+                            if($('#proizvod20').hasClass('disabledbutton')){
+                                $('#proizvod20').removeClass('disabledbutton');
+                                $( "#proizvod20" ).attr( "value" , 0 );
+                                $('#enabled-product20').html('Enabled');
+                                $('#enabled-product20').addClass('enable');
+                            }else{
+                                $('#proizvod20').addClass('disabledbutton');
+                                $( "#proizvod20" ).attr( "value" , 1 );
+                                $('#enabled-product20').html('Disabled');
+                                $('#enabled-product20').removeClass('enable');
+                            }
+                        });
+
+                              // Enable and edit Puzzle
+                              $('#edit-product21').click(function() {
+                                if(document.getElementById('product22').style.display == 'none'){
+                                    closeCanvas();
+                                    document.getElementById('product22').style.display = 'flex';
+                                }else{
+                                    document.getElementById('product22').style.display = 'none';
+                                }
+                            });
+                            $('#enabled-product21').click(function(){
+                                if($('#proizvod21').hasClass('disabledbutton')){
+                                    $('#proizvod21').removeClass('disabledbutton');
+                                    $( "#proizvod21" ).attr( "value" , 0 );
+                                    $('#enabled-product21').html('Enabled');
+                                    $('#enabled-product21').addClass('enable');
+                                }else{
+                                    $('#proizvod21').addClass('disabledbutton');
+                                    $( "#proizvod21" ).attr( "value" , 1 );
+                                    $('#enabled-product21').html('Disabled');
+                                    $('#enabled-product21').removeClass('enable');
+                                }
+                            });
+
+
+                                    // Enable and edit Makeup Bags
+                                    $('#edit-product22').click(function() {
+                                        if(document.getElementById('product23').style.display == 'none'){
+                                            closeCanvas();
+                                            document.getElementById('product23').style.display = 'flex';
+                                        }else{
+                                            document.getElementById('product23').style.display = 'none';
+                                        }
+                                    });
+                                    $('#enabled-product22').click(function(){
+                                        if($('#proizvod22').hasClass('disabledbutton')){
+                                            $('#proizvod22').removeClass('disabledbutton');
+                                            $( "#proizvod22" ).attr( "value" , 0 );
+                                            $('#enabled-product22').html('Enabled');
+                                            $('#enabled-product22').addClass('enable');
+                                        }else{
+                                            $('#proizvod22').addClass('disabledbutton');
+                                            $( "#proizvod22" ).attr( "value" , 1 );
+                                            $('#enabled-product22').html('Disabled');
+                                            $('#enabled-product22').removeClass('enable');
+                                        }
+                                    });
+
+
 
            
  
@@ -533,11 +604,24 @@ $(document).ready(function(){
             canvas22.discardActiveObject()
         });
 
-        $('#product20').mouseup(function(){
-            var image20 = document.getElementById("logo-canvas19");
-            image20.src = canvas23.toDataURL();
-            canvas23.discardActiveObject()
+        $('#product21').mouseup(function(){
+            var image21 = document.getElementById("logo-canvas20");
+            image21.src = canvas24.toDataURL();
+            canvas24.discardActiveObject()
         });
+
+        $('#product22').mouseup(function(){
+            var image22 = document.getElementById("logo-canvas21");
+            image22.src = canvas25.toDataURL();
+            canvas25.discardActiveObject()
+        });
+
+        $('#product23').mouseup(function(){
+            var image23 = document.getElementById("logo-canvas22");
+            image23.src = canvas26.toDataURL();
+            canvas26.discardActiveObject()
+        });
+
 
 
 
@@ -621,6 +705,10 @@ $(document).ready(function(){
                colorInput15.addEventListener('input', ()=>{
                  $('.background-div16').css("background-color", colorInput15.value);
                });
+
+             
+
+                
 
 
           $(document).on("change", "#file", function(e){

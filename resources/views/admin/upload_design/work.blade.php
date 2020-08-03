@@ -808,7 +808,7 @@
                           <button id="enabled-product10" class="enable-button">Disabled</button>
                           </div>
                       </div>
-                  </div>
+                      </div>
                       </div>
 
                                     {{-- Poster html --}}
@@ -1141,7 +1141,216 @@
         </div>
          </div>
 
+
+           {{-- Sacks html --}}
+    <div class="product-column">
+      <div class="row-product">
+      <div id="proizvod20" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas22" value="1">
+          <div class="background-div19">
+      <img id="logo-canvas20" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+      <img class="overlay-panel" src="/site-images/Poster.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+        Sacks
+      </span>
+      <div>
+      <button id="edit-product20" class="edit-button">Edit</button>
+      <button id="enabled-product20" class="enable-button">Disabled</button>
+  
+  
+      </div>
+  </div>
+  </div>
+  
+  
+  </div>
+  
+  {{-- Puzzle html --}}
+  <div class="product-column">
+  <div class="row-product">
+      <div id="proizvod21" class="save-picture disabledbutton" data-category="35" name="Puzzle" data-canvas="canvas23" value="1">
+          <div class="background-div20">
+      <img id="logo-canvas21" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
+      <img class="overlay-panel" src="/site-images/Puzle.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+         Puzzle
+      </span>
+      <div>
+      <button id="edit-product21" class="edit-button">Edit</button>
+      <button id="enabled-product21" class="enable-button" onclick="">Disabled</button>
+      </div>
+  </div>
+  </div>
+  
+  </div>
+  
+  
+  {{-- Makeup Bags html --}}
+  <div class="product-column">
+      <div class="row-product">
+          <div id="proizvod22" class="save-picture disabledbutton"  data-category="17" name="Coasters" data-canvas="canvas24" value="1">
+              <div class="background-div21">
+          <img id="logo-canvas22" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+          <img class="overlay-panel" src="/site-images/Thumbnail krug.png">
+              </div>
+          </div>
+      <div class="preview-info">
+          <span class="preview-name">
+              Makeup Bags
+          </span>
+          <div>
+          <button id="edit-product22" class="edit-button">Edit</button>
+          <button id="enabled-product22" class="enable-button" onclick="">Disabled</button>
+          </div>
+      </div>
+  </div>
+  
+      </div>
+  
+  </div>
+
     </div>
+
+     {{-- Canvas edit for Sacks --}}
+        
+ <div id="product21" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Sacks options</h2>
+  <div class="product-wrap">
+    <div id="app22" >
+        <canvas id="c22" width="250" height="300"></canvas>
+    </div>
+    <div class="product-options15">
+      
+      
+        <div class="color-choose">
+
+            <div class="container">
+                <div class="output" id="output"></div>
+
+                <div class="result-wrp">
+                   <p>Choose a color</p>
+                  <input type="color" id="color18">
+                </div>
+                <label class="scale-lable">
+                    <span>Scale:</span>
+                    <input type="range" id="scale-control18"  value="1.5" min="0.005" max="1.5" step="0.005">
+                </label>
+                <div class="align">
+                <button id="alignVertically18" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                <button id="alignHorizontally18" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                </div>
+                <div class="repeat-option btn-group">
+                    <button id="repeat8" class="repeat-opt">Repeat</button>
+                    <button id="none8" class="repeat-opt">None</button>
+                    <button id="repeat-vertical8" class="repeat-opt">Repeat vertical</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    </div>
+</div>
+        
+
+
+
+
+
+
+
+
+              {{-- Canvas edit for Puzzle --}}
+    <div id="product22" class="img-div" data-value="1" style="display:none">
+      <h2 class="option-title">Puzzle options</h2>
+      <div class="product-wrap">
+        <div id="app23" >
+            <canvas id="c23" width="250" height="300"></canvas>
+        </div>
+        <div class="product-options16">
+            
+
+          {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
+              {{ csrf_field() }}
+             <input type="file" name="file1" >
+             <input type="submit" value="Upload" name="submit">
+             </form>
+ --}}
+            <div class="color-choose">
+
+                <div class="container">
+                    <div class="output" id="output"></div>
+
+                    <div class="result-wrp">
+                       <p>Choose a color</p>
+                      <input type="color" id="color19">
+                    </div>
+                    <label  class="scale-lable">
+                        <span>Scale:</span>
+                        <input type="range" id="scale-control19"   value="1.5" min="0.005" max="2" step="0.005">
+                    </label>
+                    <div class="align">
+                    <button id="alignVertically19" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                    <button id="alignHorizontally19" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                    </div>
+                    <div class="repeat-option btn-group">
+                      <button id="repeat9" class="repeat-opt">Repeat</button>
+                      <button id="none9" class="repeat-opt">None</button>
+                      <button id="repeat-vertical9" class="repeat-opt">Repeat vertical</button>
+                  </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+         {{-- Canvas edit for Makeup bags --}}
+         <div id="product23" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Makeup bags options</h2>
+          <div class="product-wrap">
+            <div id="app24" >
+                <canvas id="c24" width="250" height="300"></canvas>
+            </div>
+            <div class="product-options17">
+
+               {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" >
+                 <input type="submit" value="Upload" name="submit">
+                 </form> --}}
+
+                <div class="color-choose">
+
+                    <div class="container">
+                        <div class="output" id="output"></div>
+
+                        <div class="result-wrp">
+                           <p>Choose a color</p>
+                          <input type="color" id="color20">
+                        </div>
+                        <label  class="scale-lable">
+                            <span>Scale:</span>
+                            <input type="range" id="scale-control20"  value="1.5" min="0.005" max="1.5" step="0.005">
+                        </label>
+                        <div class="align">
+                        <button id="alignVertically20" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally20" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                        </div>
+                        <div class="repeat-option btn-group">
+                          <button id="repeat10" class="repeat-opt">Repeat</button>
+                          <button id="none10" class="repeat-opt">None</button>
+                          <button id="repeat-vertical10" class="repeat-opt">Repeat vertical</button>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+         </div>
     @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
     <div id="background-div12" style=" height: 300px; width: 300px;">

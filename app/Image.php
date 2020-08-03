@@ -4817,25 +4817,25 @@ if (!$process8->isSuccessful()) {
           echo $process0->getOutput();
     
           dd(); */
-         $process0 = new Process('magick convert '.$path.'\site-images\Torbaobičnasalinijom.jpg
+         $process0 = new Process('magick convert '.$path.'\site-images\Torbaobicnasalinijom.jpg
          -resize 1200x2000
-         '.$path.'\site-images\Torbaobičnasalinijom.jpg
+         '.$path.'\site-images\Torbaobicnasalinijom.jpg
           ');
           $process0->run();
           if (!$process0->isSuccessful()) {
               throw new ProcessFailedException($process0);
           } 
     
-          $processa = new Process('magick convert '.$path.'\site-images\Torbaobičnasalinijom.jpg
+          $processa = new Process('magick convert '.$path.'\site-images\Torbaobicnasalinijom.jpg
           -resize 1200x2000
-          '.$path.'\site-images\Torbaobičnasalinijom.jpg
+          '.$path.'\site-images\Torbaobicnasalinijom.jpg
            ');
            $processa->run();
            if (!$processa->isSuccessful()) {
                throw new ProcessFailedException($processa);
            } 
     
-          $process = new Process('magick convert   '.$path.'\site-images\Torbaobičnasalinijom.jpg[403x422+390+481] 
+          $process = new Process('magick convert   '.$path.'\site-images\Torbaobicnasalinijom.jpg[403x422+390+481] 
          -colorspace gray 
          -blur 10x250 
          -auto-level
@@ -4884,7 +4884,7 @@ if (!$process8->isSuccessful()) {
         
     
           $process3 = new Process('magick convert 
-         '.$path.'\site-images\Torbaobičnasalinijom.jpg[403x422+390+481] 
+         '.$path.'\site-images\Torbaobicnasalinijom.jpg[403x422+390+481] 
          -colorspace gray -blur 10x250 -auto-level 
          -depth 16 
          '.$path.'\image\ms_displace_map_girl_white_regular.png
@@ -4916,7 +4916,7 @@ if (!$process8->isSuccessful()) {
     
          
           $process5 = new Process('magick convert ^
-         '.$path.'\site-images\Torbaobičnasalinijom.jpg[403x422+390+481] ^
+         '.$path.'\site-images\Torbaobicnasalinijom.jpg[403x422+390+481] ^
          -colorspace gray -auto-level ^
          -blur 0x4 ^
          -contrast-stretch 0,30%% ^
@@ -4973,7 +4973,7 @@ if (!$process8->isSuccessful()) {
     $imageRandom = '/' . $string . '.png';
     
          $process8 = new Process('magick convert ^
-         '.$path.'\site-images\Torbaobičnasalinijom.jpg^
+         '.$path.'\site-images\Torbaobicnasalinijom.jpg^
          '.$path.'\image\ms_light_map_logo.png ^
          -geometry +'.$X.'+'.$Y.'
          -compose over -composite ^
@@ -5001,16 +5001,16 @@ if (!$process8->isSuccessful()) {
         $path = public_path();
 
     
-     $process0 = new Process('magick convert '.$path.'\site-images\Torbacrnaručkamanjam.jpg
+     $process0 = new Process('magick convert '.$path.'\site-images\Torbacrnaruckamanjam.jpg
      -resize 1200x2000
-     '.$path.'\site-images\Torbacrnaručkamanjam.jpg
+     '.$path.'\site-images\Torbacrnaruckamanjam.jpg
       ');
       $process0->run();
       if (!$process0->isSuccessful()) {
           throw new ProcessFailedException($process0);
       } 
 
-      $process = new Process('magick convert   '.$path.'\site-images\Torbacrnaručkamanjam.jpg[403x422+440+501] 
+      $process = new Process('magick convert   '.$path.'\site-images\Torbacrnaruckamanjam.jpg[403x422+440+501] 
      -colorspace gray 
      -blur 10x250 
      -auto-level
@@ -5059,7 +5059,7 @@ if (!$process8->isSuccessful()) {
     
 
       $process3 = new Process('magick convert 
-     '.$path.'\site-images\Torbacrnaručkamanjam.jpg[403x422+410+451] 
+     '.$path.'\site-images\Torbacrnaruckamanjam.jpg[403x422+410+451] 
      -colorspace gray -blur 10x250 -auto-level 
      -depth 16 
      '.$path.'\image\ms_displace_map_girl_white_regular.png
@@ -5091,7 +5091,7 @@ if (!$process8->isSuccessful()) {
 
      
       $process5 = new Process('magick convert ^
-     '.$path.'\site-images\Torbacrnaručkamanjam.jpg[403x422+410+451] ^
+     '.$path.'\site-images\Torbacrnaruckamanjam.jpg[403x422+410+451] ^
      -colorspace gray -auto-level ^
      -blur 0x4 ^
      -contrast-stretch 0,30%% ^
@@ -5148,7 +5148,7 @@ if (!$process7->isSuccessful()) {
     $imageRandom = '/' . $string . '.png';
 
      $process8 = new Process('magick convert ^
-     '.$path.'\site-images\Torbacrvenaručkamanja.jpg ^
+     '.$path.'\site-images\Torbacrvenaruckamanja.jpg ^
      '.$path.'\image\ms_light_map_logo.png ^
      -geometry +'.$X.'+'.$Y.'
      -compose over    -composite ^
@@ -5214,14 +5214,14 @@ if (!$process9->isSuccessful()) {
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("design". $imageName1));
-        $src2 = new \Imagick(public_path("\site-images\podmetačkvadratasti.jpg"));
+        $src2 = new \Imagick(public_path("\site-images\podmetackvadratasti.jpg"));
         $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src2->writeImage(public_path("\site-images\podmetačkvadratasti.jpg"));
+        $src2->writeImage(public_path("\site-images\podmetackvadratasti.jpg"));
         
         $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5"); 
         
         $process5 = new Process('magick convert ^
-        '.$path.'\site-images\podmetačkvadratasti.jpg ^
+        '.$path.'\site-images\podmetackvadratasti.jpg ^
         -channel A -blur 0x8
         -compose hardlight
         '.$path.'\image\ms_light_map-podmetac.jpg
@@ -5275,9 +5275,9 @@ if (!$process9->isSuccessful()) {
         $src2->compositeImage($src1, \Imagick::COMPOSITE_DEFAULT  ,675,420);
         $src2->writeImage(public_path("image\image-podmetac.png"));
         echo '<img src="\image\image-podmetac.png">';
-        $src4 = new \Imagick(public_path("site-images/podmetačkvadratasti.jpg"));
+        $src4 = new \Imagick(public_path("site-images/podmetackvadratasti.jpg"));
         $src4->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src4->writeImage(public_path("\site-images/podmetačkvadratasti.jpg"));
+        $src4->writeImage(public_path("\site-images/podmetackvadratasti.jpg"));
          $src3 = new \Imagick(public_path("image/image-podmetac.png"));
          $src3->compositeImage($src4, \Imagick::COMPOSITE_MULTIPLY,0,0);
 
@@ -5313,14 +5313,14 @@ if (!$process9->isSuccessful()) {
             $src1 = new \Imagick(public_path("design". $imageName1));
             $src1->resizeImage(300, null,\Imagick::FILTER_LANCZOS,1); 
             $src1->writeImage(public_path("design". $imageName1));
-            $src2 = new \Imagick(public_path("\site-images\podmetačokrugli.jpg"));
+            $src2 = new \Imagick(public_path("\site-images\podmetacokrugli.jpg"));
             $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-            $src2->writeImage(public_path("\site-images\podmetačokrugli.jpg"));
+            $src2->writeImage(public_path("\site-images\podmetacokrugli.jpg"));
             
             $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5"); 
             
             $process5 = new Process('magick convert ^
-            '.$path.'\site-images\podmetačokrugli.jpg ^
+            '.$path.'\site-images\podmetacokrugli.jpg ^
             -channel A -blur 0x8
             -compose hardlight
             '.$path.'\image\ms_light_map-podmetac.jpg
@@ -5374,9 +5374,9 @@ if (!$process9->isSuccessful()) {
             $src2->compositeImage($src1, \Imagick::COMPOSITE_DEFAULT  ,640,740);
             $src2->writeImage(public_path("image\image-podmetac.png"));
             echo '<img src="\image\image-podmetac.png">';
-            $src4 = new \Imagick(public_path("site-images/podmetačokrugli.jpg"));
+            $src4 = new \Imagick(public_path("site-images/podmetacokrugli.jpg"));
             $src4->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-            $src4->writeImage(public_path("\site-images/podmetačokrugli.jpg"));
+            $src4->writeImage(public_path("\site-images/podmetacokrugli.jpg"));
              $src3 = new \Imagick(public_path("image/image-podmetac.png"));
              $src3->compositeImage($src4, \Imagick::COMPOSITE_MULTIPLY,0,0);
 
