@@ -231,6 +231,19 @@ if($original == "Coasters"){
     ImageModel::coastersSquare($idProduct, $originalImagePath);
     ImageModel::coastersCircle($idProduct, $originalImagePath);
 }
+if($original == "Sacks"){
+    ImageModel::sacksHo2($idProduct, $originalImagePath);
+    ImageModel::sacks($idProduct, $originalImagePath);
+}
+if($original == "Notes"){
+    ImageModel::notes($idProduct, $originalImagePath);
+}
+if($original == "Puzzles"){
+    ImageModel::puzzle($idProduct, $originalImagePath);
+}
+if($original == "Makeup Bags"){
+    ImageModel::makeupBags($idProduct, $originalImagePath);
+}
 
 
 $products = DB::table('product')->where([

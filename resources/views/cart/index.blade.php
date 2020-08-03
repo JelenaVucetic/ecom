@@ -223,7 +223,12 @@ for( let i=1;i<200;i++) {
                 <tbody>
                     <tr scope="row">
                         <td class="cart_product">
-                         <p><img style="width:150px;" src="{{url('images',$cartItem->options->img)}}" class="card-img-top bmw"></p>
+                         <div class="cart-img">
+                            <img style="max-width:100%;max-height:100%;max-width: 100%;max-height: 100%;display: block;transition: transform .4s;
+                            transform: scale(3);
+                            margin-top: 52.125%;
+                            margin-bottom: -54%;" src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                        </div>
                         </td>
                         <td class="cart_description">
                             <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
@@ -431,8 +436,8 @@ for( let i=1;i<200;i++) {
                                 <input type="text" id="exp_year" name="exp_year" value="{{ old('exp_year') }}" placeholder="e.g. 23"  required/>
                                 <span id="yearError" style="color:red"></span>
                             </div>
-                            <div  class="form-group">
-                                <label for="agreement" class="form-label">I agree to the payment terms</label>
+                            <div  class="form-group" style="flex-direction: row-reverse;align-items: baseline;justify-content: flex-end;">
+                                <label for="agreement" class="form-label" style="margin-left: 10px;">I agree to the payment terms</label>
                                 <input type="checkbox" id="agreement" name="agreement" required>
                             </div>
                         </div>

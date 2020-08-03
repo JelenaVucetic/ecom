@@ -1008,7 +1008,7 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
-    }else if(pro_cat=="Bags" || pro_cat=="Clocks"){
+    }else if(pro_cat=="Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks"){
       var id = $("#productID").val();
       var color = this.value;
       $.ajax({

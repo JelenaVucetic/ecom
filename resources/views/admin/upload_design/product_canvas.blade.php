@@ -3545,3 +3545,347 @@
   
   
   </script>
+
+<script>
+  // Canvas for Magnets
+   var oldWidth3 = 0;
+   var checkForScale = false;
+   var padding = 0;
+   var imageChange = false;
+   var image24 = document.getElementById("logo-canvas23");
+  var canvas27 = new fabric.Canvas('c25');
+  var imgElement = document.getElementById('myImage');
+  var object = "/image/<?php if(!empty($image)){echo $image;}  ?>";
+  var imageForCanvas;
+  var sel;
+  
+  
+    load(object);
+  
+  
+  
+  
+  function load(objects){
+   fabric.Image.fromURL(objects, function(img) {
+    
+      imageForCanvas = img;
+      canvas27.setWidth(250);
+      canvas27.setHeight(300);
+      canvas27.add(imageForCanvas);
+      imageForCanvas.center();
+      image24.src = canvas27.toDataURL();
+      canvas27.requestRenderAll();
+         // Scale option for T-shirt
+    $('#scale-control21').on('input', function () {
+      $(this).trigger('change');
+      img.scale(parseFloat($(this).val())).setCoords();
+      canvas27.requestRenderAll();
+  });
+       // Repeat option for Phone case
+      $('#repeat11').on('click', function(){
+        checkForScale = false;
+        imageForCanvas.set({
+              'top': 0
+          });
+          imageForCanvas.set({
+              'left': 0
+          });
+          canvas27.clear();
+          canvas27.requestRenderAll();
+      sleep(100).then(() => {
+        imageForCanvas.scaleToWidth(100);
+  
+      var patternSourceCanvas = new fabric.StaticCanvas();
+      patternSourceCanvas.add(imageForCanvas);
+  
+      patternSourceCanvas.renderAll();
+      var pattern = new fabric.Pattern({
+        source: function() {
+          patternSourceCanvas.setDimensions({
+            width: imageForCanvas.getScaledWidth() + padding,
+            height: imageForCanvas.getScaledHeight() + padding
+  
+          });
+          patternSourceCanvas.renderAll();
+          return patternSourceCanvas.getElement();
+        },
+        repeat: 'repeat',
+  
+      });
+  
+  var rect = new fabric.Rect({
+          width: 10000,
+          height: 10000,
+          left: 0,
+          fill: pattern,
+          objectCaching: false
+      });
+      canvas27.add(rect);
+  
+      rect.center().setCoords();
+      image24.src = canvas27.toDataURL();
+      canvas27.requestRenderAll();
+     })
+      });
+  
+  
+      $('#repeat-vertical11').on('click', function(){
+        checkForScale = true;
+        imageForCanvas.set({
+              'top': 0
+          });
+          imageForCanvas.set({
+              'left': 0
+          });
+          canvas27.clear();
+          canvas27.requestRenderAll();
+      
+     sleep(100).then(() => {
+      imageForCanvas.scaleToWidth(100);
+  
+      var patternSourceCanvas = new fabric.StaticCanvas();
+      patternSourceCanvas.add(imageForCanvas);
+  
+      patternSourceCanvas.renderAll();
+      var pattern = new fabric.Pattern({
+        source: function() {
+          patternSourceCanvas.setDimensions({
+            width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+            height: imageForCanvas.getScaledHeight() + padding
+  
+          });
+          patternSourceCanvas.renderAll();
+          return patternSourceCanvas.getElement();
+        },
+        repeat: 'repeat',
+  
+      });
+  
+       var pattern1 = new fabric.Pattern({
+        source: function() {
+          patternSourceCanvas.setDimensions({
+            width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+            height: imageForCanvas.getScaledHeight() + padding
+          });
+  
+          patternSourceCanvas.renderAll();
+          return patternSourceCanvas.getElement();
+        },
+        repeat: 'repeat',
+        offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/4,
+        offsetY: imageForCanvas.getScaledHeight()/2
+      });
+  
+  var rect = new fabric.Rect({
+          width: 10000,
+          height: 10000,
+          left: imageForCanvas.getScaledWidth(),
+          fill: pattern,
+          objectCaching: false
+      });
+  
+      canvas27.add(rect);
+  
+        var rect1 = new fabric.Rect({
+          width: 10000,
+          height: 10000,
+          left:0,
+          fill: pattern1,
+          objectCaching: false
+      });
+  
+  
+  
+      canvas27.add(rect1);
+      rect.center().setCoords();
+      rect1.center().setCoords();
+      image24.src = canvas27.toDataURL();
+      canvas27.requestRenderAll();
+            var sel = new fabric.ActiveSelection(canvas27.getObjects(), {
+            canvas: canvas26,
+          });
+          canvas27.setActiveObject(sel);
+          canvas27.requestRenderAll();
+     })
+  
+  
+  
+  });
+  
+  
+  
+      
+  
+      // None option for Phone case
+      $('#none11').on('click', function(){
+  
+          checkForScale = false;
+          canvas27.clear();
+          img.scaleToWidth(100);
+          canvas27.add(imageForCanvas);
+  
+          
+          image24.src = canvas27.toDataURL();
+          canvas27.requestRenderAll();
+      });
+      // Scale option for Phone case
+      $('#scale-control21').on('input', function () {
+        $(this).trigger('change');
+        sleep(100).then(() => {
+          imageForCanvas.scale(parseFloat($(this).val())).setCoords();
+        //  Repeat Vertical
+  
+          if(checkForScale==true){
+  
+            canvas27.clear();
+  
+          if(oldWidth3==imageForCanvas.getScaledWidth()){
+            canvas27.requestRenderAll();
+          }else{
+            oldWidth3=imageForCanvas.getScaledWidth();
+            imageForCanvas.set({
+              'top': 0
+          });
+          imageForCanvas.set({
+              'left': 0
+          });
+  
+  
+          canvas27.requestRenderAll();
+     sleep(100).then(() => {
+      var patternSourceCanvas = new fabric.StaticCanvas();
+      patternSourceCanvas.add(imageForCanvas);
+      patternSourceCanvas.renderAll();
+      var pattern = new fabric.Pattern({
+        source: function() {
+          patternSourceCanvas.setDimensions({
+            width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+            height: imageForCanvas.getScaledHeight() + padding
+          });
+          patternSourceCanvas.renderAll();
+          return patternSourceCanvas.getElement();
+        },
+        repeat: 'repeat',
+      });
+       var pattern1 = new fabric.Pattern({
+        source: function() {
+          patternSourceCanvas.setDimensions({
+            width: imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth(),
+            height: imageForCanvas.getScaledHeight() + padding
+          });
+          patternSourceCanvas.renderAll();
+          return patternSourceCanvas.getElement();
+        },
+        repeat: 'repeat',
+        offsetX:  imageForCanvas.getScaledWidth() + imageForCanvas.getScaledWidth()/4,
+        offsetY: imageForCanvas.getScaledHeight()/2
+      });
+  
+  var rect = new fabric.Rect({
+          width: 10000,
+          height: 10000,
+          left: imageForCanvas.getScaledWidth(),
+          fill: pattern,
+          objectCaching: false
+      });
+      canvas27.add(rect);
+  
+        var rect1 = new fabric.Rect({
+          width: 10000,
+          height: 10000,
+          left:0,
+          fill: pattern1,
+          objectCaching: false
+      });
+      canvas27.add(rect1);
+  
+      rect.center().setCoords();
+      rect1.center().setCoords();
+      image24.src = canvas27.toDataURL();
+      canvas27.requestRenderAll();
+  
+             sel = new fabric.ActiveSelection(canvas27.getObjects(), {
+            canvas: canvas27,
+          });
+          canvas27.setActiveObject(sel);
+          canvas27.requestRenderAll();
+     })
+          }
+  
+  
+          }else{
+            canvas27.requestRenderAll();
+          }
+         
+        })
+      });
+       //  Close repeat vertical
+  
+    // Align Vertical option for Phone case
+    $('#alignVertically21').on('click', function(){
+      img.centerV();
+      sleep(100).then(() => {
+      img.setCoords();
+      image24.src = canvas27.toDataURL();
+      })
+    });
+  
+    // Align Horizontal option for Phone case
+    $('#alignHorizontally21').on('click', function(){
+      img.centerH();
+      sleep(100).then(() => {
+      img.setCoords();
+      image24.src = canvas27.toDataURL();
+  })
+    });
+  
+    $('#upload-form').one('submit' , function(event){
+      checkForScale = false;
+      imageChange = true;
+      canvas27.remove(canvas27.getObjects());
+      canvas27 = null;
+      $('#c25').hide();
+      if(canvas27){
+        canvas27.clear();
+        canvas27 = null;
+      }
+      $('#c25').siblings('.upper-canvas').remove();
+      $('#c25').parent('.canvas-container').before($('#c25'));
+     // $('.canvas-container').remove();
+  
+      //
+    /*   canvas19.requestRenderAll();
+      canvas19.clear();
+      canvas19.dispose(); */
+      canvas27 = new fabric.Canvas('c25');
+      $('#c25').show();
+      canvas27.requestRenderAll();
+      event.preventDefault();
+      $.ajax({
+        url: "{{route('ajaxupload.action')}}",
+        method: "post",
+        data: new FormData(this),
+        dataType: "JSON",
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(data){
+         var object2 = "";
+         console.log(data.upload_image);
+         object2 ="/image/" + data.upload_image;
+          load(object2);
+        }
+      });
+    });
+  
+  });
+  
+  
+  
+  }
+  
+  
+  
+  
+  
+  </script>

@@ -142,6 +142,7 @@ class CheckoutController extends Controller
                 'city.required' => 'Please enter your city name',
             ]);
 
+
          // Include the autoloader (if not already done via Composer autoloader)
        // require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
@@ -183,8 +184,13 @@ class CheckoutController extends Controller
         if ($result->isSuccess()) {
             //act depending on $result->getReturnType()
             $gatewayReferenceId = $result->getReferenceId(); //store it in your database
-
-
+      
+                if (Auth::check()) {
+                    $userid = Auth::user()->id;
+                } else {
+                    $userid = '0';
+                }
+                
                 $id_order = Order::createOrder($request->order_number);
                 
                 $address = new Address;
@@ -198,7 +204,6 @@ class CheckoutController extends Controller
                 $address->city = $request->city;
                 $address->user_id = $userid;
                 $address->save();
-
             
             if ($result->getReturnType() == Result::RETURN_TYPE_ERROR) {
                 //error handling
@@ -229,11 +234,7 @@ class CheckoutController extends Controller
             return view('error_payment_info', compact('categories', 'code'));
         }
  
-        if (Auth::check()) {
-            $userid = Auth::user()->id;
-        } else {
-            $userid = '0';
-        }
+      
      
       
       

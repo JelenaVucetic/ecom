@@ -38,11 +38,10 @@
                       </label>
                   </div>
                 @else
-            <div class="select-size">
-                <h5>Size</h5>
+            <div class="select-size" style="margin: 0px 65px;">
                 <label class="xs-size">
                     <input type="radio" name="size" id="xs" value="XS" class="size-modal">
-                    <span>3XL</span>
+                    <span>XS</span>
                 </label>
                 <label class="s-size">
                     <input type="radio" name="size" id='s' value="S" class="size-modal">

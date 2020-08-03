@@ -11,7 +11,7 @@ class Order extends Model
     //
     protected $table = 'orders';
     protected $primarykey='id';
-    protected $fillable = ['total', 'status', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size', 'kids_size'];
+    protected $fillable = ['total', 'status', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size', 'kids_size', 'order_number'];
 
     public function orderFields() {
         return $this->belongsToMany(Product::class)->withPivot('qty', 'total', 'size', 'color', 'print', 'phone_model', 'case_style', 'custom_case', 'poster_size', 'picture_size', 'kids_size')->withTimestamps();
@@ -20,13 +20,15 @@ class Order extends Model
     public static function createOrder($order_number) {
         if (Auth::check()) {
           $user = Auth::user();
-
+     
           
         $order = $user->orders()->create([
             'total' => Cart::total(),
             'status' => 'pending',
             'order_number' => $order_number
         ]);
+
+      
     
         } else {
             $order = new Order;

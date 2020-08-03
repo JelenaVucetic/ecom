@@ -437,6 +437,8 @@
         </div>
          </div>
 
+         <div class="row">
+
         {{-- Hoodie html --}}
         <div class="product-column">
           <div class="row-product">
@@ -499,7 +501,7 @@
           </div>
       </div>
           </div>
-
+         </div>
           {{-- Canvas edit for Hoodie --}}
           <div id="product6" class="img-div" data-value="1" style="display:none">
             <h2 class="option-title">Hoodie options</h2>
@@ -608,6 +610,8 @@
           </div>
       </div>
          </div>
+
+         <div class="row">
                {{-- Stickers html --}}
                <div class="product-column">
                 <div class="row-product">
@@ -673,7 +677,7 @@
           </div>
 
 
-
+         </div>
 
 
                   {{-- Canvas edit for Stickers --}}
@@ -767,7 +771,7 @@
   </div>
 </div>
 
-
+<div class="row">
 
                      {{-- Termos html --}}
                      <div class="product-column">
@@ -831,7 +835,7 @@
                       </div>
                   </div>
                       </div>
-
+                  </div>
 
 
 
@@ -1141,7 +1145,7 @@
         </div>
          </div>
 
-
+         <div class="row">
            {{-- Sacks html --}}
     <div class="product-column">
       <div class="row-product">
@@ -1170,7 +1174,7 @@
   {{-- Puzzle html --}}
   <div class="product-column">
   <div class="row-product">
-      <div id="proizvod21" class="save-picture disabledbutton" data-category="35" name="Puzzle" data-canvas="canvas23" value="1">
+      <div id="proizvod21" class="save-picture disabledbutton" data-category="35" name="Puzzles" data-canvas="canvas23" value="1">
           <div class="background-div20">
       <img id="logo-canvas21" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
       <img class="overlay-panel" src="/site-images/Puzle.png">
@@ -1193,7 +1197,7 @@
   {{-- Makeup Bags html --}}
   <div class="product-column">
       <div class="row-product">
-          <div id="proizvod22" class="save-picture disabledbutton"  data-category="17" name="Coasters" data-canvas="canvas24" value="1">
+          <div id="proizvod22" class="save-picture disabledbutton"  data-category="17" name="Makeup Bags" data-canvas="canvas24" value="1">
               <div class="background-div21">
           <img id="logo-canvas22" src="/image/<?php if(!empty($image)){echo $image;} ?>">
           <img class="overlay-panel" src="/site-images/Thumbnail krug.png">
@@ -1214,7 +1218,7 @@
   
   </div>
 
-    </div>
+ 
 
      {{-- Canvas edit for Sacks --}}
         
@@ -1351,6 +1355,80 @@
             </div>
         </div>
          </div>
+
+         <div class="row">
+                    {{-- Magnets html --}}
+    <div class="product-column">
+      <div class="row-product">
+      <div id="proizvod23" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas23" value="1">
+          <div class="background-div22">
+      <img id="logo-canvas23" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+      <img class="overlay-panel" src="/site-images/Poster.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+        Magnets
+      </span>
+      <div>
+      <button id="edit-product23" class="edit-button">Edit</button>
+      <button id="enabled-product23" class="enable-button">Disabled</button>
+  
+  
+      </div>
+  </div>
+  </div>
+  
+  
+  </div>
+         </div>
+  
+
+         
+         {{-- Canvas edit for Magnets --}}
+         <div id="product24" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Magnets options</h2>
+          <div class="product-wrap">
+            <div id="app25" >
+                <canvas id="c25" width="250" height="300"></canvas>
+            </div>
+            <div class="product-options18">
+
+               {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" >
+                 <input type="submit" value="Upload" name="submit">
+                 </form> --}}
+
+                <div class="color-choose">
+
+                    <div class="container">
+                        <div class="output" id="output"></div>
+
+                        <div class="result-wrp">
+                           <p>Choose a color</p>
+                          <input type="color" id="color21">
+                        </div>
+                        <label  class="scale-lable">
+                            <span>Scale:</span>
+                            <input type="range" id="scale-control21"  value="1.5" min="0.005" max="1.5" step="0.005">
+                        </label>
+                        <div class="align">
+                        <button id="alignVertically21" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally21" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                        </div>
+                        <div class="repeat-option btn-group">
+                          <button id="repeat11" class="repeat-opt">Repeat</button>
+                          <button id="none11" class="repeat-opt">None</button>
+                          <button id="repeat-vertical11" class="repeat-opt">Repeat vertical</button>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+         </div>
+
+
     @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
     <div id="background-div12" style=" height: 300px; width: 300px;">
@@ -1360,7 +1438,7 @@
 </div>
     @endif
 
-    <div class="save-work">
+    <div class="save-work" style=" width: 100%;">
         <div class="add-work">
           <div class="add-work-title">
             <label>Title <i class="fas fa-info-circle"></i></label>

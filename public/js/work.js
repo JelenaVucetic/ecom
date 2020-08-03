@@ -488,6 +488,31 @@ $(document).ready(function(){
                                     });
 
 
+                                // Enable and edit Magnets
+                                $('#edit-product23').click(function() {
+                                    if(document.getElementById('product24').style.display == 'none'){
+                                        closeCanvas();
+                                        document.getElementById('product24').style.display = 'flex';
+                                    }else{
+                                        document.getElementById('product24').style.display = 'none';
+                                    }
+                                });
+                                $('#enabled-product23').click(function(){
+                                    if($('#proizvod23').hasClass('disabledbutton')){
+                                        $('#proizvod23').removeClass('disabledbutton');
+                                        $( "#proizvod23" ).attr( "value" , 0 );
+                                        $('#enabled-product23').html('Enabled');
+                                        $('#enabled-product23').addClass('enable');
+                                    }else{
+                                        $('#proizvod23').addClass('disabledbutton');
+                                        $( "#proizvod23" ).attr( "value" , 1 );
+                                        $('#enabled-product23').html('Disabled');
+                                        $('#enabled-product23').removeClass('enable');
+                                    }
+                                });
+
+
+
 
            
  
@@ -621,6 +646,13 @@ $(document).ready(function(){
             image23.src = canvas26.toDataURL();
             canvas26.discardActiveObject()
         });
+
+        $('#product24').mouseup(function(){
+            var image24 = document.getElementById("logo-canvas23");
+            image24.src = canvas27.toDataURL();
+            canvas27.discardActiveObject()
+        });
+
 
 
 
