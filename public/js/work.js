@@ -511,7 +511,28 @@ $(document).ready(function(){
                                     }
                                 });
 
-
+                                // Enable and edit Face mask
+                                $('#edit-product24').click(function() {
+                                    if(document.getElementById('product25').style.display == 'none'){
+                                        closeCanvas();
+                                        document.getElementById('product25').style.display = 'flex';
+                                    }else{
+                                        document.getElementById('product25').style.display = 'none';
+                                    }
+                                });
+                                $('#enabled-product24').click(function(){
+                                    if($('#proizvod24').hasClass('disabledbutton')){
+                                        $('#proizvod24').removeClass('disabledbutton');
+                                        $( "#proizvod24" ).attr( "value" , 0 );
+                                        $('#enabled-product24').html('Enabled');
+                                        $('#enabled-product24').addClass('enable');
+                                    }else{
+                                        $('#proizvod24').addClass('disabledbutton');
+                                        $( "#proizvod24" ).attr( "value" , 1 );
+                                        $('#enabled-product24').html('Disabled');
+                                        $('#enabled-product24').removeClass('enable');
+                                    }
+                                });
 
 
            
@@ -651,6 +672,13 @@ $(document).ready(function(){
             var image24 = document.getElementById("logo-canvas23");
             image24.src = canvas27.toDataURL();
             canvas27.discardActiveObject()
+        });
+
+        
+        $('#product25').mouseup(function(){
+            var image25 = document.getElementById("logo-canvas24");
+            image25.src = canvas28.toDataURL();
+            canvas28.discardActiveObject()
         });
 
 

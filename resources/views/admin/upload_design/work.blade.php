@@ -1360,10 +1360,10 @@
                     {{-- Magnets html --}}
     <div class="product-column">
       <div class="row-product">
-      <div id="proizvod23" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas23" value="1">
+      <div id="proizvod23" class="save-picture disabledbutton" data-category="26" name="Magnets" data-canvas="canvas23" value="1">
           <div class="background-div22">
       <img id="logo-canvas23" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-      <img class="overlay-panel" src="/site-images/Poster.png">
+      <img class="overlay-panel" src="/site-images/Karticni.png">
           </div>
       </div>
   <div class="preview-info">
@@ -1381,6 +1381,32 @@
   
   
   </div>
+
+
+                      {{-- Face maks html --}}
+                      <div class="product-column">
+                        <div class="row-product">
+                        <div id="proizvod24" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas24" value="1">
+                            <div class="background-div22">
+                        <img id="logo-canvas24" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                        <img class="overlay-panel" src="/site-images/Mask.png">
+                            </div>
+                        </div>
+                    <div class="preview-info">
+                        <span class="preview-name">
+                          Face mask
+                        </span>
+                        <div>
+                        <button id="edit-product24" class="edit-button">Edit</button>
+                        <button id="enabled-product24" class="enable-button">Disabled</button>
+                    
+                    
+                        </div>
+                    </div>
+                    </div>
+                    
+                    
+                    </div>
          </div>
   
 
@@ -1427,6 +1453,49 @@
             </div>
         </div>
          </div>
+
+                  {{-- Canvas edit for Face mask --}}
+                  <div id="product25" class="img-div" data-value="1" style="display:none">
+                    <h2 class="option-title">Face mask options</h2>
+                    <div class="product-wrap">
+                      <div id="app26" >
+                          <canvas id="c26" width="250" height="300"></canvas>
+                      </div>
+                      <div class="product-options19">
+          
+                         {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                           <input type="file" name="file1" >
+                           <input type="submit" value="Upload" name="submit">
+                           </form> --}}
+          
+                          <div class="color-choose">
+          
+                              <div class="container">
+                                  <div class="output" id="output"></div>
+          
+                                  <div class="result-wrp">
+                                     <p>Choose a color</p>
+                                    <input type="color" id="color21">
+                                  </div>
+                                  <label  class="scale-lable">
+                                      <span>Scale:</span>
+                                      <input type="range" id="scale-control22"  value="1.5" min="0.005" max="1.5" step="0.005">
+                                  </label>
+                                  <div class="align">
+                                  <button id="alignVertically22" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                                  <button id="alignHorizontally22" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                                  </div>
+                                  <div class="repeat-option btn-group">
+                                    <button id="repeat12" class="repeat-opt">Repeat</button>
+                                    <button id="none12" class="repeat-opt">None</button>
+                                    <button id="repeat-vertical12" class="repeat-opt">Repeat vertical</button>
+                                </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                   </div>
 
 
     @if(!empty($image))

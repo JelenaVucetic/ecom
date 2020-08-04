@@ -244,6 +244,10 @@ if($original == "Puzzles"){
 if($original == "Makeup Bags"){
     ImageModel::makeupBags($idProduct, $originalImagePath);
 }
+if($original == "Magnets"){
+    ImageModel::magnetRectangle($idProduct, $originalImagePath);
+    ImageModel::magnetCircle($idProduct, $originalImagePath);
+}
 
 
 $products = DB::table('product')->where([
