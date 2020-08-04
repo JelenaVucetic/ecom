@@ -7,11 +7,11 @@
     background-image: url('/site-images/baner-maske-lice.jpg');
       /* Background image is centered vertically and horizontally at all times */
     background-position: center center;
-    
+
     /* Background image doesn't tile */
     background-repeat: no-repeat;
 
-    
+
     /* This is what makes the background image rescale based
         on the container's size */
     background-size: cover;
@@ -52,7 +52,7 @@
 
 .box1-img-holder {
     background: url('/site-images/Mockup - T Shirts - v1 - square.png');
-} 
+}
 
 .box2-img-holder {
     background: url('/site-images/Mockup - Cases.png');
@@ -60,27 +60,27 @@
 
 .box3-img-holder {
     background: url('/site-images/OK2OKI0.png');
-} 
+}
 
 .box4-img-holder {
     background: url('/site-images/Mockup2 - mug.png');
-} 
+}
 
 .box5-img-holder {
     background: url('/site-images/Coasters.png');
-} 
+}
 
 .box6-img-holder {
     background: url('/site-images/82.png');
-} 
+}
 
 .box7-img-holder {
     background: url('/site-images/Mockup3 - Canvas bags copy.png');
-} 
+}
 
 .box8-img-holder {
     background: url('/site-images/07 Magneti 4.png');
-} 
+}
 
 .box9-img-holder {
     background: url('/site-images/129.png');
@@ -88,15 +88,15 @@
 
 .box10-img-holder {
     background: url('/site-images/63334.png');
-} 
+}
 
 .box11-img-holder {
     background: url('/site-images/9998.png');
-} 
-     
-.box1-img-holder , 
-.box2-img-holder , 
-.box3-img-holder,  
+}
+
+.box1-img-holder ,
+.box2-img-holder ,
+.box3-img-holder,
 .box4-img-holder,
 .box5-img-holder,
 .box6-img-holder,
@@ -108,7 +108,7 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    transition: all 1s; 
+    transition: all 1s;
 }
 
 .box10-img-holder,
@@ -118,12 +118,12 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    transition: all 1s; 
+    transition: all 1s;
 }
 
 .box1-img-holder:hover,
-.box2-img-holder:hover, 
-.box3-img-holder:hover,  
+.box2-img-holder:hover,
+.box3-img-holder:hover,
 .box4-img-holder:hover,
 .box5-img-holder:hover,
 .box6-img-holder:hover,
@@ -133,7 +133,7 @@
 .box10-img-holder:hover,
 .box11-img-holder:hover {
     transform: scale(1.1);
-} 
+}
 
 .box-container button {
     font-size: 14px;
@@ -231,7 +231,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
     }
-    
+
 #second-row {
     margin-top: 20px;
 }
@@ -264,7 +264,7 @@
 }
 
 .about-urban-box img {
-    width: 70px;    
+    width: 70px;
     margin-bottom: 40px;
 }
 
@@ -395,10 +395,10 @@
     right: 15px;
     bottom: 325px;
 }
-    
+
 /*     .right-arrow > .slick-next {
         position: absolute;
-  
+
     } */
 
 .slick-slide, .slick-slide div {
@@ -424,13 +424,13 @@
 
 .img-div{
     display: inline-block;
-    overflow: hidden; 
+    overflow: hidden;
     height: 220px;
 }
 
 .img-div img {
     display: block;
-    transition: transform .4s;  
+    transition: transform .4s;
     transform: scale(3);
     margin-top: 58.125%;
     margin-bottom: -54%;
@@ -443,11 +443,11 @@
 
 /* .img-div-phone{
     display: inline-block;
-    overflow: hidden; 
+    overflow: hidden;
 } */
 
-.img-div-phone {  
- 
+.img-div-phone {
+
     transform: scale(1.5)!important;
     margin-top: 8.125%!important;
 }
@@ -459,12 +459,12 @@
 
 
 
-.img-div-pictures {  
+.img-div-pictures {
     transform: scale(1.2)!important;
     margin-top: 8.125%!important;
 }
 
-.img-div-wallpapers {  
+.img-div-wallpapers {
     transform: scale(1.7)!important;
     margin-top: 21.125%!important;
 }
@@ -485,8 +485,19 @@
 }
 
 
+.img-div-notebooks {
+    transform: scale(2.5)!important;
+    margin-top: 15.125%!important;
+}
 
-@media (max-width: 1200px) { 
+.img-div-notebooks:hover  {
+    transform: scale(2.8)!important;
+    transform-origin: 50% 50%!important;
+}
+
+
+
+@media (max-width: 1200px) {
     .box1-img-holder,
     .box2-img-holder,
     .box3-img-holder,
@@ -499,7 +510,7 @@
     .box10-img-holder,
     .box11-img-holder {
         height: 197px;
-    } 
+    }
     .site-quality{
         flex-direction: column;
     }
@@ -510,16 +521,16 @@
     }
 
     .welcome-shop {
-         width: 100%; 
+         width: 100%;
     }
     .spcial-price-row {
         width: 95%;
         margin: auto;
     }
  }
- 
- 
-@media (max-width: 940px) { 
+
+
+@media (max-width: 940px) {
     .jumbotron {
         display: none;
     }
@@ -536,7 +547,7 @@
     .box10-img-holder,
     .box11-img-holder  {
        height: 166px;
-   } 
+   }
 
    #mySideNav{
        display: block!important;
@@ -554,9 +565,9 @@
 }
 }
 
- @media (max-width: 767px) {  
+ @media (max-width: 767px) {
     .my-main-div {
-         width: 100%; 
+         width: 100%;
     }
 
     #box3, #box6, #box9 {
@@ -565,7 +576,7 @@
     .welcome-shop {
         width: 100%;
     }
-    
+
     .product {
         width:150px;
         margin-top: 20px;
@@ -594,12 +605,12 @@
     }
 
     .about-urban-info {
-        flex-direction: row;  
+        flex-direction: row;
         justify-content: inherit;
         align-items: inherit;
         border-bottom: 1px solid #231F20;
     }
-    
+
     .about-urban-info:nth-child(4) {
         border-bottom: none;
     }
@@ -618,7 +629,7 @@
         margin-top: 13px;
     }
     .subscribe-box {
-         width: 100%; 
+         width: 100%;
     }
     .subscribe form {
         width: 90%;
@@ -630,7 +641,7 @@
 
     .subscribe-bottom div {
         flex-direction: column;
-        padding: 0px; 
+        padding: 0px;
     }
 
     .subscribe-bottom div p {
@@ -640,7 +651,7 @@
         text-align: end;
     }
 
-    
+
     #phone-middle div {
         display: block !important;
     }
@@ -682,10 +693,10 @@
     #slick-shirt {
         margin-top:20px; padding: 0 15px;
     }
-    
+
     #slick-shirt-img {
         height: 170px;
-    }   
+    }
 
     .spcial-price-row {
         width: 90%;
