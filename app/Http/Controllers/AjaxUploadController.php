@@ -220,6 +220,34 @@ if($original == "Wallpapers"){
     ImageModel::wallpaperThumb($idProduct, $originalImagePath);
     ImageModel::wallpaper($idProduct, $originalImagePath);
 }
+if($original == "Clocks"){
+    ImageModel::clock($idProduct, $originalImagePath);
+}
+if($original == "Bags"){
+    ImageModel::cegerThumb($idProduct, $originalImagePath);
+    ImageModel::ceger($idProduct, $originalImagePath);
+}
+if($original == "Coasters"){
+    ImageModel::coastersSquare($idProduct, $originalImagePath);
+    ImageModel::coastersCircle($idProduct, $originalImagePath);
+}
+if($original == "Sacks"){
+    ImageModel::sacksHo2($idProduct, $originalImagePath);
+    ImageModel::sacks($idProduct, $originalImagePath);
+}
+if($original == "Notes"){
+    ImageModel::notes($idProduct, $originalImagePath);
+}
+if($original == "Puzzles"){
+    ImageModel::puzzle($idProduct, $originalImagePath);
+}
+if($original == "Makeup Bags"){
+    ImageModel::makeupBags($idProduct, $originalImagePath);
+}
+if($original == "Magnets"){
+    ImageModel::magnetRectangle($idProduct, $originalImagePath);
+    ImageModel::magnetCircle($idProduct, $originalImagePath);
+}
 
 
 $products = DB::table('product')->where([

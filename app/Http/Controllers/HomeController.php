@@ -88,6 +88,7 @@ class HomeController extends Controller
     {
 
         $designs = Design::orderBy('id', 'desc')->paginate(28);
+        $designsRandom = Design::inRandomOrder()->get();
         $categories = Category::where('parent_id',NULL)->get();
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $tShirts = Product::where('category_id', 6)->get();
@@ -119,7 +120,7 @@ class HomeController extends Controller
  */
 
 
-        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies'));
+        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies', 'designsRandom'));
     }
 
     public function product_details($id)
@@ -143,7 +144,7 @@ class HomeController extends Controller
                     ['position' , "=", 'front'],
                 ])->first();
                     
-                $imageBack = "U1-Običnamajica-Bijela-Pozadi.jpg";
+                $imageBack = "U1-Obicnamajica-Bijela-Pozadi.jpg";
             }else{
                 $pictures = DB::table('images')->where([
                     ['product_id', "=", $id],
@@ -192,8 +193,46 @@ class HomeController extends Controller
                 ['size','=', 'vertical']
             ])->first();
             $imageBack = "Tapete-Thumbnail-mockup-2.png";
-        }else {
-         
+        }elseif($find_cat->category->name=="Bags") {
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color','=', 'black']
+            ])->first();
+            $imageBack = "Torbacrnaruckamanjam.jpg";
+        }elseif($find_cat->category->name=="Coasters"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size','=', 'square']
+            ])->first();
+            $imageBack = "podmetackvadratasti.jpg";
+        }elseif($find_cat->category->name=="Clocks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color','=', 'black']
+            ])->first();
+            $imageBack = "CrniSatSite.png";
+        }elseif($find_cat->category->name=="Puzzles"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "Puzle.png";
+        }elseif($find_cat->category->name=="Makeup Bags"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "Neseser.jpg";
+        }elseif($find_cat->category->name=="Notebooks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color', '=' , 'white']
+            ])->first();
+            $imageBack = "Notes.png";
+        }elseif($find_cat->category->name=="Sacks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color', '=' , 'white']
+            ])->first();
+            $imageBack = "PapirnakesaDinaHo2.jpg";
         }
 
         $cat = Category::where('id',$find_cat->category->id)->first("name");
@@ -789,6 +828,37 @@ class HomeController extends Controller
     }
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage, 'gender' => $request->gender));
+    }
+
+
+    public function loadImagesCoasters(Request $request){
+
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['size' , "=",$request->size]
+        ])->first();
+        $blankImage = "Coaster". $request->size. ".jpg";
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }
+
+    public function loadImagesColor(Request $request){
+        
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['color' , "=",$request->color]
+        ])->first();
+
+        if($request->pro_cat == "Bags"){
+            $blankImage = "Ceger". $request->color. ".jpg";
+        }elseif($request->pro_cat == "Notebooks"){
+            $blankImage = "Notes". $request->color. ".png";
+        }else{
+            $blankImage = "Clock". $request->color. ".png";
+        }
+        
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }
 
     public function loadImagesPhone(Request $request){

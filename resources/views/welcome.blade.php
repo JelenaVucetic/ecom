@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <main role="main">
   @include('layouts.error')
 
@@ -185,9 +184,9 @@
                                     <p class="">{{ $pro_cat->category->name }}</p>
                                 <?php } ?>
                                 @if($product->spl_price==0)
-                                    <p>{{ $product->price}}&euro;</p>
+                                    <p>From: <span style="font-weight: bold">{{ $product->price}}&euro;</span></p>
                                 @else
-                                    <p>{{$product->spl_price}}&euro;</p>
+                                    <p>Special price: <span style="font-weight: bold">{{$product->spl_price}}&euro;</span></p>
                                 @endif
                             </div>
                         </div>

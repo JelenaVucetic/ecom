@@ -30,7 +30,7 @@
       <div id="proizvod14" class="save-picture disabledbutton" data-category="13" name="Custom" data-canvas="canvas16" value="1">
           <div class="background-div13">
       <img id="logo-canvas14" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-      <img class="overlay-panel" src="/images/phonecase.png">
+      <img class="overlay-panel" src="/site-images/phonecase.png">
           </div>
       </div>
   <div class="preview-info">
@@ -55,7 +55,7 @@
       <div id="proizvod15" class="save-picture disabledbutton" data-category="10" name="Samsung" data-canvas="canvas17" value="1">
           <div class="background-div14">
       <img id="logo-canvas15" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
-      <img class="overlay-panel" src="/images/Samsung-P20-Bezpozadine.png">
+      <img class="overlay-panel" src="/site-images/Samsung-P20-Bezpozadine.png">
           </div>
       </div>
   <div class="preview-info">
@@ -78,7 +78,7 @@
           <div id="proizvod16" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas18" value="1">
               <div class="background-div15">
           <img id="logo-canvas16" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-          <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
+          <img class="overlay-panel" src="/site-images/Huawei-P20-Bez pozadine copy.png">
               </div>
           </div>
       <div class="preview-info">
@@ -234,7 +234,7 @@
         <div id="proizvod" class="save-picture disabledbutton" data-category="11" name="Phone Case" data-canvas="canvas3" value="1">
             <div class="background-div">
         <img id="logo-canvas" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-        <img class="overlay-panel" src="/images/phonecase.png">
+        <img class="overlay-panel" src="/site-images/phonecase.png">
             </div>
         </div>
     <div class="preview-info">
@@ -259,7 +259,7 @@
         <div id="proizvod1" class="save-picture disabledbutton" data-category="6" name="T-shirt" data-canvas="canvas4" value="1">
             <div class="background-div1">
         <img id="logo-canvas1" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
-        <img class="overlay-panel" src="/images/t-shirt.png">
+        <img class="overlay-panel" src="/site-images/t-shirt.png">
             </div>
         </div>
     <div class="preview-info">
@@ -282,7 +282,7 @@
             <div id="proizvod2" class="save-picture disabledbutton"  data-category="20" name="Mugs" data-canvas="canvas5" value="1">
                 <div class="background-div2">
             <img id="logo-canvas2" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-            <img class="overlay-panel" src="/images/mugs.png">
+            <img class="overlay-panel" src="/site-images/mugs.png">
                 </div>
             </div>
         <div class="preview-info">
@@ -437,13 +437,15 @@
         </div>
          </div>
 
+         <div class="row">
+
         {{-- Hoodie html --}}
         <div class="product-column">
           <div class="row-product">
               <div id="proizvod3" class="save-picture disabledbutton"  data-category="9" name="Hoodie" data-canvas="canvas6" value="1">
                   <div class="background-div3">
               <img id="logo-canvas3" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/hoodie.jpg">
+              <img class="overlay-panel" src="/site-images/hoodie.jpg">
                   </div>
               </div>
           <div class="preview-info">
@@ -464,7 +466,7 @@
               <div id="proizvod4" class="save-picture disabledbutton"  data-category="8" name="Long Sleeve" data-canvas="canvas7" value="1">
                   <div class="background-div4">
               <img id="logo-canvas4" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/longSleeve.jpg">
+              <img class="overlay-panel" src="/site-images/longSleeve.jpg">
                   </div>
               </div>
           <div class="preview-info">
@@ -485,7 +487,7 @@
               <div id="proizvod5" class="save-picture disabledbutton"  data-category="7" name="Graphic T-Shirt Dresses" data-canvas="canvas8" value="1">
                   <div class="background-div4">
               <img id="logo-canvas5" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/noSleeveShirt.png">
+              <img class="overlay-panel" src="/site-images/noSleeveShirt.png">
                   </div>
               </div>
           <div class="preview-info">
@@ -499,7 +501,7 @@
           </div>
       </div>
           </div>
-
+         </div>
           {{-- Canvas edit for Hoodie --}}
           <div id="product6" class="img-div" data-value="1" style="display:none">
             <h2 class="option-title">Hoodie options</h2>
@@ -608,6 +610,8 @@
           </div>
       </div>
          </div>
+
+         <div class="row">
                {{-- Stickers html --}}
                <div class="product-column">
                 <div class="row-product">
@@ -635,7 +639,7 @@
               <div id="proizvod7" class="save-picture disabledbutton"  data-category="25" name="Notes" data-canvas="canvas10" value="1">
                   <div class="background-div6">
               <img id="logo-canvas7" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/notes.png">
+              <img class="overlay-panel" src="/site-images/notes.png">
                   </div>
               </div>
           <div class="preview-info">
@@ -654,10 +658,10 @@
                       {{-- Clock html --}}
         <div class="product-column">
           <div class="row-product">
-              <div id="proizvod8" class="save-picture disabledbutton"  data-category="23" name="Clock" data-canvas="canvas11" value="1">
+              <div id="proizvod8" class="save-picture disabledbutton"  data-category="23" name="Clocks" data-canvas="canvas11" value="1">
                   <div class="background-div7">
               <img id="logo-canvas8" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-              <img class="overlay-panel" src="/images/clock.png">
+              <img class="overlay-panel" src="/site-images/clock.png">
                   </div>
               </div>
           <div class="preview-info">
@@ -673,7 +677,7 @@
           </div>
 
 
-
+         </div>
 
 
                   {{-- Canvas edit for Stickers --}}
@@ -767,7 +771,7 @@
   </div>
 </div>
 
-
+<div class="row">
 
                      {{-- Termos html --}}
                      <div class="product-column">
@@ -775,7 +779,7 @@
                           <div id="proizvod9" class="save-picture disabledbutton"  data-category="19" name="Termos"  data-canvas="canvas12" value="1">
                               <div class="background-div8">
                           <img id="logo-canvas9" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                          <img class="overlay-panel" src="/images/termos.png">
+                          <img class="overlay-panel" src="/site-images/termos.png">
                               </div>
                           </div>
                       <div class="preview-info">
@@ -793,10 +797,10 @@
                          {{-- Ceger html --}}
                      <div class="product-column">
                       <div class="row-product">
-                          <div id="proizvod10" class="save-picture disabledbutton"  data-category="24" name="Ceger"  data-canvas="canvas13" value="1">
+                          <div id="proizvod10" class="save-picture disabledbutton"  data-category="21" name="Bags"  data-canvas="canvas13" value="1">
                               <div class="background-div9">
                           <img id="logo-canvas10" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                          <img class="overlay-panel" src="/images/ceger.png">
+                          <img class="overlay-panel" src="/site-images/ceger.png">
                               </div>
                           </div>
                       <div class="preview-info">
@@ -808,7 +812,7 @@
                           <button id="enabled-product10" class="enable-button">Disabled</button>
                           </div>
                       </div>
-                  </div>
+                      </div>
                       </div>
 
                                     {{-- Poster html --}}
@@ -817,7 +821,7 @@
                           <div id="proizvod11" class="save-picture disabledbutton"  data-category="14" name="Poster"  data-canvas="canvas14" value="1">
                               <div class="background-div10">
                           <img id="logo-canvas11" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                          <img class="overlay-panel" src="/images/poster.png">
+                          <img class="overlay-panel" src="/site-images/poster.png">
                               </div>
                           </div>
                       <div class="preview-info">
@@ -831,7 +835,7 @@
                       </div>
                   </div>
                       </div>
-
+                  </div>
 
 
 
@@ -940,7 +944,7 @@
     <div id="proizvod17" class="save-picture disabledbutton" data-category="15" name="Wallpapers" data-canvas="canvas19" value="1">
         <div class="background-div16">
     <img id="logo-canvas17" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-    <img class="overlay-panel" src="/images/Poster.png">
+    <img class="overlay-panel" src="/site-images/Poster.png">
         </div>
     </div>
 <div class="preview-info">
@@ -965,7 +969,7 @@
     <div id="proizvod18" class="save-picture disabledbutton" data-category="16" name="Canvas" data-canvas="canvas20" value="1">
         <div class="background-div17">
     <img id="logo-canvas18" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
-    <img class="overlay-panel" src="/images/Poster.png">
+    <img class="overlay-panel" src="/site-images/Poster.png">
         </div>
     </div>
 <div class="preview-info">
@@ -982,18 +986,18 @@
 </div>
 
 
-{{-- Sledeci html --}}
+{{-- Coaster html --}}
 <div class="product-column">
     <div class="row-product">
-        <div id="proizvod19" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas121" value="1">
+        <div id="proizvod19" class="save-picture disabledbutton"  data-category="18" name="Coasters" data-canvas="canvas21" value="1">
             <div class="background-div18">
         <img id="logo-canvas19" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-        <img class="overlay-panel" src="/images/Huawei-P20-Bez pozadine copy.png">
+        <img class="overlay-panel" src="/site-images/Thumbnail krug.png">
             </div>
         </div>
     <div class="preview-info">
         <span class="preview-name">
-            Sledeci
+            Coaster
         </span>
         <div>
         <button id="edit-product18" class="edit-button">Edit</button>
@@ -1098,9 +1102,9 @@
     </div>
 
 
-         {{-- Canvas edit for Huawei --}}
+         {{-- Canvas edit for Coaster --}}
          <div id="product20" class="img-div" data-value="1" style="display:none">
-          <h2 class="option-title">Huawei options</h2>
+          <h2 class="option-title">Coaster options</h2>
           <div class="product-wrap">
             <div id="app21" >
                 <canvas id="c21" width="250" height="300"></canvas>
@@ -1141,7 +1145,359 @@
         </div>
          </div>
 
+         <div class="row">
+           {{-- Sacks html --}}
+    <div class="product-column">
+      <div class="row-product">
+      <div id="proizvod20" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas22" value="1">
+          <div class="background-div19">
+      <img id="logo-canvas20" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+      <img class="overlay-panel" src="/site-images/Poster.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+        Sacks
+      </span>
+      <div>
+      <button id="edit-product20" class="edit-button">Edit</button>
+      <button id="enabled-product20" class="enable-button">Disabled</button>
+  
+  
+      </div>
+  </div>
+  </div>
+  
+  
+  </div>
+  
+  {{-- Puzzle html --}}
+  <div class="product-column">
+  <div class="row-product">
+      <div id="proizvod21" class="save-picture disabledbutton" data-category="35" name="Puzzles" data-canvas="canvas23" value="1">
+          <div class="background-div20">
+      <img id="logo-canvas21" src="/image/<?php if(!empty($image)){echo $image;} ?>" >
+      <img class="overlay-panel" src="/site-images/Puzle.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+         Puzzle
+      </span>
+      <div>
+      <button id="edit-product21" class="edit-button">Edit</button>
+      <button id="enabled-product21" class="enable-button" onclick="">Disabled</button>
+      </div>
+  </div>
+  </div>
+  
+  </div>
+  
+  
+  {{-- Makeup Bags html --}}
+  <div class="product-column">
+      <div class="row-product">
+          <div id="proizvod22" class="save-picture disabledbutton"  data-category="17" name="Makeup Bags" data-canvas="canvas24" value="1">
+              <div class="background-div21">
+          <img id="logo-canvas22" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+          <img class="overlay-panel" src="/site-images/Thumbnail krug.png">
+              </div>
+          </div>
+      <div class="preview-info">
+          <span class="preview-name">
+              Makeup Bags
+          </span>
+          <div>
+          <button id="edit-product22" class="edit-button">Edit</button>
+          <button id="enabled-product22" class="enable-button" onclick="">Disabled</button>
+          </div>
+      </div>
+  </div>
+  
+      </div>
+  
+  </div>
+
+ 
+
+     {{-- Canvas edit for Sacks --}}
+        
+ <div id="product21" class="img-div" data-value="1" style="display:none">
+  <h2 class="option-title">Sacks options</h2>
+  <div class="product-wrap">
+    <div id="app22" >
+        <canvas id="c22" width="250" height="300"></canvas>
     </div>
+    <div class="product-options15">
+      
+      
+        <div class="color-choose">
+
+            <div class="container">
+                <div class="output" id="output"></div>
+
+                <div class="result-wrp">
+                   <p>Choose a color</p>
+                  <input type="color" id="color18">
+                </div>
+                <label class="scale-lable">
+                    <span>Scale:</span>
+                    <input type="range" id="scale-control18"  value="1.5" min="0.005" max="1.5" step="0.005">
+                </label>
+                <div class="align">
+                <button id="alignVertically18" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                <button id="alignHorizontally18" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                </div>
+                <div class="repeat-option btn-group">
+                    <button id="repeat8" class="repeat-opt">Repeat</button>
+                    <button id="none8" class="repeat-opt">None</button>
+                    <button id="repeat-vertical8" class="repeat-opt">Repeat vertical</button>
+                </div>
+              </div>
+        </div>
+    </div>
+    </div>
+</div>
+        
+
+
+
+
+
+
+
+
+              {{-- Canvas edit for Puzzle --}}
+    <div id="product22" class="img-div" data-value="1" style="display:none">
+      <h2 class="option-title">Puzzle options</h2>
+      <div class="product-wrap">
+        <div id="app23" >
+            <canvas id="c23" width="250" height="300"></canvas>
+        </div>
+        <div class="product-options16">
+            
+
+          {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
+              {{ csrf_field() }}
+             <input type="file" name="file1" >
+             <input type="submit" value="Upload" name="submit">
+             </form>
+ --}}
+            <div class="color-choose">
+
+                <div class="container">
+                    <div class="output" id="output"></div>
+
+                    <div class="result-wrp">
+                       <p>Choose a color</p>
+                      <input type="color" id="color19">
+                    </div>
+                    <label  class="scale-lable">
+                        <span>Scale:</span>
+                        <input type="range" id="scale-control19"   value="1.5" min="0.005" max="2" step="0.005">
+                    </label>
+                    <div class="align">
+                    <button id="alignVertically19" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                    <button id="alignHorizontally19" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                    </div>
+                    <div class="repeat-option btn-group">
+                      <button id="repeat9" class="repeat-opt">Repeat</button>
+                      <button id="none9" class="repeat-opt">None</button>
+                      <button id="repeat-vertical9" class="repeat-opt">Repeat vertical</button>
+                  </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+         {{-- Canvas edit for Makeup bags --}}
+         <div id="product23" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Makeup bags options</h2>
+          <div class="product-wrap">
+            <div id="app24" >
+                <canvas id="c24" width="250" height="300"></canvas>
+            </div>
+            <div class="product-options17">
+
+               {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" >
+                 <input type="submit" value="Upload" name="submit">
+                 </form> --}}
+
+                <div class="color-choose">
+
+                    <div class="container">
+                        <div class="output" id="output"></div>
+
+                        <div class="result-wrp">
+                           <p>Choose a color</p>
+                          <input type="color" id="color20">
+                        </div>
+                        <label  class="scale-lable">
+                            <span>Scale:</span>
+                            <input type="range" id="scale-control20"  value="1.5" min="0.005" max="1.5" step="0.005">
+                        </label>
+                        <div class="align">
+                        <button id="alignVertically20" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally20" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                        </div>
+                        <div class="repeat-option btn-group">
+                          <button id="repeat10" class="repeat-opt">Repeat</button>
+                          <button id="none10" class="repeat-opt">None</button>
+                          <button id="repeat-vertical10" class="repeat-opt">Repeat vertical</button>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+         </div>
+
+         <div class="row">
+                    {{-- Magnets html --}}
+    <div class="product-column">
+      <div class="row-product">
+      <div id="proizvod23" class="save-picture disabledbutton" data-category="26" name="Magnets" data-canvas="canvas23" value="1">
+          <div class="background-div22">
+      <img id="logo-canvas23" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+      <img class="overlay-panel" src="/site-images/Karticni.png">
+          </div>
+      </div>
+  <div class="preview-info">
+      <span class="preview-name">
+        Magnets
+      </span>
+      <div>
+      <button id="edit-product23" class="edit-button">Edit</button>
+      <button id="enabled-product23" class="enable-button">Disabled</button>
+  
+  
+      </div>
+  </div>
+  </div>
+  
+  
+  </div>
+
+
+                      {{-- Face maks html --}}
+                      <div class="product-column">
+                        <div class="row-product">
+                        <div id="proizvod24" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas24" value="1">
+                            <div class="background-div22">
+                        <img id="logo-canvas24" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+                        <img class="overlay-panel" src="/site-images/Mask.png">
+                            </div>
+                        </div>
+                    <div class="preview-info">
+                        <span class="preview-name">
+                          Face mask
+                        </span>
+                        <div>
+                        <button id="edit-product24" class="edit-button">Edit</button>
+                        <button id="enabled-product24" class="enable-button">Disabled</button>
+                    
+                    
+                        </div>
+                    </div>
+                    </div>
+                    
+                    
+                    </div>
+         </div>
+  
+
+         
+         {{-- Canvas edit for Magnets --}}
+         <div id="product24" class="img-div" data-value="1" style="display:none">
+          <h2 class="option-title">Magnets options</h2>
+          <div class="product-wrap">
+            <div id="app25" >
+                <canvas id="c25" width="250" height="300"></canvas>
+            </div>
+            <div class="product-options18">
+
+               {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+                 <input type="file" name="file1" >
+                 <input type="submit" value="Upload" name="submit">
+                 </form> --}}
+
+                <div class="color-choose">
+
+                    <div class="container">
+                        <div class="output" id="output"></div>
+
+                        <div class="result-wrp">
+                           <p>Choose a color</p>
+                          <input type="color" id="color21">
+                        </div>
+                        <label  class="scale-lable">
+                            <span>Scale:</span>
+                            <input type="range" id="scale-control21"  value="1.5" min="0.005" max="1.5" step="0.005">
+                        </label>
+                        <div class="align">
+                        <button id="alignVertically21" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                        <button id="alignHorizontally21" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                        </div>
+                        <div class="repeat-option btn-group">
+                          <button id="repeat11" class="repeat-opt">Repeat</button>
+                          <button id="none11" class="repeat-opt">None</button>
+                          <button id="repeat-vertical11" class="repeat-opt">Repeat vertical</button>
+                      </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+         </div>
+
+                  {{-- Canvas edit for Face mask --}}
+                  <div id="product25" class="img-div" data-value="1" style="display:none">
+                    <h2 class="option-title">Face mask options</h2>
+                    <div class="product-wrap">
+                      <div id="app26" >
+                          <canvas id="c26" width="250" height="300"></canvas>
+                      </div>
+                      <div class="product-options19">
+          
+                         {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                           <input type="file" name="file1" >
+                           <input type="submit" value="Upload" name="submit">
+                           </form> --}}
+          
+                          <div class="color-choose">
+          
+                              <div class="container">
+                                  <div class="output" id="output"></div>
+          
+                                  <div class="result-wrp">
+                                     <p>Choose a color</p>
+                                    <input type="color" id="color21">
+                                  </div>
+                                  <label  class="scale-lable">
+                                      <span>Scale:</span>
+                                      <input type="range" id="scale-control22"  value="1.5" min="0.005" max="1.5" step="0.005">
+                                  </label>
+                                  <div class="align">
+                                  <button id="alignVertically22" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                                  <button id="alignHorizontally22" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                                  </div>
+                                  <div class="repeat-option btn-group">
+                                    <button id="repeat12" class="repeat-opt">Repeat</button>
+                                    <button id="none12" class="repeat-opt">None</button>
+                                    <button id="repeat-vertical12" class="repeat-opt">Repeat vertical</button>
+                                </div>
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+                   </div>
+
+
     @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
     <div id="background-div12" style=" height: 300px; width: 300px;">
@@ -1151,7 +1507,7 @@
 </div>
     @endif
 
-    <div class="save-work">
+    <div class="save-work" style=" width: 100%;">
         <div class="add-work">
           <div class="add-work-title">
             <label>Title <i class="fas fa-info-circle"></i></label>
