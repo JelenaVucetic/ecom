@@ -8,6 +8,33 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use DB;
 
 
+/**
+ * App\Image
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $product_id
+ * @property string $color
+ * @property string $position
+ * @property string $gender
+ * @property string $size
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Product $product
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereGender($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image wherePosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Image whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Image extends Model
 {
     protected $table = 'images';

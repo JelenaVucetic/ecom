@@ -6,6 +6,30 @@ use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Order
+ *
+ * @property int $id
+ * @property string $status
+ * @property string $total
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $order_number
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $orderFields
+ * @property-read int|null $order_fields_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereOrderNumber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereTotal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUserId($value)
+ * @mixin \Eloquent
+ */
 class Order extends Model
 {
     //
