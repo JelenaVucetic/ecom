@@ -593,14 +593,14 @@
     }
 
     .slick-prev {
-      /*  top: 215px;*/
-        display: none !important;
+        top: 330px;
+        left: 0px
+
     }
 
     .slick-next {
-        /*right: -5px;
-        bottom: 380px;*/
-        display: none !important;
+        right: -5px;
+        bottom: 320px;
     }
 
     .about-urban {
@@ -714,3 +714,4 @@
         margin: auto;
     }
 }
+

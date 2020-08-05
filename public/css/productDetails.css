@@ -1,7 +1,3 @@
-.desctop-product {
-    display: flex;
-}
-
 .right {
     background: #F5F5F5;
     padding: 29px 15px;
@@ -45,9 +41,9 @@
 }
 
 .hoverd{
-    
+
     background: url('/site-images/1 srce - hover.svg') no-repeat!important;
-   
+
 }
 
 .wishlist #disable {
@@ -183,7 +179,7 @@
     padding-top: 4px;
 }
 
-.xs-size span:hover 
+.xs-size span:hover
 .s-size span:hover,
 .m-size span:hover,
 .l-size span:hover,
@@ -236,7 +232,7 @@
     width: 33px;
     height: 33px;
     position: relative;
-} 
+}
 .white-border-thermos {
     width: 30px;
     height: 30px;
@@ -268,7 +264,7 @@
 .navy input[type="radio"],
 .neon input[type="radio"]  {
     opacity: 0.01;
-    z-index: 100;   
+    z-index: 100;
     width: 0px;
   }
 
@@ -295,14 +291,14 @@
     border-radius: 20px;
     cursor: pointer;
     z-index: 90;
-} 
+}
 .navy span {
     background: rgb(13, 1, 32);
     border: 1px solid#DEDEDE;
     border-radius: 20px;
     cursor: pointer;
     z-index: 90;
-} 
+}
 
 .neon span {
     background: rgb(192, 159, 247);
@@ -310,7 +306,7 @@
     border-radius: 20px;
     cursor: pointer;
     z-index: 90;
-} 
+}
 .white span {
     background: white;
     border: 1px solid#DEDEDE;
@@ -366,7 +362,7 @@
 .front input[type="radio"],
 .back input[type="radio"] {
     opacity: 0.01;
-    z-index: 100;   
+    z-index: 100;
     width: 0px;
   }
 
@@ -389,7 +385,7 @@
     padding-top: 5px;
     cursor: pointer;
     z-index: 90;
-} 
+}
 
 .front span {
     background: black;
@@ -398,7 +394,7 @@
     padding-top: 5px;
     cursor: pointer;
     z-index: 90;
-} 
+}
 
 .front span:hover,
 .back span:hover {
@@ -473,7 +469,7 @@
 }
 
 #exampleModal .modal-header {
-    display: block; 
+    display: block;
     border-bottom: none;
 }
 
@@ -483,9 +479,9 @@
 }
 
 #exampleModal .modal-footer {
-    display: block; 
-    padding: 0; 
-    border-top: none; 
+    display: block;
+    padding: 0;
+    border-top: none;
 }
 
 #modal-add div {
@@ -631,7 +627,7 @@
     display: flex;
     width: 75%;
     padding: 10px 7px;
-    
+
 }
 
 .average-review {
@@ -778,7 +774,7 @@ stroke-width:20;
     padding-left: 10px;
     padding-top: 3px;
 }
-.size2 span:hover, 
+.size2 span:hover,
 .size4 span:hover,
 .size6 span:hover,
 .size8 span:hover,
@@ -821,7 +817,7 @@ stroke-width:20;
 .white input[type="radio"],
 .blue input[type="radio"] {
     opacity: 0.01;
-    z-index: 100;   
+    z-index: 100;
     width: 0px;
   }
 
@@ -843,7 +839,7 @@ stroke-width:20;
     border-radius: 20px;
     cursor: pointer;
     z-index: 90;
-} 
+}
 .pink span {
     background: pink;
     border: 1px solid#DEDEDE;
@@ -890,17 +886,17 @@ stroke-width:20;
 .B1_price {
     display: none;
 }
-@media (max-width: 767px) {  
+@media (max-width: 767px) {
        .desctop-product {
             display: block;
-        } 
+        }
         .col-3{
             display: block;
         }
         #phone-nav {
             display: block;
         }
-        
+
         #add {
             display:none;
         }
@@ -912,7 +908,7 @@ stroke-width:20;
         #desctop-middle {
             display: none;
         }
-        
+
         #phone-middle {
             display: block;
         }
@@ -924,11 +920,11 @@ stroke-width:20;
             width: 100%;
             flex-direction: column;
         }
-        
+
         .average-review {
-            width: 100%; 
+            width: 100%;
             margin: 0;
-            border-right: none; 
+            border-right: none;
             border-bottom: 1px solid #CBCBCB;
         }
 
