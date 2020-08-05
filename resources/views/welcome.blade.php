@@ -147,30 +147,32 @@
                     <a href="{{ url('/product_details', [$product->id]) }}" class="">
                         <div class="">
                             <div class="img-div">
-
-                                @if ($product->images)
-                                @foreach ($product->images as $item)
-                                @if($product->category->name=="T-Shirts")
-                                  @if ($item->color == "white" && $item->position == "front")
-                                  <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                  @break
-                                  @endif
-                                  @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                  @break
-                                  @elseif($product->category->name=="Pictures")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
-                                  @break
-                                  @elseif($product->category->name=="Wallpapers")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
-                                    @elseif($product->category->name=="Notebooks")
-                                    <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
-                                  @break
-                                  @else
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                  @break
-                                  @endif
-                                @endforeach
+                            @if ($product->images)
+                            @foreach ($product->images as $item)
+                            @if($product->category->name=="T-Shirts")
+                              @if ($item->color == "white" && $item->position == "front")
+                              <img src="{{ url('image', $item->name) }}" class="" alt="">
+                              @break
+                              @endif
+                              @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                              <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                              @break
+                              @elseif($product->category->name=="Pictures")
+                              <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                              @break
+                              @elseif($product->category->name=="Wallpapers")
+                              <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                              @elseif($product->category->name=="Notebooks")
+                              <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
+                              @break
+                              @elseif($product->category->name=="Makeup Bags")
+                              <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
+                              @break
+                              @else
+                              <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                              @break
+                              @endif
+                            @endforeach
 
                                @else
                                 <img src="{{ url('images', $product->image) }}" class="" alt="">

@@ -18,6 +18,7 @@ $("#slick1").slick({
                 slidesToShow: 3,
                 slidesToScroll: 3,
             },
+
         },
         {
             breakpoint: 767, // mobile breakpoint
@@ -58,7 +59,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -90,7 +91,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -122,7 +123,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -147,7 +148,7 @@ $("#slick5").slick({
                 slidesToScroll: 4,
             },
         },
-        
+
         {
             breakpoint: 992, // mobile breakpoint
             settings: {
@@ -155,7 +156,7 @@ $("#slick5").slick({
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -188,7 +189,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -239,7 +240,7 @@ $("#slick8").slick({
         "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
     nextArrow:
         "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        
+
 });
 
 

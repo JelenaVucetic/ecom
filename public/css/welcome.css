@@ -479,6 +479,15 @@
     transform-origin: 50% 50%!important;
 }
 
+.img-div-makeup {
+    transform: scale(2.5)!important;
+    margin-top: 21.125%!important;
+}
+
+.img-div-makeup:hover  {
+    transform: scale(2.8)!important;
+    transform-origin: 50% 50%!important;
+}
 
 .design-image {
     width: 200px;height:200px
@@ -584,12 +593,14 @@
     }
 
     .slick-prev {
-        top: 215px;
+      /*  top: 215px;*/
+        display: none !important;
     }
 
     .slick-next {
-        right: -5px;
-        bottom: 288px;
+        /*right: -5px;
+        bottom: 380px;*/
+        display: none !important;
     }
 
     .about-urban {
