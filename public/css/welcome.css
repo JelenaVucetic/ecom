@@ -374,7 +374,7 @@
 .slick-prev {
     font-size: 0;
     position: absolute;
-    top: 320px;
+    top: 330px;
     left: -23px;
 }
 
@@ -392,7 +392,7 @@
 
 .slick-next {
     position: absolute;
-    right: 15px;
+    right: 45px;
     bottom: 325px;
 }
 
@@ -504,6 +504,14 @@
     transform-origin: 50% 50%!important;
 }
 
+.img-div-masks {
+    transform: scale(0.7)!important;
+    margin-top: -2.875%!important;
+}
+
+.img-div-masks:hover {
+    transform: scale(0.9) !important;
+}
 
 
 @media (max-width: 1200px) {
@@ -712,6 +720,10 @@
     .spcial-price-row {
         width: 90%;
         margin: auto;
+    }
+
+    .slick2-left {
+        left: -27px;
     }
 }
 

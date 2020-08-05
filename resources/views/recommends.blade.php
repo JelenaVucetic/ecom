@@ -10,8 +10,8 @@
 if(Auth::check()){
  $products2 = \App\Product::join('recommends','recommends.pro_id','product.id' )
          ->select('product.*', DB::raw('count(*) as total'))
-         ->distinct('recommends.pro_id')  
-         ->groupBy('pro_id','name','image','price')   
+         ->distinct('recommends.pro_id')
+         ->groupBy('pro_id','name','image','price')
          ->where('uid',Auth::user()->id)
          ->inRandomOrder()
         ->take(18)
@@ -19,12 +19,12 @@ if(Auth::check()){
 }else{
  $products2 = \App\Product::join('recommends','recommends.pro_id','product.id' )
          ->select('product.*', DB::raw('count(*) as total'))
-         ->distinct('recommends.pro_id')  
-         ->groupBy('pro_id','name','image','price')  
+         ->distinct('recommends.pro_id')
+         ->groupBy('pro_id','name','image','price')
          ->inRandomOrder()
             ->take(18)
             ->get();
-}    
+}
 ?>
 <div style="width:90%; margin: 20px auto;">
     <h1>Recomended for you</h1>
@@ -36,36 +36,36 @@ if(Auth::check()){
             <div class="product">
                 <a href="{{ url('/product_details', [$p->id]) }}" class="">
                     <div class="">
-                            <div class="img-div">
-                                @if ($p->images)
-                       
+                        <div class="img-div">
+                            @if ($p->images)
+
                                 @foreach ($p->images as $item)
-                                @if($p->category->name=="T-Shirts")
-                                
-                                  @if ($item->color == "white" && $item->position == "front")
-                                  <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                  @break
-                                  @endif
-                                  @elseif( $p->category->getParentsNames() == "Cases" && $item->color == "transparent")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                  @break
-                                  @elseif($p->category->name=="Pictures")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
-                                  @break
-                                  @elseif($p->category->name=="Wallpapers")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
-                                  @break
-                                  @else
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                  @break
-                                  @endif
+                                    @if($p->category->name=="T-Shirts")
+
+                                    @if ($item->color == "white" && $item->position == "front")
+                                        <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                        @break
+                                    @endif
+                                    @elseif( $p->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                                        <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                        @break
+                                    @elseif($p->category->name=="Pictures")
+                                        <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                                        @break
+                                    @elseif($p->category->name=="Wallpapers")
+                                        <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                        @break
+                                    @else
+                                        <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                        @break
+                                    @endif
                                 @endforeach
-                               
-                               @else
+
+                            @else
                                 <img src="{{ url('image', $item->name) }}" class="" alt="">
                                 @break
-                                @endif
-                            </div>
+                            @endif
+                        </div>
                             <div class="">
                                 <p class="">{{ $p->name }}</p>
                                 <?php
@@ -74,14 +74,14 @@ if(Auth::check()){
                                 ?>
                                     <p class="">{{ $pro_cat->category->name }}</p>
                                 <?php } ?>
-                                @if($p->spl_price==0)
-                                    <p>{{ $p->price}}&euro;</p>
+                                @if($product->spl_price==0)
+                                    <p>From: <span style="font-weight: bold">{{ $product->price}}&euro;</span></p>
                                 @else
-                                    <p>{{$p->spl_price}}&euro;</p>
+                                    <p>Special price: <span style="font-weight: bold">{{$product->spl_price}}&euro;</span></p>
                                 @endif
                             </div>
                         </div>
-                    </a> 
+                    </a>
                 </div>
             </div>
         @endforeach

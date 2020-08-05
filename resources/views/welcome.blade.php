@@ -162,12 +162,16 @@
                               @break
                               @elseif($product->category->name=="Wallpapers")
                               <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                               @break
                               @elseif($product->category->name=="Notebooks")
                               <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                               @break
                               @elseif($product->category->name=="Makeup Bags")
                               <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
                               @break
+                              @elseif($product->category->name=="Masks")
+                              <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
+                               @break
                               @else
                               <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                               @break

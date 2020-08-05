@@ -99,11 +99,15 @@
                               @break
                                 @elseif($p->category->name=="Wallpapers")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                @break
                                 @elseif($p->category->name=="Notebooks")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                                 @break
                                 @elseif($p->category->name=="Makeup Bags")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
+                                @break
+                                @elseif($p->category->name=="Masks")
+                                <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
                                 @break
                               @else
                               <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
@@ -146,7 +150,7 @@
 
         {{-- @endif --}}
 
-        <div class="product col-sm-6 col-md-3 col-6">
+        <div class="product">
             <a href="{{ url('/product_details', [$product->id]) }}" class="">
                 <div class="">
                     <div  class="img-div">
@@ -155,29 +159,52 @@
                                 @foreach ($product->images as $item)
                                 @if($product->category->name=="T-Shirts")
 
-                                  @if ($item->color == "white" && $item->position == "front")
-                                  <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                  @break
-                                  @endif
-                                  @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                  @break
-                                  @elseif($product->category->name=="Pictures")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
-                                  @break
-                                  @elseif($product->category->name=="Wallpapers")
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
-                                  @break
-                                  @else
-                                  <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                  @break
-                                  @endif
-                                @endforeach
 
-                               @else
-                                <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                @break
+                                    @if ($item->color == "white" && $item->position == "front")
+                                        <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                        @break
+                                    @endif
+                                @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                    @break
+                                @elseif($product->category->name=="Pictures")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                                    @break
+                                @elseif($product->category->name=="Wallpapers")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                    @break
+                                @elseif($product->category->name=="Notebooks")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
+                                    @break
+                                @elseif($product->category->name=="Makeup Bags")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
+                                    @break
+                                @elseif($product->category->name == "Masks")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
+                                    @break
+                                @else
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                    @break
                                 @endif
+                            @endforeach
+                        @else
+                        <img src="{{ url('image', $item->name) }}" class="" alt="">
+                        @break
+                        @endif
+                    </div>
+                    <div class="">
+                        <p class="">{{ $product->name }}</p>
+                        <?php
+                        $pro_cat = App\Product::find($product->id);
+                        if($pro_cat->category != null){
+                        ?>
+                        <p class="">{{ $pro_cat->category->name }}</p>
+                        <?php } ?>
+                        @if($product->spl_price==0)
+                            <p>From: <span style="font-weight: bold">{{ $product->price}}&euro;</span></p>
+                        @else
+                            <p>Special price: <span style="font-weight: bold">{{$product->spl_price}}&euro;</span></p>
+                        @endif
                     </div>
                 </div>
             </a>
