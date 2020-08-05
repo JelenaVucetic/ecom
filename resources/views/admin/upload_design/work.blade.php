@@ -1386,7 +1386,7 @@
                       {{-- Face maks html --}}
                       <div class="product-column">
                         <div class="row-product">
-                        <div id="proizvod24" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas24" value="1">
+                        <div id="proizvod24" class="save-picture disabledbutton" data-category="37" name="Masks" data-canvas="canvas24" value="1">
                             <div class="background-div22">
                         <img id="logo-canvas24" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                         <img class="overlay-panel" src="/site-images/Mask.png">

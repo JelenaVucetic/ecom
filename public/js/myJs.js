@@ -1154,6 +1154,7 @@ $("#female-x").on("click", function(){
   var id = $("#productID").val();
   var pro_cat = $("#pro_cat").val();
   var phoneModel = $( ".cases option:selected" ).val();
+  console.log(color, id, pro_cat, phoneModel);
   $.ajax({
     headers: {  
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  

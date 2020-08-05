@@ -163,6 +163,7 @@
                                   @break
                                   @elseif($product->category->name=="Wallpapers")
                                   <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                  @break
                                     @elseif($product->category->name=="Notebooks")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                                   @break
