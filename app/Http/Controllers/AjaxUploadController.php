@@ -110,25 +110,47 @@ $price = 0;
 
 
 if($original=='Phone Case'){
-    $price = 10;
+$price = 6.90;
 }else if($original=='T-shirt'){
-    $price = 15;
+$price = 12.90;
 }else if($original=='Mugs'){
-    $price = 12;
+$price = 12;
 }else if($original=='Hoodie'){
-    $price = 25;
+$price = 22.90;
 }else if($original == "Poster"){
-    $price = 11;
-    $priceB1 = 18;
-    $priceB2 = 15;
+$price = 11;
+$priceB1 = 18;
+$priceB2 = 15;
 }else if($original == "Canvas"){
-    $price = 0;
-    $priceB2 = 20;
-    $priceB1 = 28;
+$price = 37;
+$priceB2 = 20;
+$priceB1 = 28;
 }else if($original == "Wallpapers"){
-    $price = 15;
+$price = 15;
+}else if($original == "Samsung"){
+$price = 6.90;
+}else if($original == "Huawei"){
+$price = 6.90;
+}else if($original == "Custom"){
+$price = 6.90;
+}else if($original == "Magnets"){
+$price = 1.90;
+}else if($original == "Makeup Bags"){
+$price = 3.90;
+}else if($original == "Puzzles"){
+$price = 2.90;
+}else if($original == "Coasters"){
+$price = 0.99;
+}else if($original == "Termos"){
+$price = 5.99;
+}else if($original == "Mugs"){
+$price = 4.90;
+}else if($original == "Bags"){
+$price = 3.90;
+}else if($original == "Notes"){
+$price = 4.90;
 }else{
-    $price = 0;
+$price = 0;
 }
     $checkImage = $image;
     $image = explode(";" , $image)[1];  
@@ -247,6 +269,16 @@ if($original == "Makeup Bags"){
 if($original == "Magnets"){
     ImageModel::magnetRectangle($idProduct, $originalImagePath);
     ImageModel::magnetCircle($idProduct, $originalImagePath);
+}
+if($original == "Mugs"){
+    ImageModel::mugThumb($idProduct, $originalImagePath);
+    ImageModel::mugMain($idProduct, $originalImagePath);
+}
+if($original == "Termos"){
+    ImageModel::thermos($idProduct, $originalImagePath);
+}
+if($original == "Masks"){
+    ImageModel::masks($idProduct, $originalImagePath);
 }
 
 

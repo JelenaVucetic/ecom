@@ -233,7 +233,31 @@ class HomeController extends Controller
                 ['color', '=' , 'white']
             ])->first();
             $imageBack = "PapirnakesaDinaHo2.jpg";
+        }elseif($find_cat->category->name=="Magnets"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size', '=' , 'rectangle']
+            ])->first();
+            $imageBack = "Karticni.png";
+        }elseif($find_cat->category->name=="Thermos"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "TermosThumbnail.png";
+        }elseif($find_cat->category->name=="Mugs"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size', "=" , "main"]
+            ])->first();
+            $imageBack = "Solja2.jpg";
+        }elseif($find_cat->category->name=="Masks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color', "=" , "white"]
+            ])->first();
+            $imageBack = "maskabijela.jpg";
         }
+
 
         $cat = Category::where('id',$find_cat->category->id)->first("name");
         $cat = $cat->name;
@@ -862,12 +886,20 @@ class HomeController extends Controller
     }
 
     public function loadImagesPhone(Request $request){
-      
+        if($request->phoneModel){
             $image = DB::table('images')->where([
                 ['product_id', "=", $request->id],
                 ['color' , "=",$request->color],
                 ['size',"=",$request->phoneModel]
             ])->first();
+        }else{
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color' , "=",$request->color]
+            ])->first();
+            
+        }
+         
 
            if($request->pro_cat=="Iphone Cases"){
             if($request->phoneModel == "iPhone XI Pro"){

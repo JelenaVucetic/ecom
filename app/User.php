@@ -80,6 +80,6 @@ class User extends Authenticatable
     public function test()
     {
         $user =User::first();
-        $user->updated_at
+        $user->updated_at;
     }
 }

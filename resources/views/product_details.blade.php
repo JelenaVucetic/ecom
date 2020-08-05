@@ -167,12 +167,12 @@
           <span id="price">
             @if($product->spl_price==0)
                 <input class="product_price" type="hidden" value="{{$product->price}}">
-                <h4 class="A3_price"><span style="font-weight: bold;font-size: 22px;" >&euro; {{ $product->price}} </span></h4>
+                <h4 class="A3_price"><span style="font-weight: bold;font-size: 20px;" >&euro; {{ $product->price}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center" style="width:90%; margin-left: 0;">
                   <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
                   <p class="" style="text-decoration:line-through; color:#333;font-weight: bold;font-size: 20px;">&euro;{{$product->price}}</p>
-                  <p class="">&euro;{{$product->spl_price}}</p>
+                  <p class="" style="font-weight: bold;font-size: 22px;">&euro;{{$product->spl_price}}</p>
                 </div>
             @endif
             @if($product->price_b2 != 0)
