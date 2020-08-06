@@ -18,7 +18,7 @@
 
   <nav id="phone-nav" class="navbar navbar-expand-sm sticky-top navbar-light bg-light" style="padding: 10px;margin: 0 -15px;">
     <div style="display: flex;width: 100%;justify-content: space-between;align-items: center;">
-        <div>   
+        <div>
             @if($product->spl_price==0)
                 <input class="product_price" type="hidden" value="{{$product->price}}">
                 <h4 class="A3_price"><span>&euro; {{ $product->price}} </span></h4>
@@ -46,11 +46,11 @@
           @endif --}}
         </div>
         <div style="width: 50%;">
-         <a id="phone-add" style="cursor:pointer;"> 
+         <a id="phone-add" style="cursor:pointer;">
             <div class="btn-add-to-cart" id="btn-add-to-cart-phone" style="width: inherit;">
               <p id="test-phone">Add to cart</p>
             </div>
-          </a>   
+          </a>
         </div>
     </div>
   </nav>
@@ -59,32 +59,35 @@
   <div class="row desctop-product">
     <div id="loading-overlay">
       <div class="loading-icon"></div>
-  </div>  
-      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
+  </div>
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
         <div id="desctop-left">
-        
+
           <input type="hidden" value="@if($imageFront){{$imageFront->color}}@endif" id="productColor" display="none" name="pro_color">
           <input type="hidden" value="{{$product->gender}}" id="productGender" display="none" name="pro_gender">
-          <img style="width:50%"  src="{{url('design', $design->name)}}"> 
+            <div style="width: 50%;margin: auto;">
+                <img src="{{url('design', $design->name)}}">
+            </div>
 
-          @if ($product->gender=="unisex" && $product->category_id == 6)
-         
-          <img id="blank-image" src="{{url('image',$imageBack)}}"> x
-        
-          @elseif(strpos($product->name, "case"))
-            <img id="blank-image" src="{{url('site-images',$imageBack)}}"> 
-          @else
-         
-            <img id="blank-image" src="{{url('site-images',$imageBack)}}"> 
-          @endif
-         
-          
+        <div>
+            @if ($product->gender=="unisex" && $product->category_id == 6)
+
+                <img id="blank-image" src="{{url('image',$imageBack)}}"> x
+
+            @elseif(strpos($product->name, "case"))
+                <img id="blank-image" src="{{url('site-images',$imageBack)}}">
+            @else
+
+                <img id="blank-image" src="{{url('site-images',$imageBack)}}">
+            @endif
+        </div>
+
         </div>
       </div>
-      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+      <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
         <div id="desctop-middle">
           <img id="main-image" src="{{url('image', $imageFront->name)}}">
-         
+
           <div class="wishlist">
             <?php
                   $wishData = DB::table('wishlist')
@@ -99,14 +102,14 @@
                     ->where('wishlist.user_id' ,'=' , Auth::user()->id)
                     ->count();
                 }
-                  
+
               ?>
               <?php if($count == "0") { ?>
-                
+
                   <input type="hidden" value="{{$product->id}}" id="productID" name="pro_id">
                   <br>
                   <input class="" type="submit" value=" " id="sendWishList">
-                  
+
               <?php } else { ?>
                 <input type="submit" value=" " id="disable">
               <?php } ?>
@@ -119,7 +122,7 @@
               $wishData = DB::table('wishlist')
                               ->rightJoin('product', 'wishlist.pro_id', '=', 'product.id')
                               ->where('wishlist.pro_id', '=', $product->id)->get();
-                             
+
              // $count = App\Wishlist::where(['pro_id' => $product->id])->count();
              $count = 0;
              if(Auth::user()) {
@@ -129,14 +132,14 @@
                 ->where('wishlist.user_id' ,'=' , Auth::user()->id)
                 ->count();
              }
-              
+
           ?>
           <?php if($count == "0") { ?>
-             
+
               <input type="hidden" value="{{$product->id}}" id="productID"  name="pro_id">
               <br>
               <input type="submit" value=" " id="phoneSendWishList">
-              
+
           <?php } else { ?>
             <input type="submit" value=" " id="disable">
           <?php } ?>
@@ -144,17 +147,17 @@
 
         <div id="slick8"    style=" display: none;">
             <div class="slide-item">
-              <img src="{{url('design', $design->name)}}"> 
+              <img src="{{url('design', $design->name)}}">
             </div>
             <div class="slide-item">
-              <img id="main-image-mobile" src="{{url('image', $imageFront->name)}}"> 
+              <img id="main-image-mobile" src="{{url('image', $imageFront->name)}}">
             </div>
             <div class="slide-item">
-              <img id="blank-image-mobile" src="{{url('image', $imageBack)}}"> 
+              <img id="blank-image-mobile" src="{{url('image', $imageBack)}}">
             </div>
         </div>
     </div>
-      <div class=" col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5;">
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5;" >
         <h4 class="product-title" style="padding-top: 20px;">{{ $product->name}}</h4>
         <?php $pro_cat = App\Product::find($product->id); ?>
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
@@ -164,12 +167,12 @@
           <span id="price">
             @if($product->spl_price==0)
                 <input class="product_price" type="hidden" value="{{$product->price}}">
-                <h4 class="A3_price"><span>&euro; {{ $product->price}} </span></h4>
+                <h4 class="A3_price"><span style="font-weight: bold;font-size: 20px;" >&euro; {{ $product->price}} </span></h4>
             @else
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center" style="width:90%; margin-left: 0;">
                   <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
-                  <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
-                  <p class="">&euro;{{$product->spl_price}}</p>
+                  <p class="" style="text-decoration:line-through; color:#333;font-weight: bold;font-size: 20px;">&euro;{{$product->price}}</p>
+                  <p class="" style="font-weight: bold;font-size: 22px;">&euro;{{$product->spl_price}}</p>
                 </div>
             @endif
             @if($product->price_b2 != 0)
@@ -218,25 +221,25 @@
                 <div class="black-border">
                   <input type="radio" name="color" value="white"  class="color-class" checked>
                   <span></span>
-                </div>    
+                </div>
               </label>
               <label class="black">
                 <div  class="white-border">
                   <input type="radio" name="color" class="color-class" value="black" >
                   <span></span>
-                </div>               
+                </div>
             </label>
             <label class="red">
               <div class="black-border">
                 <input type="radio" name="color" value="red"  class="color-class">
                 <span></span>
-              </div>    
+              </div>
             </label>
             <label class="navy">
               <div  class="white-border">
                 <input type="radio" name="color" class="color-class" value="navy" >
                 <span></span>
-              </div>               
+              </div>
           </label>
           </div>
 
@@ -244,7 +247,7 @@
             <h5>Print location</h5>
               <label class="front">
                   <input type="radio" name="print" value="front" class="print-class" checked>
-                  <span>Front</span>              
+                  <span>Front</span>
               </label>
               <label class="back">
                   <input type="radio" name="print" value="back" class="print-class">
@@ -273,7 +276,7 @@
               <option value="black">Black</option>
             </select>
           </div>
-          
+
           @elseif($pro_cat->category->name == "Iphone Cases")
           <div class="phone-model">
             <h5>Model</h5>
@@ -335,13 +338,13 @@
                 <div class="black-border">
                   <input type="radio" name="color" value="white"  class="color-class" checked>
                   <span></span>
-                </div>    
+                </div>
               </label>
               <label class="black">
                 <div  class="white-border">
                   <input type="radio" name="color" class="color-class" value="black" >
                   <span></span>
-                </div>               
+                </div>
             </label>
           </div>
 
@@ -396,89 +399,96 @@
                   <h6>Enter height:</h6>
                   <input type="text" id="height" placeholder="e.g  6">
               </div>
-            @elseif($pro_cat->category->name == "Thermos") 
+            @elseif($pro_cat->category->name == "Thermos")
               <div class="select-color">
                 <h5>Color</h5>
                   <label class="black">
                     <div class="white-border-thermos">
                       <input type="radio" name="color" class="color-class" value="black" checked >
                       <span></span>
-                    </div>               
+                    </div>
                 </label>
               </div>
-            @elseif($pro_cat->category->name == "Bags") 
+            @elseif($pro_cat->category->name == "Bags")
             <div class="select-color">
               <h5>Color</h5>
               <label class="white whiteBlack">
                 <div class="black-border">
                   <input type="radio" name="color" class="kids-color-class" value="Black"checked>
                   <span style=" background: linear-gradient( -45deg, rgb(245, 240, 242), rgb(247, 243, 245) 49%, white 49%, rgb(10, 9, 9) 51%, rgb(12, 5, 10) 51% );"></span>
-                </div>               
+                </div>
             </label>
                 <label class="white whiteRed" >
                   <div class="black-border">
                     <input type="radio" name="color" value="Red"  class="kids-color-class" >
                     <span style=" background: linear-gradient( -45deg, rgb(248, 28, 28), rgb(245, 31, 31) 49%, white 49%, white 51%, rgb(253, 251, 251) 51% );"></span>
-                  </div>    
-                </label>  
+                  </div>
+                </label>
             </div>
 
-            @elseif($pro_cat->category->name == "Clocks") 
+            @elseif($pro_cat->category->name == "Clocks")
             <div class="select-color">
               <h5>Color</h5>
               <label class="black">
                 <div  class="white-border">
                   <input type="radio" name="color" class="color-class" value="black" checked>
                   <span></span>
-                </div>               
+                </div>
             </label>
                 <label class="white">
                   <div class="black-border">
                     <input type="radio" name="color" value="white"  class="color-class" >
                     <span></span>
-                  </div>    
+                  </div>
                 </label>
-               
+
             </div>
-            @elseif($pro_cat->category->name == "Mugs") 
+            @elseif($pro_cat->category->name == "Mugs")
             <div class="select-color">
               <h5>Color</h5>
                 <label class="white">
                   <div class="black-border">
                     <input type="radio" name="color" value="white"  class="color-class" checked>
                     <span></span>
-                  </div>    
+                  </div>
                 </label>
                 <label class="neon">
                   <div class="black-border">
                     <input type="radio" name="color" class="color-class" value="neon" >
                     <span></span>
-                  </div>               
+                  </div>
               </label>
             </div>
-            @elseif($pro_cat->category->name == "Backpacks") 
+            @elseif($pro_cat->category->name == "Backpacks")
             <div class="select-color">
               <h5>Color</h5>
                 <label class="black">
                     <div  class="white-border">
                       <input type="radio" name="color" class="color-class" value="black" checked >
                       <span></span>
-                    </div>               
+                    </div>
                 </label>
                 <label class="red">
                   <div class="black-border">
                     <input type="radio" name="color" value="red"  class="color-class">
                     <span></span>
-                  </div>    
+                  </div>
                 </label>
             </div>
-            
-            @elseif($pro_cat->category->name == "Coasters") 
+            @elseif($pro_cat->category->name == "Magnets")
+            <div class="choose-size">
+              <h5>Shape</h5>
+              <select class="magnet-shape" id=''>
+                <option value="Square">Squared</option>
+                <option value="Rounded">Rounded</option>
+              </select>
+            </div>
+            @elseif($pro_cat->category->name == "Coasters")
             <div class="choose-size">
               <h5>Shape</h5>
               <select class="coaster-shape" id=''>
                 <option value="Square">Squared</option>
-                <option value="Circle">Rounded</option>
+                <option value="Rounded">Rounded</option>
               </select>
             </div>
             <div class="choose-size">
@@ -488,7 +498,7 @@
                 <option value="Engraving">Engraving</option>
               </select>
             </div>
-            @elseif($pro_cat->category->name == "Bottle Openers") 
+            @elseif($pro_cat->category->name == "Bottle Openers")
             <div class="choose-size">
               <h5>Material</h5>
               <select class="material" id=''>
@@ -531,41 +541,41 @@
                     <span>12</span>
                 </label>
             </div>
-            
+
             <div class="select-color">
               <h5>Color</h5>
                 <label class="white">
                   <div class="black-border">
                     <input type="radio" name="color" value="white"  class="kids-color-class" checked>
                     <span></span>
-                  </div>    
+                  </div>
                 </label>
                 <label class="pink">
                   <div class="black-border">
                     <input type="radio" name="color" class="kids-color-class" value="pink" >
                     <span></span>
-                  </div>               
+                  </div>
               </label>
               <label class="blue">
                 <div  class="black-border">
                   <input type="radio" name="color" class="kids-color-class" value="blue" >
                   <span></span>
-                </div>               
+                </div>
             </label>
             </div>
-  
+
             <div class="print-location">
               <h5>Print location</h5>
                 <label class="front">
                     <input type="radio" name="print" value="front" class="print-class" checked>
-                    <span>Front</span>              
+                    <span>Front</span>
                 </label>
                 <label class="back">
                     <input type="radio" name="print" value="back" class="print-class">
                     <span>Back</span>
                 </label>
             </div>
-  
+
             <div class="view-size-guid">
                 <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
                 <img src="/site-images/Layer_1_1_.svg" alt="">
@@ -579,22 +589,22 @@
                   <span style="padding-left: 5px;padding-top: 5px;">0-12</span>
               </label>
           </div>
-             
+
           <div class="select-color">
             <h5>Color</h5>
               <label class="white">
                 <div class="black-border">
                   <input type="radio" name="color" value="white"  class="kids-color-class" checked>
                   <span></span>
-                </div>    
+                </div>
               </label>
           </div>
-          
+
           <div class="print-location">
             <h5>Print location</h5>
               <label class="front">
                   <input type="radio" name="print" value="front" class="print-class" checked>
-                  <span>Front</span>              
+                  <span>Front</span>
               </label>
               <label class="back">
                   <input type="radio" name="print" value="back" class="print-class">
@@ -609,20 +619,20 @@
                   <span style="padding-left: 4px;">Uni</span>
               </label>
           </div>
-             
+
           <div class="select-color">
             <h5>Color</h5>
               <label class="white whiteBlue" >
                 <div class="black-border">
                   <input type="radio" name="color" value="white and blue"  class="kids-color-class" checked>
                   <span style=" background: linear-gradient( -45deg, blue, blue 49%, white 49%, white 51%, rgb(253, 251, 251) 51% );"></span>
-                </div>    
+                </div>
               </label>
               <label class="white whitePink">
                 <div class="black-border">
                   <input type="radio" name="color" class="kids-color-class" value="white and pink" >
                   <span style=" background: linear-gradient( -45deg, rgb(245, 240, 242), rgb(247, 243, 245) 49%, white 49%, white 51%, rgb(255, 138, 216) 51% );"></span>
-                </div>               
+                </div>
             </label>
           </div>
           @elseif($pro_cat->category->name == "Towels")
@@ -639,13 +649,13 @@
                   <div class="black-border">
                     <input type="radio" name="color" value="white"  class="color-class" checked>
                     <span></span>
-                  </div>    
+                  </div>
                 </label>
                 <label class="black">
                   <div  class="white-border">
                     <input type="radio" name="color" class="color-class" value="black" >
                     <span></span>
-                  </div>               
+                  </div>
               </label>
             </div>
             @elseif($pro_cat->category->name == "Notebooks")
@@ -655,22 +665,85 @@
                   <div class="black-border">
                     <input type="radio" name="color" value="white"  class="color-class" checked>
                     <span></span>
-                  </div>    
+                  </div>
                 </label>
                 <label class="black">
                   <div  class="white-border">
                     <input type="radio" name="color" class="color-class" value="black" >
                     <span></span>
-                  </div>               
+                  </div>
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Masks")
+            <div class="mask-model">
+              <h5>Print location</h5>
+              <select class="masks" id="cases">
+                <option value="One side printed">One side printed</option>
+                <option value="Both sides printed">Both sides printed</option>
+              </select>
+            </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Sacks")
+            <div class="sack-model">
+              <h5>Choose Sack Model</h5>
+              <select class="sacks" id="cases">
+                <option value="Shape One">Shape One</option>
+                <option value="Shape Two">Shape Two</option>
+              </select>
+            </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Makeup Bags")
+            <div class="select-color">
+              <h5>Color</h5>
+              {{--   <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>
+                </label> --}}
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black"  checked>
+                    <span></span>
+                  </div>
               </label>
             </div>
 
-          @else 
+
+          @else
           <button style="display:none"></button>
           @endif
           <input type="hidden" value="<?php echo $product->id; ?>" id="proDum">
 
-          <a id="add" style="cursor:pointer;"> 
+          <a id="add" style="cursor:pointer;">
             <div class="btn-add-to-cart" id="btn-add-to-cart">
               <p id="test">Add to cart</p>
             </div>
@@ -683,13 +756,13 @@
             </div>
             <p>Post Express by 24 April</p>
             <p>Standard 24 - 28 April</p>
-          </div>   
+          </div>
 
           @if( isset($counter) && $counter->total>0 && $createReview === null)
               <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeReviewModal">
               Write your review
-            </button> 
+            </button>
           @endif
         </div>
     </div>
@@ -711,8 +784,8 @@
             <div class="latest-review">
                 <h5>Lates review</h5>
                 <p>star icons </p>
-                <p><strong>{{$review->review_title}}</strong> 
-                  <br>  
+                <p><strong>{{$review->review_title}}</strong>
+                  <br>
                   <span> by {{$review->person_name}}, on {{date('F j, Y', strtotime($review->created_at))}} </span>
                 </p>
                 <p>{{$review->review_content}}</p>

@@ -29,7 +29,7 @@ class CategorySeeder extends Seeder
             'cover_image' => '1596110174second.jpg'
         ]);
         Category::create([
-            'id' => 3,  
+            'id' => 3,
             'name'=> 'Wall ART',
             'image' => '1596110212.jpg',
             'cover_image' => '1596110212second.jpg'
@@ -227,6 +227,11 @@ class CategorySeeder extends Seeder
             'name'=> 'Bottle Openers',
             'parent_id' => 4
         ]);
-        
+        Category::create([
+            'id' => 37,
+            'name'=> 'Masks',
+            'parent_id' => 4
+        ]);
+
     }
 }

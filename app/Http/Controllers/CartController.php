@@ -130,13 +130,18 @@ class CartController extends Controller
                 ['product_id',"=", $id],
                 ['color','=', 'black']
             ])->first();
-        } elseif($product->category->name=="Makeup Bags"){
+        } elseif($product->category->name=="Makeup Bags" || $product->category->name=="Puzzles"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
-        } elseif($product->category->name=="Puzzles"){
+        } elseif($product->category->name=="Masks" || $product->category->name=="Sacks"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id]
+                ['product_id',"=", $id],
+                ['color','=', 'white']
+            ])->first();
+        } elseif($product->category->name=="Magnets"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
             ])->first();
         }
 
@@ -147,14 +152,16 @@ class CartController extends Controller
                          'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                          'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                          'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
-                         'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign]);
+                         'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign, 'maskLocation' => $request->maskLocation,
+                          'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
         } else {
             $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0,
                         ['img'=> $imageFront, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
-                        'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign]);
+                        'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign,'maskLocation' => $request->maskLocation,
+                         'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
         }
         echo Cart::count();
 

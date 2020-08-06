@@ -6,6 +6,10 @@
     <div class="container-fluid shipping">
         <div class="row">
             <div class="col-xs-6 col-sm-3 " id="side">
+                <div>
+                    <a href="/about">About us</a>
+                    <i class="fa fa-angle-right"></i>
+                </div>
                <div>
                    <a href="/how_to_order">How to order</a>
                    <i class="fa fa-angle-right"></i>

@@ -79,7 +79,7 @@ $(document).ready(function(){
 
 /*   Adding to cart */
 
-function addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, coasterShape, coasterDesign) {
+function addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, coasterShape, coasterDesign,maskLocation, sackType, magnetShape) {
     var proDum = $('#proDum').val();
     var parent =  $('#btn-add-to-cart');
     var parent1 =  $('#btn-add-to-cart-phone');
@@ -106,7 +106,10 @@ function addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyl
           customSize: customSize,
           price: price,
           coasterShape: coasterShape,
-          coasterDesign:coasterDesign
+          coasterDesign:coasterDesign,
+          maskLocation: maskLocation,
+          sackType: sackType,
+          magnetShape: magnetShape
         },
         beforeSend: function() {
               modalAddBtn.attr('data-dismiss', 'modal');
@@ -158,13 +161,13 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null, null, null); 
+              addToCartAjax(price, kidssize, size, color, print); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
         } else if(pro_cat == "T-Shirts" || pro_cat == "Polo Shirts" || pro_cat == "Tank Tops"  || pro_cat == "Hoodie & Sweatshirts" && size == null) {
-          addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null, null, null);
+          addToCartAjax(price, kidssize, size, color, print);
         }else if (pro_cat == "Kids T-Shirts" && kidssize == null) {
           $('#btn-add-to-cart').attr('data-toggle', 'modal');
           $('#btn-add-to-cart').attr('data-target', '#exampleModal');
@@ -175,37 +178,46 @@ $(document).ready(function(){
           $("input[name='kids-size']").change(function(){
             $('#modal-add').bind("click", function(){
               var kidssize =  $("input[name='kids-size']:checked").val();
-              addToCartAjax(price, kidssize,  null, color, print, null, null, null, null, null, null); 
+              addToCartAjax(price, kidssize,  null, color, print); 
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
         } else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-          addToCartAjax(price, kidssize, null, color, print, null, null, null, null, null, null); 
+          addToCartAjax(price, kidssize, null, color, print); 
         } 
         else if(pro_cat == "Custom" && !customCase) {
           alert('Please enter your phone model');
         } else if (pro_cat == "Wallpapers") {
-          addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize);
+          addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, null);
         }else if (pro_cat == "Pictures") {
-          addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize);
+          addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize, null);
         } else if (pro_cat == "Coasters") { 
           var coasterShape = $( ".coaster-shape option:selected" ).val();
           var coasterDesign = $( ".coaster-design option:selected" ).val();
-          addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
+          addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign, null);
+        } else if (pro_cat == "Magnets") { 
+          var magnetShape = $( ".magnet-shape option:selected" ).val();
+          addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign, null, magnetShape);
+        }else if (pro_cat == "Masks") { 
+          var maskLocation = $( ".masks option:selected" ).val();
+          addToCartAjax(price, null, null, color, null, null, null, null, null, null, null,coasterShape,coasterDesign, maskLocation);
+        } else if (pro_cat == "Sacks") { 
+          var sackType = $( ".sacks option:selected" ).val();
+          addToCartAjax(price, null, null, color, null, null, null, null, null, null, null,coasterShape,coasterDesign, null, sackType);
         } else if (pro_cat == "Bottle Openers") { 
           var coasterShape = $( ".material option:selected" ).val();
           var coasterDesign = $( ".opener-design option:selected" ).val();
-          addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
+          addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign, null);
         } else if (pro_cat == "Mugs") { 
           if (color == 'white') {
             var  price = $( ".product_price" ).val();
           } else {
             var price = $('.product_b2_price').val();
           }
-          addToCartAjax(price, null, null, color, null, null, null, null, null, null, null, null, null);
+          addToCartAjax(price, null, null, color, null, null, null, null, null, null, null, null, null, null);
         }else {
-            addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, null, null);
+            addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, null, null, null);
           }  
       }); 
 

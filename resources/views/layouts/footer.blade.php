@@ -10,7 +10,7 @@
         </div>
         <div>
           <p>About</p>
-          <a href="">About us</a>
+          <a href="/about">About us</a>
         </div>
         <div>
           <p>Help</p>

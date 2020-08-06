@@ -18,6 +18,7 @@ $("#slick1").slick({
                 slidesToShow: 3,
                 slidesToScroll: 3,
             },
+
         },
         {
             breakpoint: 767, // mobile breakpoint
@@ -40,9 +41,9 @@ $("#slick2").slick({
     slidesToShow: 6,
     slidesToScroll: 6,
     prevArrow:
-    "<img style='top:60px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+    "<img  style='top:60px;' class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
 nextArrow:
-    "<img id='test' style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+    "<img id='test' style='right: 50px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -58,7 +59,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -72,9 +73,9 @@ $("#slick3").slick({
     slidesToShow: 6,
     slidesToScroll: 6,
     prevArrow:
-    "<img style='top:60px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+    "<img style='top:60px;'  class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
 nextArrow:
-    "<img  id='test'     style='right: 0px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+    "<img  id='test' style='right: 50px;bottom: 150px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -90,7 +91,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -104,9 +105,9 @@ $("#slick4").slick({
     slidesToShow: 6,
     slidesToScroll: 6,
     prevArrow:
-    "<img style='top:80px;'  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+    "<img style='top:80px;'  class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
 nextArrow:
-    "<img  style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+    "<img  style='right: 0px;bottom: 180px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 1200, // tablet breakpoint
@@ -122,7 +123,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -136,7 +137,7 @@ $("#slick5").slick({
     slidesToShow: 6,
     slidesToScroll: 6,
  prevArrow:
-        "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
+        "<img style='top:90px;' class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
         "<img id='test1' style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
@@ -147,7 +148,7 @@ $("#slick5").slick({
                 slidesToScroll: 4,
             },
         },
-        
+
         {
             breakpoint: 992, // mobile breakpoint
             settings: {
@@ -155,7 +156,7 @@ $("#slick5").slick({
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -188,7 +189,7 @@ nextArrow:
                 slidesToScroll: 2,
             },
         },
-    ], 
+    ],
 });
 
 
@@ -203,9 +204,9 @@ $("#slick7").slick({
     slidesToShow: 6,
     slidesToScroll: 6,
     prevArrow:
-    "<img  class='a-left control-c prev slick-prev left-arrow' src='/site-images/Strelica-lijevo-slider.svg'>",
-nextArrow:
-    "<img  class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+        "<img style='top:110px; left:-50px;' class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
+    nextArrow:
+        "<img id='test1' style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint
@@ -239,7 +240,7 @@ $("#slick8").slick({
         "<img id='left-arrow' class='a-left control-c prev slick-prev' src='/site-images/arrow-left.jpg'>",
     nextArrow:
         "<img id='right-arrow' class='a-right control-c next slick-next' src='/site-images/arrow-right.png'>",
-        
+
 });
 
 

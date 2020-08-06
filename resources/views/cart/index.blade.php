@@ -271,6 +271,16 @@ for( let i=1;i<200;i++) {
                             @if($cartItem->options->coasterDesign !== null) 
                             <span>{{ $cartItem->options->coasterDesign}}</span><br>
                             @endif
+                            @if($cartItem->options->maskLocation !== null) 
+                            <span>{{ $cartItem->options->maskLocation}}</span><br>
+                            @endif
+                            @if($cartItem->options->sackType !== null) 
+                            <span>{{ $cartItem->options->sackType}}</span><br>
+                            @endif
+                            @if($cartItem->options->magnetShape !== null) 
+                            <span>{{ $cartItem->options->magnetShape}}</span><br>
+                            @endif
+                             
                              
                              
                         </td>

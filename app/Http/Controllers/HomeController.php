@@ -491,7 +491,7 @@ class HomeController extends Controller
         $output = '';
          foreach($products as $product){
              
-            $output.= " <div class='product col-sm-6 col-md-3 col-6'>".
+            $output.= " <div class='product'>".
           "<a href='/product_details/".$product->id ."'  class=''>".
                 "<div class=''>".
                 "    <div class='img-div'>";
@@ -500,20 +500,33 @@ class HomeController extends Controller
                 foreach ($product->images as $item){
                 if($product->category->name=="T-Shirts"){
                
-                  if ($item->color == "white" && $item->position == "front"){
-                 $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
-                  break;
+                if ($item->color == "white" && $item->position == "front"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                    break;
                 }
-                  }elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent"){
-                       $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
-                  break;
-                  }elseif($product->category->name=="Pictures"){
-                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-pictures" alt="'.$product->category->name.'">';
-                  break;
-                  }else{
+                }else if( $product->category->getParentsNames() == "Cases" && $item->color == "transparent"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
-                  break;
-                    }
+                    break;
+                }else if($product->category->name=="Pictures"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-pictures" alt="'.$product->category->name.'">';
+                    break;
+                }else if($product->category->name=="Wallpapers"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wallpapers" alt="'.$product->category->name.'">';
+                    break;
+                }else if($product->category->name=="Notebooks"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-notebooks" alt="'.$product->category->name.'">';
+                    break;
+                } else if($product->category->name=="Makeup Bags"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-makeup" alt="'.$product->category->name.'">';
+                    break;
+                } else if($product->category->name=="Masks"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-masks" alt="'.$product->category->name.'">';
+                    break;
+                } 
+                else{
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
+                    break;
+                }
                 
                
             /* }else{
@@ -532,9 +545,9 @@ class HomeController extends Controller
                                 $output.="<p class=''>". $pro_cat->category->name ."</p>";
                             }
                         if($product->spl_price==0){
-                        $output.="<p>".$product->price."&euro;</p>";
+                        $output.="<p> From: <span style='font-weight: bold'>". $product->price."&euro;</span></p>";
                         }else{
-                        $output.=" <p>".$product->spl_price."&euro;</p>";
+                        $output.=" <p> Special price: <span style='font-weight: bold'>".$product->spl_price."&euro;</span></p>";
                         }
                         $output.=" </div>       </div>   </a>     </div>     " ;
    
@@ -764,6 +777,11 @@ class HomeController extends Controller
     public function privacyPolicy() {
         $categories = Category::where('parent_id',NULL)->get();
         return view('privacy_policy', compact('categories'));
+    }
+
+    public function about() {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('about', compact('categories'));
     }
 
     public function howToOrder() {

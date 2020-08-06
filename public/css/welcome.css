@@ -4,7 +4,7 @@
     width: 100%;
     height: 350px;
     margin: auto;
-    background-image: url('/site-images/baner-maske-lice.jpg');
+    background-image: url('/site-images/Homepage-Banner.jpg');
       /* Background image is centered vertically and horizontally at all times */
     background-position: center center;
 
@@ -14,7 +14,7 @@
 
     /* This is what makes the background image rescale based
         on the container's size */
-    background-size: cover;
+    background-size: contain;
 }
 
 /* .welcome-image img{
@@ -374,7 +374,7 @@
 .slick-prev {
     font-size: 0;
     position: absolute;
-    top: 320px;
+    top: 330px;
     left: -23px;
 }
 
@@ -392,7 +392,7 @@
 
 .slick-next {
     position: absolute;
-    right: 15px;
+    right: 45px;
     bottom: 325px;
 }
 
@@ -479,6 +479,15 @@
     transform-origin: 50% 50%!important;
 }
 
+.img-div-makeup {
+    transform: scale(2.5)!important;
+    margin-top: 21.125%!important;
+}
+
+.img-div-makeup:hover  {
+    transform: scale(2.8)!important;
+    transform-origin: 50% 50%!important;
+}
 
 .design-image {
     width: 200px;height:200px
@@ -495,6 +504,14 @@
     transform-origin: 50% 50%!important;
 }
 
+.img-div-masks {
+    transform: scale(0.7)!important;
+    margin-top: -2.875%!important;
+}
+
+.img-div-masks:hover {
+    transform: scale(0.9) !important;
+}
 
 
 @media (max-width: 1200px) {
@@ -584,12 +601,14 @@
     }
 
     .slick-prev {
-        top: 215px;
+        top: 330px;
+        left: 0px
+
     }
 
     .slick-next {
         right: -5px;
-        bottom: 288px;
+        bottom: 320px;
     }
 
     .about-urban {
@@ -702,4 +721,9 @@
         width: 90%;
         margin: auto;
     }
+
+    .slick2-left {
+        left: -27px;
+    }
 }
+
