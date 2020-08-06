@@ -226,6 +226,7 @@ if($original == "Huawei"){
     ImageModel::huaweiP20($idProduct, $originalImagePath);
 }
 if($original == "Poster"){
+    ImageModel::whiteFrameThumb($idProduct, $originalImagePath);
     ImageModel::blackFrameA3($idProduct, $originalImagePath);
     ImageModel::blackFrameB1($idProduct, $originalImagePath);
     ImageModel::blackFrameB2($idProduct, $originalImagePath);
@@ -233,9 +234,9 @@ if($original == "Poster"){
     ImageModel::whiteFrameA3($idProduct, $originalImagePath);
     ImageModel::whiteFrameB1($idProduct, $originalImagePath);
     ImageModel::whiteFrameB2($idProduct, $originalImagePath);
-    ImageModel::whiteFrameThumb($idProduct, $originalImagePath);
 }
 if($original == "Canvas"){
+    ImageModel::canvasThumb($idProduct, $originalImagePath);
     ImageModel::canvas($idProduct, $originalImagePath);
 }
 if($original == "Wallpapers"){

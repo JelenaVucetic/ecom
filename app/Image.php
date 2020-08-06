@@ -4359,12 +4359,108 @@ if (!$process8->isSuccessful()) {
          $imageRandom = ltrim($imageRandom, '/');
 
          $check = DB::table('images')->insert([
-          'name' => $imageRandom, 'product_id' => $id
+          'name' => $imageRandom, 'product_id' => $id, 'size' => 'main'
          ]);
       
          return $check;
 
      
+    }
+
+    public static function canvasThumb($id, $image){
+        $imageName1 = "/" .  $image; 
+
+        $path = public_path();
+   
+   
+        $src1 = new \Imagick(public_path("design". $imageName1));
+        $src1->resizeImage(600, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("resized_pictures". $imageName1));
+        $src2 = new \Imagick(public_path("\site-images\U1-Canvas_Slika-Maska.png"));
+       /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
+        $src2->writeImage(public_path("\site-images\Canvas-mockup-thumbnail.png")); */
+        
+        $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5"); 
+        
+        $process5 = new Process('magick convert ^
+        '.$path.'\site-images\Canvas-mockup-thumbnail.png ^
+        -channel A -blur 0x8
+        -compose hardlight
+        '.$path.'\image\ms_light_map-canvas-thumb.png
+        ');
+        
+        /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
+        -blur 0x3 ^
+        -contrast-stretch 0,50%% ^
+        -depth 16 ^  -negate  -channel A -blur 0x8*/
+        
+        $process5->run();
+        if (!$process5->isSuccessful()) {
+        throw new ProcessFailedException($process5);
+        }
+        echo $process5->getOutput();
+        echo '<img src="\image\ms_light_map-canvas-thumb.png">';
+        
+        $process6 = new Process('magick convert ^
+        '.$path.'\resized_pictures'. $imageName1. ' ^
+        -channel matte -separate ^
+        '.$path.'\image\ms_logo_displace_mask_canvas_thumb.png
+        ');
+        
+        
+        
+        $process6->run();
+        if (!$process6->isSuccessful()) {
+        throw new ProcessFailedException($process6);
+        }
+        echo $process6->getOutput();
+        echo '<img src="\image\ms_logo_displace_mask_canvas_thumb.png">';
+        
+        $process7 = new Process('magick convert ^
+        '.$path.'\resized_pictures'. $imageName1. ' ^
+        '.$path.'\image\ms_light_map-canvas-thumb.png ^
+        -geometry -300-230 ^
+        -compose Multiply -composite ^
+        '.$path.'\image\ms_logo_displace_mask_canvas_thumb.png ^
+        -compose CopyOpacity -composite ^
+        '.$path.'\image\ms_light_map_logo_canvas_thumb.png
+        ');
+        
+        $process7->run();
+        if (!$process7->isSuccessful()) {
+        throw new ProcessFailedException($process7);
+        }
+        echo $process7->getOutput();
+        echo '<img src="\image\ms_light_map_logo_canvas_thumb.png">';
+   
+   
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,300,230);
+        $src2->writeImage(public_path("image\image-canvas-thumb.png"));
+        echo '<img src="\image\image-canvas-thumb.png">';
+        $src4 = new \Imagick(public_path("site-images/U1-Canvas_Slika-BG.png"));
+       /*  $src4->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
+        $src4->writeImage(public_path("\site-images/Textura-Canvas-mockup.png")); */
+         $src3 = new \Imagick(public_path("image/image-canvas-thumb.png"));
+         $src3->compositeImage($src4, \Imagick::COMPOSITE_MULTIPLY,0,0);
+
+         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+         $name = mt_rand(1000000, 9999999)
+             . mt_rand(1000000, 9999999)
+             . $characters[rand(0, strlen($characters) - 1)];
+         
+         $string = str_shuffle($name);
+         $string .=  round(microtime(true) * 1000);
+         $imageRandom = '/' . $string . '.png';
+
+         $src3->writeImage(public_path("image".$imageRandom));
+   
+         $imageRandom = ltrim($imageRandom, '/');
+
+         $check = DB::table('images')->insert([
+          'name' => $imageRandom, 'product_id' => $id, 'size' => 'thumb'
+         ]);
+      
+         return $check;
     }
 
     public static function wallpaper($id, $image){
@@ -5232,7 +5328,7 @@ if (!$process8->isSuccessful()) {
        $imageRandom1 = ltrim($imageRandom1, '/');
 
        $check = DB::table('images')->insert([
-        'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black'
+        'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black' 
        ]);
 
     }
