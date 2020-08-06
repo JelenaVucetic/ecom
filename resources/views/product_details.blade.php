@@ -475,13 +475,20 @@
                   </div>
                 </label>
             </div>
-
+            @elseif($pro_cat->category->name == "Magnets")
+            <div class="choose-size">
+              <h5>Shape</h5>
+              <select class="magnet-shape" id=''>
+                <option value="Square">Squared</option>
+                <option value="Rounded">Rounded</option>
+              </select>
+            </div>
             @elseif($pro_cat->category->name == "Coasters")
             <div class="choose-size">
               <h5>Shape</h5>
               <select class="coaster-shape" id=''>
                 <option value="Square">Squared</option>
-                <option value="Circle">Rounded</option>
+                <option value="Rounded">Rounded</option>
               </select>
             </div>
             <div class="choose-size">
@@ -667,6 +674,69 @@
                   </div>
               </label>
             </div>
+            @elseif($pro_cat->category->name == "Masks")
+            <div class="mask-model">
+              <h5>Print location</h5>
+              <select class="masks" id="cases">
+                <option value="One side printed">One side printed</option>
+                <option value="Both sides printed">Both sides printed</option>
+              </select>
+            </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Sacks")
+            <div class="sack-model">
+              <h5>Choose Sack Model</h5>
+              <select class="sacks" id="cases">
+                <option value="Shape One">Shape One</option>
+                <option value="Shape Two">Shape Two</option>
+              </select>
+            </div>
+            <div class="select-color">
+              <h5>Color</h5>
+                <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>
+                </label>
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black" >
+                    <span></span>
+                  </div>
+              </label>
+            </div>
+            @elseif($pro_cat->category->name == "Makeup Bags")
+            <div class="select-color">
+              <h5>Color</h5>
+              {{--   <label class="white">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <span></span>
+                  </div>
+                </label> --}}
+                <label class="black">
+                  <div  class="white-border">
+                    <input type="radio" name="color" class="color-class" value="black"  checked>
+                    <span></span>
+                  </div>
+              </label>
+            </div>
+
 
           @else
           <button style="display:none"></button>

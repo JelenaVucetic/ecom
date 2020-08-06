@@ -4,7 +4,7 @@
     width: 100%;
     height: 350px;
     margin: auto;
-    background-image: url('/site-images/baner-maske-lice.jpg');
+    background-image: url('/site-images/Homepage-Banner.jpg');
       /* Background image is centered vertically and horizontally at all times */
     background-position: center center;
 
@@ -14,7 +14,7 @@
 
     /* This is what makes the background image rescale based
         on the container's size */
-    background-size: cover;
+    background-size: contain;
 }
 
 /* .welcome-image img{
