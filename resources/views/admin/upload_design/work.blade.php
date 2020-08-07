@@ -97,7 +97,7 @@
   </div>
 
     {{-- Canvas edit for Custom --}}
-        
+
 <div id="product15" class="img-div" data-value="1" style="display:none">
   <h2 class="option-title">Custom options</h2>
   <div class="product-wrap">
@@ -105,7 +105,7 @@
         <canvas id="c16" width="250" height="300"></canvas>
     </div>
     <div class="product-options12">
-      
+
       {{--   <form method="post" id="upload-form" enctype="multipart/form-data">
          {{ csrf_field() }}
         <input type="file" name="file1" >
@@ -138,7 +138,7 @@
     </div>
     </div>
 </div>
-        
+
 
 
 
@@ -155,7 +155,7 @@
             <canvas id="c17" width="250" height="300"></canvas>
         </div>
         <div class="product-options13">
-            
+
 
           {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -225,7 +225,7 @@
             </div>
         </div>
          </div>
-  
+
     <div class="row">
 
       {{-- Phone case html --}}
@@ -303,7 +303,7 @@
 
 
         {{-- Canvas edit for Phone Case --}}
-        
+
 <div id="product3" class="img-div" data-value="1" style="display:none">
   <h2 class="option-title">PhoneCase options</h2>
   <div class="product-wrap">
@@ -311,7 +311,7 @@
         <canvas id="c3" width="250" height="300"></canvas>
     </div>
     <div class="product-options">
-      
+
       {{--   <form method="post" id="upload-form" enctype="multipart/form-data">
          {{ csrf_field() }}
         <input type="file" name="file1" >
@@ -344,7 +344,7 @@
     </div>
     </div>
 </div>
-        
+
 
 
 
@@ -361,7 +361,7 @@
             <canvas id="c4" class="canvas4" width="250" height="300"></canvas>
         </div>
         <div class="product-options1">
-            
+
 
           {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -574,7 +574,7 @@
       </div>
          </div>
 
-      
+
          {{-- Canvas edit for Graphic T-Shirt Dresses --}}
          <div id="product8" class="img-div" data-value="1" style="display:none">
           <h2 class="option-title">Graphic T-shirt Dresses options</h2>
@@ -618,7 +618,7 @@
                     <div id="proizvod6" class="save-picture disabledbutton"  data-category="26" name="Stickers" data-canvas="canvas9" value="1">
                         <div class="background-div5">
                     <img id="logo-canvas6" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                    
+
                         </div>
                     </div>
                 <div class="preview-info">
@@ -1010,7 +1010,7 @@
 
 </div>
  {{-- Canvas edit for Wallpaper --}}
-        
+
  <div id="product18" class="img-div" data-value="1" style="display:none">
   <h2 class="option-title">Wallpaper options</h2>
   <div class="product-wrap">
@@ -1018,8 +1018,8 @@
         <canvas id="c19" width="250" height="300"></canvas>
     </div>
     <div class="product-options12">
-      
-      
+
+
         <div class="color-choose">
 
             <div class="container">
@@ -1047,7 +1047,7 @@
     </div>
     </div>
 </div>
-        
+
 
 
 
@@ -1064,7 +1064,7 @@
             <canvas id="c20" width="250" height="300"></canvas>
         </div>
         <div class="product-options13">
-            
+
 
           {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -1162,15 +1162,15 @@
       <div>
       <button id="edit-product20" class="edit-button">Edit</button>
       <button id="enabled-product20" class="enable-button">Disabled</button>
-  
-  
+
+
       </div>
   </div>
   </div>
-  
-  
+
+
   </div>
-  
+
   {{-- Puzzle html --}}
   <div class="product-column">
   <div class="row-product">
@@ -1190,10 +1190,10 @@
       </div>
   </div>
   </div>
-  
+
   </div>
-  
-  
+
+
   {{-- Makeup Bags html --}}
   <div class="product-column">
       <div class="row-product">
@@ -1213,15 +1213,15 @@
           </div>
       </div>
   </div>
-  
+
       </div>
-  
+
   </div>
 
- 
+
 
      {{-- Canvas edit for Sacks --}}
-        
+
  <div id="product21" class="img-div" data-value="1" style="display:none">
   <h2 class="option-title">Sacks options</h2>
   <div class="product-wrap">
@@ -1229,8 +1229,8 @@
         <canvas id="c22" width="250" height="300"></canvas>
     </div>
     <div class="product-options15">
-      
-      
+
+
         <div class="color-choose">
 
             <div class="container">
@@ -1258,7 +1258,7 @@
     </div>
     </div>
 </div>
-        
+
 
 
 
@@ -1275,7 +1275,7 @@
             <canvas id="c23" width="250" height="300"></canvas>
         </div>
         <div class="product-options16">
-            
+
 
           {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
               {{ csrf_field() }}
@@ -1373,20 +1373,20 @@
       <div>
       <button id="edit-product23" class="edit-button">Edit</button>
       <button id="enabled-product23" class="enable-button">Disabled</button>
-  
-  
+
+
       </div>
   </div>
   </div>
-  
-  
+
+
   </div>
 
 
                       {{-- Face maks html --}}
                       <div class="product-column">
                         <div class="row-product">
-                        <div id="proizvod24" class="save-picture disabledbutton" data-category="37" name="Masks" data-canvas="canvas24" value="1">
+                        <div id="proizvod24" class="save-picture disabledbutton" data-category="33" name="Masks" data-canvas="canvas24" value="1">
                             <div class="background-div22">
                         <img id="logo-canvas24" src="/image/<?php if(!empty($image)){echo $image;} ?>">
                         <img class="overlay-panel" src="/site-images/Mask.png">
@@ -1399,18 +1399,18 @@
                         <div>
                         <button id="edit-product24" class="edit-button">Edit</button>
                         <button id="enabled-product24" class="enable-button">Disabled</button>
-                    
-                    
+
+
                         </div>
                     </div>
                     </div>
-                    
-                    
+
+
                     </div>
          </div>
-  
 
-         
+
+
          {{-- Canvas edit for Magnets --}}
          <div id="product24" class="img-div" data-value="1" style="display:none">
           <h2 class="option-title">Magnets options</h2>
@@ -1462,18 +1462,18 @@
                           <canvas id="c26" width="250" height="300"></canvas>
                       </div>
                       <div class="product-options19">
-          
+
                          {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
                             {{ csrf_field() }}
                            <input type="file" name="file1" >
                            <input type="submit" value="Upload" name="submit">
                            </form> --}}
-          
+
                           <div class="color-choose">
-          
+
                               <div class="container">
                                   <div class="output" id="output"></div>
-          
+
                                   <div class="result-wrp">
                                      <p>Choose a color</p>
                                     <input type="color" id="color21">
@@ -1501,7 +1501,7 @@
     @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
     <div id="background-div12" style=" height: 300px; width: 300px;">
-        <img id="logo-canvas13" src="{{$image}}">  
+        <img id="logo-canvas13" src="{{$image}}">
       <img class="overlay-panel" src="/images/Majica-zenska-mockup.png" style="top:0px!important; width: 800px; height: 800px;">
   </div>
 </div>
@@ -1521,7 +1521,7 @@
             <label>Description</label>
             <textarea type="text" placeholder="Description" id="description"></textarea>
           </div>
-          
+
         </div>
         <div class="ram-checkbox">
           <input type="radio" id="female-check" name="gender"  value="female">
@@ -1532,15 +1532,15 @@
           <label for="vehicle3"> Unisex</label><br>
           </div>
         <button id="capture" {{-- onclick="doCapture();" --}}>Save work</button>
-    
-       
+
+
     </div>
 
 </div>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
-    
+
 `   @include('admin.upload_design.product_canvas')
 <script>
   var canvas10 = new fabric.Canvas('c9');
@@ -1574,7 +1574,7 @@ function stickerEffect(img1,grow){
     ctx2.drawImage(canvas11,0,0);
     ctx1.drawImage(canvas12,0,0);
   }
-  ctx2.shadowColor='rgba(0,0,0,0)';   
+  ctx2.shadowColor='rgba(0,0,0,0)';
   ctx2.drawImage(img1,grow,grow);
   return(canvas12);
 }
@@ -1594,7 +1594,7 @@ $('#upload-form6').on('submit' , function(event){
       cache: false,
       processData: false,
       success: function(data){
-       
+
        img1.src = "";
        img1.src ="/image/" + data.upload_image;
        img1.onload = start;
@@ -1676,7 +1676,7 @@ var sel;
 
 function load(objects){
  fabric.Image.fromURL(objects, function(img) {
-  
+
     imageForCanvas = img;
     canvas3.setWidth(250);
     canvas3.setHeight(300);
@@ -1684,7 +1684,7 @@ function load(objects){
     imageForCanvas.center();
     image1.src = canvas3.toDataURL();
     canvas3.requestRenderAll();
-    
+
      // Repeat option for Phone case
     $('#repeat').on('click', function(){
       checkForScale = false;
@@ -1743,7 +1743,7 @@ var rect = new fabric.Rect({
         });
     canvas3.clear();
     canvas3.requestRenderAll();
-    
+
    sleep(100).then(() => {
     imageForCanvas.scaleToWidth(100);
 
@@ -1818,7 +1818,7 @@ var rect = new fabric.Rect({
 
 
 
-    
+
 
     // None option for Phone case
     $('#none').on('click', function(){
@@ -1828,7 +1828,7 @@ var rect = new fabric.Rect({
         img.scaleToWidth(100);
         canvas3.add(imageForCanvas);
 
-        
+
         image1.src = canvas3.toDataURL();
         canvas3.requestRenderAll();
     });
@@ -1921,7 +1921,7 @@ var rect = new fabric.Rect({
         }else{
           canvas3.requestRenderAll();
         }
-       
+
       })
     });
      //  Close repeat vertical
@@ -2044,7 +2044,7 @@ function loadTshirt(objects){
     canvas4 = new fabric.Canvas('c4');
 
     canvas4.requestRenderAll();
-    
+
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
@@ -2293,7 +2293,7 @@ var rect2 = new fabric.Rect({
         }else{
           canvas5.requestRenderAll();
         }
-        
+
       })
   });
 
@@ -2320,7 +2320,7 @@ var rect2 = new fabric.Rect({
     canvas5.dispose();
     canvas5 = new fabric.Canvas('c5');
     canvas5.requestRenderAll();
-    
+
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
@@ -2387,7 +2387,7 @@ function loadHoodie(objects){
     canvas6.dispose();
     canvas6 = new fabric.Canvas('c6');
     canvas6.requestRenderAll();
-    
+
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
@@ -2431,7 +2431,7 @@ function loadHoodie(objects){
         img.scale(parseFloat($(this).val())).setCoords();
         canvas7.requestRenderAll();
     });
-  
+
       // Align Vertical option for Hoodie
     $('#alignVertically4').on('click', function(){
       img.centerV();
@@ -2454,7 +2454,7 @@ function loadHoodie(objects){
     canvas7.dispose();
     canvas7 = new fabric.Canvas('c7');
     canvas7.requestRenderAll();
-    
+
     event.preventDefault();
     $.ajax({
       url: "{{route('ajaxupload.action')}}",
@@ -2473,23 +2473,23 @@ function loadHoodie(objects){
   });
 
   });
-  
+
 }
   </script>
 
 <script>
   // Canvas for Graphic T-Shirt Dresses
-  
+
   var object7 = "/image/<?php if(!empty($image)){echo $image;}  ?>";
   var canvas8 = new fabric.Canvas('c8');
   loadGraphicTshirtDresses(object7);
 
   function loadGraphicTshirtDresses(objects){
    fabric.Image.fromURL(objects, function(img) {
-      
+
       canvas8.setWidth(250);
       canvas8.setHeight(300);
-      
+
       canvas8.add(img);
       var image6 = document.getElementById("logo-canvas5");
       img.center();
@@ -2501,7 +2501,7 @@ function loadHoodie(objects){
         img.scale(parseFloat($(this).val())).setCoords();
         canvas8.requestRenderAll();
     });
-  
+
       // Align Vertical option for Hoodie
     $('#alignVertically5').on('click', function(){
       img.centerV();
@@ -2595,15 +2595,15 @@ function finalMockup(prodId){
             }
           });
           });
-        
+
         }else{
           canvasImage = "0";
         }
   });
 }
-  
+
 $("#capture").click(function(event){
-  
+
     window.scrollTo(0,0);
     time = 500;
     var title = document.getElementById('title').value;
@@ -2614,34 +2614,34 @@ $("#capture").click(function(event){
     var gender = $('input[name=gender]:checked').val();
     var count = 0;
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
-   
+
     Array.prototype.forEach.call(els, function(el) {
       if( el.getAttribute('value')=='0'){
         count++;
       }
     });
-  
+
     $("#loader").show();
     $('body').css("opacity" , 0.3);
     $('body').css("pointer-events" , "none");
    var number = 0;
     Array.prototype.forEach.call(els, function(el) {
-      
+
       event.preventDefault();
-     
+
      setTimeout(function(){
 
-     
+
       var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
       canvasPicture = el.getAttribute("data-canvas");
         html2canvas(el).then(function (canvasA){
-          var numbers = canvasPicture.match(/(\d+)/); 
+          var numbers = canvasPicture.match(/(\d+)/);
           var can = document.getElementById("c" + numbers[0]);
-          
+
 
           picture = can.toDataURL("image/png").replace("image/png", "image/octet-stream");
-         
+
             var imgData = canvasA.toDataURL("image/png" , 0.9);
             var originalName = el.getAttribute('name');
             console.log(originalImagePath);
@@ -2668,37 +2668,37 @@ $("#capture").click(function(event){
                     },
                     beforeSend: function(){
                       // Show image container
-                     
+
                     },
                     success:function(msg){
                       console.log(msg);
                        // finalMockup(msg);
-                       
-                    }, 
+
+                    },
                     error: function(msg) {
                       console.log(msg);
-                    
+
                     },
                     complete: function(msg){
-                      
+
                     }
                 });
         });
     }
     number++;
     if(count==number){
-      $("#loader").hide(); 
+      $("#loader").hide();
       $('body').css("opacity" , 1);
       $('body').css("pointer-events" , "all");
     }
-  
+
 },time)
 time += 3000;
 
 });
 
 
-  
+
 });
 
 /* function doCapture(){
@@ -2708,7 +2708,7 @@ time += 3000;
     var description = document.getElementById('description').value;
     var els = document.getElementsByClassName("save-picture");
     var mockUpCanvas = document.getElementById("canvasMockUp");
-    
+
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
     Array.prototype.forEach.call(els, function(el) {
       sleep(2000).then(() => {
@@ -2735,12 +2735,12 @@ time += 3000;
                         originalName1 : originalName,
                         originalImagePath: originalImagePath,
                         canvasImage : canvasImage,
-                       
+
                     },
                     success:function(msg){
                       console.log(msg);
                        // finalMockup(msg);
-                    }, 
+                    },
                     error: function(msg) {
                       console.log(msg);
                     }
@@ -2748,7 +2748,7 @@ time += 3000;
         });
 
     }
-  
+
 })
 } */  </script>
 

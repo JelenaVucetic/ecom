@@ -23,16 +23,16 @@ class AjaxUploadController extends Controller
 
             $file = $request->file('file1');
 
-            
+
             $file->move('image', $file->getClientOriginalName());
             $image =  $file->getClientOriginalName();
                 $filename    = $image;
-               
+
                 $image_resize = Image::make(public_path('image/'. $image))->resize(300, 150, function ($c) {
                     $c->aspectRatio();
                 });
                 $image_resize->save();
-              
+
             return response()->json([
                 'message' => 'Image uploaded',
                 'upload_image' => $image
@@ -47,11 +47,11 @@ class AjaxUploadController extends Controller
 
     function save(Request $request){
         $data = $request->all();
-       
+
       $picture = $data['picture'];
 
       if($picture!==null && $picture!=="0"){
-        $picture = explode(";" ,  $picture)[1];  
+        $picture = explode(";" ,  $picture)[1];
         $picture = explode("," ,  $picture)[1];
         $picture = str_replace(" ", "+",  $picture);
         $picture = base64_decode( $picture);
@@ -61,9 +61,9 @@ class AjaxUploadController extends Controller
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string2 = str_shuffle($name1);
         $string2 .=  round(microtime(true) * 1000);
-        
+
         file_put_contents("canvas_picture/". $string2 . ".png", $picture);
-    }  
+    }
 
       $title = $data['name'];
       $image = $data['image'];;
@@ -74,9 +74,9 @@ class AjaxUploadController extends Controller
       $canvasImage = $data['canvasImage'];
       $gender = $data['gedner'];
       $category = $data['category'];
-      
+
        if($canvasImage!==null && $canvasImage!=="0"){
-        $canvasImage = explode(";" ,  $canvasImage)[1];  
+        $canvasImage = explode(";" ,  $canvasImage)[1];
         $canvasImage = explode("," ,  $canvasImage)[1];
         $canvasImage = str_replace(" ", "+",  $canvasImage);
         $canvasImage = base64_decode( $canvasImage);
@@ -86,13 +86,13 @@ class AjaxUploadController extends Controller
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string1 = str_shuffle($name1);
         $string1 .=  round(microtime(true) * 1000);
-        
-        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    }  
 
-    
+        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
+    }
+
+
  /*    if($canvasImage!=="0"){
-        
+
        if( $canvasImage = explode(";" ,  $canvasImage)[1]){
         $canvasImage = explode("," ,  $canvasImage)[1];
         $canvasImage = str_replace(" ", "+",  $canvasImage);
@@ -103,7 +103,7 @@ class AjaxUploadController extends Controller
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string1 = str_shuffle($name1);
         file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    } 
+    }
     } */
 
 $price = 0;
@@ -145,7 +145,7 @@ $price = 0.99;
 $price = 5.99;
 }else if($original == "Mugs"){
 $price = 4.90;
-}else if($original == "Bags"){
+}else if($original == "Tote Bags"){
 $price = 3.90;
 }else if($original == "Notes"){
 $price = 4.90;
@@ -153,7 +153,7 @@ $price = 4.90;
 $price = 0;
 }
     $checkImage = $image;
-    $image = explode(";" , $image)[1];  
+    $image = explode(";" , $image)[1];
     $image = explode("," , $image)[1];
     $image = str_replace(" ", "+", $image);
 
@@ -169,13 +169,13 @@ $string .=  round(microtime(true) * 1000);
 
 file_put_contents("images/". $string . ".png", $image);
 
- 
+
 $row = DB::table('design')->where('name',  $originalImagePath)->first();
 
 if($row==null){
     $idDesign = DB::table('design')->insertGetId([
         'name' => $originalImagePath
-    ]);  
+    ]);
 } else {
     $idDesign = $row->id;
 }
@@ -183,15 +183,15 @@ if($row==null){
 if($original == "Poster"){
  $idProduct = DB::table('product')->insertGetId([
 'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category, 'price_b2' => $priceB2 , 'price_b1' => $priceB1
-]); 
+]);
  }else if($original == "Canvas"){
     $idProduct = DB::table('product')->insertGetId([
         'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category, 'price_b1' => $priceB1, 'price_b2' => $priceB2
-        ]); 
+        ]);
  }else{
     $idProduct = DB::table('product')->insertGetId([
         'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category
-        ]);   
+        ]);
  }
 
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
@@ -216,7 +216,7 @@ if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
 }
 if($original=='Phone Case'){
     ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
-   
+
 }
 if($original == 'Samsung'){
     ImageModel::samsungP20PhoneCase($idProduct, $originalImagePath);
@@ -299,14 +299,14 @@ $tagsComma = explode("," , $tags);
 foreach($tagsComma as $tag){
     Tag::firstOrCreate([
         'name'=> $tag . " " . $original,
-        ]); 
-    $tagId = DB::table('tags')->where('name',$tag)->get('id');    
+        ]);
+    $tagId = DB::table('tags')->where('name',$tag)->get('id');
         foreach($tagId as $Id){
-            
+
         DB::table('product_tag')->insert([
             'product_id'=> $productId,
             'tag_id'=> $Id->id
-            ]); 
+            ]);
         }
 
 }
@@ -316,13 +316,13 @@ echo $checkImage;
     }
 
 
-    
+
 
     function save1(Request $request){
 
         $data = $request->all();
-       
-      
+
+
         $title = $data['name'];
         $image = $data['image'];;
         $tags = $data['tag'];
@@ -337,78 +337,78 @@ echo $checkImage;
         $imageName =  $file->getClientOriginalName();
         $imageName = preg_replace('/\s+/', '', $imageName);
         $filename = pathinfo($imageName, PATHINFO_FILENAME);
-        
+
         $extension =  $request->file('file')->getClientOriginalExtension();
        // dd($extension);
         $image = $originalImagePath;
-         $file->move('design/', $image); 
-  
-         $process0 = new Process('magick convert  C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg 
+         $file->move('design/', $image);
+
+         $process0 = new Process('magick convert  C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg
          -resize 1500x2500
-         C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg 
+         C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg
           ');
           $process0->run();
           if (!$process0->isSuccessful()) {
               throw new ProcessFailedException($process0);
-          } 
-  
-         $process = new Process('magick convert  C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg[403x422+584+601] 
-         -colorspace gray 
-         -blur 10x250 
+          }
+
+         $process = new Process('magick convert  C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg[403x422+584+601]
+         -colorspace gray
+         -blur 10x250
          -auto-level
          C:\xampp\htdocs\www\imageMagick\public\image\displace_map.png
           ');
-    
+
      $process->run();
      if (!$process->isSuccessful()) {
          throw new ProcessFailedException($process);
      }
         /*  echo $process->getOutput();
          echo '<img src="\image\displace_map.png">'; */
-  
-         $imageName1 = "/" .  $image; 
-  
+
+         $imageName1 = "/" .  $image;
+
          $process1 = new Process('magick convert  C:\xampp\htdocs\www\imageMagick\public\design' . $imageName1 . '
-      
+
          -resize 300x300
          C:\xampp\htdocs\www\imageMagick\public\design' . $imageName1 . '
-         '); 
-         
+         ');
+
       $process1->run();
        if (!$process1->isSuccessful()) {
-           throw new ProcessFailedException($process1);    
-     } 
-  
-  
-         $process2 = new Process('magick convert 
+           throw new ProcessFailedException($process1);
+     }
+
+
+         $process2 = new Process('magick convert
          C:\xampp\htdocs\www\imageMagick\public\design' . $imageName1 . '
-         -bordercolor transparent -border 12x12 -thumbnail 403x422 
+         -bordercolor transparent -border 12x12 -thumbnail 403x422
          C:\xampp\htdocs\www\imageMagick\public\image\ms_temp.png
           ');
-    
+
      $process2->run();
      if (!$process1->isSuccessful()) {
          throw new ProcessFailedException($process2);
      }
         /*  echo $process2->getOutput();
          echo '<img src="\image\ms_temp.png">'; */
-  
-        
-  
-         $process3 = new Process('magick convert 
-         C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg[403x422+584+601] 
-         -colorspace gray -blur 10x250 -auto-level 
-         -depth 16 
+
+
+
+         $process3 = new Process('magick convert
+         C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg[403x422+584+601]
+         -colorspace gray -blur 10x250 -auto-level
+         -depth 16
          C:\xampp\htdocs\www\imageMagick\public\image\ms_displace_map.png
           ');
-    
+
      $process3->run();
      if (!$process3->isSuccessful()) {
          throw new ProcessFailedException($process3);
      }
         /*  echo $process3->getOutput();
          echo '<img src="\image\ms_displace_map.png">'; */
-        
+
          $process4 = new Process('magick convert ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_temp.png ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_displace_map.png ^
@@ -416,17 +416,17 @@ echo $checkImage;
          -compose displace -set option:compose:args -5x-5 -composite ^
          -depth 16 ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_displaced_logo.png
-       
+
           ');
-    
+
      $process4->run();
      if (!$process4->isSuccessful()) {
          throw new ProcessFailedException($process4);
      }
         /*  echo $process4->getOutput();
          echo '<img src="\image\ms_displaced_logo.png">'; */
-  
-         
+
+
          $process5 = new Process('magick convert ^
          C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg[403x422+584+601] ^
          -colorspace gray -auto-level ^
@@ -435,9 +435,9 @@ echo $checkImage;
          -depth 16 ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_light_map.png
           ');
-  
+
           /* Makao sam komandu -separate proces 5 */
-    
+
      $process5->run();
      if (!$process5->isSuccessful()) {
          throw new ProcessFailedException($process5);
@@ -450,14 +450,14 @@ echo $checkImage;
          -channel matte -separate ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_logo_displace_mask.png
           ');
-    
+
      $process6->run();
      if (!$process6->isSuccessful()) {
          throw new ProcessFailedException($process6);
      }
        /*   echo $process6->getOutput();
          echo '<img src="\image\ms_logo_displace_mask.png">'; */
-         
+
          $process7 = new Process('magick convert ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_displaced_logo.png ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_light_map.png ^
@@ -466,18 +466,18 @@ echo $checkImage;
          -compose CopyOpacity -composite ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_light_map_logo.png
          ');
-   
+
     $process7->run();
     if (!$process7->isSuccessful()) {
         throw new ProcessFailedException($process7);
     }
        /*  echo $process7->getOutput();
         echo '<img src="\image\ms_light_map_logo.png">'; */
-        
-  
-  
-        
-  
+
+
+
+
+
          $process8 = new Process('magick convert ^
          C:\xampp\htdocs\www\imageMagick\public\image\U-one-16.jpg ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_light_map_logo.png ^
@@ -486,18 +486,18 @@ echo $checkImage;
          -depth 16 ^
          C:\xampp\htdocs\www\imageMagick\public\image\ms_product.png
          ');
-   
+
     $process8->run();
     if (!$process8->isSuccessful()) {
         throw new ProcessFailedException($process8);
     }
        /*  echo $process8->getOutput();
         echo '<img src="\image\ms_product.png">'; */
-        
 
-      
+
+
        if($canvasImage!==null && $canvasImage!=="0"){
-        $canvasImage = explode(";" ,  $canvasImage)[1];  
+        $canvasImage = explode(";" ,  $canvasImage)[1];
         $canvasImage = explode("," ,  $canvasImage)[1];
         $canvasImage = str_replace(" ", "+",  $canvasImage);
         $canvasImage = base64_decode( $canvasImage);
@@ -507,13 +507,13 @@ echo $checkImage;
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string1 = str_shuffle($name1);
         $string1 .=  round(microtime(true) * 1000);
-        
-        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    }  
 
-    
+        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
+    }
+
+
  /*    if($canvasImage!=="0"){
-        
+
        if( $canvasImage = explode(";" ,  $canvasImage)[1]){
         $canvasImage = explode("," ,  $canvasImage)[1];
         $canvasImage = str_replace(" ", "+",  $canvasImage);
@@ -524,7 +524,7 @@ echo $checkImage;
         . $characters1[rand(0, strlen($characters1) - 1)];
         $string1 = str_shuffle($name1);
         file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    } 
+    }
     } */
 
 $price = 0;
@@ -542,7 +542,7 @@ if($original=='Phone Case'){
     $price = 0;
 }
     $checkImage = $image;
-    $image = explode(";" , $image)[1];  
+    $image = explode(";" , $image)[1];
     $image = explode("," , $image)[1];
     $image = str_replace(" ", "+", $image);
 
@@ -558,13 +558,13 @@ $string .=  round(microtime(true) * 1000);
 
 file_put_contents("images/". $string . ".png", $image);
 
- 
+
 $row = DB::table('design')->where('name',  $originalImagePath)->first();
 
 if($row==null){
     $idDesign = DB::table('design')->insertGetId([
         'name' => $originalImagePath
-    ]);  
+    ]);
 } else {
     $idDesign = $row->id;
 }
@@ -572,7 +572,7 @@ if($row==null){
 
  $idProduct = DB::table('product')->insertGetId([
 'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category
-]); 
+]);
 
 $products = DB::table('product')->where([
     ['name', '=' , $title],
@@ -590,14 +590,14 @@ $tagsComma = explode("," , $tags);
 foreach($tagsComma as $tag){
     Tag::firstOrCreate([
         'name'=> $tag . " " . $original,
-        ]); 
-    $tagId = DB::table('tags')->where('name',$tag)->get('id');    
+        ]);
+    $tagId = DB::table('tags')->where('name',$tag)->get('id');
         foreach($tagId as $Id){
-            
+
         DB::table('product_tag')->insert([
             'product_id'=> $productId,
             'tag_id'=> $Id->id
-            ]); 
+            ]);
         }
 
 }
