@@ -115,7 +115,7 @@ class CartController extends Controller
                 ['product_id',"=", $id],
                 ['size','=', 'vertical']
             ])->first();
-        }elseif($product->category->name=="Bags") {
+        }elseif($product->category->name=="Tote Bags") {
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color','=', 'black']
@@ -134,7 +134,7 @@ class CartController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
-        } elseif($product->category->name=="Masks" || $product->category->name=="Sacks"){
+        } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color','=', 'white']

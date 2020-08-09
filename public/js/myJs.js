@@ -1,3 +1,13 @@
+//Remove placeholder on click
+$(function () {
+    $('input,textarea').focus(function () {
+        $(this).data('placeholder', $(this).attr('placeholder'))
+            .attr('placeholder', '');
+    }).blur(function () {
+        $(this).attr('placeholder', $(this).data('placeholder'));
+    });
+});
+
 /* Checkout page */
 $('#review-and-pay').on('click', function(){
     $('#hide-review').html(' ');
@@ -7,11 +17,11 @@ $('#review-and-pay').on('click', function(){
 
 
 $(document).ready(function(){
-  
+
     /* 1. Visualizing things on Hover - See next part for action on click */
     $('#stars li').on('mouseover', function(){
       var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-     
+
       // Now highlight all the stars that's not after the current hovered star
       $(this).parent().children('li.star').each(function(e){
         if (e < onStar) {
@@ -21,26 +31,26 @@ $(document).ready(function(){
           $(this).removeClass('hover');
         }
       });
-      
+
     }).on('mouseout', function(){
       $(this).parent().children('li.star').each(function(e){
         $(this).removeClass('hover');
       });
     });
-    
+
     /* 2. Action to perform on click */
     $('#stars li').on('click', function(){
       var onStar = parseInt($(this).data('value'), 10); // The star currently selected
       var stars = $(this).parent().children('li.star');
-      
+
       for (i = 0; i < stars.length; i++) {
         $(stars[i]).removeClass('selected');
       }
-      
+
       for (i = 0; i < onStar; i++) {
         $(stars[i]).addClass('selected');
       }
-      
+
       // JUST RESPONSE (Not needed)
       var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
       var msg = "";
@@ -53,10 +63,10 @@ $(document).ready(function(){
       responseMessage(msg);
       var proDum = $('#proDum').val();
       var userId = $('#user_id').val()
-  
+
       $.ajax({
-          headers: {  
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   } ,
         type: 'post',
         dataType: 'html',
@@ -66,12 +76,12 @@ $(document).ready(function(){
             console.log(response)
         }
     });
-      
+
     });
   });
-  
+
   function responseMessage(msg) {
-    $('.success-box').fadeIn(200);  
+    $('.success-box').fadeIn(200);
     $('.success-box div.text-message').html("<span>" + msg + "</span>");
   }
 
@@ -137,7 +147,7 @@ $(document).ready(function(){
     $('#add').on('click', function(){
         $('#btn-add-to-cart').removeAttr('data-toggle');
         $('#btn-add-to-cart').removeAttr('data-target');
-        
+
         var phoneModel = $( ".cases option:selected" ).val();
         var caseStyle = $( ".cases-style option:selected" ).val();
         var posterSize = $( ".poster-size option:selected" ).val();
@@ -161,7 +171,7 @@ $(document).ready(function(){
           $("input[name='size']").change(function(){
             $('#modal-add').bind("click", function(){
               var size =  $("input[name='size']:checked").val();
-              addToCartAjax(price, kidssize, size, color, print); 
+              addToCartAjax(price, kidssize, size, color, print);
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
@@ -178,38 +188,38 @@ $(document).ready(function(){
           $("input[name='kids-size']").change(function(){
             $('#modal-add').bind("click", function(){
               var kidssize =  $("input[name='kids-size']:checked").val();
-              addToCartAjax(price, kidssize,  null, color, print); 
+              addToCartAjax(price, kidssize,  null, color, print);
             });
               $('#modal-add').css('cursor', "pointer");
               $('#modal-add div').css('background', "#E6003A");
           });
         } else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-          addToCartAjax(price, kidssize, null, color, print); 
-        } 
+          addToCartAjax(price, kidssize, null, color, print);
+        }
         else if(pro_cat == "Custom" && !customCase) {
           alert('Please enter your phone model');
         } else if (pro_cat == "Wallpapers") {
           addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, null);
         }else if (pro_cat == "Pictures") {
           addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize, null);
-        } else if (pro_cat == "Coasters") { 
+        } else if (pro_cat == "Coasters") {
           var coasterShape = $( ".coaster-shape option:selected" ).val();
           var coasterDesign = $( ".coaster-design option:selected" ).val();
           addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign, null);
-        } else if (pro_cat == "Magnets") { 
+        } else if (pro_cat == "Magnets") {
           var magnetShape = $( ".magnet-shape option:selected" ).val();
           addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign, null, magnetShape);
-        }else if (pro_cat == "Masks") { 
+        }else if (pro_cat == "Masks") {
           var maskLocation = $( ".masks option:selected" ).val();
           addToCartAjax(price, null, null, color, null, null, null, null, null, null, null,coasterShape,coasterDesign, maskLocation);
-        } else if (pro_cat == "Sacks") { 
+        } else if (pro_cat == "Gift Bags") {
           var sackType = $( ".sacks option:selected" ).val();
           addToCartAjax(price, null, null, color, null, null, null, null, null, null, null,coasterShape,coasterDesign, null, sackType);
-        } else if (pro_cat == "Bottle Openers") { 
+        } else if (pro_cat == "Bottle Openers") {
           var coasterShape = $( ".material option:selected" ).val();
           var coasterDesign = $( ".opener-design option:selected" ).val();
           addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign, null);
-        } else if (pro_cat == "Mugs") { 
+        } else if (pro_cat == "Mugs") {
           if (color == 'white') {
             var  price = $( ".product_price" ).val();
           } else {
@@ -218,10 +228,10 @@ $(document).ready(function(){
           addToCartAjax(price, null, null, color, null, null, null, null, null, null, null, null, null, null);
         }else {
             addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, null, null, null);
-          }  
-      }); 
+          }
+      });
 
-}); 
+});
  $(document).ready(function(){
   $('.pink div').removeClass( "black-border");
   $('.blue div').removeClass( "black-border");
@@ -254,7 +264,7 @@ $(document).ready(function(){
   var pro_cat = $('#pro_cat').val();
   if(pro_cat == 'Mugs') {
   $('input[type=radio][name=color]').change(function() {
-    if(this.value == 'white'){ 
+    if(this.value == 'white'){
       $('.neon div').removeClass( "black-border");
       $('.white div').addClass( "black-border")
       $('.A3_price').css('display', 'block')
@@ -269,7 +279,7 @@ $(document).ready(function(){
 }
 });
 
-$(document).ready(function(){ 
+$(document).ready(function(){
   var pro_cat = $('#pro_cat').val();
   if(pro_cat == 'Pictures') {
     var newPrice = $( "#picture option:selected" ).attr('data-price');
@@ -324,31 +334,31 @@ $('#picture-custom').css('display', "none");
         $('.B2_price').css('display', 'none')
         $('.B1_price').css('display', 'none')
         $('.A3_price').css('display', 'block')
-  
+
         $("#save-picture-size").click(function(){
           var attrWidth = $('#picture-custom-width').attr('readonly');
           var attrHeight = $('#picture-custom-height').attr('readonly');
           if ((typeof attrWidth !== typeof undefined && attrWidth !== false) || (typeof attrHeight !== typeof undefined && attrHeight !== false)) {
-            $("#picture-custom-width").attr("readonly", false); 
-            $("#picture-custom-width").css("background", 'white'); 
-            $("#picture-custom-width").css("color", 'black'); 
-            $("#picture-custom-height").attr("readonly", false); 
-            $("#picture-custom-height").css("background", 'white'); 
-            $("#picture-custom-height").css("color", 'black'); 
-            $("#save-picture-size").html('Save'); 
+            $("#picture-custom-width").attr("readonly", false);
+            $("#picture-custom-width").css("background", 'white');
+            $("#picture-custom-width").css("color", 'black');
+            $("#picture-custom-height").attr("readonly", false);
+            $("#picture-custom-height").css("background", 'white');
+            $("#picture-custom-height").css("color", 'black');
+            $("#save-picture-size").html('Save');
           } else {
             if( !$("#picture-custom-width").val() || !$("#picture-custom-height").val()) {
               alert("Please enter your picture size")
             } else if ($("#picture-custom-width").val() == 0 ) {
               alert('false')
             } else {
-                $("#picture-custom-width").attr("readonly", true); 
-                $("#picture-custom-width").css("background", '#F5F5F5'); 
+                $("#picture-custom-width").attr("readonly", true);
+                $("#picture-custom-width").css("background", '#F5F5F5');
                 $("#picture-custom-width").css("color", '#adacac');
-                $("#picture-custom-height").attr("readonly", true); 
-                $("#picture-custom-height").css("background", '#F5F5F5'); 
+                $("#picture-custom-height").attr("readonly", true);
+                $("#picture-custom-height").css("background", '#F5F5F5');
                 $("#picture-custom-height").css("color", '#adacac');
-                $("#save-picture-size").html('Edit'); 
+                $("#save-picture-size").html('Edit');
 
                 var newPrice =  ($("#picture-custom-width").val() * $("#picture-custom-height").val() * $('.product_price').val()) / 100;
                 $('.A3_price span').html(newPrice);
@@ -357,7 +367,7 @@ $('#picture-custom').css('display', "none");
             }
         }
         });
-        
+
       } else if( pro_cat == "Pictures" && pictureSize == 'B2') {
         $('#picture-custom').css('display', "none");
         $('.B2_price').css('display', 'block')
@@ -396,7 +406,7 @@ $('#picture-custom').css('display', "none");
 
   });
 
-  
+
 });
 
 $(document).ready(function() {
@@ -404,24 +414,24 @@ $(document).ready(function() {
     var attrWidth = $('#wallpaper-custom-width').attr('readonly');
     var attrHeight = $('#wallpaper-custom-height').attr('readonly');
     if ((typeof attrWidth !== typeof undefined && attrWidth !== false) || (typeof attrHeight !== typeof undefined && attrHeight !== false)) {
-      $("#wallpaper-custom-width").attr("readonly", false); 
-      $("#wallpaper-custom-width").css("background", 'white'); 
-      $("#wallpaper-custom-width").css("color", 'black'); 
-      $("#wallpaper-custom-height").attr("readonly", false); 
-      $("#wallpaper-custom-height").css("background", 'white'); 
-      $("#wallpaper-custom-height").css("color", 'black'); 
-      $("#save-wallpaper-size").html('Save'); 
+      $("#wallpaper-custom-width").attr("readonly", false);
+      $("#wallpaper-custom-width").css("background", 'white');
+      $("#wallpaper-custom-width").css("color", 'black');
+      $("#wallpaper-custom-height").attr("readonly", false);
+      $("#wallpaper-custom-height").css("background", 'white');
+      $("#wallpaper-custom-height").css("color", 'black');
+      $("#save-wallpaper-size").html('Save');
     } else {
       if( !$("#wallpaper-custom-width").val() || !$("#wallpaper-custom-height").val()) {
         alert("Please enter your wallpaper size")
       } else {
-          $("#wallpaper-custom-width").attr("readonly", true); 
-          $("#wallpaper-custom-width").css("background", '#F5F5F5'); 
+          $("#wallpaper-custom-width").attr("readonly", true);
+          $("#wallpaper-custom-width").css("background", '#F5F5F5');
           $("#wallpaper-custom-width").css("color", '#adacac');
-          $("#wallpaper-custom-height").attr("readonly", true); 
-          $("#wallpaper-custom-height").css("background", '#F5F5F5'); 
+          $("#wallpaper-custom-height").attr("readonly", true);
+          $("#wallpaper-custom-height").css("background", '#F5F5F5');
           $("#wallpaper-custom-height").css("color", '#adacac');
-          $("#save-wallpaper-size").html('Edit'); 
+          $("#save-wallpaper-size").html('Edit');
 
           var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.product_price').val()) / 100;
           $('.A3_price span').html(newPrice);
@@ -443,18 +453,18 @@ $(document).ready(function(){
   $("#custom-phone-model").click(function(){
     var attr = $('#input-custom-phone').attr('readonly');
     if (typeof attr !== typeof undefined && attr !== false) {
-      $("#input-custom-phone").attr("readonly", false); 
-      $("#input-custom-phone").css("background", 'transparent'); 
-      $("#input-custom-phone").css("color", 'black'); 
-      $("#custom-phone-model").html('Save'); 
+      $("#input-custom-phone").attr("readonly", false);
+      $("#input-custom-phone").css("background", 'transparent');
+      $("#input-custom-phone").css("color", 'black');
+      $("#custom-phone-model").html('Save');
    } else {
      if( !$("#input-custom-phone").val()) {
        alert("Please enter your size")
      } else {
-        $("#input-custom-phone").attr("readonly", true); 
-        $("#input-custom-phone").css("background", '#F5F5F5'); 
+        $("#input-custom-phone").attr("readonly", true);
+        $("#input-custom-phone").css("background", '#F5F5F5');
         $("#input-custom-phone").css("color", '#adacac');
-        $("#custom-phone-model").html('Edit'); 
+        $("#custom-phone-model").html('Edit');
      }
    }
   });
@@ -493,7 +503,7 @@ $(document).ready(function(){
     $('.black div').addClass( "white-border");
     $('.black span').css('border', "none");
   $('input[type=radio][name=color]').change(function() {
-    if(this.value == 'black'){ 
+    if(this.value == 'black'){
       $('.black div').addClass( "white-border");
       $('.black span').css('border', "1px solid #DEDEDE;");
       $('.red div').removeClass( "black-border")
@@ -582,7 +592,7 @@ $(document).ready(function(){
     $(".rateyo").rateYo({
       starWidth: "30px",
       ratedFill: "#000000",
-      spacing: "10px", 
+      spacing: "10px",
     }).rateYo('option', 'readOnly', true);
 })
 
@@ -592,7 +602,7 @@ $(document).ready(function(){
   $(".rateyoPhone").rateYo({
     starWidth: "15px",
     ratedFill: "#000000",
-    spacing: "5px", 
+    spacing: "5px",
   }).rateYo('option', 'readOnly', true);
 })
 
@@ -606,7 +616,7 @@ $(document).ready(function(){
   $('#phone-add').on('click', function(){
       $('#btn-add-to-cart-phone').removeAttr('data-toggle');
       $('#btn-add-to-cart-phone').removeAttr('data-target');
-      
+
       var phoneModel = $( ".cases option:selected" ).val();
       var caseStyle = $( ".cases-style option:selected" ).val();
       var posterSize = $( ".poster-size option:selected" ).val();
@@ -632,7 +642,7 @@ $(document).ready(function(){
         $("input[name='size']").change(function(){
           $('#modal-add').bind("click", function(){
             var size =  $("input[name='size']:checked").val();
-            addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null); 
+            addToCartAjax(price, kidssize, size, color, print, null, null, null, null, null, null);
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
@@ -649,13 +659,13 @@ $(document).ready(function(){
         $("input[name='kids-size']").change(function(){
           $('#modal-add').bind("click", function(){
             var kidssize =  $("input[name='kids-size']:checked").val();
-            addToCartAjax(price, kidssize,  null, color, print, null, null, null, null, null, null); 
+            addToCartAjax(price, kidssize,  null, color, print, null, null, null, null, null, null);
           });
             $('#modal-add').css('cursor', "pointer");
             $('#modal-add div').css('background', "#E6003A");
         });
       }  else if  (pro_cat == "Kids T-Shirts" || pro_cat == "Kids One-Pieces"){
-        addToCartAjax(price, kidssize, null, color, print, null, null, null, null, null, null); 
+        addToCartAjax(price, kidssize, null, color, print, null, null, null, null, null, null);
       }  else if(pro_cat == 'Posters') {
         var price = $( ".poster-size option:selected" ).attr('data-price');
         addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, null, price);
@@ -665,15 +675,15 @@ $(document).ready(function(){
         addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize);
       } else if (pro_cat == "Pictures") {
         addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize);
-      } else if (pro_cat == "Coasters") { 
+      } else if (pro_cat == "Coasters") {
         var coasterShape = $( ".coaster-shape option:selected" ).val();
         var coasterDesign = $( ".coaster-design option:selected" ).val();
         addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
-      } else if (pro_cat == "Bottle Openers") { 
+      } else if (pro_cat == "Bottle Openers") {
         var coasterShape = $( ".material option:selected" ).val();
         var coasterDesign = $( ".opener-design option:selected" ).val();
         addToCartAjax(price, null, null, null, null, null, null, null, null, null, null,coasterShape,coasterDesign);
-      } else if (pro_cat == "Mugs") { 
+      } else if (pro_cat == "Mugs") {
         if (color == 'white') {
           var  price = $( ".product_price" ).val();
         } else {
@@ -682,9 +692,9 @@ $(document).ready(function(){
         addToCartAjax(price, null, null, color, null, null, null, null, null, null, null, null, null);
       }else {
           addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize,null, null, null);
-        }  
-    }); 
-}); 
+        }
+    });
+});
 
 
 
@@ -744,20 +754,20 @@ jQuery('.quantity').each(function() {
       }else{
         category_bold[i].style.fontWeight = "400";
       }
-     
+
     }
   }
-  
-  var url = window.location.href;    
+
+  var url = window.location.href;
   var number = url.charAt(url.length-1);
   $("#"+number).attr("aria-expanded","true");
   if($("#"+number).hasClass("collapsed")){
     $("#"+number).removeClass("collapsed");
   }
   $("#"+number).next("ul").addClass("show");
-  
 
-  
+
+
 $(".side-category-gender").on("click" ,function(){
   var genders_div = document.getElementsByClassName("gender");
   for(var i = 0;i<genders_div.length;i++){
@@ -771,7 +781,7 @@ $(".side-category-gender").on("click" ,function(){
 });
 
 $("#man-mobile").on("click", function(){
-  
+
   if($("#category-paragraph").attr("data-gender") == "male"){
     sendGender(null);
     $(this).prop("checked", false);
@@ -807,7 +817,7 @@ $("#woman-mobile").on("click", function(){
   document.getElementById("male-div").style.display = "none";
   sendGender(null);
 });
- 
+
 $("#female-x").on("click", function(){
   document.getElementById("female-div").style.display = "none";
   sendGender(null);
@@ -818,8 +828,8 @@ $("#female-x").on("click", function(){
     var attribute = $("#category-paragraph").attr("data-myattribute");
     var number = $("#category-paragraph").attr("data-id");
     $.ajax({
-      headers: {  
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               } ,
     type: 'post',
     dataType: 'html',
@@ -840,8 +850,8 @@ $("#female-x").on("click", function(){
       $("#category-paragraph").attr("data-myattribute",attribute);
       $("#category-paragraph").attr("data-id",number);
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'html',
@@ -852,9 +862,9 @@ $("#female-x").on("click", function(){
           $("#category-paragraph").attr("data-gender", gender);
       }
   });
-} 
+}
 
-  
+
 
 
   var elements = document.getElementsByClassName("side-category");
@@ -864,41 +874,41 @@ $("#female-x").on("click", function(){
       var attribute = this.getAttribute("data-myattribute");
       var number = this.getAttribute("data-id");
       var category = this.getAttribute("data-category");
-     
+
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
       $("#category-paragraph").attr("data-myattribute",attribute);
       $("#category-paragraph").attr("data-id",category);
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'html',
       url: '/category_search',
       data: { category:attribute, number:number},
       success: function(response) {
-       
+
           $("#content").html(response);
           attribute = attribute.replace(/ /g,"");
-           history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number); 
+           history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number);
            boldCategory(category);
-           
+
       }
   });
   };
-  
+
   for (var i = 0; i < elements.length; i++) {
       elements[i].addEventListener('click', myFunction, false);
-      
+
   }
 
 
     $("#query1").keyup(function (){
       var data = $("#query1").val();
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'html',
@@ -906,7 +916,7 @@ $("#female-x").on("click", function(){
       data: { data:data},
       success: function(response) {
         $(".row").html(response);
-        history.replaceState({page: window.location.hostname+"/search"}, "", "/search?query="  + data); 
+        history.replaceState({page: window.location.hostname+"/search"}, "", "/search?query="  + data);
       }
   });
     })
@@ -915,8 +925,8 @@ $("#female-x").on("click", function(){
     function sendWishList(){
       var id = $("#productID").val();
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       method: 'POST',
       dataType: 'html',
@@ -951,8 +961,8 @@ $("#female-x").on("click", function(){
      var id = $("#productID").val();
      var gender = $("#productGender").val();
      $.ajax({
-      headers: {  
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               } ,
     type: 'post',
     dataType: 'json',
@@ -962,26 +972,26 @@ $("#female-x").on("click", function(){
       $("#loading-overlay").show();
   },
     success: function(response) {
-      $("#loading-overlay").hide(); 
+      $("#loading-overlay").hide();
        var blank = response['blankImage'];
        var name = response['image']['name'];
-      $("#main-image").attr("src","../image/" +name); 
+      $("#main-image").attr("src","../image/" +name);
       if(response['gender']!="unisex"){
-        $("#blank-image").attr("src","../site-images/" + blank);  
+        $("#blank-image").attr("src","../site-images/" + blank);
       }else{
-        $("#blank-image").attr("src","../image/" + blank);  
+        $("#blank-image").attr("src","../image/" + blank);
       }
       if(response['gender']!="unisex"){
         $("#blank-image-mobile").attr("src","../site-images/" + blank);
       }else{
         $("#blank-image-mobile").attr("src","../image/" + blank);
       }
-      $("#main-image-mobile").attr("src","../image/" +name); 
-     
+      $("#main-image-mobile").attr("src","../image/" +name);
+
       $("#productColor").val(response['image']['color']);
     },
     error: function (jqXHR, textStatus, errorThrown) {
-      $("#loading-overlay").hide(); 
+      $("#loading-overlay").hide();
       alert("something went wrong");
   }
   });
@@ -995,8 +1005,8 @@ $("#female-x").on("click", function(){
       var size = $("#posters option:selected" ).val();
       var color = this.value;
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'json',
@@ -1006,26 +1016,26 @@ $("#female-x").on("click", function(){
         $("#loading-overlay").show();
     },
       success: function(response) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
          var blank = response['blankImage'];
          var name = response['image']['name'];
-        $("#main-image").attr("src","../image/" +name); 
+        $("#main-image").attr("src","../image/" +name);
         $("#blank-image").attr("src","../site-images/" + blank);
-        $("#main-image-mobile").attr("src","../image/" +name); 
-        $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+        $("#main-image-mobile").attr("src","../image/" +name);
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
         $("#productColor").val(response['image']['color']);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
         alert("something went wrong");
     }
     });
-    }else if(pro_cat=="Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks"){
+    }else if(pro_cat=="Tote Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks"){
       var id = $("#productID").val();
       var color = this.value;
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'json',
@@ -1035,17 +1045,17 @@ $("#female-x").on("click", function(){
         $("#loading-overlay").show();
     },
       success: function(response) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
          var blank = response['blankImage'];
          var name = response['image']['name'];
-        $("#main-image").attr("src","../image/" +name); 
+        $("#main-image").attr("src","../image/" +name);
         $("#blank-image").attr("src","../site-images/" + blank);
-        $("#main-image-mobile").attr("src","../image/" +name); 
-        $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+        $("#main-image-mobile").attr("src","../image/" +name);
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
         $("#productColor").val(response['image']['color']);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
         alert("something went wrong");
     }
     });
@@ -1055,8 +1065,8 @@ $("#female-x").on("click", function(){
     var gender = $("#productGender").val();
     var id = $("#productID").val();
     $.ajax({
-     headers: {  
-         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+     headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              } ,
    type: 'post',
    dataType: 'json',
@@ -1066,40 +1076,40 @@ $("#female-x").on("click", function(){
     $("#loading-overlay").show();
 },
    success: function(response) {
-    $("#loading-overlay").hide(); 
+    $("#loading-overlay").hide();
       var blank = response['blankImage'];
       var name = response['image']['name'];
-     $("#main-image").attr("src","../image/" +name); 
+     $("#main-image").attr("src","../image/" +name);
      if(response['gender']!="unisex"){
-      $("#blank-image").attr("src","../site-images/" + blank);  
+      $("#blank-image").attr("src","../site-images/" + blank);
     }else{
-      $("#blank-image").attr("src","../image/" + blank);  
+      $("#blank-image").attr("src","../image/" + blank);
     }
     if(response['gender']!="unisex"){
-      $("#blank-image-mobile").attr("src","../site-images/" + blank);   
+      $("#blank-image-mobile").attr("src","../site-images/" + blank);
     }else{
-      $("#blank-image-mobile").attr("src","../image/" + blank);   
+      $("#blank-image-mobile").attr("src","../image/" + blank);
     }
-     $("#main-image-mobile").attr("src","../image/" +name); 
-    
+     $("#main-image-mobile").attr("src","../image/" +name);
+
      $("#productColor").val(response['image']['color']);
    },
    error: function (jqXHR, textStatus, errorThrown) {
-     $("#loading-overlay").hide(); 
+     $("#loading-overlay").hide();
      alert("something went wrong");
  }
  });
-  
+
 
     }
  });
 
  //Za telefon
- 
 
 
 
- 
+
+
   $('.options li').on('click', function() {
     var pro_cat = $('#pro_cat').val();
     var id = $("#productID").val();
@@ -1107,8 +1117,8 @@ $("#female-x").on("click", function(){
       var color = $('input[name="color"]:checked').val();
       var size = $("#posters option:selected" ).val();
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'json',
@@ -1118,26 +1128,26 @@ $("#female-x").on("click", function(){
         $("#loading-overlay").show();
     },
       success: function(response) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
          var blank = response['blankImage'];
          var name = response['image']['name'];
-        $("#main-image").attr("src","../image/" +name); 
+        $("#main-image").attr("src","../image/" +name);
         $("#blank-image").attr("src","../site-images/" + blank);
-        $("#main-image-mobile").attr("src","../image/" +name); 
-        $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+        $("#main-image-mobile").attr("src","../image/" +name);
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
         $("#productColor").val(response['image']['color']);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
         alert("something went wrong");
     }
     });
     }else if(pro_cat=="Coasters"){
       var size = $(".coaster-shape option:selected" ).val();
-     
+
       $.ajax({
-        headers: {  
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'json',
@@ -1147,17 +1157,17 @@ $("#female-x").on("click", function(){
         $("#loading-overlay").show();
     },
       success: function(response) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
          var blank = response['blankImage'];
          var name = response['image']['name'];
-        $("#main-image").attr("src","../image/" +name); 
+        $("#main-image").attr("src","../image/" +name);
         $("#blank-image").attr("src","../site-images/" + blank);
-        $("#main-image-mobile").attr("src","../image/" +name); 
-        $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+        $("#main-image-mobile").attr("src","../image/" +name);
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
         $("#productColor").val(response['image']['color']);
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        $("#loading-overlay").hide(); 
+        $("#loading-overlay").hide();
         alert("something went wrong");
     }
     });
@@ -1168,8 +1178,8 @@ $("#female-x").on("click", function(){
   var phoneModel = $( ".cases option:selected" ).val();
   console.log(color, id, pro_cat, phoneModel);
   $.ajax({
-    headers: {  
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             } ,
   type: 'post',
   dataType: 'json',
@@ -1179,17 +1189,17 @@ $("#female-x").on("click", function(){
     $("#loading-overlay").show();
 },
   success: function(response) {
-    $("#loading-overlay").hide(); 
+    $("#loading-overlay").hide();
      var blank = response['blankImage'];
      var name = response['image']['name'];
-    $("#main-image").attr("src","../image/" +name); 
+    $("#main-image").attr("src","../image/" +name);
     $("#blank-image").attr("src","../site-images/" + blank);
-    $("#main-image-mobile").attr("src","../image/" +name); 
-    $("#blank-image-mobile").attr("src","../site-images/" + blank);  
+    $("#main-image-mobile").attr("src","../image/" +name);
+    $("#blank-image-mobile").attr("src","../site-images/" + blank);
     $("#productColor").val(response['image']['color']);
   },
   error: function (jqXHR, textStatus, errorThrown) {
-    $("#loading-overlay").hide(); 
+    $("#loading-overlay").hide();
     alert("something went wrong");
 }
 });
@@ -1200,4 +1210,3 @@ $("#female-x").on("click", function(){
 /*  $('.cases').change(function(){
   alert($( "cases option:selected" ).val());
  }); */
- 

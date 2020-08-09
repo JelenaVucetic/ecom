@@ -14,22 +14,28 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box1-img-holder"></div>
-                    <button><a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">  Shop T-Shirts</a></button>
-                </div>
+                <a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box1-img-holder"></div>
+                        <button>Shop T-Shirts</button>
+                    </div>
+                </a>
             </div>
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box2-img-holder"></div>
-                    <button><a href="{{route('category.show',[$casesCat->id, $casesCat->name => $casesCat->id ])}}" style="color: inherit;">  Shop Cases</a></button>
-                </div>
+                <a href="{{route('category.show',[$casesCat->id, $casesCat->name => $casesCat->id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box2-img-holder"></div>
+                        <button>Shop Cases</button>
+                    </div>
+                </a>
             </div>
             <div id="box3" class="col-12 col-md-4">
-                <div class="box-container">
-                    <div class="box3-img-holder"></div>
-                    <button><a href="{{route('category.show',[ $picturesCat->id, $picturesCat->name => $picturesCat->parent_id ])}}" style="color: inherit;">  Shop Pictures</a></button>
-                </div>
+                <a href="{{route('category.show',[ $picturesCat->id, $picturesCat->name => $picturesCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box3-img-holder"></div>
+                        <button>  Shop Pictures</button>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="site-quality">
@@ -66,18 +72,22 @@
 
     <div class="row gifts   ">
         <div class="col-6 gifts-for-him">
-            <div class="box-container">
-                <div class="box10-img-holder"></div>
-                <img id="male" src="/site-images/216-Male.svg">
-                <button><a href="/gifts_for_him" style="color: inherit;">Gifts for Him</a></button>
-            </div>
+            <a href="/gifts_for_him" style="color: inherit;">
+                <div class="box-container">
+                    <div class="box10-img-holder"></div>
+                    <img id="male" src="/site-images/216-Male.svg">
+                    <button>Gifts for Him</button>
+                </div>
+            </a>
         </div>
         <div class="col-6 gifts-for-her">
-            <div class="box-container">
-                <div class="box11-img-holder"></div>
-                <img id="female" src="/site-images/217-Female.svg">
-                <button><a href="/gifts_for_her" style="color: inherit;">Gifts for Her</a></button>
-            </div>
+            <a href="/gifts_for_her" style="color: inherit;">
+                <div class="box-container">
+                    <div class="box11-img-holder"></div>
+                    <img id="female" src="/site-images/217-Female.svg">
+                    <button>Gifts for Her</button>
+                </div>
+            </a>
         </div>
     </div>
 
@@ -89,42 +99,54 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box4-img-holder"></div>
-                    <button><a href="{{route('category.show',[$mugsCat->id, $mugsCat->name => $mugsCat->parent_id ])}}" style="color: inherit;">Mugs</a></button>
-                </div>
+                <a href="{{route('category.show',[$mugsCat->id, $mugsCat->name => $mugsCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box4-img-holder"></div>
+                        <button>Mugs</button>
+                    </div>
+                </a>
             </div>
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box5-img-holder"></div>
-                    <button><a href="{{route('category.show',[$coastersCat->id, $coastersCat->name => $coastersCat->parent_id ])}}" style="color: inherit;">Coasters</a></button>
-                </div>
+                <a href="{{route('category.show',[$coastersCat->id, $coastersCat->name => $coastersCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box5-img-holder"></div>
+                        <button>Coasters</button>
+                    </div>
+                </a>
             </div>
             <div id="box6" class="col-12 col-md-4">
-                <div class="box-container">
-                    <div class="box6-img-holder"></div>
-                    <button><a href="{{route('category.show',[$clocksCat->id, $clocksCat->name => $clocksCat->parent_id ])}}" style="color: inherit;">Clocks</a></button>
-                </div>
+                <a href="{{route('category.show',[$clocksCat->id, $clocksCat->name => $clocksCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box6-img-holder"></div>
+                        <button>Clocks</button>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="row" id="second-row">
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box7-img-holder"></div>
-                    <button><a href="{{route('category.show',[$sacksCat->id, $sacksCat->name => $sacksCat->parent_id ])}}" style="color: inherit;">Sacks</a></button>
-                </div>
+                <a href="{{route('category.show',[$sacksCat->id, $sacksCat->name => $sacksCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box7-img-holder"></div>
+                        <button>Sacks</button>
+                    </div>
+                </a>
             </div>
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box8-img-holder"></div>
-                    <button><a href="{{route('category.show',[$magnetsCat->id, $magnetsCat->name => $magnetsCat->parent_id ])}}" style="color: inherit;">Magnets</a></button>
-                </div>
+                <a href="{{route('category.show',[$magnetsCat->id, $magnetsCat->name => $magnetsCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box8-img-holder"></div>
+                        <button>Magnets</button>
+                    </div>
+                </a>
             </div>
             <div id="box9" class="col-12 col-md-4">
-                <div class="box-container">
-                    <div class="box9-img-holder"></div>
-                    <button><a href="{{route('category.show',[$notebooksCat->id, $notebooksCat->name => $notebooksCat->parent_id ])}}" style="color: inherit;">Notebooks</a></button>
-                </div>
+                <a href="{{route('category.show',[$notebooksCat->id, $notebooksCat->name => $notebooksCat->parent_id ])}}" style="color: inherit;">
+                    <div class="box-container">
+                        <div class="box9-img-holder"></div>
+                        <button>Notebooks</button>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -136,8 +158,8 @@
 
     </div>
 
-    <div class="container products-title">
-        <h3>Newest products</h3>
+    <div class="container products-title" style="padding-left: 0">
+        <h3 style="color: #404040;font-size: 27px;font-weight: bold;">Newest products</h3>
     </div>
     <div class="slick-wrapper">
     <div id="slick1">
@@ -184,17 +206,17 @@
                                 @endif
                             </div>
                             <div class="">
-                                <p class="">{{ $product->name }}</p>
+                                <p class="product-name">{{ $product->name }}</p>
                                 <?php
                                     $pro_cat = App\Product::find($product->id);
                                     if($pro_cat->category != null){
                                 ?>
-                                    <p class="">{{ $pro_cat->category->name }}</p>
+                                    <p class="product-category">{{ $pro_cat->category->name }}</p>
                                 <?php } ?>
                                 @if($product->spl_price==0)
-                                    <p>From: <span style="font-weight: bold">{{ $product->price}}&euro;</span></p>
+                                    <p><span style="font-weight: bold">&euro;{{ $product->price}}</span></p>
                                 @else
-                                    <p>Special price: <span style="font-weight: bold">{{$product->spl_price}}&euro;</span></p>
+                                    <p><span style="font-weight: bold">&euro;{{$product->spl_price}}</span></p>
                                 @endif
                             </div>
                         </div>

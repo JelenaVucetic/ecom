@@ -106,7 +106,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 16,
-            'name'=> 'Pictures',
+            'name'=> 'Canvas Art',
             'parent_id' => 3
         ]);
 
@@ -124,7 +124,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 19,
-            'name'=> 'Thermos',
+            'name'=> 'Thermoses',
             'parent_id' => 4
         ]);
 
@@ -136,7 +136,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 21,
-            'name'=> 'Bags',
+            'name'=> 'Tote Bags',
             'parent_id' => 4
         ]);
 
@@ -154,7 +154,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 24,
-            'name'=> 'Sacks',
+            'name'=> 'Gift Bags',
             'parent_id' => 4
         ]);
 
@@ -208,8 +208,7 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'id' => 33,
-            'name'=> 'Kids Kits',
-            'parent_id' => 5
+            'name'=> 'Masks'
         ]);
 
         Category::create([
@@ -225,11 +224,6 @@ class CategorySeeder extends Seeder
         Category::create([
             'id' => 36,
             'name'=> 'Bottle Openers',
-            'parent_id' => 4
-        ]);
-        Category::create([
-            'id' => 37,
-            'name'=> 'Masks',
             'parent_id' => 4
         ]);
 

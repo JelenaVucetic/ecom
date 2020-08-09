@@ -367,7 +367,7 @@
               <img src="/site-images/Layer_1_1_.svg" alt="">
             </div>
 
-            @elseif($pro_cat->category->name == "Pictures")
+            @elseif($pro_cat->category->name == "Canvas Art")
             <div class="choose-size">
               <h5>Size</h5>
               <select class="picture-size" id='picture'>
@@ -399,7 +399,7 @@
                   <h6>Enter height:</h6>
                   <input type="text" id="height" placeholder="e.g  6">
               </div>
-            @elseif($pro_cat->category->name == "Thermos")
+            @elseif($pro_cat->category->name == "Thermoses")
               <div class="select-color">
                 <h5>Color</h5>
                   <label class="black">
@@ -409,7 +409,7 @@
                     </div>
                 </label>
               </div>
-            @elseif($pro_cat->category->name == "Bags")
+            @elseif($pro_cat->category->name == "Tote Bags")
             <div class="select-color">
               <h5>Color</h5>
               <label class="white whiteBlack">
@@ -697,7 +697,7 @@
                   </div>
               </label>
             </div>
-            @elseif($pro_cat->category->name == "Sacks")
+            @elseif($pro_cat->category->name == "Gift Bags")
             <div class="sack-model">
               <h5>Choose Sack Model</h5>
               <select class="sacks" id="cases">

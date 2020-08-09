@@ -2,7 +2,7 @@
 
 .welcome-image{
     width: 100%;
-    height: 350px;
+    height: 500px;
     margin: auto;
     background-image: url('/site-images/Homepage-Banner.jpg');
       /* Background image is centered vertically and horizontally at all times */
@@ -14,7 +14,7 @@
 
     /* This is what makes the background image rescale based
         on the container's size */
-    background-size: contain;
+    background-size: cover;
 }
 
 /* .welcome-image img{
@@ -48,6 +48,7 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+    border-radius: 5px;
 }
 
 .box1-img-holder {
@@ -302,13 +303,13 @@
 }
 
 .subscribe-info img {
-    width:50px;
+    width:80px;
 }
 
 .subscribe-info h5{
     padding: 0 20px;
     color: #E7667C;
-    font-size: 16px;
+    font-size: 26px;
 }
 
 #submit-image {
@@ -325,9 +326,9 @@
     border-right: none;
     border-left: none;
     outline: none;
-    width: 200px;
+    width: 400px;
     padding: 0 10px;
-    margin: 0 10px;
+    margin: 20 10px;
     font-size: 14px;
 }
 
@@ -350,13 +351,12 @@
 
 
 .products-title {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .product {
-    width:220px;
-    margin-top: 20px;
-    padding: 10px;
+    width:100%;
+    margin-top: 30px;
 }
 
 .product a {
@@ -375,7 +375,7 @@
     font-size: 0;
     position: absolute;
     top: 330px;
-    left: -23px;
+    left: 32px;
 }
 
 .left-arrow {
@@ -392,8 +392,8 @@
 
 .slick-next {
     position: absolute;
-    right: 45px;
-    bottom: 325px;
+    right: -32px;
+    bottom: 370px;
 }
 
 /*     .right-arrow > .slick-next {
@@ -425,7 +425,8 @@
 .img-div{
     display: inline-block;
     overflow: hidden;
-    height: 220px;
+    height: 270px;
+    border-radius: 5px;
 }
 
 .img-div img {
@@ -513,6 +514,21 @@
     transform: scale(0.9) !important;
 }
 
+.product-name {
+    font-width: bold;
+}
+
+.product-category {
+    color: #8B8B8B;
+    font-size: 14px;
+}
+
+@media (max-width: 1255px) {
+    .img-div {
+        height: 215px;
+    }
+}
+
 
 @media (max-width: 1200px) {
     .box1-img-holder,
@@ -580,6 +596,9 @@
     width: 93%;
     margin: auto;
 }
+    .img-div {
+        height: 220px;
+    }
 }
 
  @media (max-width: 767px) {
@@ -601,14 +620,14 @@
     }
 
     .slick-prev {
-        top: 330px;
+        top: 250px;
         left: 0px
 
     }
 
     .slick-next {
         right: -5px;
-        bottom: 320px;
+        bottom: 250px;
     }
 
     .about-urban {
@@ -725,5 +744,26 @@
     .slick2-left {
         left: -27px;
     }
+     .img-div {
+         height: 145px;
+     }
+     .subscribe-info img {
+         width: 50px;
+     }
+
+     .subscribe-info h5 {
+         font-size: 18px;
+     }
 }
 
+.slick-list {margin: 0 -5px;}
+.slick-slide>div {padding: 0 5px;}
+
+.product-cat {
+    width: 280px;
+}
+
+.img-div-cat {
+    width: 270px;
+    margin: 10px;
+}

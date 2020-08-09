@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<section>  
+<section>
    <h1>Search Results</h1>
    <p>result(s) for '{{ request()->input('query') }}'</p>
     @include('layouts.error')
@@ -9,10 +9,10 @@
     <div class="container">
       <div class="row">
           @forelse($products as $product)
-          <div class="product">
+          <div class="product product-cat">
             <a href="{{ url('/product_details', [$product->id]) }}" class="">
                 <div class="">
-                    <div class="img-div">
+                    <div class="img-div img-div-cat">
                         <img src="{{ url('images', $product->image) }}" class="" alt="">
                     </div>
                     <div class="">
@@ -30,7 +30,7 @@
                         @endif
                     </div>
                 </div>
-            </a> 
+            </a>
         </div>
         @empty
         <h3>No products</h3>
