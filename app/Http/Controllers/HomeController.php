@@ -243,13 +243,14 @@ class HomeController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
+          
             $imageBack = "TermosThumbnail.png";
         }elseif($find_cat->category->name=="Mugs"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['size', "=" , "main"]
+                ['size', "=" , "thumb"]
             ])->first();
-            $imageBack = "Solja2.jpg";
+            $imageBack = "Solja.png";
         }elseif($find_cat->category->name=="Masks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
@@ -883,7 +884,7 @@ class HomeController extends Controller
 
 
     public function loadImagesCoasters(Request $request){
-
+       
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['size' , "=",$request->size]
@@ -947,7 +948,7 @@ class HomeController extends Controller
                 }
                }else{
                 if($request->color=="black"){
-                    $blankImage = 'Samsung-S20Plus-Crna.png';
+                    $blankImage = 'Samsung-S20Plus-Crna-1.png';
                 }else{
                     $blankImage = 'Samsung-S20Plus-Bezpozadine.png';
                 }

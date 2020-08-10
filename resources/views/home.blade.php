@@ -85,6 +85,9 @@
                     @elseif($tshirt->category->name=="Canvas Art")
                     <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                     @break
+                    @elseif($product->category->name=="Thermoses")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-thermos" alt="">
+                     @break
                     @else
                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                     @break

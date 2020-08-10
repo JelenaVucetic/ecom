@@ -273,7 +273,7 @@ if($original == "Magnets"){
 }
 if($original == "Mugs"){
     ImageModel::mugThumb($idProduct, $originalImagePath);
-    ImageModel::mugMain($idProduct, $originalImagePath);
+   /*  ImageModel::mugMain($idProduct, $originalImagePath); */
 }
 if($original == "Termos"){
     ImageModel::thermos($idProduct, $originalImagePath);

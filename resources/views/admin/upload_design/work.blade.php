@@ -78,7 +78,7 @@
           <div id="proizvod16" class="save-picture disabledbutton"  data-category="12" name="Huawei" data-canvas="canvas18" value="1">
               <div class="background-div15">
           <img id="logo-canvas16" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-          <img class="overlay-panel" src="/site-images/Huawei-P20-Bez pozadine copy.png">
+          <img class="overlay-panel" src="/site-images/Huawei-P20-Bezpozadinecopy.png">
               </div>
           </div>
       <div class="preview-info">

@@ -490,6 +490,16 @@
     transform-origin: 50% 50%!important;
 }
 
+.img-div-thermos {
+    transform: scale(1.5)!important;
+    margin-top: 19.125%!important;
+}
+
+.img-div-thermos:hover  {
+    transform: scale(1.9)!important;
+    transform-origin: 50% 50%!important;
+}
+
 .design-image {
     width: 200px;height:200px
 }

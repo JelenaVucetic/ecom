@@ -193,6 +193,9 @@
                               @elseif($product->category->name=="Masks")
                               <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
                                @break
+                               @elseif($product->category->name=="Thermoses")
+                               <img src="{{ url('image', $item->name) }}" class="img-div-thermos" alt="">
+                                @break
                               @else
                               <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                               @break
