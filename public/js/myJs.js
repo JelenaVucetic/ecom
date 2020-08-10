@@ -199,9 +199,17 @@ $(document).ready(function(){
         else if(pro_cat == "Custom" && !customCase) {
           alert('Please enter your phone model');
         } else if (pro_cat == "Wallpapers") {
-          addToCartAjax(price, kidssize, size, color, print, phoneModel, caseStyle, customCase, posterSize, pictureSize, customSize, null);
-        }else if (pro_cat == "Pictures") {
-          addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize, null);
+          if($('.custom-width').val() == "" || $('.custom-height').val() == "") {
+            alert('Please enter your wallpaper size')
+          } else {
+            addToCartAjax(price, null, null, null, null, null, null, null, null, null, customSize, null);
+          }
+        }else if (pro_cat == "Canvas Art") {
+          if($('.custom-width').val() == "" || $('.custom-height').val() == "") {
+            alert('Please enter your canvas size')
+          } else {
+            addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize, null);
+          }      
         } else if (pro_cat == "Coasters") {
           var coasterShape = $( ".coaster-shape option:selected" ).val();
           var coasterDesign = $( ".coaster-design option:selected" ).val();
@@ -279,13 +287,13 @@ $(document).ready(function(){
 }
 });
 
-$(document).ready(function(){
+/* $(document).ready(function(){
   var pro_cat = $('#pro_cat').val();
-  if(pro_cat == 'Pictures') {
+  if(pro_cat == 'Canvas Art') {
     var newPrice = $( "#picture option:selected" ).attr('data-price');
     $(".product_price").val(newPrice)
   }
-})
+}) */
 
 $(document).ready(function(){
   $('.black div').removeClass( "white-border");
@@ -305,7 +313,9 @@ $(document).ready(function(){
   } else if(this.value == 'red') {
     $('.white div').removeClass( "black-border")
     $('.black div').removeClass( "white-border");
+    $('.navy div').removeClass( "white-border")
     $('.red div').addClass( "black-border");
+    $('.red span').css('border', "1px solid #DEDEDE;");
   } else if( this.value == 'navy' ) {
     $('.navy div').addClass( "white-border");
     $('.navy span').css('border', "1px solid #DEDEDE;");
@@ -329,7 +339,7 @@ $('#picture-custom').css('display', "none");
   var pro_cat = $('#pro_cat').val();
   $('.options li').on('click', function() {
     var pictureSize = $( "#picture option:selected" ).val();
-      if(pro_cat == "Pictures" && pictureSize == 'custom') {
+      if(pro_cat == "Canvas Art" && pictureSize == 'custom') {
         $('#picture-custom').css('display', "block");
         $('.B2_price').css('display', 'none')
         $('.B1_price').css('display', 'none')
@@ -360,7 +370,7 @@ $('#picture-custom').css('display', "none");
                 $("#picture-custom-height").css("color", '#adacac');
                 $("#save-picture-size").html('Edit');
 
-                var newPrice =  ($("#picture-custom-width").val() * $("#picture-custom-height").val() * $('.product_price').val()) / 100;
+                var newPrice =  ($("#picture-custom-width").val() * $("#picture-custom-height").val() * $('.db_price').val()) / 100;
                 $('.A3_price span').html(newPrice);
                 $("#custom-option").attr('data-price', newPrice)
                 $(".product_price").val(newPrice)
@@ -368,14 +378,14 @@ $('#picture-custom').css('display', "none");
         }
         });
 
-      } else if( pro_cat == "Pictures" && pictureSize == 'B2') {
+      } else if( pro_cat == "Canvas Art" && pictureSize == 'B2') {
         $('#picture-custom').css('display', "none");
         $('.B2_price').css('display', 'block')
         $('.B1_price').css('display', 'none')
         $('.A3_price').css('display', 'none')
         var newPrice = $( "#picture option:selected" ).attr('data-price');
         $(".product_price").val(newPrice)
-      } else if( pro_cat == "Pictures" && pictureSize == 'B1'){
+      } else if( pro_cat == "Canvas Art" && pictureSize == 'B1'){
           $('#picture-custom').css('display', "none");
           $('.B2_price').css('display', 'none')
           $('.B1_price').css('display', 'block')
@@ -433,7 +443,7 @@ $(document).ready(function() {
           $("#wallpaper-custom-height").css("color", '#adacac');
           $("#save-wallpaper-size").html('Edit');
 
-          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.product_price').val()) / 100;
+          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.db_price').val()) / 100;
           $('.A3_price span').html(newPrice);
           $(".product_price").val(newPrice)
       }
@@ -443,7 +453,7 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   var pro_cat = $('#pro_cat').val();
-  if(pro_cat == "Pictures") {
+  if(pro_cat == "Canvas Art") {
     $('.A3_price').css('display', 'none')
     $('.B2_price').css('display', 'block')
   }
@@ -1171,23 +1181,26 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
+    } else if(pro_cat=="Canvas Art"){ 
+      var newPrice = $( "#picture option:selected" ).attr('data-price');
+      $(".product_price").val(newPrice)
     } else{
-  var color = $( ".cases-style option:selected" ).val();
-  var id = $("#productID").val();
-  var pro_cat = $("#pro_cat").val();
-  var phoneModel = $( ".cases option:selected" ).val();
-  console.log(color, id, pro_cat, phoneModel);
-  $.ajax({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            } ,
-  type: 'post',
-  dataType: 'json',
-  url: '/load_images_phone',
-  data: { color:color, id:id, pro_cat:pro_cat, phoneModel:phoneModel},
-  beforeSend: function(){
-    $("#loading-overlay").show();
-},
+    var color = $( ".cases-style option:selected" ).val();
+    var id = $("#productID").val();
+    var pro_cat = $("#pro_cat").val();
+    var phoneModel = $( ".cases option:selected" ).val();
+    console.log(color, id, pro_cat, phoneModel);
+    $.ajax({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              } ,
+    type: 'post',
+    dataType: 'json',
+    url: '/load_images_phone',
+    data: { color:color, id:id, pro_cat:pro_cat, phoneModel:phoneModel},
+    beforeSend: function(){
+      $("#loading-overlay").show();
+  },
   success: function(response) {
     $("#loading-overlay").hide();
      var blank = response['blankImage'];
