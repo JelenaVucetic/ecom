@@ -413,12 +413,16 @@
 
 
 .btn-add-to-cart {
-    width: 55%;
-    background: red;
+    width: 47%;
+    background: #040404;
     text-align: center;
     border-radius: 20px;
     height: 35px;
     padding-top: 5px;
+}
+
+.btn-add-to-cart:hover {
+    background: #E6003A;
 }
 
 .btn-add-to-cart p {
@@ -885,6 +889,17 @@ stroke-width:20;
 
 .B1_price {
     display: none;
+}
+
+#save-wallpaper-size,
+#save-picture-size {
+    margin-top: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: #212529;
+    width: 70px;
+    text-align: center;
 }
 @media (max-width: 767px) {
        .desctop-product {

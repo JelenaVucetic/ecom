@@ -126,8 +126,11 @@ for( let i=1;i<200;i++) {
          <?php $var =1;?>
             @foreach($cartItems as $cartItem)
             <div class="row-product" style="margin: 30px 0;">
-                <div>
-                    <img style="width:150px;" src="{{url('images',$cartItem->options->img)}}" class="">
+                <div style="width:100px; overflow:hidden">
+                    <img style="max-width:100%;max-height:100%;display: block;transition: transform .4s;
+                    transform: scale(3);
+                    margin-top: 52.125%;
+                    margin-bottom: -54%;" src="{{url('image',$cartItem->options->img)}}" class="">
                 </div>
                     <div>
                         <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
@@ -224,7 +227,7 @@ for( let i=1;i<200;i++) {
                     <tr scope="row">
                         <td class="cart_product">
                          <div class="cart-img">
-                            <img style="max-width:100%;max-height:100%;max-width: 100%;max-height: 100%;display: block;transition: transform .4s;
+                            <img style="max-width:100%;max-height:100%;display: block;transition: transform .4s;
                             transform: scale(3);
                             margin-top: 52.125%;
                             margin-bottom: -54%;" src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
@@ -319,10 +322,10 @@ for( let i=1;i<200;i++) {
                      
                         <strong id="cartTotal1"  style="float: right;">&euro;{{$cartSubTotal}}</strong>
                         <!--  odje treba neko if -->
-                        <span id="oldPrice"  style="float: right;">&euro;{{ $oldPrice }}</span> 
+                      {{--   <span id="oldPrice"  style="float: right;">&euro;{{ $oldPrice }}</span>  --}}
                     </li>
-                    <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
-                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">&euro;{{$cartSubTotal}}</strong></li>
+                    <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>&euro;3</strong></li>
+                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">&euro;{{$cartSubTotal+3}}</strong></li>
                 </ul>
                 @if(!Auth::user())
                 <div class="account">
@@ -351,7 +354,7 @@ for( let i=1;i<200;i++) {
             <form  id="payment_form"  action="{{url('/')}}/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
             @csrf
             <input type="hidden" name="transaction_token" id="transaction_token" />
-            <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal}}">
+            <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal+3}}">
                 <div class="shipping-details-form">
                     <div class="">
                         <label for="firstname" class="form-label">First Name</label>           
@@ -411,8 +414,8 @@ for( let i=1;i<200;i++) {
                                     <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
                                     <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
                                 </li>
-                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>Free</strong></li>
-                                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal}}</strong></li>
+                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>&euro;3</strong></li>
+                                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal+3}}</strong></li>
                             </ul>
                         </div>
                         <div class="payment">

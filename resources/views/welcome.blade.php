@@ -33,7 +33,7 @@
                 <a href="{{route('category.show',[ $picturesCat->id, $picturesCat->name => $picturesCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
                         <div class="box3-img-holder"></div>
-                        <button>  Shop Pictures</button>
+                        <button>Shop Canvas Art</button>
                     </div>
                 </a>
             </div>
@@ -69,7 +69,6 @@
         </div>
 
       <!-- Gifts -->
-
     <div class="row gifts   ">
         <div class="col-6 gifts-for-him">
             <a href="/gifts_for_him" style="color: inherit;">
@@ -128,7 +127,7 @@
                 <a href="{{route('category.show',[$sacksCat->id, $sacksCat->name => $sacksCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
                         <div class="box7-img-holder"></div>
-                        <button>Sacks</button>
+                        <button>Gift Bags</button>
                     </div>
                 </a>
             </div>

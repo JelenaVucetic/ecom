@@ -15,7 +15,7 @@ class CartController extends Controller
 {
     public function index()
     {
-
+        
         $cartItems = Cart::content();
         $categories = Category::where('parent_id',NULL)->get();
         $oldPrice =  Cart::subtotal();
@@ -156,7 +156,7 @@ class CartController extends Controller
                           'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
         } else {
             $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0,
-                        ['img'=> $imageFront, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
+                        ['img'=> $imageFront->name, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                         'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                         'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
