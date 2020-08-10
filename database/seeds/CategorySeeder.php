@@ -23,7 +23,7 @@ class CategorySeeder extends Seeder
             'cover_image' => '1596109198second.jpg'
         ]);
         Category::create([
-            'id' => 2,
+            'id' => 5,
             'name'=> 'Cases',
             'image' => '1596110174.jpg',
             'cover_image' => '1596110174second.jpg'
@@ -40,7 +40,7 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'id' => 5,
+            'id' => 33,
             'name'=> 'Urban Kids'
         ]);
 
@@ -71,25 +71,25 @@ class CategorySeeder extends Seeder
         Category::create([
             'id' => 10,
             'name'=> 'Samsung Cases',
-            'parent_id' => 2
+            'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 11,
             'name'=> 'Iphone Cases',
-            'parent_id' => 2
+            'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 12,
             'name'=> 'Huawei Cases',
-            'parent_id' => 2
+            'parent_id' => 5
         ]);
 
         Category::create([
             'id' => 13,
             'name'=> 'Custom',
-            'parent_id' => 2
+            'parent_id' => 5
         ]);
 
         Category::create([
@@ -179,43 +179,38 @@ class CategorySeeder extends Seeder
         Category::create([
             'id' => 28,
             'name'=> 'Kids T-Shirts',
-            'parent_id' => 5
+            'parent_id' => 33
         ]);
 
         Category::create([
             'id' => 29,
             'name'=> 'Kids One-Pieces',
-            'parent_id' => 5
+            'parent_id' => 33
         ]);
 
         Category::create([
             'id' => 30,
             'name'=> 'Kids Clocks',
-            'parent_id' => 5
+            'parent_id' => 33
         ]);
 
         Category::create([
             'id' => 31,
             'name'=> 'Kids Posters',
-            'parent_id' => 5
+            'parent_id' => 33
         ]);
 
         Category::create([
             'id' => 32,
             'name'=> 'Kids Mugs',
-            'parent_id' => 5
+            'parent_id' => 33
         ]);
 
-        Category::create([
-            'id' => 33,
-            'name'=> 'Kids Kits',
-            'parent_id' => 5
-        ]);
 
         Category::create([
             'id' => 34,
             'name'=> 'Kids Bibs',
-            'parent_id' => 5
+            'parent_id' => 33
         ]);
         Category::create([
             'id' => 35,
@@ -228,9 +223,8 @@ class CategorySeeder extends Seeder
             'parent_id' => 4
         ]);
         Category::create([
-            'id' => 37,
+            'id' => 2,
             'name'=> 'Masks',
-            'parent_id' => 4
         ]);
 
     }
