@@ -1,5 +1,6 @@
 <?php
 use App\Product;
+use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +13,8 @@ use App\Product;
 */
 
 
-Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('/test', 'HomeController@test');
 
