@@ -206,13 +206,6 @@ class CategorySeeder extends Seeder
             'parent_id' => 33
         ]);
 
-<<<<<<< HEAD
-        Category::create([
-            'id' => 33,
-            'name'=> 'Masks'
-        ]);
-=======
->>>>>>> jv_search
 
         Category::create([
             'id' => 34,
@@ -229,13 +222,10 @@ class CategorySeeder extends Seeder
             'name'=> 'Bottle Openers',
             'parent_id' => 4
         ]);
-<<<<<<< HEAD
-=======
         Category::create([
             'id' => 2,
             'name'=> 'Masks',
         ]);
->>>>>>> jv_search
 
     }
 }
