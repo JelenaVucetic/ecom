@@ -10,9 +10,9 @@ use Image;
 class CategoriesController extends Controller
 {
 
-    public function __construct() 
+    public function __construct()
     {
-        $this->middleware('admin', ['except' => ['index', 'show']]); 
+        $this->middleware('admin', ['except' => ['index', 'show']]);
     }
     //
     public function index() {
@@ -24,7 +24,7 @@ class CategoriesController extends Controller
     public function create() {
         $categories = Category::where('parent_id',NULL)->get();
         return view('admin.category.create', compact('categories'));
-    } 
+    }
 
     public function store(Request $request) {
         $this->validate($request, [
@@ -37,7 +37,7 @@ class CategoriesController extends Controller
     		$image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $img = Image::make($image);
-           
+
     		$img->save( public_path('/site-images/' . $filename ) );
         }
 
@@ -45,9 +45,9 @@ class CategoriesController extends Controller
     		$cover_image = $request->file('cover_image');
             $filename_cover = time() . 'second' . '.' . $cover_image->getClientOriginalExtension();
             $cover_img = Image::make($cover_image);
-           
+
     		$cover_img->save( public_path('/site-images/' . $filename_cover ) );
-    
+
         }
 
           DB::table('categories')->insert([
@@ -64,9 +64,9 @@ class CategoriesController extends Controller
     public function show(Request $request,$id) {
         //dd($request);
         $number = substr($request->fullUrl(),-1);
-    
+
         $products = Category::find($id)->products;
-        
+
         $categories = Category::where('parent_id',NULL)->get();
         $cat = Category::where('id',$id)->first("name");
         $cat = $cat->name;
@@ -75,7 +75,7 @@ class CategoriesController extends Controller
             'categories' => $categories
          ]);  */
 
-               
+
         $clothingIds = Category::where('parent_id', $parentId = Category::where('name', $cat)
                 ->value('id'))
                 ->pluck('id')
@@ -84,8 +84,12 @@ class CategoriesController extends Controller
 
                 }
         $mainCategory = Category::where("id",$id)->first();
-        $clothingProducts =  Product::whereIn('category_id', $clothingIds)->get();
-            
+
+        if($clothingIds) {
+            $clothingProducts =  Product::whereIn('category_id', $clothingIds)->get();
+        } else {
+            $clothingProducts =  Product::where('category_id', $id)->get();
+        }
         return view('admin.category.show', compact('categories', 'products','number', 'cat' , 'id', 'clothingProducts', 'mainCategory'));
     }
 
@@ -107,10 +111,10 @@ class CategoriesController extends Controller
     		$image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $img = Image::make($image);
-           
+
             $img->save( public_path('/site-images/' . $filename ) );
-            
-            
+
+
         DB::table('categories')->where('id', $catId)->update([
             'image' => $filename
         ]);
@@ -120,7 +124,7 @@ class CategoriesController extends Controller
     		$cover_image = $request->file('cover_image');
             $filename_cover = time() . 'second' . '.' . $cover_image->getClientOriginalExtension();
             $cover_img = Image::make($cover_image);
-           
+
             $cover_img->save( public_path('/site-images/' . $filename_cover ) );
 
             DB::table('categories')->where('id', $catId)->update([
@@ -139,5 +143,5 @@ class CategoriesController extends Controller
         return redirect()->back();
     }
 
-  
+
 }

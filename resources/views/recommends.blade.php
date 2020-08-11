@@ -49,7 +49,7 @@ if(Auth::check()){
                                     @elseif( $p->category->getParentsNames() == "Cases" && $item->color == "transparent")
                                         <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                                         @break
-                                    @elseif($p->category->name=="Pictures")
+                                    @elseif($p->category->name=="Canvas Art")
                                         <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                         @break
                                     @elseif($p->category->name=="Wallpapers")

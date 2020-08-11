@@ -78,10 +78,10 @@
 
          <div id="content" class="row products-category" style="padding: 0 0; display:flex; width: 75%;">
         @forelse ($clothingProducts as $p)
-        <div class="product">
+        <div class="product product-cat">
             <a href="{{ url('/product_details', [$p->id]) }}" class="">
                 <div class="">
-                    <div  class="img-div">
+                    <div  class="img-div image-div-cat">
                         @if ($p->images)
 
                         @foreach ($p->images as $item)
@@ -94,7 +94,7 @@
                               @elseif( $p->category->getParentsNames() == "Cases" && $item->color == "transparent")
                               <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                               @break
-                              @elseif($p->category->name=="Pictures")
+                              @elseif($p->category->name=="Canvas Art")
                               <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                               @break
                                 @elseif($p->category->name=="Wallpapers")
@@ -150,10 +150,10 @@
 
         {{-- @endif --}}
 
-        <div class="product">
+        <div class="product product-cat">
             <a href="{{ url('/product_details', [$product->id]) }}" class="">
                 <div class="">
-                    <div  class="img-div">
+                    <div  class="img-div img-div-cat">
                         @if ($product->images)
 
                                 @foreach ($product->images as $item)
@@ -167,7 +167,7 @@
                                 @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                                     @break
-                                @elseif($product->category->name=="Pictures")
+                                @elseif($product->category->name=="Canvas Art")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                     @break
                                 @elseif($product->category->name=="Wallpapers")

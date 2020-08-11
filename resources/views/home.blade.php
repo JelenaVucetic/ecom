@@ -13,7 +13,7 @@
           <div class="design-box">
             <div class="design-image">
               <img src="/image/{{$design->name}}" style="max-witdh:100%;max-height:100%">
-            </div>     
+            </div>
             <div class="count-product">
               <p>Products
               <?php
@@ -42,7 +42,7 @@
             <div class="design-image">
               <img src="/image/{{$designsRandom->name}}" style="max-witdh:100%;max-height:100%">
             </div>
-          
+
             <div class="count-product">
               <p>Products
               <?php
@@ -82,15 +82,15 @@
                     @elseif( $tshirt->category->getParentsNames() == "Cases" && $item->color == "transparent")
                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                     @break
-                    @elseif($tshirt->category->name=="Pictures")
+                    @elseif($tshirt->category->name=="Canvas Art")
                     <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                     @break
                     @else
                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                     @break
-                    @endif 
+                    @endif
                   @endforeach
-                 
+
                  @else
                   <img src="{{ url('images', $tshirt->image) }}" class="" alt="">
                   @break
@@ -111,7 +111,7 @@
                     @endif
                 </div>
               </div>
-            </a> 
+            </a>
           </div>
         </div>
       @endforeach
@@ -132,7 +132,7 @@
             <a href="{{ url('/product_details', [$case->id]) }}" class="">
               <div class="">
                 <div class="img-div">
-                           
+
                   @if ($case->images)
                   @foreach ($case->images as $item)
                   @if($case->category->name=="T-Shirts")
@@ -151,7 +151,7 @@
                     @break
                     @endif
                   @endforeach
-                 
+
                  @else
                   <img src="{{ url('images', $case->image) }}" class="" alt="">
                   @break
@@ -172,7 +172,7 @@
                     @endif
                 </div>
               </div>
-            </a> 
+            </a>
           </div>
         </div>
       @endforeach
@@ -193,7 +193,7 @@
             <a href="{{ url('/product_details', [$hoodie->id]) }}" class="">
               <div class="">
                 <div class="img-div">
-                           
+
                   @if ($hoodie->images)
                   @foreach ($hoodie->images as $item)
                   @if($hoodie->category->name=="T-Shirts")
@@ -215,7 +215,7 @@
                     @break
                     @endif
                   @endforeach
-                 
+
                  @else
                   <img src="{{ url('images', $hoodie->image) }}" class="" alt="">
                   @break
@@ -236,7 +236,7 @@
                     @endif
                 </div>
               </div>
-            </a> 
+            </a>
           </div>
         </div>
       @endforeach

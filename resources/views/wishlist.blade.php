@@ -17,14 +17,14 @@
                     @else
                     <div class="row">
                     @foreach($Products as $product)
-     
+
                         <div class="product">
                             <a href="{{ url('/product_details', [$product->id]) }}" class="">
                                 <div class="">
                                     <div class="img-div">
-                                    @if ($product->images)  
-                                         
-                                        @foreach ($product->images as $item)                                      
+                                    @if ($product->images)
+
+                                        @foreach ($product->images as $item)
                                             @if($product->category->name=="T-Shirts")
                                                 @if ($item->color == "white" && $item->position == "front")
                                                 <img src="{{ url('image', $item->name) }}" class="" alt="das">
@@ -36,7 +36,7 @@
                                             @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
                                             <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                                             @break
-                                            @elseif($product->category->name=="Pictures")
+                                            @elseif($product->category->name=="Canvas Art")
                                             <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                             @break
                                             @elseif($product->category->name=="Wallpapers")
@@ -47,15 +47,15 @@
                                             @break
                                             @endif
                                         @endforeach
-                               
+
                                     @else
-                                    
+
                                     <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                
+
                                 @endif
                                     </div>
                                 </div>
-                            </a> 
+                            </a>
                         </div>
 
                            {{--  <div class="product-image-wrapper">
@@ -69,8 +69,8 @@
                                         <p><a href="{{url('/product_details')}}/{{$product->id}}">{{$product->name}}</a></p>
                                         <a href="{{url('/cart/addItem')}}/{{$product->id}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Move to cart</a>
                                     </div>
-                                    
-                                </div>                      
+
+                                </div>
                             <a href="{{url('/')}}/removeWishList/{{$product->id}}" style="color:red" class="btn btn-default btn-block"><i class="fa fa-minus-square"></i>Remove from wishlist</a></li>
                             </div> --}}
                         @endforeach

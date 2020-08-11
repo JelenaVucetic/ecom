@@ -62,22 +62,19 @@
   </div>
       <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
         <div id="desctop-left">
-
+     
           <input type="hidden" value="@if($imageFront){{$imageFront->color}}@endif" id="productColor" display="none" name="pro_color">
           <input type="hidden" value="{{$product->gender}}" id="productGender" display="none" name="pro_gender">
             <div style="width: 50%;margin: auto;">
                 <img src="{{url('design', $design->name)}}">
             </div>
-
+           
         <div>
             @if ($product->gender=="unisex" && $product->category_id == 6)
-
                 <img id="blank-image" src="{{url('image',$imageBack)}}"> x
-
             @elseif(strpos($product->name, "case"))
                 <img id="blank-image" src="{{url('site-images',$imageBack)}}">
             @else
-
                 <img id="blank-image" src="{{url('site-images',$imageBack)}}">
             @endif
         </div>
@@ -167,6 +164,7 @@
           <span id="price">
             @if($product->spl_price==0)
                 <input class="product_price" type="hidden" value="{{$product->price}}">
+                <input class="db_price" type="hidden" value="{{$product->price}}">
                 <h4 class="A3_price"><span style="font-weight: bold;font-size: 20px;" >&euro; {{ $product->price}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center" style="width:90%; margin-left: 0;">
@@ -367,7 +365,7 @@
               <img src="/site-images/Layer_1_1_.svg" alt="">
             </div>
 
-            @elseif($pro_cat->category->name == "Pictures")
+            @elseif($pro_cat->category->name == "Canvas Art")
             <div class="choose-size">
               <h5>Size</h5>
               <select class="picture-size" id='picture'>
@@ -399,7 +397,7 @@
                   <h6>Enter height:</h6>
                   <input type="text" id="height" placeholder="e.g  6">
               </div>
-            @elseif($pro_cat->category->name == "Thermos")
+            @elseif($pro_cat->category->name == "Thermoses")
               <div class="select-color">
                 <h5>Color</h5>
                   <label class="black">
@@ -409,7 +407,7 @@
                     </div>
                 </label>
               </div>
-            @elseif($pro_cat->category->name == "Bags")
+            @elseif($pro_cat->category->name == "Tote Bags")
             <div class="select-color">
               <h5>Color</h5>
               <label class="white whiteBlack">
@@ -697,7 +695,7 @@
                   </div>
               </label>
             </div>
-            @elseif($pro_cat->category->name == "Sacks")
+            @elseif($pro_cat->category->name == "Gift Bags")
             <div class="sack-model">
               <h5>Choose Sack Model</h5>
               <select class="sacks" id="cases">

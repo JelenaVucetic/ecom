@@ -30,7 +30,7 @@ class HomeController extends Controller
     }
 
     public function test() {
-        return view('test');      
+        return view('test');
     }
 
     /**
@@ -38,14 +38,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
     public function welcome()
     {
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
 
       /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */
-      
+
         $shirtsCat = DB::table('categories')
                 ->where('categories.name', '=', 'T-Shirts')
                 ->first();
@@ -71,13 +71,13 @@ class HomeController extends Controller
                 ->first();
 
         $sacksCat = DB::table('categories')
-                ->where('categories.name', '=', 'Tote Bags')
+                ->where('categories.name', '=', 'Gift Bags')
                 ->first();
 
         $magnetsCat = DB::table('categories')
                 ->where('categories.name', '=', 'Magnets')
                 ->first();
-                
+
         $notebooksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Notebooks')
                 ->first();
@@ -92,14 +92,14 @@ class HomeController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $tShirts = Product::where('category_id', 6)->get();
-       
+
         $hoodies = Product::where('category_id', 9)->get();
         $cases1 = Category::where('parent_id', $parentId = Category::where('name', "Cases")
                 ->value('id'))
                 ->pluck('id')
                 ->all();
                 $cases = Product::whereIn('category_id', $cases1)->get();
-  /*     
+  /*
         foreach($tShirts as $t) {
             dd($t->images);
         } */
@@ -107,7 +107,7 @@ class HomeController extends Controller
   /*       $cases = DB::table('product')
                 ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
                 ->join('categories', 'categories.id', '=', 'product.category_id')
-                ->where('categories.name', '=', 'Samsung Cases') 
+                ->where('categories.name', '=', 'Samsung Cases')
                 ->orWhere('categories.name', '=', 'Iphone Cases')
                 ->orWhere('categories.name', '=', 'Huawei Cases')
                 ->get();
@@ -135,7 +135,7 @@ class HomeController extends Controller
                 ['color' , "=", 'white'],
                 ['position' , "=", 'front'],
             ])->first();
-                
+
             $imageBack = "U-one-18.jpg";
             }elseif($product->gender == "male"){
                 $imageFront = DB::table('images')->where([
@@ -143,7 +143,7 @@ class HomeController extends Controller
                     ['color' , "=", 'white'],
                     ['position' , "=", 'front'],
                 ])->first();
-                    
+
                 $imageBack = "U1-Obicnamajica-Bijela-Pozadi.jpg";
             }else{
                 $pictures = DB::table('images')->where([
@@ -155,14 +155,14 @@ class HomeController extends Controller
                $imageFront = $pictures[0];
                $imageBack = $pictures[1]->name;
             }
-                
+
         }elseif($find_cat->category->name == "Iphone Cases"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color',"=" ,'transparent']
             ])->first();
             $imageBack = "Iphone-II-Pro-Bezpozadine1.png";
-           
+
         }elseif($find_cat->category->name == "Samsung Cases"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
@@ -182,7 +182,7 @@ class HomeController extends Controller
                 ['color', '=', 'white']
             ])->first();
             $imageBack = "Poster---Bijeli-Ram---A3.jpg";
-        }elseif($find_cat->category->name=="Pictures"){
+        }elseif($find_cat->category->name=="Canvas Art"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
@@ -193,7 +193,7 @@ class HomeController extends Controller
                 ['size','=', 'vertical']
             ])->first();
             $imageBack = "Tapete-Thumbnail-mockup-2.png";
-        }elseif($find_cat->category->name=="Bags") {
+        }elseif($find_cat->category->name=="Tote Bags") {
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color','=', 'black']
@@ -227,7 +227,7 @@ class HomeController extends Controller
                 ['color', '=' , 'white']
             ])->first();
             $imageBack = "Notes.png";
-        }elseif($find_cat->category->name=="Sacks"){
+        }elseif($find_cat->category->name=="Gift Bags"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color', '=' , 'white']
@@ -239,7 +239,7 @@ class HomeController extends Controller
                 ['size', '=' , 'rectangle']
             ])->first();
             $imageBack = "Karticni.png";
-        }elseif($find_cat->category->name=="Thermos"){
+        }elseif($find_cat->category->name=="Thermoses"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
@@ -261,20 +261,20 @@ class HomeController extends Controller
 
         $cat = Category::where('id',$find_cat->category->id)->first("name");
         $cat = $cat->name;
-     
+
         $product_category = Category::where('parent_id', $parentId = Category::where('id', $cat)
                 ->value('id'))
                 ->pluck('id')
                 ->all();
-        
-         $mainCategory = Category::where("id",$find_cat->category->id)->first(); 
-        
+
+         $mainCategory = Category::where("id",$find_cat->category->id)->first();
+
 
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
-        $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first(); 
-        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get(); 
+        $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first();
+        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get();
         $countReviews = DB::table('reviews')->where('product_id', $product->id)->get();
         $counter = null;
         $numberOfReviews = count($countReviews);
@@ -285,7 +285,7 @@ class HomeController extends Controller
             $size = $item->size;
             $totalStar = $totalStar + $size;
           }
-          
+
           $average = round($totalStar / count($reviewsStar),1);
         } else {
             $average = 1;
@@ -301,7 +301,7 @@ class HomeController extends Controller
             ->where('users.id', $user)
             ->where('order_product.product_id', $product->id)
             ->groupBy('name')
-            ->first(); 
+            ->first();
 
 
         } else {
@@ -325,11 +325,11 @@ class HomeController extends Controller
 
     public function viewWishlist()
     {
-         $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); 
+         $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get();
 
      /*    $Products = Product::leftJoin('wishlist', 'wishlist.pro_id', '=' , 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); */
         $categories = Category::where('parent_id',NULL)->get();
-    
+
         return view('wishlist', compact('Products', 'categories'));
     }
 
@@ -348,8 +348,8 @@ class HomeController extends Controller
       /*   $product = DB::table('product')->where('id', $request->id)->first();
         $categories = Category::where('parent_id',NULL)->get();
         $design = DB::table('design')->where('id', $product->design_id)->first(); */
-        
-        
+
+
         /* return view('product_details', compact('product', 'categories', 'design'));
      */
 }
@@ -374,7 +374,7 @@ class HomeController extends Controller
     public function addReview(Request $request)
     {
         $this->validate($request, [
-          
+
             'person_name' => 'required|min:3|max:35',
             'review_title' => 'required|min:3|max:35',
             'review_content' => 'required|min:3|max:35',
@@ -387,7 +387,7 @@ class HomeController extends Controller
         DB::table('reviews')->insert(['person_name' => $request->person_name,
                                     'product_id' => $request->product_id,
                                     'user_id' => $request->userId,
-                                    'review_title' => $request->review_title, 
+                                    'review_title' => $request->review_title,
                                     'review_content' => $request->review_content,
                                     'created_at' => date("Y-m-d H:i:s"),
                                     'updated_at' => date("Y-m-d H:i:s")
@@ -395,7 +395,7 @@ class HomeController extends Controller
         return back();
     }
 
-    public function addStar(Request $request) 
+    public function addStar(Request $request)
     {
         $stars=$_POST['value'];
         $product_id=$_POST['product_id'];
@@ -421,7 +421,7 @@ class HomeController extends Controller
             'size' =>   $stars
             ]);
         }
-    
+
         echo 'uspjesno' ;
     }
 
@@ -454,14 +454,15 @@ class HomeController extends Controller
     }
 
     public function showCategoryProduct(Request $request){
-        
+
         $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
+
          $all = Category::where('parent_id', $parentId = Category::where('name', $category->name)
                 ->value('id'))
                 ->pluck('id')
                 ->all();
-              
+
          if($request->gender){
              if($category->parent_id){
                 /* dd($request->gender,$category->parent_id); */
@@ -479,27 +480,35 @@ class HomeController extends Controller
             }
          }else{
              if($category->parent_id){
+
                 $products = Product::where('category_id',$categoryId)->get();
              }else{
-                $products = Product::whereIn(
-                        'category_id',$all
-                    )->get();
+                 if($all) {
+                     $products = Product::whereIn(
+                         'category_id',$all
+                     )->get();
+                 } else {
+                     $products = Product::where(
+                         'category_id',$categoryId
+                     )->get();
+                 }
+
              }
-           
+
          }
-        
+
         $output = '';
          foreach($products as $product){
-             
-            $output.= " <div class='product'>".
+
+            $output.= " <div class='product product-cat'>".
           "<a href='/product_details/".$product->id ."'  class=''>".
                 "<div class=''>".
-                "    <div class='img-div'>";
+                "    <div class='img-div img-div-cat'>";
                 if($product->images){
-                       
+
                 foreach ($product->images as $item){
                 if($product->category->name=="T-Shirts"){
-               
+
                 if ($item->color == "white" && $item->position == "front"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
                     break;
@@ -522,26 +531,26 @@ class HomeController extends Controller
                 } else if($product->category->name=="Masks"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-masks" alt="'.$product->category->name.'">';
                     break;
-                } 
+                }
                 else{
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
                     break;
                 }
-                
-               
+
+
             /* }else{
                 $output .=   '<img src="{{ url"image", $item->name) }}" class="" alt="'.$product->category->name.'">';
             break; */
             }
         }
-             $output .=        
+             $output .=
                   "  </div>".
                    " <div class=''>".
                        " <p class=''> ".$product->name." </p>";
-                        
+
                             $pro_cat = Product::find($product->id);
                             if($pro_cat->category != null){
-                        
+
                                 $output.="<p class=''>". $pro_cat->category->name ."</p>";
                             }
                         if($product->spl_price==0){
@@ -550,7 +559,7 @@ class HomeController extends Controller
                         $output.=" <p> Special price: <span style='font-weight: bold'>".$product->spl_price."&euro;</span></p>";
                         }
                         $output.=" </div>       </div>   </a>     </div>     " ;
-   
+
          }
 
          if(count($products)>0){
@@ -561,12 +570,12 @@ class HomeController extends Controller
 
        /*   return response()
             ->json(['output' => $output, 'number' => $number]); */
-         
+
     }
-/* 
+/*
     public function product_price(Request $request) {
         $poster_size = $request->sizeSelected;
-        
+
         return view('product_details', compact('poster_size'));
     } */
 
@@ -574,18 +583,18 @@ class HomeController extends Controller
         $products = Product::search($request->data)->paginate(20);
         $output = '';
         foreach($products as $product){
-           $output.= " <div class='product'>".
+           $output.= " <div class='product product-cat'>".
          "<a href='/product_details/".$product->id ."'  class=''>".
                "<div class=''>".
-               "    <div class='img-div'>".
+               "    <div class='img-div img-div-cat'>".
                      "  <img src='/images/".$product->image ." ' class='' alt=''>".
                  "  </div>".
                   " <div class=''>".
                       " <p class=''> ".$product->name." </p>";
-                       
+
                            $pro_cat = Product::find($product->id);
                            if($pro_cat->category != null){
-                       
+
                                $output.="<p class=''>". $pro_cat->category->name ."</p>";
                            }
                        if($product->spl_price==0){
@@ -594,7 +603,7 @@ class HomeController extends Controller
                        $output.=" <p>".$product->spl_price."&euro;</p>";
                        }
                        $output.=" </div>       </div>   </a>     </div>     " ;
-  
+
         }
 
         if(count($products)>0){
@@ -615,7 +624,7 @@ class HomeController extends Controller
             $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
         })
         ->get();
-       
+
         $casesIds = Category::where('parent_id', $parentId = Category::where('name', 'Cases')
         ->value('id'))
         ->pluck('id')
@@ -691,7 +700,7 @@ class HomeController extends Controller
             $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
         })
         ->get();
-       
+
         $casesIds = Category::where('parent_id', $parentId = Category::where('name', 'Cases')
         ->value('id'))
         ->pluck('id')
@@ -729,7 +738,7 @@ class HomeController extends Controller
         $bags = DB::table('product')
         ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
-        ->where('categories.name','Bags')
+        ->where('categories.name','Tote Bags')
         ->where(function ($q) {
             $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
         })
@@ -756,7 +765,7 @@ class HomeController extends Controller
         $sacks = DB::table('product')
         ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
-        ->where('categories.name','Sacks')
+        ->where('categories.name','Gift Bags')
         ->where(function ($q) {
             $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
         })
@@ -793,12 +802,12 @@ class HomeController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         return view('shipping', compact('categories'));
     }
-    
+
     public function helpCenter() {
         $categories = Category::where('parent_id',NULL)->get();
         return view('help_center', compact('categories'));
     }
- 
+
     public function copyright() {
         $categories = Category::where('parent_id',NULL)->get();
         return view('copyright', compact('categories'));
@@ -857,7 +866,7 @@ class HomeController extends Controller
         ])->first();
         $blankImage = 'front'.$request->color.'male.jpg';
     }
-        
+
     }else{
         $pictures = DB::table('images')->where([
             ['product_id', "=", $request->id],
@@ -885,20 +894,20 @@ class HomeController extends Controller
     }
 
     public function loadImagesColor(Request $request){
-        
+
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['color' , "=",$request->color]
         ])->first();
 
-        if($request->pro_cat == "Bags"){
+        if($request->pro_cat == "Tote Bags"){
             $blankImage = "Ceger". $request->color. ".jpg";
         }elseif($request->pro_cat == "Notebooks"){
             $blankImage = "Notes". $request->color. ".png";
         }else{
             $blankImage = "Clock". $request->color. ".png";
         }
-        
+
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }
@@ -915,9 +924,9 @@ class HomeController extends Controller
                 ['product_id', "=", $request->id],
                 ['color' , "=",$request->color]
             ])->first();
-            
+
         }
-         
+
 
            if($request->pro_cat=="Iphone Cases"){
             if($request->phoneModel == "iPhone XI Pro"){
@@ -943,7 +952,7 @@ class HomeController extends Controller
                     $blankImage = 'Samsung-S20Plus-Bezpozadine.png';
                 }
                }
-         
+
            }elseif($request->pro_cat=="Huawei Cases"){
             if($request->color=="Black"){
                 $blankImage = 'Huawei-P20-Crna.png';
@@ -951,8 +960,8 @@ class HomeController extends Controller
                 $blankImage = 'Huawei-P20-Bezpozadinecopy.png';
             }
            }
-          
-        
+
+
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }
@@ -964,7 +973,7 @@ class HomeController extends Controller
             ['size',"=",$request->size]
         ])->first();
 
-        $blankImage = $request->size . $request->color . ".jpg"; 
+        $blankImage = $request->size . $request->color . ".jpg";
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }
