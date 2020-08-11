@@ -14,6 +14,13 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-4">
+<<<<<<< HEAD
+                <div class="box-container">
+                    <div class="box1-img-holder"></div>
+                    <button><a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">  Shop T-Shirts</a></button>
+                </div>
+            </div>          
+=======
                 <a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
                         <div class="box1-img-holder"></div>
@@ -21,6 +28,7 @@
                     </div>
                 </a>
             </div>
+>>>>>>> 706fe058eff0551ce3b387100cc57118c1957bca
             <div class="col-6 col-md-4">
                 <a href="{{route('category.show',[$casesCat->id, $casesCat->name => $casesCat->id ])}}" style="color: inherit;">
                     <div class="box-container">
