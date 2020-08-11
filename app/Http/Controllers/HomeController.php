@@ -55,7 +55,7 @@ class HomeController extends Controller
                 ->first();
 
         $picturesCat = DB::table('categories')
-                ->where('categories.name', '=', 'Pictures')
+                ->where('categories.name', '=', 'Canvas Art')
                 ->first();
 
         $mugsCat = DB::table('categories')
@@ -71,7 +71,7 @@ class HomeController extends Controller
                 ->first();
 
         $sacksCat = DB::table('categories')
-                ->where('categories.name', '=', 'Sacks')
+                ->where('categories.name', '=', 'Tote Bags')
                 ->first();
 
         $magnetsCat = DB::table('categories')

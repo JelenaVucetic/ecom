@@ -18,7 +18,7 @@
                     <div class="box1-img-holder"></div>
                     <button><a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">  Shop T-Shirts</a></button>
                 </div>
-            </div>
+            </div>          
             <div class="col-6 col-md-4">
                 <div class="box-container">
                     <div class="box2-img-holder"></div>
