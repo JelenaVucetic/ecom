@@ -61,6 +61,11 @@
     color: #8B8B8B;
     margin-top: 100px;
 }
+
+.my-verify {
+    margin-bottom: 200px;
+}
+
 @media (max-width: 767px) {  
     .footer-content {
         width: 100%; 

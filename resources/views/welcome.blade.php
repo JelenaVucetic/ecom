@@ -176,7 +176,7 @@
                                 @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                                 @break
-                                @elseif($product->category->name=="Pictures")
+                                @elseif($product->category->name=="Canvas Art")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                 @break
                                 @elseif($product->category->name=="Wallpapers")
