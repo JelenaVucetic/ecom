@@ -411,7 +411,7 @@ for( let i=1;i<200;i++) {
                             <ul class="order-menu list-unstyled">
                                 <input type="hidden" value="{{$order_number}}" name="order_number">
                                 <li class="d-flex justify-content-between"><span>Order Number:</span><strong>{{$order_number}}</strong></li>
-                                <li class="d-flex justify-content-between"><span>Company</span><strong>Urban One</strong></li>
+                                <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
                                 <li>
                                     <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
                                     <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
