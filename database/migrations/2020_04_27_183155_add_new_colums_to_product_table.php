@@ -14,8 +14,8 @@ class AddNewColumsToProductTable extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->string('price_b2')->nullable();
-            $table->string('price_b1')->nullable();
+            $table->float('price_b2', 8, 2)->nullable();
+            $table->float('price_b1', 8, 2)->nullable();
         });
     }
 

@@ -1164,16 +1164,15 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
-    }else if(pro_cat=="Coasters"){
-      var size = $(".coaster-shape option:selected" ).val();
-
+    }else if(pro_cat=="Coasters" || pro_cat=="Magnets"){
+      var size = $("option:selected" ).val();
       $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'json',
-      url: '/load_images_coasters',
+      url: '/load_images_size',
       data: {  pro_cat:pro_cat, size:size, id:id},
       beforeSend: function(){
         $("#loading-overlay").show();
