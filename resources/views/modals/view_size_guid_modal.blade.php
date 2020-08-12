@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
       <?php $pro_cat = App\Product::find($product->id);?>
-      @if($pro_cat->category->name == "Urban clothing" || $pro_cat->category->name == "T-shirt" || $pro_cat->category->name == "Polo Shirt" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodie & Sweatshirts" || $pro_cat->category->name == "Hoodie & Sweatshirts")
+      @if($pro_cat->category->name == "T-Shirts" || $pro_cat->category->name == "Polo Shirts" || $pro_cat->category->name == "Tank Tops" || $pro_cat->category->name == "Hoodies & Sweatshirts")
         <table class="table">
             <thead>
                 <tr>

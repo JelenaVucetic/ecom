@@ -6,6 +6,20 @@
 .right p {
     color: #8B8B8B;
 }
+.slika1 {
+    height: 35vh;
+    object-fit: contain;   
+}
+
+.slika2 {
+    height: 65vh;
+    object-fit: cover;
+}
+
+.slika3 {
+    height: 100vh;
+    object-fit: cover;
+}
 
 .wishlist input[type="submit"] {
     position: absolute;

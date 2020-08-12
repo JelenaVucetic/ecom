@@ -81,7 +81,7 @@
         <div class="product product-cat">
             <a href="{{ url('/product_details', [$p->id]) }}" class="">
                 <div class="">
-                    <div  class="img-div image-div-cat">
+                    <div  class="img-div img-div-cat">
                         @if ($p->images)
 
                         @foreach ($p->images as $item)
@@ -112,6 +112,9 @@
                                 @elseif($p->category->name=="Thermoses")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-thermos" alt="">
                                  @break
+                                 @elseif($p->category->name=="Mugs")
+                                 <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                                  @break
                               @else
                               <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                               @break

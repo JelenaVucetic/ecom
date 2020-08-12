@@ -58,8 +58,9 @@
                 <div>
                     <h4>Our informations</h4>
                     <p>Monargo doo – Urban One <br>
-                        PIB 03083748 <br>
-                        Djoka Mirasevica M3 ( Ruske Kule ) Podgorica 81000
+                       <strong>Registration ID:</strong>  50757097 <br>
+                       <strong>PIB:</strong>  03083748 <br>
+                       <strong>Address:</strong> Djoka Mirasevica M3 ( Ruske Kule ) Podgorica 81000
                     </p>
                 </div>
                 

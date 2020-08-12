@@ -93,12 +93,12 @@ class HomeController extends Controller
         $products = Product::orderBy('id', 'desc')->paginate(28);
         $tShirts = Product::where('category_id', 6)->get();
 
-        $hoodies = Product::where('category_id', 9)->get();
+        $masks = Product::where('category_id', 2)->get();
         $cases1 = Category::where('parent_id', $parentId = Category::where('name', "Cases")
                 ->value('id'))
                 ->pluck('id')
                 ->all();
-                $cases = Product::whereIn('category_id', $cases1)->get();
+        $cases = Product::whereIn('category_id', $cases1)->get();
   /*
         foreach($tShirts as $t) {
             dd($t->images);
@@ -120,7 +120,7 @@ class HomeController extends Controller
  */
 
 
-        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'hoodies', 'designsRandom'));
+        return view('home', compact('products', 'categories', 'designs', 'tShirts', 'cases', 'masks', 'designsRandom'));
     }
 
     public function product_details($id)
@@ -360,17 +360,6 @@ class HomeController extends Controller
         return back()->with('msg', 'item removed from wishlist');
     }
 
-/*     public function selectSize(Request $request)
-    {
-        $proDum = $request->proDum;
-        $size = $request->size;
-
-        $s_price = DB::table('products_properties')->where('pro_id', $proDum)->where('size', $size)->get();
-
-        foreach($s_price as $sPrice) {
-            echo "&euro;" . $sPrice->p_price;
-        }
-    } */
 
     public function addReview(Request $request)
     {
@@ -531,6 +520,14 @@ class HomeController extends Controller
                     break;
                 } else if($product->category->name=="Masks"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-masks" alt="'.$product->category->name.'">';
+                    break;
+                }
+                else if($product->category->name=="Thermoses"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-thermos" alt="'.$product->category->name.'">';
+                    break;
+                }
+                else if($product->category->name=="Mugs"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-mugs" alt="'.$product->category->name.'">';
                     break;
                 }
                 else{

@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+@include('modals.terms')
+
 <script>
 $(document).ready(function(){
 for( let i=1;i<200;i++) {
@@ -450,8 +452,9 @@ for( let i=1;i<200;i++) {
                                 <span id="yearError" style="color:red"></span>
                             </div>
                             <div  class="form-group" style="flex-direction: row-reverse;align-items: baseline;justify-content: flex-end;">
+                                <a href="3" data-toggle="modal" data-target="#termsModal" style="margin-left:10px"> Read more</a>
                                 <label for="agreement" class="form-label" style="margin-left: 10px;">I agree to the payment terms</label>
-                                <input type="checkbox" id="agreement" name="agreement" required>
+                                <input type="checkbox" id="agreement" name="agreement" required>                                             
                             </div>
                         </div>
                         <br>
@@ -479,4 +482,12 @@ for( let i=1;i<200;i++) {
 
 <script src="/js/payment.js"></script>
 
+<script>
+$(document).ready(function() {
+   $('[data-toggle="popover"]').popover({
+      placement: 'top',
+      trigger: 'hover'
+   });
+});
+</script>
 @endsection

@@ -66,16 +66,16 @@
           <input type="hidden" value="@if($imageFront){{$imageFront->color}}@endif" id="productColor" display="none" name="pro_color">
           <input type="hidden" value="{{$product->gender}}" id="productGender" display="none" name="pro_gender">
             <div style="width: 50%;margin: auto;">
-                <img src="{{url('design', $design->name)}}">
+                <img class="slika1" src="{{url('design', $design->name)}}">
             </div>
            
         <div>
             @if ($product->gender=="unisex" && $product->category_id == 6)
-                <img id="blank-image" src="{{url('image',$imageBack)}}"> x
+                <img id="blank-image"  class="slika2"  src="{{url('image',$imageBack)}}"> x
             @elseif(strpos($product->name, "case"))
-                <img id="blank-image" src="{{url('site-images',$imageBack)}}">
+                <img id="blank-image"   class="slika2" src="{{url('site-images',$imageBack)}}">
             @else
-                <img id="blank-image" src="{{url('site-images',$imageBack)}}">
+                <img id="blank-image"  class="slika2" src="{{url('site-images',$imageBack)}}">
             @endif
         </div>
 
@@ -83,7 +83,7 @@
       </div>
       <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
         <div id="desctop-middle">
-          <img id="main-image" src="{{url('image', $imageFront->name)}}">
+          <img id="main-image" class="slika3"  src="{{url('image', $imageFront->name)}}">
 
           <div class="wishlist">
             <?php

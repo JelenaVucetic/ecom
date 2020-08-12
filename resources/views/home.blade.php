@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid" style="width: 90%;margin:auto">
-  <div class="design-for-you">
+<div class="container-fluid" style="width: 90%;margin:50px auto">
+  <div class="design-for-you" style="margin:20px 0;">
     <h2>Designs picked for you</h2>
   </div>
 
@@ -15,10 +15,11 @@
               <img src="/image/{{$design->name}}" style="max-witdh:100%;max-height:100%">
             </div>
             <div class="count-product">
-              <p>Products
+              <p>
               <?php
                   $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count(); ?>
                 <span>{{$count}}</span>
+                Products with this design
               </p>
             </div>
           </div>
@@ -29,8 +30,8 @@
 </div>
 
 
-<div class="container-fluid"  style="width: 90%;margin:auto">
-  <div class="design-for-you">
+<div class="container-fluid"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you"  style="margin:20px 0;">
     <h2>Most popular designs - TRENDING</h2>
   </div>
 
@@ -44,10 +45,11 @@
             </div>
 
             <div class="count-product">
-              <p>Products
+              <p>
               <?php
                   $count = DB::table('product')->where('design_id', $designsRandom->id)->groupBy('design_id')->count(); ?>
                 <span>{{$count}}</span>
+                Products with this design
               </p>
             </div>
           </div>
@@ -59,8 +61,8 @@
 
 
 
-<div class="container-fluid"  style="width: 90%;margin:auto">
-  <div class="design-for-you">
+<div class="container-fluid"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you" style="margin:20px 0;">
     <h2>Premium T-shirts</h2>
   </div>
 
@@ -122,8 +124,8 @@
   </div>
 </div>
 
-<div class="container-fluid"  style="width: 90%;margin:auto">
-  <div class="design-for-you">
+<div class="container-fluid"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you" style="margin:20px 0;">
     <h2>Phone Cases</h2>
   </div>
 
@@ -160,18 +162,18 @@
                   @break
                   @endif
               </div>
-                <div class="">
-                    <p class="">{{ $case->name }}</p>
+                  <div class="">
+                    <p class="product-name">{{ $case->name }}</p>
                     <?php
                         $pro_cat = App\Product::find($case->id);
                         if($pro_cat->category != null){
                     ?>
-                        <p class="">{{ $pro_cat->category->name }}</p>
+                        <p class="product-category">{{ $pro_cat->category->name }}</p>
                     <?php } ?>
                     @if($case->spl_price==0)
-                        <p>From: <span style="font-weight: bold">{{ $case->price}}&euro;</span></p>
+                        <p><span style="font-weight: bold">&euro;{{ $case->price}}</span></p>
                     @else
-                        <p>Special price: <span style="font-weight: bold">{{$case->spl_price}}&euro;</span></p>
+                        <p><span style="font-weight: bold">&euro;{{$case->spl_price}}</span></p>
                     @endif
                 </div>
               </div>
@@ -183,31 +185,31 @@
   </div>
 </div>
 
-<div class="container-fluid"  style="width: 90%;margin:auto">
-  <div class="design-for-you">
-    <h2>Hoodies </h2>
+<div class="container-fluid"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you" style="margin:20px 0;">
+    <h2>Face Masks </h2>
   </div>
 
   <div class="slick-wrapper">
     <div id="slick6">
-      @foreach ($hoodies as $hoodie)
+      @foreach ($masks as $mask)
         <div class="slide-item">
           <div class="product">
             <a href="{{ url('/product_details', [$hoodie->id]) }}" class="">
               <div class="">
                 <div class="img-div">
 
-                  @if ($hoodie->images)
-                  @foreach ($hoodie->images as $item)
-                  @if($hoodie->category->name=="T-Shirts")
+                  @if ($mask->images)
+                  @foreach ($mask->images as $item)
+                  @if($mask->category->name=="T-Shirts")
                     @if ($item->color == "white" && $item->position == "front")
                 <img src="{{ url('image', $item->name) }}" class="" alt="">
                     @break
                     @endif
-                    @elseif( $hoodie->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                    @elseif( $mask->category->getParentsNames() == "Cases" && $item->color == "transparent")
                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                     @break
-                    @elseif($hoodie->category->name=="Pictures")
+                    @elseif($mask->category->name=="Pictures")
                     <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                     @break
                     @elseif($product->category->name=="Wallpapers")
@@ -220,24 +222,24 @@
                   @endforeach
 
                  @else
-                  <img src="{{ url('images', $hoodie->image) }}" class="" alt="">
+                  <img src="{{ url('images', $mask->image) }}" class="" alt="">
                   @break
                   @endif
               </div>
                 <div class="">
-                    <p class="">{{ $hoodie->name }}</p>
-                    <?php
-                        $pro_cat = App\Product::find($hoodie->id);
-                        if($pro_cat->category != null){
-                    ?>
-                        <p class="">{{ $pro_cat->category->name }}</p>
-                    <?php } ?>
-                    @if($hoodie->spl_price==0)
-                        <p>{{ $hoodie->price}}&euro;</p>
-                    @else
-                        <p>Special price: <span style="font-weight: bold">{{$hoodie->spl_price}}&euro;</span></p>
-                    @endif
-                </div>
+                  <p class="product-name">{{ $mask->name }}</p>
+                  <?php
+                      $pro_cat = App\Product::find($mask->id);
+                      if($pro_cat->category != null){
+                  ?>
+                      <p class="product-category">{{ $pro_cat->category->name }}</p>
+                  <?php } ?>
+                  @if($mask->spl_price==0)
+                      <p><span style="font-weight: bold">&euro;{{ $mask->price}}</span></p>
+                  @else
+                      <p><span style="font-weight: bold">&euro;{{$mask->spl_price}}</span></p>
+                  @endif
+              </div>
               </div>
             </a>
           </div>

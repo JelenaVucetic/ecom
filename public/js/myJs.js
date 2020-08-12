@@ -457,6 +457,18 @@ $(document).ready(function(){
     $('.A3_price').css('display', 'none')
     $('.B2_price').css('display', 'block')
   }
+  if(pro_cat == "Clocks") {
+    $('.black-border').css('border', 'none')   
+    $('input[type=radio][name=color]').change(function() {
+      if(this.value == 'white'){
+        $('.black-border span').css('border', '1px solid black')  
+        $('.black div').removeClass( "white-border");
+      } else {
+        $('.black-border span').css('border', 'none')  
+        $('.black div').addClass( "white-border");
+    }
+  })
+  }
 });
 
 $(document).ready(function(){

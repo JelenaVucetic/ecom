@@ -204,9 +204,9 @@ $("#slick7").slick({
     slidesToShow: 6,
     slidesToScroll: 6,
     prevArrow:
-        "<img style='top:110px; left:-50px;' class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
+        "<img style='top:140px; left:-35px;' class='a-left control-c prev slick-prev left-arrow slick2-left' src='/site-images/Strelica-lijevo-slider.svg'>",
     nextArrow:
-        "<img id='test1' style='right: 0px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
+        "<img id='test1' style='right: -35px;bottom: 200px' class='a-right control-c next slick-next right-arrow' src='/site-images/Strelica-desno-slider.svg' onmouseover='this.src='/site-images/Strelica-desno-slider-HOVER.svg'' onmouseout='this.src='/site-images/Strelica-desno-slider.svg'' >",
     responsive: [
         {
             breakpoint: 992, // mobile breakpoint

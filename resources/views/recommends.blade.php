@@ -41,24 +41,38 @@ if(Auth::check()){
 
                                 @foreach ($p->images as $item)
                                     @if($p->category->name=="T-Shirts")
-
                                     @if ($item->color == "white" && $item->position == "front")
-                                        <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                        @break
+                                    <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                    @break
                                     @endif
                                     @elseif( $p->category->getParentsNames() == "Cases" && $item->color == "transparent")
-                                        <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                        @break
-                                    @elseif($p->category->name=="Canvas Art")
-                                        <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
-                                        @break
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                    @break
+                                    @elseif($p->category->name=="Pictures")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                                    @break
                                     @elseif($p->category->name=="Wallpapers")
-                                        <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
-                                        @break
-                                    @else
-                                        <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                                        @break
-                                    @endif
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                    @break
+                                    @elseif($p->category->name=="Notebooks")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
+                                    @break
+                                    @elseif($p->category->name=="Makeup Bags")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
+                                    @break
+                                    @elseif($p->category->name=="Masks")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
+                                    @break
+                                    @elseif($p->category->name=="Thermoses")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-thermos" alt="">
+                                    @break
+                                    @elseif($p->category->name=="Mugs")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                                    @break
+                                @else
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                    @break
+                                @endif
                                 @endforeach
 
                             @else

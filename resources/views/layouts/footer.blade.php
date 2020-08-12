@@ -89,6 +89,6 @@
   <div class="footer-icons-second" style="margin-top:20px;">
     <img src="/site-images/14 Monargo-logo.svg" alt="">
     <a href="https://www.hipotekarnabanka.com/" target="_blank"><img src="/site-images/Mask Group 2.svg" alt=""></a> 
-    <p>© Urban One. All Rights Reserved</p>
+    <p>© Monargo doo - Urban One . All Rights Reserved</p>
   </div>
 </footer>

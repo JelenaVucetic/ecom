@@ -374,8 +374,8 @@
 .slick-prev {
     font-size: 0;
     position: absolute;
-    top: 330px;
-    left: 32px;
+    top: 370px;
+    left: -32px;
 }
 
 .left-arrow {
@@ -393,7 +393,7 @@
 .slick-next {
     position: absolute;
     right: -32px;
-    bottom: 370px;
+    bottom: 350px;
 }
 
 /*     .right-arrow > .slick-next {
@@ -432,13 +432,13 @@
 .img-div img {
     display: block;
     transition: transform .4s;
-    transform: scale(3);
-    margin-top: 58.125%;
+    transform: scale(2.0);
+    margin-top: 24.125%;
     margin-bottom: -54%;
 }
 
 .img-div:hover img {
-    transform: scale(3.3);
+    transform: scale(2.2);
     transform-origin: 50% 50%;
 }
 
@@ -448,16 +448,24 @@
 } */
 
 .img-div-phone {
-
-    transform: scale(1.5)!important;
+    transform: scale(1.2)!important;
     margin-top: 8.125%!important;
 }
 
 .img-div-phone:hover  {
-    transform: scale(1.7)!important;
+    transform: scale(1.4)!important;
     transform-origin: 50% 50%!important;
 }
 
+.img-div-mugs {
+    transform: scale(1.5)!important;
+    margin-top: 8.125%!important;
+}
+
+.img-div-mugs:hover  {
+    transform: scale(1.7)!important;
+    transform-origin: 50% 50%!important;
+}
 
 
 .img-div-pictures {
@@ -491,12 +499,13 @@
 }
 
 .img-div-thermos {
+    height:70%;
     transform: scale(1.5)!important;
-    margin-top: 19.125%!important;
+    margin-top: 16.125%!important;
 }
 
 .img-div-thermos:hover  {
-    transform: scale(1.9)!important;
+    transform: scale(1.7)!important;
     transform-origin: 50% 50%!important;
 }
 
@@ -506,12 +515,12 @@
 
 
 .img-div-notebooks {
-    transform: scale(2.5)!important;
-    margin-top: 15.125%!important;
+    transform: scale(2.4)!important;
+    margin-top: 4.125%!important;
 }
 
 .img-div-notebooks:hover  {
-    transform: scale(2.8)!important;
+    transform: scale(2.6)!important;
     transform-origin: 50% 50%!important;
 }
 
@@ -624,20 +633,19 @@
     }
 
     .product {
-        width:150px;
+        width:170px;
         margin-top: 20px;
         padding: 10px;
     }
 
     .slick-prev {
-        top: 250px;
-        left: 0px
-
+        top: 280px;
+        left: -8px;
     }
 
     .slick-next {
-        right: -5px;
-        bottom: 250px;
+        right: -8px;
+        bottom: 260px;
     }
 
     .about-urban {
@@ -755,7 +763,7 @@
         left: -27px;
     }
      .img-div {
-         height: 145px;
+         height: 170px;
      }
      .subscribe-info img {
          width: 50px;
