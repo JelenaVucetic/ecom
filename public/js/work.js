@@ -300,6 +300,30 @@ $(document).ready(function(){
                 }
             });
 
+                         // Enable and edit New T-shirt
+                         $('#edit-product13').click(function() {
+                            if(document.getElementById('product15').style.display == 'none'){
+                                closeCanvas();
+                                document.getElementById('product15').style.display = 'flex';
+                            }else{
+                                document.getElementById('product15').style.display = 'none';
+                            }
+                        });
+                        $('#enabled-product13').click(function(){
+                            if($('#proizvod14').hasClass('disabledbutton')){
+                                $('#proizvod14').removeClass('disabledbutton');
+                                $( "#proizvod14" ).attr( "value" , 0 );
+                                $('#enabled-product13').html('Enabled');
+                                $('#enabled-product13').addClass('enable');
+                            }else{
+                                $('#proizvod14').addClass('disabledbutton');
+                                $( "#proizvod14" ).attr( "value" , 1 );
+                                $('#enabled-product13').html('Disabled');
+                                $('#enabled-product13').removeClass('enable');
+                            }
+                        });
+            
+
                          // Enable and edit Samsung
                          $('#edit-product14').click(function() {
                             if(document.getElementById('product16').style.display == 'none'){
@@ -621,8 +645,8 @@ $(document).ready(function(){
 
           // canvas on change show Poster
           $('#product15').mouseup(function(){
-            var image16 = document.getElementById("logo-canvas12");
-            image16.src = canvas18.toDataURL();
+            var image15 = document.getElementById("logo-canvas14");
+            image15.src = canvas18.toDataURL();
             canvas18.discardActiveObject()
         });
 

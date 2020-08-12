@@ -25,8 +25,9 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //Maknuti komentar ispod
+        //Maknuti komentar ispod ,'verified'
         //$this->middleware('auth', ['only' => ['index']]);
+        $this->middleware(['auth','verified']);
     }
 
     public function test() {
@@ -248,9 +249,9 @@ class HomeController extends Controller
         }elseif($find_cat->category->name=="Mugs"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['size', "=" , "thumb"]
+                ['size', "=" , "main"]
             ])->first();
-            $imageBack = "Solja.png";
+            $imageBack = "Solja-Mockup-BG.png";
         }elseif($find_cat->category->name=="Masks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
