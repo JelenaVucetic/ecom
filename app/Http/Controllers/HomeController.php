@@ -248,8 +248,7 @@ class HomeController extends Controller
             $imageBack = "TermosThumbnail.png";
         }elseif($find_cat->category->name=="Mugs"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id],
-                ['size', "=" , "main"]
+                ['product_id',"=", $id]
             ])->first();
             $imageBack = "Solja-Mockup-BG.png";
         }elseif($find_cat->category->name=="Masks"){

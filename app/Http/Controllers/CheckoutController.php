@@ -117,6 +117,7 @@ class CheckoutController extends Controller
 
     public function formvalidate(Request $request)
     {
+       
         $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
 
@@ -232,10 +233,7 @@ class CheckoutController extends Controller
             $code = $errorData->getCode();
 
             return view('error_payment_info', compact('categories', 'code'));
-        }
- 
-      
-     
+        }          
       
       
        /*  if(Auth::user()) {

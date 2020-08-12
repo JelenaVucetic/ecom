@@ -72,7 +72,9 @@ $error_messages = array(
                 @endif
             @endforeach
         </div>
-        
+        <div>
+			<p> <strong>Date and Time:</strong>  {{date('d.m.Y h:i:s', time())}}</p>
+		</div>
         </div>
     </section>
 @endsection

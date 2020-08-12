@@ -154,7 +154,7 @@
             </div>
         </div>
     </div>
-      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5;" >
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5; height: 100vh" >
         <h4 class="product-title" style="padding-top: 20px;">{{ $product->name}}</h4>
         <?php $pro_cat = App\Product::find($product->id); ?>
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">

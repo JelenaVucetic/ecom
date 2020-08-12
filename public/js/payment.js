@@ -38,19 +38,31 @@ payment.init('Etl3lMjFydB0a2tloU09', 'number_div', 'cvv_div', function(payment) 
    
 });
 function interceptSubmit() {
-       var data = {
-           first_name: $('#firstname').val(),
-           last_name: $('#lastname').val(),
-           card_holder: $('#card_holder').val(),
-           month: $('#exp_month').val(),
-           year: $('#exp_year').val(),
-           email: $('#email').val()
-       };
+            var data = {
+                first_name: $('#firstname').val(),
+                last_name: $('#lastname').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                street: $('#street').val(),
+                zip: $('#zip').val(),
+                city: $('#city').val(),
+                card_holder: $('#card_holder').val(),
+                month: $('#exp_month').val(),
+                year: $('#exp_year').val(),
+            
+            };
        payment.tokenize(
            data, //additional data, MUST include card_holder (or first_name & last_name), month and year
            function(token, cardData) { //success callback function
             console.log(cardData);
                $('#transaction_token').val(token); //store the transaction token
+                $('#payment_form').append('<input type="hidden" name="firstname" value="'+ data.first_name +' " /> ');
+                $('#payment_form').append('<input type="hidden" name="lastname" value="'+ data.last_name +' " /> ');
+                $('#payment_form').append('<input type="hidden" name="email" value="'+ data.email +' " /> ');
+                $('#payment_form').append('<input type="hidden" name="phone" value="'+ data.phone +' " /> ');
+                $('#payment_form').append('<input type="hidden" name="street" value="'+ data.street +' " /> ');
+                $('#payment_form').append('<input type="hidden" name="zip" value="'+ data.zip +' " /> ');
+                $('#payment_form').append('<input type="hidden" name="city" value="'+ data.city +' " /> ');
                $('#payment_form').get(0).submit(); //submit the form
            }, 
            function(errors) { //error callback function

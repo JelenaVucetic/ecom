@@ -153,15 +153,22 @@
     text-align: center;
 }
 
-#review-and-pay {
-    width: 33%;
+#pay-with-card,
+#pay-with-cash {
+    width: 35%;
     margin-bottom: 40px;
     border: none;
     border-radius: 5px;
-    background: #E6003A;
+    background: #231F20;
     color: white;
     padding: 5px;
 }
+
+#pay-with-card:hover,
+#pay-with-cash:hover {
+    background: #E6003A;
+}
+
 
 .card {
     border: none;
@@ -307,13 +314,16 @@
     height: 50%;
   }
 
-.cart-img {
+.cart-img-shirt,
+.cart-img-mug,
+.cart-img-case  {
     width: 100px;
     height:120px;
     overflow: hidden;
 }
 
-.cart-img img {
+.art-img-shirt img,
+.cart-img-mug  img  {
     max-width: 100%;
     max-height: 100%;
     display: block;
@@ -322,6 +332,17 @@
     margin-top: 52.125%;
     margin-bottom: -54%;
 }
+
+.cart-img-mug  img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    transition: transform .4s;
+    transform: scale(1.7);
+    margin-top: 16.125%;
+    margin-bottom: -54%;
+}
+
 @media (max-width: 767px) {  
     .empty-cart-title {
         width: 100%;

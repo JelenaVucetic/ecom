@@ -80,7 +80,8 @@ $error_messages = array(
             <p><strong>Order number:</strong> {{$payment->transaction_id}}</p>
             <p><strong>Amount:</strong> {{$payment->amount}} &euro;</p>
             <p><strong>Card type:</strong> {{$payment->card_type}}</p>
-            <p><strong>Last four digits:</strong> {{$payment->last_four_digits}}</p>
+			<p><strong>Last four digits:</strong> {{$payment->last_four_digits}}</p>
+			<p> <strong>Date and Time:</strong>  {{date('d.m.Y h:i:s', time())}}</p>
         </div>
         
         </div>

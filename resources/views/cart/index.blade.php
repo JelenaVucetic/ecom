@@ -129,10 +129,23 @@ for( let i=1;i<200;i++) {
             @foreach($cartItems as $cartItem)
             <div class="row-product" style="margin: 30px 0;">
                 <div style="width:100px; overflow:hidden">
-                    <img style="max-width:100%;max-height:100%;display: block;transition: transform .4s;
-                    transform: scale(3);
-                    margin-top: 52.125%;
-                    margin-bottom: -54%;" src="{{url('image',$cartItem->options->img)}}" class="">
+                    @if($cartItem->options->cat == 'T-Shirts')
+                    <div class="cart-img-shirt">
+                       <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                   </div>
+                   @elseif($cartItem->options->cat == 'Mugs')
+                   <div class="cart-img-mug">
+                       <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                   </div>
+                   @elseif($cartItem->options->cat == 'Samsung Cases' || $cartItem->options->cat == 'Iphone Cases' || $cartItem->options->cat == 'Huawei Cases' || $cartItem->options->cat == 'Custom')
+                   <div class="cart-img-case">
+                       <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                   </div>
+                   @else
+                   <div class="cart-img-case">
+                       <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                   </div>
+                   @endif
                 </div>
                     <div>
                         <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
@@ -228,12 +241,23 @@ for( let i=1;i<200;i++) {
                 <tbody>
                     <tr scope="row">
                         <td class="cart_product">
-                         <div class="cart-img">
-                            <img style="max-width:100%;max-height:100%;display: block;transition: transform .4s;
-                            transform: scale(3);
-                            margin-top: 52.125%;
-                            margin-bottom: -54%;" src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                        @if($cartItem->options->cat == 'T-Shirts')
+                         <div class="cart-img-shirt">
+                            <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
                         </div>
+                        @elseif($cartItem->options->cat == 'Mugs')
+                        <div class="cart-img-mug">
+                            <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                        </div>
+                        @elseif($cartItem->options->cat == 'Samsung Cases' || $cartItem->options->cat == 'Iphone Cases' || $cartItem->options->cat == 'Huawei Cases' || $cartItem->options->cat == 'Custom')
+                        <div class="cart-img-case">
+                            <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                        </div>
+                        @else
+                        <div class="cart-img-case">
+                            <img src="{{url('image',$cartItem->options->img)}}" class="card-img-top bmw">
+                        </div>
+                        @endif
                         </td>
                         <td class="cart_description">
                             <a href="{{url('/product_details')}}/{{$cartItem->id}}">{{$cartItem->name}}</a> <br>
@@ -353,10 +377,9 @@ for( let i=1;i<200;i++) {
                 <div class="number-one">1.</div>
                 <h6 class="text-uppercase">What are your shipping details?</h6>                
             </div>
-            <form  id="payment_form"  action="{{url('/')}}/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
+            <form action="/" method="post" >
             @csrf
-            <input type="hidden" name="transaction_token" id="transaction_token" />
-            <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal+3}}">
+
                 <div class="shipping-details-form">
                     <div class="">
                         <label for="firstname" class="form-label">First Name</label>           
@@ -380,7 +403,7 @@ for( let i=1;i<200;i++) {
                         <label for="phone" class="form-label">Phone</label>
                         <input id="phone" type="text" name="phone" placeholder="e.g. 068/123-123" value="{{ (isset($ads->phone)) ? $ads->phone :  old('phone') }}" class="form-control">
                         <br>
-                        <span style="color:red">{{ $errors->first('email') }}</span>
+                        <span style="color:red">{{ $errors->first('phone') }}</span>
                     </div>
                     <div class="">
                         <label for="street" class="form-label">Street Address</label>
@@ -401,72 +424,97 @@ for( let i=1;i<200;i++) {
                         <span style="color:red">{{ $errors->first('city') }}</span>
                     </div>
                 </div>
-            <div style="margin:30px auto;">     
-                <div class="continue" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="cursor:pointer;">
-                    <button id="review-and-pay">Continue</button>                
-                </div>      
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <div>
-                            <ul class="order-menu list-unstyled">
-                                <input type="hidden" value="{{$order_number}}" name="order_number">
-                                <li class="d-flex justify-content-between"><span>Order Number:</span><strong>{{$order_number}}</strong></li>
-                                <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
-                                <li>
-                                    <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
-                                    <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
-                                </li>
-                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>&euro;3</strong></li>
-                                <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal+3}}</strong></li>
-                            </ul>
-                        </div>
-                        <div class="payment">
-                            <div style="width:100%;">
-                                <img style="width: 250px; margin:auto;  " src="\site-images\banner-010.png" alt="">
-                            </div>                         
-                            <h6>What are your credit card details?</h6>
-                            <div class="form-group" class="form-label">
-                                <label for="card_holder">Card holder</label>
-                                <input type="text" id="card_holder" name="card_holder" placeholder="e.g. John Doe" value="{{ old('card_holder') }}" required />
-                                <span id="cardHolderError" style="color:red"></span>
-                            </div>
-                            <div  class="form-group">
-                                <label for="number_div" class="form-label">Card number</label>
-                                <div id="number_div"></div>
-                                <span id="cardError" style="color:red"></span>
-                            </div> 
-                            <div  class="form-group" >
-                                <label for="cvv_div">CVV</label>
-                                <div id="cvv_div"></div>
-                                <span id="cvvError" style="color:red"></span>
-                            </div>
-
-                            <div  class="form-group">
-                                <label for="exp_month" class="form-label">Month</label>
-                                <input type="text" id="exp_month" name="exp_month" value="{{ old('exp_month') }}"  placeholder="e.g. 05" required />
-                                <span id="monthError" style="color:red"></span>
-                            </div>
-                            <div  class="form-group">
-                                <label for="exp_year" class="form-label">Year</label>
-                                <input type="text" id="exp_year" name="exp_year" value="{{ old('exp_year') }}" placeholder="e.g. 23"  required/>
-                                <span id="yearError" style="color:red"></span>
-                            </div>
-                            <div  class="form-group" style="flex-direction: row-reverse;align-items: baseline;justify-content: flex-end;">
-                                <a href="3" data-toggle="modal" data-target="#termsModal" style="margin-left:10px"> Read more</a>
-                                <label for="agreement" class="form-label" style="margin-left: 10px;">I agree to the payment terms</label>
-                                <input type="checkbox" id="agreement" name="agreement" required>                                             
-                            </div>
-                        </div>
-                        <br>
-                        <input type="submit" value="Submit" class="submit-button">
-                    </div>
-                </div>      
-                <div id="hide-review" class="shipping-details-title">
-                    <div class="number-one">2.</div>
-                    <h6 class="text-uppercase">Review and pay</h6>                
-                </div>
-            </div>
             </form>
+            <div style="margin:30px auto;"> 
+
+
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <div  class="continue">                       
+                          <button id="pay-with-card" class="collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Continue with Card
+                          </button>                        
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <div>
+                                <ul class="order-menu list-unstyled">
+                                    <input type="hidden" value="{{$order_number}}" name="order_number">
+                                    <li class="d-flex justify-content-between"><span>Order Number:</span><strong>{{$order_number}}</strong></li>
+                                    <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
+                                    <li>
+                                        <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
+                                        <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
+                                    </li>
+                                    <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>&euro;3</strong></li>
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal+3}}</strong></li>
+                                </ul>
+                            </div>
+                            <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
+                                @csrf
+                                <input type="hidden" name="transaction_token" id="transaction_token" />
+                                <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal+3}}">
+
+                                <div class="payment">
+                                <div style="width:100%;">
+                                    <img style="width: 250px; margin:auto;  " src="\site-images\banner-010.png" alt="">
+                                </div>                         
+                                <h6>What are your credit card details?</h6>
+                                <div class="form-group" class="form-label">
+                                    <label for="card_holder">Card holder</label>
+                                    <input type="text" id="card_holder" name="card_holder" placeholder="e.g. John Doe" value="{{ old('card_holder') }}" required />
+                                    <span id="cardHolderError" style="color:red"></span>
+                                </div>
+                                <div  class="form-group">
+                                    <label for="number_div" class="form-label">Card number</label>
+                                    <div id="number_div"></div>
+                                    <span id="cardError" style="color:red"></span>
+                                </div> 
+                                <div  class="form-group" >
+                                    <label for="cvv_div">CVV</label>
+                                    <div id="cvv_div"></div>
+                                    <span id="cvvError" style="color:red"></span>
+                                </div>
+    
+                                <div  class="form-group">
+                                    <label for="exp_month" class="form-label">Month</label>
+                                    <input type="text" id="exp_month" name="exp_month" value="{{ old('exp_month') }}"  placeholder="e.g. 05" required />
+                                    <span id="monthError" style="color:red"></span>
+                                </div>
+                                <div  class="form-group">
+                                    <label for="exp_year" class="form-label">Year</label>
+                                    <input type="text" id="exp_year" name="exp_year" value="{{ old('exp_year') }}" placeholder="e.g. 23"  required/>
+                                    <span id="yearError" style="color:red"></span>
+                                </div>
+                                <div  class="form-group" style="flex-direction: row-reverse;align-items: baseline;justify-content: flex-end;">
+                                    <a href="3" data-toggle="modal" data-target="#termsModal" style="margin-left:10px"> Read more</a>
+                                    <label for="agreement" class="form-label" style="margin-left: 10px;">I agree to the payment terms</label>
+                                    <input type="checkbox" id="agreement" name="agreement" required>                                             
+                                </div>
+                                <input type="submit" value="Card" name="action" class="submit-button">
+                            </div> 
+                            </form>
+                         </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="continue">                 
+                            <button id="pay-with-cash" class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Continue with Cash</button>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                        <input type="submit" value="Cash" name="action" class="submit-button">
+                      </div>
+                    </div>
+                  </div>
+
+
+
+            </div>
+
         <div>
     </div>
 </section>
