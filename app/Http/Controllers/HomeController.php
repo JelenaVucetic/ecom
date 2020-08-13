@@ -26,8 +26,8 @@ class HomeController extends Controller
     public function __construct()
     {
         //Maknuti komentar ispod ,'verified'
-        //$this->middleware('auth', ['only' => ['index']]);
-        $this->middleware(['auth','verified']);
+        $this->middleware('verified', ['only' => ['index']]);
+       
     }
 
     public function test() {

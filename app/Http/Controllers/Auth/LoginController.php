@@ -27,15 +27,15 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected $redirectTo ='/admin';
+    protected $redirectTo ='email/verify';
    
-    protected function redirectTo()
+     protected function redirectTo()
     {
         if (auth()->user()->admin == 1) {
             return '/admin';
         }
-        return '/home';
-    }
+        return '/email/verify';
+    } 
 
     protected function home() {
         return view('/');

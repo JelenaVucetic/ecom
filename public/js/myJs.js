@@ -17,7 +17,6 @@ $('#review-and-pay').on('click', function(){
 
 
 $(document).ready(function(){
-
     /* 1. Visualizing things on Hover - See next part for action on click */
     $('#stars li').on('mouseover', function(){
       var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -1132,7 +1131,7 @@ $("#female-x").on("click", function(){
 
 
 
-  $('.options li').on('click', function() {
+ $('.options li').on('click', function() {
     var pro_cat = $('#pro_cat').val();
     var id = $("#productID").val();
     if(pro_cat=="Posters"){
@@ -1148,23 +1147,23 @@ $("#female-x").on("click", function(){
       data: { color:color, pro_cat:pro_cat, size:size, id:id},
       beforeSend: function(){
         $("#loading-overlay").show();
-    },
-      success: function(response) {
-        $("#loading-overlay").hide();
-         var blank = response['blankImage'];
-         var name = response['image']['name'];
-        $("#main-image").attr("src","../image/" +name);
-        $("#blank-image").attr("src","../site-images/" + blank);
-        $("#main-image-mobile").attr("src","../image/" +name);
-        $("#blank-image-mobile").attr("src","../site-images/" + blank);
-        $("#productColor").val(response['image']['color']);
       },
-      error: function (jqXHR, textStatus, errorThrown) {
-        $("#loading-overlay").hide();
-        alert("something went wrong");
-    }
-    });
-    }else if(pro_cat=="Coasters"){
+        success: function(response) {
+          $("#loading-overlay").hide();
+          var blank = response['blankImage'];
+          var name = response['image']['name'];
+          $("#main-image").attr("src","../image/" +name);
+          $("#blank-image").attr("src","../site-images/" + blank);
+          $("#main-image-mobile").attr("src","../image/" +name);
+          $("#blank-image-mobile").attr("src","../site-images/" + blank);
+          $("#productColor").val(response['image']['color']);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+          $("#loading-overlay").hide();
+          alert("something went wrong");
+      }
+      });
+    } else if(pro_cat=="Coasters"){
       var size = $(".coaster-shape option:selected" ).val();
 
       $.ajax({
@@ -1197,41 +1196,53 @@ $("#female-x").on("click", function(){
     } else if(pro_cat=="Canvas Art"){ 
       var newPrice = $( "#picture option:selected" ).attr('data-price');
       $(".product_price").val(newPrice)
-    } else{
-    var color = $( ".cases-style option:selected" ).val();
-    var id = $("#productID").val();
-    var pro_cat = $("#pro_cat").val();
-    var phoneModel = $( ".cases option:selected" ).val();
-    console.log(color, id, pro_cat, phoneModel);
-    $.ajax({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              } ,
-    type: 'post',
-    dataType: 'json',
-    url: '/load_images_phone',
-    data: { color:color, id:id, pro_cat:pro_cat, phoneModel:phoneModel},
-    beforeSend: function(){
-      $("#loading-overlay").show();
-  },
-  success: function(response) {
-    $("#loading-overlay").hide();
-     var blank = response['blankImage'];
-     var name = response['image']['name'];
-    $("#main-image").attr("src","../image/" +name);
-    $("#blank-image").attr("src","../site-images/" + blank);
-    $("#main-image-mobile").attr("src","../image/" +name);
-    $("#blank-image-mobile").attr("src","../site-images/" + blank);
-    $("#productColor").val(response['image']['color']);
-  },
-  error: function (jqXHR, textStatus, errorThrown) {
-    $("#loading-overlay").hide();
-    alert("something went wrong");
-}
+    } else if(pro_cat=="Custom" || pro_cat=="Huawei Cases" || pro_cat=="Samsung Cases" || pro_cat=="Iphone Cases" ){
+      var color = $( ".cases-style option:selected" ).val();
+      var id = $("#productID").val();
+      var pro_cat = $("#pro_cat").val();
+      var phoneModel = $( ".cases option:selected" ).val();
+      console.log(color, id, pro_cat, phoneModel);
+      $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } ,
+      type: 'post',
+      dataType: 'json',
+      url: '/load_images_phone',
+      data: { color:color, id:id, pro_cat:pro_cat, phoneModel:phoneModel},
+      beforeSend: function(){
+        $("#loading-overlay").show();
+    },
+    success: function(response) {
+      $("#loading-overlay").hide();
+      var blank = response['blankImage'];
+      var name = response['image']['name'];
+      $("#main-image").attr("src","../image/" +name);
+      $("#blank-image").attr("src","../site-images/" + blank);
+      $("#main-image-mobile").attr("src","../image/" +name);
+      $("#blank-image-mobile").attr("src","../site-images/" + blank);
+      $("#productColor").val(response['image']['color']);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      $("#loading-overlay").hide();
+      alert("something went wrong");
+    } 
+  });
+  } else {
+     
+  }
 });
-}
- });
 
+$('.cart_select li').on('click', function() {
+  var option = $('.cart_select select').find(":selected").val();
+  if(option == "Podgorica"){
+   $("#shipping_price").val("2");
+   $("#strong_shipping").html("&euro;2");
+  }else{
+   $("#shipping_price").val("3");
+   $("#strong_shipping").html("&euro;3");
+  }
+})
 
 /*  $('.cases').change(function(){
   alert($( "cases option:selected" ).val());

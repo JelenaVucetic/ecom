@@ -108,7 +108,7 @@ Route::post('/addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
 });
 
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => [ 'auth', 'verified']], function() {
     Route::post('/addToWishlist', 'HomeController@wishlist')->name('addToWishlist');
     Route::get('/profile', 'ProfileController@index');
     Route::get('/address', 'ProfileController@address');

@@ -342,17 +342,17 @@ for( let i=1;i<200;i++) {
     <section id="do_action">
         <div class="container">
             <div class="block-body order-summary">
-                <ul class="order-menu list-unstyled">
+               {{--  <ul class="order-menu list-unstyled">
                     <li>
                         <span id="countTotal">{{$countTotal}}</span> <span> items</span>
                      
                         <strong id="cartTotal1"  style="float: right;">&euro;{{$cartSubTotal}}</strong>
-                        <!--  odje treba neko if -->
-                      {{--   <span id="oldPrice"  style="float: right;">&euro;{{ $oldPrice }}</span>  --}}
                     </li>
-                    <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>&euro;3</strong></li>
+                    <li class="d-flex justify-content-between">
+                        <span>Shipping and handling</span><strong>&euro;3</strong>
+                    </li>
                     <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotal">&euro;{{$cartSubTotal+3}}</strong></li>
-                </ul>
+                </ul> --}}
                 @if(!Auth::user())
                 <div class="account">
                     <div>
@@ -423,6 +423,34 @@ for( let i=1;i<200;i++) {
                         <br>
                         <span style="color:red">{{ $errors->first('city') }}</span>
                     </div>
+                    <div class="cart_select">
+                        <label for="city" class="form-label">City Name</label>     
+                        <select class="select_city" id="" name="city" >
+                            <option value="Andrijevica" {{ (isset($ads->city)) == "Andrijevica" ? selected : "" }}>Andrijevica</option>
+                            <option value="Bar" {{ (isset($ads->city)) == "Bar" ? selected : "" }}>Bar</option>
+                            <option value="Berane" {{ (isset($ads->city)) == "Berane" ? selected : "" }}>Berane</option>
+                            <option value="Budva" {{ (isset($ads->city)) == "Budva" ? selected : "" }}>Budva</option>
+                            <option value="Bijelo Polje" {{ (isset($ads->city)) == "Bijelo Polje" ? selected : "" }}>Bijelo Polje</option>
+                            <option value="Cetinje" {{ (isset($ads->city)) == "Cetinje" ? selected : "" }}>Cetinje</option>
+                            <option value="Danilovgrad" {{ (isset($ads->city)) == "Danilovgrad" ? selected : "" }}>Danilovgrad</option>
+                            <option value="Gusinje" {{ (isset($ads->city)) == "Gusinje" ? selected : "" }}>Gusinje</option>
+                            <option value="Herceg Novi" {{ (isset($ads->city)) == "Herceg Novi" ? selected : "" }}>Herceg Novi</option>
+                            <option value="Podgorica" {{ (isset($ads->city)) == "Podgorica" ? selected : "" }}>Podgorica</option>
+                            <option value="Petnjica" {{ (isset($ads->city)) == "Petnjica" ? selected : "" }}>Petnjica</option>
+                            <option value="Plav" {{ (isset($ads->city)) == "Plav" ? selected : "" }}>Plav</option>
+                            <option value="Pljevlja" {{ (isset($ads->city)) == "Pljevlja" ? selected : "" }}>Pljevlja</option>
+                            <option value="Plužine" {{ (isset($ads->city)) == "Plužine" ? selected : "" }}>Plužine</option>
+                            <option value="Rožaje" {{ (isset($ads->city)) == "Rožaje" ? selected : "" }}>Rožaje</option>
+                            <option value="Kolašin" {{ (isset($ads->city)) == "Kolašin" ? selected : "" }}>Kolašin</option>
+                            <option value="Kotor" {{ (isset($ads->city)) == "Kotor" ? selected : "" }}>Kotor</option>                           
+                            <option value="Mojkovac" {{ (isset($ads->city)) == "Mojkovac" ? selected : "" }}>Mojkovac</option>
+                            <option value="Nikšić" {{ (isset($ads->city)) == "Nikšić" ? selected : "" }}>Nikšić</option>
+                            <option value="Ulcinj" {{ (isset($ads->city)) == "Ulcinj" ? selected : "" }}>Ulcinj</option>                         
+                            <option value="Tivat" {{ (isset($ads->city)) == "Tivat" ? selected : "" }}>Tivat</option>
+                            <option value="Šavnik" {{ (isset($ads->city)) == "Šavnik" ? selected : "" }}>Šavnik</option>
+                            <option value="Žabljak" {{ (isset($ads->city)) == "Žabljak" ? selected : "" }}>Žabljak</option>
+                        </select>
+                    </div>
                 </div>
             </form>
             <div style="margin:30px auto;"> 
@@ -438,6 +466,8 @@ for( let i=1;i<200;i++) {
                   
                       <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
+
+                            <input type="hidden" value="" id="shipping_price">
                             <div>
                                 <ul class="order-menu list-unstyled">
                                     <input type="hidden" value="{{$order_number}}" name="order_number">
@@ -447,8 +477,8 @@ for( let i=1;i<200;i++) {
                                         <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
                                         <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
                                     </li>
-                                    <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>&euro;3</strong></li>
-                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal+3}}</strong></li>
+                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;</strong></li>
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal}}</strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
@@ -499,7 +529,7 @@ for( let i=1;i<200;i++) {
                       </div>
                     </div>
                     <div class="card">
-                      <div class="continue">                 
+                     {{--  <div class="continue">                 
                             <button id="pay-with-cash" class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Continue with Cash</button>
                       </div>
                       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
@@ -507,7 +537,7 @@ for( let i=1;i<200;i++) {
                           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                         <input type="submit" value="Cash" name="action" class="submit-button">
-                      </div>
+                      </div> --}}
                     </div>
                   </div>
 
@@ -538,4 +568,5 @@ $(document).ready(function() {
    });
 });
 </script>
+
 @endsection
