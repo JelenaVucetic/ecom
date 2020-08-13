@@ -6151,7 +6151,40 @@ if (!$process8->isSuccessful()) {
     }
 
     public static function wallpaper($id, $image){
+        $imageName1 = "/" .  $image; 
 
+        $path = public_path();
+   
+       
+       
+   
+        $src1 = new \Imagick(public_path("design". $imageName1));
+        $src1->resizeImage(1300, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("design". $imageName1));
+   
+        $src2 = new \Imagick(public_path("\site-images\Wall-Wallpapers-Mask.png"));
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 0, 0);
+
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        
+        $string = str_shuffle($name);
+        $string .=  round(microtime(true) * 1000);
+        $imageRandom = '/' . $string . '.png';
+
+        $src2->writeImage(public_path("image" . $imageRandom));
+
+                $imageRandom = ltrim($imageRandom, '/');
+
+         $check = DB::table('images')->insert([
+          'name' => $imageRandom, 'product_id' => $id, 'size' => 'big'
+         ]);
+      
+         return $check;
+
+        dd();
         $imageName1 = "/" .  $image; 
 
         $path = public_path();
@@ -6269,11 +6302,10 @@ if (!$process8->isSuccessful()) {
    throw new ProcessFailedException($process7);
    }
    echo $process7->getOutput();
-   echo '<img src="\image\ms_light_map_logo_tapeta-2.png">';
+
    
    $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
    $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
-   $src = new \Imagick(public_path("\image\ms_light_map_logo_tapeta-2.png"));
    $src3 = new \Imagick(public_path("image/_wallpap.png"));
    $src2->compositeImage($src3, \Imagick::COMPOSITE_DSTOVER, 0, 0);
    $src2->writeImage(public_path("image/output1.png"));
@@ -6476,7 +6508,131 @@ if (!$process8->isSuccessful()) {
         return $check;
     }
 
-    public static function wallpaperThumb($id, $image){
+    public static function wallpaperRepeat($id, $image){
+
+        $imageName1 = "/" .  $image; 
+
+        $path = public_path();
+   
+       
+       
+   
+        $src1 = new \Imagick(public_path("design". $imageName1));
+        $src1->resizeImage(200, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("design". $imageName1));
+        $Y = $src1->getImageHeight()/2;
+        $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/design'.$imageName1. ' ' .$path.'/image/Tiles.png
+   ');
+   
+   $process->run();
+   if (!$process->isSuccessful()) {
+   throw new ProcessFailedException($process);
+   }
+   echo $process->getOutput();
+   echo '<img src="\image\Tiles.png">';
+   
+   
+   
+   $src2 = new \Imagick(public_path("\site-images\Wall-Wallpapers-Mask.png"));
+   /* $src2->resizeImage(1000, null,\Imagick::FILTER_LANCZOS,1); 
+   $src2->writeImage(public_path("\site-images\Tapete-Thumbnail-mockup.png")); */
+   
+   
+   
+   $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5"); 
+   
+   $process5 = new Process('magick convert ^
+   '.$path.'\site-images\Wall-Wallpapers-Mask.png ^
+   -channel A -blur 0x8
+   -compose hardlight
+   '.$path.'\image\ms_light_map-tapeta.png
+   ');
+   
+   /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
+   -blur 0x3 ^
+   -contrast-stretch 0,50%% ^
+   -depth 16 ^  -negate  -channel A -blur 0x8*/
+   
+   $process5->run();
+   if (!$process5->isSuccessful()) {
+   throw new ProcessFailedException($process5);
+   }
+   echo $process5->getOutput();
+   echo '<img src="\image\ms_light_map-tapeta.png">';
+   
+   $process6 = new Process('magick convert ^
+   '.$path.'/image/Tiles.png ^
+   
+   '.$path.'\image\ms_logo_displace_mask_tapeta.png
+   ');
+   
+   
+   
+   $process6->run();
+   if (!$process6->isSuccessful()) {
+   throw new ProcessFailedException($process6);
+   }
+   echo $process6->getOutput();
+   echo '<img src="\image\ms_logo_displace_mask_tapeta.png">';
+   
+   $process7 = new Process('magick convert ^
+   '.$path.'\image/Tiles.png ^
+   '.$path.'\image\ms_light_map-tapeta.png ^
+   -geometry -0-0 ^
+   -compose Multiply -composite ^
+   '.$path.'\image\ms_logo_displace_mask_tapeta.png ^
+   -compose CopyOpacity -composite ^
+   '.$path.'\image\ms_light_map_logo_tapeta.png
+   ');
+   
+   $process7->run();
+   if (!$process7->isSuccessful()) {
+   throw new ProcessFailedException($process7);
+   }
+   echo $process7->getOutput();
+   echo '<img src="\image\ms_light_map_logo_tapeta.png">';
+   
+   $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
+   $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
+   $src = new \Imagick(public_path("\image\ms_light_map_logo_tapeta.png"));
+   $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 0, 0);
+   $src2->writeImage(public_path("image/output1.png"));
+   $process5 = new Process('magick  convert '.$path.'\image\output1.png 
+   -flatten  '.$path.'\image\out.png 
+   ');
+    $process5->run();
+       if (!$process5->isSuccessful()) {
+        throw new ProcessFailedException($process5);
+       }
+        echo $process5->getOutput();
+        echo '<img src="\image\out.png">'; 
+   
+   
+        $src7 = new \Imagick(public_path("\image\out.png"));
+        $src8 = new \Imagick(public_path("\site-images\Wall-Wallpapers-BG.png"));
+        $src7->compositeImage($src8, \Imagick::COMPOSITE_MULTIPLY, 0, 0);
+
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        
+        $string = str_shuffle($name);
+        $string .=  round(microtime(true) * 1000);
+        $imageRandom = '/' . $string . '.png';
+
+        $src7->writeImage(public_path("image" . $imageRandom));
+
+        
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat'
+        ]);
+     
+        return $check;
+
+        dd();
         $imageName1 = "/" .  $image; 
 
         $path = public_path();
@@ -7645,7 +7801,7 @@ if (!$process8->isSuccessful()) {
              $imageRandom = ltrim($imageRandom, '/');
              
              $check = DB::table('images')->insert([
-                'name' => $imageRandom, 'product_id' => $id, 'size' => 'rectangle'
+                'name' => $imageRandom, 'product_id' => $id, 'size' => 'Square'
                ]);
          
                return $check;
@@ -7838,7 +7994,7 @@ if (!$process8->isSuccessful()) {
           -matte                     ^
           -virtual-pixel transparent ^
           -distort Perspective       ^
-          "0,0,20,20 0,200,20,220 200,200,180,220 200,0,220,10" ^
+          "0,0,20,20 0,200,20,220 200,200,220,180 200,0,220,20" ^
           '.$path.'\image\ms_displaced_logo_perspective.png
         
            ');
@@ -8009,7 +8165,7 @@ if (!$process8->isSuccessful()) {
           -matte                     ^
           -virtual-pixel transparent ^
           -distort Perspective       ^
-          "0,0,20,20 0,200,20,220 200,200,180,220 200,0,220,10" ^
+          "0,0,20,20 0,200,20,220 200,200,220,180 200,0,220,20" ^
           '.$path.'\image\ms_displaced_logo_perspective.png
         
            ');
@@ -8798,10 +8954,7 @@ if (!$process8->isSuccessful()) {
         '.$path.'\image\ms_light_map-puzle.png
         ');
         
-        /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
-        -blur 0x3 ^
-        -contrast-stretch 0,50%% ^
-        -depth 16 ^  -negate  -channel A -blur 0x8*/
+
         
         $process5->run();
         if (!$process5->isSuccessful()) {
@@ -8828,7 +8981,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-puzle.png ^
-        -geometry -205-100 ^
+        -geometry -450-350 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_puzle.png ^
         -compose CopyOpacity -composite ^
@@ -8845,7 +8998,7 @@ if (!$process8->isSuccessful()) {
         $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
         $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
         $src = new \Imagick(public_path("\image\ms_light_map_logo_puzle.png"));
-        $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 205, 100);
+        $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 450, 350);
         $src2->writeImage(public_path("image/output1.png"));
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

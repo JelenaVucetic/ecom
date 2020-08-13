@@ -1148,31 +1148,20 @@ $("#female-x").on("click", function(){
       beforeSend: function(){
         $("#loading-overlay").show();
       },
-        success: function(response) {
-          $("#loading-overlay").hide();
-          var blank = response['blankImage'];
-          var name = response['image']['name'];
-          $("#main-image").attr("src","../image/" +name);
-          $("#blank-image").attr("src","../site-images/" + blank);
-          $("#main-image-mobile").attr("src","../image/" +name);
-          $("#blank-image-mobile").attr("src","../site-images/" + blank);
-          $("#productColor").val(response['image']['color']);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          $("#loading-overlay").hide();
-          alert("something went wrong");
-      }
-      });
-    } else if(pro_cat=="Coasters"){
-      var size = $(".coaster-shape option:selected" ).val();
-
+      error: function (jqXHR, textStatus, errorThrown) {
+        $("#loading-overlay").hide();
+        alert("something went wrong");
+    }
+    });
+    }else if(pro_cat=="Coasters" || pro_cat=="Magnets"){
+      var size = $("option:selected" ).val();
       $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
       dataType: 'json',
-      url: '/load_images_coasters',
+      url: '/load_images_size',
       data: {  pro_cat:pro_cat, size:size, id:id},
       beforeSend: function(){
         $("#loading-overlay").show();

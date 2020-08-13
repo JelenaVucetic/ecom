@@ -237,7 +237,7 @@ class HomeController extends Controller
         }elseif($find_cat->category->name=="Magnets"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['size', '=' , 'rectangle']
+                ['size', '=' , 'Square']
             ])->first();
             $imageBack = "Karticni.png";
         }elseif($find_cat->category->name=="Thermoses"){
@@ -257,6 +257,11 @@ class HomeController extends Controller
                 ['color', "=" , "white"]
             ])->first();
             $imageBack = "maskabijela.jpg";
+        }elseif($find_cat->category->name=="Custom"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "Custommaska.png";
         }
 
 
@@ -880,13 +885,17 @@ class HomeController extends Controller
     }
 
 
-    public function loadImagesCoasters(Request $request){
-       
+    public function loadImagesSize(Request $request){
+
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['size' , "=",$request->size]
         ])->first();
+       if($request->pro_cat == "Coasters"){
         $blankImage = "Coaster". $request->size. ".jpg";
+       }elseif($request->pro_cat == "Magnets"){
+        $blankImage = "Magnets". $request->size. ".png";
+       }
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }

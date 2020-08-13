@@ -240,7 +240,7 @@ if($original == "Canvas"){
     ImageModel::canvas($idProduct, $originalImagePath);
 }
 if($original == "Wallpapers"){
-    ImageModel::wallpaperThumb($idProduct, $originalImagePath);
+    ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
     ImageModel::wallpaper($idProduct, $originalImagePath);
 }
 if($original == "Clocks"){
