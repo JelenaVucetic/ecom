@@ -7760,7 +7760,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-phone1.png ^
-        -geometry -430-270 ^
+        -geometry -430-320 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_phone1.png ^
         -compose CopyOpacity -composite ^
@@ -7777,7 +7777,7 @@ if (!$process8->isSuccessful()) {
         $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
         $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
         $src = new \Imagick(public_path("\image\ms_light_map_logo_phone1.png"));
-        $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 430, 270);
+        $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 430, 320);
         $src2->writeImage(public_path("image/output1.png"));
 
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -7861,7 +7861,7 @@ if (!$process8->isSuccessful()) {
      $process7 = new Process('magick convert ^
      '.$path.'\resized_pictures'. $imageName1. ' ^
      '.$path.'\image\ms_light_map-phone1.png ^
-     -geometry -425-280 ^
+     -geometry -425-330 ^
      -compose Multiply -composite ^
      '.$path.'\image\ms_logo_displace_mask_phone1.png ^
      -compose CopyOpacity -composite ^
@@ -7878,7 +7878,7 @@ if (!$process8->isSuccessful()) {
      $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
      $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
      $src = new \Imagick(public_path("\image\ms_light_map_logo_phone1.png"));
-     $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 425, 280);
+     $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 425, 330);
      $src2->writeImage(public_path("image/output1.png"));
 
      $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

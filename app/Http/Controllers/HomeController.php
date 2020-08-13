@@ -190,8 +190,7 @@ class HomeController extends Controller
             $imageBack = "Canvas-mockup-thumbnail.png";
         }elseif($find_cat->category->name=="Wallpapers"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id],
-                ['size','=', 'vertical']
+                ['product_id',"=", $id]
             ])->first();
             $imageBack = "Tapete-Thumbnail-mockup-2.png";
         }elseif($find_cat->category->name=="Tote Bags") {
@@ -248,7 +247,8 @@ class HomeController extends Controller
             $imageBack = "TermosThumbnail.png";
         }elseif($find_cat->category->name=="Mugs"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id]
+                ['product_id',"=", $id],
+                ['size', "=" , "main"]
             ])->first();
             $imageBack = "Solja-Mockup-BG.png";
         }elseif($find_cat->category->name=="Masks"){
