@@ -48,6 +48,9 @@
                         </div>
                     </form>
                 </div>
+                <div>
+                    <a href="/home">Go to Home page</a>
+                </div>
             </div>
         </div>
     </div>

@@ -62,7 +62,36 @@
                         Method of payment
                         Urban One made Credit Card Payment possible. In our online store you can buy using credit cards MasterCard, Maestro, Visa .</p>
                 </div>  
-               
+                <div>
+                    <h4>Payment conversion statement</h4>
+                    <p>Please note that all payments will be effected in the Montenegrian currency – euro (EUR).
+                        If the payment is done using foreign issuers payment cards,
+                        total amount of transaction will be converted into bank settlement currency,
+                        according to the current exchange rate of the Montenegrian National Bank.
+                        Once when transaction is settled the already converted amount will be converted 
+                        into your local currency according to the exchange rate of credit card associations.
+                        As a result of this conversion there is a possibility of a slight difference
+                        from the original price stated in our web site.
+                    </p>
+                </div>  
+                <div>
+                    <h4>Data protection when paying</h4>
+                    <p>When entering payment card data, confidential information is transmitted via the public network in a protected (encrypted)
+                         form using the SSL protocol, using the most modern methods of tokenization of sensitive data, and in accordance 
+                         with PCI-DSS standards. At no time is the payment card information available to the merchant.
+                        3D Secure protection for all merchants and customers - AllSecure Payment Gateway uses the highest global standards of
+                         data protection and privacy. All merchants using the AllSecure Payment Gateway are automatically included in 3D-Secure 
+                         protection, guaranteeing customers the security of their purchases. Customer payment card numbers are not stored on 
+                         the merchant's system and the registration itself is protected by SSL data encryption.
+                        PCI DSS Standards - AllSecure Payment Gateway is constantly complying with all the requirements of card organizations 
+                        in order to increase the level of security of merchants and customers. From 2005 until today, without interruption,
+                         the system has been certified as PCI-DSS Level 1, which is the highest standard in the industry. The PCI Data Security 
+                         Standard (PCI-DSS) is a standard that defines the necessary security measures when processing, storing and transmitting
+                          sensitive card data. PCI Standards protect sensitive cardholder data during the entire payment process: from the moment 
+                          of entering data at the merchant's point of sale, during communications between the merchant and relevant banks and card 
+                          organizations, as well as the subsequent storage of this data.
+                    </p>
+                </div>  
             </div>
         </div>
     </div>
