@@ -1255,7 +1255,7 @@ $('.cart_select li').on('click', function() {
   data: { city : city, subtotal: subtotal },
 success: function(response) {
   $('#cartTotalSecond').html("&euro;"+response['subtotal']);
-  $('#amount').html("&euro;"+response['subtotal']);
+  $('#amount').val(response['subtotal']);
 },
 error: function (jqXHR, textStatus, errorThrown) {
   alert("something went wrong");

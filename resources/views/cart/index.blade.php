@@ -11,6 +11,7 @@
 $(document).ready(function(){
 for( let i=1;i<200;i++) {
     $('#upCart'+i).on('change keyup', function(){
+        var city = $('.cart_select select').find(":selected").val();
         var newqty = $('#upCart'+i).val();
         var rowId = $('#rowId'+i).val();
         var proId = $('#proId'+i).val();
@@ -25,7 +26,7 @@ for( let i=1;i<200;i++) {
             type: 'get',
             dataType: 'json',
             url: '/cart/updateCart/'+proId,
-            data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
+            data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId +  "& city=" + city,
             success: function (data) {
                 $('#upCart'+i).html(data.qty);
                 $('#subtotal'+i).html(data.subtotal);
@@ -34,7 +35,7 @@ for( let i=1;i<200;i++) {
                 $('#oldPrice').html(data.oldPrice);
                 $('#countTotal').html(data.countTotal);
                 $('#cartTotalSecond').html(data.cartTotal);
-                $('#cartTotal1Second').html(data.cartTotal);
+                $('#cartTotal1Second').html(data.cartSubTotalOld);
                 $('#countTotalSecond').html(data.countTotal);
                 //$('#strong_shipping').html(date.shipping)
                 $('#amount').val(data.cartTotal);
@@ -51,6 +52,7 @@ for( let i=1;i<200;i++) {
     $(document).ready(function(){
     for( let i=1;i<200;i++) {
         $('#upCartPhone'+i).on('change keyup', function(){
+            var city = $('.cart_select select').find(":selected").val();
             var newqty = $('#upCartPhone'+i).val();
             var rowId = $('#rowIdPhone'+i).val();
             var proId = $('#proIdPhone'+i).val();
@@ -65,7 +67,7 @@ for( let i=1;i<200;i++) {
                 type: 'get',
                 dataType: 'json',
                 url: '/cart/updateCart/'+proId,
-                data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId,
+                data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId + "& city=" + city,
                 success: function (data) {
                     $('#upCartPhone'+i).html(data.qty);
                     $('#subtotalPhone'+i).html(data.subtotal);
@@ -74,7 +76,7 @@ for( let i=1;i<200;i++) {
                     $('#oldPrice').html(data.oldPrice);
                     $('#countTotal').html(data.countTotal);
                     $('#cartTotalSecond').html(data.cartTotal);
-                    $('#cartTotal1Second').html(data.cartTotal);
+                    $('#cartTotal1Second').html(data.cartSubTotalOld);
                     $('#countTotalSecond').html(data.countTotal);
                     $('#amount').val(data.cartTotal);
                     $("#number_cart_items_phone").html(data.cartCount); 
@@ -105,7 +107,7 @@ for( let i=1;i<200;i++) {
         <div style="text-align:center">
             <h2>Your shopping cart</h2>
             <p>Order <strong>three</strong> products and get 10% off</p>
-            <p>Order <strong>five</strong> products and get 20% off</p>
+            <p>Order <strong>five</strong> products and get 15% off</p>
         </div>
 
 
@@ -315,7 +317,7 @@ for( let i=1;i<200;i++) {
                              
                         </td>
                         <td class="cart_price">
-                            <p>{{$cartItem->price}}&euro;</p>
+                            <p>{{ number_format((float)$cartItem->price, 2, '.', '')}}&euro;</p>
                         </td>
                         <td class="cart_quantity">
                             <input type="hidden" id="rowId<?php echo $count;?>" value="{{$cartItem->rowId}}"/>
@@ -480,14 +482,14 @@ for( let i=1;i<200;i++) {
                                     </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;</strong></li>
                                {{--  //dodati siping --}}
-                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;<?php echo number_format((float)$cartSubTotal, 2, '.', ''); ?></strong></li>
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{number_format((float)$cartSubTotal, 2, '.', '')}}</strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
                                 @csrf
                                 <input type="hidden" name="transaction_token" id="transaction_token" />
                               {{--   //dodati siping --}}
-                                <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal+3}}">
+                                <input type="hidden" name="amount" id="amount" value="{{number_format((float)$cartSubTotal, 2, '.', '')}}">
 
                                 <div class="payment">
                                 <div style="width:100%;">
