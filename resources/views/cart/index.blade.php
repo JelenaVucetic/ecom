@@ -36,6 +36,7 @@ for( let i=1;i<200;i++) {
                 $('#cartTotalSecond').html(data.cartTotal);
                 $('#cartTotal1Second').html(data.cartTotal);
                 $('#countTotalSecond').html(data.countTotal);
+                //$('#strong_shipping').html(date.shipping)
                 $('#amount').val(data.cartTotal);
                 $("#number_cart_items").html(data.cartCount); 
             }
@@ -478,12 +479,14 @@ for( let i=1;i<200;i++) {
                                         <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
                                     </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;</strong></li>
+                               {{--  //dodati siping --}}
                                     <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal}}</strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
                                 @csrf
                                 <input type="hidden" name="transaction_token" id="transaction_token" />
+                              {{--   //dodati siping --}}
                                 <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal+3}}">
 
                                 <div class="payment">

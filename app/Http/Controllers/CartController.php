@@ -173,6 +173,7 @@ class CartController extends Controller
 
     public function updateCart(Request $request, $id)
     {
+        dd($request);
         $qty = $request->qty;
         $proId = $request->proId;
         $rowId = $request->rowId;
