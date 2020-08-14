@@ -133,7 +133,7 @@ class CartController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
-        } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags"){
+        } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags" || $product->category->name=="Notebooks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color','=', 'white']
@@ -205,8 +205,16 @@ class CartController extends Controller
             $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
             $cartSubTotal = (float) Cart::subtotal() * 0.85;
+            $cartSubTotalOld = (float) Cart::subtotal() * 0.85;
         } else {
             $cartSubTotal = Cart::subtotal();
+            $cartSubTotalOld = Cart::subtotal();
+        }
+
+        if($request->city == "Podgorica"){
+            $cartSubTotal += 2;
+        }else{
+            $cartSubTotal += 3;
         }
 
         return response()->json([
@@ -215,7 +223,8 @@ class CartController extends Controller
             'cartTotal' => number_format((float)$cartSubTotal, 2, '.', ''),
             'oldPrice' =>  $oldPrice,
             'countTotal' => $countTotal,
-            'cartCount' => $cartCount
+            'cartCount' => $cartCount,
+            'cartSubTotalOld' => $cartSubTotalOld
         ]);
     }
 }
