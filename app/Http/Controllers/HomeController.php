@@ -27,6 +27,7 @@ class HomeController extends Controller
     {
         //Maknuti komentar ispod ,'verified'
         $this->middleware('verified', ['only' => ['index']]);
+        $this->middleware('auth', ['only' => ['index']]);
        
     }
 
@@ -91,15 +92,20 @@ class HomeController extends Controller
         $designs = Design::orderBy('id', 'desc')->paginate(28);
         $designsRandom = Design::inRandomOrder()->get();
         $categories = Category::where('parent_id',NULL)->get();
-        $products = Product::orderBy('id', 'desc')->paginate(28);
-        $tShirts = Product::where('category_id', 6)->get();
+        $products = Product::orderBy('id', 'desc')->distinct('design_id')->paginate(28);
+        $tShirts = Product::distinct()->where('category_id', 6)->groupBy("product.design_id")->get();
 
-        $masks = Product::where('category_id', 2)->get();
+        $masks = Product::distinct()->where('category_id', 2)->groupBy("product.design_id")->get();
+        
         $cases1 = Category::where('parent_id', $parentId = Category::where('name', "Cases")
                 ->value('id'))
                 ->pluck('id')
                 ->all();
-        $cases = Product::whereIn('category_id', $cases1)->get();
+
+              
+        $cases = Product::distinct()->whereIn('category_id', $cases1)->groupBy("product.design_id")->get();
+        
+
   /*
         foreach($tShirts as $t) {
             dd($t->images);
@@ -256,7 +262,7 @@ class HomeController extends Controller
                 ['product_id',"=", $id],
                 ['color', "=" , "white"]
             ])->first();
-            $imageBack = "maskabijela.jpg";
+            $imageBack = "Face-Mask-White-BG.png";
         }elseif($find_cat->category->name=="Custom"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]

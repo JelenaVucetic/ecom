@@ -1148,6 +1148,17 @@ $("#female-x").on("click", function(){
       beforeSend: function(){
         $("#loading-overlay").show();
       },
+      success: function(response) {
+        $("#loading-overlay").hide();
+         var blank = response['blankImage'];
+         var name = response['image']['name'];
+        $("#main-image").attr("src","../image/" +name);
+        $("#blank-image").attr("src","../site-images/" + blank);
+       
+        $("#main-image-mobile").attr("src","../image/" +name);
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
+        $("#productColor").val(response['image']['color']);
+      },
       error: function (jqXHR, textStatus, errorThrown) {
         $("#loading-overlay").hide();
         alert("something went wrong");
