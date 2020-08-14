@@ -53,9 +53,13 @@ class CheckoutController extends Controller
         $expiry_year = (string) $xml->returnData->creditcardData->expiryYear;
         $first_six_digits = (string) $xml->returnData->creditcardData->firstSixDigits;
         $last_four_digits = (string) $xml->returnData->creditcardData->lastFourDigits;
-         
+        $email = (string) $xml->customerData->email;
         //file_put_contents('/home/khhua5brw593/public_html/urbanone.me/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
  
+        $status = $callbackResult->getResult();
+        $order_number = $callbackResult->getReferenceId();
+        $amount = $callbackResult->getAmount();
+        
         if ($callbackResult->getResult() == 'OK') {
              DB::table('payment_info')->insert([
                     'result' => $callbackResult->getResult(),
@@ -78,6 +82,9 @@ class CheckoutController extends Controller
             //finishCart();
 
             Cart::destroy();
+
+            //Order Success Mail
+            Mail::to($email)->send(new OrderShipped($status, $order_number, $amount, $card_type, $last_four_digits));
 
             return response('OK', 200)
                   ->header('Content-Type', 'text/plain');  
@@ -107,6 +114,8 @@ class CheckoutController extends Controller
                 'last_four_digits' => $last_four_digits
             ]);
             
+            //Order error mail
+
             return response('OK', 200)
             ->header('Content-Type', 'text/plain');   
         } else {
