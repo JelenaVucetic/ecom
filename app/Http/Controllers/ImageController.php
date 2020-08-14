@@ -11,6 +11,9 @@ use App\Category;
 use Illuminate\Support\Facades\Input;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+
 
 class ImageController extends Controller
 {
@@ -36,11 +39,48 @@ class ImageController extends Controller
         
         $extension =  $request->file('file')->getClientOriginalExtension();
        // dd($extension);
-        $image = $filename . "_" . time() . ".".$extension;
+        $imageNoExt = $filename . "_" . time();
+        $image2 = $imageNoExt . "_watermark" . "." . $extension;
+        $image = $imageNoExt . ".".$extension;
         $image = preg_replace('/\s+/', '', $image);
+        $image2 = preg_replace('/\s+/', '', $image2);
         $file->move('design/', $image);
-
+       
+      /*   $image1 = new \Imagick();
+        $image1->readImage(public_path('design/' . $image)); */
         $image1 = Image::make(public_path('design/' . $image));
+        
+         $image3 = new \Imagick();
+        $image3->readImage(public_path('design/' . $image)); 
+        $watermark = new \Imagick();
+       $path = public_path();
+        $watermark->readImage(public_path("site-images/watermark2.png"));
+
+      /*   $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/site-images/watermark2.png ' .$path.'/image/watermark2.png
+        ');
+        
+        $process->run();
+        if (!$process->isSuccessful()) {
+        throw new ProcessFailedException($process);
+        }
+        echo $process->getOutput(); */
+       
+        $width = $image1->width();
+        $height = $image1->height();
+        $watermark1 = new \Imagick();
+       
+        $watermark1->readImage(public_path("image/watermark2.png"));
+        /* $watermark->resizeImage($width,$height,\Imagick::FILTER_LANCZOS,1); */
+        // The start coordinates where the file should be printed
+        $x = 0;
+        $y = 0;
+        
+        // Draw watermark on the image file with the given coordinates
+        $image3->compositeImage($watermark1, \Imagick::COMPOSITE_OVER, $x, $y);
+
+    
+        // Save image
+        $image3->writeImage(public_path("design/" . $image2));
        
 
          if($image1->width() > 400) {
