@@ -11,9 +11,11 @@
       @foreach ($designs as $design)
         <div class="slide-item">
           <div class="design-box">
-            <div class="design-image">
-              <img src="/image/{{$design->name}}" style="max-witdh:100%;max-height:100%">
-            </div>
+           <a href="{{route('productsDesign', $design->id)}}">
+              <div class="design-image">
+                <img src="/image/{{$design->name}}" style="max-witdh:100%;max-height:100%">
+              </div>
+            </a>
             <div class="count-product">
               <p>
               <?php

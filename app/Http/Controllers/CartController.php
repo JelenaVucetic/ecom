@@ -29,7 +29,7 @@ class CartController extends Controller
         } elseif ( $countTotal >= 5 ) {
             $cartSubTotal = strpos(Cart::subtotal(),'.')!==false ? rtrim(rtrim(Cart::subtotal(),'0'),'.') : Cart::subtotal();
             $cartSubTotal = str_replace( ',', '', $cartSubTotal);
-            $cartSubTotal = $cartSubTotal * 0.8;
+            $cartSubTotal = $cartSubTotal * 0.85;
         } else {
             $cartSubTotal = Cart::subtotal();
         }
@@ -171,9 +171,22 @@ class CartController extends Controller
        return back();
     }
 
+    public function shippingPrice(Request $request){
+        if($request->city == "Podgorica"){
+            $price = 2;
+        }else{
+            $price = 3;
+        }
+
+        $subtotal = str_replace('€','',$request->subtotal);
+        $subtotal = (float)$subtotal;
+        $subtotal = $subtotal + $price;
+        $subtotal = number_format((float)$subtotal, 2, '.', ''); 
+        return response()->json(["subtotal" => $subtotal]);
+    }
+
     public function updateCart(Request $request, $id)
-    {
-        dd($request);
+    {   
         $qty = $request->qty;
         $proId = $request->proId;
         $rowId = $request->rowId;
@@ -191,7 +204,7 @@ class CartController extends Controller
         if( $countTotal >= 3 &&  $countTotal < 5 ) {
             $cartSubTotal = Cart::subtotal() * 0.9;
         } elseif ( $countTotal >= 5 ) {
-            $cartSubTotal = (float) Cart::subtotal() * 0.8;
+            $cartSubTotal = (float) Cart::subtotal() * 0.85;
         } else {
             $cartSubTotal = Cart::subtotal();
         }
@@ -199,7 +212,7 @@ class CartController extends Controller
         return response()->json([
             "qty" =>  $qty,
             'subtotal' => $item->subtotal(),
-            'cartTotal' => $cartSubTotal,
+            'cartTotal' => number_format((float)$cartSubTotal, 2, '.', ''),
             'oldPrice' =>  $oldPrice,
             'countTotal' => $countTotal,
             'cartCount' => $cartCount
