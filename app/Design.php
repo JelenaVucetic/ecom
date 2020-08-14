@@ -26,7 +26,9 @@ class Design extends Model
     protected $primaryKey = 'id';
     protected $fillable = ['name'];
 
-
-    
+    public function products() 
+    {
+        return $this->hasMany(Product::class);
+    }
 
 }

@@ -36,6 +36,7 @@ for( let i=1;i<200;i++) {
                 $('#cartTotalSecond').html(data.cartTotal);
                 $('#cartTotal1Second').html(data.cartTotal);
                 $('#countTotalSecond').html(data.countTotal);
+                //$('#strong_shipping').html(date.shipping)
                 $('#amount').val(data.cartTotal);
                 $("#number_cart_items").html(data.cartCount); 
             }
@@ -323,7 +324,7 @@ for( let i=1;i<200;i++) {
                                            autocomplete="off" style="text-align:center; max-width:50px; "  MIN="1" MAX="1000">
                         </td>
                         <td class="cart_total">
-                            <p class="cart_total-price" id="subtotal<?php echo $count;?>">{{ $cartItem->subtotal }}</p>
+                            <p class="cart_total-price" id="subtotal<?php echo $count;?>">{{ number_format((float)$cartItem->subtotal, 2, '.', '') }}</p>
                         </td>
                         <td class="cart_delete">
                             <button><a href="{{ url('/cart/remove') }}/{{ $cartItem->rowId }}">x</a></button>
@@ -475,15 +476,17 @@ for( let i=1;i<200;i++) {
                                     <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
                                     <li>
                                         <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
-                                        <strong id="cartTotal1Second" style="float: right;">&euro;{{$cartSubTotal}}</strong>
+                                       <strong id="cartTotal1Second" style="float: right;">&euro;<?php echo number_format((float)$cartSubTotal, 2, '.', ''); ?></strong>
                                     </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;</strong></li>
-                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{$cartSubTotal}}</strong></li>
+                               {{--  //dodati siping --}}
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;<?php echo number_format((float)$cartSubTotal, 2, '.', ''); ?></strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
                                 @csrf
                                 <input type="hidden" name="transaction_token" id="transaction_token" />
+                              {{--   //dodati siping --}}
                                 <input type="hidden" name="amount" id="amount" value="{{$cartSubTotal+3}}">
 
                                 <div class="payment">

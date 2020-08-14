@@ -97,4 +97,8 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function design()
+    {
+        return $this->belongsTo(Design::class);
+    }
 }

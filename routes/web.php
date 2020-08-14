@@ -93,6 +93,7 @@ Route::post('/cart/addItem/{id}', 'CartController@addItem');
 Route::get('/cart/updateCart/{id}', 'CartController@updateCart')->name('updateCart');
 
 Route::get('/cart/remove/{id}', 'CartController@destroy');
+Route::post('/shipping_city', 'CartController@shippingPrice');
 
 Route::post('/formvalidate', 'CheckoutController@formvalidate');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -122,3 +123,6 @@ Route::group(['middleware' => [ 'auth', 'verified']], function() {
     Route::get('/wishlist', 'HomeController@viewWishlist');
     Route::get('/removeWishList/{id}', 'HomeController@destroy');
 });
+
+
+Route::get('/product/design/{id}', 'HomeController@productsOfDesign')->name('productsDesign');

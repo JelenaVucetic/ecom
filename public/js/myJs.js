@@ -1223,14 +1223,34 @@ $("#female-x").on("click", function(){
 });
 
 $('.cart_select li').on('click', function() {
-  var option = $('.cart_select select').find(":selected").val();
-  if(option == "Podgorica"){
+  var city = $('.cart_select select').find(":selected").val();
+  var subtotal = $('#cartTotal1Second').html();
+
+  if(city == "Podgorica"){
    $("#shipping_price").val("2");
    $("#strong_shipping").html("&euro;2");
   }else{
    $("#shipping_price").val("3");
    $("#strong_shipping").html("&euro;3");
   }
+ 
+  $.ajax({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            } ,
+  type: 'post',
+  dataType: 'json',
+  url: '/shipping_city',
+  data: { city : city, subtotal: subtotal },
+success: function(response) {
+  $('#cartTotalSecond').html("&euro;"+response['subtotal']);
+  $('#amount').html("&euro;"+response['subtotal']);
+},
+error: function (jqXHR, textStatus, errorThrown) {
+  alert("something went wrong");
+} 
+});
+
 })
 
 /*  $('.cases').change(function(){

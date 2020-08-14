@@ -992,4 +992,13 @@ class HomeController extends Controller
     public function mastercardSecure() {
         return view('mastercard_secure');
     }
+
+    public function productsOfDesign($id) 
+    {
+        $categories = Category::where('parent_id',NULL)->get();
+        $design = Design::findOrFail($id);
+        $products = $design->products()->get();
+
+        return view('design.show', compact('products' , 'categories'));
+    }
 }
