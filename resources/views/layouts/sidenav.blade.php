@@ -15,7 +15,7 @@
         <!-- Navbar Right icon -->
        <div class="pmd-ml-auto-icon float-right" style="width: 95px">
         <div class="hero-right">
-          <a class="nav-link" href="/wishlist" style='color:#231F20;'><i class="fa fa-heart-o fa-2x" ></i></a>
+          <a class="nav-link" href="/wishlist" style='color:#231F20;'><img style='width:30px;'  onmouseover="this.src='/site-images/4 Favorites - ikonica - HEADER - HOVER.svg'" onmouseout="this.src='/site-images/4 Favorites - ikonica - HEADER.svg'" src="/site-images/4 Favorites - ikonica - HEADER.svg" alt=""></i></a>  
             <li style="list-style:none;">
               <div style='position: relative;'>
                 <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/5 Shopping - cart - kolica.svg" alt="">

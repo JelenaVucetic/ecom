@@ -16,8 +16,8 @@
                 <h6>Secure Payments</h6>
                 <p>100% Secure payments for <br> all your orders</p>
             </div>
-            <a class="learn-more" href="">Learn more</a>
-            <a class="learn-more-img" href="" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
+            <a class="learn-more" href="/help_center">Learn more</a>
+            <a class="learn-more-img" href="/help_center" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
         </div>
         <div class="about-urban-info">
             <img src="/site-images/12 Free Return - Ikonica.svg" alt="">
@@ -25,8 +25,8 @@
                 <h6>Free Return</h6>
                 <p>Exchange or money back <br> guarantee for all orders</p>
             </div>
-            <a class="learn-more" href="">Learn more</a>
-            <a class="learn-more-img" href="" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
+            <a class="learn-more" href="/help_center">Learn more</a>
+            <a class="learn-more-img" href="/help_center" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
         </div>
         <div class="about-urban-info">
             <img src="/site-images/12 Local Chat support.svg" alt="">
@@ -34,8 +34,8 @@
                 <h6>Local Support</h6>
                 <p>24/7 Dedicated support</p>
             </div>
-            <a class="learn-more" href="">Learn more</a>
-            <a class="learn-more-img" href="" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
+            <a class="learn-more" href="http://ecom.example/contact_us">Learn more</a>
+            <a class="learn-more-img" href="http://ecom.example/contact_us" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
         </div>
     </div>
 </div>

@@ -192,11 +192,11 @@ class CartController extends Controller
        
         if( $countTotal >= 3 &&  $countTotal < 5 ) {
             $var = Cart::subtotal();
-            $var = str_replace(',','.',$var);
+            $var = str_replace(',','',$var);
             $cartSubTotal = (float)$var * 0.9;
         } elseif ( $countTotal >= 5 ) {
             $var = Cart::subtotal();
-            $var = str_replace(',','.',$var);
+            $var = str_replace(',','',$var);
             $cartSubTotal = (float)$var * 0.85;
             $cartSubTotalOld = (float)$var * 0.85;
         } else {
@@ -205,7 +205,6 @@ class CartController extends Controller
         }
 
        
-
         if($request->city == "Podgorica"){
             $cartSubTotal += 2;
         }else{
@@ -219,7 +218,7 @@ class CartController extends Controller
             'oldPrice' =>  $oldPrice,
             'countTotal' => $countTotal,
             'cartCount' => $cartCount,
-            'cartSubTotalOld' => $cartSubTotalOld
+            'cartSubTotalOld' => number_format((float)$cartSubTotalOld, 2, '.', '')
         ]);
     }
 }

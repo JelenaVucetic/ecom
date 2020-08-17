@@ -28,10 +28,10 @@
                 </a>
             </div>
             <div id="box3" class="col-12 col-md-4">
-                <a href="{{route('category.show',[ $picturesCat->id, $picturesCat->name => $picturesCat->parent_id ])}}" style="color: inherit;">
+                <a href="{{route('category.show',[ $faceMasksCat->id, $faceMasksCat->name => $faceMasksCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
                         <div class="box3-img-holder"></div>
-                        <button>Shop Posters</button>
+                        <button>Masks</button>
                     </div>
                 </a>
             </div>
@@ -138,10 +138,10 @@
                 </a>
             </div>
             <div id="box9" class="col-12 col-md-4">
-                <a href="{{route('category.show',[$notebooksCat->id, $notebooksCat->name => $notebooksCat->parent_id ])}}" style="color: inherit;">
+                <a href="{{route('category.show',[ $postersCat->id, $postersCat->name => $postersCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
-                        <div class="box9-img-holder"></div>
-                        <button>Notebooks</button>
+                        <div class="box3-img-holder"></div>
+                        <button>Shop Posters</button>
                     </div>
                 </a>
             </div>
@@ -168,10 +168,10 @@
                             <div class="img-div">
                             @if ($product->images)
                             @foreach ($product->images as $item)
-                            @if($product->category->name=="T-Shirts")
-                              @if ($item->color == "white" && $item->position == "front")
-                                <img src="{{ url('image', $item->name) }}" class="" alt="">
-                                @break
+                                @if($product->category->name=="T-Shirts")
+                                    @if ($item->color == "white" && $item->position == "front")
+                                    <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                    @break
                                 @endif
                                 @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
