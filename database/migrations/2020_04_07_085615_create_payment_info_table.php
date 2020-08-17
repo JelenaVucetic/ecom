@@ -21,7 +21,7 @@ class CreatePaymentInfoTable extends Migration
             $table->string('purchase_id');
             $table->string('transaction_type');
             $table->string('payment_method');
-            $table->integer('amount');
+            $table->float('amount', 8, 2);
             $table->string('currency');
             $table->string('message')->nullable();
             $table->string('code')->nullable();

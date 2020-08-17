@@ -43,7 +43,8 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $products = Product::orderBy('id', 'desc')->paginate(28);
+        /* $products = Product::orderBy('id', 'desc')->paginate(28); */
+        $products = Product::distinct()->orderBy('id', 'desc')->groupBy('design_id')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
 
       /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */

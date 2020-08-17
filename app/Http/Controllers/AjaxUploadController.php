@@ -110,44 +110,62 @@ $price = 0;
 
 
 if($original=='Phone Case'){
+   /*  $originalImagePath = "iphone" + $originalImagePath; */
 $price = 6.90;
 }else if($original=='T-shirt'){
+   /*  $originalImagePath = "tshirt" + $originalImagePath; */
 $price = 12.90;
 }else if($original=='Mugs'){
+    /* $originalImagePath = "mugs" + $originalImagePath; */
 $price = 12;
 }else if($original=='Hoodie'){
+    /* $originalImagePath = "hoodie" + $originalImagePath; */
 $price = 22.90;
 }else if($original == "Poster"){
+   /*  $originalImagePath = "poster" + $originalImagePath; */
 $price = 11;
 $priceB1 = 18;
 $priceB2 = 15;
 }else if($original == "Canvas"){
+   /*  $originalImagePath = "canvas" + $originalImagePath; */
 $price = 37;
 $priceB2 = 20;
 $priceB1 = 28;
 }else if($original == "Wallpapers"){
+    /* $originalImagePath = "wallpapers" . $originalImagePath; */
 $price = 15;
 }else if($original == "Samsung"){
+   /*  $originalImagePath = "samsung" . $originalImagePath; */
 $price = 6.90;
 }else if($original == "Huawei"){
+   /*  $originalImagePath = "huawei" . $originalImagePath; */
 $price = 6.90;
 }else if($original == "Custom"){
+    /* $originalImagePath = "custom" . $originalImagePath; */
 $price = 6.90;
 }else if($original == "Magnets"){
+    /* $originalImagePath = "magnets" . $originalImagePath; */
 $price = 1.90;
 }else if($original == "Makeup Bags"){
+    /* $originalImagePath = "makeup" . $originalImagePath; */
 $price = 3.90;
 }else if($original == "Puzzles"){
+    /* $originalImagePath = "puzzles" . $originalImagePath; */
 $price = 2.90;
 }else if($original == "Coasters"){
+    /* $originalImagePath = "coasters" . $originalImagePath; */
 $price = 0.99;
 }else if($original == "Termos"){
+    /* $originalImagePath = "termos" . $originalImagePath; */
 $price = 5.99;
 }else if($original == "Mugs"){
+    /* $originalImagePath = "mugs" . $originalImagePath; */
 $price = 4.90;
 }else if($original == "Tote Bags"){
+    /* $originalImagePath = "tote" . $originalImagePath; */
 $price = 3.90;
 }else if($original == "Notes"){
+    /* $originalImagePath = "notes" . $originalImagePath; */
 $price = 4.90;
 }else{
 $price = 0;
