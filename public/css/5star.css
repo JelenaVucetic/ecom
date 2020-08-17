@@ -1,8 +1,9 @@
-
 .success-box {
     padding:10px 10px;
     border:1px solid #eee;
     background:#f9f9f9;
+    width: 80%;
+    margin: auto;
   }
   
   .success-box img {
@@ -23,7 +24,7 @@
   .rating-stars ul {
     list-style-type:none;
     padding:0;
-    
+    text-align: center;
     -moz-user-select:none;
     -webkit-user-select:none;
   }
@@ -34,7 +35,7 @@
   
   /* Idle State of the stars */
   .rating-stars ul > li.star > i.fa {
-    font-size:2.5em; /* Change the size of the stars */
+    font-size:2.0em; /* Change the size of the stars */
     color:#ccc; /* Color on idle state */
   }
   

@@ -449,7 +449,7 @@
 
 .img-div-phone {
     transform: scale(1.2)!important;
-    margin-top: 8.125%!important;
+    margin-top: 10.125%!important;
 }
 
 .img-div-phone:hover  {
@@ -525,12 +525,12 @@
 }
 
 .img-div-masks {
-    transform: scale(0.7)!important;
-    margin-top: -2.875%!important;
+    transform: scale(2.0)!important;
+    margin-top: 20.125%!important;
 }
 
 .img-div-masks:hover {
-    transform: scale(0.9) !important;
+    transform: scale(2.2) !important;
 }
 
 .product-name {

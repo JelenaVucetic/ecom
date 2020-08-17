@@ -83,23 +83,12 @@ class CartController extends Controller
                $imageFront = $pictures[0];
             }
 
-        }elseif($product->category->name == "Iphone Cases"){
+        }elseif($product->category->name == "Iphone Cases" || $product->category->name == "Samsung Cases" || $product->category->name == "Samsung Cases" || $product->category->name == "Custom"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color',"=" ,'transparent']
             ])->first();
-
-        }elseif($product->category->name == "Samsung Cases"){
-            $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id],
-                ['color',"=" ,'transparent']
-            ])->first();
-        }elseif($product->category->name == "Huawei Cases"){
-            $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id],
-                ['color',"=" ,'transparent']
-            ])->first();
-        }elseif($product->category->name=="Posters"){
+        } elseif($product->category->name=="Posters"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['size',"=" ,'A3'],
@@ -200,16 +189,22 @@ class CartController extends Controller
         foreach($cartItems as $c) {
           $countTotal = $c->qty + $countTotal;
         }
-
+       
         if( $countTotal >= 3 &&  $countTotal < 5 ) {
-            $cartSubTotal = Cart::subtotal() * 0.9;
+            $var = Cart::subtotal();
+            $var = str_replace(',','.',$var);
+            $cartSubTotal = (float)$var * 0.9;
         } elseif ( $countTotal >= 5 ) {
-            $cartSubTotal = (float) Cart::subtotal() * 0.85;
-            $cartSubTotalOld = (float) Cart::subtotal() * 0.85;
+            $var = Cart::subtotal();
+            $var = str_replace(',','.',$var);
+            $cartSubTotal = (float)$var * 0.85;
+            $cartSubTotalOld = (float)$var * 0.85;
         } else {
             $cartSubTotal = Cart::subtotal();
             $cartSubTotalOld = Cart::subtotal();
         }
+
+       
 
         if($request->city == "Podgorica"){
             $cartSubTotal += 2;

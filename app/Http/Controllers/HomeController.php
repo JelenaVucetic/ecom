@@ -286,11 +286,20 @@ class HomeController extends Controller
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
         $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first();
-        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get();
-        $countReviews = DB::table('reviews')->where('product_id', $product->id)->get();
+        //$reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get();
+        $numberOfReviews = count(DB::table('reviews')->where('product_id', $product->id)->get());
         $counter = null;
-        $numberOfReviews = count($countReviews);
-
+        $reviewsStar = DB::table('reviews')->where('product_id', $product->id)->select('reviews.*',DB::raw('AVG(reviews.stars) as avg' ))
+                                            ->groupBy('reviews.stars')->first();
+                     
+        if($reviewsStar) {
+            $average = round($reviewsStar->avg,1);
+        } else {
+            $average = '';
+        }
+      
+      
+/* dd($reviewsStar);
         if(!$reviewsStar->isEmpty()) {
           $totalStar = 0;
           foreach ($reviewsStar as $item) {
@@ -301,7 +310,7 @@ class HomeController extends Controller
           $average = round($totalStar / count($reviewsStar),1);
         } else {
             $average = 1;
-        }
+        } */
 
         if(Auth::check()) {
             $user = Auth::id();
@@ -374,20 +383,24 @@ class HomeController extends Controller
 
     public function addReview(Request $request)
     {
+       
         $this->validate($request, [
 
             'person_name' => 'required|min:3|max:35',
             'review_title' => 'required|min:3|max:35',
             'review_content' => 'required|min:3|max:35',
+            'starsVal' => 'required'
         ],
             [
                 'person_name.required' => 'Please enter your name.',
                 'review_title.required' => 'Please enter review title.',
                 'review_content.required' => 'Please enter review description',
+                'starsVal.required' => 'Please rate this product with stars.'
             ]);
         DB::table('reviews')->insert(['person_name' => $request->person_name,
                                     'product_id' => $request->product_id,
                                     'user_id' => $request->userId,
+                                    'stars' => $request->starsVal,
                                     'review_title' => $request->review_title,
                                     'review_content' => $request->review_content,
                                     'created_at' => date("Y-m-d H:i:s"),

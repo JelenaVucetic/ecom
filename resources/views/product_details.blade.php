@@ -758,7 +758,7 @@
 
           @if( isset($counter) && $counter->total>0 && $createReview === null)
               <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#writeReviewModal">
+            <button type="button" id="review" data-toggle="modal" data-target="#writeReviewModal">
               Write your review
             </button>
           @endif
@@ -767,7 +767,7 @@
 
 
  <!--   Displaying reviews -->
-     @if(isset($review))
+      @if(isset($review))
         <div class="display-review">
             <div class="average-review">
               <h5>Reviews</h5>
@@ -781,7 +781,12 @@
             </div>
             <div class="latest-review">
                 <h5>Lates review</h5>
-                <p>star icons </p>
+                <div>
+                  <div class="rateyoo"
+                  data-rateyo-rating="{{ $review->stars }}"
+                  data-rateyo-num-stars="5">
+              </div>
+              </div>
                 <p><strong>{{$review->review_title}}</strong>
                   <br>
                   <span> by {{$review->person_name}}, on {{date('F j, Y', strtotime($review->created_at))}} </span>
@@ -803,5 +808,17 @@
 @section('rateYo')
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
-
+  <script>
+    
+    function validateForm()
+    {
+        // Validate URL
+        var stars = $("#starsVal").val();
+        if (stars == "") { 
+            alert("Plese review this product by selectin a star.");
+            return false;
+        }
+      return true;
+    }
+  </script>
 @endsection
