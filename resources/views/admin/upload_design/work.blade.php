@@ -2693,7 +2693,7 @@ $("#capture").click(function(event){
     }
 
 },time)
-time += 3000;
+time += 10000;
 
 });
 

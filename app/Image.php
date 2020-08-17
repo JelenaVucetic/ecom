@@ -5808,7 +5808,7 @@ if (!$process8->isSuccessful()) {
         $imageRandom = ltrim($imageRandom, '/');
 
         $check = DB::table('images')->insert([
-         'name' => $imageRandom, 'product_id' => $id, 'color' => 'white' ,'size' => 'custom'
+         'name' => $imageRandom, 'product_id' => $id, 'color' => 'transparent' ,'size' => 'custom'
         ]);
      
      
@@ -8890,7 +8890,7 @@ if (!$process8->isSuccessful()) {
    $process7 = new Process('magick convert ^
    '.$path.'\resized_pictures'. $imageName1. ' ^
    '.$path.'\image\ms_light_map-thermos.png ^
-   -geometry -700-420 ^
+   -geometry -690-420 ^
    -compose Multiply -composite ^
    '.$path.'\image\ms_logo_displace_mask_thermos.png ^
    -compose CopyOpacity -composite ^
@@ -8907,7 +8907,7 @@ if (!$process8->isSuccessful()) {
    $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
    $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
    $src = new \Imagick(public_path("\image\ms_light_map_logo_thermos.png"));
-   $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 700, 420);
+   $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 690, 420);
 
    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
    $name = mt_rand(1000000, 9999999)

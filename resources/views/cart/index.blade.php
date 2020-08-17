@@ -473,20 +473,21 @@ for( let i=1;i<200;i++) {
                             <input type="hidden" value="" id="shipping_price">
                             <div>
                                 <ul class="order-menu list-unstyled">
-                                    <input type="hidden" value="{{$order_number}}" name="order_number">
+                                    
                                     <li class="d-flex justify-content-between"><span>Order Number:</span><strong>{{$order_number}}</strong></li>
                                     <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
                                     <li>
                                         <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
                                        <strong id="cartTotal1Second" style="float: right;">&euro;<?php echo number_format((float)$cartSubTotal, 2, '.', ''); ?></strong>
                                     </li>
-                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;</strong></li>
+                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;3</strong></li>
                                {{--  //dodati siping --}}
-                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{number_format((float)$cartSubTotal, 2, '.', '')}}</strong></li>
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{number_format((float)$cartSubTotal, 2, '.', '')+3}}</strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>
                                 @csrf
+                                <input type="hidden" value="{{$order_number}}" name="order_number">
                                 <input type="hidden" name="transaction_token" id="transaction_token" />
                               {{--   //dodati siping --}}
                                 <input type="hidden" name="amount" id="amount" value="{{number_format((float)$cartSubTotal, 2, '.', '')}}">
