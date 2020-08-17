@@ -31,7 +31,7 @@
                 <a href="{{route('category.show',[ $picturesCat->id, $picturesCat->name => $picturesCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
                         <div class="box3-img-holder"></div>
-                        <button>Shop Posters</button>
+                        <button>Shop Masks</button>
                     </div>
                 </a>
             </div>

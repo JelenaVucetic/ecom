@@ -918,6 +918,8 @@ class HomeController extends Controller
             $blankImage = "Ceger". $request->color. ".jpg";
         }elseif($request->pro_cat == "Notebooks"){
             $blankImage = "Notes". $request->color. ".png";
+        }elseif($request->pro_cat == "Makeup Bags"){
+            $blankImage = "Makeup". $request->color. ".jpg";
         }else{
             $blankImage = "Clock". $request->color. ".png";
         }

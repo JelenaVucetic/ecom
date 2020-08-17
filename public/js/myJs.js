@@ -1051,7 +1051,7 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
-    }else if(pro_cat=="Tote Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks"){
+    }else if(pro_cat=="Tote Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks" || pro_cat=="Makeup Bags"){
       var id = $("#productID").val();
       var color = this.value;
       $.ajax({
