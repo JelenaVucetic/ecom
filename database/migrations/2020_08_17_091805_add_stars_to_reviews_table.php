@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReviewStarTable extends Migration
+class AddStarsToReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateReviewStarTable extends Migration
      */
     public function up()
     {
-        Schema::create('review_star', function (Blueprint $table) {
-            $table->integer('product_id');
-            $table->integer('user_id');
-            $table->primary(['user_id', 'product_id']);
-            $table->integer('size');
-            $table->timestamps();
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->integer('stars');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateReviewStarTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review_star');
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->dropColumn('stars');
+        });
     }
 }

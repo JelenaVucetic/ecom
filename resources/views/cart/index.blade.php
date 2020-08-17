@@ -29,14 +29,14 @@ for( let i=1;i<200;i++) {
             data: "qty=" + newqty + "& rowId=" + rowId + "& proId=" + proId +  "& city=" + city,
             success: function (data) {
                 $('#upCart'+i).html(data.qty);
-                $('#subtotal'+i).html(data.subtotal);
-                $('#cartTotal').html(data.cartTotal);
-                $('#cartTotal1').html(data.cartTotal);
-                $('#oldPrice').html(data.oldPrice);
-                $('#countTotal').html(data.countTotal);
-                $('#cartTotalSecond').html(data.cartTotal);
-                $('#cartTotal1Second').html(data.cartSubTotalOld);
-                $('#countTotalSecond').html(data.countTotal);
+                $('#subtotal'+i).html('&euro;'+data.subtotal);
+                $('#cartTotal').html('&euro;'+data.cartTotal);
+                $('#cartTotal1').html('&euro;'+data.cartTotal);
+                $('#oldPrice').html('&euro;'+data.oldPrice);
+                $('#countTotal').html('&euro;'+data.countTotal);
+                $('#cartTotalSecond').html('&euro;'+data.cartTotal);
+                $('#cartTotal1Second').html('&euro;'+data.cartSubTotalOld);
+                $('#countTotalSecond').html('&euro;'+data.countTotal);
                 //$('#strong_shipping').html(date.shipping)
                 $('#amount').val(data.cartTotal);
                 $("#number_cart_items").html(data.cartCount); 
@@ -71,13 +71,13 @@ for( let i=1;i<200;i++) {
                 success: function (data) {
                     $('#upCartPhone'+i).html(data.qty);
                     $('#subtotalPhone'+i).html(data.subtotal);
-                    $('#cartTotal').html(data.cartTotal);
-                    $('#cartTotal1').html(data.cartTotal);
-                    $('#oldPrice').html(data.oldPrice);
-                    $('#countTotal').html(data.countTotal);
-                    $('#cartTotalSecond').html(data.cartTotal);
-                    $('#cartTotal1Second').html(data.cartSubTotalOld);
-                    $('#countTotalSecond').html(data.countTotal);
+                    $('#cartTotal').html('&euro;'+data.cartTotal);
+                    $('#cartTotal1').html('&euro;'+data.cartTotal);
+                    $('#oldPrice').html('&euro;'+data.oldPrice);
+                    $('#countTotal').html('&euro;'+data.countTotal);
+                    $('#cartTotalSecond').html('&euro;'+data.cartTotal);
+                    $('#cartTotal1Second').html('&euro;'+data.cartSubTotalOld);
+                    $('#countTotalSecond').html('&euro;'+data.countTotal);
                     $('#amount').val(data.cartTotal);
                     $("#number_cart_items_phone").html(data.cartCount); 
                 }
@@ -478,11 +478,11 @@ for( let i=1;i<200;i++) {
                                     <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
                                     <li>
                                         <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
-                                       <strong id="cartTotal1Second" style="float: right;">&euro;<?php echo number_format((float)$cartSubTotal, 2, '.', ''); ?></strong>
+                                    <strong id="cartTotal1Second" style="float: right;">&euro;{{ number_format((float)$cartItem->subtotal, 2, '.', '') }}</strong>
                                     </li>
                                 <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;3</strong></li>
                                {{--  //dodati siping --}}
-                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{number_format((float)$cartSubTotal, 2, '.', '')+3}}</strong></li>
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{ number_format((float)$cartItem->subtotal, 2, '.', '')+3.00 }}</strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>

@@ -54,16 +54,17 @@ $(document).ready(function(){
       var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
       var msg = "";
       if (ratingValue > 1) {
-          msg = "Thanks! You rated this " + ratingValue + " stars.";
+          msg = "Thanks! You rated this " + ratingValue + " stars.";       
       }
       else {
           msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
       }
+      $('#starsVal').val(ratingValue)
       responseMessage(msg);
       var proDum = $('#proDum').val();
       var userId = $('#user_id').val()
-
-      $.ajax({
+    
+     /*  $.ajax({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   } ,
@@ -74,10 +75,11 @@ $(document).ready(function(){
         success: function(response) {
             console.log(response)
         }
-    });
+    }); */
 
     });
-  });
+
+});
 
   function responseMessage(msg) {
     $('.success-box').fadeIn(200);
@@ -627,7 +629,13 @@ $(document).ready(function(){
   }).rateYo('option', 'readOnly', true);
 })
 
-
+$(document).ready(function(){
+  $(".rateyoo").rateYo({
+    starWidth: "15px",
+    ratedFill: "#000000",
+    spacing: "5px",
+  }).rateYo('option', 'readOnly', true);
+})
 
 
 

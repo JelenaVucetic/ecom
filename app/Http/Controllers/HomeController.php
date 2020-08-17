@@ -57,8 +57,8 @@ class HomeController extends Controller
                 ->where('categories.name', '=', 'Cases')
                 ->first();
 
-        $picturesCat = DB::table('categories')
-                ->where('categories.name', '=', 'Canvas Art')
+        $postersCat = DB::table('categories')
+                ->where('categories.name', '=', 'Posters')
                 ->first();
 
         $mugsCat = DB::table('categories')
@@ -81,10 +81,11 @@ class HomeController extends Controller
                 ->where('categories.name', '=', 'Magnets')
                 ->first();
 
-        $notebooksCat = DB::table('categories')
-                ->where('categories.name', '=', 'Notebooks')
+        $faceMasksCat = DB::table('categories')
+                ->where('categories.name', '=', 'Masks')
                 ->first();
-        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'picturesCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'notebooksCat'));
+        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat
+        '));
     }
 
     public function index()
@@ -287,11 +288,20 @@ class HomeController extends Controller
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
         $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first();
-        $reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get();
-        $countReviews = DB::table('reviews')->where('product_id', $product->id)->get();
+        //$reviewsStar = DB::table('review_star')->where('product_id', $product->id)->get();
+        $numberOfReviews = count(DB::table('reviews')->where('product_id', $product->id)->get());
         $counter = null;
-        $numberOfReviews = count($countReviews);
-
+        $reviewsStar = DB::table('reviews')->where('product_id', $product->id)->select('reviews.*',DB::raw('AVG(reviews.stars) as avg' ))
+                                            ->groupBy('reviews.stars')->first();
+                     
+        if($reviewsStar) {
+            $average = round($reviewsStar->avg,1);
+        } else {
+            $average = '';
+        }
+      
+      
+/* dd($reviewsStar);
         if(!$reviewsStar->isEmpty()) {
           $totalStar = 0;
           foreach ($reviewsStar as $item) {
@@ -302,7 +312,7 @@ class HomeController extends Controller
           $average = round($totalStar / count($reviewsStar),1);
         } else {
             $average = 1;
-        }
+        } */
 
         if(Auth::check()) {
             $user = Auth::id();
@@ -375,20 +385,24 @@ class HomeController extends Controller
 
     public function addReview(Request $request)
     {
+       
         $this->validate($request, [
 
             'person_name' => 'required|min:3|max:35',
             'review_title' => 'required|min:3|max:35',
             'review_content' => 'required|min:3|max:35',
+            'starsVal' => 'required'
         ],
             [
                 'person_name.required' => 'Please enter your name.',
                 'review_title.required' => 'Please enter review title.',
                 'review_content.required' => 'Please enter review description',
+                'starsVal.required' => 'Please rate this product with stars.'
             ]);
         DB::table('reviews')->insert(['person_name' => $request->person_name,
                                     'product_id' => $request->product_id,
                                     'user_id' => $request->userId,
+                                    'stars' => $request->starsVal,
                                     'review_title' => $request->review_title,
                                     'review_content' => $request->review_content,
                                     'created_at' => date("Y-m-d H:i:s"),
@@ -634,7 +648,6 @@ class HomeController extends Controller
             $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
         })
         ->get();
-
         $casesIds = Category::where('parent_id', $parentId = Category::where('name', 'Cases')
         ->value('id'))
         ->pluck('id')
@@ -651,8 +664,7 @@ class HomeController extends Controller
             $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
         })->get();
 
-        $makeupBags = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $makeupBags = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Makeup Bags')
         ->where(function ($q) {
@@ -660,8 +672,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $mugs = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $mugs = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Mugs')
         ->where(function ($q) {

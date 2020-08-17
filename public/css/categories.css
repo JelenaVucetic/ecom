@@ -105,6 +105,16 @@
   #sidebar{
     display: block;
 }
+
+#content {
+    padding: 0 0; 
+    display:flex; 
+    width: 75%;
+}
+
+.product-info {
+    padding: 0px 10px;
+}
 @media (max-width: 940px){
 
     #content{
@@ -123,4 +133,13 @@
     #sidebar{
         display: none;
     }
+}
+
+@media (max-width: 767px){
+
+   #category-paragraph {
+    margin: 25px 0px 0px 25px;
+   }
+
+ 
 }

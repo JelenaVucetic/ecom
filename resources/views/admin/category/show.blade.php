@@ -76,7 +76,7 @@
 
          @if ($mainCategory->parent_id == null)
 
-         <div id="content" class="row products-category" style="padding: 0 0; display:flex; width: 75%;">
+         <div id="content" class="row products-category">
         @forelse ($clothingProducts as $p)
         <div class="product product-cat">
             <a href="{{ url('/product_details', [$p->id]) }}" class="">
@@ -126,7 +126,7 @@
                             @break
                             @endif
                     </div>
-                    <div class="">
+                    <div class="product-info">
                         <p class="">{{ $p->name }}</p>
                         <?php
                             $pro_cat = App\Product::find($p->id);
@@ -198,7 +198,7 @@
                         @break
                         @endif
                     </div>
-                    <div class="">
+                    <div class="product-info">
                         <p class="">{{ $product->name }}</p>
                         <?php
                         $pro_cat = App\Product::find($product->id);
