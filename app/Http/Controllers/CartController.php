@@ -52,6 +52,7 @@ class CartController extends Controller
             $order_number = "U1-000001";
         }
 
+    
         return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads', 'order_number'));
     }
 
@@ -59,69 +60,79 @@ class CartController extends Controller
     {
         $product = Product::find($id);
 
+        /* foreach($product->images as $image){
+            dd($image->name);
+        } */
+         /* dd($request); */ 
         if($product->category->name == "T-Shirts"){
             if($product->gender == "female"){
             $imageFront = DB::table('images')->where([
                 ['product_id', "=", $id],
-                ['color' , "=", 'white'],
-                ['position' , "=", 'front'],
+                ['color' , "=", $request->color],
+                ['position' , "=", $request->print],
             ])->first();
 
             }elseif($product->gender == "male"){
                 $imageFront = DB::table('images')->where([
                     ['product_id', "=", $id],
-                    ['color' , "=", 'white'],
-                    ['position' , "=", 'front'],
+                    ['color' , "=", $request->color],
+                    ['position' , "=", $request->print],
                 ])->first();
             }else{
                 $pictures = DB::table('images')->where([
                     ['product_id', "=", $id],
-                    ['color' , "=", 'white'],
-                    ['position' , "=", 'front'],
+                    ['color' , "=", $request->color],
+                    ['position' , "=", $request->print],
                 ])->get();
 
                $imageFront = $pictures[0];
             }
-
-        }elseif($product->category->name == "Iphone Cases" || $product->category->name == "Samsung Cases" || $product->category->name == "Samsung Cases" || $product->category->name == "Custom"){
+        }elseif($product->category->name == "Iphone Cases" || $product->category->name == "Samsung Cases" || $product->category->name == "Samsung Cases"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['color',"=" ,'transparent']
+                ['color',"=" ,$request->caseStyle],
+                ['size' , '=', $request->phoneModel]
+            ])->first();
+        }elseif($product->category->name == "Custom"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color',"=" ,$request->caseStyle]
             ])->first();
         } elseif($product->category->name=="Posters"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['size',"=" ,'A3'],
-                ['color', '=', 'white']
+                ['size',"=" ,$request->posterSize],
+                ['color', '=', $request->color]
             ])->first();
-        }elseif($product->category->name=="Pictures"){
+        }elseif($product->category->name=="Canvas Art"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
         }elseif($product->category->name=="Wallpapers"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id],
-                ['size','=', 'vertical']
+                ['product_id',"=", $id]
             ])->first();
         }elseif($product->category->name=="Tote Bags") {
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['color','=', 'black']
+                ['color','=', $request->color]
             ])->first();
         }elseif($product->category->name=="Coasters"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['size','=', 'square']
+                ['size','=', $request->coasterShape]
             ])->first();
         }elseif($product->category->name=="Clocks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['color','=', 'black']
+                ['color','=', $request->color]
             ])->first();
-        } elseif($product->category->name=="Makeup Bags" || $product->category->name=="Puzzles"){
+        } elseif( $product->category->name=="Puzzles"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
+        }elseif($product->category->name=="Makeup Bags"){
+            
         } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags" || $product->category->name=="Notebooks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],

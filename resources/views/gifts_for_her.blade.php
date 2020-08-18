@@ -16,24 +16,40 @@
             <div class="product">
               <a href="{{ url('/product_details', [$shirt->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($shirt->images)
+                  @foreach ($shirt->images as $item)
+                  @if($shirt->category->name=="T-Shirts")
+                    @if ($item->color == "white" && $item->position == "front")
+                      <img src="{{ url('image', $item->name) }}" class="" alt="">
+                      @break
+                    @endif                    
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $shirt->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $shirt->name }}</p>
+                      <p class="product-name">{{ $shirt->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($shirt->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($shirt->spl_price==0)
-                          <p>{{ $shirt->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $shirt->price}}</span></p>
                       @else
-                          <p>{{$shirt->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$shirt->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -53,24 +69,39 @@
             <div class="product">
               <a href="{{ url('/product_details', [$case->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
-                      <img src="{{ url('images', $case->image) }}" class="" alt="">
+                  <div class="img-div">
+                  @if ($case->images)
+                    @foreach ($case->images as $item)
+                      @if($case->category->name=="T-Shirts")
+                          @if ($item->color == "white" && $item->position == "front")
+                            <img src="{{ url('image', $item->name) }}" class="" alt="">
+                            @break
+                          @endif                 
+                      @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+                  @else
+                  <img src="{{ url('images', $case->image) }}" class="" alt="">
+                  @break
+                  @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $case->name }}</p>
+                      <p class="product-name">{{ $case->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($case->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($case->spl_price==0)
-                          <p>{{ $case->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $case->price}}</span></p>
                       @else
-                          <p>{{$case->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$case->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -91,24 +122,43 @@
             <div class="product">
               <a href="{{ url('/product_details', [$wall->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
-                      <img src="{{ url('images', $wall->image) }}" class="" alt="">
+                  <div class="img-div">
+                  @if ($wall->images)
+                  @foreach ($wall->images as $item)
+                      
+                      @if($wall->category->name=="Canvas Art")
+                        <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
+                        @break
+                      @elseif($wall->category->name=="Wallpapers")
+                        <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                        @break
+                    
+                      @else
+                        <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                        @break
+                  @endif
+                  @endforeach
+
+                  @else
+                    <img src="{{ url('images', $wall->image) }}" class="" alt="">
+                    @break
+                  @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $wall->name }}</p>
+                      <p class="product-name">{{ $wall->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($wall->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($wall->spl_price==0)
-                          <p>{{ $wall->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $wall->price}}</span></p>
                       @else
-                          <p>{{$wall->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$wall->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -129,24 +179,38 @@
             <div class="product">
               <a href="{{ url('/product_details', [$bag->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($bag->images)
+                  @foreach ($bag->images as $item)            
+                      @if($bag->category->name=="Makeup Bags")
+                      <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
+                      @break                               
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $bag->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $bag->name }}</p>
+                      <p class="product-name">{{ $bag->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($bag->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($bag->spl_price==0)
-                          <p>{{ $bag->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $bag->price}}</span></p>
                       @else
-                          <p>{{$bag->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$bag->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -167,24 +231,38 @@
             <div class="product">
               <a href="{{ url('/product_details', [$mug->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($mug->images)
+                  @foreach ($mug->images as $item)            
+                      @if($mug->category->name=="Mugs")
+                      <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                      @break                               
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $mug->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $mug->name }}</p>
+                      <p class="product-name">{{ $mug->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($mug->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($mug->spl_price==0)
-                          <p>{{ $mug->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $mug->price}}</span></p>
                       @else
-                          <p>{{$mug->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$mug->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -205,24 +283,37 @@
             <div class="product">
               <a href="{{ url('/product_details', [$bag->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($bag->images)
+                    @foreach ($bag->images as $item)  
+                        @if($bag->category->name=="Mugs")
+                          <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                          @break
+                        @else
+                          <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                          @break
+                        @endif
+                    @endforeach
+                    @else
                       <img src="{{ url('images', $bag->image) }}" class="" alt="">
+                      @break
+                    @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $bag->name }}</p>
+                      <p class="product-name">{{ $bag->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($bag->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($bag->spl_price==0)
-                          <p>{{ $bag->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $bag->price}}</span></p>
                       @else
-                          <p>{{$bag->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$bag->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -243,24 +334,37 @@
             <div class="product">
               <a href="{{ url('/product_details', [$back->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
-                      <img src="{{ url('images', $back->image) }}" class="" alt="">
+                  <div class="img-div">
+                  @if ($bag->images)
+                    @foreach ($bag->images as $item)  
+                        @if($bag->category->name=="Mugs")
+                          <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                          @break
+                        @else
+                          <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                          @break
+                        @endif
+                    @endforeach
+                    @else
+                      <img src="{{ url('images', $bag->image) }}" class="" alt="">
+                      @break
+                    @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $back->name }}</p>
+                      <p class="product-name">{{ $bag->name }}</p>
                       <?php
-                          $pro_cat = App\Product::find($back->id);
+                          $pro_cat = App\Product::find($bag->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
-                      @if($back->spl_price==0)
-                          <p>{{ $back->price}}&euro;</p>
+                      @if($bag->spl_price==0)
+                          <p><span style="font-weight: bold">&euro;{{ $bag->price}}</span></p>
                       @else
-                          <p>{{$back->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$bag->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -281,24 +385,38 @@
             <div class="product">
               <a href="{{ url('/product_details', [$note->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($note->images)
+                  @foreach ($note->images as $item)                     
+                      @if($note->category->name=="Notebooks")
+                      <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
+                      @break                      
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $note->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $note->name }}</p>
+                      <p class="product-name">{{ $note->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($note->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($note->spl_price==0)
-                          <p>{{ $note->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $note->price}}</span></p>
                       @else
-                          <p>{{$note->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$note->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -310,7 +428,7 @@
 
 <div class="container-fluid">
     <div class="design-for-you">
-      <h2>Sacks</h2>
+      <h2>Gift Bags</h2>
     </div>
   
     <div class="slick-wrapper">
@@ -320,24 +438,38 @@
             <div class="product">
               <a href="{{ url('/product_details', [$sack->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($sack->images)
+                  @foreach ($sack->images as $item)
+                    @if($sack->category->name == "Gift Bags")
+                    <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
+                    @break
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $sack->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $sack->name }}</p>
+                      <p class="product-name">{{ $sack->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($sack->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($sack->spl_price==0)
-                          <p>{{ $sack->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $sack->price}}</span></p>
                       @else
-                          <p>{{$sack->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$sack->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -357,25 +489,41 @@
             <div class="product">
               <a href="{{ url('/product_details', [$magnet->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($magnet->images)
+                  @foreach ($magnet->images as $item)
+                      @if($magnet->category->name=="T-Shirts")
+                          @if ($item->color == "white" && $item->position == "front")
+                          <img src="{{ url('image', $item->name) }}" class="" alt="">
+                          @break
+                      @endif
+                      
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $magnet->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $magnet->name }}</p>
+                      <p class="product-name">{{ $magnet->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($magnet->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($magnet->spl_price==0)
-                          <p>{{ $magnet->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $magnet->price}}</span></p>
                       @else
-                          <p>{{$magnet->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$magnet->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
-              </a> 
+              </div>
             </div>
           </div>
         @endforeach

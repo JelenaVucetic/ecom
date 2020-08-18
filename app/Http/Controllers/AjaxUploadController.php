@@ -117,7 +117,7 @@ $price = 6.90;
 $price = 12.90;
 }else if($original=='Mugs'){
     /* $originalImagePath = "mugs" + $originalImagePath; */
-$price = 12;
+$price = 12.00;
 }else if($original=='Hoodie'){
     /* $originalImagePath = "hoodie" + $originalImagePath; */
 $price = 22.90;
@@ -167,8 +167,10 @@ $price = 3.90;
 }else if($original == "Notes"){
     /* $originalImagePath = "notes" . $originalImagePath; */
 $price = 4.90;
+}elseif($original == "Clocks"){
+$price = 25.00;
 }else{
-$price = 0;
+    $price = 0;
 }
     $checkImage = $image;
     $image = explode(";" , $image)[1];
