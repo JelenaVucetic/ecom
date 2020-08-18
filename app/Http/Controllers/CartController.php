@@ -63,7 +63,7 @@ class CartController extends Controller
         /* foreach($product->images as $image){
             dd($image->name);
         } */
-         /* dd($request); */ 
+          /* dd($request);  */
         if($product->category->name == "T-Shirts"){
             if($product->gender == "female"){
             $imageFront = DB::table('images')->where([
@@ -127,20 +127,24 @@ class CartController extends Controller
                 ['product_id',"=", $id],
                 ['color','=', $request->color]
             ])->first();
-        } elseif( $product->category->name=="Puzzles"){
+        } elseif( $product->category->name=="Puzzles" ||  $product->category->name=="Thermoses"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
         }elseif($product->category->name=="Makeup Bags"){
-            
-        } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags" || $product->category->name=="Notebooks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['color','=', 'white']
+                ['color','=', $request->color]
             ])->first();
-        } elseif($product->category->name=="Magnets"|| $product->category->name=="Mugs" ){
+        } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags" || $product->category->name=="Notebooks" || $product->category->name=="Mugs" ){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
+                ['color','=', $request->color]
+            ])->first();
+        } elseif($product->category->name=="Magnets"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['size', '=' , $request->sackType]
             ])->first();
         }
 

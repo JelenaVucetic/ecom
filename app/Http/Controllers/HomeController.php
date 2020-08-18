@@ -840,6 +840,7 @@ class HomeController extends Controller
 
 
 
+
     public function loadImages(Request $request){
         if($request->gender == "female"){
         if($request->position == 'front'){
