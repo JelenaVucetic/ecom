@@ -733,6 +733,18 @@
                     <span></span>
                   </div>
               </label>
+              <label class="red">
+                <div  class="white-border">
+                  <input type="radio" name="color" class="color-class" value="red"  checked>
+                  <span></span>
+                </div>
+            </label>
+            <label class="pink">
+              <div  class="white-border">
+                <input type="radio" name="color" class="color-class" value="pink"  checked>
+                <span></span>
+              </div>
+          </label>
             </div>
 
 

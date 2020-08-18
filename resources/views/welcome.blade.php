@@ -31,7 +31,7 @@
                 <a href="{{route('category.show',[ $faceMasksCat->id, $faceMasksCat->name => $faceMasksCat->parent_id ])}}" style="color: inherit;">
                     <div class="box-container">
                         <div class="box3-img-holder"></div>
-                        <button>Masks</button>
+                        <button>Shop Masks</button>
                     </div>
                 </a>
             </div>
