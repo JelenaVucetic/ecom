@@ -279,24 +279,37 @@
             <div class="product">
               <a href="{{ url('/product_details', [$bag->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($bag->images)
+                    @foreach ($bag->images as $item)  
+                        @if($bag->category->name=="Mugs")
+                          <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                          @break
+                        @else
+                          <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                          @break
+                        @endif
+                    @endforeach
+                    @else
                       <img src="{{ url('images', $bag->image) }}" class="" alt="">
+                      @break
+                    @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $bag->name }}</p>
+                      <p class="product-name">{{ $bag->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($bag->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($bag->spl_price==0)
-                          <p>{{ $bag->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $bag->price}}</span></p>
                       @else
-                          <p>{{$bag->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$bag->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -316,24 +329,39 @@
             <div class="product">
               <a href="{{ url('/product_details', [$clock->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
-                      <img src="{{ url('images', $clock->image) }}" class="" alt="">
+                  <div class="img-div">
+                  @if ($clock->images)
+                    @foreach ($clock->images as $item)
+                    
+                      @if($clock->category->name=="Mugs")
+                      <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                      @break
+                      @else
+                        <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                        @break
+                      @endif
+                      @endforeach
+
+                  @else
+                    <img src="{{ url('images', $clock->image) }}" class="" alt="">
+                    @break
+                  @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $clock->name }}</p>
+                      <p class="product-name">{{ $clock->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($clock->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($clock->spl_price==0)
-                          <p>{{ $clock->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $clock->price}}</span></p>
                       @else
-                          <p>{{$clock->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$clock->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>
@@ -353,24 +381,38 @@
             <div class="product">
               <a href="{{ url('/product_details', [$note->id]) }}" class="">
                 <div class="">
-                  <div  class="img-div">
+                  <div class="img-div">
+                  @if ($note->images)
+                  @foreach ($note->images as $item)                     
+                      @if($note->category->name=="Notebooks")
+                      <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
+                      @break                      
+                  @else
+                      <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                      @break
+                  @endif
+                  @endforeach
+
+                     @else
                       <img src="{{ url('images', $note->image) }}" class="" alt="">
+                      @break
+                      @endif
                   </div>
                   <div class="">
-                      <p class="">{{ $note->name }}</p>
+                      <p class="product-name">{{ $note->name }}</p>
                       <?php
                           $pro_cat = App\Product::find($note->id);
                           if($pro_cat->category != null){
                       ?>
-                          <p class="">{{ $pro_cat->category->name }}</p>
+                          <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($note->spl_price==0)
-                          <p>{{ $note->price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{ $note->price}}</span></p>
                       @else
-                          <p>{{$note->spl_price}}&euro;</p>
+                          <p><span style="font-weight: bold">&euro;{{$note->spl_price}}</span></p>
                       @endif
                   </div>
-                </div>
+              </div>
               </a> 
             </div>
           </div>

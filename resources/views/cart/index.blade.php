@@ -528,7 +528,9 @@ for( let i=1;i<200;i++) {
                                     <label for="agreement" class="form-label" style="margin-left: 10px;">I agree to the payment terms</label>
                                     <input type="checkbox" id="agreement" name="agreement" required>                                             
                                 </div>
-                                <input type="submit" value="Card" name="action" class="submit-button">
+                                <div style="text-align: center">
+                                    <input type="submit" value="Card" name="action" class="submit-button" style="    width: 35%;border: none;border-radius: 5px;color: white;padding: 5px;">
+                                </div>
                             </div> 
                             </form>
                          </div>

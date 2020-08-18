@@ -164,8 +164,6 @@
 
                                 @foreach ($product->images as $item)
                                 @if($product->category->name=="T-Shirts")
-
-
                                     @if ($item->color == "white" && $item->position == "front")
                                         <img src="{{ url('image', $item->name) }}" class="" alt="">
                                         @break
@@ -187,6 +185,9 @@
                                     @break
                                 @elseif($product->category->name == "Masks")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
+                                    @break
+                                @elseif($product->category->name == "Gift Bags")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
                                     @break
                                 @else
                                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">

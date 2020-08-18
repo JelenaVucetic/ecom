@@ -533,6 +533,15 @@
     transform: scale(2.2) !important;
 }
 
+.img-div-gift-bags {
+    transform: scale(2.2)!important;
+    margin-top: 0.125%!important;
+}
+
+.img-div-gift-bags:hover {
+    transform: scale(2.4) !important;
+}
+
 .product-name {
     font-weight: bold;
 }
@@ -554,6 +563,14 @@
     margin: 10px;
 }
 
+#gift-left {
+    top:90px;
+}
+
+#gift-right {
+    right: 0px;
+    bottom: 200px
+}
 
 @media (max-width: 1500px) {
     .img-div {
@@ -566,6 +583,16 @@
 
     .product-cat {
         width: 250px;
+    }
+    .welcome-image {
+        height: 420px;
+    }
+
+    .slick-next {
+        bottom: 46%;
+    }
+    .slick-prev {
+        top: 50%;
     }
 }
 
@@ -606,6 +633,8 @@
         width: 95%;
         margin: auto;
     }
+
+ 
  }
 
 
@@ -806,5 +835,15 @@
         width: 160px;
         margin: 6px;
     }
+
+    #gift-left {
+        top:40%;
+    }
+    
+    #gift-right {
+        right: 0px;
+        bottom: 50%;
+    }
+    
 }
 

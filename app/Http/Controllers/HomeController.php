@@ -84,7 +84,7 @@ class HomeController extends Controller
         $faceMasksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Masks')
                 ->first();
-
+ 
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
     }
 
@@ -654,7 +654,7 @@ class HomeController extends Controller
         ->all();
         $casesProducts =  Product::whereIn('category_id', $casesIds)->where(function ($q) {
             $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
-        })->get();
+        })->distinct()->groupBy('design_id')->get();
 
         $wallArtIds = Category::where('parent_id', $parentId = Category::where('name', 'Wall ART')
         ->value('id'))
@@ -689,8 +689,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $clocks = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $clocks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Clocks')
         ->where(function ($q) {
@@ -698,8 +697,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $notebooks = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $notebooks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Notebooks')
         ->where(function ($q) {
@@ -713,8 +711,7 @@ class HomeController extends Controller
     public function giftsForHer() {
         $categories = Category::where('parent_id',NULL)->get();
 
-        $shirts = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $shirts = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','T-Shirts')
         ->where(function ($q) {
@@ -726,9 +723,10 @@ class HomeController extends Controller
         ->value('id'))
         ->pluck('id')
         ->all();
-        $casesProducts =  Product::whereIn('category_id', $casesIds)->where(function ($q) {
+        $casesProducts =  Product::whereIn('category_id', $casesIds)
+            ->where(function ($q) {
             $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
-        })->get();
+        })->distinct()->groupBy('design_id')->get();
 
         $wallArtIds = Category::where('parent_id', $parentId = Category::where('name', 'Wall ART')
         ->value('id'))
@@ -738,8 +736,7 @@ class HomeController extends Controller
             $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
         })->get();
 
-        $makeupBags = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $makeupBags = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Makeup Bags')
         ->where(function ($q) {
@@ -747,8 +744,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $mugs = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $mugs = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Mugs')
         ->where(function ($q) {
@@ -756,8 +752,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $bags = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $bags = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Tote Bags')
         ->where(function ($q) {
@@ -765,8 +760,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $backpacks = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $backpacks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Backpacks')
         ->where(function ($q) {
@@ -774,8 +768,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $notebooks = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $notebooks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Notebooks')
         ->where(function ($q) {
@@ -783,8 +776,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $sacks = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $sacks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Gift Bags')
         ->where(function ($q) {
@@ -792,8 +784,7 @@ class HomeController extends Controller
         })
         ->get();
 
-        $magnets = DB::table('product')
-        ->select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
+        $magnets = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Magnets')
         ->where(function ($q) {
@@ -846,6 +837,7 @@ class HomeController extends Controller
 
         return view('specialprice', compact('categories', 'products'));
     }
+
 
 
 

@@ -117,7 +117,8 @@ $price = 6.90;
 $price = 12.90;
 }else if($original=='Mugs'){
     /* $originalImagePath = "mugs" + $originalImagePath; */
-$price = 12;
+$price = 4.90;
+$priceB2 = 5.90;
 }else if($original=='Hoodie'){
     /* $originalImagePath = "hoodie" + $originalImagePath; */
 $price = 22.90;
@@ -167,8 +168,10 @@ $price = 3.90;
 }else if($original == "Notes"){
     /* $originalImagePath = "notes" . $originalImagePath; */
 $price = 4.90;
+}elseif($original == "Clocks"){
+$price = 25.00;
 }else{
-$price = 0;
+    $price = 0;
 }
     $checkImage = $image;
     $image = explode(";" , $image)[1];
@@ -206,6 +209,10 @@ if($original == "Poster"){
  }else if($original == "Canvas"){
     $idProduct = DB::table('product')->insertGetId([
         'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category, 'price_b1' => $priceB1, 'price_b2' => $priceB2
+        ]);
+ }else if($original == "Mugs"){
+    $idProduct = DB::table('product')->insertGetId([
+        'name'=> $title, 'description'=> $description, 'price'=>$price,'image'=> $string.'.png', 'design_id' => $idDesign, 'gender' => $gender, 'category_id' => $category, 'price_b2' => $priceB2
         ]);
  }else{
     $idProduct = DB::table('product')->insertGetId([
