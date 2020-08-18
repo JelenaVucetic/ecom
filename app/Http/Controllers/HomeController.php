@@ -84,8 +84,8 @@ class HomeController extends Controller
         $faceMasksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Masks')
                 ->first();
-        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat
-        '));
+
+        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
     }
 
     public function index()

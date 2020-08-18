@@ -5196,7 +5196,7 @@ if (!$process8->isSuccessful()) {
   $process7 = new Process('magick convert ^
   '.$path.'\resized_pictures'. $imageName1. ' ^
   '.$path.'\image\ms_light_map-phone1.png ^
-  -geometry -280-130 ^
+  -geometry -280-180 ^
   -compose Multiply -composite ^
   '.$path.'\image\ms_logo_displace_mask_phone1.png ^
   -compose CopyOpacity -composite ^
@@ -5213,7 +5213,7 @@ if (!$process8->isSuccessful()) {
  $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
  $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
  $src = new \Imagick(public_path("\image\ms_light_map_logo_phone1.png"));
- $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 280, 130);
+ $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 280, 180);
  $src2->writeImage(public_path("image/output1.png"));
 
  $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -5487,7 +5487,7 @@ if (!$process8->isSuccessful()) {
   $process7 = new Process('magick convert ^
   '.$path.'\resized_pictures'. $imageName1. ' ^
   '.$path.'\image\ms_light_map-phone1.png ^
-  -geometry -260-120 ^
+  -geometry -260-170 ^
   -compose Multiply -composite ^
   '.$path.'\image\ms_logo_displace_mask_phone1.png ^
   -compose CopyOpacity -composite ^
@@ -5504,7 +5504,7 @@ if (!$process8->isSuccessful()) {
  $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
  $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
  $src = new \Imagick(public_path("\image\ms_light_map_logo_phone1.png"));
- $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 260, 120);
+ $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 260, 170);
  $src2->writeImage(public_path("image/output1.png"));
 
  $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -5566,11 +5566,7 @@ if (!$process8->isSuccessful()) {
  }
  echo $process8->getOutput();
 
- $imageRandom = ltrim($imageRandom, '/');
 
- $check = DB::table('images')->insert([
-  'name' => $imageRandom, 'product_id' => $id, 'color' => 'black', 'size' => 'iPhone XI Pro'
- ]);
 
  $imageRandom1 = ltrim($imageRandom1, '/');
 
@@ -5578,6 +5574,11 @@ if (!$process8->isSuccessful()) {
   'name' => $imageRandom1, 'product_id' => $id, 'color' => 'transparent', 'size' => 'iPhone XI Pro'
  ]);
 
+ $imageRandom = ltrim($imageRandom, '/');
+
+ $check = DB::table('images')->insert([
+  'name' => $imageRandom, 'product_id' => $id, 'color' => 'black', 'size' => 'iPhone XI Pro'
+ ]);
  return $check;
 
         dd();
@@ -5766,7 +5767,7 @@ if (!$process8->isSuccessful()) {
    $process7 = new Process('magick convert ^
    '.$path.'\resized_pictures'. $imageName1. ' ^
    '.$path.'\image\ms_light_map-custom.png ^
-   -geometry -280-140 ^
+   -geometry -280-160 ^
    -compose Multiply -composite ^
    '.$path.'\image\ms_logo_displace_mask_custom.png ^
    -compose CopyOpacity -composite ^
@@ -5783,7 +5784,7 @@ if (!$process8->isSuccessful()) {
    $src1->setImageVirtualPixelMethod(\Imagick::VIRTUALPIXELMETHOD_TRANSPARENT);
    $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5");
    $src = new \Imagick(public_path("\image\ms_light_map_logo_custom.png"));
-   $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 280, 140);
+   $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 280, 160);
    $src2->writeImage(public_path("image/custom1.png"));
 
    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
