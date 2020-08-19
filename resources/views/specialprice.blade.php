@@ -2,25 +2,30 @@
 
 @section('content')
 <div class="container">
-    <div class="row spcial-price-row">
-        <div class="features_items"><!--features_items-->
-            <h2 class="title text-center">
-                @if (isset($msg))
-                    {{ $msg}}
-                @else  Special price
-                @endif
-            </h2>
+    <div class="row spcial-price-row">         
 
             @if ($products->isEmpty())
-                sorry, products not found
+            <div class="no-product">
+                <img src="/site-images/No Products page.svg">
+               <p>
+                There is no products on sale yet. Please check back in a couple of days.
+               </p>
+            </div>
             @else
             <div class="row">
+                <h2 class="title text-center">
+                    @if (isset($msg))
+                        {{ $msg}}
+                    @else  Special price
+                    @endif
+                </h2>
+
                 @foreach($products as $product)
 
-                <div class="product">
+                <div class="product product-cat">
                     <a href="{{ url('/product_details', [$product->id]) }}" class="">
                         <div class="">
-                            <div class="img-div">
+                            <div class="img-div  img-div-cat">
                             @if ($product->images)
                             @foreach ($product->images as $item)
                                 @if($product->category->name=="T-Shirts")
@@ -66,7 +71,7 @@
                                 @break
                                 @endif
                             </div>
-                            <div class="">
+                            <div class="product-info">
                                 <p class="product-name">{{ $product->name }}</p>
                                 <?php
                                     $pro_cat = App\Product::find($product->id);
@@ -75,9 +80,9 @@
                                     <p class="product-category">{{ $pro_cat->category->name }}</p>
                                 <?php } ?>
                                 @if($product->spl_price==0)
-                                    <p><span style="font-weight: bold">&euro;{{ $product->price}}</span></p>
+                                    <p><span style="font-weight: bold">&euro;{{number_format((float)$product->price, 2)}}</span></p>
                                 @else
-                                    <p><span style="font-weight: bold">&euro;{{$product->spl_price}}</span></p>
+                                    <p><span style="font-weight: bold">&euro;{{number_format((float)$product->spl_price, 2)}}</span></p>
                                 @endif
                             </div>
                         </div>
@@ -87,7 +92,6 @@
             </div>
             @endif
         </div>
-    </div>
 </div>
 @include('layouts.about_urban_web')
 @include('layouts.subscribe')

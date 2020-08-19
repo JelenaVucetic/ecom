@@ -572,6 +572,11 @@
     bottom: 200px
 }
 
+.search-title {
+    width: 80%;
+    margin:auto;
+}
+
 @media (max-width: 1500px) {
     .img-div {
         height: 225px;
@@ -845,5 +850,9 @@
         bottom: 50%;
     }
     
+    .search-title {
+        width: 90%;
+        margin-top: 50px;
+    }
 }
 

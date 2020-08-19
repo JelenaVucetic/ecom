@@ -135,16 +135,23 @@
                             <p class="">{{ $pro_cat->category->name }}</p>
                         <?php } ?>
                         @if($p->spl_price==0)
-                            <p>From: <span style="font-weight: bold">{{ $p->price}}&euro;</span></p>
+                            <p>From: <span style="font-weight: bold">&euro;{{number_format((float)$p->price, 2)}}</span></p>
                         @else
-                            <p>Special price: <span style="font-weight: bold">{{$p->spl_price}}&euro;</span></p>
+                            <p>Special price: <span style="font-weight: bold">&euro;{{number_format((float)$p->spl_price, 2)}}</span></p>
                         @endif
                     </div>
                 </div>
             </a>
         </div>
         @empty
-
+        <div class="no-product">
+            <img src="/site-images/No Products page.svg">
+            <p> <span style="font-weight: bold;"> We are very sorry.</span> <br> Somebody didn’t feel like doing his job, and now thereis
+                 no products on this page. <br> The person is fired, and new one is getting products 
+                 available for you. <br>
+                Check back in a couple of days.
+            </p>
+        </div>
         @endforelse
          </div>
        @else
@@ -208,9 +215,9 @@
                         <p class="">{{ $pro_cat->category->name }}</p>
                         <?php } ?>
                         @if($product->spl_price==0)
-                            <p>From: <span style="font-weight: bold">{{ $product->price}}&euro;</span></p>
+                            <p>From: <span style="font-weight: bold">&euro;{{number_format((float)$product->price, 2)}}</span></p>
                         @else
-                            <p>Special price: <span style="font-weight: bold">{{$product->spl_price}}&euro;</span></p>
+                            <p>Special price: <span style="font-weight: bold">&euro;{{number_format((float)$product->spl_price, 2)}}</span></p>
                         @endif
                     </div>
                 </div>
@@ -221,7 +228,14 @@
     @endif --}}
     <?php $no++ ?>
         @empty
-            <h3>No products</h3>
+        <div class="no-product">
+            <img src="/site-images/No Products page.svg">
+                <p> <span style="font-weight: bold;"> We are very sorry.</span> <br> Somebody didn’t feel like doing his job, and now thereis
+                    no products on this page. <br> The person is fired, and new one is getting products 
+                    available for you. <br>
+                    Check back in a couple of days.
+                </p>
+            </div>
         @endforelse
         @endif
 </div>

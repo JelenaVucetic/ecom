@@ -112,9 +112,9 @@
                         <p class="">{{ $pro_cat->category->name }}</p>
                     <?php } ?>
                     @if($tshirt->spl_price==0)
-                        <p>From: <span style="font-weight: bold">{{ $tshirt->price}}&euro;</span></p>
+                        <p>From: <span style="font-weight: bold">&euro;{{number_format((float)$tshirt->price, 2)}}</span></p>
                     @else
-                        <p>Special price:  <span style="font-weight: bold">{{$tshirt->spl_price}}&euro;</span></p>
+                        <p>Special price:  <span style="font-weight: bold">&euro;{{number_format((float)$tshirt->spl_price, 2)}}</span></p>
                     @endif
                 </div>
               </div>
@@ -173,9 +173,9 @@
                         <p class="product-category">{{ $pro_cat->category->name }}</p>
                     <?php } ?>
                     @if($case->spl_price==0)
-                        <p><span style="font-weight: bold">&euro;{{ $case->price}}</span></p>
+                        <p><span style="font-weight: bold">&euro;{{number_format((float)$case->price, 2)}}</span></p>
                     @else
-                        <p><span style="font-weight: bold">&euro;{{$case->spl_price}}</span></p>
+                        <p><span style="font-weight: bold">&euro;{{number_format((float)$case->spl_price, 2)}}</span></p>
                     @endif
                 </div>
               </div>
@@ -237,9 +237,9 @@
                       <p class="product-category">{{ $pro_cat->category->name }}</p>
                   <?php } ?>
                   @if($mask->spl_price==0)
-                      <p><span style="font-weight: bold">&euro;{{ $mask->price}}</span></p>
+                      <p><span style="font-weight: bold">&euro;{{number_format((float)$mask->price, 2)}}</span></p>
                   @else
-                      <p><span style="font-weight: bold">&euro;{{$mask->spl_price}}</span></p>
+                      <p><span style="font-weight: bold">&euro;{{number_format((float)$mask->spl_price, 2)}}</span></p>
                   @endif
               </div>
               </div>

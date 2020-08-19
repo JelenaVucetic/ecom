@@ -378,8 +378,106 @@ class HomeController extends Controller
 }
 
     public function destroy($id) {
-        DB::table('wishlist')->where('pro_id', '=', $id)->delete();
-        return back()->with('msg', 'item removed from wishlist');
+        DB::table('wishlist')->where([
+            ['pro_id', '=', $id],
+            ['user_id' , '=', Auth::user()->id]
+            ])->delete();
+
+            $products = Product::select('product.*')->join("wishlist", "wishlist.pro_id" , "product.id")->where("user_id", "=" , Auth::user()->id)->get();
+
+            $output = '';
+            foreach($products as $product){
+               $output.= "<div class='product product-cat'>
+               <a href='/product_details/" . $product->id . " '>
+                   <div>
+                       <div class='img-div  img-div-cat'> ";
+                       if($product->images){ 
+                       foreach ($product->images as $item) {
+                           if($product->category->name=="T-Shirts") {
+                               if ($item->color == "white" && $item->position == "front") {
+                                $output.= " <img src='" . url('image',  $item->name ) ."'> ";
+                               break;
+                           } 
+                        }
+                           elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-phone'> ";
+                           break;
+                           }
+                           elseif($product->category->name=="Canvas Art") {
+                            $output.= " <img src='" . url('image',  $item->name ) . "') class='img-div-pictures'> ";
+                           break;
+                           }
+                           elseif($product->category->name=="Wallpapers") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-wallpapers'> ";
+                           break;
+                           }
+                           elseif($product->category->name=="Notebooks") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-notebooks'> ";
+                           break;
+                           }
+                           elseif($product->category->name=="Makeup Bags") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-makeup'> ";
+                           break;
+                           }
+                           elseif($product->category->name=="Masks") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-masks'> ";
+                           break;
+                           }
+                           elseif($product->category->name=="Thermoses") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-thermos'>";
+                           break;
+                           }
+                           elseif($product->category->name=="Mugs") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-mugs'>";
+                           break;
+                           }
+                           elseif($product->category->name == "Gift Bags") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
+                           break;
+                           }
+                           else {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-phone'>  ";
+                           break;
+                               }
+                           }
+                       }
+    
+                          else {
+                            $output.="<img src='" . url('images',  $product->image ). " '> ";
+                          break;
+                          }
+                       
+                          $output.="</div>
+                       <div class='product-info'>
+                           <p class='product-name'>".$product->name ."</p> ";                  
+                               $pro_cat = Product::find($product->id);
+                               if($pro_cat->category != null){
+    
+                                $output.=" <p class='product-category'>".$pro_cat->category->name ."</p>
+                           "; } 
+                           if($product->spl_price==0) {
+                            $output.="  <p><span style='font-weight: bold'>&euro;" .number_format((float)$product->price, 2) ."</span></p> ";
+                           }else {
+                            $output.="   <p><span style='font-weight: bold'>&euro;" .number_format((float)$product->spl_price, 2)."</span></p> ";
+                           } $output.="<a data-id='".$product->id."'  style='color:red' class='btn btn-default btn-block remove-wishlist'><i class='fa fa-minus-square'></i>Remove from wishlist</a></li>
+                       </div>
+                   </div>
+               </a>
+           </div>";
+    
+        }
+    
+            
+        
+            if(count($products)>0){
+                echo $output;
+             }else{
+                 echo "<h3>No products</h3>";
+             }
+    
+
+
+       
     }
 
 
@@ -460,9 +558,7 @@ class HomeController extends Controller
                 'query.min' => 'Your search must have more than three caracters.'
             ]);
         $query = $request->input('query');
-       /*  $products = DB::table('product')->where('name', 'like',  "%$query%")
-                                        ->orWhere('description','like', "%$query%")
-                                        ->get(); */
+ 
 
         $products = Product::search($query)->paginate(20);
         $categories = Category::where('parent_id',NULL)->get();
@@ -607,29 +703,88 @@ class HomeController extends Controller
         $products = Product::search($request->data)->paginate(20);
         $output = '';
         foreach($products as $product){
-           $output.= " <div class='product product-cat'>".
-         "<a href='/product_details/".$product->id ."'  class=''>".
-               "<div class=''>".
-               "    <div class='img-div img-div-cat'>".
-                     "  <img src='/images/".$product->image ." ' class='' alt=''>".
-                 "  </div>".
-                  " <div class=''>".
-                      " <p class=''> ".$product->name." </p>";
+           $output.= "<div class='product product-cat'>
+           <a href='/product_details/" . $product->id . " '>
+               <div>
+                   <div class='img-div  img-div-cat'> ";
+                   if($product->images){ 
+                   foreach ($product->images as $item) {
+                       if($product->category->name=="T-Shirts") {
+                           if ($item->color == "white" && $item->position == "front") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."'> ";
+                           break;
+                       } 
+                    }
+                       elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-phone'> ";
+                       break;
+                       }
+                       elseif($product->category->name=="Canvas Art") {
+                        $output.= " <img src='" . url('image',  $item->name ) . "') class='img-div-pictures'> ";
+                       break;
+                       }
+                       elseif($product->category->name=="Wallpapers") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-wallpapers'> ";
+                       break;
+                       }
+                       elseif($product->category->name=="Notebooks") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-notebooks'> ";
+                       break;
+                       }
+                       elseif($product->category->name=="Makeup Bags") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-makeup'> ";
+                       break;
+                       }
+                       elseif($product->category->name=="Masks") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-masks'> ";
+                       break;
+                       }
+                       elseif($product->category->name=="Thermoses") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-thermos'>";
+                       break;
+                       }
+                       elseif($product->category->name=="Mugs") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-mugs'>";
+                       break;
+                       }
+                       elseif($product->category->name == "Gift Bags") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
+                       break;
+                       }
+                       else {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-phone'>  ";
+                       break;
+                           }
+                       }
+                   }
 
+                      else {
+                        $output.="<img src='" . url('images',  $product->image ). " '> ";
+                      break;
+                      }
+                   
+                      $output.="</div>
+                   <div class='product-info'>
+                       <p class='product-name'>".$product->name ."</p> ";                  
                            $pro_cat = Product::find($product->id);
                            if($pro_cat->category != null){
 
-                               $output.="<p class=''>". $pro_cat->category->name ."</p>";
-                           }
-                       if($product->spl_price==0){
-                       $output.="<p>".$product->price."&euro;</p>";
-                       }else{
-                       $output.=" <p>".$product->spl_price."&euro;</p>";
-                       }
-                       $output.=" </div>       </div>   </a>     </div>     " ;
+                            $output.=" <p class='product-category'>".$pro_cat->category->name ."</p>
+                       "; } 
+                       if($product->spl_price==0) {
+                        $output.="  <p><span style='font-weight: bold'>&euro;" .number_format((float)$product->price, 2) ."</span></p> ";
+                       }else {
+                        $output.="   <p><span style='font-weight: bold'>&euro;" .number_format((float)$product->spl_price, 2)."</span></p> ";
+                       } $output.="
+                   </div>
+               </div>
+           </a>
+       </div>";
 
-        }
+    }
 
+        
+    
         if(count($products)>0){
             echo $output;
          }else{
