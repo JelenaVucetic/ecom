@@ -13,7 +13,7 @@
           <div class="design-box">
            <a href="{{route('productsDesign', $design->id)}}">
               <div class="design-image">
-                <img src="/image/{{$design->name}}" style="max-witdh:100%;max-height:100%">
+                <img src="/design/{{$design->name}}" style="max-witdh:100%;max-height:100%">
               </div>
             </a>
             <div class="count-product">
@@ -43,7 +43,7 @@
         <div class="slide-item testnovi">
           <div class="design-box random">
             <div class="design-image">
-              <img src="/image/{{$designsRandom->name}}" style="max-witdh:100%;max-height:100%">
+              <img src="/design/{{$designsRandom->name}}" style="max-witdh:100%;max-height:100%">
             </div>
 
             <div class="count-product">

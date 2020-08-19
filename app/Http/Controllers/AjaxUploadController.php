@@ -109,7 +109,7 @@ class AjaxUploadController extends Controller
 $price = 0;
 
 
-if($original=='Phone Case'){
+if($original=='IPhone'){
    /*  $originalImagePath = "iphone" + $originalImagePath; */
 $price = 6.90;
 }else if($original=='T-shirt'){

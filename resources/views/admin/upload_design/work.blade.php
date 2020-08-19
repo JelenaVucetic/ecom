@@ -231,7 +231,7 @@
       {{-- Phone case html --}}
         <div class="product-column">
         <div class="row-product">
-        <div id="proizvod" class="save-picture disabledbutton" data-category="11" name="Phone Case" data-canvas="canvas3" value="1">
+        <div id="proizvod" class="save-picture disabledbutton" data-category="11" name="IPhone" data-canvas="canvas3" value="1">
             <div class="background-div">
         <img id="logo-canvas" src="/image/<?php if(!empty($image)){echo $image;} ?>">
         <img class="overlay-panel" src="/site-images/phonecase.png">

@@ -682,6 +682,13 @@
 }
 
  @media (max-width: 767px) {
+     
+.welcome-image{
+
+    background-image: url('/site-images/Finished-Banner-Mobile.jpg');
+
+}
+
     .my-main-div {
          width: 100%;
     }
