@@ -564,12 +564,12 @@
 }
 
 #gift-left {
-    top:90px;
+    top:150px;
 }
 
 #gift-right {
-    right: 0px;
-    bottom: 200px
+    right: -35px;
+    bottom: 150px
 }
 
 .search-title {
@@ -577,6 +577,33 @@
     margin:auto;
 }
 
+
+#design-left {
+    top: 80px;
+}
+
+#design-right {
+    right: -25px;
+    bottom: 130px;
+}
+
+#shirt-left {
+    top:80px;
+}
+
+#shirt-right {
+    right: -25px;
+    bottom: 180px
+}
+
+#phone-left {
+    top:150px;
+}
+
+#phone-right {
+    right: 0px;
+    bottom: 150px
+}
 @media (max-width: 1500px) {
     .img-div {
         height: 225px;
@@ -599,6 +626,19 @@
     .slick-prev {
         top: 50%;
     }
+
+    #design-right {
+        bottom: 140px;
+    }
+
+    #phone-left {
+        top:130px;
+    }
+    
+    #phone-right {
+        right: -30px;
+        bottom: 170px;  
+    }
 }
 
 /* @media (max-width: 1255px) {
@@ -606,6 +646,7 @@
         height: 215px;
     }
 } */
+
 
 
 @media (max-width: 1200px) {
@@ -803,8 +844,10 @@
         margin-top: 25px;
     }
 
+ 
+
     #test {
-        bottom: 109px !important;
+        bottom: 130px !important;
         right: -20px !important;
 
     }
@@ -860,6 +903,20 @@
     .search-title {
         width: 90%;
         margin-top: 50px;
+    }
+
+    #design-left {
+        top: 55px;
+    }
+
+    #design-right {
+        right: 0px;
+        bottom: 135px;
+    }
+
+    #shirt-right {
+        right: -20px;
+        bottom: 180px;
     }
 }
 

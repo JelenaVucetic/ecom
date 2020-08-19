@@ -2,7 +2,15 @@
     <div class="mycontainer">
         <div class="logo-section">
           <div class="logo-image">  
-            <a href="/"> <img src="/site-images/U1.png" alt="Urban one">    </a>
+            @if(Auth::check())
+              @if(Auth::user()->isAdmin())
+              <a href="/"> <img src="/site-images/U1.png" alt="Urban one"></a>
+              @else
+              <a href="/home"> <img src="/site-images/U1.png" alt="Urban one"></a>
+              @endif
+            @else
+            <a href="/"> <img src="/site-images/U1.png" alt="Urban one"></a>
+            @endif
           </div>
           @if(Request::path() === 'search')
           <form class="form-inline ml-auto">

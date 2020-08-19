@@ -13,11 +13,11 @@
           <div class="design-box">
            <a href="{{route('productsDesign', $design->id)}}">
               <div class="design-image">
-                <img src="/design/{{$design->name}}" style="max-witdh:100%;max-height:100%">
+                <img src="/design/{{$design->name}}" style="max-witdh:100%;max-height:100%;margin:auto">
               </div>
             </a>
             <div class="count-product">
-              <p>
+              <p style="text-align:center;">
               <?php
                   $count = DB::table('product')->where('design_id', $design->id)->groupBy('design_id')->count(); ?>
                 <span>{{$count}}</span>
@@ -34,7 +34,7 @@
 
 <div class="container-fluid"  style="width: 90%;margin: 50px auto">
   <div class="design-for-you"  style="margin:20px 0;">
-    <h2>Most popular designs - TRENDING</h2>
+    <h2>Most Popular Designs - TRENDING</h2>
   </div>
 
   <div class="slick-wrapper">
@@ -43,11 +43,11 @@
         <div class="slide-item testnovi">
           <div class="design-box random">
             <div class="design-image">
-              <img src="/design/{{$designsRandom->name}}" style="max-witdh:100%;max-height:100%">
+              <img src="/design/{{$designsRandom->name}}" style="max-witdh:100%;max-height:100%;margin:auto">
             </div>
 
             <div class="count-product">
-              <p>
+              <p style="text-align: center">
               <?php
                   $count = DB::table('product')->where('design_id', $designsRandom->id)->groupBy('design_id')->count(); ?>
                 <span>{{$count}}</span>
@@ -65,7 +65,7 @@
 
 <div class="container-fluid"  style="width: 90%;margin: 50px auto">
   <div class="design-for-you" style="margin:20px 0;">
-    <h2>Premium T-shirts</h2>
+    <h2>Premium T-Shirts</h2>
   </div>
 
   <div class="slick-wrapper">
@@ -139,32 +139,17 @@
             <a href="{{ url('/product_details', [$case->id]) }}" class="">
               <div class="">
                 <div class="img-div">
-
-                  @if ($case->images)
-                  @foreach ($case->images as $item)
-                  @if($case->category->name=="T-Shirts")
-                    @if ($item->color == "white" && $item->position == "front")
-                    <img src="{{ url('image', $item->name) }}" class="" alt="">
-                    @break
-                    @endif
-                    @elseif( $case->category->getParentsNames() == "Cases" && $item->color == "transparent")
+                @if ($case->images)
+                @foreach ($case->images as $item)              
                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                     @break
-                    @elseif($case->category->name=="Pictures")
-                    <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
-                    @break
-                    @else
-                    <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                    @break
-                    @endif
-                  @endforeach
-
-                 @else
-                  <img src="{{ url('images', $case->image) }}" class="" alt="">
-                  @break
-                  @endif
-              </div>
-                  <div class="">
+                @endforeach
+                @else
+                <img src="{{ url('images', $case->image) }}" class="" alt="">
+                @break
+                @endif
+                </div>
+                <div class="">
                     <p class="product-name">{{ $case->name }}</p>
                     <?php
                         $pro_cat = App\Product::find($case->id);
@@ -178,8 +163,8 @@
                         <p><span style="font-weight: bold">&euro;{{number_format((float)$case->spl_price, 2)}}</span></p>
                     @endif
                 </div>
-              </div>
-            </a>
+            </div>
+            </a> 
           </div>
         </div>
       @endforeach
