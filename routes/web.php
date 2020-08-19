@@ -88,6 +88,7 @@ Route::post('/load_images_phone', 'HomeController@loadImagesPhone');
 Route::post('/load_images_posters', 'HomeController@loadImagesPosters');
 Route::post('/load_images_color', 'HomeController@loadImagesColor');
 Route::post('/load_images_size', 'HomeController@loadImagesSize');
+Route::post('/load_images_masks', 'HomeController@loadImagesMasks');
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/addItem/{id}', 'CartController@addItem');
