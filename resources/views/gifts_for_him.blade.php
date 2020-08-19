@@ -43,9 +43,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($shirt->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $shirt->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$shirt->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$shirt->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$shirt->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -88,9 +88,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($case->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $case->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$case->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$case->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$case->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -150,9 +150,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($wall->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $wall->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$wall->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$wall->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$wall->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -202,9 +202,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($bag->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $bag->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$bag->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$bag->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$bag->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -254,9 +254,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($mug->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $mug->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$mug->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$mug->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$mug->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -304,9 +304,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($bag->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $bag->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$bag->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$bag->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$bag->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -356,9 +356,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($clock->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $clock->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$clock->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$clock->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$clock->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>
@@ -407,9 +407,9 @@
                           <p class="product-category">{{ $pro_cat->category->name }}</p>
                       <?php } ?>
                       @if($note->spl_price==0)
-                          <p><span style="font-weight: bold">&euro;{{ $note->price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$note->price, 2)}}</span></p>
                       @else
-                          <p><span style="font-weight: bold">&euro;{{$note->spl_price}}</span></p>
+                          <p><span style="font-weight: bold">&euro;{{number_format((float)$note->spl_price, 2)}}</span></p>
                       @endif
                   </div>
               </div>

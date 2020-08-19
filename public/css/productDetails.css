@@ -39,7 +39,7 @@
 .wishlist input[type="submit"]:hover {
     position: absolute;
     top: 20px;
-    right: 17px;
+    right: 30px;
     background: url('/site-images/1 srce - hover.svg') no-repeat;
     background-size: cover;
     color: inherit;
@@ -49,20 +49,32 @@
     cursor: pointer;
     outline: inherit;
     width: 1;
-    height: 58px;
-    width: 57px;
+    height: 50px;
+    width: 50px;
 }
 
 .hoverd{
-
-    background: url('/site-images/1 srce - hover.svg') no-repeat!important;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: url('/site-images/1 srce - hover.svg') no-repeat !important;
+    background-size: cover;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width: 1;
+    height: 50px;
+    width: 50px;
 
 }
 
 .wishlist #disable {
     position: absolute;
     top: 20px;
-    right: 17px;
+    right: 30px;
     background: url('/site-images/1 srce - hover.svg') no-repeat;
     background-size: cover;
     color: inherit;
@@ -72,8 +84,8 @@
     cursor: pointer;
     outline: inherit;
     width: 1;
-    height: 58px;
-    width: 57px;
+    height: 50px;
+    width: 50px;
 }
 
 .select-size {
@@ -905,7 +917,8 @@ stroke-width:20;
 }
 
 #save-wallpaper-size,
-#save-picture-size {
+#save-picture-size,
+#custom-phone-model {
     margin-top: 10px;
     color: white;
     border: none;

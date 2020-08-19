@@ -60,7 +60,7 @@
                                     @break
                                     @endif
                                 </div>
-                                <div class="">
+                                <div class="product-info">
                                     <p class="product-name">{{ $product->name }}</p>
                                     <?php
                                         $pro_cat = App\Product::find($product->id);
@@ -69,9 +69,9 @@
                                         <p class="product-category">{{ $pro_cat->category->name }}</p>
                                     <?php } ?>
                                     @if($product->spl_price==0)
-                                        <p><span style="font-weight: bold">&euro;{{ $product->price}}</span></p>
+                                        <p><span style="font-weight: bold">&euro;{{number_format((float)$product->price, 2)}}</span></p>
                                     @else
-                                        <p><span style="font-weight: bold">&euro;{{$product->spl_price}}</span></p>
+                                        <p><span style="font-weight: bold">&euro;{{number_format((float)$product->spl_price, 2)}}</span></p>
                                     @endif
                                 </div>
                             </div>

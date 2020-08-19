@@ -950,6 +950,23 @@ $("#female-x").on("click", function(){
   });
     })
 
+    $(".remove-wishlist").on("click", function(){
+    var pro_id = $(this).attr("data-id");
+    alert(pro_id);
+    $.ajax({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              } ,
+    type: 'get',
+    dataType: 'html',
+    url: '/removeWishList/' + pro_id,
+    data: { data:pro_id},
+    success: function(response) {
+      $("#wishlist-load").html(response);
+    }
+});
+    });
+
 
     function sendWishList(){
       var id = $("#productID").val();

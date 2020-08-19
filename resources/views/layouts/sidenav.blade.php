@@ -9,7 +9,16 @@
       data-position="fixed" is-open="true" class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect float-left margin-r8 pmd-sidebar-toggle"
       is-open-width="1000"><i class="material-icons md-light fa-2x" style="color:#231F20">menu</i></a>
       <i class="fa fa-search fa-2x" data-toggle="modal" data-target="#searchModal" style="margin-right: 30px;"></i>
+
+      @if(Auth::check())
+        @if(Auth::user()->isAdmin())
+        <a class="navbar-brand" href="/" style="margin-right: 0;"><img src="/site-images/U1.png" alt="Urban one"></a>
+        @else
+        <a class="navbar-brand" href="/home" style="margin-right: 0;"><img src="/site-images/U1.png" alt="Urban one"></a>
+        @endif
+      @else
       <a class="navbar-brand" href="/" style="margin-right: 0;"><img src="/site-images/U1.png" alt="Urban one"></a>
+      @endif
 
     </div>
         <!-- Navbar Right icon -->

@@ -27,4 +27,5 @@ class Wishlist extends Model
     //
     protected $table = 'wishlist';
     protected $fillable = ['user_id', 'pro_id'];
+    //protected $primaryKey = ['user_id', 'pro_id'];
 }

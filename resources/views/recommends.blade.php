@@ -69,6 +69,9 @@ if(Auth::check()){
                                     @elseif($p->category->name=="Mugs")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
                                     @break
+                                    @elseif($p->category->name == "Gift Bags")
+                                    <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
+                                    @break
                                 @else
                                     <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                                     @break
@@ -80,7 +83,7 @@ if(Auth::check()){
                                 @break
                             @endif
                         </div>
-                            <div class="">
+                            <div class="product-info">
                                 <p class="">{{ $p->name }}</p>
                                 <?php
                                     $pro_cat = App\Product::find($p->id);
@@ -89,9 +92,9 @@ if(Auth::check()){
                                     <p class="">{{ $pro_cat->category->name }}</p>
                                 <?php } ?>
                                 @if($product->spl_price==0)
-                                    <p>From: <span style="font-weight: bold">{{ $product->price}}&euro;</span></p>
+                                    <p>From: <span style="font-weight: bold">&euro;{{number_format((float)$product->price, 2)}}</span></p>
                                 @else
-                                    <p>Special price: <span style="font-weight: bold">{{$product->spl_price}}&euro;</span></p>
+                                    <p>Special price: <span style="font-weight: bold">{{number_format((float)$product->spl_price, 2)}}&euro;</span></p>
                                 @endif
                             </div>
                         </div>

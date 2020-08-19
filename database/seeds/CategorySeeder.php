@@ -177,12 +177,6 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::create([
-            'id' => 27,
-            'name'=> 'Towels',
-            'parent_id' => 5
-        ]);
-
-        Category::create([
             'id' => 28,
             'name'=> 'Kids T-Shirts',
             'parent_id' => 33

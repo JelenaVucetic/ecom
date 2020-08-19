@@ -3,19 +3,22 @@
 @section('content')
 <section>
     <div class="container">
-        <div class="row">
-            <div class="features_items"><!--features_items-->
-                <h2 class="title text-center">
-                    @if (isset($msg))
-                        {{ $msg}}
-                    @else  Your Wishlist
-                    @endif
-                </h2>
-
+        <h2 class="title text-center">
+            @if (isset($msg))
+                {{ $msg}}
+            @else  Your Wishlist
+            @endif
+        </h2>
                 @if ($Products->isEmpty())
-                    Products not found
+                <div class="no-product">
+                    <h4> Your wishlist is empty.
+                    </h4>
+                    <img src="/site-images/No Products page.svg">
+                   
+               
                 @else
-                <div class="row" style="margin: 50px 0;">
+                <div class="row" id="wishlist-load" style="margin: 50px 0;">
+                   
                 @foreach($Products as $product)
 
                     <div class="product product-cat">
@@ -64,7 +67,7 @@
                                         @break
                                         @endif
                                 </div>
-                                <div class="">
+                                <div class="product-info">
                                     <p class="product-name">{{ $product->name }}</p>
                                     <?php
                                         $pro_cat = App\Product::find($product->id);
@@ -73,10 +76,11 @@
                                         <p class="product-category">{{ $pro_cat->category->name }}</p>
                                     <?php } ?>
                                     @if($product->spl_price==0)
-                                        <p><span style="font-weight: bold">&euro;{{ $product->price}}</span></p>
+                                        <p><span style="font-weight: bold">&euro;{{number_format((float)$product->price, 2)}}</span></p>
                                     @else
-                                        <p><span style="font-weight: bold">&euro;{{$product->spl_price}}</span></p>
+                                        <p><span style="font-weight: bold">&euro;{{number_format((float)$product->spl_price, 2)}}</span></p>
                                     @endif
+                                    <a data-id="{{$product->id}}"  style="color:red" class="btn btn-default btn-block remove-wishlist"><i class="fa fa-minus-square"></i>Remove from wishlist</a></li>
                                 </div>
                             </div>
                         </a>
@@ -101,7 +105,6 @@
                 </div>
             @endif
         </div>
-    </div>
 </div>
 </section>
 @endsection
