@@ -19,7 +19,7 @@
        <div>
            <h4>1. Data processor</h4>
            <p>Responsible for the processing of your personal information described herein as a data processor is: <br>
-                Monargo Ltd.<br>
+                Monargo doo.<br>
                 Djoka Mirasevica M3<br>
                 81000 Podgorica<br>
                 E-mail: buy@urbanone.me<br>
