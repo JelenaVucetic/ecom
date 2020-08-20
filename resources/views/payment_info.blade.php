@@ -64,7 +64,11 @@ $error_messages = array(
             @endif
             </h3>
         <div>
-            @if( $payment->result == 'OK')
+			@if( $payment->result == 'OK')
+			@php
+				//finishCart();
+				Cart::destroy();
+			@endphp
                  <p><strong>Status:</strong> Successful payment </p>
             @else
             <p><strong>Status:</strong> Error </p>

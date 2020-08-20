@@ -200,14 +200,22 @@ $(document).ready(function(){
         else if(pro_cat == "Custom" && !customCase) {
           alert('Please enter your phone model');
         } else if (pro_cat == "Wallpapers") {
+          $validation = $('.custom-width').val() * $('.custom-height').val() * $('.db_price').val();
+
           if($('.custom-width').val() == "" || $('.custom-height').val() == "") {
             alert('Please enter your wallpaper size')
-          } else {
+          } else if ($validation != price) {
+            alert('Please save your size')
+          }else {
             addToCartAjax(price, null, null, null, null, null, null, null, null, null, customSize, null);
           }
         }else if (pro_cat == "Canvas Art") {
+          $validation = $('.custom-width').val() * $('.custom-height').val() * $('.db_price').val();
+
           if($('.custom-width').val() == "" || $('.custom-height').val() == "") {
             alert('Please enter your canvas size')
+          } else if ($validation != price) {
+            alert('Please save your size')
           } else {
             addToCartAjax(price, null, null, null, null, null, null, null, null, pictureSize, customSize, null);
           }      
