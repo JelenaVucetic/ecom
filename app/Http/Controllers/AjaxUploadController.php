@@ -268,6 +268,10 @@ if($original == "Canvas"){
 if($original == "Wallpapers"){
     ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
     ImageModel::wallpaper($idProduct, $originalImagePath);
+    ImageModel::wallpaperRepeatKids($idProduct, $originalImagePath);
+    ImageModel::wallpaperKids($idProduct, $originalImagePath);
+    ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
+    ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
 }
 if($original == "Clocks"){
     ImageModel::clock($idProduct, $originalImagePath);
@@ -306,9 +310,13 @@ if($original == "Termos"){
 }
 if($original == "Masks"){
     ImageModel::masks($idProduct, $originalImagePath);
+    ImageModel::masksBlack($idProduct, $originalImagePath);
 }
 if($original == "Custom"){
     ImageModel::customCase($idProduct, $originalImagePath);
+}
+if($original == "Kids T-Shirts"){
+    ImageModel::kidsTShirts($idProduct, $originalImagePath);
 }
 
 

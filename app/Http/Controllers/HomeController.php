@@ -88,6 +88,19 @@ class HomeController extends Controller
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
     }
 
+
+    public function loadImagesMasks(Request $request){
+        $image = DB::table('images')->where([
+            ['product_id', "=", $request->id],
+            ['color' , "=",$request->color]
+        ])->first();
+            $blankImage = "Mask". $request->color. ".png";
+        
+
+
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+    }
+
     public function index()
     {
 
@@ -270,6 +283,11 @@ class HomeController extends Controller
                 ['product_id',"=", $id]
             ])->first();
             $imageBack = "Custommaska.png";
+        }elseif($find_cat->category->name=="Kids T-Shirts"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "Kids-T-Shirt-White-BG.jpg";
         }
 
 

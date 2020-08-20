@@ -1113,6 +1113,35 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
+    }else if(pro_cat=="Masks"){
+      var id = $("#productID").val();
+      var color = this.value;
+      $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                } ,
+      type: 'post',
+      dataType: 'json',
+      url: '/load_images_masks',
+      data: { color:color, pro_cat:pro_cat, id:id},
+      beforeSend: function(){
+        $("#loading-overlay").show();
+    },
+      success: function(response) {
+        $("#loading-overlay").hide();
+         var blank = response['blankImage'];
+         var name = response['image']['name'];
+        $("#main-image").attr("src","../image/" +name);
+        $("#blank-image").attr("src","../site-images/" + blank);
+        $("#main-image-mobile").attr("src","../image/" +name);
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
+        $("#productColor").val(response['image']['color']);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        $("#loading-overlay").hide();
+        alert("something went wrong");
+    }
+    });
     }else{
     var position = $('input[type=radio][name=print]:checked').val();
     var color = this.value;

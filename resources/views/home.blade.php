@@ -182,7 +182,7 @@
       @foreach ($masks as $mask)
         <div class="slide-item">
           <div class="product">
-            <a href="{{ url('/product_details', [$hoodie->id]) }}" class="">
+            <a href="{{ url('/product_details', [$mask->id]) }}" class="">
               <div class="">
                 <div class="img-div">
 
@@ -199,7 +199,7 @@
                     @elseif($mask->category->name=="Pictures")
                     <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                     @break
-                    @elseif($product->category->name=="Wallpapers")
+                    @elseif($mask->category->name=="Wallpapers")
                     <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
                     @break
                     @else

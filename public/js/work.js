@@ -559,6 +559,30 @@ $(document).ready(function(){
                                 });
 
 
+                            // Enable and edit Face mask
+                            $('#edit-product25').click(function() {
+                                if(document.getElementById('product26').style.display == 'none'){
+                                    closeCanvas();
+                                    document.getElementById('product26').style.display = 'flex';
+                                }else{
+                                    document.getElementById('product26').style.display = 'none';
+                                }
+                            });
+                            $('#enabled-product25').click(function(){
+                                if($('#proizvod25').hasClass('disabledbutton')){
+                                    $('#proizvod25').removeClass('disabledbutton');
+                                    $( "#proizvod25" ).attr( "value" , 0 );
+                                    $('#enabled-product25').html('Enabled');
+                                    $('#enabled-product25').addClass('enable');
+                                }else{
+                                    $('#proizvod25').addClass('disabledbutton');
+                                    $( "#proizvod25" ).attr( "value" , 1 );
+                                    $('#enabled-product25').html('Disabled');
+                                    $('#enabled-product25').removeClass('enable');
+                                }
+                            });
+
+
            
  
 
@@ -703,6 +727,12 @@ $(document).ready(function(){
             var image25 = document.getElementById("logo-canvas24");
             image25.src = canvas28.toDataURL();
             canvas28.discardActiveObject()
+        });
+
+        $('#product26').mouseup(function(){
+            var image26 = document.getElementById("logo-canvas25");
+            image26.src = canvas29.toDataURL();
+            canvas29.discardActiveObject()
         });
 
 
