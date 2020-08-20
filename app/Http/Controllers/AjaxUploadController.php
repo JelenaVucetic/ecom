@@ -168,8 +168,12 @@ $price = 3.90;
 }else if($original == "Notes"){
     /* $originalImagePath = "notes" . $originalImagePath; */
 $price = 4.90;
-}elseif($original == "Clocks"){
+}else if($original == "Clocks"){
 $price = 25.00;
+}else if($original == "Kids T-Shirts"){
+  $price = 10.90;
+}else if($original == "Backpacks"){
+ $price = 3.90;
 }else{
     $price = 0;
 }
@@ -317,6 +321,9 @@ if($original == "Custom"){
 }
 if($original == "Kids T-Shirts"){
     ImageModel::kidsTShirts($idProduct, $originalImagePath);
+}
+if($original == "Backpacks"){
+    ImageModel::backpack($idProduct, $originalImagePath);
 }
 
 

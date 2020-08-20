@@ -1408,31 +1408,31 @@
 
                     </div>
 
-                                          {{-- Kids t-shirts html --}}
-                                          <div class="product-column">
-                                            <div class="row-product">
-                                            <div id="proizvod25" class="save-picture disabledbutton" data-category="28" name="Kids T-Shirts" data-canvas="canvas25" value="1">
-                                                <div class="background-div23">
-                                            <img id="logo-canvas25" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-                                            <img class="overlay-panel" src="/site-images/Kids-T-Shirt-White-Mask.png">
-                                                </div>
-                                            </div>
-                                        <div class="preview-info">
-                                            <span class="preview-name">
-                                              Kids T-Shirts
-                                            </span>
-                                            <div>
-                                            <button id="edit-product25" class="edit-button">Edit</button>
-                                            <button id="enabled-product25" class="enable-button">Disabled</button>
-                    
-                    
-                                            </div>
-                                        </div>
-                                        </div>
-                    
-                    
-                                        </div>
-         </div>
+        {{-- Kids t-shirts html --}}
+        <div class="product-column">
+          <div class="row-product">
+          <div id="proizvod25" class="save-picture disabledbutton" data-category="28" name="Kids T-Shirts" data-canvas="canvas25" value="1">
+              <div class="background-div23">
+          <img id="logo-canvas25" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+          <img class="overlay-panel" src="/site-images/Kids-T-Shirt-White-Mask.png">
+              </div>
+          </div>
+      <div class="preview-info">
+          <span class="preview-name">
+            Kids T-Shirts
+          </span>
+          <div>
+          <button id="edit-product25" class="edit-button">Edit</button>
+          <button id="enabled-product25" class="enable-button">Disabled</button>
+
+
+          </div>
+      </div>
+      </div>
+
+
+      </div>
+</div>
 
 
 
@@ -1564,7 +1564,76 @@
                       </div>
                   </div>
                    </div>
+                   <div class="row">
 
+            {{-- Kids t-shirts html --}}
+            <div class="product-column">
+            <div class="row-product">
+            <div id="proizvod26" class="save-picture disabledbutton" data-category="22" name="Backpacks" data-canvas="canvas26" value="1">
+                <div class="background-div24">
+            <img id="logo-canvas26" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+            <img class="overlay-panel" src="/site-images/Backpack-black-Mask.png">
+                </div>
+            </div>
+        <div class="preview-info">
+            <span class="preview-name">
+              Backpacks
+            </span>
+            <div>
+            <button id="edit-product26" class="edit-button">Edit</button>
+            <button id="enabled-product26" class="enable-button">Disabled</button>
+
+
+            </div>
+        </div>
+        </div>
+
+
+        </div>
+</div>
+
+                    {{-- Canvas edit for Backpacks --}}
+                    <div id="product27" class="img-div" data-value="1" style="display:none">
+                      <h2 class="option-title">Backpacks options</h2>
+                      <div class="product-wrap">
+                        <div id="app28" >
+                            <canvas id="c28" width="250" height="300"></canvas>
+                        </div>
+                        <div class="product-options21">
+  
+                           {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                              {{ csrf_field() }}
+                             <input type="file" name="file1" >
+                             <input type="submit" value="Upload" name="submit">
+                             </form> --}}
+  
+                            <div class="color-choose">
+  
+                                <div class="container">
+                                    <div class="output" id="output"></div>
+  
+                                    <div class="result-wrp">
+                                       <p>Choose a color</p>
+                                      <input type="color" id="color23">
+                                    </div>
+                                    <label  class="scale-lable">
+                                        <span>Scale:</span>
+                                        <input type="range" id="scale-control24"  value="1.5" min="0.005" max="1.5" step="0.005">
+                                    </label>
+                                    <div class="align">
+                                    <button id="alignVertically24" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                                    <button id="alignHorizontally24" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                                    </div>
+                                    <div class="repeat-option btn-group">
+                                      <button id="repeat14" class="repeat-opt">Repeat</button>
+                                      <button id="none14" class="repeat-opt">None</button>
+                                      <button id="repeat-vertical14" class="repeat-opt">Repeat vertical</button>
+                                  </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                     </div>
 
     @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
@@ -2702,7 +2771,6 @@ $("#capture").click(function(event){
 
       var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
-      alert(el.getAttribute('name'));
       canvasPicture = el.getAttribute("data-canvas");
         html2canvas(el).then(function (canvasA){
           var numbers = canvasPicture.match(/(\d+)/);
