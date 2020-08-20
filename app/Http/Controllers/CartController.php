@@ -165,6 +165,8 @@ class CartController extends Controller
                         'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign,'maskLocation' => $request->maskLocation,
                          'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
         }
+
+        
         echo Cart::count();
 
     }

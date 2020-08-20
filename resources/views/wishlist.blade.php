@@ -14,8 +14,6 @@
                     <h4> Your wishlist is empty.
                     </h4>
                     <img src="/site-images/No Products page.svg">
-                   
-               
                 @else
                 <div class="row" id="wishlist-load" style="margin: 50px 0;">
                    

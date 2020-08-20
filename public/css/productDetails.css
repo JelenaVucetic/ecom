@@ -917,7 +917,8 @@ stroke-width:20;
 }
 
 #save-wallpaper-size,
-#save-picture-size {
+#save-picture-size,
+#custom-phone-model {
     margin-top: 10px;
     color: white;
     border: none;

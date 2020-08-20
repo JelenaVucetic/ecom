@@ -24,6 +24,7 @@ class CheckoutController extends Controller
     public function payment_info() {
         $categories = Category::where('parent_id',NULL)->get();
         $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
+
         return view('payment_info', compact('categories', 'payment'));
     }
 
@@ -79,10 +80,7 @@ class CheckoutController extends Controller
                     'first_six_digits' => $first_six_digits,
                     'last_four_digits' => $last_four_digits
                 ]);
-            //finishCart();
-
-            Cart::destroy();
-
+           
             //Order Success Mail
             Mail::to($email)->send(new OrderShipped($status, $order_number, $amount, $card_type, $last_four_digits));
 
@@ -126,7 +124,7 @@ class CheckoutController extends Controller
 
     public function formvalidate(Request $request)
     {
-       
+    
         $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
 
@@ -152,7 +150,8 @@ class CheckoutController extends Controller
                 'city.required' => 'Please enter your city name',
             ]);
 
-
+          
+        
          // Include the autoloader (if not already done via Composer autoloader)
        // require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
@@ -214,7 +213,8 @@ class CheckoutController extends Controller
                 $address->city = $request->city;
                 $address->user_id = $userid;
                 $address->save();
-            
+
+                Cart::destroy();
             if ($result->getReturnType() == Result::RETURN_TYPE_ERROR) {
                 //error handling
                 
