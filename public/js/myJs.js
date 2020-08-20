@@ -452,7 +452,7 @@ $(document).ready(function() {
           $("#wallpaper-custom-height").css("color", '#adacac');
           $("#save-wallpaper-size").html('Edit');
 
-          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.db_price').val()) / 100;
+          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.db_price').val());
           $('.A3_price span').html(newPrice);
           $(".product_price").val(newPrice)
       }
