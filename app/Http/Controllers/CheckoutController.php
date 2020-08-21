@@ -17,13 +17,20 @@ use Exchange\Client\StatusApi\StatusRequestData;
 use Laravie\Parser\Xml\Reader;
 use Laravie\Parser\Xml\Document;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderShipped;
 class CheckoutController extends Controller
 {
 
     public function payment_info() {
         $categories = Category::where('parent_id',NULL)->get();
         $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
+
+        if( $payment->result == 'OK') {
+            Mail::to($payment->email)->send(new OrderShipped('Uspješno', $payment->transaction_id, $payment->amount, $payment->extra_data,$payment->card_type, $payment->last_four_digits));
+        } else {
+            Mail::to($payment->email)->send(new OrderShipped('Neuspješno', $payment->transaction_id, $payment->amount,$payment->extra_data,$payment->card_type, $payment->last_four_digits));
+        }
 
         return view('payment_info', compact('categories', 'payment'));
     }
@@ -71,8 +78,10 @@ class CheckoutController extends Controller
                     'payment_method' => $callbackResult->getPaymentMethod(),
                     'amount' => $callbackResult->getAmount(),
                     'currency' => $callbackResult->getCurrency(),
+                    'extra_data' => 'XXXXXX',
                     'message' => 'dummy',
                     'code' =>'dummy',
+                    'email' => $email,
                     'card_type' => $card_type,
                     'card_holder' =>  $card_holder,
                     'expiry_month' =>  $expiry_month,
@@ -82,7 +91,7 @@ class CheckoutController extends Controller
                 ]);
            
             //Order Success Mail
-            Mail::to($email)->send(new OrderShipped($status, $order_number, $amount, $card_type, $last_four_digits));
+           
 
             return response('OK', 200)
                   ->header('Content-Type', 'text/plain');  
@@ -104,6 +113,7 @@ class CheckoutController extends Controller
                 'currency' => $callbackResult->getCurrency(),
                 'message' =>  $message,
                 'code' => $code,
+                'email' => $email,
                 'card_type' => $card_type,
                 'card_holder' =>  $card_holder,
                 'expiry_month' =>  $expiry_month,
@@ -124,7 +134,7 @@ class CheckoutController extends Controller
 
     public function formvalidate(Request $request)
     {
-    
+
         $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
 

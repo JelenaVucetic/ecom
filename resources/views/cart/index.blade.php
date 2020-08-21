@@ -420,12 +420,12 @@ for( let i=1;i<200;i++) {
                         <br>
                         <span style="color:red">{{ $errors->first('zip') }}</span>
                     </div>
-                    <div class="">
+                   {{--  <div class="">
                         <label for="city" class="form-label">City Name</label>                   
                         <input id="city" type="text" name="city" placeholder="e.g. Podgorica" value="{{ (isset($ads->city)) ? $ads->city : old('city') }}" class="form-control">
                         <br>
                         <span style="color:red">{{ $errors->first('city') }}</span>
-                    </div>
+                    </div> --}}
                     <div class="cart_select">
                         <label for="city" class="form-label">City Name</label>     
                         <select class="select_city" id="" name="city" >

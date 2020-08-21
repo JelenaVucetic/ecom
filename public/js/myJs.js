@@ -1329,3 +1329,32 @@ error: function (jqXHR, textStatus, errorThrown) {
 /*  $('.cases').change(function(){
   alert($( "cases option:selected" ).val());
  }); */
+
+
+
+
+/*  Newsletter */
+
+
+    $.ajaxSetup({
+        headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $("#submit-image").click(function(e){
+        e.preventDefault();
+        email = $('#subscribe-email').val();
+        $.ajax({
+
+           type:'POST',
+
+           url:'newsletter',
+
+           data:{email:email},
+
+           success:function(data){
+             alert(data.success);
+           }
+        });
+	});

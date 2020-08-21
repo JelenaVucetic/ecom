@@ -16,11 +16,13 @@ class OrderShipped extends Mailable
      *
      * @return void
      */
-    public function __construct($status, $order_number, $amount, $card_type, $last_four_digits)
+    public function __construct($status, $order_number, $amount,$extra_data, $card_type, $last_four_digits)
     {
+        
         $this->status = $status;
         $this->order_number = $order_number;
         $this->amount = $amount;
+        $this->extra_data = $extra_data;
         $this->card_type = $card_type;
         $this->last_four_digits = $last_four_digits;
     }
@@ -33,6 +35,14 @@ class OrderShipped extends Mailable
     public function build()
     {
         return $this->from(env("MAIL_USERNAME"))
-                    ->view('emails.order');
+                    ->view('emails.order')
+                    ->with([
+                        'status' => $this->status,
+                        'order_number' =>  $this->order_number,
+                        'extra_data' =>  $this->extra_data,
+                        'amount' =>  $this->amount,
+                        'card_type' =>  $this->card_type,
+                        'last_four_digits' => $this->last_four_digits,
+                    ]);;
     }
 }

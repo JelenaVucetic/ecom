@@ -14,11 +14,13 @@
 .slika2 {
     height: 65vh;
     object-fit: cover;
+    object-position: top;
 }
 
 .slika3 {
     height: 100vh;
     object-fit: cover;
+    object-position: top;
 }
 
 .wishlist input[type="submit"] {
