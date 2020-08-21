@@ -764,8 +764,7 @@
               <h5>Delivery</h5>
               <img src="/site-images/iconfinder_173_Ensign_Flag_Nation_montenegro_2634361.svg" alt="">
             </div>
-            <p>Post Express by 24 April</p>
-            <p>Standard 24 - 28 April</p>
+            <p>2-5 working days</p>
           </div>
 
           @if( isset($counter) && $counter->total>0 && $createReview === null)

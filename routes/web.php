@@ -127,3 +127,7 @@ Route::group(['middleware' => [ 'auth', 'verified']], function() {
 
 
 Route::get('/product/design/{id}', 'HomeController@productsOfDesign')->name('productsDesign');
+
+
+Route::get('newsletter','NewsletterController@create');
+Route::post('newsletter','NewsletterController@store');

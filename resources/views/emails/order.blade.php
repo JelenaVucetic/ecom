@@ -7,10 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    Status: {{ $status }}
-    Broj porudzbine: {{ $status }}
-    Price: {{ $amount }}
-    Vrsta kartice: {{ $card_type }}
-    Poslednje cetri cifre: {{ $last_four_digits }}
+    Poštovani, <br>
+
+    Hvala vam što korisitine naše usluge. <br>
+    Detalji vaše porudžbine: <br>
+    <div>
+        Status transakcije: <strong>{{$status}}</strong>
+    </div>
+   <div>
+        Broj porudžbine: <strong>{{$order_number}}</strong>
+   </div>
+   <div>
+   Autorizacioni kod: <strong>{{$extra_data}}</strong>
+</div>
+   <div>
+    Ukupan iznos: <strong>{{$amount}}</strong>
+   </div>
+   
+   <div>
+    Tip kartice: <strong>{{$card_type}}</strong>
+   </div>
+    <div>
+        Poslednje 4 cifre: <strong>{{$last_four_digits}}</strong>   
+    </div>
+   
 </body>
 </html>
