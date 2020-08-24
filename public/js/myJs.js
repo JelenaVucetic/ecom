@@ -1366,4 +1366,9 @@ $(document).ready(function(){
         var fileName = e.target.files[0].name;
         alert('The file "' + fileName +  '" has been selected.');
     });
+
+
+    $('body').on('contextmenu', 'img', function(e){ 
+      return false; 
+    });
 });
