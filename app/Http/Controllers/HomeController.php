@@ -153,6 +153,7 @@ class HomeController extends Controller
 
     public function product_details($id)
     {
+        $imageSlider = "";
         $product = DB::table('product')->where('id', $id)->first();
         $find_cat = Product::findOrFail($id);
         $pro_cat = Product::find($product->id); 
@@ -220,6 +221,9 @@ class HomeController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
+            $imageSlider =  DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->get();
             $imageBack = "Wall-Wallpapers-BG.png";
         }elseif($find_cat->category->name=="Tote Bags") {
             $imageFront = DB::table('images')->where([
@@ -301,6 +305,11 @@ class HomeController extends Controller
                 ['color', '=', 'black']
             ])->first();
             $imageBack = "Backpack-black-BG.jpg";
+        }elseif($find_cat->category->name=="Kids Bibs"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id]
+            ])->first();
+            $imageBack = "New-bibs-BG.jpg";
         }
 
 
@@ -373,8 +382,8 @@ class HomeController extends Controller
             $recommends->pro_id = $id;
             $recommends->save();
         }
-
-        return view('product_details', compact('pro_cat','product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack'));
+       
+        return view('product_details', compact('pro_cat','product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack', 'imageSlider'));
     }
 
     public function viewWishlist()

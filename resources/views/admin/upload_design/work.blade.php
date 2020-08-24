@@ -1566,7 +1566,7 @@
                    </div>
                    <div class="row">
 
-            {{-- Kids t-shirts html --}}
+            {{-- Backpacks html --}}
             <div class="product-column">
             <div class="row-product">
             <div id="proizvod26" class="save-picture disabledbutton" data-category="22" name="Backpacks" data-canvas="canvas26" value="1">
@@ -1582,6 +1582,31 @@
             <div>
             <button id="edit-product26" class="edit-button">Edit</button>
             <button id="enabled-product26" class="enable-button">Disabled</button>
+
+
+            </div>
+        </div>
+        </div>
+
+
+        </div>
+
+          {{-- Kids bibs html --}}
+          <div class="product-column">
+            <div class="row-product">
+            <div id="proizvod27" class="save-picture disabledbutton" data-category="34" name="Kids Bibs" data-canvas="canvas27" value="1">
+                <div class="background-div24">
+            <img id="logo-canvas27" src="/image/<?php if(!empty($image)){echo $image;} ?>">
+            <img class="overlay-panel" src="/site-images/New-Bibs-Mask.png">
+                </div>
+            </div>
+        <div class="preview-info">
+            <span class="preview-name">
+              Kids bibs
+            </span>
+            <div>
+            <button id="edit-product27" class="edit-button">Edit</button>
+            <button id="enabled-product27" class="enable-button">Disabled</button>
 
 
             </div>
@@ -1634,6 +1659,52 @@
                         </div>
                     </div>
                      </div>
+
+
+                     
+                    {{-- Canvas edit for Kids Bibs --}}
+                    <div id="product28" class="img-div" data-value="1" style="display:none">
+                      <h2 class="option-title">Kids bibs options</h2>
+                      <div class="product-wrap">
+                        <div id="app29" >
+                            <canvas id="c29" width="250" height="300"></canvas>
+                        </div>
+                        <div class="product-options22">
+  
+                           {{--  <form method="post" id="upload-form2" enctype="multipart/form-data">
+                              {{ csrf_field() }}
+                             <input type="file" name="file1" >
+                             <input type="submit" value="Upload" name="submit">
+                             </form> --}}
+  
+                            <div class="color-choose">
+  
+                                <div class="container">
+                                    <div class="output" id="output"></div>
+  
+                                    <div class="result-wrp">
+                                       <p>Choose a color</p>
+                                      <input type="color" id="color24">
+                                    </div>
+                                    <label  class="scale-lable">
+                                        <span>Scale:</span>
+                                        <input type="range" id="scale-control25"  value="1.5" min="0.005" max="1.5" step="0.005">
+                                    </label>
+                                    <div class="align">
+                                    <button id="alignVertically25" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
+                                    <button id="alignHorizontally25" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
+                                    </div>
+                                    <div class="repeat-option btn-group">
+                                      <button id="repeat15" class="repeat-opt">Repeat</button>
+                                      <button id="none15" class="repeat-opt">None</button>
+                                      <button id="repeat-vertical15" class="repeat-opt">Repeat vertical</button>
+                                  </div>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                     </div>
+
 
     @if(!empty($image))
     <div id="proizvod13" class="save-picture disabledbutton" name="Ceger"  data-canvas="canvas13" value="1" style="display:none;">
@@ -2766,11 +2837,12 @@ $("#capture").click(function(event){
       
       event.preventDefault();
 
-     setTimeout(function(){
+    
 
 
       var canvasImage = "0";
     if( el.getAttribute('value')=='0'){
+      setTimeout(function(){
       canvasPicture = el.getAttribute("data-canvas");
         html2canvas(el).then(function (canvasA){
           var numbers = canvasPicture.match(/(\d+)/);
@@ -2821,17 +2893,18 @@ $("#capture").click(function(event){
                     }
                 });
         });
-    }
-    number++;
+        number++;
     if(count==number){
       $("#loader").hide();
       $('body').css("opacity" , 1);
       $('body').css("pointer-events" , "all");
     }
-
-},time)
+    },time)
 time += 10000;
+  
 
+
+    }
 });
 
 

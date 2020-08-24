@@ -174,6 +174,8 @@ $price = 25.00;
   $price = 10.90;
 }else if($original == "Backpacks"){
  $price = 3.90;
+}else if($original == "Kids Bibs"){
+    $price = 0;
 }else{
     $price = 0;
 }
@@ -324,6 +326,9 @@ if($original == "Kids T-Shirts"){
 }
 if($original == "Backpacks"){
     ImageModel::backpack($idProduct, $originalImagePath);
+}
+if($original == "Kids Bibs"){
+    ImageModel::kidsBibs($idProduct, $originalImagePath);
 }
 
 

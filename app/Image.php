@@ -6963,7 +6963,7 @@ if (!$process8->isSuccessful()) {
 
  
 
-        $process = new Process('magick convert   '.$path.'\site-images\Backpack-black-BG.jpg[403x522+450+381] 
+        $process = new Process('magick convert   '.$path.'\site-images\Backpack-black-BG.jpg[403x522+420+351] 
        -colorspace gray 
        -blur 10x250 
        -auto-level
@@ -7007,12 +7007,12 @@ if (!$process8->isSuccessful()) {
        list($width, $height) = getimagesize($path.'\image\ms_temp.png');
   
      
-       $X = 450 + (403-$width)/2;
-       $Y = 381 +  (522-$height)/2;
+       $X = 420 + (403-$width)/2;
+       $Y = 351 +  (522-$height)/2;
       
   
         $process3 = new Process('magick convert 
-       '.$path.'\site-images\Backpack-black-BG.jpg[403x522+450+381] 
+       '.$path.'\site-images\Backpack-black-BG.jpg[403x522+420+351] 
        -colorspace gray -blur 10x250 -auto-level 
        -depth 16 
        '.$path.'\image\ms_displace_map_girl_white_regular.png
@@ -7044,7 +7044,7 @@ if (!$process8->isSuccessful()) {
   
        
         $process5 = new Process('magick convert ^
-       '.$path.'\site-images\Backpack-black-BG.jpg[403x522+450+381] ^
+       '.$path.'\site-images\Backpack-black-BG.jpg[403x522+420+351] ^
        -colorspace gray -auto-level ^
        -blur 0x4 ^
        -contrast-stretch 0,30%% ^
@@ -7093,7 +7093,7 @@ if (!$process8->isSuccessful()) {
       $src1 = new \Imagick(public_path("\image\ms_light_map_logo.png"));
       $src2 = new \Imagick(public_path("site-images/Backpack-black-Mask.png"));
     /*   $src6 = new \Imagick(public_path("site-images/1Tote-Bag-Black-handle-Mask-Red-lined.png")); */
-      $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,450,381);
+      $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,$X,$Y);
       $src2->writeImage(public_path("image\image-backpacks.png"));
   
      /*  $src6->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,450,451);
@@ -7103,7 +7103,7 @@ if (!$process8->isSuccessful()) {
       $src7 = new \Imagick(public_path("\image\ms_light_map_logo.png"));
       $src8 = new \Imagick(public_path("site-images/Backpack-red-Mask.png"));
     /*   $src6 = new \Imagick(public_path("site-images/1Tote-Bag-Black-handle-Mask-Red-lined.png")); */
-      $src8->compositeImage($src7, \Imagick::COMPOSITE_DSTOVER ,450,381);
+      $src8->compositeImage($src7, \Imagick::COMPOSITE_DSTOVER ,$X,$Y);
       $src8->writeImage(public_path("image\image-backpacks1.png"));
   
   
@@ -7152,6 +7152,171 @@ if (!$process8->isSuccessful()) {
        ]);
 
        return $check1;
+    }
+
+
+    public static function kidsBibs($id, $image){
+        $path = public_path();
+
+ 
+
+        $process = new Process('magick convert   '.$path.'\site-images\New-bibs-BG.jpg[503x522+550+501] 
+       -colorspace gray 
+       -blur 10x250 
+       -auto-level
+       '.$path.'\image\displace_map.png
+        ');
+  
+   $process->run();
+   if (!$process->isSuccessful()) {
+       throw new ProcessFailedException($process);
+   }
+       echo $process->getOutput();
+       echo '<img src="\image\displace_map.png">'; 
+  
+       $imageName1 = "/" .  $image; 
+  
+       $process1 = new Process('magick convert   '.$path.'\design' . $imageName1 . '
+       -resize 500x500
+       '.$path.'\resized_pictures' . $imageName1 . '
+       '); 
+       
+    $process1->run();
+     if (!$process1->isSuccessful()) {
+         throw new ProcessFailedException($process1);    
+   } 
+  
+  
+       $process2 = new Process('magick convert 
+       '.$path.'\resized_pictures' . $imageName1 . '
+       -bordercolor transparent -border 12x12 -thumbnail 503x522 
+       '.$path.'\image\ms_temp.png
+        ');
+  
+   $process2->run();
+   if (!$process1->isSuccessful()) {
+       throw new ProcessFailedException($process2);
+   }
+       echo $process2->getOutput();
+       echo '<img src="\image\ms_temp.png">';
+  
+  
+       list($width, $height) = getimagesize($path.'\image\ms_temp.png');
+  
+     
+       $X = 550 + (503-$width)/2;
+       $Y = 501 +  (522-$height)/2;
+      
+  
+        $process3 = new Process('magick convert 
+       '.$path.'\site-images\New-bibs-BG.jpg[503x522+550+501] 
+       -colorspace gray -blur 10x250 -auto-level 
+       -depth 16 
+       '.$path.'\image\ms_displace_map_girl_white_regular.png
+        ');
+  
+   $process3->run();
+   if (!$process3->isSuccessful()) {
+       throw new ProcessFailedException($process3);
+   }
+       echo $process3->getOutput();
+       echo '<img src="\image\ms_displace_map_girl_white_regular.png">'; 
+      
+       $process4 = new Process('magick convert ^
+       '.$path.'\image\ms_temp.png ^
+       '.$path.'\image\ms_displace_map_girl_white_regular.png ^
+       -alpha set -virtual-pixel transparent ^
+       -compose displace -set option:compose:args -5x-5 -composite ^
+       -depth 16 ^
+       '.$path.'\image\ms_displaced_logo.png
+     
+        ');
+  
+   $process4->run();
+   if (!$process4->isSuccessful()) {
+       throw new ProcessFailedException($process4);
+   }
+       echo $process4->getOutput();
+       echo '<img src="\image\ms_displaced_logo.png">';
+  
+       
+        $process5 = new Process('magick convert ^
+       '.$path.'\site-images\New-bibs-BG.jpg[503x522+550+501] ^
+       -colorspace gray -auto-level ^
+       -blur 0x4 ^
+       -contrast-stretch 0,30%% ^
+       -depth 16 ^
+       '.$path.'\image\ms_light_map_girl_white_regular.png
+        ');
+  
+  /*         Makao sam komandu -separate proces 5 */
+  
+   $process5->run();
+   if (!$process5->isSuccessful()) {
+       throw new ProcessFailedException($process5);
+   }
+       echo $process5->getOutput();
+       echo '<img src="\image\ms_light_map_girl_white_regular.png">'; 
+       
+       $process6 = new Process('magick convert ^
+       '.$path.'\image\ms_displaced_logo.png ^
+       -channel matte -separate ^
+       '.$path.'\image\ms_logo_displace_mask.png
+        ');
+  
+   $process6->run();
+   if (!$process6->isSuccessful()) {
+       throw new ProcessFailedException($process6);
+   }
+       echo $process6->getOutput();
+       echo '<img src="\image\ms_logo_displace_mask.png">';
+       
+       $process7 = new Process('magick convert ^
+       '.$path.'\image\ms_displaced_logo.png ^
+       '.$path.'\image\ms_light_map_girl_white_regular.png ^
+       -compose Multiply -composite ^
+       '.$path.'\image\ms_logo_displace_mask.png ^
+       -compose CopyOpacity -composite ^
+       '.$path.'\image\ms_light_map_logo.png
+       ');
+  
+  $process7->run();
+  if (!$process7->isSuccessful()) {
+      throw new ProcessFailedException($process7);
+  }
+      echo $process7->getOutput();
+      echo '<img src="\image\ms_light_map_logo.png">';
+  
+      $src1 = new \Imagick(public_path("\image\ms_light_map_logo.png"));
+      $src2 = new \Imagick(public_path("site-images/New-Bibs-Mask.png"));
+     
+      $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,$X,$Y);
+      $src2->writeImage(public_path("image\image-bibs.png"));
+  
+  
+     
+      $src4 = new \Imagick(public_path("site-images/New-bibs-BG.jpg"));
+  
+       $src3 = new \Imagick(public_path("image/image-bibs.png"));
+       $src4->compositeImage($src3, \Imagick::COMPOSITE_OVER,0,0);
+
+       $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+       $name = mt_rand(1000000, 9999999)
+           . mt_rand(1000000, 9999999)
+           . $characters[rand(0, strlen($characters) - 1)];
+       
+       $string = str_shuffle($name);
+       $string .=  round(microtime(true) * 1000);
+       $imageRandom = '/' . $string . '.png';
+
+       $src4->writeImage(public_path("image". $imageRandom));
+             
+       $imageRandom = ltrim($imageRandom, '/');
+
+       $check = DB::table('images')->insert([
+        'name' => $imageRandom, 'product_id' => $id, 'color' => 'black'
+       ]);
+
     }
 
     public static function clock($id, $image){
@@ -8276,7 +8441,7 @@ if (!$process8->isSuccessful()) {
     public static function masksBlack($id, $image){
         $path = public_path();
 
-           $process = new Process('magick convert   '.$path.'\site-images\Face-Mask-Black-BG.png[203x222+620+401] 
+           $process = new Process('magick convert   '.$path.'\site-images\Face-Mask-Black-BG.png[203x222+640+421] 
           
           '.$path.'\image\displace_map.png
            ');
@@ -8318,12 +8483,12 @@ if (!$process8->isSuccessful()) {
           list($width, $height) = getimagesize($path.'\image\ms_temp.png');
       
       
-          $X = 620 + (203-$width)/2;
-          $Y = 401 +  (222-$height)/2;
+          $X = 640 + (203-$width)/2;
+          $Y = 421 +  (222-$height)/2;
          
       
            $process3 = new Process('magick convert 
-          '.$path.'\site-images\Face-Mask-Black-BG.png[203x222+620+401] 
+          '.$path.'\site-images\Face-Mask-Black-BG.png[203x222+640+421] 
           -colorspace gray -blur 10x250 -auto-level 
           -depth 16 
           '.$path.'\image\ms_displace_map_girl_white_regular.png
@@ -8372,7 +8537,7 @@ if (!$process8->isSuccessful()) {
       
       
            $process5 = new Process('magick convert ^
-          '.$path.'\site-images\Face-Mask-Black-BG.png[203x222+620+401] ^
+          '.$path.'\site-images\Face-Mask-Black-BG.png[203x222+640+421] ^
           -colorspace gray -auto-level ^
           -blur 0x4 ^
           -contrast-stretch 0,30%% ^
@@ -8405,7 +8570,7 @@ if (!$process8->isSuccessful()) {
       
           $src1 = new \Imagick(public_path("\image\ms_displaced_logo_perspective.png"));
           $src2 = new \Imagick(public_path("site-images/Face-Mask-Black-Mask.png"));
-          $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,620,401);
+          $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,640,421);
           $src2->writeImage(public_path("image\image-mask-black.png"));
           echo '<img src="\image\image-mask-black.png">';
       

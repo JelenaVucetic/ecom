@@ -85,15 +85,13 @@
         <div id="desctop-middle">
           @if ($pro_cat->category->name == 'Wallpapers')
           <div id="slick27">
-              <div class="slide-item">
-                <img src="{{url('design', $design->name)}}">
-              </div>
-              <div class="slide-item">
-                <img id="main-image-mobile" src="{{url('image', $imageFront->name)}}">
-              </div>
-              <div class="slide-item">
-                <img id="blank-image-mobile" src="{{url('image', $imageBack)}}">
-              </div>
+            @foreach ($imageSlider as $item)
+            <div class="slide-item">
+              <img src="{{url('image', $item->name)}}">
+            </div>
+          
+            @endforeach
+             
           </div>
           @else    
             <img id="main-image" class="slika3"  src="{{url('image', $imageFront->name)}}">
