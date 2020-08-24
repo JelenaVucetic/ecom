@@ -1329,3 +1329,12 @@ error: function (jqXHR, textStatus, errorThrown) {
            }
         });
 	});
+
+
+$(document).ready(function(){
+    $('input[type="file"]').change(function(e){
+      alert('fdsfs');
+        var fileName = e.target.files[0].name;
+        alert('The file "' + fileName +  '" has been selected.');
+    });
+});

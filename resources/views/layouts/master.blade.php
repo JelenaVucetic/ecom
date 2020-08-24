@@ -72,6 +72,7 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <link rel="stylesheet" href="/css/header.css">
         <link rel="stylesheet" href="/css/welcome.css">
+        <link rel="stylesheet" href="/css/slick.css">
         <link rel="stylesheet" href="/css/home.css">
         <link rel="stylesheet" href="/css/cart.css">
         <link rel="stylesheet" href="/css/productDetails.css">

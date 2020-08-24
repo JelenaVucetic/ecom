@@ -33,7 +33,12 @@
             </div>
             <div class="col-xs-6 col-sm-9 contact-form">
                 <h4>You can contact us by sending an email to buy@urbanone.me</h4>
-               <form action="">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+               <form  method="post" action="{{url('/send-mail')}}">
                    @csrf
                     <div>
                         <label for="email">Your email address <span style="color:#E6003A">*</span></label>
@@ -50,7 +55,7 @@
                     </div>
                     <div >
                         <label for="file">Attach a photo<span style="color:#E6003A"> *</span></label>
-                        <input type="file" class="custom-input">
+                        <input type="file" class="custom-input" name="image">
                         <p>If you have a photo or image that will help our investigation, please add it here.</p>
                     </div>
                     <div>

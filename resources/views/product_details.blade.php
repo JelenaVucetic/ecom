@@ -83,8 +83,22 @@
       </div>
       <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12">
         <div id="desctop-middle">
-          <img id="main-image" class="slika3"  src="{{url('image', $imageFront->name)}}">
-
+          @if ($pro_cat->category->name == 'Wallpapers')
+          <div id="slick27">
+              <div class="slide-item">
+                <img src="{{url('design', $design->name)}}">
+              </div>
+              <div class="slide-item">
+                <img id="main-image-mobile" src="{{url('image', $imageFront->name)}}">
+              </div>
+              <div class="slide-item">
+                <img id="blank-image-mobile" src="{{url('image', $imageBack)}}">
+              </div>
+          </div>
+          @else    
+            <img id="main-image" class="slika3"  src="{{url('image', $imageFront->name)}}">
+          @endif
+         
           <div class="wishlist">
             <?php
                   $wishData = DB::table('wishlist')
@@ -156,7 +170,7 @@
     </div>
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12" style="background: #F5F5F5; height: 100vh" >
         <h4 class="product-title" style="padding-top: 20px;">{{ $product->name}}</h4>
-        <?php $pro_cat = App\Product::find($product->id); ?>
+       
         <input type="hidden" value="{{ $pro_cat->category->name }}" id="pro_cat">
           <h5>{{ $pro_cat->category->name }}</h5>
           <p>Designed by <strong>Urban One</strong></p>
