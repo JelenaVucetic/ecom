@@ -7,8 +7,8 @@
                 <h6>High quality</h6>
                 <p>Available as Standard or <br> Express delivery</p>
             </div>
-            <a class="learn-more" href="">Learn more</a>
-            <a class="learn-more-img" href="" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
+            <a class="learn-more" href="/about#quality">Learn more</a>
+            <a class="learn-more-img" href="/about#quality" style="display:none;"><img src="/site-images/about-right-arrow.png" alt=""></a>
         </div>
         <div class="about-urban-info">
             <img src="/site-images/12 Secure Payment.svg" alt="">

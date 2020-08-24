@@ -37,13 +37,12 @@ class NewsletterController extends Controller
     {
        
         if ( ! Newsletter::isSubscribed($request->subscribe_email) ) 
-        {
-          
+        {   
             Newsletter::subscribePending($request->subscribe_email);
-            return response()->json(['success'=>'You are successfully subscribed.']);
+            return redirect()->back()->with(['status'=>'Please check your email to confirm subscription.']);
         }
+        return redirect()->back()->with('status', 'You are alredy subscribed');
 
-        return response()->json(['message'=>'You are alredy subscribed']);
              
     }
 

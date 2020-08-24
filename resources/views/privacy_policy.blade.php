@@ -120,7 +120,7 @@
                     contents of the card data are not stored in Monargo&#39;s databases;</p>
              </div>
          </div>
-         <div>
+         <div id="cookies">
              <h4>4. COOKIES and related technologies</h4>
              <div>
                  <p>When you use our Internet services, cookies are installed on your computer. In general, cookies and
