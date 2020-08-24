@@ -266,7 +266,7 @@
           </div>
 
           <div class="view-size-guid">
-              <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guid</h5></a>
+              <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guide</h5></a>
               <img src="/site-images/Layer_1_1_.svg" alt="">
           </div>
 

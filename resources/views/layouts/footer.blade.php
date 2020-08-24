@@ -35,9 +35,8 @@
         <img src="/site-images/Logotip-White.svg" alt="Urban one">
       </div>
       <div class="footer-bottom-info" >
-        <a href="">User Agreement</a>
         <a href="/privacy_policy">Privacy Policy</a>
-        <span>UrbanOne uses cookies: Cookie policy</span>
+        <span style="font-size:14px">UrbanOne uses cookies: <a href="/privacy_policy#cookies">Cookies policy</a> </span>
       </div>
     </div>
   </div>
