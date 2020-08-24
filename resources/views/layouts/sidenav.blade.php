@@ -19,12 +19,15 @@
       @else
       <a class="navbar-brand" href="/" style="margin-right: 0;"><img src="/site-images/U1.png" alt="Urban one"></a>
       @endif
+      <img src="/site-images/5 Search.svg" data-toggle="modal" data-target="#searchModal" style="width: 25px;">
+{{--       <i class="fa fa-search fa-2x" data-toggle="modal" data-target="#searchModal" style="margin-right: 30px;"></i>
+ --}}      <a class="navbar-brand" href="/" style="margin-right: 0;"><img src="/site-images/U1.png" alt="Urban one"></a>
 
     </div>
         <!-- Navbar Right icon -->
-       <div class="pmd-ml-auto-icon float-right" style="width: 95px">
+       <div class="pmd-ml-auto-icon float-right" style="width: 104px">
         <div class="hero-right">
-          <a class="nav-link" href="/wishlist" style='color:#231F20;'><img style='width:30px;'  onmouseover="this.src='/site-images/4 Favorites - ikonica - HEADER - HOVER.svg'" onmouseout="this.src='/site-images/4 Favorites - ikonica - HEADER.svg'" src="/site-images/4 Favorites - ikonica - HEADER.svg" alt=""></i></a>  
+          <a class="nav-link" href="/wishlist" style='color:#231F20;'><img style='width:30px;margin-right: 10px;'  onmouseover="this.src='/site-images/4 Favorites - ikonica - HEADER - HOVER.svg'" onmouseout="this.src='/site-images/4 Favorites - ikonica - HEADER.svg'" src="/site-images/4 Favorites - ikonica - HEADER.svg" alt=""></i></a>  
             <li style="list-style:none;">
               <div style='position: relative;'>
                 <a  href="{{url('/cart')}}"><img style='width:30px;' src="/site-images/5 Shopping - cart - kolica.svg" alt="">

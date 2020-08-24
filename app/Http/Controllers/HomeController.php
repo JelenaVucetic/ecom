@@ -13,6 +13,12 @@ use App\Recommends;
 use Image;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
+use App\Mail\ContactMail;
+// HomeController.php
+
+use Illuminate\Support\Facades\Mail;
+
+
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -149,6 +155,7 @@ class HomeController extends Controller
     {
         $product = DB::table('product')->where('id', $id)->first();
         $find_cat = Product::findOrFail($id);
+        $pro_cat = Product::find($product->id); 
 
         if($find_cat->category->name == "T-Shirts"){
             if($product->gender == "female"){
@@ -361,7 +368,7 @@ class HomeController extends Controller
             $recommends->save();
         }
 
-        return view('product_details', compact('product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack'));
+        return view('product_details', compact('pro_cat','product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack'));
     }
 
     public function viewWishlist()
@@ -1185,5 +1192,35 @@ class HomeController extends Controller
         $products = $design->products()->get();
 
         return view('design.show', compact('products' , 'categories'));
+    }
+
+    public function sendContactMail(Request $request)
+    {
+        $this->validate($request, [
+            'subject'     =>  'required',
+            'email'  =>  'required|email',
+            'description' =>  'required',
+            'image' => 'nullable'
+           ]);
+      
+        $details = [
+            'subject'      =>  $request->subject,
+            'email'   =>   $request->email,
+            'description'   =>   $request->description
+        ];
+
+
+        if($request->hasFile('image')){
+    		$image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $img = Image::make($image);
+
+            $img->save( public_path('/mail/' . $filename ) );
+            $details[image] = $filename;
+
+        }
+
+ 
+        return redirect()->back()->with('status', 'Thank you for contacting us!');
     }
 }
