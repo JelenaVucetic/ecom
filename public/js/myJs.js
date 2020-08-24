@@ -452,7 +452,7 @@ $(document).ready(function() {
           $("#wallpaper-custom-height").css("color", '#adacac');
           $("#save-wallpaper-size").html('Edit');
 
-          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.db_price').val()) / 100;
+          var newPrice =  ($("#wallpaper-custom-width").val() * $("#wallpaper-custom-height").val() * $('.db_price').val());
           $('.A3_price span').html(newPrice);
           $(".product_price").val(newPrice)
       }
@@ -1084,7 +1084,7 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
-    }else if(pro_cat=="Tote Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks" || pro_cat=="Makeup Bags"){
+    }else if(pro_cat=="Tote Bags" || pro_cat=="Clocks" || pro_cat=="Notebooks" || pro_cat=="Makeup Bags" ||  pro_cat=="Backpacks"){
       var id = $("#productID").val();
       var color = this.value;
       $.ajax({

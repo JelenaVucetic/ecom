@@ -583,7 +583,30 @@ $(document).ready(function(){
                             });
 
 
-           
+        // Enable and edit Face mask
+        $('#edit-product26').click(function() {
+            if(document.getElementById('product27').style.display == 'none'){
+                closeCanvas();
+                document.getElementById('product27').style.display = 'flex';
+            }else{
+                document.getElementById('product27').style.display = 'none';
+            }
+        });
+        $('#enabled-product26').click(function(){
+            if($('#proizvod26').hasClass('disabledbutton')){
+                $('#proizvod26').removeClass('disabledbutton');
+                $( "#proizvod26" ).attr( "value" , 0 );
+                $('#enabled-product26').html('Enabled');
+                $('#enabled-product26').addClass('enable');
+            }else{
+                $('#proizvod26').addClass('disabledbutton');
+                $( "#proizvod26" ).attr( "value" , 1 );
+                $('#enabled-product26').html('Disabled');
+                $('#enabled-product26').removeClass('enable');
+            }
+        });
+
+
  
 
 
@@ -733,6 +756,12 @@ $(document).ready(function(){
             var image26 = document.getElementById("logo-canvas25");
             image26.src = canvas29.toDataURL();
             canvas29.discardActiveObject()
+        });
+
+        $('#product27').mouseup(function(){
+            var image27 = document.getElementById("logo-canvas26");
+            image27.src = canvas30.toDataURL();
+            canvas30.discardActiveObject()
         });
 
 

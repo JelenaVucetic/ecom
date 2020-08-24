@@ -220,7 +220,7 @@ class HomeController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
-            $imageBack = "Tapete-Thumbnail-mockup-2.png";
+            $imageBack = "Wall-Wallpapers-BG.png";
         }elseif($find_cat->category->name=="Tote Bags") {
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
@@ -295,6 +295,12 @@ class HomeController extends Controller
                 ['product_id',"=", $id]
             ])->first();
             $imageBack = "Kids-T-Shirt-White-BG.jpg";
+        }elseif($find_cat->category->name=="Backpacks"){
+            $imageFront = DB::table('images')->where([
+                ['product_id',"=", $id],
+                ['color', '=', 'black']
+            ])->first();
+            $imageBack = "Backpack-black-BG.jpg";
         }
 
 
@@ -1103,6 +1109,8 @@ class HomeController extends Controller
             $blankImage = "Notes". $request->color. ".png";
         }elseif($request->pro_cat == "Makeup Bags"){
             $blankImage = "Makeup". $request->color. ".jpg";
+        }elseif($request->pro_cat == "Backpacks"){
+            $blankImage = "Backpack". $request->color. ".jpg";
         }else{
             $blankImage = "Clock". $request->color. ".png";
         }
