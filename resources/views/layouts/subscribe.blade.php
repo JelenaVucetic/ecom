@@ -1,14 +1,9 @@
 <div class="subscribe">
-    @if (\Session::has('success'))
-    <div class="alert alert-success">
-      <p>{{ \Session::get('success') }}</p>
-    </div><br />
-   @endif
-   @if (\Session::has('failure'))
-    <div class="alert alert-danger">
-      <p>{{ \Session::get('failure') }}</p>
-    </div><br />
-   @endif
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="subscribe-box">
         <div class="subscribe-info">
             <img src="/site-images/Subscribe1.svg" alt="">

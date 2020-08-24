@@ -63,6 +63,35 @@
                        <strong>Address:</strong> Djoka Mirasevica M3 ( Ruske Kule ) Podgorica 81000
                     </p>
                 </div>
+                <div id="quality">
+                    <h4>Product’s quality standards</h4>
+                    <p>
+                        Monargo doo is highly taking care of the product’s quality. All of our products are made of high quality materials with high precision of printing and best printing machines on the market.
+                        Internationally recognized quality standards also tell about how important quality of the products and services are to us. Monargo doo owns three ISO standards:
+                        <br><br>
+                        ISO 9001 – Quality management systems
+                        ISO 9001:2015 specifies requirements for a quality management system when an organization:
+                     <br>   a) needs to demonstrate its ability to consistently provide products and services that meet customer and applicable statutory and regulatory requirements, and
+                     <br>   b) aims to enhance customer satisfaction through the effective application of the system, including processes for improvement of the system and the assurance of conformity to customer and applicable statutory and regulatory requirements.
+                        ISO 14001 – Environmental management systems
+                        ISO 14001:2015 specifies the requirements for an environmental management system that an organization can use to enhance its environmental performance. ISO 14001:2015 is intended for use by an organization seeking to manage its environmental responsibilities in a systematic manner that contributes to the environmental pillar of sustainability.
+                        ISO 14001:2015 helps an organization achieve the intended outcomes of its environmental management system, which provide value for the environment, the organization itself and interested parties. Consistent with the organization's environmental policy, the intended outcomes of an environmental management system include:
+                      <br>  · enhancement of environmental performance;
+                      <br>  · fulfilment of compliance obligations;
+                      <br>  · achievement of environmental objectives.
+                      <br>  ISO 18001 – Health and safety management systems
+                      <br>  • Improves corporate image and credibility among stakeholders, regulators, customers, prospective clients and the public
+                        
+                      <br>  • Adoption of international best practice in relation to risk management
+                      <br>  • Ensures health and well-being of employees, sub-contractors and the public
+                      <br>  • Minimisation of liability of employers through adoption of proactive rather than reactive controls
+                      <br>  • Ensures legislative awareness and compliance
+                      <br> • Reduces accident and incident rates by reducing or eliminating workplace hazards
+                      <br>  • Improves the incident investigation process
+                      <br>  • Increases employee motivation through the provision of a safer workplace and participation process
+                        
+                    </p>
+                </div>
                 
             </div>
         </div>

@@ -129,5 +129,4 @@
 @yield('rateYo')
 
 <script src="/js/myJs.js"></script>
-<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/60cde65460ee658c884f9a093/2e82530a5323cb0644278d84f.js");</script>
-</html>
+  </html>

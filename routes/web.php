@@ -48,6 +48,7 @@ Route::get('/contact_us', 'HomeController@contact');
 Route::get('/verified_by_visa', 'HomeController@verifiedByVisa');
 Route::get('/mastercard_secure', 'HomeController@mastercardSecure');
 
+
 Route::resource('category', 'CategoriesController');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
