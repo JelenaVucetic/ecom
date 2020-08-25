@@ -14,10 +14,11 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-4">
-                <div class="box-container">
-                    <div class="box1-img-holder"></div>
-                    <button><a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">  Shop T-Shirts</a></button>
-                </div>
+                <a href="{{route('category.show',[ $shirtsCat->id, $shirtsCat->name => $shirtsCat->parent_id ])}}" style="color: inherit;">                    <div class="box-container">
+                        <div class="box1-img-holder"></div>
+                        <button>  Shop T-Shirts</button>
+                    </div>
+                </a>
             </div>          
             <div class="col-6 col-md-4">
                 <a href="{{route('category.show',[$casesCat->id, $casesCat->name => $casesCat->id ])}}" style="color: inherit;">

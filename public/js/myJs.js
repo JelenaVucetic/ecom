@@ -1328,28 +1328,32 @@ $('.cart_select li').on('click', function() {
   var subtotal = $('#cartTotal1Second').html();
 
   if(city == "Podgorica"){
-   $("#shipping_price").val("2");
-   $("#strong_shipping").html("&euro;2");
-  }else{
-   $("#shipping_price").val("3");
-   $("#strong_shipping").html("&euro;3");
+    $("#shipping_price").val("2");
+    $("#strong_shipping").html("&euro;2");
+  } else if ( subtotal.substring(1) > 35) {
+    $("#shipping_price").val("0");
+    $("#strong_shipping").html("&euro;0");
+  } else {
+    $("#shipping_price").val("3");
+    $("#strong_shipping").html("&euro;3");
   }
  
   $.ajax({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             } ,
-  type: 'post',
-  dataType: 'json',
-  url: '/shipping_city',
-  data: { city : city, subtotal: subtotal },
-success: function(response) {
-  $('#cartTotalSecond').html("&euro;"+response['subtotal']);
-  $('#amount').val(response['subtotal']);
-},
-error: function (jqXHR, textStatus, errorThrown) {
-  alert("something went wrong");
-} 
+    type: 'post',
+    dataType: 'json',
+    url: '/shipping_city',
+    data: { city : city, subtotal: subtotal },
+    success: function(response) {
+      $('#cartTotalSecond').html("&euro;"+response['subtotal']);
+      $('#amount').val(response['subtotal']);
+      $("#strong_shipping").html(response['shipping']);
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      alert("something went wrong");
+    } 
 });
 
 })

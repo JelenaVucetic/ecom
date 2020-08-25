@@ -162,4 +162,21 @@ class ProfileController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         return view('profile.my_wishlist', compact('Products', 'categories'));
     }
+
+    public function deleteForm()
+    {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('profile.delete_acount', compact('categories'));
+    }
+    public function destroy()
+    {
+        $user = User::find(Auth::user()->id);
+
+        Auth::logout();
+    
+        if ($user->delete()) {
+    
+             return redirect('/')->with('message', 'Your account has been deleted!');
+        }
+    }
 }

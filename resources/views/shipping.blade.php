@@ -33,11 +33,6 @@
             </div>
             <div class="col-xs-6 col-sm-9 shipping-right">
                 <div>
-                    <h4>Can the package be monitored?</h4>
-                    <p>Yes. When you confirm and submit your order, you will receive a confirmation email that will allow you
-                        to access the status of your shipment.</p>
-                </div>
-                <div>
                     <h4>How can I change my order?</h4>
                     <p>If you have confirmed your order and have already received an email confirmation, the order can no
                         longer be changed. If you believe that an error has occurred, you have changed your mind or want to

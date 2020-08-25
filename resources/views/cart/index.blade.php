@@ -36,10 +36,11 @@ for( let i=1;i<200;i++) {
                 $('#countTotal').html('&euro;'+data.countTotal);
                 $('#cartTotalSecond').html('&euro;'+data.cartTotal);
                 $('#cartTotal1Second').html('&euro;'+data.cartSubTotalOld);
-                $('#countTotalSecond').html('&euro;'+data.countTotal);
+                $('#countTotalSecond').html(data.countTotal);
                 //$('#strong_shipping').html(date.shipping)
                 $('#amount').val(data.cartTotal);
                 $("#number_cart_items").html(data.cartCount); 
+                $("#strong_shipping").html(data.shipping)
             }
         });
 
@@ -77,9 +78,10 @@ for( let i=1;i<200;i++) {
                     $('#countTotal').html('&euro;'+data.countTotal);
                     $('#cartTotalSecond').html('&euro;'+data.cartTotal);
                     $('#cartTotal1Second').html('&euro;'+data.cartSubTotalOld);
-                    $('#countTotalSecond').html('&euro;'+data.countTotal);
+                    $('#countTotalSecond').html(data.countTotal);
                     $('#amount').val(data.cartTotal);
                     $("#number_cart_items_phone").html(data.cartCount); 
+                    $("#strong_shipping").html(data.shipping)
                 }
             });
     
@@ -420,12 +422,6 @@ for( let i=1;i<200;i++) {
                         <br>
                         <span style="color:red">{{ $errors->first('zip') }}</span>
                     </div>
-                   {{--  <div class="">
-                        <label for="city" class="form-label">City Name</label>                   
-                        <input id="city" type="text" name="city" placeholder="e.g. Podgorica" value="{{ (isset($ads->city)) ? $ads->city : old('city') }}" class="form-control">
-                        <br>
-                        <span style="color:red">{{ $errors->first('city') }}</span>
-                    </div> --}}
                     <div class="cart_select">
                         <label for="city" class="form-label">City Name</label>     
                         <select class="select_city" id="" name="city" >
@@ -457,8 +453,6 @@ for( let i=1;i<200;i++) {
                 </div>
             </form>
             <div style="margin:30px auto;"> 
-
-
                 <div class="accordion" id="accordionExample">
                     <div class="card">
                       <div  class="continue">                       
@@ -478,11 +472,11 @@ for( let i=1;i<200;i++) {
                                     <li class="d-flex justify-content-between"><span>Company</span><strong> Monargo doo- Urban One</strong></li>
                                     <li>
                                         <span id="countTotalSecond">{{$countTotal}}</span> <span> items</span>
-                                    <strong id="cartTotal1Second" style="float: right;">&euro;{{ number_format((float)$cartItem->subtotal, 2, '.', '') }}</strong>
+                                    <strong id="cartTotal1Second" style="float: right;">&euro;{{ number_format((float)$oldPrice, 2, '.', '') }}</strong>
                                     </li>
-                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;3</strong></li>
-                               {{--  //dodati siping --}}
-                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{ number_format((float)$cartItem->subtotal, 2, '.', '')+3.00 }}</strong></li>
+                                <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong id="strong_shipping">&euro;{{$shipping}}</strong></li>
+                               <li>3 items -> 10%, 5items -> 15%, >35 free</li>
+                                    <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong id="cartTotalSecond">&euro;{{ number_format((float)$cartSubTotal, 2, '.', '')+ $shipping }}</strong></li>
                                 </ul>
                             </div>
                             <form id="payment_form"  action="/formvalidate" method="POST" onsubmit="interceptSubmit(); return false;" class='test-form'>

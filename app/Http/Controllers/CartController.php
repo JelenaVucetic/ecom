@@ -33,7 +33,7 @@ class CartController extends Controller
         } else {
             $cartSubTotal = Cart::subtotal();
         }
-
+        
         $ads = null;
 
         if(Auth::check()) {
@@ -52,8 +52,15 @@ class CartController extends Controller
             $order_number = "U1-000001";
         }
 
+        if($cartSubTotal > 35) {
+            $shipping = 0;
+        } else {
+            $shipping = 3;
+        }
+
+       
     
-        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads', 'order_number'));
+        return view('cart.index', compact('cartItems', 'cartSubTotal', 'categories', 'countTotal', 'oldPrice', 'ads', 'order_number', 'shipping'));
     }
 
     public function addItem(Request $request, $id)
@@ -178,17 +185,64 @@ class CartController extends Controller
     }
 
     public function shippingPrice(Request $request){
-        if($request->city == "Podgorica"){
-            $price = 2;
-        }else{
-            $price = 3;
-        }
-
+        
         $subtotal = str_replace('€','',$request->subtotal);
         $subtotal = (float)$subtotal;
-        $subtotal = $subtotal + $price;
+ 
+        $countTotal=0;
+        foreach(Cart::content() as $c) {
+            $countTotal = $c->qty + $countTotal;
+        }
+
+        if($request->city == "Podgorica")
+        {
+            if( $countTotal <3  && $subtotal >= 35)
+            {
+                $shipping = 0;
+                $subtotal = $subtotal + $shipping;
+            } else if ( $countTotal >=5  && Cart::subtotal() >= 35) {
+                $shipping = 0;
+                $subtotal = ($subtotal + $shipping)* 0.85;
+            } else if ( $countTotal <3  && $subtotal < 35) {
+                $shipping = 2;
+                $subtotal = $subtotal + $shipping;
+            } else if ( $countTotal >=3 &&  $countTotal <5  && $subtotal >= 35) {
+                $shipping = 0;
+                $subtotal = ($subtotal + $shipping) * 0.9;
+            } else if ( $countTotal >=3 &&  $countTotal <5  && $subtotal < 35) {
+                $shipping = 2;
+                $subtotal = ($subtotal + $shipping) * 0.9;
+            } else  {
+                $shipping = 2;
+                $subtotal = ($subtotal + $shipping) * 0.85;
+            } 
+        } else {
+            if( $countTotal <3  && $subtotal >= 35)
+            {
+                $shipping = 0;
+                $subtotal = $subtotal + $shipping;
+            } else if ( $countTotal >=5  && $subtotal >= 35) {
+                $shipping = 0;
+                $subtotal = ($subtotal + $shipping) * 0.85;
+            } else if ( $countTotal <3  && $subtotal < 35) {
+                $shipping = 3;
+                $subtotal = $subtotal + $shipping;
+            } else if ( $countTotal >=3 &&  $countTotal <5  && $subtotal >= 35) {
+        
+                $shipping = 0;
+                $subtotal = ($subtotal + $shipping) * 0.9;
+            }  else if ( $countTotal >=3 &&  $countTotal <5  && $subtotal < 35) {
+                $shipping = 3;
+                $subtotal = ($subtotal + $shipping) * 0.9;
+            } else  {
+                $shipping = 3;
+                $subtotal = ($subtotal + $shipping) * 0.85;
+            } 
+        }
+       
+      
         $subtotal = number_format((float)$subtotal, 2, '.', ''); 
-        return response()->json(["subtotal" => $subtotal]);
+        return response()->json(["subtotal" => $subtotal, 'shipping' => $shipping]);
     }
 
     public function updateCart(Request $request, $id)
@@ -206,27 +260,99 @@ class CartController extends Controller
         foreach($cartItems as $c) {
           $countTotal = $c->qty + $countTotal;
         }
-       
-        if( $countTotal >= 3 &&  $countTotal < 5 ) {
-            $var = Cart::subtotal();
-            $var = str_replace(',','',$var);
-            $cartSubTotal = (float)$var * 0.9;
-        } elseif ( $countTotal >= 5 ) {
-            $var = Cart::subtotal();
-            $var = str_replace(',','',$var);
-            $cartSubTotal = (float)$var * 0.85;
-            $cartSubTotalOld = (float)$var * 0.85;
+
+
+        if($request->city == "Podgorica")
+        {
+            if( $countTotal <3  && Cart::subtotal() >= 35)
+            {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var;
+                $shipping = 0;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal >=5  && Cart::subtotal() >= 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.85;
+                $shipping = 0;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal <3  && Cart::subtotal() < 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var;
+                $shipping = 2;
+                $cartSubTotal = $cartSubTotal + $shipping;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal >=3 &&  $countTotal <5  && Cart::subtotal() >= 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.9;
+                $shipping = 0;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal >=3 &&  $countTotal <5  && Cart::subtotal() < 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.9;
+                $shipping = 2;
+                $cartSubTotal = $cartSubTotal + $shipping;
+                $cartSubTotalOld = Cart::subtotal();
+            } else  {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.85;
+                $shipping = 2;
+                $cartSubTotal = $cartSubTotal + $shipping;
+                $cartSubTotalOld = Cart::subtotal();
+            } 
         } else {
-            $cartSubTotal = Cart::subtotal();
-            $cartSubTotalOld = Cart::subtotal();
+            if( $countTotal <3  && Cart::subtotal() >= 35)
+            {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var;
+                $shipping = 0;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal >=5  && Cart::subtotal() >= 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.85;
+                $shipping = 0;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal <3  && Cart::subtotal() < 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var;
+                $shipping = 3;
+                $cartSubTotal = $cartSubTotal + $shipping;
+                $cartSubTotalOld = Cart::subtotal();
+            } else if ( $countTotal >=3 &&  $countTotal <5  && Cart::subtotal() >= 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.9;
+                $shipping = 0;
+                $cartSubTotalOld = Cart::subtotal();
+            }  else if ( $countTotal >=3 &&  $countTotal <5  && Cart::subtotal() < 35) {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.9;
+                $shipping = 3;
+                $cartSubTotal = $cartSubTotal + $shipping;
+                $cartSubTotalOld = Cart::subtotal();
+            } else  {
+                $var = Cart::subtotal();
+                $var = str_replace(',','',$var);
+                $cartSubTotal = (float)$var * 0.85;
+                $shipping = 3;
+                $cartSubTotal = $cartSubTotal + $shipping;
+                $cartSubTotalOld = Cart::subtotal();
+            } 
         }
+       
+       
 
        
-        if($request->city == "Podgorica"){
-            $cartSubTotal += 2;
-        }else{
-            $cartSubTotal += 3;
-        }
+
 
         return response()->json([
             "qty" =>  $qty,
@@ -235,6 +361,7 @@ class CartController extends Controller
             'oldPrice' =>  $oldPrice,
             'countTotal' => $countTotal,
             'cartCount' => $cartCount,
+            'shipping' => $shipping,
             'cartSubTotalOld' => number_format((float)$cartSubTotalOld, 2, '.', '')
         ]);
     }
