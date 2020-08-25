@@ -90,10 +90,10 @@
     width: 50px;
 }
 
-.select-size {
+/* .select-size {
     margin: 0px 65px;
 }
-
+ */
 .xs-size,
 .s-size,
 .m-size,
@@ -943,6 +943,19 @@ stroke-width:20;
 #review:hover {
     background: #E6003A;
 }
+
+.shirts-size-description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shirts-size-description img {
+    width: 200px;
+}
+
+.table {
+    text-align: center !important;
+}
 @media (max-width: 767px) {
        .desctop-product {
             display: block;
@@ -992,6 +1005,7 @@ stroke-width:20;
 
         .select-size {
             margin: 0px ;
+          
         }
 
   /*   .phone-product {

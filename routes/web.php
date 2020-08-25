@@ -125,6 +125,8 @@ Route::group(['middleware' => [ 'auth', 'verified']], function() {
     Route::get('/my_wishlist', 'ProfileController@myWishlist');
     Route::get('/wishlist', 'HomeController@viewWishlist');
     Route::get('/removeWishList/{id}', 'HomeController@destroy');
+    Route::get('delete', 'ProfileController@deleteForm');
+    Route::post('delete', 'ProfileController@destroy')->name('user.delete');
 });
 
 

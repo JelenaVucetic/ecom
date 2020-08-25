@@ -129,4 +129,4 @@
 @yield('rateYo')
 
 <script src="/js/myJs.js"></script>
-  </html>
+</html>
