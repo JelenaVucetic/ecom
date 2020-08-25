@@ -86,6 +86,34 @@ $(document).ready(function(){
     $('.success-box div.text-message').html("<span>" + msg + "</span>");
   }
 
+  $("#submit-image").click(function(e){
+      e.preventDefault();
+      
+      email = $('#subscribe-email').val();
+      $.ajax({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+       },
+         type:'POST',
+         dataType: 'json',
+         url:'newsletter',
+         data:{subscribe_email:email},
+         success:function(data){
+           if(data['subscribe'] == "no"){
+          $('#subscribe-message').removeClass('hide');
+          $('#subscribe-message').addClass('show');
+         }else{
+          $('#subscribe-message1').removeClass('hide');
+          $('#subscribe-message1').addClass('show');
+         }
+        }
+      });
+});
+
+$('body').on('contextmenu', 'img', function(e){ 
+  return false; 
+});
+
 
 
 /*   Adding to cart */
@@ -1336,29 +1364,13 @@ error: function (jqXHR, textStatus, errorThrown) {
 /*  Newsletter */
 
 
-    $.ajaxSetup({
-        headers: {
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+  /*   $.ajaxSetup({
+      
+    }); */
 
-    $("#submit-image").click(function(e){
-        e.preventDefault();
-        email = $('#subscribe-email').val();
-        $.ajax({
 
-           type:'POST',
 
-           url:'newsletter',
-
-           data:{email:email},
-
-           success:function(data){
-             alert(data.success);
-           }
-        });
-	});
-
+  
 
 $(document).ready(function(){
     $('input[type="file"]').change(function(e){
@@ -1367,8 +1379,5 @@ $(document).ready(function(){
         alert('The file "' + fileName +  '" has been selected.');
     });
 
-
-    $('body').on('contextmenu', 'img', function(e){ 
-      return false; 
-    });
+  
 });

@@ -1140,7 +1140,6 @@ class HomeController extends Controller
                 ['product_id', "=", $request->id],
                 ['color' , "=",$request->color]
             ])->first();
-
         }
 
 
