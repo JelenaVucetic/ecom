@@ -27,6 +27,14 @@
                     <i class="fa fa-angle-right"></i>
                </div>
                <div>
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+                <div>
+                    <a href="/terms-and-conditions">Terms and Conditions</a>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+               <div>
                     <a href="/contact_us">Contact us</a>
                     <i class="fa fa-angle-right"></i>
                </div>

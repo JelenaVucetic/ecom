@@ -37,7 +37,8 @@ class HomeController extends Controller
        
     }
 
-    public function test() {
+    public function test() 
+    {
         return view('test');
     }
 
@@ -95,7 +96,8 @@ class HomeController extends Controller
     }
 
 
-    public function loadImagesMasks(Request $request){
+    public function loadImagesMasks(Request $request)
+    {
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['color' , "=",$request->color]
@@ -354,7 +356,8 @@ class HomeController extends Controller
             $average = 1;
         } */
 
-        if(Auth::check()) {
+        if(Auth::check()) 
+        {
             $user = Auth::id();
             $createReview = DB::table('reviews')->where('user_id', $user)->where('product_id', $product->id)->first();
 
@@ -417,7 +420,8 @@ class HomeController extends Controller
      */
 }
 
-    public function destroy($id) {
+    public function destroy($id) 
+    {
         DB::table('wishlist')->where([
             ['pro_id', '=', $id],
             ['user_id' , '=', Auth::user()->id]
@@ -507,16 +511,11 @@ class HomeController extends Controller
     
         }
     
-            
-        
             if(count($products)>0){
                 echo $output;
              }else{
                  echo "<h3>No products</h3>";
              }
-    
-
-
        
     }
 
@@ -579,7 +578,8 @@ class HomeController extends Controller
         echo 'uspjesno' ;
     }
 
-    public function showReview(){
+    public function showReview()
+    {
         $userId = Auth::user()->id;
         DB::table('users')->join('orders', 'orders.user_id' , '=', 'users.id')
         ->join('order_product', 'orders.id','=','order_product.order_id')
@@ -605,7 +605,8 @@ class HomeController extends Controller
         return view('search-results', compact('products', 'categories'));
     }
 
-    public function showCategoryProduct(Request $request){
+    public function showCategoryProduct(Request $request)
+    {
 
         $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
@@ -739,7 +740,8 @@ class HomeController extends Controller
         return view('product_details', compact('poster_size'));
     } */
 
-    public function searchProduct(Request $request){
+    public function searchProduct(Request $request)
+    {
         $products = Product::search($request->data)->paginate(20);
         $output = '';
         foreach($products as $product){
@@ -822,9 +824,6 @@ class HomeController extends Controller
        </div>";
 
     }
-
-        
-    
         if(count($products)>0){
             echo $output;
          }else{
@@ -833,7 +832,8 @@ class HomeController extends Controller
 
     }
 
-    public function giftsForHim() {
+    public function giftsForHim() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
 
         $shirts = Product::select('product.*')
@@ -903,7 +903,8 @@ class HomeController extends Controller
         return view('gifts_for_him', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'backpacks', 'clocks', 'notebooks'));
     }
 
-    public function giftsForHer() {
+    public function giftsForHer() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
 
         $shirts = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
@@ -990,42 +991,62 @@ class HomeController extends Controller
         return view('gifts_for_her', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'bags', 'backpacks', 'notebooks','sacks', 'magnets'));
     }
 
-    public function privacyPolicy() {
+    public function termsAndPrivacy() 
+    {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('terms_and_privacy', compact('categories'));
+    } 
+
+    public function privacyPolicy() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
         return view('privacy_policy', compact('categories'));
     }
 
-    public function about() {
+    public function termsAndConditions() 
+    {
+        $categories = Category::where('parent_id',NULL)->get();
+        return view('terms_and_conditions', compact('categories'));
+    }
+
+    public function about()
+     {
         $categories = Category::where('parent_id',NULL)->get();
         return view('about', compact('categories'));
     }
 
-    public function howToOrder() {
+    public function howToOrder()
+     {
         $categories = Category::where('parent_id',NULL)->get();
         return view('how_to_order', compact('categories'));
     }
 
-    public function shipping() {
+    public function shipping() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
         return view('shipping', compact('categories'));
     }
 
-    public function helpCenter() {
+    public function helpCenter()
+    {
         $categories = Category::where('parent_id',NULL)->get();
         return view('help_center', compact('categories'));
     }
 
-    public function copyright() {
+    public function copyright() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
         return view('copyright', compact('categories'));
     }
 
-    public function contact() {
+    public function contact() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
         return view('contact_us', compact('categories'));
     }
 
-    public function specialPrice() {
+    public function specialPrice() 
+    {
         $categories = Category::where('parent_id',NULL)->get();
 
         $products = Product::where('spl_price' , '!=' , 0)->get();
