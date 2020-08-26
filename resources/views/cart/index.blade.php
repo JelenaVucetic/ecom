@@ -108,8 +108,10 @@ for( let i=1;i<200;i++) {
     <div class="container">
         <div style="text-align:center">
             <h2>Your shopping cart</h2>
-            <p>Order <strong>three</strong> products and get 10% off</p>
-            <p>Order <strong>five</strong> products and get 15% off</p>
+            <p style="margin-bottom: 0.5rem">Order <strong>three</strong> products and get 10% off</p>
+            <p style="margin-bottom: 0.5rem">Order <strong>five</strong> products and get 15% off</p>
+            <p>Shipping cost is 2.00 € for Podgrica <br> and 3.00 € for every other city in Montenegro. <br>
+                If the total number of your order exceeds 35.00 € delivery is <strong>free</strong>.</p>
         </div>
 
 

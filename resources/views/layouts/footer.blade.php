@@ -18,6 +18,8 @@
           <a href="/shipping_and_handling">Shipping & Handling</a> <br>
           <a href="/help_center">Help Center</a> <br>
           <a href="/copyright">Copyright</a> <br>
+          <a href="/privacy-policy">Privacy Policy</a> <br>
+          <a href="/terms-and-conditions">Terms and Conditions</a> <br>
           <a href="/contact_us">Contact Us</a>
         </div>
         <div>
@@ -35,7 +37,7 @@
         <img src="/site-images/Logotip-White.svg" alt="Urban one">
       </div>
       <div class="footer-bottom-info" >
-        <a href="/privacy_policy">Privacy Policy</a>
+        <a href="/terms-and-privacy-policy">Terms and Conditions & Privacy Policy</a>
         <span style="font-size:14px">UrbanOne uses cookies: <a href="/privacy_policy#cookies">Cookies policy</a> </span>
       </div>
     </div>

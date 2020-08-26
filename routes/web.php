@@ -39,7 +39,7 @@ Route::get('/gifts_for_him', 'HomeController@giftsForHim');
 Route::get('/gifts_for_her', 'HomeController@giftsForHer');
 
 Route::get('/about', 'HomeController@about');
-Route::get('/privacy_policy', 'HomeController@privacyPolicy');
+Route::get('/terms-and-privacy-policy', 'HomeController@termsAndPrivacy');
 Route::get('/how_to_order', 'HomeController@howToOrder');
 Route::get('/shipping_and_handling', 'HomeController@shipping');
 Route::get('/help_center', 'HomeController@helpCenter');
@@ -47,6 +47,9 @@ Route::get('/copyright', 'HomeController@copyright');
 Route::get('/contact_us', 'HomeController@contact');
 Route::get('/verified_by_visa', 'HomeController@verifiedByVisa');
 Route::get('/mastercard_secure', 'HomeController@mastercardSecure');
+
+Route::get('/terms-and-conditions', 'HomeController@termsAndConditions');
+Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 
 
 Route::resource('category', 'CategoriesController');
