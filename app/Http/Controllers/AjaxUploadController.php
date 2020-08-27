@@ -315,8 +315,8 @@ if($original == "Termos"){
     ImageModel::thermos($idProduct, $originalImagePath);
 }
 if($original == "Masks"){
-    ImageModel::masks($idProduct, $originalImagePath);
     ImageModel::masksBlack($idProduct, $originalImagePath);
+    ImageModel::masks($idProduct, $originalImagePath);
 }
 if($original == "Custom"){
     ImageModel::customCase($idProduct, $originalImagePath);

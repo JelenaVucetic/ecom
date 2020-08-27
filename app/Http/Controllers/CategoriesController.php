@@ -86,7 +86,12 @@ class CategoriesController extends Controller
         $mainCategory = Category::where("id",$id)->first();
 
         if($clothingIds) {
+          if($id == "3"){
+            $clothingProducts =  Product::where('category_id', '11')->get();
+          }else{
             $clothingProducts =  Product::whereIn('category_id', $clothingIds)->get();
+          }
+            
         } else {
             $clothingProducts =  Product::where('category_id', $id)->get();
         }

@@ -9070,7 +9070,7 @@ if (!$process8->isSuccessful()) {
          $imageRandom1 = ltrim($imageRandom1, '/');
    
          $check1 = DB::table('images')->insert([
-            'name' => $imageRandom1, 'product_id' => $id, 'size' => 'thumb'
+            'name' => $imageRandom1, 'product_id' => $id, 'color' => 'white','size' => 'thumb'
            ]);
      
            return $check1;
@@ -9264,7 +9264,7 @@ if (!$process8->isSuccessful()) {
                 $imageRandom1 = ltrim($imageRandom1, '/');
    
          $check1 = DB::table('images')->insert([
-            'name' => $imageRandom1, 'product_id' => $id, 'size' => 'main'
+            'name' => $imageRandom1, 'product_id' => $id,'color' => 'white', 'size' => 'main'
            ]);
      
            return $check1;

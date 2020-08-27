@@ -287,8 +287,7 @@ class HomeController extends Controller
             $imageBack = "Solja-Mockup-BG.png";
         }elseif($find_cat->category->name=="Masks"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id],
-                ['color', "=" , "white"]
+                ['product_id',"=", $id]
             ])->first();
             $imageBack = "Face-Mask-White-BG.png";
         }elseif($find_cat->category->name=="Custom"){
@@ -610,7 +609,7 @@ class HomeController extends Controller
 
         $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
-
+        
          $all = Category::where('parent_id', $parentId = Category::where('name', $category->name)
                 ->value('id'))
                 ->pluck('id')
@@ -627,9 +626,19 @@ class HomeController extends Controller
                     ['gender', 'unisex']
                 ])->get();
             }else{
+                if($categoryId == "3"){
+                $products = Product::where([
+                    ['category_id', '11'],
+                    ['gender', $request->gender]
+                ])->orWhere([
+                    ['category_id', '11'],
+                    ['gender', 'unisex']
+                ])->get();
+                }else{
                 $products = Product::
                 whereIn('category_id',$all)->where('gender', $request->gender)
                     ->orWhereIn( 'category_id',$all)->where('gender', 'unisex')->get();
+                }
             }
          }else{
              if($category->parent_id){
@@ -637,9 +646,19 @@ class HomeController extends Controller
                 $products = Product::where('category_id',$categoryId)->get();
              }else{
                  if($all) {
-                     $products = Product::whereIn(
-                         'category_id',$all
-                     )->get();
+
+                    if($categoryId == "3"){
+                        $products = Product::where(
+                            'category_id', '11'
+                        )->get();
+                        
+                    }else{
+                        $products = Product::whereIn(
+                            'category_id',$all
+                        )->get();
+                    }
+                    
+
                  } else {
                      $products = Product::where(
                          'category_id',$categoryId
@@ -649,7 +668,7 @@ class HomeController extends Controller
              }
 
          }
-
+        
         $output = '';
          foreach($products as $product){
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section>
+<section style="padding-bottom: 50px;">
 @include('layouts.error')
 @if(isset($products))
 <div class="row" id="cat-show-paragraph" style="margin:0;">
