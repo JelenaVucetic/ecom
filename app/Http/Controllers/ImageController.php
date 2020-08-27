@@ -56,14 +56,14 @@ class ImageController extends Controller
        $path = public_path();
         $watermark->readImage(public_path("site-images/watermark2.png"));
 
-      /*   $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/site-images/watermark2.png ' .$path.'/image/watermark2.png
+        $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/site-images/watermark2.png ' .$path.'/image/watermark2.png
         ');
         
         $process->run();
         if (!$process->isSuccessful()) {
         throw new ProcessFailedException($process);
         }
-        echo $process->getOutput(); */
+        echo $process->getOutput(); 
        
         $width = $image1->width();
         $height = $image1->height();

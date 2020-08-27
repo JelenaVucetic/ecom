@@ -1292,7 +1292,6 @@ class HomeController extends Controller
                 foreach(Mail::failures() as $email_address) {
                     echo " - $email_address <br />";
                     }
-        
                 }
              
 

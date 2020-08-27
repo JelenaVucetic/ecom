@@ -9029,7 +9029,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-canvas.png ^
-        -geometry -380-290 ^
+        -geometry -380-310 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_canvas.png ^
         -compose CopyOpacity -composite ^
@@ -9047,7 +9047,7 @@ if (!$process8->isSuccessful()) {
         /* $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,390,450);
         $src2->writeImage(public_path("image\image-canvas.png")); */
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER  ,380,290);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER  ,380,310);
         $src2->writeImage(public_path("image\image-canvas.png"));
         echo '<img src="\image\image-canvas.png">';
         $src4 = new \Imagick(public_path("site-images/Solja.png"));
@@ -10170,7 +10170,7 @@ if (!$process9->isSuccessful()) {
 
  
 
-        $process = new Process('magick convert   '.$path.'\site-images\Kids-T-Shirt-White-BG.jpg[403x522+450+181] 
+        $process = new Process('magick convert   '.$path.'\site-images\Kids-T-Shirt-White-BG.jpg[403x522+400+181] 
        -colorspace gray 
        -blur 10x250 
        -auto-level
@@ -10214,12 +10214,12 @@ if (!$process9->isSuccessful()) {
        list($width, $height) = getimagesize($path.'\image\ms_temp.png');
   
      
-       $X = 450 + (403-$width)/2;
+       $X = 400 + (403-$width)/2;
        $Y = 181 +  (522-$height)/2;
       
   
         $process3 = new Process('magick convert 
-       '.$path.'\site-images\Kids-T-Shirt-White-BG.jpg[403x522+450+181] 
+       '.$path.'\site-images\Kids-T-Shirt-White-BG.jpg[403x522+400+181] 
        -colorspace gray -blur 10x250 -auto-level 
        -depth 16 
        '.$path.'\image\ms_displace_map_girl_white_regular.png
@@ -10251,7 +10251,7 @@ if (!$process9->isSuccessful()) {
   
        
         $process5 = new Process('magick convert ^
-       '.$path.'\site-images\Kids-T-Shirt-White-BG.jpg[403x522+450+181] ^
+       '.$path.'\site-images\Kids-T-Shirt-White-BG.jpg[403x522+400+181] ^
        -colorspace gray -auto-level ^
        -blur 0x4 ^
        -contrast-stretch 0,30%% ^
@@ -10300,7 +10300,7 @@ if (!$process9->isSuccessful()) {
       $src1 = new \Imagick(public_path("\image\ms_light_map_logo.png"));
       $src2 = new \Imagick(public_path("site-images/Kids-T-Shirt-White-Mask.png"));
     /*   $src6 = new \Imagick(public_path("site-images/1Tote-Bag-Black-handle-Mask-Red-lined.png")); */
-      $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,450,181);
+      $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,$X,$Y);
       $src2->writeImage(public_path("image\image-kids-tshirt.png"));
   
      /*  $src6->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,450,451);
