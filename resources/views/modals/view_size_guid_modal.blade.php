@@ -23,8 +23,8 @@
             <thead>
                 <tr>
                 <th scope="col">Size</th>
-                <th scope="col">Chest <br> Man / Woman</th>
-                <th scope="col">Length <br> Man / Woman</th>
+                <th scope="col">Chest <br> Man / Woman (cm)</th>
+                <th scope="col">Length <br> Man / Woman (cm)</th>
                 </tr>
             </thead>
             <tbody>
@@ -110,29 +110,29 @@
             </tbody>
         </table>
         @else
-        <table class="table">
+        <table class="table" style="text-align: center">
             <thead>
                 <tr>
                 <th scope="col">Size</th>
-                <th scope="col">Width</th>
-                <th scope="col">Height</th>
+                <th scope="col">Width (cm)</th>
+                <th scope="col">Height (cm)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>A3</td>
-                    <td>94</td>
-                    <td>54.5</td>
+                    <td>59.4</td>
+                    <td>84.1</td>
                 </tr>
                 <tr>
                     <td>B2</td>
-                    <td>98.5</td>
-                    <td>55.5</td>
+                    <td>50.0</td>
+                    <td>70.7</td>
                 </tr>
                 <tr>
                     <td>B1</td>
-                    <td>103.5</td>
-                    <td>57</td>
+                    <td>70.7</td>
+                    <td>100.0</td>
                 </tr>
             </tbody>
         </table>

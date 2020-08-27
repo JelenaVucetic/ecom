@@ -520,7 +520,7 @@ for( let i=1;i<200;i++) {
                                     <span id="yearError" style="color:red"></span>
                                 </div>
                                 <div  class="form-group" style="flex-direction: row-reverse;align-items: baseline;justify-content: flex-end;">
-                                    <a href="/help_center"{{--  data-toggle="modal" data-target="#termsModal" --}} target="_blank" style="margin-left:10px"> Read more</a>
+                                    <a href="/terms-and-privacy-policy#terms"{{--  data-toggle="modal" data-target="#termsModal" --}} target="_blank" style="margin-left:10px"> Read more</a>
                                     <label for="agreement" class="form-label" style="margin-left: 10px;">I agree to the payment terms</label>
                                     <input type="checkbox" id="agreement" name="agreement" required>                                             
                                 </div>

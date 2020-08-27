@@ -32,13 +32,14 @@ class ContactMail extends Mailable
     {
         $mail = $this->subject('Kontakt Mail')
         ->view('emails.contact')
+        ->from($this->details['email'])
         ->subject($this->details['subject']);
 
         
         if (isset($this->details['image'])) {
             $mail = $mail->attach($this->details['image'], ['as' => $this->details['image'], 'mime' => $this->details['image']]);
         }
-
+        
         return $mail;
     }
 }

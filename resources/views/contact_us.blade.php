@@ -40,24 +40,29 @@
                 @endif
                <form  method="post" action="{{url('/send-mail')}}">
                    @csrf
-                    <div>
+                    <div class="contact-form-div">
                         <label for="email">Your email address <span style="color:#E6003A">*</span></label>
                         <input type="email" name="email" required>
                     </div>
-                    <div>
+                    <div  class="contact-form-div">
                         <label for="subject">Subject<span style="color:#E6003A"> *</span></label>
                         <input type="text" name="subject" required>
                     </div>
-                    <div>
+                    <div  class="contact-form-div">
                         <label for="description">Description<span style="color:#E6003A"> *</span></label>
                         <textarea name="description" required></textarea>
                         <p>Please use this text box above to tell us a little bit more about your request.</p>
                     </div>
-                    <div >
-                        <label for="file">Attach a photo<span style="color:#E6003A"> *</span></label>
+                    <div  class="contact-form-div">
+                        <label for="file">Attach a photo    </label>
                         <input type="file" class="custom-input" name="image">
                         <p>If you have a photo or image that will help our investigation, please add it here.</p>
                     </div>
+             
+                    <div style="margin-bottom:30px;">            
+                        <div class="g-recaptcha" data-sitekey="{!! env('RECAPTCHA_SITE_KEY','NO-KEY-FOUND') !!}"></div>
+                    </div>
+                
                     <div>
                         <button type="submit">Submit</button>
                     </div>
@@ -72,4 +77,9 @@
             <p>Mature content: Visible</p>
         </div>
     </div>
+    
+@endsection
+
+@section('recaptcha')
+<script src='https://www.google.com/recaptcha/api.js'></script>
 @endsection

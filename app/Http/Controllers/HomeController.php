@@ -1265,7 +1265,6 @@ class HomeController extends Controller
             'description'   =>   $request->description
         ];
 
-
         if($request->hasFile('image')){
     		$image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -1276,7 +1275,34 @@ class HomeController extends Controller
 
         }
 
- 
-        return redirect()->back()->with('status', 'Thank you for contacting us!');
+         // check if reCaptcha has been validated by Google      
+        $secret = env('GOOGLE_RECAPTCHA_SECRET');
+        $captchaId = $request->input('g-recaptcha-response');
+    
+        //sends post request to the URL and tranforms response to JSON
+        $responseCaptcha = json_decode(file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$captchaId));
+        
+        if($responseCaptcha->success == true)
+        {
+
+            Mail::to('buy@urbanone.me')->send(new ContactMail($details));
+                if( count(Mail::failures()) > 0 ) {
+        
+                echo "There was one or more failures. They were: <br />";
+        
+                foreach(Mail::failures() as $email_address) {
+                    echo " - $email_address <br />";
+                    }
+        
+                }
+             
+
+        } else {
+            // send back error message
+
+            return redirect()->back()->with('status', 'Looks like you are a replicant. Sorry but I do not receive emails from non human entities :(');
+        }      
+    
     }
+    
 }

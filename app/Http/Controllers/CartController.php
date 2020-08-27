@@ -144,6 +144,7 @@ class CartController extends Controller
                 ['color','=', $request->color]
             ])->first();
         } elseif($product->category->name=="Masks" || $product->category->name=="Gift Bags" || $product->category->name=="Notebooks" || $product->category->name=="Mugs" ){
+            dd('fsdfs');
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
                 ['color','=', $request->color]
