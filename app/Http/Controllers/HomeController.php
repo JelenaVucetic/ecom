@@ -1273,7 +1273,6 @@ class HomeController extends Controller
 
             $img->save( public_path('/mail/' . $filename ) );
             $details[image] = $filename;
-
         }
 
  
