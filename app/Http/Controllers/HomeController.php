@@ -1256,8 +1256,16 @@ class HomeController extends Controller
             $details[image] = $filename;
 
         }
+        Mail::to('buy@urbanone.me')->send(new ContactMail($details));
+		if( count(Mail::failures()) > 0 ) {
 
- 
+		   echo "There was one or more failures. They were: <br />";
+
+		   foreach(Mail::failures() as $email_address) {
+			   echo " - $email_address <br />";
+			}
+
+		}
         return redirect()->back()->with('status', 'Thank you for contacting us!');
     }
 }

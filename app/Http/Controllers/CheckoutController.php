@@ -27,6 +27,7 @@ class CheckoutController extends Controller
         $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
 
         if( $payment->result == 'OK') {
+            Cart::destroy();
             Mail::to($payment->email)->send(new OrderShipped('Uspješno', $payment->transaction_id, $payment->amount, $payment->extra_data,$payment->card_type, $payment->last_four_digits));
         } else {
             Mail::to($payment->email)->send(new OrderShipped('Neuspješno', $payment->transaction_id, $payment->amount,$payment->extra_data,$payment->card_type, $payment->last_four_digits));
@@ -62,14 +63,16 @@ class CheckoutController extends Controller
         $first_six_digits = (string) $xml->returnData->creditcardData->firstSixDigits;
         $last_four_digits = (string) $xml->returnData->creditcardData->lastFourDigits;
         $email = (string) $xml->customerData->email;
-        //file_put_contents('/home/khhua5brw593/public_html/urbanone.me/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
  
         $status = $callbackResult->getResult();
         $order_number = $callbackResult->getReferenceId();
         $amount = $callbackResult->getAmount();
         
+file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
+
         if ($callbackResult->getResult() == 'OK') {
-             DB::table('payment_info')->insert([
+	
+            $test= DB::table('payment_info')->insert([
                     'result' => $callbackResult->getResult(),
                     'reference_id' => $callbackResult->getReferenceId(),
                     'transaction_id' =>  $callbackResult->getTransactionId(),
@@ -89,16 +92,15 @@ class CheckoutController extends Controller
                     'first_six_digits' => $first_six_digits,
                     'last_four_digits' => $last_four_digits
                 ]);
-           
-            //Order Success Mail
-           
+          
+            //Order Success Mail    
 
             return response('OK', 200)
                   ->header('Content-Type', 'text/plain');  
 
         } elseif ($callbackResult->getResult() == 'ERROR') {
             //payment failed, handle errors
-             
+             file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views/test.xml', 'error' , FILE_APPEND );
             $message = (string) $xml->errors->error->message;
             $code = (string) $xml->errors->error->code;
             
@@ -111,6 +113,7 @@ class CheckoutController extends Controller
                 'payment_method' => $callbackResult->getPaymentMethod(),
                 'amount' => $callbackResult->getAmount(),
                 'currency' => $callbackResult->getCurrency(),
+				'extra_data' => 'XXXXXX',
                 'message' =>  $message,
                 'code' => $code,
                 'email' => $email,

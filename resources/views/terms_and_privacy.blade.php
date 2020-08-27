@@ -389,6 +389,8 @@
              </div>
          </div>
          <div>
+            <h4 style="font-size:24px;padding-top: 50px;" id="terms">TERMS AND CONDITIONS</h4>
+
             <h4>11. Delivery policy</h4>
             <div>
                  <p> 
