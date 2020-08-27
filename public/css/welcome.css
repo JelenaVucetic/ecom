@@ -918,5 +918,11 @@
         right: -20px;
         bottom: 180px;
     }
+    .accessories p {
+        font-size: 22px;
+    }
+    .shop-product p {
+        font-size: 22px;
+    }
 }
 

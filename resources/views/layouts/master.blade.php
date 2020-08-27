@@ -127,6 +127,6 @@
 <script type="text/javascript" language="javascript" src="/js/dropdown.js"></script>
 <script src="/js/wavytext.js"></script>
 @yield('rateYo')
-
+@yield('recaptcha')
 <script src="/js/myJs.js"></script>
 </html>

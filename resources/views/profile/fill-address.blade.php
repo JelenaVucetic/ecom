@@ -9,7 +9,7 @@
         <div class="row">
             @include('profile.menu') 
             <div class="col-md-8">
-                <h4 style="margin-bottom:40px;"> <strong> {{ucwords(Auth::user()->name)}}</strong>, please fill in your information.</h4>
+                <h4 style="margin-bottom:40px;"> <strong>Personal details</strong></h4>
                 <div class="container">
                     <form  id="payment_form"  action="{{ url('createAddress') }}" method="POST"  class='test-form fill-address'>
                         @csrf
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div style="text-align:center; margin-bottom:50px;" >
-                                <input type="submit" value="Submit" class="submit-button" style="width: 150px;">
+                                <input type="submit" value="Save Changes" class="submit-button" style="width: 150px;">
                             </div>                          
                     </form>
                 </div>
