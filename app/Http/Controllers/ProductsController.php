@@ -41,12 +41,11 @@ class ProductsController extends Controller
         return view('admin.product.create', compact(['categories', 'tags']));
     }
 
-    public function store(Request $request)
+    public function store(Request $request) 
     {
  
         $formInput = $request->except('image');
         
-
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',

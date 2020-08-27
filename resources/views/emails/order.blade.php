@@ -7,9 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    Poštovani, <br>
-
-    Hvala vam što korisitine naše usluge. <br>
+    <div style="margin:20px 0;">
+        Poštovani, <br><br>
+    </div>
+    
+    <div>
+        Hvala vam što korisitine naše usluge. <br> <br> <br>
+        Vaša porudžbina će biti dostavljena u roku od 5 radnih dana.
+    </div>
+ 
     Detalji vaše porudžbine: <br>
     <div>
         Status transakcije: <strong>{{$status}}</strong>
@@ -30,6 +36,9 @@
     <div>
         Poslednje 4 cifre: <strong>{{$last_four_digits}}</strong>   
     </div>
-   
+   <div>
+       Srdačno, <br> <br>
+       Urban One
+   </div>
 </body>
 </html>
