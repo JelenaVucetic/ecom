@@ -19,6 +19,8 @@ use Laravie\Parser\Xml\Document;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderShipped;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\OrderNotification;
 class CheckoutController extends Controller
 {
 
@@ -26,12 +28,9 @@ class CheckoutController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         $payment = DB::table('payment_info')->orderBy('id', 'DESC')->first();
 
-        if( $payment->result == 'OK') {
-            Cart::destroy();
-            Mail::to($payment->email)->send(new OrderShipped('Uspješno', $payment->transaction_id, $payment->amount, $payment->extra_data,$payment->card_type, $payment->last_four_digits));
-        } else {
-            Mail::to($payment->email)->send(new OrderShipped('Neuspješno', $payment->transaction_id, $payment->amount,$payment->extra_data,$payment->card_type, $payment->last_four_digits));
-        }
+        Cart::destroy();
+        Notification::route('mail', $payment->email)->notify(new OrderNotification($payment));
+        // Mail::to($payment->email)->send(new OrderShipped('Uspješno', $payment->transaction_id, $payment->amount, $payment->extra_data,$payment->card_type, $payment->last_four_digits));
 
         return view('payment_info', compact('categories', 'payment'));
     }

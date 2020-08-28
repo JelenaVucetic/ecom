@@ -365,9 +365,9 @@
 
           @elseif($pro_cat->category->name == "Wallpapers")
             <div class="custom">
-                <h6>Enter your wallpaper width</h6>
+                <h6>Enter your wallpaper width (in meters)</h6>
                 <input type="text" id="wallpaper-custom-width" class="custom-width" placeholder="e.g. 100"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
-                <h6>Enter your wallpaper height</h6>
+                <h6>Enter your wallpaper height (in meters)</h6>
                 <input type="text" id="wallpaper-custom-height" class="custom-height" placeholder="e.g. 80"  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
                 <button id='save-wallpaper-size'>Save</button>
             </div>

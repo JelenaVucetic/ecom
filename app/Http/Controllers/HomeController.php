@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\DB;
 use App\Recommends;
 use Image;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ContactNotification;
 
 use App\Mail\ContactMail;
 // HomeController.php
@@ -1283,8 +1285,11 @@ class HomeController extends Controller
             $img = Image::make($image);
 
             $img->save( public_path('/mail/' . $filename ) );
-            $details[image] = $filename;
+            $details['image'] = $filename;
+
         }
+
+
 
          // check if reCaptcha has been validated by Google      
         $secret = env('GOOGLE_RECAPTCHA_SECRET');
@@ -1296,7 +1301,8 @@ class HomeController extends Controller
         if($responseCaptcha->success == true)
         {
 
-            Mail::to('buy@urbanone.me')->send(new ContactMail($details));
+            Notification::route('mail','buy@urbanone.me')->notify(new ContactNotification($details));
+
                 if( count(Mail::failures()) > 0 ) {
         
                 echo "There was one or more failures. They were: <br />";
