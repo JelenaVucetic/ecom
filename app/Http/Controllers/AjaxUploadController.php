@@ -249,7 +249,7 @@ if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
     ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
     ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath);
 }
-if($original=='Phone Case'){
+if($original=='IPhone'){
     ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
 
 }

@@ -2989,7 +2989,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(500, 650,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Framed-Art-Black-A3-Mask.png"));
         
@@ -3032,7 +3032,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-A3-black.png ^
-        -geometry -300-250 ^
+        -geometry -300-200  ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_A3-black.png ^
         -compose CopyOpacity -composite ^
@@ -3047,7 +3047,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_A3-black.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,300,250);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,300,200);
         $src2->writeImage(public_path("image\image-A3-black.png"));
         echo '<img src="\image\image-A3-black.png">';
         $src4 = new \Imagick(public_path("site-images/Framed-Art-Black-A3-BG.png"));
@@ -3260,7 +3260,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(530, 700,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Framed-Art-White-A3-Mask.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -3305,7 +3305,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-A3-white.png ^
-        -geometry -360-340 ^
+        -geometry -340-240 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_A3-white.png ^
         -compose CopyOpacity -composite ^
@@ -3320,7 +3320,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_A3-white.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,360,340);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,240);
         $src2->writeImage(public_path("image\image-A3-white.png"));
         echo '<img src="\image\image-A3-white.png">';
         $src4 = new \Imagick(public_path("site-images/Framed-Art-White-A3-BG.jpg"));
@@ -3449,7 +3449,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(470, 610,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Thumbnail-Framed-Art-White-A4-Mask.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -3494,7 +3494,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-thumb-white.png ^
-        -geometry -290-280 ^
+        -geometry -290-240 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_thumb-white.png ^
         -compose CopyOpacity -composite ^
@@ -3509,7 +3509,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_thumb-white.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,290,280);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,290,240);
         $src2->writeImage(public_path("image\image-thumb-white.png"));
         echo '<img src="\image\image-thumb-white.png">';
         $src4 = new \Imagick(public_path("site-images/Thumbnail-Framed-Art-White-A4-BG.png"));
@@ -3635,7 +3635,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(620, 870,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Framed-Art-White-B1-Mask.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -3680,7 +3680,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-B1-white.png ^
-        -geometry -340-300 ^
+        -geometry -260-100 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_B1-white.png ^
         -compose CopyOpacity -composite ^
@@ -3695,7 +3695,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_B1-white.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,300);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,260,100);
         $src2->writeImage(public_path("image\image-B1-white.png"));
         echo '<img src="\image\image-B1-white.png">';
         $src4 = new \Imagick(public_path("site-images/Framed-Art-White-B1-BG.png"));
@@ -3821,7 +3821,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(500, 660,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Framed-Art-White-B2-Mask.png"));
         
@@ -3864,7 +3864,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-B2-white.png ^
-        -geometry -340-300 ^
+        -geometry -290-210 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_B2-white.png ^
         -compose CopyOpacity -composite ^
@@ -3879,7 +3879,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_B2-white.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,300);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,290,210);
         $src2->writeImage(public_path("image\image-B2-white.png"));
         echo '<img src="\image\image-B2-white.png">';
         $src4 = new \Imagick(public_path("site-images/Framed-Art-White-B2-BG.png"));
@@ -4006,7 +4006,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(440, 610,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Thumbnail-Framed-Art-Black-A4-Mask.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -4051,7 +4051,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-thumb-black.png ^
-        -geometry -340-300 ^
+        -geometry -320-240 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_thumb-black.png ^
         -compose CopyOpacity -composite ^
@@ -4066,7 +4066,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_thumb-black.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,300);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,320,240);
         $src2->writeImage(public_path("image\image-thumb-black.png"));
         echo '<img src="\image\image-thumb-black.png">';
         $src4 = new \Imagick(public_path("site-images/Thumbnail-Framed-Art-Black-A4-BG.png"));
@@ -4190,7 +4190,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(480, 630,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Framed-Art-Black-B1-Mask.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -4235,7 +4235,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-B1-black.png ^
-        -geometry -360-300 ^
+        -geometry -320-200 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_B1-black.png ^
         -compose CopyOpacity -composite ^
@@ -4250,7 +4250,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_B1-black.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,360,300);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,320,200);
         $src2->writeImage(public_path("image\image-B1-black.png"));
         echo '<img src="\image\image-B1-black.png">';
         $src4 = new \Imagick(public_path("site-images/Framed-Art-Black-B1-BG.png"));
@@ -4377,7 +4377,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(380, 500,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Framed-Art-Black-B2-Mask.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -4422,7 +4422,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-B2-black.png ^
-        -geometry -340-260 ^
+        -geometry -340-230 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_B2-black.png ^
         -compose CopyOpacity -composite ^
@@ -4437,7 +4437,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_B2-black.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,260);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,230);
         $src2->writeImage(public_path("image\image-B2-black.png"));
         echo '<img src="\image\image-B2-black.png">';
         $src4 = new \Imagick(public_path("site-images/Framed-Art-Black-B2-BG.png"));
@@ -5425,7 +5425,7 @@ if (!$process8->isSuccessful()) {
  ]);
 
  return $check2;
-     
+      
     }
 
     public static function iphonePhoneCase($id, $image){
@@ -8096,7 +8096,7 @@ if (!$process8->isSuccessful()) {
        
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(300, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("resized_pictures". $imageName1));
+        $src1->writeImage(public_path("resized_wallpaper". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Notes.png"));
        
         
@@ -8123,7 +8123,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-notes.png">';
         
         $process6 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
+        '.$path.'\resized_wallpaper'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask_notes.png
         ');
@@ -8138,7 +8138,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask_clock.png">';
         
         $process7 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
+        '.$path.'\resized_wallpaper'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-notes.png ^
         -geometry -430-400 ^
         -compose Multiply -composite ^
@@ -9180,7 +9180,7 @@ if (!$process8->isSuccessful()) {
    
         $src1 = new \Imagick(public_path("design". $imageName1));
         $src1->resizeImage(370, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("design". $imageName1));
+        $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\Solja-Mockup-BG.png"));
       
         
@@ -9206,7 +9206,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-canvas.png">';
         
         $process6 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\resized_pictures'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask_canvas.png
         ');
@@ -9221,7 +9221,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask_canvas.png">';
         
         $process7 = new Process('magick convert ^
-        '.$path.'\design'. $imageName1. ' ^
+        '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-canvas.png ^
         -geometry -380-350 ^
         -compose Multiply -composite ^

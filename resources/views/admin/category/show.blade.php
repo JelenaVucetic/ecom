@@ -18,7 +18,7 @@
       {{--   <div>
         <a class="side-category-gender" id="round-btn" data-value="male" >Male  <i class="fas fa-plus"></i></a>
         </div>
-        <p></p>
+        <p></p> 
         <a class="side-category-gender" data-value="female" style="color: black!important">Female   <i class="fas fa-plus"></i></a> --}}
         <div id="mobile-gender" style="display: none;">
               <label class="man-label" id="man-mobile">

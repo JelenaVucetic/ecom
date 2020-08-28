@@ -606,7 +606,7 @@ class HomeController extends Controller
 
     public function showCategoryProduct(Request $request)
     {
-
+       
         $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
         
@@ -680,11 +680,23 @@ class HomeController extends Controller
 
                 foreach ($product->images as $item){
                 if($product->category->name=="T-Shirts"){
-
-                if ($item->color == "white" && $item->position == "front"){
-                    $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
-                    break;
-                }
+                    if($request->gender == "female"){
+                        if ($item->color == "white" && $item->position == "front"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                            break;
+                        }
+                    }else if($request->gender == "male"){
+                        if ($item->color == "white" && $item->position == "front" && $item->gender == "male"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                            break;
+                        }
+                    }else{
+                        if ($item->color == "white" && $item->position == "front"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                            break;
+                        }
+                    }
+              
                 }else if( $product->category->getParentsNames() == "Cases" && $item->color == "transparent"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
                     break;
