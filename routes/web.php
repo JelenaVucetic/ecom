@@ -139,3 +139,4 @@ Route::post('/send-mail','HomeController@sendContactMail');
 
 Route::get('newsletter','NewsletterController@create');
 Route::post('newsletter','NewsletterController@store');
+

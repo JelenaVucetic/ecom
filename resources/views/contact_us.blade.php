@@ -38,7 +38,7 @@
                         {{ session('status') }}
                     </div>
                 @endif
-               <form  method="post" action="{{url('/send-mail')}}">
+               <form  method="post" action="{{url('/send-mail')}}" enctype="multipart/form-data">
                    @csrf
                     <div class="contact-form-div">
                         <label for="email">Your email address <span style="color:#E6003A">*</span></label>
