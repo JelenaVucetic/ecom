@@ -93,10 +93,7 @@
              <div>
                 <p> 
                     <span>2.2. Payment conversion statement</span> <br> <br>                   
-                        Please note that all payments will be effected in Euro (EUR). If the payment is done
-                        using foreign issuers payment cards, total amount of transaction will be converted into bank 
-                        settlement currency,
-                        according to the current exchange rate of Visa/Mastercard.
+                    Please note that all payments will be effected in Euro (EUR). If the payment is done using foreign issuers payment cards, total amount of transaction will be converted into bank settlement currency, according to the current exchange rate of Visa/Mastercard.
                 </p> 
             </div>
             <div>

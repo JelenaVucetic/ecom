@@ -17,12 +17,12 @@ class ContactNotification extends Notification
      *
      * @return void
      */
-    public function __construct($details)
+  public function __construct($details)
     {
           $this->details = $details;
+
           
     }
-
     /**
      * Get the notification's delivery channels.
      *
@@ -40,14 +40,17 @@ class ContactNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+
     public function toMail($notifiable)
-    {
+    {			
+
+	
         return (new MailMessage)
                     ->greeting('Poštovani,')
-                    ->subject($details['subject'])
+                    ->subject(' ' . $this->details['subject'])
                     ->line('Imate novu poruku od korisnika.')
-                    ->line($details['email'])
-                    ->line($details['description']);
+                    ->line(' ' .$this->details['email'])
+                    ->line(' ' .$this->details['description']);
     }
 
     /**

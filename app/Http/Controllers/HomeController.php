@@ -608,7 +608,7 @@ class HomeController extends Controller
 
     public function showCategoryProduct(Request $request)
     {
-
+       
         $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
         
@@ -682,11 +682,23 @@ class HomeController extends Controller
 
                 foreach ($product->images as $item){
                 if($product->category->name=="T-Shirts"){
-
-                if ($item->color == "white" && $item->position == "front"){
-                    $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
-                    break;
-                }
+                    if($request->gender == "female"){
+                        if ($item->color == "white" && $item->position == "front"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                            break;
+                        }
+                    }else if($request->gender == "male"){
+                        if ($item->color == "white" && $item->position == "front" && $item->gender == "male"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                            break;
+                        }
+                    }else{
+                        if ($item->color == "white" && $item->position == "front"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="" alt="">';
+                            break;
+                        }
+                    }
+              
                 }else if( $product->category->getParentsNames() == "Cases" && $item->color == "transparent"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
                     break;
@@ -1252,7 +1264,7 @@ class HomeController extends Controller
         return view('design.show', compact('products' , 'categories'));
     }
 
-    public function sendContactMail(Request $request)
+   public function sendContactMail(Request $request)
     {
         $this->validate($request, [
             'subject'     =>  'required',
@@ -1266,8 +1278,7 @@ class HomeController extends Controller
             'email'   =>   $request->email,
             'description'   =>   $request->description
         ];
-
-        if($request->hasFile('image')){
+       if($request->hasFile('image')){
     		$image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $img = Image::make($image);
@@ -1276,7 +1287,6 @@ class HomeController extends Controller
             $details['image'] = $filename;
 
         }
-
 
 
          // check if reCaptcha has been validated by Google      
@@ -1292,7 +1302,6 @@ class HomeController extends Controller
             Notification::route('mail','buy@urbanone.me')->notify(new ContactNotification($details));
 
                 if( count(Mail::failures()) > 0 ) {
-        
                 echo "There was one or more failures. They were: <br />";
         
                 foreach(Mail::failures() as $email_address) {
@@ -1300,7 +1309,8 @@ class HomeController extends Controller
                     }
         
                 }
-             
+               return redirect()->back()->with('status', 'Message successfully sent !');
+
 
         } else {
             // send back error message
