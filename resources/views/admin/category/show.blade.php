@@ -112,6 +112,9 @@
                                 @elseif($p->category->name=="Thermoses")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-thermos" alt="">
                                  @break
+						      @elseif($p->category->name=="Tote Bags" || $p->category->name=="Backpacks")
+                                 <img src="{{ url('image', $item->name) }}" class="img-div-backpacks" alt="">
+                                  @break
                                  @elseif($p->category->name=="Mugs")
                                  <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
                                   @break
@@ -196,6 +199,10 @@
                                 @elseif($product->category->name == "Masks")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
                                     @break
+						      @elseif($product->category->name=="Tote Bags" || $product->category->name=="Backpacks")
+                                 <img src="{{ url('image', $item->name) }}" class="img-div-backpacks" alt="">
+                                  @break
+					
                                 @elseif($product->category->name == "Gift Bags")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
                                     @break

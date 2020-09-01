@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'mail.urbanone.me'),
+    'host' => env('MAIL_HOST', 'n3plcpnl0239.prod.ams3.secureserver.net'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'port' => env('MAIL_PORT', 25),
+=======
+    'port' => env('MAIL_PORT', 465),
+>>>>>>> d5b97db30c7ef382d33c325c4b2b3c8c6355b105
 
     /*
     |--------------------------------------------------------------------------

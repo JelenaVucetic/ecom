@@ -1286,7 +1286,7 @@ class HomeController extends Controller
         return view('design.show', compact('products' , 'categories'));
     }
 
-    public function sendContactMail(Request $request)
+   public function sendContactMail(Request $request)
     {
         $this->validate($request, [
             'subject'     =>  'required',
@@ -1300,8 +1300,7 @@ class HomeController extends Controller
             'email'   =>   $request->email,
             'description'   =>   $request->description
         ];
-
-        if($request->hasFile('image')){
+       if($request->hasFile('image')){
     		$image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $img = Image::make($image);
@@ -1310,7 +1309,6 @@ class HomeController extends Controller
             $details['image'] = $filename;
 
         }
-
 
 
          // check if reCaptcha has been validated by Google      
@@ -1326,14 +1324,14 @@ class HomeController extends Controller
             Notification::route('mail','buy@urbanone.me')->notify(new ContactNotification($details));
 
                 if( count(Mail::failures()) > 0 ) {
-        
                 echo "There was one or more failures. They were: <br />";
         
                 foreach(Mail::failures() as $email_address) {
                     echo " - $email_address <br />";
                     }
                 }
-             
+               return redirect()->back()->with('status', 'Message successfully sent !');
+
 
         } else {
             // send back error message

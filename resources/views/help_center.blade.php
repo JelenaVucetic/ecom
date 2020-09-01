@@ -64,14 +64,7 @@
                 </div>  
                 <div>
                     <h4>Payment conversion statement</h4>
-                    <p>Please note that all payments will be effected in the 
-                        Montenegrian currency – euro (EUR). If the payment is done using 
-                        foreign issuers payment cards, total amount of transaction will be 
-                        converted into bank settlement currency, according to the current exchange 
-                        rate of the Montenegrian National Bank. Once transaction is settled the already 
-                        converted amount will be converted into your local currency according to the exchange 
-                        rate of credit card associations. As a result of this conversion there is a possibility
-                         of a slight difference from the original price stated in our web site. 
+                    <p>Please note that all payments will be effected in Euro (EUR). If the payment is done using foreign issuers payment cards, total amount of transaction will be converted into bank settlement currency, according to the current exchange rate of Visa/Mastercard.
 
                     </p>
                 </div>  
