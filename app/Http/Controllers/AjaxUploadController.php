@@ -106,7 +106,7 @@ class AjaxUploadController extends Controller
     }
     } */
 
-$price = 0;
+$price = 15;
 
 
 if($original=='IPhone'){
@@ -175,9 +175,9 @@ $price = 25.00;
 }else if($original == "Backpacks"){
  $price = 3.90;
 }else if($original == "Kids Bibs"){
-    $price = 0;
+    $price = 15;
 }else{
-    $price = 0;
+    $price = 15;
 }
     $checkImage = $image;
     $image = explode(";" , $image)[1];
@@ -576,7 +576,7 @@ echo $checkImage;
     }
     } */
 
-$price = 0;
+$price = 15;
 
 
 if($original=='Phone Case'){
@@ -588,7 +588,7 @@ if($original=='Phone Case'){
 }else if($original=='Hoodie'){
     $price = 25;
 }else{
-    $price = 0;
+    $price = 15;
 }
     $checkImage = $image;
     $image = explode(";" , $image)[1];
