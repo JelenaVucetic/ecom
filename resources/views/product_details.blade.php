@@ -560,7 +560,7 @@
                     <span></span>
                   </div>
                 </label>
-                <label class="pink">
+              {{--   <label class="pink">
                   <div class="black-border">
                     <input type="radio" name="color" class="kids-color-class" value="pink" >
                     <span></span>
@@ -571,7 +571,7 @@
                   <input type="radio" name="color" class="kids-color-class" value="blue" >
                   <span></span>
                 </div>
-            </label>
+            </label> --}}
             </div>
 
             <div class="print-location">
@@ -710,9 +710,9 @@
             @elseif($pro_cat->category->name == "Gift Bags")
             <div class="sack-model">
               <h5>Choose Sack Model</h5>
-              <select class="sacks" id="cases">
-                <option value="Shape One">Shape One</option>
+              <select class="sacks" id="gift">
                 <option value="Shape Two">Shape Two</option>
+                <option value="Shape One">Shape One</option>
               </select>
             </div>
             <div class="select-color">

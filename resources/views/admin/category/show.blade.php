@@ -115,6 +115,9 @@
                                  @elseif($p->category->name=="Mugs")
                                  <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
                                   @break
+                                  @elseif($p->category->name=="Posters")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-posters" alt="">
+                                   @break
                               @else
                               <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                               @break

@@ -1042,6 +1042,9 @@ $("#female-x").on("click", function(){
      var color = $("#productColor").val();
      var id = $("#productID").val();
      var gender = $("#productGender").val();
+   if($("#pro_cat").val() == "T-Shirts"){
+
+
      $.ajax({
       headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1077,6 +1080,7 @@ $("#female-x").on("click", function(){
       alert("something went wrong");
   }
   });
+}
   });
 
   // Za majicu boja
@@ -1170,7 +1174,46 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
-    }else{
+    }else if(pro_cat=="Gift Bags"){
+      var position = $("#gift option:selected" ).val();
+      var color = $("input[type=radio][name=color]:checked").val();
+      var id = $("#productID").val();
+      $.ajax({
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               } ,
+     type: 'post',
+     dataType: 'json',
+     url: '/load_images_gift',
+     data: { position:position, color:color, id:id, gender:gender},
+     beforeSend: function(){
+      $("#loading-overlay").show();
+  },
+     success: function(response) {
+      $("#loading-overlay").hide();
+        var blank = response['blankImage'];
+        var name = response['image']['name'];
+       $("#main-image").attr("src","../image/" +name);
+       if(response['gender']!="unisex"){
+        $("#blank-image").attr("src","../site-images/" + blank);
+      }else{
+        $("#blank-image").attr("src","../image/" + blank);
+      }
+      if(response['gender']!="unisex"){
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
+      }else{
+        $("#blank-image-mobile").attr("src","../image/" + blank);
+      }
+       $("#main-image-mobile").attr("src","../image/" +name);
+  
+       $("#productColor").val(response['image']['color']);
+     },
+     error: function (jqXHR, textStatus, errorThrown) {
+       $("#loading-overlay").hide();
+       alert("something went wrong");
+   }
+   });
+    }else if(pro_cat=="T-Shirts"){
     var position = $('input[type=radio][name=print]:checked').val();
     var color = this.value;
     var gender = $("#productGender").val();
@@ -1318,6 +1361,45 @@ $("#female-x").on("click", function(){
       alert("something went wrong");
     } 
   });
+  }else if(pro_cat=="Gift Bags"){
+    var position = $("#gift option:selected" ).val();
+    var color = $("input[type=radio][name=color]:checked").val();
+    var id = $("#productID").val();
+    $.ajax({
+     headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             } ,
+   type: 'post',
+   dataType: 'json',
+   url: '/load_images_gift',
+   data: { position:position, color:color, id:id},
+   beforeSend: function(){
+    $("#loading-overlay").show();
+},
+   success: function(response) {
+    $("#loading-overlay").hide();
+      var blank = response['blankImage'];
+      var name = response['image']['name'];
+     $("#main-image").attr("src","../image/" +name);
+     if(response['gender']!="unisex"){
+      $("#blank-image").attr("src","../site-images/" + blank);
+    }else{
+      $("#blank-image").attr("src","../image/" + blank);
+    }
+    if(response['gender']!="unisex"){
+      $("#blank-image-mobile").attr("src","../site-images/" + blank);
+    }else{
+      $("#blank-image-mobile").attr("src","../image/" + blank);
+    }
+     $("#main-image-mobile").attr("src","../image/" +name);
+
+     $("#productColor").val(response['image']['color']);
+   },
+   error: function (jqXHR, textStatus, errorThrown) {
+     $("#loading-overlay").hide();
+     alert("something went wrong");
+ }
+ });
   } else {
      
   }

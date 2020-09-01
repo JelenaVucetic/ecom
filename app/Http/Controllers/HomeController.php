@@ -112,7 +112,7 @@ class HomeController extends Controller
     }
 
     public function index()
-    {
+    { 
 
         $designs = Design::orderBy('id', 'desc')->paginate(28);
         $designsRandom = Design::inRandomOrder()->get();
@@ -452,7 +452,7 @@ class HomeController extends Controller
                             $output.= " <img src='" . url('image',  $item->name ) . "') class='img-div-pictures'> ";
                            break;
                            }
-                           elseif($product->category->name=="Wallpapers") {
+                           elseif($product->category->name=="Wallpapers" ) {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-wallpapers'> ";
                            break;
                            }
@@ -1143,6 +1143,28 @@ class HomeController extends Controller
         return response()->json(array('image' => $image,'blankImage' => $blankImage, 'gender' => $request->gender));
     }
 
+
+    public function loadImagesGift(Request $request){
+        if($request->position == "Shape Two"){
+
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color', "=", $request->color],
+                ['size' , "=","H02"]
+            ])->first();
+            $blankImage = $request->color."H02.jpg";
+        }else{
+
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color', "=", $request->color],
+                ['size' , "=","H"]
+            ])->first();
+            $blankImage = $request->color."H.jpg";
+            }
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+
+    }
 
     public function loadImagesSize(Request $request){
 
