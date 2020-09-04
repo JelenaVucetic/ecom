@@ -180,7 +180,7 @@
                                 @elseif($product->category->name=="Canvas Art")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                 @break
-                                @elseif($product->category->name=="Wallpapers")
+                                @elseif($product->category->name=="Wallpapers" && $item->position == "kid")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
                                 @break
                                 @elseif($product->category->name=="Notebooks")
