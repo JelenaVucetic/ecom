@@ -988,7 +988,6 @@ $("#female-x").on("click", function(){
 
     $(".remove-wishlist").on("click", function(){
     var pro_id = $(this).attr("data-id");
-    alert(pro_id);
     $.ajax({
       headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1267,6 +1266,7 @@ $("#female-x").on("click", function(){
  $('.options li').on('click', function() {
     var pro_cat = $('#pro_cat').val();
     var id = $("#productID").val();
+    
     if(pro_cat=="Posters"){
       var color = $('input[name="color"]:checked').val();
       var size = $("#posters option:selected" ).val();

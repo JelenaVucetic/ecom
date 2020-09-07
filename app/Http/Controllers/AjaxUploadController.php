@@ -124,9 +124,9 @@ $priceB2 = 5.90;
 $price = 22.90;
 }else if($original == "Poster"){
    /*  $originalImagePath = "poster" + $originalImagePath; */
-$price = 11.00;
-$priceB1 = 18.00;
-$priceB2 = 15.00;
+$price = 15.00;
+$priceB1 = 25.00;
+$priceB2 = 33.00;
 }else if($original == "Canvas"){
    /*  $originalImagePath = "canvas" + $originalImagePath; */
 $price = 37.00;
@@ -179,6 +179,9 @@ $price = 15.90;
     $price = 10.00;
 }else if($original == "Masks"){
     $price = 4.50;
+}else if($original == "Sacks"){
+    $price = 2.25;
+    $priceB1 = 2.50;
 }else{
     $price = 15.00;
 }
