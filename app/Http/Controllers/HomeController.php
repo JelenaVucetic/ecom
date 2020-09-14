@@ -746,7 +746,6 @@ class HomeController extends Controller
 
                             $pro_cat = Product::find($product->id);
                             if($pro_cat->category != null){
-
                                 $output.="<p class=''>". $pro_cat->category->name ."</p>";
                             }
                         if($product->spl_price==0){
@@ -761,7 +760,14 @@ class HomeController extends Controller
          if(count($products)>0){
             echo $output;
          }else{
-             echo "<h3>No products</h3>";
+             echo "<div class='no-product'>
+             <img src='/site-images/No Products page.svg'>
+             <p> <span style='font-weight: bold;'> We are very sorry.</span> <br> Somebody didn’t feel like doing his job, and now thereis
+                  no products on this page. <br> The person is fired, and new one is getting products 
+                  available for you. <br>
+                 Check back in a couple of days.
+             </p>
+         </div>";
          }
 
        /*   return response()

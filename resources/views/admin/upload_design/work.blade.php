@@ -2822,7 +2822,7 @@ $("#capture").click(function(event){
     var gender = $('input[name=gender]:checked').val();
     var count = 0;
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
-
+    
     Array.prototype.forEach.call(els, function(el) {
       if( el.getAttribute('value')=='0'){
         count++;

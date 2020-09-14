@@ -47,7 +47,6 @@ class AjaxUploadController extends Controller
 
     function save(Request $request){
         $data = $request->all();
-       dd($data['originalImagePath']);
       $picture = $data['picture'];
 
       if($picture!==null && $picture!=="0"){
@@ -208,7 +207,7 @@ $row = DB::table('design')->where('name', $watermarkImage)->first();
 
 if($row==null){
     $idDesign = DB::table('design')->insertGetId([
-        'name' => $watermarkImage
+        'name' => $watermarkImage , 'origin_name' => $originalImagePath
     ]);
 } else {
     $idDesign = $row->id;

@@ -36,6 +36,9 @@ class AdminController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         $products = Product::where('design_id',$id)->get();
         $design = Design::where('id',$id)->first();
-        return view('admin.design_show', compact('design', 'categories','products'));
+        $image = Design::where('id',$id)->first();
+        $image = $image->origin_name;
+       /*  dd($products); */
+        return view('admin.design_show', compact('design', 'categories','products', 'image'));
     }
 }
