@@ -41,4 +41,19 @@ class AdminController extends Controller
        /*  dd($products); */
         return view('admin.design_show', compact('design', 'categories','products', 'image'));
     }
+
+    
+    public function categoryDisable($id) {
+        $category = Category::where('id',$id)->first();
+        Category::where('id', $id)
+                ->update(['active' => 0]);
+                return back()->with('success','!');
+    }
+       
+    public function categoryEnable($id) {
+        $category = Category::where('id',$id)->first();
+        Category::where('id', $id)
+                ->update(['active' => 1]);
+                return back()->with('success','!');
+    }
 }

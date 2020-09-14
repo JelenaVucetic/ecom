@@ -791,8 +791,20 @@ input[type=color] {
 
 }
 
-.btn {
+/* .btn {
     margin-top: 60px;
+} */
+.danger {
+    height: 100%;
+    margin: 0;
+}
+
+.small {
+    margin: 5px;
+}
+
+.admin-nav {
+    border-bottom: 1px solid #929598;
 }
 
 #capture {
@@ -1679,7 +1691,7 @@ input {
 
 }
 
-.desiImg img{
+.desiImg img {
     width: 100% !important;
     object-fit: cover;
     height: 350px;
