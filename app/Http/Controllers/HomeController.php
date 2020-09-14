@@ -260,9 +260,9 @@ class HomeController extends Controller
         }elseif($find_cat->category->name=="Notebooks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['color', '=' , 'white']
+                ['color', '=' , 'black']
             ])->first();
-            $imageBack = "Notes.png";
+            $imageBack = "Notesblack.png";
         }elseif($find_cat->category->name=="Gift Bags"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
@@ -706,8 +706,10 @@ class HomeController extends Controller
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-pictures" alt="'.$product->category->name.'">';
                     break;
                 }else if($product->category->name=="Wallpapers"){
+                    if($item->position == "room"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wallpapers" alt="'.$product->category->name.'">';
                     break;
+                }
                 }else if($product->category->name=="Notebooks"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-notebooks" alt="'.$product->category->name.'">';
                     break;

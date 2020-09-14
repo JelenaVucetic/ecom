@@ -9,7 +9,7 @@
     <div class="col-3" style=" padding-left: 35px;">
     </div>
     <div class="col-9" style="padding: 0 0; display:flex;">
-        <p id="category-paragraph" data-gender="" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
+    <p id="category-paragraph" data-gender="" data-myattribute="@if($cat){{$cat}}  @endif" data-id="@if($id){{$id}}  @endif" data-main-category="@if($number){{$number}}@endif" style="font-size:20px; font-weight: bolder; ">@if($cat){{$cat}}  @endif</p>
         <div class="gender" id="male-div" data-value="male" style="display: none;">Man <i class="fas fa-times" id="male-x"></i></div>
         <div class="gender" id="female-div" data-value="female" style="display: none;">Woman <i class="fas fa-times" id="female-x"></i></div>
     </div>
@@ -85,8 +85,21 @@
                         @if ($p->images)
 
                         @foreach ($p->images as $item)
+                  
                         @if($p->category->name=="T-Shirts")
-
+                        {{--       @if ($gender)
+                                  @if ($gender == "male")
+                                  @if ($item->color == "white" && $item->position == "front" && $item->gender == "male")
+                                  <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                  @break
+                                  @else
+                                  @if ($item->color == "white" && $item->position == "front" && $item->gender == "female")
+                                  <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                  @break
+                                  @endif
+                              @else
+                                  
+                              @endif --}}
                               @if ($item->color == "white" && $item->position == "front")
                               <img src="{{ url('image', $item->name) }}" class="" alt="">
                               @break
@@ -97,9 +110,11 @@
                               @elseif($p->category->name=="Canvas Art")
                               <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                               @break
-                                @elseif($p->category->name=="Wallpapers")
-                                <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+                                @elseif($p->category->name=="Wallpapers" )
+                                @if($item->position == "room")
+                                <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="{{$item->position}}">
                                 @break
+                                @endif
                                 @elseif($p->category->name=="Notebooks")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                                 @break
@@ -188,8 +203,10 @@
                                     <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                     @break
                                 @elseif($product->category->name=="Wallpapers")
-                                    <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
-                                    @break
+                                @if($item->position == "room")
+                                <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="{{$item->position}}">
+                                @break
+                                @endif
                                 @elseif($product->category->name=="Notebooks")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                                     @break

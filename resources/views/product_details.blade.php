@@ -671,18 +671,18 @@
             @elseif($pro_cat->category->name == "Notebooks")
             <div class="select-color">
               <h5>Color</h5>
+              <label class="black">
+                <div  class="white-border">
+                  <input type="radio" name="color" class="color-class" value="black" checked>
+                  <span></span>
+                </div>
+            </label>
                 <label class="white">
                   <div class="black-border">
-                    <input type="radio" name="color" value="white"  class="color-class" checked>
+                    <input type="radio" name="color" value="white"  class="color-class">
                     <span></span>
                   </div>
                 </label>
-                <label class="black">
-                  <div  class="white-border">
-                    <input type="radio" name="color" class="color-class" value="black" >
-                    <span></span>
-                  </div>
-              </label>
             </div>
             @elseif($pro_cat->category->name == "Masks")
             <div class="mask-model">

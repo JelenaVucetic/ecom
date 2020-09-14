@@ -1,3 +1,18 @@
+// Register form    
+
+$("#password").focusin(function() {
+  $("#pass-val").css('visibility', 'visible');
+}).focusout(function () {
+  $("#pass-val").css('visibility', 'hidden');
+});
+
+
+
+
+
+
+
+
 //Remove placeholder on click
 $(function () {
     $('input,textarea').focus(function () {
@@ -909,11 +924,12 @@ $("#female-x").on("click", function(){
 
  function sendGender(gender){
       var attribute = $("#category-paragraph").attr("data-myattribute");
-      var number = $("#category-paragraph").attr("data-id");
+      var number = $("#category-paragraph").attr("data-main-category");
+      var category =  $("#category-paragraph").attr("data-id");
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
       $("#category-paragraph").attr("data-myattribute",attribute);
-      $("#category-paragraph").attr("data-id",number);
+      $("#category-paragraph").attr("data-id",category);
       $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -923,6 +939,11 @@ $("#female-x").on("click", function(){
       url: '/category_search',
       data: { category:attribute, number:number, gender:gender},
       success: function(response) {
+        attribute = attribute.replace(/ /g,"");
+        category = category.replace(/ /g,"");
+        number = number.replace(/ /g,"");
+        gender = gender.replace(/ /g,"");
+        history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number+"?"+gender);
           $("#content").html(response);
           $("#category-paragraph").attr("data-gender", gender);
       }
@@ -939,11 +960,12 @@ $("#female-x").on("click", function(){
       var attribute = this.getAttribute("data-myattribute");
       var number = this.getAttribute("data-id");
       var category = this.getAttribute("data-category");
-
+      var gender =  $("#category-paragraph").attr("data-gender");
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
       $("#category-paragraph").attr("data-myattribute",attribute);
       $("#category-paragraph").attr("data-id",category);
+      $("#category-paragraph").attr("data-main-category",number);
       $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -956,7 +978,10 @@ $("#female-x").on("click", function(){
 
           $("#content").html(response);
           attribute = attribute.replace(/ /g,"");
-           history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number);
+          category = category.replace(/ /g,"");
+          number = number.replace(/ /g,"");
+          gender = gender.replace(/ /g,"");
+          history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number+"?"+gender);
            boldCategory(category);
 
       }

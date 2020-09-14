@@ -6178,7 +6178,7 @@ if (!$process8->isSuccessful()) {
         $imageRandom = ltrim($imageRandom, '/');
 
         $check = DB::table('images')->insert([
-         'name' => $imageRandom, 'product_id' => $id, 'size' => 'big'
+         'name' => $imageRandom, 'product_id' => $id, 'size' => 'big', 'position' => 'kid'
         ]);
      
         return $check;
@@ -6229,7 +6229,7 @@ if (!$process8->isSuccessful()) {
    $imageRandom = ltrim($imageRandom, '/');
 
    $check = DB::table('images')->insert([
-    'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat'
+    'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat', 'position' => 'kid'
    ]);
 
    return $check;
@@ -6262,7 +6262,7 @@ if (!$process8->isSuccessful()) {
         $imageRandom = ltrim($imageRandom, '/');
 
         $check = DB::table('images')->insert([
-         'name' => $imageRandom, 'product_id' => $id, 'size' => 'big'
+         'name' => $imageRandom, 'product_id' => $id, 'size' => 'big', 'position' => 'room'
         ]);
      
         return $check;
@@ -6310,7 +6310,7 @@ if (!$process8->isSuccessful()) {
    $imageRandom = ltrim($imageRandom, '/');
 
    $check = DB::table('images')->insert([
-    'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat'
+    'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat', 'position' => 'room'
    ]);
 
    return $check;
@@ -6346,7 +6346,7 @@ if (!$process8->isSuccessful()) {
                 $imageRandom = ltrim($imageRandom, '/');
 
          $check = DB::table('images')->insert([
-          'name' => $imageRandom, 'product_id' => $id, 'size' => 'big'
+          'name' => $imageRandom, 'product_id' => $id, 'size' => 'big', 'position' => 'office'
          ]);
       
          return $check;
@@ -6794,7 +6794,7 @@ if (!$process8->isSuccessful()) {
         $imageRandom = ltrim($imageRandom, '/');
 
         $check = DB::table('images')->insert([
-         'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat'
+         'name' => $imageRandom, 'product_id' => $id, 'size' => 'repeat', 'position' => 'office'
         ]);
      
         return $check;
@@ -8180,9 +8180,7 @@ if (!$process8->isSuccessful()) {
             
              $imageRandom = ltrim($imageRandom, '/');
 
-             $check = DB::table('images')->insert([
-                'name' => $imageRandom, 'product_id' => $id, 'color' => 'white'
-               ]);
+          
          
                
         
@@ -8233,6 +8231,10 @@ if (!$process8->isSuccessful()) {
        
              $check1 = DB::table('images')->insert([
                 'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black'
+               ]);
+
+               $check = DB::table('images')->insert([
+                'name' => $imageRandom, 'product_id' => $id, 'color' => 'white'
                ]);
          
                return $check1;

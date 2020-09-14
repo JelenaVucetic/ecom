@@ -179,7 +179,7 @@ $price = 15.90;
     $price = 10.00;
 }else if($original == "Masks"){
     $price = 4.50;
-}else if($original == "Sacks"){
+}else if($original == "Gift Bags"){
     $price = 2.25;
     $priceB1 = 2.50;
 }else{
@@ -278,12 +278,12 @@ if($original == "Canvas"){
     ImageModel::canvas($idProduct, $originalImagePath);
 }
 if($original == "Wallpapers"){
+    ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
+    ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
     ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
     ImageModel::wallpaper($idProduct, $originalImagePath);
     ImageModel::wallpaperRepeatKids($idProduct, $originalImagePath);
     ImageModel::wallpaperKids($idProduct, $originalImagePath);
-    ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
-    ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
 }
 if($original == "Clocks"){
     ImageModel::clock($idProduct, $originalImagePath);
@@ -296,7 +296,7 @@ if($original == "Coasters"){
     ImageModel::coastersSquare($idProduct, $originalImagePath);
     ImageModel::coastersCircle($idProduct, $originalImagePath);
 }
-if($original == "Sacks"){
+if($original == "Gift Bags"){
     ImageModel::sacksHo2($idProduct, $originalImagePath);
     ImageModel::sacks($idProduct, $originalImagePath);
 }

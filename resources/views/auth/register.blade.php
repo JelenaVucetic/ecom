@@ -42,12 +42,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group row login-filds">
+                        <div class="form-group row login-filds" style="margin-bottom: 0; padding-bottom: 0;">
                             <label for="password" class=" col-form-label">{{ __('Password') }}</label>
 
                             <div class="">
+                              
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                                <span id="pass-val" style="visibility: hidden;">
+                                    <strong>Your password must contain a minimum of 8 characters, at least one uppercase letter and one number.</strong>
+                                </span>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

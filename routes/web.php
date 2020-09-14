@@ -53,6 +53,7 @@ Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 
 
 Route::resource('category', 'CategoriesController');
+Route::get('category/{id}/{gender}', 'CategoriesController@showGenderCategory');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', 'AdminController@index')->name('dashboard');

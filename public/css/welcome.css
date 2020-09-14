@@ -23,6 +23,33 @@
     margin-top: 35px;
 }
 
+#pass-val{
+    font-size: 10px;
+    color: darkseagreen;
+   
+}
+
+#pass-val strong{
+    line-height: 1.5;
+    display: block;
+}
+/* .pass-info{
+    display: -webkit-box;     
+    display: -moz-box;        
+    display: -ms-flexbox;    
+    display: -webkit-flex;  
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;	
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -ms-box-orient: horizontal;
+    box-orient: horizontal;	  
+    width: 100%!important;
+}
+ */
 
 .myRow {
     display: -ms-flexbox;
