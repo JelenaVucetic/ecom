@@ -59,7 +59,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/', 'AdminController@index')->name('dashboard');
         Route::resource('product', 'ProductsController');
         Route::get('/designs', 'AdminController@designs')->name('designs');
-        
+        Route::get('/categoryEnable/{id}', 'AdminController@categoryEnable')->name('enable');
+        Route::get('/categoryDisable/{id}', 'AdminController@categoryDisable')->name('disable');
+
         Route::get('/showDesign/{id}', 'AdminController@showDesign')->name('showDesign');
 
         Route::resource('tag', 'TagsController');

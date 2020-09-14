@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="navbar" style="width:30%">
-    <table class="table table-dark">
+    <table class="table table-light">
         <thead>
             <tr>
                 <th>Tag Name</th>
