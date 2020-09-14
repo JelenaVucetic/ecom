@@ -57,7 +57,8 @@ Route::resource('category', 'CategoriesController');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', 'AdminController@index')->name('dashboard');
         Route::resource('product', 'ProductsController');
-   
+        Route::get('/designs', 'AdminController@designs')->name('designs');
+
         Route::resource('tag', 'TagsController');
 
         Route::get('work', 'ImageController@index');
@@ -139,4 +140,3 @@ Route::post('/send-mail','HomeController@sendContactMail');
 
 Route::get('newsletter','NewsletterController@create');
 Route::post('newsletter','NewsletterController@store');
-
