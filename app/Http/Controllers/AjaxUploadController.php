@@ -47,7 +47,7 @@ class AjaxUploadController extends Controller
 
     function save(Request $request){
         $data = $request->all();
-       
+       dd($data['originalImagePath']);
       $picture = $data['picture'];
 
       if($picture!==null && $picture!=="0"){

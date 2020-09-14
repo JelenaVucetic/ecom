@@ -9,7 +9,7 @@
           @foreach ($designs as $design)
           <div class="col-3">
               <div class="design-box">
-               <a href="">
+              <a href="/admin/showDesign/{{$design->id}}">
                   <div class="design-image desiImg">
                     <img src="/design/{{$design->name}}" style="max-witdh:100%;max-height:100%;margin:auto">
                   </div>

@@ -40,9 +40,11 @@ class ImageController extends Controller
         $extension =  $request->file('file')->getClientOriginalExtension();
        // dd($extension);
         $imageNoExt = $filename . "_" . time();
+
         $image2 = $imageNoExt . "_watermark" . "." . $extension;
         $image = $imageNoExt . ".".$extension;
         $image = preg_replace('/\s+/', '', $image);
+
         $image2 = preg_replace('/\s+/', '', $image2);
         $file->move('design/', $image);
        

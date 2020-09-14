@@ -7,8 +7,8 @@
   <img src='/site-images/3.gif' width='62px' height='62px'>
 </div>
 <!-- Image loader -->
-  <h2 class="add-work-h2">Add new work</h2>
-    <form  action="/admin/work" method="post"  id="form-change"  enctype="multipart/form-data">
+<h2 class="add-work-h2">Edit work</h2><h2>  {{$design->origin_name}}</h2>
+    <form  action="#" method="post"  id="form-change"  enctype="multipart/form-data">
         @csrf
         <input type="file" name="file" onchange="this.form.submit()" id="file">
         <label for="file" id="add-label">

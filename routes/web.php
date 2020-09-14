@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/', 'AdminController@index')->name('dashboard');
         Route::resource('product', 'ProductsController');
         Route::get('/designs', 'AdminController@designs')->name('designs');
+        
+        Route::get('/showDesign/{id}', 'AdminController@showDesign')->name('showDesign');
 
         Route::resource('tag', 'TagsController');
 

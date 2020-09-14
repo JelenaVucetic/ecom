@@ -29,7 +29,13 @@ class AdminController extends Controller
     public function designs() {
         $categories = Category::where('parent_id',NULL)->get();
 
-        $designs = Design::orderBy('id', 'desc')->paginate(28);
+        $designs = Design::orderBy('id', 'desc')->get();
         return view('admin.designs', compact('designs', 'categories'));
+    }
+    public function showDesign($id) {
+        $categories = Category::where('parent_id',NULL)->get();
+        $products = Product::where('design_id',$id)->get();
+        $design = Design::where('id',$id)->first();
+        return view('admin.design_show', compact('design', 'categories','products'));
     }
 }
