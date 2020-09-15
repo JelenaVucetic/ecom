@@ -1694,4 +1694,5 @@ input {
 .desiImg img {
     width: 100% !important;
     object-fit: cover;
+    height: 350px;
 }
