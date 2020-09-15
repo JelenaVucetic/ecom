@@ -21,28 +21,29 @@
         <div>
             @if($product->spl_price==0)
                 <input class="product_price" type="hidden" value="{{$product->price}}">
-                <h4 class="A3_price"><span>&euro; {{ $product->price}} </span></h4>
+                <h4 class="A3_price"><span>&euro; {{ number_format((float)$product->price, 2)}} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center">
                   <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
-                  <p class="" style="text-decoration:line-through; color:#333">&euro;{{$product->price}}</p>
-                  <p class="">&euro;{{$product->spl_price}}</p>
+                  <p class="" style="text-decoration:line-through; color:#333">&euro;{{number_format((float)$product->price, 2)}}</p>
+                  <p class="">&euro;{{number_format((float)$product->spl_price, 2)}}</p>
                 </div>
             @endif
             @if($product->price_b2 != 0)
               <input type="hidden" class="product_b2_price" value="{{$product->price_b2}}" name="newPrice">
-              <h4 class="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
+              <h4 class="B2_price"><span>&euro; {{number_format((float)$product->price_b2, 2) }} </span></h4>
             @endif
             @if($product->price_b1 != 0)
               <input type="hidden" value="{{$product->price_b1}}" name="newPrice">
-              <h4 class="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
+              <h4 class="B1_price"><span>&euro; {{number_format((float)$product->price_b1, 2)}} </span></h4>
             @endif
 
+        
           {{-- @if($product->spl_price==0)
 
-              <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;" >{{ $product->price }}&euro;</p>
+              <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;" >{{ number_format((float)$product->price, 2) }}&euro;</p>
           @else
-              <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;">{{ $product->spl_price }}&euro;</p>
+              <p style="font-size: 20px;margin-bottom: 0;margin-left: 20px;">{{number_format((float)$product->spl_price, 2)  }}&euro;</p>
           @endif --}}
         </div>
         <div style="width: 50%;">
@@ -177,21 +178,21 @@
             @if($product->spl_price==0)
                 <input class="product_price" type="hidden" value="{{$product->price}}">
                 <input class="db_price" type="hidden" value="{{$product->price}}">
-                <h4 class="A3_price"><span style="font-weight: bold;font-size: 20px;" >&euro; {{ $product->price}} </span></h4>
+                <h4 class="A3_price"><span style="font-weight: bold;font-size: 20px;" >&euro; {{number_format((float)$product->price, 2) }} </span></h4>
             @else
                 <div class="d-flex justify-content-between align-items-center" style="width:90%; margin-left: 0;">
                   <input type="hidden" value="{{$product->spl_price}}" name="newPrice">
-                  <p class="" style="text-decoration:line-through; color:#333;font-weight: bold;font-size: 20px;">&euro;{{$product->price}}</p>
-                  <p class="" style="font-weight: bold;font-size: 22px;">&euro;{{$product->spl_price}}</p>
+                  <p class="" style="text-decoration:line-through; color:#333;font-weight: bold;font-size: 20px;">&euro;{{number_format((float)$product->price, 2)}}</p>
+                  <p class="" style="font-weight: bold;font-size: 22px;">&euro;{{number_format((float)$product->spl_price, 2)}}</p>
                 </div>
             @endif
             @if($product->price_b2 != 0)
               <input type="hidden" class="product_b2_price" value="{{$product->price_b2}}" name="newPrice">
-              <h4 class="B2_price"><span>&euro; {{ $product->price_b2}} </span></h4>
+              <h4 class="B2_price"><span>&euro; {{ number_format((float)$product->price_b2, 2)}} </span></h4>
             @endif
             @if($product->price_b1 != 0)
               <input type="hidden" value="{{$product->price_b1}}" name="newPrice">
-              <h4 class="B1_price"><span>&euro; {{ $product->price_b1}} </span></h4>
+              <h4 class="B1_price"><span>&euro; {{ number_format((float)$product->price_b1, 2)}} </span></h4>
             @endif
           </span>
 
