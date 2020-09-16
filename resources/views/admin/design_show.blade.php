@@ -1751,6 +1751,33 @@
 
 `   @include('admin.upload_design.product_canvas')
 <script>
+
+function getText( obj ) {
+    return obj.textContent ? obj.textContent : obj.innerText;
+}
+
+function setText( obj, to ) {
+    obj.textContent? obj.textContent = to : obj.innerText = to;
+}
+
+  var arrayCategory = @json($products_category);
+  var products = document.getElementsByClassName("save-picture");
+  var i;
+  var j;
+for (i = 0; i < arrayCategory.length; i++) {
+    for(j = 0; j < products.length; j++){
+      if(arrayCategory[i] == products[j].getAttribute('data-category')){
+        products[j].setAttribute('value', "0");
+        products[j].classList.remove("disabledbutton");
+       
+        $(products[j]).closest(".enable-button").css('color', 'blue');
+        $button = $(products[j]).closest(".preview-info").find(".enable-button").html('Enabled').addClass('enable');
+
+      }
+    }
+}
+
+
   var canvas10 = new fabric.Canvas('c9');
 
 var img1 = new Image();
@@ -2809,6 +2836,9 @@ function finalMockup(prodId){
         }
   });
 }
+
+
+ 
 
 $("#capture").click(function(event){
 

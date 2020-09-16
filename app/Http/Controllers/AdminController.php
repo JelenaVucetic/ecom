@@ -38,8 +38,9 @@ class AdminController extends Controller
         $design = Design::where('id',$id)->first();
         $image = Design::where('id',$id)->first();
         $image = $image->origin_name;
-       /*  dd($products); */
-        return view('admin.design_show', compact('design', 'categories','products', 'image'));
+        $products_category = $products->pluck('category_id');
+
+        return view('admin.design_show', compact('design', 'categories','products', 'image', 'products_category'));
     }
 
     
