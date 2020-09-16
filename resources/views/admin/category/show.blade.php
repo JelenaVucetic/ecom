@@ -124,8 +124,14 @@
                                 @elseif($p->category->name=="Masks")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-masks" alt="">
                                 @break
+                                @elseif($p->category->name=="Mugs")
+                                <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                                @break
                                 @elseif($p->category->name=="Thermoses")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-thermos" alt="">
+                                 @break
+                                 @elseif($p->category->name=="Kids T-Shirts")
+                                 <img src="{{ url('image', $item->name) }}" class="img-div-kidsT" alt="">
                                  @break
 						      @elseif($p->category->name=="Tote Bags" || $p->category->name=="Backpacks")
                                  <img src="{{ url('image', $item->name) }}" class="img-div-backpacks" alt="">
@@ -219,7 +225,15 @@
 						      @elseif($product->category->name=="Tote Bags" || $product->category->name=="Backpacks")
                                  <img src="{{ url('image', $item->name) }}" class="img-div-backpacks" alt="">
                                   @break
-					
+                                  @elseif($product->category->name=="Mugs")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                                  @break
+                                  @elseif($product->category->name=="Posters")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-wall" alt="">
+                                  @break
+                                   @elseif($product->category->name=="Kids T-Shirts")
+                                   <img src="{{ url('image', $item->name) }}" class="img-div-kidsT" alt="">
+                                   @break
                                 @elseif($product->category->name == "Gift Bags")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
                                     @break

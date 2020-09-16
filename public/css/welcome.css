@@ -23,16 +23,17 @@
     margin-top: 35px;
 }
 
-#pass-val{
+#pass-val {
     font-size: 10px;
     color: darkseagreen;
-   
+
 }
 
-#pass-val strong{
+#pass-val strong {
     line-height: 1.5;
     display: block;
 }
+
 /* .pass-info{
     display: -webkit-box;     
     display: -moz-box;        
@@ -550,6 +551,26 @@
 
 .img-div-notebooks:hover {
     transform: scale(2.6) !important;
+    transform-origin: 50% 50% !important;
+}
+
+.img-div-wall {
+    transform: scale(1.2) !important;
+    margin-top: 4.125% !important;
+}
+
+.img-div-wall:hover {
+    transform: scale(1.4) !important;
+    transform-origin: 50% 50% !important;
+}
+
+.img-div-kidsT {
+    transform: scale(1.2) !important;
+    margin-top: 8.125% !important;
+}
+
+.img-div-kidsT:hover {
+    transform: scale(1.4) !important;
     transform-origin: 50% 50% !important;
 }
 

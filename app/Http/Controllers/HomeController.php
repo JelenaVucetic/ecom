@@ -472,10 +472,18 @@ class HomeController extends Controller
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-thermos'>";
                            break;
                            }
+                           elseif($product->category->name=="Kids T-Shirts") {
+                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-kidsT'>";
+                           break;
+                           }
                            elseif($product->category->name=="Mugs") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-mugs'>";
                            break;
                            }
+                           else if($p->category->name=="Posters"){
+                            $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wall" alt="'.$product->category->name.'">';
+                            break;
+                        }
                            elseif($product->category->name == "Gift Bags") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
                            break;
@@ -728,6 +736,14 @@ class HomeController extends Controller
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-mugs" alt="'.$product->category->name.'">';
                     break;
                 }
+                else if($product->category->name=="Posters"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wall" alt="'.$product->category->name.'">';
+                    break;
+                }
+                else if($product->category->name=="Backpacks"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-backpacks" alt="'.$product->category->name.'">';
+                    break;
+                }
                 else{
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
                     break;
@@ -749,7 +765,7 @@ class HomeController extends Controller
                                 $output.="<p class=''>". $pro_cat->category->name ."</p>";
                             }
                         if($product->spl_price==0){
-                        $output.="<p> From: <span style='font-weight: bold'>". $product->price."&euro;</span></p>";
+                        $output.="<p> From: <span style='font-weight: bold'>".  number_format((float)$product->price, 2). "&euro;</span></p>";
                         }else{
                         $output.=" <p> Special price: <span style='font-weight: bold'>".$product->spl_price."&euro;</span></p>";
                         }
@@ -875,6 +891,7 @@ class HomeController extends Controller
 
     public function giftsForHim() 
     {
+    
         $categories = Category::where('parent_id',NULL)->get();
 
         $shirts = Product::select('product.*')
@@ -921,10 +938,10 @@ class HomeController extends Controller
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Backpacks')
         ->where(function ($q) {
-            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
+            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
         })
         ->get();
-
+       
         $clocks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Clocks')
