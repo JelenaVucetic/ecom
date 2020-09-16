@@ -5870,8 +5870,8 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("resized_pictures". $imageName1));
+        $src1->resizeImage(520, 675,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("resized_canvas". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\U1-Canvas_Slika-Maska.png"));
       
         
@@ -5897,7 +5897,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map-canvas.png">';
         
         $process6 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
+        '.$path.'\resized_canvas'. $imageName1. ' ^
         -channel matte -separate ^
         '.$path.'\image\ms_logo_displace_mask_canvas.png
         ');
@@ -5912,9 +5912,9 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_logo_displace_mask_canvas.png">';
         
         $process7 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
+        '.$path.'\resized_canvas'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-canvas.png ^
-        -geometry -350-250 ^
+        -geometry -340-180 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_canvas.png ^
         -compose CopyOpacity -composite ^
@@ -5929,7 +5929,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_canvas.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,350,250);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,180);
         $src2->writeImage(public_path("image\image-canvas.png"));
         echo '<img src="\image\image-canvas.png">';
         $src4 = new \Imagick(public_path("site-images/U1-Canvas_Slika-BG.png"));
@@ -6062,7 +6062,7 @@ if (!$process8->isSuccessful()) {
    
    
         $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(600, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->resizeImage(520, 675,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\U1-Canvas_Slika-Maska.png"));
        /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
@@ -6107,7 +6107,7 @@ if (!$process8->isSuccessful()) {
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         '.$path.'\image\ms_light_map-canvas-thumb.png ^
-        -geometry -300-230 ^
+        -geometry -340-180 ^
         -compose Multiply -composite ^
         '.$path.'\image\ms_logo_displace_mask_canvas_thumb.png ^
         -compose CopyOpacity -composite ^
@@ -6122,7 +6122,7 @@ if (!$process8->isSuccessful()) {
         echo '<img src="\image\ms_light_map_logo_canvas_thumb.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,300,230);
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,340,180);
         $src2->writeImage(public_path("image\image-canvas-thumb.png"));
         echo '<img src="\image\image-canvas-thumb.png">';
         $src4 = new \Imagick(public_path("site-images/U1-Canvas_Slika-BG.png"));
