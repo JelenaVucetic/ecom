@@ -1152,7 +1152,7 @@
       <div id="proizvod20" class="save-picture disabledbutton" data-category="24" name="Gift Bags" data-canvas="canvas22" value="1">
           <div class="background-div19">
       <img id="logo-canvas20" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-      <img class="overlay-panel" src="/site-images/Poster.png">
+      <img class="overlay-panel" src="/site-images/Gift-Bag-Big-White-Mask.png">
           </div>
       </div>
   <div class="preview-info">
