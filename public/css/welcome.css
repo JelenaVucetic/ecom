@@ -556,10 +556,20 @@
 
 .img-div-wall {
     transform: scale(1.2) !important;
-    margin-top: 4.125% !important;
+    margin-top: 1.4% !important;
 }
 
 .img-div-wall:hover {
+    transform: scale(1.4) !important;
+    transform-origin: 50% 50% !important;
+}
+
+.img-div-poster {
+    transform: scale(1.2) !important;
+    margin-top: 1.4% !important;
+}
+
+.img-div-poster:hover {
     transform: scale(1.4) !important;
     transform-origin: 50% 50% !important;
 }
@@ -801,6 +811,23 @@
 }
 
 @media (max-width: 767px) {
+
+
+    .box10-img-holder {
+        background: url(/site-images/gifthimmobile.jpg);
+        background-size: cover;
+    }
+
+    .box11-img-holder {
+        background: url(/site-images/gifthermobile.jpg);
+        background-size: cover;
+    }
+
+    .box6-img-holder {
+        background: url(/site-images/clockmobile.jpg);
+        background-size: cover;
+
+    }
 
     .welcome-image {
 

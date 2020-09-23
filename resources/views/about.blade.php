@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('changed_header')
-aasdadasdadaasdadasdadaasdadasdad
+
 {{-- f,lsdfs --}}
 <link rel="stylesheet" href="/css/changed_header.css">
 @endsection
