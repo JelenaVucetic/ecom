@@ -246,7 +246,7 @@ class HomeController extends Controller
                 ['product_id',"=", $id],
                 ['color','=', 'black']
             ])->first();
-            $imageBack = "CrniSatSite.png";
+            $imageBack = "SatCrni-BG.png";
         }elseif($find_cat->category->name=="Puzzles"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
@@ -1222,7 +1222,7 @@ class HomeController extends Controller
         }elseif($request->pro_cat == "Backpacks"){
             $blankImage = "Backpack". $request->color. ".jpg";
         }else{
-            $blankImage = "Clock". $request->color. ".png";
+            $blankImage = "Clock". $request->color. ".jpg";
         }
 
 

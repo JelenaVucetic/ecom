@@ -285,7 +285,10 @@ if($original == "Wallpapers"){
     ImageModel::wallpaperKids($idProduct, $originalImagePath);
 }
 if($original == "Clocks"){
-    ImageModel::clock($idProduct, $originalImagePath);
+    ImageModel::blackClock($idProduct, $originalImagePath);
+    ImageModel::whiteClock($idProduct, $originalImagePath);
+    ImageModel::redClock($idProduct, $originalImagePath);
+    ImageModel::blueClock($idProduct, $originalImagePath);
 }
 if($original == "Bags"){
     ImageModel::cegerThumb($idProduct, $originalImagePath);

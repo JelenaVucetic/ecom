@@ -7319,15 +7319,157 @@ if (!$process8->isSuccessful()) {
 
     }
 
-    public static function clock($id, $image){
+    public static function blackClock($id, $image){
+         $imageName1 = "/" .  $image; 
+    
+         $path = public_path();
+    
+         $src1 = new \Imagick(public_path("design". $imageName1));
+         $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+         $src1->writeImage(public_path("design". $imageName1));
+    
+      
+    
+        $src3 = new \Imagick(public_path("\site-images\SatCrni-BG.png"));
+        $src3->compositeImage($src1, \Imagick::COMPOSITE_MULTIPLY, 340, 270);
+        $src3->writeImage(public_path("image/clock-black-final.png"));
+        echo '<img src="\image/clock-black-final.png">';
+
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        
+        $string = str_shuffle($name);
+        $string .=  round(microtime(true) * 1000);
+        $imageRandom = '/' . $string . '.png';
+    
+        $src2 = new \Imagick(public_path("\site-images\SatCrni-Maska.png"));
+        $src2->compositeImage($src3, \Imagick::COMPOSITE_DSTOVER, 0, 0);
+        $src2->writeImage(public_path("image" . $imageRandom));
+     
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'color' => 'black'
+        ]);
+      }
+    
+      public static function whiteClock($id, $image){
+    
+         $imageName1 = "/" .  $image; 
+    
+         $path = public_path();
+    
+         $src1 = new \Imagick(public_path("design". $imageName1));
+         $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+         $src1->writeImage(public_path("design". $imageName1));
+    
+         $src3 = new \Imagick(public_path("\site-images\Sat-Bijeli-BG.jpg"));
+         $src3->compositeImage($src1, \Imagick::COMPOSITE_MULTIPLY, 340, 270);
+         $src3->writeImage(public_path("image/clock-white-final.png"));
+         echo '<img src="\image/clock-white-final.png">';
+
+         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+         $name = mt_rand(1000000, 9999999)
+             . mt_rand(1000000, 9999999)
+             . $characters[rand(0, strlen($characters) - 1)];
+         
+         $string = str_shuffle($name);
+         $string .=  round(microtime(true) * 1000);
+         $imageRandom = '/' . $string . '.png';
+    
+         $src2 = new \Imagick(public_path("\site-images\Sat-Bijeli-Maska.png"));
+         $src2->compositeImage($src3, \Imagick::COMPOSITE_DSTOVER, 0, 0);
+         $src2->writeImage(public_path("image" . $imageRandom));
+        
+         
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'color' => 'white'
+        ]);
+    
+       
+      }
+    
+      public static function redClock($id, $image){
+    
+         $imageName1 = "/" .  $image; 
+    
+         $path = public_path();
+    
+         $src1 = new \Imagick(public_path("design". $imageName1));
+         $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+         $src1->writeImage(public_path("design". $imageName1));
+
+         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+         $name = mt_rand(1000000, 9999999)
+             . mt_rand(1000000, 9999999)
+             . $characters[rand(0, strlen($characters) - 1)];
+         
+         $string = str_shuffle($name);
+         $string .=  round(microtime(true) * 1000);
+         $imageRandom = '/' . $string . '.png';
+    
+         $src3 = new \Imagick(public_path("\site-images\Sat-Crveni-BG.jpg"));
+         $src3->compositeImage($src1, \Imagick::COMPOSITE_MULTIPLY, 340, 270);
+         $src3->writeImage(public_path("image/clock-red-final.png"));
+         echo '<img src="\image/clock-red-final.png">';
+    
+         $src2 = new \Imagick(public_path("\site-images\Sat-Crveni-Maska.png"));
+         $src2->compositeImage($src3, \Imagick::COMPOSITE_DSTOVER, 0, 0);
+         $src2->writeImage(public_path("image" . $imageRandom));
+        
+         
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'color' => 'red'
+        ]);
+    
+      }
+    
+      public static function blueClock($id, $image){
+      
+         $imageName1 = "/" .  $image; 
+    
+         $path = public_path();
+    
+         $src1 = new \Imagick(public_path("design". $imageName1));
+         $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); 
+         $src1->writeImage(public_path("design". $imageName1));
+    
+         $src3 = new \Imagick(public_path("\site-images\Sat-Plavi-BG.jpg"));
+         $src3->compositeImage($src1, \Imagick::COMPOSITE_MULTIPLY, 340, 270);
+         $src3->writeImage(public_path("image/clock-blue-final.png"));
+
+         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+         $name = mt_rand(1000000, 9999999)
+             . mt_rand(1000000, 9999999)
+             . $characters[rand(0, strlen($characters) - 1)];
+         
+         $string = str_shuffle($name);
+         $string .=  round(microtime(true) * 1000);
+         $imageRandom = '/' . $string . '.png';
+    
+         $src2 = new \Imagick(public_path("\site-images\Sat-Plavi-Maska.png"));
+         $src2->compositeImage($src3, \Imagick::COMPOSITE_DSTOVER, 0, 0);
+         $src2->writeImage(public_path("image" . $imageRandom));
+        
+         
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'color' => 'blue'
+        ]);
+      }
+
+   /*  public static function clock($id, $image){
         $imageName1 = "/" .  $image; 
 
         $path = public_path();
-   
-       
-    
-       
-   
+
    $src1 = new \Imagick(public_path("design". $imageName1));
    $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
    $imageName1 = ltrim($imageName1, '/');
@@ -7349,7 +7491,7 @@ if (!$process8->isSuccessful()) {
    /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
    -blur 0x3 ^
    -contrast-stretch 0,50%% ^
-   -depth 16 ^  -negate  -channel A -blur 0x8*/
+   -depth 16 ^  -negate  -channel A -blur 0x8
    
    $process5->run();
    if (!$process5->isSuccessful()) {
@@ -7423,15 +7565,7 @@ if (!$process8->isSuccessful()) {
     
         
    
-      /*   $process9 = new Process('magick  convert '.$path.'\site-images\SatCrni.png -background "rgb(0,0,0)" 
-   -flatten  '.$path.'\site-images\CrniSatSite.png 
-   ');
-    $process9->run();
-       if (!$process9->isSuccessful()) {
-        throw new ProcessFailedException($process9);
-       }
-        echo $process9->getOutput();
-        echo '<img src="\site-images\CrniSatSite.png">';  */
+
    
         $src2->compositeImage($src, \Imagick::COMPOSITE_DSTOVER, 310, 240);
         $src2->writeImage(public_path("image/output1.png"));
@@ -7464,7 +7598,7 @@ if (!$process8->isSuccessful()) {
        
            return $check1;
              
-    }
+    } */
 
     public static function cegerThumb($id, $image){
         $path = public_path();

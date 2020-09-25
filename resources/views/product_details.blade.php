@@ -440,15 +440,31 @@
             @elseif($pro_cat->category->name == "Clocks")
             <div class="select-color">
               <h5>Color</h5>
+              
               <label class="black">
                 <div  class="white-border">
                   <input type="radio" name="color" class="color-class" value="black" checked>
                   <span></span>
                 </div>
             </label>
+
                 <label class="white">
                   <div class="black-border">
                     <input type="radio" name="color" value="white"  class="color-class" >
+                    <span></span>
+                  </div>
+                </label>
+
+                <label class="red">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="red"  class="color-class" >
+                    <span></span>
+                  </div>
+                </label>
+
+                <label class="blue">
+                  <div class="black-border">
+                    <input type="radio" name="color" value="blue"  class="color-class" >
                     <span></span>
                   </div>
                 </label>

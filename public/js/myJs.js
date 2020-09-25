@@ -1148,7 +1148,7 @@ $("#female-x").on("click", function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 } ,
       type: 'post',
-      dataType: 'json',
+      dataType: 'json', 
       url: '/load_images_color',
       data: { color:color, pro_cat:pro_cat, id:id},
       beforeSend: function(){
