@@ -41,9 +41,14 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany('App\Category', 'parent_id');
+        return $this->hasMany('App\Category', 'parent_id')->where('active',1);
+        ;
     }
-
+    public function childrenA()
+    {
+        return $this->hasMany('App\Category', 'parent_id');
+        ;
+    }
     public function products()
     {
         return $this->hasMany(Product::class);
@@ -57,6 +62,10 @@ class Category extends Model
     {
         return $this->belongsTo('App\Category', 'parent_id');
     }
+    public function a()
+    {
+        return $this->name;
+    }
 
 
     public function getParentsNames() {
@@ -66,5 +75,9 @@ class Category extends Model
             return $this->name;
         }
     }
-    
+
+    public function isActive()
+    {
+        return $this->isActive;
+    }
 }

@@ -238,20 +238,20 @@ if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
     ImageModel::womanNavyTshirt($idProduct, $originalImagePath);
     ImageModel::womanRedTshirt($idProduct, $originalImagePath);
     ImageModel::womanBlackTshirt($idProduct, $originalImagePath);
-    ImageModel::womanRedBackTshirt($idProduct, $originalImagePath);
+    /* ImageModel::womanRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanBlackBackTshirt($idProduct, $originalImagePath);
-    ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath);
+    ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath); */
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
     ImageModel::manWhiteTshirt($idProduct, $originalImagePath);
     ImageModel::manNavyTshirt($idProduct, $originalImagePath);
     ImageModel::manRedTshirt($idProduct, $originalImagePath);
     ImageModel::manBlackTshirt($idProduct, $originalImagePath);
-    ImageModel::manRedBackTshirt($idProduct, $originalImagePath);
+   /*  ImageModel::manRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::manNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
-    ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath);
+    ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath); */
 }
 if($original=='IPhone'){
     ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
