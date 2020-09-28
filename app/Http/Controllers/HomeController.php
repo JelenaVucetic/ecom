@@ -220,7 +220,7 @@ class HomeController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
-            $imageBack = "Canvas-mockup-thumbnail.png";
+            $imageBack = "U1-Canvas_Slika-BG.png";
         }elseif($find_cat->category->name=="Wallpapers"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]

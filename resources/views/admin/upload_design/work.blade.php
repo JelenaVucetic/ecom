@@ -1157,7 +1157,7 @@
       </div>
   <div class="preview-info">
       <span class="preview-name">
-        Sacks
+        Gift Bags
       </span>
       <div>
       <button id="edit-product20" class="edit-button">Edit</button>
@@ -1223,7 +1223,7 @@
      {{-- Canvas edit for Sacks --}}
 
  <div id="product21" class="img-div" data-value="1" style="display:none">
-  <h2 class="option-title">Sacks options</h2>
+  <h2 class="option-title">Gift Bags options</h2>
   <div class="product-wrap">
     <div id="app22" >
         <canvas id="c22" width="250" height="300"></canvas>
