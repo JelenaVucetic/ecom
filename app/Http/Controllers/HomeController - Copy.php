@@ -54,7 +54,10 @@ class HomeController extends Controller
     {
         /* $products = Product::orderBy('id', 'desc')->paginate(28); */
         $products = Product::distinct()->orderBy('id', 'desc')->groupBy('design_id')->paginate(28);
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
       /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */
 
@@ -112,11 +115,14 @@ class HomeController extends Controller
     }
 
     public function index()
-    { 
+    {
 
         $designs = Design::orderBy('id', 'desc')->paginate(28);
         $designsRandom = Design::inRandomOrder()->get();
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $products = Product::orderBy('id', 'desc')->distinct('design_id')->paginate(28);
         $tShirts = Product::distinct()->where('category_id', 6)->groupBy("product.design_id")->get();
 
@@ -260,9 +266,9 @@ class HomeController extends Controller
         }elseif($find_cat->category->name=="Notebooks"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['color', '=' , 'black']
+                ['color', '=' , 'white']
             ])->first();
-            $imageBack = "Notesblack.png";
+            $imageBack = "Notes.png";
         }elseif($find_cat->category->name=="Gift Bags"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
@@ -327,7 +333,13 @@ class HomeController extends Controller
          $mainCategory = Category::where("id",$find_cat->category->id)->first();
 
 
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
+
+
+
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
         $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first();
@@ -395,7 +407,10 @@ class HomeController extends Controller
          $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get();
 
      /*    $Products = Product::leftJoin('wishlist', 'wishlist.pro_id', '=' , 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); */
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
         return view('wishlist', compact('Products', 'categories'));
     }
@@ -413,7 +428,10 @@ class HomeController extends Controller
         }
 
       /*   $product = DB::table('product')->where('id', $request->id)->first();
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $design = DB::table('design')->where('id', $product->design_id)->first(); */
 
 
@@ -452,7 +470,7 @@ class HomeController extends Controller
                             $output.= " <img src='" . url('image',  $item->name ) . "') class='img-div-pictures'> ";
                            break;
                            }
-                           elseif($product->category->name=="Wallpapers" ) {
+                           elseif($product->category->name=="Wallpapers") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-wallpapers'> ";
                            break;
                            }
@@ -472,18 +490,18 @@ class HomeController extends Controller
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-thermos'>";
                            break;
                            }
-                           elseif($product->category->name=="Kids T-Shirts") {
-                            $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-kidsT'>";
-                           break;
-                           }
                            elseif($product->category->name=="Mugs") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-mugs'>";
                            break;
                            }
+<<<<<<< Updated upstream
+=======
                            else if($p->category->name=="Posters"){
                             $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wall" alt="'.$product->category->name.'">';
                             break;
                         }
+                        
+>>>>>>> Stashed changes
                            elseif($product->category->name == "Gift Bags") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
                            break;
@@ -610,7 +628,10 @@ class HomeController extends Controller
  
 
         $products = Product::search($query)->paginate(20);
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('search-results', compact('products', 'categories'));
     }
 
@@ -714,10 +735,8 @@ class HomeController extends Controller
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-pictures" alt="'.$product->category->name.'">';
                     break;
                 }else if($product->category->name=="Wallpapers"){
-                    if($item->position == "room"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wallpapers" alt="'.$product->category->name.'">';
                     break;
-                }
                 }else if($product->category->name=="Notebooks"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-notebooks" alt="'.$product->category->name.'">';
                     break;
@@ -744,7 +763,6 @@ class HomeController extends Controller
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-kidbibs" alt="'.$product->category->name.'">';
                     break;
                 }
-
                 else if($product->category->name=="Backpacks"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-backpacks" alt="'.$product->category->name.'">';
                     break;
@@ -767,10 +785,11 @@ class HomeController extends Controller
 
                             $pro_cat = Product::find($product->id);
                             if($pro_cat->category != null){
+
                                 $output.="<p class=''>". $pro_cat->category->name ."</p>";
                             }
                         if($product->spl_price==0){
-                        $output.="<p> From: <span style='font-weight: bold'>".  number_format((float)$product->price, 2). "&euro;</span></p>";
+                        $output.="<p> From: <span style='font-weight: bold'>". $product->price."&euro;</span></p>";
                         }else{
                         $output.=" <p> Special price: <span style='font-weight: bold'>".$product->spl_price."&euro;</span></p>";
                         }
@@ -781,14 +800,7 @@ class HomeController extends Controller
          if(count($products)>0){
             echo $output;
          }else{
-             echo "<div class='no-product'>
-             <img src='/site-images/No Products page.svg'>
-             <p> <span style='font-weight: bold;'> We are very sorry.</span> <br> Somebody didn’t feel like doing his job, and now thereis
-                  no products on this page. <br> The person is fired, and new one is getting products 
-                  available for you. <br>
-                 Check back in a couple of days.
-             </p>
-         </div>";
+             echo "<h3>No products</h3>";
          }
 
        /*   return response()
@@ -855,6 +867,10 @@ class HomeController extends Controller
                         $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-mugs'>";
                        break;
                        }
+                       elseif($product->category->name=="Kids Bibs") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-kidbibs'>";
+                       break;
+                       }
                        elseif($product->category->name == "Gift Bags") {
                         $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
                        break;
@@ -900,8 +916,15 @@ class HomeController extends Controller
 
     public function giftsForHim() 
     {
-    
+<<<<<<< Updated upstream
         $categories = Category::where('parent_id',NULL)->get();
+=======
+    
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
+>>>>>>> Stashed changes
 
         $shirts = Product::select('product.*')
         ->join('categories', 'categories.id', 'product.category_id')
@@ -947,10 +970,10 @@ class HomeController extends Controller
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Backpacks')
         ->where(function ($q) {
-            $q->where('product.gender', 'male')->orWhere('product.gender', 'unisex');
+            $q->where('product.gender', 'female')->orWhere('product.gender', 'unisex');
         })
         ->get();
-       
+
         $clocks = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','Clocks')
@@ -972,7 +995,10 @@ class HomeController extends Controller
 
     public function giftsForHer() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
         $shirts = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
@@ -1060,61 +1086,91 @@ class HomeController extends Controller
 
     public function termsAndPrivacy() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('terms_and_privacy', compact('categories'));
     } 
 
     public function privacyPolicy() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('privacy_policy', compact('categories'));
     }
 
     public function termsAndConditions() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('terms_and_conditions', compact('categories'));
     }
 
     public function about()
      {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('about', compact('categories'));
     }
 
     public function howToOrder()
      {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('how_to_order', compact('categories'));
     }
 
     public function shipping() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('shipping', compact('categories'));
     }
 
     public function helpCenter()
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('help_center', compact('categories'));
     }
 
     public function copyright() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('copyright', compact('categories'));
     }
 
     public function contact() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('contact_us', compact('categories'));
     }
 
     public function specialPrice() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
         $products = Product::where('spl_price' , '!=' , 0)->get();
 
@@ -1177,28 +1233,6 @@ class HomeController extends Controller
         return response()->json(array('image' => $image,'blankImage' => $blankImage, 'gender' => $request->gender));
     }
 
-
-    public function loadImagesGift(Request $request){
-        if($request->position == "Shape Two"){
-
-            $image = DB::table('images')->where([
-                ['product_id', "=", $request->id],
-                ['color', "=", $request->color],
-                ['size' , "=","H02"]
-            ])->first();
-            $blankImage = $request->color."H02.jpg";
-        }else{
-
-            $image = DB::table('images')->where([
-                ['product_id', "=", $request->id],
-                ['color', "=", $request->color],
-                ['size' , "=","H"]
-            ])->first();
-            $blankImage = $request->color."H.jpg";
-            }
-        return response()->json(array('image' => $image,'blankImage' => $blankImage));
-
-    }
 
     public function loadImagesSize(Request $request){
 
@@ -1313,7 +1347,10 @@ class HomeController extends Controller
 
     public function productsOfDesign($id) 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $design = Design::findOrFail($id);
         $products = $design->products()->get();
 
@@ -1363,6 +1400,7 @@ class HomeController extends Controller
                 foreach(Mail::failures() as $email_address) {
                     echo " - $email_address <br />";
                     }
+        
                 }
                return redirect()->back()->with('status', 'Message successfully sent !');
 

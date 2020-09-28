@@ -254,17 +254,7 @@
           </label>
           </div>
 
-          <div class="print-location">
-            <h5>Print location</h5>
-              <label class="front">
-                  <input type="radio" name="print" value="front" class="print-class" checked>
-                  <span>Front</span>
-              </label>
-              <label class="back">
-                  <input type="radio" name="print" value="back" class="print-class">
-                  <span>Back</span>
-              </label>
-          </div>
+
 
           <div class="view-size-guid">
               <a href="" data-toggle="modal" data-target="#myModal"> <h5> View size guide</h5></a>

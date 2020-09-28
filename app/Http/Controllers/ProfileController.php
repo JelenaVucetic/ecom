@@ -17,7 +17,10 @@ class ProfileController extends Controller
 {
     //
     public function index() {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $user_id = Auth::user()->id;
 
         $orders = DB::table('order_product')->leftJoin('product', 'product.id', '=', 'order_product.product_id')->
@@ -29,7 +32,10 @@ class ProfileController extends Controller
 
 
     public function address() {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
         $user_id = Auth::user()->id;
 
@@ -48,7 +54,10 @@ class ProfileController extends Controller
     }
 
     public function createAddress(Request $request) {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
         $this->validate($request, [ 
             'firstname' => 'required|min:3|max:35',
@@ -114,7 +123,10 @@ class ProfileController extends Controller
     }
 
     public function password() {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('profile.password', compact('categories'));
     }
 
@@ -132,7 +144,10 @@ class ProfileController extends Controller
     }
 
     public function profilImage() {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('profile.add_avatar', compact('categories'));
     }
 
@@ -159,7 +174,10 @@ class ProfileController extends Controller
 
     public function myWishlist() {
         $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); 
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         return view('profile.my_wishlist', compact('Products', 'categories'));
     }
 

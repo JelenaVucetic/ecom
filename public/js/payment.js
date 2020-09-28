@@ -1,8 +1,8 @@
 var payment = new PaymentJs();
-var publicIntegrationKey = 'Etl3lMjFydB0a2tloU09'; 
+var publicIntegrationKey = 'NfvQALTGA3lmJxQbzDeR'; 
 //var numberDiv = document.getElementById('number_div');
 //var cvvDiv = document.getElementById('cvv_div');  
-payment.init('Etl3lMjFydB0a2tloU09', 'number_div', 'cvv_div', function(payment) {
+payment.init('NfvQALTGA3lmJxQbzDeR', 'number_div', 'cvv_div', function(payment) {
     var focusStyle = {
         'outline': 'none',
         'box-shadow': 'none',

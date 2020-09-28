@@ -32,9 +32,9 @@
          
             </tr>
                 <td>
-                    @if ($category->children)
+                    @if ($category->childrenA)
                         <ul class="list-group mt-2">
-                            @foreach ($category->children as $child)
+                            @foreach ($category->childrenA as $child)
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between" style="color:red;">
                                         <a href="">{{ $child->name }} </a>
