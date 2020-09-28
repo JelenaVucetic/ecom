@@ -47,7 +47,6 @@ class AjaxUploadController extends Controller
 
     function save(Request $request){
         $data = $request->all();
-       
       $picture = $data['picture'];
 
       if($picture!==null && $picture!=="0"){
@@ -111,7 +110,7 @@ $price = 15;
 
 if($original=='IPhone'){
    /*  $originalImagePath = "iphone" + $originalImagePath; */
-$price = 6.90;
+$price = 5.90;
 }else if($original=='T-shirt'){
    /*  $originalImagePath = "tshirt" + $originalImagePath; */
 $price = 12.90;
@@ -124,26 +123,26 @@ $priceB2 = 5.90;
 $price = 22.90;
 }else if($original == "Poster"){
    /*  $originalImagePath = "poster" + $originalImagePath; */
-$price = 11;
-$priceB1 = 18;
-$priceB2 = 15;
+$price = 15.00;
+$priceB1 = 25.00;
+$priceB2 = 33.00;
 }else if($original == "Canvas"){
    /*  $originalImagePath = "canvas" + $originalImagePath; */
-$price = 37;
-$priceB2 = 20;
-$priceB1 = 28;
+$price = 37.00;
+$priceB2 = 20.00;
+$priceB1 = 28.00;
 }else if($original == "Wallpapers"){
     /* $originalImagePath = "wallpapers" . $originalImagePath; */
-$price = 15;
+$price = 15.00;
 }else if($original == "Samsung"){
    /*  $originalImagePath = "samsung" . $originalImagePath; */
-$price = 6.90;
+$price = 5.90;
 }else if($original == "Huawei"){
    /*  $originalImagePath = "huawei" . $originalImagePath; */
-$price = 6.90;
+$price = 5.90;
 }else if($original == "Custom"){
     /* $originalImagePath = "custom" . $originalImagePath; */
-$price = 6.90;
+$price = 5.90;
 }else if($original == "Magnets"){
     /* $originalImagePath = "magnets" . $originalImagePath; */
 $price = 1.90;
@@ -158,26 +157,32 @@ $price = 2.90;
 $price = 0.99;
 }else if($original == "Termos"){
     /* $originalImagePath = "termos" . $originalImagePath; */
-$price = 5.99;
+$price = 5.90;
 }else if($original == "Mugs"){
     /* $originalImagePath = "mugs" . $originalImagePath; */
-$price = 4.90;
+$price = 5.00;
+$priceB1 = 5.90;
 }else if($original == "Tote Bags"){
     /* $originalImagePath = "tote" . $originalImagePath; */
-$price = 3.90;
+$price = 6.90;
 }else if($original == "Notes"){
     /* $originalImagePath = "notes" . $originalImagePath; */
 $price = 4.90;
 }else if($original == "Clocks"){
-$price = 25.00;
+$price = 15.90;
 }else if($original == "Kids T-Shirts"){
   $price = 10.90;
 }else if($original == "Backpacks"){
- $price = 3.90;
+ $price = 8.90;
 }else if($original == "Kids Bibs"){
-    $price = 15;
+    $price = 10.00;
+}else if($original == "Masks"){
+    $price = 4.50;
+}else if($original == "Gift Bags"){
+    $price = 2.25;
+    $priceB1 = 2.50;
 }else{
-    $price = 15;
+    $price = 15.00;
 }
     $checkImage = $image;
     $image = explode(";" , $image)[1];
@@ -202,7 +207,7 @@ $row = DB::table('design')->where('name', $watermarkImage)->first();
 
 if($row==null){
     $idDesign = DB::table('design')->insertGetId([
-        'name' => $watermarkImage
+        'name' => $watermarkImage , 'origin_name' => $originalImagePath
     ]);
 } else {
     $idDesign = $row->id;
@@ -246,7 +251,7 @@ if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
     ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
     ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath); */
 }
-if($original=='Phone Case'){
+if($original=='IPhone'){
     ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
 
 }
@@ -272,12 +277,12 @@ if($original == "Canvas"){
     ImageModel::canvas($idProduct, $originalImagePath);
 }
 if($original == "Wallpapers"){
+    ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
+    ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
     ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
     ImageModel::wallpaper($idProduct, $originalImagePath);
     ImageModel::wallpaperRepeatKids($idProduct, $originalImagePath);
     ImageModel::wallpaperKids($idProduct, $originalImagePath);
-    ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
-    ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
 }
 if($original == "Clocks"){
     ImageModel::clock($idProduct, $originalImagePath);
@@ -290,7 +295,7 @@ if($original == "Coasters"){
     ImageModel::coastersSquare($idProduct, $originalImagePath);
     ImageModel::coastersCircle($idProduct, $originalImagePath);
 }
-if($original == "Sacks"){
+if($original == "Gift Bags"){
     ImageModel::sacksHo2($idProduct, $originalImagePath);
     ImageModel::sacks($idProduct, $originalImagePath);
 }

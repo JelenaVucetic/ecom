@@ -181,8 +181,11 @@
                                 <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
                                 @break
                                 @elseif($product->category->name=="Wallpapers")
-                                <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="">
+
+                                @if($item->position == "room")
+                                <img src="{{ url('image', $item->name) }}" class="img-div-wallpapers" alt="{{$item->position}}">
                                 @break
+                                @endif
                                 @elseif($product->category->name=="Notebooks")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                                 @break

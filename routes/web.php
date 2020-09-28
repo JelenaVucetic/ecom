@@ -53,11 +53,16 @@ Route::get('/privacy-policy', 'HomeController@privacyPolicy');
 
 
 Route::resource('category', 'CategoriesController');
+Route::get('category/{id}/{gender}', 'CategoriesController@showGenderCategory');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', 'AdminController@index')->name('dashboard');
         Route::resource('product', 'ProductsController');
         Route::get('/designs', 'AdminController@designs')->name('designs');
+        Route::get('/categoryEnable/{id}', 'AdminController@categoryEnable')->name('enable');
+        Route::get('/categoryDisable/{id}', 'AdminController@categoryDisable')->name('disable');
+
+        Route::get('/showDesign/{id}', 'AdminController@showDesign')->name('showDesign');
 
         Route::resource('tag', 'TagsController');
 
@@ -94,6 +99,7 @@ Route::post('/load_images_posters', 'HomeController@loadImagesPosters');
 Route::post('/load_images_color', 'HomeController@loadImagesColor');
 Route::post('/load_images_size', 'HomeController@loadImagesSize');
 Route::post('/load_images_masks', 'HomeController@loadImagesMasks');
+Route::post('/load_images_gift', 'HomeController@loadImagesGift');
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart/addItem/{id}', 'CartController@addItem');

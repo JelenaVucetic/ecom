@@ -33,7 +33,7 @@
     });
 </script>
 <div class="row" style="width: 80%; margin: auto;">
-    <table class="table table-striped table-dark">
+    <table class="table table-striped table-light">
         <thead>
         <tr>
             <th scope="col">Product id</th>
@@ -56,7 +56,7 @@
             <td> {{ $product->name }} </td>
             <td>{{ $product->description }}</td>
             <td><img src="{{url('images', $product->image)}}" alt="" style="width:100px;height:100px;"></td>
-            <td>{{ $product->price }}</td>
+            <td>{{ $product->price }}&euro;</td>
             <td> {{$product->category_id}}</td>
             <td>  @foreach($product->tags as $tag)
                     <a href="/admin/product?tag={{$tag->name}}">{{ $tag->name }}</a>
@@ -75,7 +75,7 @@
             </td>
             <td><a href="{{route('product.edit', $product->id)}}" class="btn btn-success btn small">Edit</a></td>
             {!! Form::open(['method' => 'DELETE', 'action' => ['ProductsController@destroy', $product->id ]]) !!}
-            <td> <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger col-sm-6">Delete</button></td>
+            <td> <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger ">Delete</button></td>
             {!! Form::close() !!}
         </tr>
             <?php $count++ ?>

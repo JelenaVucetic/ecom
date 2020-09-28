@@ -251,7 +251,7 @@ Hover
 @media (max-width: 767px) {
   .pmd-sidebar.pmd-sidebar-open {
     min-width: 280px;
-    width: 280px;
+    width: 320px;
   }
 }
 

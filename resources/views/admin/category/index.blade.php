@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="navbar" style="width:80%">
-    <table class="table table-dark">
+    <table class="table table-light">
         <thead>
             <tr>
                 <th>Category Name</th>
@@ -24,9 +24,12 @@
                         Disable
                     @endif
                 </td>
-            {!! Form::open(['method'=>'DELETE', 'action'=> ['CategoriesController@destroy', $category->id]]) !!}
+         {{--    {!! Form::open(['method'=>'DELETE', 'action'=> ['CategoriesController@destroy', $category->id]]) !!}
                 <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td>
-            {!! Form::close() !!}
+            {!! Form::close() !!} --}}
+            <td>   <a href="/admin/categoryEnable/{{$category->id}}" class="btn btn-info btn small">Enable</a>
+                <a href="/admin/categoryDisable/{{$category->id}}" class="btn btn-warning btn small">Disable</a></td>
+         
             </tr>
                 <td>
                     @if ($category->childrenA)
@@ -38,12 +41,14 @@
 
                                         <div class="button-group d-flex">
                                             <a href="{{route('category.edit', $child->id)}}" class="btn btn-success btn small">Edit</a>
-                                            <form action="{{ route('category.destroy', $child->id) }}" method="POST">
+                                          {{--   <form action="{{ route('category.destroy', $child->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
+                                            </form> --}}
+                                            <a href="/admin/categoryEnable/{{$child->id}}" class="btn btn-info btn small">Enable</a>
+                                            <a href="/admin/categoryDisable/{{$child->id}}" class="btn btn-warning btn small">Disable</a>
                                         </div>
                                     </div>
                                 </li>

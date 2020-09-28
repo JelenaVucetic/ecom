@@ -33,7 +33,7 @@
     });
 </script>
 <div class="row" style="width: 80%; margin: auto;">
-    <table class="table table-striped table-dark">
+    <table class="table table-striped table-light">
         <thead>
         <tr>
             <th scope="col">Product id</th>

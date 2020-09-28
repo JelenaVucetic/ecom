@@ -23,6 +23,34 @@
     margin-top: 35px;
 }
 
+#pass-val {
+    font-size: 10px;
+    color: darkseagreen;
+
+}
+
+#pass-val strong {
+    line-height: 1.5;
+    display: block;
+}
+
+/* .pass-info{
+    display: -webkit-box;     
+    display: -moz-box;        
+    display: -ms-flexbox;    
+    display: -webkit-flex;  
+    display: flex;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;	
+    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -ms-box-orient: horizontal;
+    box-orient: horizontal;	  
+    width: 100%!important;
+}
+ */
 
 .myRow {
     display: -ms-flexbox;
@@ -526,6 +554,44 @@
     transform-origin: 50% 50% !important;
 }
 
+.img-div-wall {
+    transform: scale(1.2) !important;
+    margin-top: 1.4% !important;
+}
+
+.img-div-wall:hover {
+    transform: scale(1.4) !important;
+    transform-origin: 50% 50% !important;
+}
+
+.img-div-poster {
+    transform: scale(1.2) !important;
+    margin-top: 1.4% !important;
+}
+
+.img-div-poster:hover {
+    transform: scale(1.4) !important;
+    transform-origin: 50% 50% !important;
+}
+
+.img-div-kidsT {
+    transform: scale(1.2) !important;
+    margin-top: 8.125% !important;
+}
+
+.img-div-kidsT:hover {
+    transform: scale(1.4) !important;
+    transform-origin: 50% 50% !important;
+}
+.img-div-kidbibs {
+    transform: scale(1.4) !important;
+    margin-top: 12.125% !important;
+}
+
+.img-div-kidbibs:hover {
+    transform: scale(1.5) !important;
+    transform-origin: 50% 50% !important;
+}
 .img-div-masks {
     transform: scale(2.0) !important;
     margin-top: 9.125% !important;
@@ -753,6 +819,23 @@
 }
 
 @media (max-width: 767px) {
+
+
+    .box10-img-holder {
+        background: url(/site-images/gifthimmobile.jpg);
+        background-size: cover;
+    }
+
+    .box11-img-holder {
+        background: url(/site-images/gifthermobile.jpg);
+        background-size: cover;
+    }
+
+    .box6-img-holder {
+        background: url(/site-images/clockmobile.jpg);
+        background-size: cover;
+
+    }
 
     .welcome-image {
 

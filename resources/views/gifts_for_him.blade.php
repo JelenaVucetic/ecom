@@ -274,26 +274,27 @@
   
     <div class="slick-wrapper">
       <div id="slick14">
+        @if ($backpacks)
         @foreach ($backpacks as $bag)
           <div class="slide-item">
             <div class="product">
               <a href="{{ url('/product_details', [$bag->id]) }}" class="">
                 <div class="">
                   <div class="img-div">
-                  @if ($bag->images)
-                    @foreach ($bag->images as $item)  
-                        @if($bag->category->name=="Mugs")
-                          <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
-                          @break
-                        @else
-                          <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
-                          @break
-                        @endif
-                    @endforeach
+               {{--    @if ($bag->images)
+                      @foreach ($bag->images as $item)  
+                          @if($bag->category->name=="Mugs")
+                            <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                            @break
+                          @else
+                            <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                            @break
+                          @endif
+                      @endforeach
                     @else
                       <img src="{{ url('images', $bag->image) }}" class="" alt="">
                       @break
-                    @endif
+                    @endif --}}
                   </div>
                   <div class="">
                       <p class="product-name">{{ $bag->name }}</p>
@@ -314,6 +315,9 @@
             </div>
           </div>
         @endforeach
+        @else 
+          <div>Nema</div>
+        @endif
       </div>
     </div>
 </div>

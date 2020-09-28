@@ -40,9 +40,11 @@ class ImageController extends Controller
         $extension =  $request->file('file')->getClientOriginalExtension();
        // dd($extension);
         $imageNoExt = $filename . "_" . time();
+
         $image2 = $imageNoExt . "_watermark" . "." . $extension;
         $image = $imageNoExt . ".".$extension;
         $image = preg_replace('/\s+/', '', $image);
+
         $image2 = preg_replace('/\s+/', '', $image2);
         $file->move('design/', $image);
        
@@ -56,14 +58,14 @@ class ImageController extends Controller
        $path = public_path();
         $watermark->readImage(public_path("site-images/watermark2.png"));
 
-      /*   $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/site-images/watermark2.png ' .$path.'/image/watermark2.png
+        $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/site-images/watermark2.png ' .$path.'/image/watermark2.png
         ');
         
         $process->run();
         if (!$process->isSuccessful()) {
         throw new ProcessFailedException($process);
         }
-        echo $process->getOutput(); */
+        echo $process->getOutput(); 
        
         $width = $image1->width();
         $height = $image1->height();

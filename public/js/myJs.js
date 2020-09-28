@@ -1,3 +1,18 @@
+// Register form    
+
+$("#password").focusin(function() {
+  $("#pass-val").css('visibility', 'visible');
+}).focusout(function () {
+  $("#pass-val").css('visibility', 'hidden');
+});
+
+
+
+
+
+
+
+
 //Remove placeholder on click
 $(function () {
     $('input,textarea').focus(function () {
@@ -909,11 +924,12 @@ $("#female-x").on("click", function(){
 
  function sendGender(gender){
       var attribute = $("#category-paragraph").attr("data-myattribute");
-      var number = $("#category-paragraph").attr("data-id");
+      var number = $("#category-paragraph").attr("data-main-category");
+      var category =  $("#category-paragraph").attr("data-id");
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
       $("#category-paragraph").attr("data-myattribute",attribute);
-      $("#category-paragraph").attr("data-id",number);
+      $("#category-paragraph").attr("data-id",category);
       $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -923,6 +939,11 @@ $("#female-x").on("click", function(){
       url: '/category_search',
       data: { category:attribute, number:number, gender:gender},
       success: function(response) {
+        attribute = attribute.replace(/ /g,"");
+        category = category.replace(/ /g,"");
+        number = number.replace(/ /g,"");
+        gender = gender.replace(/ /g,"");
+        history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number+"?"+gender);
           $("#content").html(response);
           $("#category-paragraph").attr("data-gender", gender);
       }
@@ -939,11 +960,12 @@ $("#female-x").on("click", function(){
       var attribute = this.getAttribute("data-myattribute");
       var number = this.getAttribute("data-id");
       var category = this.getAttribute("data-category");
-
+      var gender =  $("#category-paragraph").attr("data-gender");
       $("#category-paragraph").text("");
       $("#category-paragraph").text(attribute);
       $("#category-paragraph").attr("data-myattribute",attribute);
       $("#category-paragraph").attr("data-id",category);
+      $("#category-paragraph").attr("data-main-category",number);
       $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -956,7 +978,10 @@ $("#female-x").on("click", function(){
 
           $("#content").html(response);
           attribute = attribute.replace(/ /g,"");
-           history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number);
+          category = category.replace(/ /g,"");
+          number = number.replace(/ /g,"");
+          gender = gender.replace(/ /g,"");
+          history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number+"?"+gender);
            boldCategory(category);
 
       }
@@ -988,7 +1013,6 @@ $("#female-x").on("click", function(){
 
     $(".remove-wishlist").on("click", function(){
     var pro_id = $(this).attr("data-id");
-    alert(pro_id);
     $.ajax({
       headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1042,6 +1066,9 @@ $("#female-x").on("click", function(){
      var color = $("#productColor").val();
      var id = $("#productID").val();
      var gender = $("#productGender").val();
+   if($("#pro_cat").val() == "T-Shirts"){
+
+
      $.ajax({
       headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1077,6 +1104,7 @@ $("#female-x").on("click", function(){
       alert("something went wrong");
   }
   });
+}
   });
 
   // Za majicu boja
@@ -1170,7 +1198,46 @@ $("#female-x").on("click", function(){
         alert("something went wrong");
     }
     });
-    }else{
+    }else if(pro_cat=="Gift Bags"){
+      var position = $("#gift option:selected" ).val();
+      var color = $("input[type=radio][name=color]:checked").val();
+      var id = $("#productID").val();
+      $.ajax({
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               } ,
+     type: 'post',
+     dataType: 'json',
+     url: '/load_images_gift',
+     data: { position:position, color:color, id:id, gender:gender},
+     beforeSend: function(){
+      $("#loading-overlay").show();
+  },
+     success: function(response) {
+      $("#loading-overlay").hide();
+        var blank = response['blankImage'];
+        var name = response['image']['name'];
+       $("#main-image").attr("src","../image/" +name);
+       if(response['gender']!="unisex"){
+        $("#blank-image").attr("src","../site-images/" + blank);
+      }else{
+        $("#blank-image").attr("src","../image/" + blank);
+      }
+      if(response['gender']!="unisex"){
+        $("#blank-image-mobile").attr("src","../site-images/" + blank);
+      }else{
+        $("#blank-image-mobile").attr("src","../image/" + blank);
+      }
+       $("#main-image-mobile").attr("src","../image/" +name);
+  
+       $("#productColor").val(response['image']['color']);
+     },
+     error: function (jqXHR, textStatus, errorThrown) {
+       $("#loading-overlay").hide();
+       alert("something went wrong");
+   }
+   });
+    }else if(pro_cat=="T-Shirts"){
     var position = $('input[type=radio][name=print]:checked').val();
     var color = this.value;
     var gender = $("#productGender").val();
@@ -1224,6 +1291,7 @@ $("#female-x").on("click", function(){
  $('.options li').on('click', function() {
     var pro_cat = $('#pro_cat').val();
     var id = $("#productID").val();
+    
     if(pro_cat=="Posters"){
       var color = $('input[name="color"]:checked').val();
       var size = $("#posters option:selected" ).val();
@@ -1318,6 +1386,45 @@ $("#female-x").on("click", function(){
       alert("something went wrong");
     } 
   });
+  }else if(pro_cat=="Gift Bags"){
+    var position = $("#gift option:selected" ).val();
+    var color = $("input[type=radio][name=color]:checked").val();
+    var id = $("#productID").val();
+    $.ajax({
+     headers: {
+         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             } ,
+   type: 'post',
+   dataType: 'json',
+   url: '/load_images_gift',
+   data: { position:position, color:color, id:id},
+   beforeSend: function(){
+    $("#loading-overlay").show();
+},
+   success: function(response) {
+    $("#loading-overlay").hide();
+      var blank = response['blankImage'];
+      var name = response['image']['name'];
+     $("#main-image").attr("src","../image/" +name);
+     if(response['gender']!="unisex"){
+      $("#blank-image").attr("src","../site-images/" + blank);
+    }else{
+      $("#blank-image").attr("src","../image/" + blank);
+    }
+    if(response['gender']!="unisex"){
+      $("#blank-image-mobile").attr("src","../site-images/" + blank);
+    }else{
+      $("#blank-image-mobile").attr("src","../image/" + blank);
+    }
+     $("#main-image-mobile").attr("src","../image/" +name);
+
+     $("#productColor").val(response['image']['color']);
+   },
+   error: function (jqXHR, textStatus, errorThrown) {
+     $("#loading-overlay").hide();
+     alert("something went wrong");
+ }
+ });
   } else {
      
   }

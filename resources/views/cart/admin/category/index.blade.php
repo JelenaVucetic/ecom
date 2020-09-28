@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="navbar" style="width:80%">
-    <table class="table table-dark">
+    <table class="table table-light">
         <thead>
             <tr>
                 <th>Category Name</th>
@@ -24,6 +24,8 @@
                         Disable
                     @endif
                 </td>
+                <a href="{{route('category.edit', $category->id)}}" class="btn btn-success btn small">Edit</a>
+
             {!! Form::open(['method'=>'DELETE', 'action'=> ['CategoriesController@destroy', $category->id]]) !!}
                 <td>  {!! Form::submit('Delete Category', ['class'=>'btn btn-danger col-sm-6']) !!}</td>
             {!! Form::close() !!}

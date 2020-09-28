@@ -29,7 +29,32 @@ class AdminController extends Controller
     public function designs() {
         $categories = Category::where('parent_id',NULL)->get();
 
-        $designs = Design::orderBy('id', 'desc')->paginate(28);
+        $designs = Design::orderBy('id', 'desc')->get();
         return view('admin.designs', compact('designs', 'categories'));
+    }
+    public function showDesign($id) {
+        $categories = Category::where('parent_id',NULL)->get();
+        $products = Product::where('design_id',$id)->get();
+        $design = Design::where('id',$id)->first();
+        $image = Design::where('id',$id)->first();
+        $image = $image->origin_name;
+        $products_category = $products->pluck('category_id');
+
+        return view('admin.design_show', compact('design', 'categories','products', 'image', 'products_category'));
+    }
+
+    
+    public function categoryDisable($id) {
+        $category = Category::where('id',$id)->first();
+        Category::where('id', $id)
+                ->update(['active' => 0]);
+                return back()->with('success','!');
+    }
+       
+    public function categoryEnable($id) {
+        $category = Category::where('id',$id)->first();
+        Category::where('id', $id)
+                ->update(['active' => 1]);
+                return back()->with('success','!');
     }
 }

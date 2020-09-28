@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-
+<div class="col-10">
   <div class="upload-work-form">
     <!-- Image loader -->
 <div id='loader' style='display: none;'>
@@ -1149,10 +1149,10 @@
            {{-- Sacks html --}}
     <div class="product-column">
       <div class="row-product">
-      <div id="proizvod20" class="save-picture disabledbutton" data-category="24" name="Sacks" data-canvas="canvas22" value="1">
+      <div id="proizvod20" class="save-picture disabledbutton" data-category="24" name="Gift Bags" data-canvas="canvas22" value="1">
           <div class="background-div19">
       <img id="logo-canvas20" src="/image/<?php if(!empty($image)){echo $image;} ?>">
-      <img class="overlay-panel" src="/site-images/Poster.png">
+      <img class="overlay-panel" src="/site-images/Gift-Bag-Big-White-Mask.png">
           </div>
       </div>
   <div class="preview-info">
@@ -2822,7 +2822,7 @@ $("#capture").click(function(event){
     var gender = $('input[name=gender]:checked').val();
     var count = 0;
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
-
+    
     Array.prototype.forEach.call(els, function(el) {
       if( el.getAttribute('value')=='0'){
         count++;
@@ -2961,5 +2961,5 @@ time += 10000;
 
 })
 } */  </script>
-
+</div>
 @endsection
