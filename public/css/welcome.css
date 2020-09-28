@@ -583,7 +583,15 @@
     transform: scale(1.4) !important;
     transform-origin: 50% 50% !important;
 }
+.img-div-kidbibs {
+    transform: scale(1.4) !important;
+    margin-top: 12.125% !important;
+}
 
+.img-div-kidbibs:hover {
+    transform: scale(1.5) !important;
+    transform-origin: 50% 50% !important;
+}
 .img-div-masks {
     transform: scale(2.0) !important;
     margin-top: 9.125% !important;
