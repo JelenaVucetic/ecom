@@ -84,4 +84,5 @@ class User extends Authenticatable implements MustVerifyEmail
         $user =User::first();
         $user->updated_at;
     }
+
 }

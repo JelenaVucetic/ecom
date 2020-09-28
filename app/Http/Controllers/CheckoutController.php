@@ -45,7 +45,7 @@ class CheckoutController extends Controller
         
         //require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
 
-        $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
+        $client = new Client("urbanone.me", "ATk9krlxg5yyF?gYyR(§8X&Oh)Ui8", "urbanone-hb01", "IkzkNSWoNztn2cq2HAPHauBK6FBviq");
 
         $client->validateCallbackWithGlobals();
       
@@ -167,7 +167,7 @@ file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views
          // Include the autoloader (if not already done via Composer autoloader)
        // require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
-         $client = new Client("monargo", "d#70Ce=X&VTv=d_gvo4P6g.R3mGRs", "monargo-cc-simulator", "Tk3ObsC8inhbvGkLoP8Ibud3fGYXjK");
+         $client = new Client("urbanone.me", "ATk9krlxg5yyF?gYyR(§8X&Oh)Ui8", "urbanone-hb01", "IkzkNSWoNztn2cq2HAPHauBK6FBviq");
 
         $customer = new Customer();
         $customer->setBillingCountry("ME")
