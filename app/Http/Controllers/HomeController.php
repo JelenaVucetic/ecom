@@ -157,11 +157,12 @@ class HomeController extends Controller
 
     public function product_details($id)
     {
+        
         $imageSlider = "";
-        $product = DB::table('product')->where('id', $id)->first();
+        $product = Product::where('id', $id)->first();
         $find_cat = Product::findOrFail($id);
         $pro_cat = Product::find($product->id); 
-
+        
         if($find_cat->category->name == "T-Shirts"){
             if($product->gender == "female"){
             $imageFront = DB::table('images')->where([

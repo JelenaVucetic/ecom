@@ -2873,7 +2873,8 @@ $("#capture").click(function(event){
                         canvasImage : canvasImage,
                         gedner : gender,
                         category : category,
-                        picture : picture
+                        picture : picture,
+                        title : title
                     },
                     beforeSend: function(){
                       // Show image container

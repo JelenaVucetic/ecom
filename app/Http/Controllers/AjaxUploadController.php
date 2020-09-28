@@ -7,6 +7,7 @@ use Validator;
 use DB;
 use App\Image as ImageModel;
 use App\Tag;
+use App\Product;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
 
@@ -73,6 +74,7 @@ class AjaxUploadController extends Controller
       $canvasImage = $data['canvasImage'];
       $gender = $data['gedner'];
       $category = $data['category'];
+      $design_title = $data['title'];
 
        if($canvasImage!==null && $canvasImage!=="0"){
         $canvasImage = explode(";" ,  $canvasImage)[1];
@@ -207,7 +209,7 @@ $row = DB::table('design')->where('name', $watermarkImage)->first();
 
 if($row==null){
     $idDesign = DB::table('design')->insertGetId([
-        'name' => $watermarkImage , 'origin_name' => $originalImagePath
+        'name' => $watermarkImage , 'origin_name' => $originalImagePath, 'title' => $design_title
     ]);
 } else {
     $idDesign = $row->id;
@@ -340,7 +342,7 @@ if($original == "Kids Bibs"){
 }
 
 
-$products = DB::table('product')->where([
+$products = Product::where([
     ['name', '=' , $title],
     ['image', '=', $string.'.png']
 ])->get();
@@ -350,23 +352,19 @@ $products = DB::table('product')->where([
     $productId =  $product->id;
  }
 
-
-$tagsComma = explode("," , $tags);
-
-foreach($tagsComma as $tag){
+ $tagsComma = explode("," , $tags);
+ $tags = Tag::all();
+ $items = array();
+ foreach($tagsComma as $tag){
     Tag::firstOrCreate([
-        'name'=> $tag . " " . $original,
+        'name'=> $tag 
         ]);
-    $tagId = DB::table('tags')->where('name',$tag)->get('id');
-        foreach($tagId as $Id){
+        $item = DB::table('tags')->select('id')->where('name',$tag)->first();
+        $items[] = $item->id;
+ }
 
-        DB::table('product_tag')->insert([
-            'product_id'=> $productId,
-            'tag_id'=> $Id->id
-            ]);
-        }
+ $product->tags()->sync($items);
 
-}
 
 echo $checkImage;
 

@@ -24,7 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
-    protected $fillable = ['name'];
+    protected $table = "tags";
+    protected $fillable = ['id','name'];
 
     public function products()
     {

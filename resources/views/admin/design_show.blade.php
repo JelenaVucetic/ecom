@@ -1719,24 +1719,24 @@
         <div class="add-work">
           <div class="add-work-title">
             <label>Title <i class="fas fa-info-circle"></i></label>
-            <input type="text" placeholder="Title" id="title">
+          <input type="text" placeholder="Title" id="title" value="{{$design->title}}">
           </div>
           <div class="add-work-tags">
             <label>Tags</label>
-            <textarea type="text" placeholder="Tags" id="tags"></textarea>
+            <textarea type="text" placeholder="Tags" id="tags" value="{{ implode(', ', $oneProduct->tags()->get()->pluck('name')->toArray()) }}"> {{ implode(', ', $oneProduct->tags()->get()->pluck('name')->toArray()) }}</textarea>
           </div>
           <div class="add-work-description">
             <label>Description</label>
-            <textarea type="text" placeholder="Description" id="description"></textarea>
+            <textarea type="text" placeholder="Description" id="description" value="{{$oneProduct->description}}">{{$oneProduct->description}}</textarea>
           </div>
 
         </div>
         <div class="ram-checkbox">
-          <input type="radio" id="female-check" name="gender"  value="female">
+          <input type="radio" id="female-check" name="gender"  value="female" {{ ($oneProduct->gender=="female")? "checked" : "" }}>
           <label for="vehicle1"> Female</label><br>
-          <input type="radio"  id="male-check"   name="gender" value="male">
+          <input type="radio"  id="male-check"   name="gender" value="male" {{ ($oneProduct->gender=="male")? "checked" : "" }}>
           <label for="vehicle2"> Male</label><br>
-          <input type="radio" id="unisex-check"  name="gender" value="unisex">
+          <input type="radio" id="unisex-check"  name="gender" value="unisex" {{ ($oneProduct->gender=="unisex")? "checked" : "" }}>
           <label for="vehicle3"> Unisex</label><br>
           </div>
         <button id="capture" {{-- onclick="doCapture();" --}}>Save work</button>

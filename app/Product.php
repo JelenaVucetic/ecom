@@ -55,7 +55,7 @@ class Product extends Model
     //
     protected $table = 'product';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'description', 'price', 'image', 'spl_price', 'category_id'];
+    protected $fillable = ['id', 'name', 'description', 'price', 'image', 'spl_price', 'category_id'];
 
     protected $searchable = [
         /**
