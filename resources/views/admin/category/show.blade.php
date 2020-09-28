@@ -202,7 +202,18 @@
 						      @elseif($product->category->name=="Tote Bags" || $product->category->name=="Backpacks")
                                  <img src="{{ url('image', $item->name) }}" class="img-div-backpacks" alt="">
                                   @break
-					
+                                  @elseif($product->category->name=="Mugs")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-mugs" alt="">
+                                  @break
+                                  @elseif($product->category->name=="Posters")
+                                  <img src="{{ url('image', $item->name) }}" class="img-div-wall" alt="">
+                                  @break
+                                   @elseif($product->category->name=="Kids T-Shirts")
+                                   <img src="{{ url('image', $item->name) }}" class="img-div-kidsT" alt="">
+                                   @break
+                                   @elseif($product->category->name=="Kids Bibs")
+                                   <img src="{{ url('image', $item->name) }}" class="img-div-kidbibs" alt="">
+                                   @break
                                 @elseif($product->category->name == "Gift Bags")
                                     <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
                                     @break

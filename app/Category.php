@@ -66,5 +66,15 @@ class Category extends Model
             return $this->name;
         }
     }
-    
+  /*   public function isActive(){
+        if($this->active == '1'){
+            return true;
+        }else{
+            return false;
+        }
+    } */
+    public function isActive()
+    {
+        return $this->isActive;
+    }
 }

@@ -726,6 +726,18 @@ class HomeController extends Controller
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-mugs" alt="'.$product->category->name.'">';
                     break;
                 }
+                else if($product->category->name=="Posters"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wall" alt="'.$product->category->name.'">';
+                    break;
+                }
+                else if($product->category->name=="Kids Bibs"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-kidbibs" alt="'.$product->category->name.'">';
+                    break;
+                }
+                else if($product->category->name=="Backpacks"){
+                    $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-backpacks" alt="'.$product->category->name.'">';
+                    break;
+                }
                 else{
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
                     break;
@@ -816,6 +828,10 @@ class HomeController extends Controller
                        }
                        elseif($product->category->name=="Thermoses") {
                         $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-thermos'>";
+                       break;
+                       }
+                       elseif($product->category->name=="Kids Bibs") {
+                        $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-kidbibs'>";
                        break;
                        }
                        elseif($product->category->name=="Mugs") {
