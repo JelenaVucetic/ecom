@@ -95,8 +95,8 @@
 
 
        <!--  Payment script -->
-       <script data-main="payment-js" src=" https://asxgw.com/js/integrated/payment.1.2.min.js"></script>
-       
+       <script data-main="payment-js" src="https://asxgw.com/js/integrated/payment.1.2.min.js"></script>
+
        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 
     </head>
