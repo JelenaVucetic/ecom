@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<callback xmlns="http://asxgw.paymentsandbox.cloud/Schema/V2/Callback">
+<callback xmlns="https://asxgw.com/Schema/V2/Callback">
   <result>ERROR</result>
   <referenceId>b365c80659e72cbd0faf</referenceId>
   <transactionId>myId2020-04-10-5e90aaf51d003</transactionId>

@@ -11,8 +11,8 @@
             <div class="col-md-8">
             <h4 style="margin-bottom:40px;"> <strong> {{ucwords(Auth::user()->name)}}</strong>, your infromation.</h4>
                 <div class="container">
-                    {!! Form::open(['url' => 'updateAddress', 'method'=> 'post']) !!}
-
+                    <form action="{{ url('updateAddress') }}" method="POST"  class='test-form'>
+                    @csrf
                     <div class="shipping-details-form address">
                         <div class="">
                             <label for="firstname" class="form-label">First Name</label> 
@@ -52,18 +52,41 @@
                         </div>
                         <div class="">
                             <label for="city" class="form-label">City Name</label>                   
-                            <input id="city" type="text" name="city" placeholder="e.g. Podgorica"  value="{{ $address_data->city }}"  class="form-control">
+                            <select class="select_city" id="" name="city" >
+                                <option value={{ $address_data->city }}>{{ $address_data->city }}</option>
+                                <option value="Andrijevica" {{ (isset($ads->city)) == "Andrijevica" ? selected : "" }}>Andrijevica</option>
+                                <option value="Bar" {{ (isset($ads->city)) == "Bar" ? selected : "" }}>Bar</option>
+                                <option value="Berane" {{ (isset($ads->city)) == "Berane" ? selected : "" }}>Berane</option>
+                                <option value="Budva" {{ (isset($ads->city)) == "Budva" ? selected : "" }}>Budva</option>
+                                <option value="Bijelo Polje" {{ (isset($ads->city)) == "Bijelo Polje" ? selected : "" }}>Bijelo Polje</option>
+                                <option value="Cetinje" {{ (isset($ads->city)) == "Cetinje" ? selected : "" }}>Cetinje</option>
+                                <option value="Danilovgrad" {{ (isset($ads->city)) == "Danilovgrad" ? selected : "" }}>Danilovgrad</option>
+                                <option value="Gusinje" {{ (isset($ads->city)) == "Gusinje" ? selected : "" }}>Gusinje</option>
+                                <option value="Herceg Novi" {{ (isset($ads->city)) == "Herceg Novi" ? selected : "" }}>Herceg Novi</option>
+                                <option value="Podgorica" {{ (isset($ads->city)) == "Podgorica" ? selected : "" }}>Podgorica</option>
+                                <option value="Petnjica" {{ (isset($ads->city)) == "Petnjica" ? selected : "" }}>Petnjica</option>
+                                <option value="Plav" {{ (isset($ads->city)) == "Plav" ? selected : "" }}>Plav</option>
+                                <option value="Pljevlja" {{ (isset($ads->city)) == "Pljevlja" ? selected : "" }}>Pljevlja</option>
+                                <option value="Plužine" {{ (isset($ads->city)) == "Plužine" ? selected : "" }}>Plužine</option>
+                                <option value="Rožaje" {{ (isset($ads->city)) == "Rožaje" ? selected : "" }}>Rožaje</option>
+                                <option value="Kolašin" {{ (isset($ads->city)) == "Kolašin" ? selected : "" }}>Kolašin</option>
+                                <option value="Kotor" {{ (isset($ads->city)) == "Kotor" ? selected : "" }}>Kotor</option>                           
+                                <option value="Mojkovac" {{ (isset($ads->city)) == "Mojkovac" ? selected : "" }}>Mojkovac</option>
+                                <option value="Nikšić" {{ (isset($ads->city)) == "Nikšić" ? selected : "" }}>Nikšić</option>
+                                <option value="Ulcinj" {{ (isset($ads->city)) == "Ulcinj" ? selected : "" }}>Ulcinj</option>                         
+                                <option value="Tivat" {{ (isset($ads->city)) == "Tivat" ? selected : "" }}>Tivat</option>
+                                <option value="Šavnik" {{ (isset($ads->city)) == "Šavnik" ? selected : "" }}>Šavnik</option>
+                                <option value="Žabljak" {{ (isset($ads->city)) == "Žabljak" ? selected : "" }}>Žabljak</option>
+                            </select>
                             <br>
                             <span style="color:red">{{ $errors->first('city') }}</span>
                         </div>
-                        
                     </div>
                     <div class="address-btn">
                         <input type="submit" value="Submit" class="submit-button" style="width: 150px;">
                     </div>      
-
-                    {!! Form::close() !!}
-                </div>
+                </form>
+             </div>
             </div>       
         </div>
     </div>

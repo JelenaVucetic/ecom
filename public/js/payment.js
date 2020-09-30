@@ -25,7 +25,6 @@ payment.init('NfvQALTGA3lmJxQbzDeR', 'number_div', 'cvv_div', function(payment) 
        'border-left': 'none',
        'border-right': 'none'
      });
-  
      // Focus events
         payment.numberOn('focus', function() {
             numberFocused = true;
@@ -35,7 +34,6 @@ payment.init('NfvQALTGA3lmJxQbzDeR', 'number_div', 'cvv_div', function(payment) 
             cvvFocused = true;
             payment.setCvvStyle(focusStyle);
         });
-   
 });
 function interceptSubmit() {
             var data = {

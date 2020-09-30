@@ -53,7 +53,8 @@ class CheckoutController extends Controller
         
         $myTransactionId = $callbackResult->getTransactionId();
         $gatewayTransactionId = $callbackResult->getReferenceId(); 
-        
+        file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
+
         $xml = simplexml_load_file('php://input');
         $card_type = (string) $xml->returnData->creditcardData->type;
         $card_holder = (string) $xml->returnData->creditcardData->cardHolder;
@@ -67,7 +68,6 @@ class CheckoutController extends Controller
         $order_number = $callbackResult->getReferenceId();
         $amount = $callbackResult->getAmount();
         
-file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views/test.xml', file_get_contents('php://input') , FILE_APPEND );
 
         if ($callbackResult->getResult() == 'OK') {
 	

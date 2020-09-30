@@ -451,6 +451,32 @@ for( let i=1;i<200;i++) {
                             <option value="Šavnik" {{ (isset($ads->city)) == "Šavnik" ? selected : "" }}>Šavnik</option>
                             <option value="Žabljak" {{ (isset($ads->city)) == "Žabljak" ? selected : "" }}>Žabljak</option>
                         </select>
+
+                    {{--     <select class="select_city" id="" name="city" >
+                            <option value="Andrijevica">Andrijevica</option>
+                            <option value="Bar">Bar</option>
+                            <option value="Berane" >Berane</option>
+                            <option value="Budva" >Budva</option>
+                            <option value="Bijelo Polje" >Bijelo Polje</option>
+                            <option value="Cetinje" >Cetinje</option>
+                            <option value="Danilovgrad" >Danilovgrad</option>
+                            <option value="Gusinje" >Gusinje</option>
+                            <option value="Herceg Novi" >Herceg Novi</option>
+                            <option value="Podgorica" >Podgorica</option>
+                            <option value="Petnjica">Petnjica</option>
+                            <option value="Plav" >Plav</option>
+                            <option value="Pljevlja" >Pljevlja</option>
+                            <option value="Plužine" >Plužine</option>
+                            <option value="Rožaje" >Rožaje</option>
+                            <option value="Kolašin" >Kolašin</option>
+                            <option value="Kotor" >Kotor</option>                           
+                            <option value="Mojkovac" >Mojkovac</option>
+                            <option value="Nikšić" >Nikšić</option>
+                            <option value="Ulcinj" >Ulcinj</option>                         
+                            <option value="Tivat" >Tivat</option>
+                            <option value="Šavnik">Šavnik</option>
+                            <option value="Žabljak" >Žabljak</option>
+                        </select> --}}
                     </div>
                 </div>
             </form>
