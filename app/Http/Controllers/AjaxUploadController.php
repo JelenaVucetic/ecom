@@ -47,7 +47,7 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
-        $data = $request->all();
+      $data = $request->all();
       $picture = $data['picture'];
 
       if($picture!==null && $picture!=="0"){
@@ -367,6 +367,19 @@ $products = Product::where([
 
 
 echo $checkImage;
+
+    }
+
+
+    function update(Request $request){
+        $data = $request->all();
+        $picture = $data['picture'];
+        $description = $data['description1'];
+  
+        $title = $data['name'];
+        $tags = $data['tag'];
+        $design_title = $data['title'];
+        dd($title, $tags, $description, $design_title);
 
     }
 

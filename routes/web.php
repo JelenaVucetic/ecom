@@ -71,6 +71,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
         Route::post('work/action', 'AjaxUploadController@action')->name('ajaxupload.action');
         Route::post('work/save', 'AjaxUploadController@save')->name('ajaxupload.save');
+        Route::post('work/update', 'AjaxUploadController@update')->name('ajaxupload.update');
         Route::post('/savework', function () {
             return view('/admin/upload_design/savework');
         });

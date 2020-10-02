@@ -2890,7 +2890,7 @@ $("#capture").click(function(event){
                      headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: '{{route("ajaxupload.save")}}',
+                    url: '{{route("ajaxupload.update")}}',
                     type: 'post',
                     dataType: "text",
                     data: {
@@ -2903,7 +2903,8 @@ $("#capture").click(function(event){
                         canvasImage : canvasImage,
                         gedner : gender,
                         category : category,
-                        picture : picture
+                        picture : picture,
+                        title : title
                     },
                     beforeSend: function(){
                       // Show image container
