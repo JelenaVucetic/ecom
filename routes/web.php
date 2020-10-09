@@ -146,3 +146,7 @@ Route::post('/send-mail','HomeController@sendContactMail');
 
 Route::get('newsletter','NewsletterController@create');
 Route::post('newsletter','NewsletterController@store');
+Route::get("/test", function(){
+    $categories=App\Category::all();
+    return view("test1",compact('categories'));
+ });

@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-<section id="cart_items" style="margin-bottom: 200px;">
+<section id="orders_acc" style="margin-bottom: 200px;">
     <div class="container">
         <div class="row">
             @include('profile.menu') 
-            <div class="col-md-8">
+            <div class="col-md-9 mr-0 ml-auto">
                 <h3><span style="color:green;">{{ucwords(Auth::user()->name)}}</span>, 
                     Your Orders
                 </h3>

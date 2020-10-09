@@ -110,5 +110,3 @@ function interceptSubmit() {
          }
        );
    }
-
-

@@ -1,4 +1,4 @@
-<div class="col-md-4 well well-sm" id="profile-navbar">
+<div class="col-md-2 well well-sm" id="profile-navbar">
     <nav class="nav flex-column profile-nav">
         <a href="{{url('/profile')}}" class="{{Request::path() === 'profile' ? 'active' : 'nav-link'}}">Orders</a>
 {{--         <a href="{{url('/my_wishlist')}}" class="{{Request::path() === 'my_wishlist' ? 'active' : 'nav-link'}}"><span>Wishlist </span> </a>

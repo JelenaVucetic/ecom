@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('content')
 
-<section id="cart_items" style="margin-bottom: 200px;">
+<section id="delete_acc" style="margin-bottom: 200px;">
     <div class="container">
         <div class="row">
             @include('profile.menu') 
-            <div class="col-md-8">
+            <div class="col-md-9 mr-0 ml-auto">
                 <h4 style="padding-bottom:20px; border-bottom: 1px solid lightgray;"> <strong>We're sorry to see you go.</strong></h4>
                 <div>
                     <p>If you choose to cancel your account:</p>

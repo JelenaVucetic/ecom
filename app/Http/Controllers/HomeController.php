@@ -54,7 +54,10 @@ class HomeController extends Controller
     {
         /* $products = Product::orderBy('id', 'desc')->paginate(28); */
         $products = Product::distinct()->orderBy('id', 'desc')->groupBy('design_id')->paginate(28);
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
       /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */
 
@@ -116,7 +119,10 @@ class HomeController extends Controller
 
         $designs = Design::orderBy('id', 'desc')->paginate(28);
         $designsRandom = Design::inRandomOrder()->get();
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();    
         $products = Product::orderBy('id', 'desc')->distinct('design_id')->paginate(28);
         $tShirts = Product::distinct()->where('category_id', 6)->groupBy("product.design_id")->get();
 
@@ -328,7 +334,10 @@ class HomeController extends Controller
          $mainCategory = Category::where("id",$find_cat->category->id)->first();
 
 
-        $categories = Category::where('parent_id',NULL)->get();
+         $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $design = DB::table('design')->where('id', $product->design_id)->first();
         $poster_size = ' ';
         $review = DB::table('reviews')->orderBy('id', 'desc')->where('product_id', $product->id)->first();
@@ -396,8 +405,10 @@ class HomeController extends Controller
          $Products = Product::select('product.*')->join('wishlist', 'wishlist.pro_id', '=', 'product.id')->where("user_id", "=" , Auth::user()->id)->get();
 
      /*    $Products = Product::leftJoin('wishlist', 'wishlist.pro_id', '=' , 'product.id')->where("user_id", "=" , Auth::user()->id)->get(); */
-        $categories = Category::where('parent_id',NULL)->get();
-
+     $categories = Category::where([
+        ['parent_id',NULL],
+        ['active',1]
+        ])->get();
         return view('wishlist', compact('Products', 'categories'));
     }
 
@@ -611,8 +622,10 @@ class HomeController extends Controller
  
 
         $products = Product::search($query)->paginate(20);
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('search-results', compact('products', 'categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        return view('search-results', compact('products', 'categories'));
     }
 
     public function showCategoryProduct(Request $request)
@@ -763,7 +776,7 @@ class HomeController extends Controller
         }
              $output .=
                   "  </div>".
-                   " <div class=''>".
+                   " <div class='product-info'>".
                        " <p class=''> ".$product->name." </p>";
 
                             $pro_cat = Product::find($product->id);
@@ -902,8 +915,10 @@ class HomeController extends Controller
     public function giftsForHim() 
     {
     
-        $categories = Category::where('parent_id',NULL)->get();
-
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $shirts = Product::select('product.*')
         ->join('categories', 'categories.id', 'product.category_id')
         ->where('categories.name','T-Shirts')
@@ -973,7 +988,10 @@ class HomeController extends Controller
 
     public function giftsForHer() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
 
         $shirts = Product::select('product.id', 'product.name', 'product.description', 'product.category_id', 'product.price', 'product.image', 'product.spl_price', 'product.design_id')
         ->join('categories', 'categories.id', 'product.category_id')
@@ -1061,62 +1079,91 @@ class HomeController extends Controller
 
     public function termsAndPrivacy() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('terms_and_privacy', compact('categories'));
+       $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('terms_and_privacy', compact('categories'));
     } 
 
     public function privacyPolicy() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('privacy_policy', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('privacy_policy', compact('categories'));
     }
 
     public function termsAndConditions() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('terms_and_conditions', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('terms_and_conditions', compact('categories'));
     }
 
     public function about()
      {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('about', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('about', compact('categories'));
     }
 
     public function howToOrder()
      {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('how_to_order', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('how_to_order', compact('categories'));
     }
 
     public function shipping() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('shipping', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('shipping', compact('categories'));
     }
 
     public function helpCenter()
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('help_center', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('help_center', compact('categories'));
     }
 
     public function copyright() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('copyright', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();        
+            return view('copyright', compact('categories'));
     }
 
     public function contact() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        return view('contact_us', compact('categories'));
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();     
+               return view('contact_us', compact('categories'));
     }
 
     public function specialPrice() 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
         $products = Product::where('spl_price' , '!=' , 0)->get();
 
         return view('specialprice', compact('categories', 'products'));
@@ -1314,8 +1361,11 @@ class HomeController extends Controller
 
     public function productsOfDesign($id) 
     {
-        $categories = Category::where('parent_id',NULL)->get();
-        $design = Design::findOrFail($id);
+        $categories = Category::where([
+            ['parent_id',NULL],
+            ['active',1]
+            ])->get();
+                    $design = Design::findOrFail($id);
         $products = $design->products()->get();
 
         return view('design.show', compact('products' , 'categories'));

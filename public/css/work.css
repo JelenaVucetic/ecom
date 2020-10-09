@@ -145,7 +145,6 @@
     margin: 0px 0 0 0;
     background: #fff;
     border-radius: 8px;
-    width: calc(50% - 8px);
     box-sizing: border-box;
     height: 80px;
 }

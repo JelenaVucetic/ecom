@@ -16,10 +16,7 @@ class CategoriesController extends Controller
     }
     //
     public function index() {
-        $categories = Category::where([
-            ['parent_id',NULL],
-            ['active',1]
-            ])->get();
+        $categories = Category::where('parent_id',NULL)->get();
         $products = Product::all();
         return view('admin.category.index', compact(['categories', 'products']));
     }

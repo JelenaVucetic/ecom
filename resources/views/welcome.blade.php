@@ -189,6 +189,9 @@
                                 @elseif($product->category->name=="Notebooks")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-notebooks" alt="">
                                 @break
+                                @elseif($product->category->name=="Posters")
+                                <img src="{{ url('image', $item->name) }}" class="img-div-wall" alt="">
+                                @break
                                 @elseif($product->category->name=="Makeup Bags")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-makeup" alt="">
                                 @break

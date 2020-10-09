@@ -53,7 +53,7 @@ $error_messages = array(
 	'7070' => 'The planned transaction status is not a valid format for the requested operation.'
 );
 ?>
-    <section id="cart_items">
+   <section id="cart_items" >
         <div class="container">
             <h3>
             @if (Auth::check()) 
@@ -73,12 +73,12 @@ $error_messages = array(
             @else
             <p><strong>Status:</strong> Error </p>
             <?php
-            foreach ($error_messages as $code => $message) {
+           foreach ($error_messages as $code => $message) {
                 if($code == $payment->code) { ?>
                     <p><?php echo $message; ?></p>
             <?php       
                 }
-            }
+            } 
             ?>
             @endif
             <p><strong>Order number:</strong> {{$payment->transaction_id}}</p>
@@ -90,5 +90,6 @@ $error_messages = array(
         </div>
         
         </div>
-    </section>
+	</section> 
+
 @endsection

@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
-<section id="cart_items">
+<section id="fill_password">
     <div class="container">
         <div class="row">
         @include('profile.menu')
-            <div class="col-md-8">
+        <div class="col-md-9 mr-0 ml-auto">
             <h3><span>{{ucwords(Auth::user()->name)}},</span> Update your password</h3>
             <div class="container">
             @if(session('msg'))
