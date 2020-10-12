@@ -47,6 +47,7 @@ class CheckoutController extends Controller
 
         $client = new Client("urbanone.me", "ATk9krlxg5yyF?gYyR(§8X&Oh)Ui8", "urbanone-hb01", "IkzkNSWoNztn2cq2HAPHauBK6FBviq");
 
+
         $client->validateCallbackWithGlobals();
       
         $callbackResult = $client->readCallback(file_get_contents('php://input'));
@@ -139,6 +140,7 @@ file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views
 
         $token = $request->transaction_token;
         $categories = Category::where('parent_id',NULL)->get();
+        file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views/test.xml', $request , FILE_APPEND );
 
         $this->validate($request, [  
             'firstname' => 'required|min:2|max:35',
@@ -167,7 +169,8 @@ file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views
          // Include the autoloader (if not already done via Composer autoloader)
        // require_once(base_path() . '/vendor/allsecure-pay/php-exchange/initClientAutoload.php');
         // Instantiate the "Exchange\Client\Client" with your credentials
-         $client = new Client("urbanone.me", "ATk9krlxg5yyF?gYyR(§8X&Oh)Ui8", "urbanone-hb01", "IkzkNSWoNztn2cq2HAPHauBK6FBviq");
+          $client = new Client("urbanone.me", "ATk9krlxg5yyF?gYyR(§8X&Oh)Ui8", "urbanone-hb01", "IkzkNSWoNztn2cq2HAPHauBK6FBviq");
+
 
         $customer = new Customer();
         $customer->setBillingCountry("ME")
@@ -175,6 +178,7 @@ file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views
                 ->setLastName($request->lastname)
                 ->setEmail($request->email)
                 ->setIpAddress(request()->ip());
+        file_put_contents('/var/www/vhosts/urbanone.me/httpdocs/urbanone/resources/views/test.xml', $request , FILE_APPEND );
 
         $debit = new Debit();
         // define your transaction ID: e.g. 'myId-'.date('Y-m-d').'-'.uniqid()

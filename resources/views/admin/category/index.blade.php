@@ -14,7 +14,13 @@
         <tbody>
          @foreach($categories as $category)
             <tr>
-                <td>{{$category->name}}</td>
+                <td>{{$category->name}}
+                @if ($category->active==0)
+             <span class="text-bold"  style="color:red;">Deaktiviran</span>   
+                @else
+               <span class="text-bold" style="color:green;">Aktiviran</span> 
+                @endif
+                </td>
                 <td>
                     <a href="{{route('category.edit', $category->id)}}" class="btn btn-success btn small">Edit</a>
                 </td>
@@ -38,7 +44,11 @@
                                 <li class="list-group-item">
                                     <div class="d-flex justify-content-between" style="color:red;">
                                         <a href="">{{ $child->name }} </a>
-
+                                        @if ($child->active==0)
+                                        <span class="text-bold"  style="color:red;">Deaktiviran</span>   
+                                           @else
+                                          <span class="text-bold" style="color:green;">Aktiviran</span> 
+                                           @endif
                                         <div class="button-group d-flex">
                                             <a href="{{route('category.edit', $child->id)}}" class="btn btn-success btn small">Edit</a>
                                           {{--   <form action="{{ route('category.destroy', $child->id) }}" method="POST">

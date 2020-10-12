@@ -66,7 +66,7 @@ class CartController extends Controller
     public function addItem(Request $request, $id)
     {
         $product = Product::find($id);
-
+  
         /* foreach($product->images as $image){
             dd($image->name);
         } */
@@ -76,20 +76,16 @@ class CartController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id', "=", $id],
                 ['color' , "=", $request->color],
-                ['position' , "=", $request->print],
             ])->first();
-
             }elseif($product->gender == "male"){
                 $imageFront = DB::table('images')->where([
                     ['product_id', "=", $id],
                     ['color' , "=", $request->color],
-                    ['position' , "=", $request->print],
                 ])->first();
             }else{
                 $pictures = DB::table('images')->where([
                     ['product_id', "=", $id],
                     ['color' , "=", $request->color],
-                    ['position' , "=", $request->print],
                 ])->get();
 
                $imageFront = $pictures[0];
@@ -154,16 +150,17 @@ class CartController extends Controller
                 ['size', '=' , $request->sackType]
             ])->first();
         }
-
         if($product->spl_price==0) {
+      
             $cart= Cart::add( $id, $product->name, 1, $request->price, 0,
                          ['cat' => $product->category->name, 'img'=> $imageFront->name, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print ,
                          'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
                          'posterSize' => $request->posterSize, 'pictureSize' => $request->pictureSize,
                          'kidssize' => $request->kidssize, 'kidscolor' => $request->kidscolor, 'customSize' => $request->customSize,
                          'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign, 'maskLocation' => $request->maskLocation,
-                          'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
+                         'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
         } else {
+   
             $cart=  Cart::add( $id, $product->name, 1, $product->spl_price, 0,
                         ['cat' => $product->category->name,'img'=> $imageFront->name, 'size' => $request->size, 'color' => $request->color, 'print' => $request->print,
                         'phoneModel' => $request->phoneModel ,'caseStyle' => $request->caseStyle, 'customCase' => $request->customCase,
@@ -172,6 +169,7 @@ class CartController extends Controller
                         'coasterShape' => $request->coasterShape, 'coasterDesign' => $request->coasterDesign,'maskLocation' => $request->maskLocation,
                          'sackType' => $request->sackType, 'magnetShape' => $request->magnetShape ]);
         }
+     
 
         
         echo Cart::count();

@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
-<section id="cart_items" style="margin-bottom: 50px;">
+<section id="edit_avatar" style="margin-bottom: 50px;">
     <div class="container">
         <div class="row">
             @include('profile.menu') 
-            <div class="col-md-8 avatar">
+            <div class="col-md-9 mr-0 ml-auto avatar">
                 <h3>Avatar</h3> 
                 <div>
                     <img src="/avatars/{{ Auth::user()->avatar }}" style="width:100px;border-radius:50%;height: 100px;object-fit: cover;">

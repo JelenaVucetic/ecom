@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
         @include('profile.menu')
-            <div class="col-md-8">
-                @if ($Products->isEmpty())
+        <div class="col-md-9 mr-0 ml-auto">
+            @if ($Products->isEmpty())
                 Products not found
              @else
                  @foreach($Products as $product)
