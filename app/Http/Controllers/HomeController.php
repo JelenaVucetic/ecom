@@ -55,6 +55,7 @@ class HomeController extends Controller
         /* $products = Product::orderBy('id', 'desc')->paginate(28); */
         $products = Product::distinct()->orderBy('id', 'desc')->groupBy('design_id')->paginate(28);
         $categories = Category::where('parent_id',NULL)->get();
+<<<<<<< Updated upstream
 
       /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */
 
@@ -95,6 +96,10 @@ class HomeController extends Controller
                 ->first();
  
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
+=======
+     //   $subcategories = Category::where('parent_id', '<>', NULL)->get();
+        return view('welcome', compact('products', 'categories'));
+>>>>>>> Stashed changes
     }
 
 

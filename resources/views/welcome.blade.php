@@ -155,9 +155,42 @@
 
 
     </div>
+<<<<<<< Updated upstream
 
     <div class="container products-title" style="padding-left: 0">
         <h3 style="color: #404040;font-size: 27px;font-weight: bold;">Newest products</h3>
+=======
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="myRow">
+              @forelse($products as $product)
+                  <div class="col-md-3">
+                      <div class="card mb-3 shadow-sm">
+                          <img src="{{ url('images', $product->image) }}" class="card-img" alt="">
+                        </div>
+                          <div class="my-card-body">
+                              <p class="my-card-text">{{ $product->name }}</p>
+                               <p class="my-card-text">{{ $product->description }}</p> 
+                                <p class="my-card-text">{{ $product-> }}</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <div class="btn-group">
+                                      <button type="button" class="btn btn-sm btn-outline-primpary">
+                                          <a href="{{ url('/product_details', [$product->id]) }}" class="add-to-cart"> View product</a>
+                                      </button>
+                                      <button type="button" class="btn btn-sm btn-outline-primpary">
+                                          <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart"> Add to cart</a>
+                                      </button>
+                                  </div>
+                               
+                              </div>
+                          </div>
+                      
+                  </div>
+              @empty
+                  <h3>No products</h3>
+              @endforelse
+      </div>
+>>>>>>> Stashed changes
     </div>
     <div class="slick-wrapper">
     <div id="slick1">
