@@ -155,13 +155,8 @@
 
 
     </div>
-<<<<<<< Updated upstream
-
-    <div class="container products-title" style="padding-left: 0">
-        <h3 style="color: #404040;font-size: 27px;font-weight: bold;">Newest products</h3>
-=======
   <div class="album py-5 bg-light">
-    <div class="container">
+{{--     <div class="container">
       <div class="myRow">
               @forelse($products as $product)
                   <div class="col-md-3">
@@ -171,7 +166,7 @@
                           <div class="my-card-body">
                               <p class="my-card-text">{{ $product->name }}</p>
                                <p class="my-card-text">{{ $product->description }}</p> 
-                                <p class="my-card-text">{{ $product-> }}</p>
+                               
                               <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
                                       <button type="button" class="btn btn-sm btn-outline-primpary">
@@ -190,8 +185,7 @@
                   <h3>No products</h3>
               @endforelse
       </div>
->>>>>>> Stashed changes
-    </div>
+    </div> --}}
     <div class="slick-wrapper">
     <div id="slick1">
         @foreach($products as $product)

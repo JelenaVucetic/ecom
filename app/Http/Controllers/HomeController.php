@@ -99,11 +99,11 @@ class HomeController extends Controller
                 ->where('categories.name', '=', 'Masks')
                 ->first();
  
-        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
-/* =======
+     //   return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
+           
      //   $subcategories = Category::where('parent_id', '<>', NULL)->get();
         return view('welcome', compact('products', 'categories'));
->>>>>>> Stashed changes */
+
     }
 
 

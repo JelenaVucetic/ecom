@@ -59,7 +59,6 @@ class HomeController extends Controller
             ['active',1]
             ])->get();
 
-      /*   $images = DB::table('images')->join('product', 'product.id', '=', 'images.product_id')->get(); */
 
         $shirtsCat = DB::table('categories')
                 ->where('categories.name', '=', 'T-Shirts')
@@ -96,8 +95,10 @@ class HomeController extends Controller
         $faceMasksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Masks')
                 ->first();
- 
+              
+
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
+        
     }
 
 
@@ -494,14 +495,11 @@ class HomeController extends Controller
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-mugs'>";
                            break;
                            }
-<<<<<<< Updated upstream
-=======
                            else if($p->category->name=="Posters"){
                             $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wall" alt="'.$product->category->name.'">';
                             break;
                         }
                         
->>>>>>> Stashed changes
                            elseif($product->category->name == "Gift Bags") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
                            break;
@@ -916,15 +914,11 @@ class HomeController extends Controller
 
     public function giftsForHim() 
     {
-<<<<<<< Updated upstream
-        $categories = Category::where('parent_id',NULL)->get();
-=======
     
         $categories = Category::where([
             ['parent_id',NULL],
             ['active',1]
             ])->get();
->>>>>>> Stashed changes
 
         $shirts = Product::select('product.*')
         ->join('categories', 'categories.id', 'product.category_id')
