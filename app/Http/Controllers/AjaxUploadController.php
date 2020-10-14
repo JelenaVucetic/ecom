@@ -47,51 +47,39 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
-      $data = $request->all();
-      $picture = $data['picture'];
+        $data = $request->all();
+       
+        $picture = $data['picture'];
+        $title = $data['name'];
+        $image = $data['image'];;
+        $tags = $data['tag'];
+        $description = $data['description1'];
+        $original = $data['originalName1'];
+        $originalImagePath = $data['originalImagePath'];
+        $canvasImage = $data['canvasImage'];
+        $gender = $data['gedner'];
+        $category = $data['category'];
+        $design_title = $data['title'];
 
-      if($picture!==null && $picture!=="0"){
-        $picture = explode(";" ,  $picture)[1];
-        $picture = explode("," ,  $picture)[1];
-        $picture = str_replace(" ", "+",  $picture);
-        $picture = base64_decode( $picture);
-        $characters1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $name1 = mt_rand(1000000, 9999999)
-        . mt_rand(1000000, 9999999)
-        . $characters1[rand(0, strlen($characters1) - 1)];
-        $string2 = str_shuffle($name1);
-        $string2 .=  round(microtime(true) * 1000);
+        if($picture!==null && $picture!=="0"){
+          $picture = explode(";" ,  $picture)[1];
+          $picture = explode("," ,  $picture)[1];
+          $picture = str_replace(" ", "+",  $picture);
+          $picture = base64_decode( $picture);
+          $characters1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+          $name1 = mt_rand(1000000, 9999999)
+          . mt_rand(1000000, 9999999)
+          . $characters1[rand(0, strlen($characters1) - 1)];
+          $string2 = str_shuffle($name1);
+          $string2 .=  round(microtime(true) * 1000);
+  
+          file_put_contents("canvas_picture/". $string2 . ".png", $picture);
+      }
+      file_put_contents("test/". $string2 . ".png", $picture);
 
-        file_put_contents("canvas_picture/". $string2 . ".png", $picture);
-    }
-
-      $title = $data['name'];
-      $image = $data['image'];;
-      $tags = $data['tag'];
-      $description = $data['description1'];
-      $original = $data['originalName1'];
-      $originalImagePath = $data['originalImagePath'];
-      $canvasImage = $data['canvasImage'];
-      $gender = $data['gedner'];
-      $category = $data['category'];
-      $design_title = $data['title'];
-
-       if($canvasImage!==null && $canvasImage!=="0"){
-        $canvasImage = explode(";" ,  $canvasImage)[1];
-        $canvasImage = explode("," ,  $canvasImage)[1];
-        $canvasImage = str_replace(" ", "+",  $canvasImage);
-        $canvasImage = base64_decode( $canvasImage);
-        $characters1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $name1 = mt_rand(1000000, 9999999)
-        . mt_rand(1000000, 9999999)
-        . $characters1[rand(0, strlen($characters1) - 1)];
-        $string1 = str_shuffle($name1);
-        $string1 .=  round(microtime(true) * 1000);
-
-        file_put_contents("canvas/". $string1 . ".png", $canvasImage);
-    }
-
-
+     
+      
+      $imageCanvas = $string2 . ".png";
  /*    if($canvasImage!=="0"){
 
        if( $canvasImage = explode(";" ,  $canvasImage)[1]){
@@ -234,49 +222,51 @@ if($original == "Poster"){
  }
 
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
-    ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
-    ImageModel::womanNavyTshirt($idProduct, $originalImagePath);
-    ImageModel::womanRedTshirt($idProduct, $originalImagePath);
-    ImageModel::womanBlackTshirt($idProduct, $originalImagePath);
+    ImageModel::womanWhiteTshirt($idProduct, $imageCanvas);
+    ImageModel::womanNavyTshirt($idProduct, $imageCanvas);
+    ImageModel::womanRedTshirt($idProduct, $imageCanvas);
+    ImageModel::womanBlackTshirt($idProduct, $imageCanvas);
     /* ImageModel::womanRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanBlackBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath); */
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
-    ImageModel::manWhiteTshirt($idProduct, $originalImagePath);
-    ImageModel::manNavyTshirt($idProduct, $originalImagePath);
-    ImageModel::manRedTshirt($idProduct, $originalImagePath);
-    ImageModel::manBlackTshirt($idProduct, $originalImagePath);
+    ImageModel::manWhiteTshirt($idProduct, $imageCanvas);
+    ImageModel::manNavyTshirt($idProduct, $imageCanvas);
+    ImageModel::manRedTshirt($idProduct, $imageCanvas);
+    ImageModel::manBlackTshirt($idProduct, $imageCanvas);
    /*  ImageModel::manRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::manNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
     ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath); */
 }
 if($original=='IPhone'){
-    ImageModel::iphonePhoneCase($idProduct, $originalImagePath);
+    ImageModel::iphonePhoneCase($idProduct, $imageCanvas);
 
 }
 if($original == 'Samsung'){
-    ImageModel::samsungP20PhoneCase($idProduct, $originalImagePath);
-    ImageModel::samsungS20PlusPhoneCase($idProduct, $originalImagePath);
+    ImageModel::samsungP20PhoneCase($idProduct, $imageCanvas);
+    ImageModel::samsungS20PlusPhoneCase($idProduct, $imageCanvas);
 }
 if($original == "Huawei"){
-    ImageModel::huaweiP20($idProduct, $originalImagePath);
+    ImageModel::huaweiP20($idProduct, $imageCanvas);
 }
 if($original == "Poster"){
-    ImageModel::whiteFrameThumb($idProduct, $originalImagePath);
-    ImageModel::blackFrameA3($idProduct, $originalImagePath);
-    ImageModel::blackFrameB1($idProduct, $originalImagePath);
-    ImageModel::blackFrameB2($idProduct, $originalImagePath);
-    ImageModel::blackFrameThumb($idProduct, $originalImagePath);
-    ImageModel::whiteFrameA3($idProduct, $originalImagePath);
-    ImageModel::whiteFrameB1($idProduct, $originalImagePath);
-    ImageModel::whiteFrameB2($idProduct, $originalImagePath);
+   // ImageModel::whiteFrameThumb($idProduct, $originalImagePath);
+    ImageModel::blackFrameA3($idProduct, $imageCanvas);
+    ImageModel::blackFrameA4($idProduct, $imageCanvas);
+  //  ImageModel::blackFrameB1($idProduct, $originalImagePath);
+    ImageModel::blackFrameB2($idProduct, $imageCanvas);
+   // ImageModel::blackFrameThumb($idProduct, $originalImagePath);
+    ImageModel::whiteFrameA3($idProduct, $imageCanvas);
+    ImageModel::whiteFrameA4($idProduct, $imageCanvas);
+   // ImageModel::whiteFrameB1($idProduct, $originalImagePath);
+    ImageModel::whiteFrameB2($idProduct, $imageCanvas);
 }
 if($original == "Canvas"){
-    ImageModel::canvasThumb($idProduct, $originalImagePath);
-    ImageModel::canvas($idProduct, $originalImagePath);
+    ImageModel::canvasThumb($idProduct, $imageCanvas);
+    ImageModel::canvas($idProduct, $imageCanvas);
 }
 if($original == "Wallpapers"){
     ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
@@ -287,58 +277,58 @@ if($original == "Wallpapers"){
     ImageModel::wallpaperKids($idProduct, $originalImagePath);
 }
 if($original == "Clocks"){
-    ImageModel::blackClock($idProduct, $originalImagePath);
-    ImageModel::whiteClock($idProduct, $originalImagePath);
-    ImageModel::redClock($idProduct, $originalImagePath);
-    ImageModel::blueClock($idProduct, $originalImagePath);
+    ImageModel::blackClock($idProduct, $imageCanvas);
+    ImageModel::whiteClock($idProduct, $imageCanvas);
+    ImageModel::redClock($idProduct, $imageCanvas);
+    ImageModel::blueClock($idProduct, $imageCanvas);
 }
 if($original == "Bags"){
-    ImageModel::cegerThumb($idProduct, $originalImagePath);
-    ImageModel::ceger($idProduct, $originalImagePath);
+    ImageModel::cegerThumb($idProduct, $imageCanvas);
+    ImageModel::ceger($idProduct, $imageCanvas);
 }
 if($original == "Coasters"){
-    ImageModel::coastersSquare($idProduct, $originalImagePath);
-    ImageModel::coastersCircle($idProduct, $originalImagePath);
+    ImageModel::coastersSquare($idProduct, $imageCanvas);
+    ImageModel::coastersCircle($idProduct, $imageCanvas);
 }
 if($original == "Gift Bags"){
-    ImageModel::sacksHo2($idProduct, $originalImagePath);
-    ImageModel::sacks($idProduct, $originalImagePath);
+    ImageModel::sacksHo2($idProduct, $imageCanvas);
+    ImageModel::sacks($idProduct, $imageCanvas);
 }
 if($original == "Notes"){
-    ImageModel::notes($idProduct, $originalImagePath);
+    ImageModel::notes($idProduct, $imageCanvas);
 }
 if($original == "Puzzles"){
-    ImageModel::puzzle($idProduct, $originalImagePath);
+    ImageModel::puzzle($idProduct, $imageCanvas);
 }
 if($original == "Makeup Bags"){
-    ImageModel::makeupBags($idProduct, $originalImagePath);
+    ImageModel::makeupBags($idProduct, $imageCanvas);
 }
 if($original == "Magnets"){
-    ImageModel::magnetRectangle($idProduct, $originalImagePath);
-    ImageModel::magnetCircle($idProduct, $originalImagePath);
+    ImageModel::magnetRectangle($idProduct, $imageCanvas);
+    ImageModel::magnetCircle($idProduct, $imageCanvas);
 }
 if($original == "Mugs"){
-    ImageModel::mugThumb($idProduct, $originalImagePath);
-     ImageModel::mugMain($idProduct, $originalImagePath);  
+    ImageModel::mugThumb($idProduct, $imageCanvas);
+     ImageModel::mugMain($idProduct, $imageCanvas);  
 }
 if($original == "Termos"){
-    ImageModel::thermos($idProduct, $originalImagePath);
+    ImageModel::thermos($idProduct, $imageCanvas);
 }
 if($original == "Masks"){
-    ImageModel::masksBlack($idProduct, $originalImagePath);
-    ImageModel::masks($idProduct, $originalImagePath);
+    ImageModel::masksBlack($idProduct, $imageCanvas);
+    ImageModel::masks($idProduct, $imageCanvas);
 }
 if($original == "Custom"){
-    ImageModel::customCase($idProduct, $originalImagePath);
+    ImageModel::customCase($idProduct, $imageCanvas);
 }
 if($original == "Kids T-Shirts"){
-    ImageModel::kidsTShirts($idProduct, $originalImagePath);
+    ImageModel::kidsTShirts($idProduct, $imageCanvas);
 }
 if($original == "Backpacks"){
-    ImageModel::backpack($idProduct, $originalImagePath);
+    ImageModel::backpack($idProduct, $imageCanvas);
 }
 if($original == "Kids Bibs"){
-    ImageModel::kidsBibs($idProduct, $originalImagePath);
+    ImageModel::kidsBibs($idProduct, $imageCanvas);
 }
 
 

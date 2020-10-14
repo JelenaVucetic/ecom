@@ -98,11 +98,11 @@ class HomeController extends Controller
         $faceMasksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Masks')
                 ->first();
- 
-     //   return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
+               
+        return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
            
      //   $subcategories = Category::where('parent_id', '<>', NULL)->get();
-        return view('welcome', compact('products', 'categories'));
+       // return view('welcome', compact('products', 'categories'));
 
     }
 
