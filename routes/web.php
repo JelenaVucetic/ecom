@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
         Route::get('/designs', 'AdminController@designs')->name('designs');
         Route::get('/categoryEnable/{id}', 'AdminController@categoryEnable')->name('enable');
         Route::get('/categoryDisable/{id}', 'AdminController@categoryDisable')->name('disable');
+        Route::post('/destroyDesign/{id}', 'AdminController@destroyDesign')->name('destroy.design');
 
         Route::get('/showDesign/{id}', 'AdminController@showDesign')->name('showDesign');
 
@@ -150,4 +151,9 @@ Route::post('newsletter','NewsletterController@store');
 Route::get("/test", function(){
     $categories=App\Category::all();
     return view("test1",compact('categories'));
+ });
+
+ Route::get("/patch", function(){
+    $categories=App\Category::all();
+    return view("patch_notes",compact('categories'));
  });

@@ -55,6 +55,11 @@ class AdminController extends Controller
         $category = Category::where('id',$id)->first();
         Category::where('id', $id)
                 ->update(['active' => 1]);
+          
                 return back()->with('success','!');
+    }
+    public function destroyDesign($id){
+        Design::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

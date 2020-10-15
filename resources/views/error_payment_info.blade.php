@@ -53,28 +53,37 @@ $error_messages = array(
 	'7070' => 'The planned transaction status is not a valid format for the requested operation.'
 );
 ?>
-    <section id="cart_items">
-        <div class="container" style="margin: 50px 0;">
-            <h3>
+ <section id="cart_items" class="mx-auto mb-5 shadow-sm">
+	<div class="card-header">
+		<h3>
             @if (Auth::check()) 
                 <span style="color:green"> {{ucwords(Auth::user()->name)}} </span>, 
                 Welcome
             @else
                 Your payment informations
             @endif
-            </h3>
-        <div>
-            <p><strong>Status:</strong> Error </p>
-			@foreach ($error_messages as $item => $value)
-			
-                @if ($item == $code )
-                <p>{{$value}}</p>
-                @endif
-            @endforeach
-        </div>
-        <div>
-			<p> <strong>Date and Time:</strong>  {{date('d.m.Y h:i:s', time())}}</p>
+			</h3>
 		</div>
-        </div>
+			<div class="card-body paymentInfo">
+				<div class="row">
+					<div class="col-12 col-lg-7 text-left">
+						<p><strong>Status:</strong> Error </p>
+							@foreach ($error_messages as $item => $value)
+						
+							@if ($item == $code )
+							<p>{{$value}}</p>
+							@endif
+							@endforeach
+       		
+							<p> <strong>Date and Time:</strong>  {{date('d.m.Y h:i:s', time())}}</p>
+		
+					</div>
+					<div class="col-12 col-lg-5 m-auto _success" >
+						<i class="fa fa-times-circle" aria-hidden="true"></i>
+
+					</div>
+					<div>
+
+			</div>
     </section>
 @endsection
