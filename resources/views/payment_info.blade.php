@@ -53,9 +53,9 @@ $error_messages = array(
 	'7070' => 'The planned transaction status is not a valid format for the requested operation.'
 );
 ?>
-   <section id="cart_items" >
-        <div class="container">
-            <h3>
+<section id="cart_items" class="mx-auto mb-5 shadow-sm">
+	<div class="card-header">
+		<h3>
             @if (Auth::check()) 
                 <span style="color:green"> {{ucwords(Auth::user()->name)}} </span>, 
                 Welcome
@@ -63,33 +63,50 @@ $error_messages = array(
                 Your payment informations
             @endif
             </h3>
-        <div>
-			@if( $payment->result == 'OK')
-			@php
-				//finishCart();
-				Cart::destroy();
-			@endphp
-                 <p><strong>Status:</strong> Successful payment </p>
-            @else
-            <p><strong>Status:</strong> Error </p>
-            <?php
-           foreach ($error_messages as $code => $message) {
-                if($code == $payment->code) { ?>
-                    <p><?php echo $message; ?></p>
-            <?php       
-                }
-            } 
-            ?>
-            @endif
-            <p><strong>Order number:</strong> {{$payment->transaction_id}}</p>
-			<p><strong>Amount:</strong> {{$payment->amount}} &euro;</p>
-			<p><strong>Autorazition code:</strong> {{$payment->extra_data}}</p>
-            <p><strong>Card type:</strong> {{$payment->card_type}}</p>
-			<p><strong>Last four digits:</strong> {{$payment->last_four_digits}}</p>
-			<p> <strong>Date and Time:</strong>  {{date('d.m.Y h:i:s', time())}}</p>
-        </div>
-        
-        </div>
+   </div>
+	<div class="card-body paymentInfo">
+		<div class="row">
+				<div class="col-12 col-lg-7 text-left">
+
+						@if( $payment->result == 'OK')
+						@php
+							//finishCart();
+							Cart::destroy();
+						@endphp
+							<p><strong>Status:</strong> Successful payment </p>
+						@else
+						<p><strong>Status:</strong> Error </p>
+						<?php
+					foreach ($error_messages as $code => $message) {
+							if($code == $payment->code) { ?>
+								<p><?php echo $message; ?></p>
+						<?php       
+							}
+						} 
+						?>
+						@endif
+						<p><strong>Order number:</strong> {{$payment->transaction_id}}</p>
+						<p><strong>Amount:</strong> {{$payment->amount}} &euro;</p>
+						<p><strong>Autorazition code:</strong> {{$payment->extra_data}}</p>
+						<p><strong>Card type:</strong> {{$payment->card_type}}</p>
+						<p><strong>Last four digits:</strong> {{$payment->last_four_digits}}</p>
+						<p> <strong>Date and Time:</strong>  {{date('d.m.Y h:i:s', time())}}</p>
+				</div>
+				<div class="col-12 col-lg-5 m-auto">
+					<div class="icon icon--order-success svg">
+						<svg xmlns="http://www.w3.org/2000/svg" width="154px" height="154px">
+							<g fill="none" stroke="#22AE73" stroke-width="2">
+							  <circle cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+							  <circle id="colored" fill="#22AE73" cx="77" cy="77" r="72" style="stroke-dasharray:480px, 480px; stroke-dashoffset: 960px;"></circle>
+							  <polyline class="st0" stroke="#fff" stroke-width="10" points="43.5,77.8 63.7,97.9 112.2,49.4 " style="stroke-dasharray:100px, 100px; stroke-dashoffset: 200px;"/>
+							</g>
+						</svg>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>
+
 	</section> 
 
 @endsection

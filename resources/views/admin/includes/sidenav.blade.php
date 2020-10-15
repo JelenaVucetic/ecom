@@ -84,4 +84,6 @@
         </li>
     </ul>
     </div>
+    <a href="/patch"><i class="fa fa-info-circle infoCircle" aria-hidden="true"></i></a>
+
 </nav>

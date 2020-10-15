@@ -30,5 +30,12 @@ class Design extends Model
     {
         return $this->hasMany(Product::class);
     }
+    public function delete(){
+        try {
+            $this->products()->delete();
 
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
 }

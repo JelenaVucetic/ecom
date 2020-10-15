@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container-fluid" style="width: 90%;margin:50px auto">
-  <div class="design-for-you" style="margin:20px 0;">
+<div class="container-fluid userMain" style="width: 90%;margin:50px auto" > 
+  <div class="design-for-you mb-5 mb-5" style="margin:20px 0;">
     <h2>Designs picked for you</h2>
   </div>
 
@@ -32,8 +32,8 @@
 </div>
 
 
-<div class="container-fluid"  style="width: 90%;margin: 50px auto">
-  <div class="design-for-you"  style="margin:20px 0;">
+<div class="container-fluid userMain"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you mb-5"  style="margin:20px 0;">
     <h2>Most Popular Designs - TRENDING</h2>
   </div>
 
@@ -63,8 +63,8 @@
 
 
 
-<div class="container-fluid"  style="width: 90%;margin: 50px auto">
-  <div class="design-for-you" style="margin:20px 0;">
+<div class="container-fluid userMain"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you mb-5" style="margin:20px 0;">
     <h2>Premium T-Shirts</h2>
   </div>
 
@@ -126,8 +126,8 @@
   </div>
 </div>
 
-<div class="container-fluid"  style="width: 90%;margin: 50px auto">
-  <div class="design-for-you" style="margin:20px 0;">
+<div class="container-fluid userMain"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you mb-5" style="margin:20px 0;">
     <h2>Phone Cases</h2>
   </div>
 
@@ -172,8 +172,8 @@
   </div>
 </div>
 
-<div class="container-fluid"  style="width: 90%;margin: 50px auto">
-  <div class="design-for-you" style="margin:20px 0;">
+<div class="container-fluid userMain"  style="width: 90%;margin: 50px auto">
+  <div class="design-for-you mb-5" style="margin:20px 0;">
     <h2>Face Masks </h2>
   </div>
 
