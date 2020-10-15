@@ -1043,11 +1043,15 @@
                   <button id="alignVertically15" class="btn-option"><span class="vertical-span"><i class="fa fa-arrows-v fa-2x" aria-hidden="true"></i></span>Vertically</button>
                   <button id="alignHorizontally15" class="btn-option"><span class="horizontal-span"><i class="fa fa-arrows-h fa-2x" aria-hidden="true"></i></span>Horizontally</button>
                   </div>
-                  <div class="repeat-option btn-group">
+                 {{--  <div class="repeat-option btn-group">
                       <button id="repeat5" class="repeat-opt">Repeat</button>
                       <button id="none5" class="repeat-opt">None</button>
                       <button id="repeat-vertical5" class="repeat-opt">Repeat vertical</button>
-                  </div>
+                  </div> --}}
+                 <input type="checkbox" class="check-wallpaper" name="repeat" value="Repeat">
+                 <label for="repeat">Repeat</label>
+                 <input type="checkbox" class="check-wallpaper" name="large" value="Large">
+                 <label for="large">Large</label>
                 </div>
           </div>
       </div>
@@ -2049,7 +2053,8 @@
       // Scale option for Phone case
       $('#scale-control').on('input', function () {
         $(this).trigger('change');
-    
+        img.scale(parseFloat($(this).val())).setCoords();
+        canvas3.requestRenderAll();
         sleep(100).then(() => {
           imageForCanvas.scale(parseFloat($(this).val())).setCoords();
         //  Repeat Vertical
@@ -2816,105 +2821,133 @@
   }
   
   $("#capture").click(function(event){
-  
-      window.scrollTo(0,0);
-      time = 500;
-      var title = document.getElementById('title').value;
-      var tags = document.getElementById('tags').value;
-      var description = document.getElementById('description').value;
-      var els = document.getElementsByClassName("save-picture");
-      var mockUpCanvas = document.getElementById("canvasMockUp");
-      var gender = $('input[name=gender]:checked').val();
-      var count = 0;
-      var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
-  
-      Array.prototype.forEach.call(els, function(el) {
-        if( el.getAttribute('value')=='0'){
-          count++;
-        }
-      });
-  
-      $("#loader").show();
-      $('body').css("opacity" , 0.3);
-      $('body').css("pointer-events" , "none");
-     var number = 0;
-      Array.prototype.forEach.call(els, function(el) {
-        
-        event.preventDefault();
-  
-      
-  
-  
-        var canvasImage = "0";
-      if( el.getAttribute('value')=='0'){
-        setTimeout(function(){
-        canvasPicture = el.getAttribute("data-canvas");
-          html2canvas(el).then(function (canvasA){
-            var numbers = canvasPicture.match(/(\d+)/);
-            var can = document.getElementById("c" + numbers[0]);
-  
-            picture = can.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  
-              var imgData = canvasA.toDataURL("image/png" , 0.9);
-              var originalName = el.getAttribute('name');
-              console.log(originalImagePath);
-              var category = el.getAttribute('data-category');
-              var nameProduct = title + " " + el.getAttribute('name');
-              $.ajax({ 
-                       headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                      },
-                      url: '{{route("ajaxupload.save")}}',
-                      type: 'post',
-                      dataType: "text",
-                      data: {
-                          image : imgData,
-                          name: nameProduct,
-                          tag : tags,
-                          description1 : description,
-                          originalName1 : originalName,
-                          originalImagePath: originalImagePath,
-                          canvasImage : canvasImage,
-                          gedner : gender,
-                          category : category,
-                          picture : picture,
-                          title : title
-                      },
-                      beforeSend: function(){
-                        // Show image container
-  
-                      },
-                      success:function(msg){
-                        console.log(msg);
-                         // finalMockup(msg);
-  
-                      },
-                      error: function(msg) {
-                        console.log(msg);
-  
-                      },
-                      complete: function(msg){
-  
-                      }
-                  });
-          });
-          number++;
-      if(count==number){
-        $("#loader").hide();
-        $('body').css("opacity" , 1);
-        $('body').css("pointer-events" , "all");
-      }
-      },time)
-  time += 10000;
-    
-  
-  
-      }
-  });
-  
-  
+  var wall = document.getElementById('enabled-product16');
+    if(wall.classList.contains("enable")){
+      var check = document.getElementsByClassName("check-wallpaper");
+          if(check[0].checked || check[1].checked){
+           if(check[0].checked && check[1].checked){
+            repeat = check[0].value;
+            large = check[1].value;
+            var checkArray = [repeat, large];
+            sendProducts(checkArray);
+           }else if(check[0].checked){
+            repeat = check[0].value;
+            var checkArray = [repeat];
+            sendProducts(checkArray);
+           }else if(check[1].checked){
+            large = check[1].value;
+            var checkArray = [large];
+            sendProducts(checkArray);
+           }
+          }else{
+            alert("Izaberite opciju za wallpaper")
+          }
+    }else{
+            sendProducts("null");
+    }
   
   });
+
+function sendProducts(check){
+window.scrollTo(0,0);
+time = 500;
+var title = document.getElementById('title').value;
+var tags = document.getElementById('tags').value;
+var description = document.getElementById('description').value;
+var els = document.getElementsByClassName("save-picture");
+var mockUpCanvas = document.getElementById("canvasMockUp");
+var gender = $('input[name=gender]:checked').val();
+var count = 0;
+var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
+
+Array.prototype.forEach.call(els, function(el) {
+  if( el.getAttribute('value')=='0'){
+    count++;
+  }
+});
+
+$("#loader").show();
+$('body').css("opacity" , 0.3);
+$('body').css("pointer-events" , "none");
+var number = 0;
+Array.prototype.forEach.call(els, function(el) {
+  
+  event.preventDefault();
+
+
+  
+
+  var canvasImage = "0";
+if( el.getAttribute('value')=='0'){
+  if(el.getAttribute('name') == "Wallpapers"){
+   
+  }
+  setTimeout(function(){
+  canvasPicture = el.getAttribute("data-canvas");
+    html2canvas(el).then(function (canvasA){
+      var numbers = canvasPicture.match(/(\d+)/);
+      var can = document.getElementById("c" + numbers[0]);
+
+      picture = can.toDataURL("image/png").replace("image/png", "image/octet-stream");
+
+        var imgData = canvasA.toDataURL("image/png" , 0.9);
+        var originalName = el.getAttribute('name');
+        console.log(originalImagePath);
+        var category = el.getAttribute('data-category');
+        var nameProduct = title + " " + el.getAttribute('name');
+        $.ajax({ 
+                 headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '{{route("ajaxupload.save")}}',
+                type: 'post',
+                dataType: "text",
+                data: {
+                    image : imgData,
+                    name: nameProduct,
+                    tag : tags,
+                    description1 : description,
+                    originalName1 : originalName,
+                    originalImagePath: originalImagePath,
+                    canvasImage : canvasImage,
+                    gedner : gender,
+                    category : category,
+                    picture : picture,
+                    title : title,
+                    check : check
+                },
+                beforeSend: function(){
+                  // Show image container
+
+                },
+                success:function(msg){
+                  console.log(msg);
+                   // finalMockup(msg);
+
+                },
+                error: function(msg) {
+                  console.log(msg);
+
+                },
+                complete: function(msg){
+
+                }
+            });
+    });
+    number++;
+if(count==number){
+  $("#loader").hide();
+  $('body').css("opacity" , 1);
+  $('body').css("pointer-events" , "all");
+}
+},time)
+time += 10000;
+
+
+
+}
+});
+}
   
   function doCapture(){
       window.scrollTo(0,0);

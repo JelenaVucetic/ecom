@@ -219,10 +219,11 @@ class HomeController extends Controller
         }elseif($find_cat->category->name=="Posters"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id],
-                ['size',"=" ,'A3'],
+                ['size', '=', 'A4'],
                 ['color', '=', 'white']
             ])->first();
-            $imageBack = "Poster---Bijeli-Ram---A3.jpg";
+          
+            $imageBack = "Framed-Prints-Art-White-A4-Mask01-1080.png";
         }elseif($find_cat->category->name=="Canvas Art"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
@@ -1172,6 +1173,28 @@ class HomeController extends Controller
     }
 
 
+    public function loadImagesGift(Request $request){
+        if($request->position == "Shape Two"){
+
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color', "=", $request->color],
+                ['size' , "=","H02"]
+            ])->first();
+            $blankImage = $request->color."H02.jpg";
+        }else{
+
+            $image = DB::table('images')->where([
+                ['product_id', "=", $request->id],
+                ['color', "=", $request->color],
+                ['size' , "=","H"]
+            ])->first();
+            $blankImage = $request->color."H.jpg";
+            }
+        return response()->json(array('image' => $image,'blankImage' => $blankImage));
+
+    }
+
 
 
     public function loadImages(Request $request){
@@ -1180,7 +1203,6 @@ class HomeController extends Controller
                 $image = DB::table('images')->where([
                     ['product_id', "=", $request->id],
                     ['color' , "=",$request->color],
-                    ['position' , "=", 'front'],
                     ['gender' , "=", 'female'],
                 ])->first();
                 $blankImage = 'back'.$request->color.'female.jpg';
@@ -1188,10 +1210,9 @@ class HomeController extends Controller
             $image = DB::table('images')->where([
                 ['product_id', "=", $request->id],
                 ['color' , "=",$request->color],
-                ['position' , "=", 'back'],
                 ['gender' , "=", 'female'],
             ])->first();
-            $blankImage = 'front'.$request->color.'female.jpg';
+            $blankImage = 'back'.$request->color.'female.jpg';
         }
 
     }elseif($request->gender == "male"){
@@ -1199,7 +1220,6 @@ class HomeController extends Controller
             $image = DB::table('images')->where([
                 ['product_id', "=", $request->id],
                 ['color' , "=",$request->color],
-                ['position' , "=", 'front'],
                 ['gender' , "=", 'male'],
             ])->first();
             $blankImage = 'back'.$request->color.'male.jpg';
@@ -1207,17 +1227,15 @@ class HomeController extends Controller
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['color' , "=",$request->color],
-            ['position' , "=", 'back'],
-            ['gender' , "=", 'male'],
+            ['gender' , "=", 'male']
         ])->first();
-        $blankImage = 'front'.$request->color.'male.jpg';
+        $blankImage = 'back'.$request->color.'male.jpg';
     }
 
     }else{
         $pictures = DB::table('images')->where([
             ['product_id', "=", $request->id],
-            ['color' , "=", $request->color],
-            ['position' , "=", $request->position],
+            ['color' , "=", $request->color]
         ])->get();
 
        $image = $pictures[0];
@@ -1326,13 +1344,14 @@ class HomeController extends Controller
     }
 
     public function loadImagesPosters(Request $request){
+        
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['color' , "=",$request->color],
             ['size',"=",$request->size]
         ])->first();
-
-        $blankImage = $request->size . $request->color . ".jpg";
+      
+        $blankImage = $request->size . $request->color . ".png";
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
     }

@@ -8,6 +8,7 @@ use DB;
 use App\Image as ImageModel;
 use App\Tag;
 use App\Product;
+use App\ImageMagick;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
 
@@ -47,11 +48,12 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
+        
         $data = $request->all();
-       
+
         $picture = $data['picture'];
         $title = $data['name'];
-        $image = $data['image'];;
+        $image = $data['image'];
         $tags = $data['tag'];
         $description = $data['description1'];
         $original = $data['originalName1'];
@@ -222,20 +224,20 @@ if($original == "Poster"){
  }
 
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
-    ImageModel::womanWhiteTshirt($idProduct, $imageCanvas);
-    ImageModel::womanNavyTshirt($idProduct, $imageCanvas);
-    ImageModel::womanRedTshirt($idProduct, $imageCanvas);
-    ImageModel::womanBlackTshirt($idProduct, $imageCanvas);
+    ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
+ //   ImageMagick::womanNavyTshirt($idProduct, $originalImagePath);
+   // ImageMagick::womanRedTshirt($idProduct, $originalImagePath);
+  //  ImageMagick::womanBlackTshirt($idProduct, $originalImagePath);
     /* ImageModel::womanRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanBlackBackTshirt($idProduct, $originalImagePath);
     ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath); */
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
-    ImageModel::manWhiteTshirt($idProduct, $imageCanvas);
-    ImageModel::manNavyTshirt($idProduct, $imageCanvas);
-    ImageModel::manRedTshirt($idProduct, $imageCanvas);
-    ImageModel::manBlackTshirt($idProduct, $imageCanvas);
+  //  ImageMagick::manWhiteTshirt($idProduct, $originalImagePath);
+  //  ImageMagick::manNavyTshirt($idProduct, $originalImagePath);
+  //  ImageMagick::manRedTshirt($idProduct, $originalImagePath);
+  //  ImageMagick::manBlackTshirt($idProduct, $originalImagePath);
    /*  ImageModel::manRedBackTshirt($idProduct, $originalImagePath);
     ImageModel::manNavyBackTshirt($idProduct, $originalImagePath);
     ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
@@ -269,12 +271,22 @@ if($original == "Canvas"){
     ImageModel::canvas($idProduct, $imageCanvas);
 }
 if($original == "Wallpapers"){
-    ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
-    ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
-    ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
-    ImageModel::wallpaper($idProduct, $originalImagePath);
-    ImageModel::wallpaperRepeatKids($idProduct, $originalImagePath);
-    ImageModel::wallpaperKids($idProduct, $originalImagePath);
+    if(in_array("Repeat", $data['check'],true)){
+        ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
+        ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
+        ImageModel::wallpaperRepeatKids($idProduct, $originalImagePath);
+    }else if(in_array("Large", $data['check'],true)){
+        ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
+        ImageModel::wallpaper($idProduct, $originalImagePath);
+        ImageModel::wallpaperKids($idProduct, $originalImagePath);
+    }else{
+        ImageModel::wallpaperRepeatSittingRoom($idProduct, $originalImagePath);
+        ImageModel::wallpaperSittingRoom($idProduct, $originalImagePath);
+        ImageModel::wallpaperRepeat($idProduct, $originalImagePath);
+        ImageModel::wallpaper($idProduct, $originalImagePath);
+        ImageModel::wallpaperRepeatKids($idProduct, $originalImagePath);
+        ImageModel::wallpaperKids($idProduct, $originalImagePath);
+    }
 }
 if($original == "Clocks"){
     ImageModel::blackClock($idProduct, $imageCanvas);

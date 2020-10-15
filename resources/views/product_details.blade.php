@@ -327,8 +327,8 @@
           <div class="choose-size">
             <h5>Size</h5>
             <select class="poster-size" id='posters'>
-              <option value="A3" data-price="{{ $product->price}}">A3</option>
-              <option value="B1" data-price="{{ $product->price_b1}}">B1</option>
+              <option value="A4" data-price="{{ $product->price}}">A4</option>
+              <option value="A3" data-price="{{ $product->price_b1}}">A3</option>
               <option value="B2" data-price="{{ $product->price_b2}}">B2</option>
             </select>
           </div>

@@ -453,14 +453,14 @@ $('#picture-custom').css('display', "none");
           $('.A3_price').css('display', 'none')
           $('.B2_price').css('display', 'block')
           $('.B1_price').css('display', 'none')
-        } else if( $( ".poster-size option:selected" ).val() == 'B1' ) {
-          $('.A3_price').css('display', 'none')
-          $('.B2_price').css('display', 'none')
-          $('.B1_price').css('display', 'block')
-        } else {
+        } else if( $( ".poster-size option:selected" ).val() == 'A4' ) {
           $('.A3_price').css('display', 'block')
           $('.B2_price').css('display', 'none')
           $('.B1_price').css('display', 'none')
+        } else {
+          $('.A3_price').css('display', 'none')
+          $('.B2_price').css('display', 'none')
+          $('.B1_price').css('display', 'block')
         }
         var price = $( ".poster-size option:selected" ).attr('data-price');
         $(".product_price").val(price)
@@ -1129,6 +1129,7 @@ $("#female-x").on("click", function(){
         $("#loading-overlay").hide();
          var blank = response['blankImage'];
          var name = response['image']['name'];
+        
         $("#main-image").attr("src","../image/" +name);
         $("#blank-image").attr("src","../site-images/" + blank);
         $("#main-image-mobile").attr("src","../image/" +name);
