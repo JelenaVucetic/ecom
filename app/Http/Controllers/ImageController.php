@@ -21,7 +21,7 @@ class ImageController extends Controller
         $categories = Category::where('parent_id',NULL)->get();
         return view('admin.upload_design.work', compact('categories'));
     }
-  
+   
     public function upload(Request $request){
         $categories = Category::where('parent_id',NULL)->get();
         $this->validate($request, [
@@ -55,7 +55,7 @@ class ImageController extends Controller
          $image3 = new \Imagick();
         $image3->readImage(public_path('design/' . $image)); 
         $watermark = new \Imagick();
-       $path = public_path();
+        $path = public_path();
         $watermark->readImage(public_path("site-images/watermark2.png"));
 
         $process = new Process('magick convert -size 2000x2000 tile:'.$path.'/site-images/watermark2.png ' .$path.'/image/watermark2.png

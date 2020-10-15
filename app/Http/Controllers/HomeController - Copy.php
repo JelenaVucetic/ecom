@@ -96,7 +96,7 @@ class HomeController extends Controller
                 ->where('categories.name', '=', 'Masks')
                 ->first();
               
-
+            
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
         
     }
@@ -1259,7 +1259,7 @@ class HomeController extends Controller
         }elseif($request->pro_cat == "Backpacks"){
             $blankImage = "Backpack". $request->color. ".jpg";
         }else{
-            $blankImage = "Clock". $request->color. ".png";
+            $blankImage = "Clock". $request->color. ".jpg";
         }
 
 
@@ -1311,6 +1311,12 @@ class HomeController extends Controller
                 $blankImage = 'Huawei-P20-Crna.png';
             }else{
                 $blankImage = 'Huawei-P20-Bezpozadinecopy.png';
+            }
+           }elseif($request->pro_cat=="Custom"){
+            if($request->color=="Black"){
+                $blankImage = 'Custommaska.png';
+            }else{
+                $blankImage = 'Custommaska.png';
             }
            }
 

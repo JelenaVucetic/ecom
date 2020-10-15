@@ -96,7 +96,6 @@ class HomeController extends Controller
                 ->where('categories.name', '=', 'Masks')
                 ->first();
               
-
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
         
     }
