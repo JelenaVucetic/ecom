@@ -804,10 +804,10 @@ $(document).ready(function(){
       $('.background-div').css("background-color", colorInput.value);
     });
     // Change T-Shirt color
-    var colorInput1 = document.querySelector('#color1');
+   /*  var colorInput1 = document.querySelector('#color1');
     colorInput1.addEventListener('input', ()=>{
       $('.background-div1').css("background-color", colorInput1.value);
-    });
+    }); */
     // Change Mug color
     var colorInput2 = document.querySelector('#color2');
     colorInput2.addEventListener('input', ()=>{

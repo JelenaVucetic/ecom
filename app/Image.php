@@ -48,6 +48,181 @@ class Image extends Model
     $path = public_path();
 
 
+    $process0 = new Process('magick convert '.$path.'\site-images\U-one-16.jpg 
+    -resize 1500x2500
+    '.$path.'\site-images\U-one-16.jpg 
+     ');
+     $process0->run();
+     if (!$process0->isSuccessful()) {
+         throw new ProcessFailedException($process0);
+     } 
+
+     $process = new Process('magick convert   '.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
+    -colorspace gray 
+    -blur 10x250 
+    -auto-level
+    '.$path.'\image\displace_map.png
+     ');
+
+$process->run();
+if (!$process->isSuccessful()) {
+    throw new ProcessFailedException($process);
+}
+    echo $process->getOutput();
+    echo '<img src="\image\displace_map.png">'; 
+
+    $imageName1 = "/" .  $image; 
+
+    $process1 = new Process('magick convert   '.$path.'\design' . $imageName1 . '
+    -resize 300x300
+    '.$path.'\resized_pictures' . $imageName1 . '
+    '); 
+    
+ $process1->run();
+  if (!$process1->isSuccessful()) {
+      throw new ProcessFailedException($process1);    
+} 
+
+
+    $process2 = new Process('magick convert 
+    '.$path.'\resized_pictures' . $imageName1 . '
+    -bordercolor transparent -border 12x12 -thumbnail 303x322 
+    '.$path.'\image\ms_temp.png
+     ');
+
+$process2->run();
+if (!$process1->isSuccessful()) {
+    throw new ProcessFailedException($process2);
+}
+    echo $process2->getOutput();
+    echo '<img src="\image\ms_temp.png">';
+
+   
+
+     $process3 = new Process('magick convert 
+    '.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
+    -colorspace gray -blur 10x250 -auto-level 
+    -depth 16 
+    '.$path.'\image\ms_displace_map_girl_white_regular.png
+     ');
+
+$process3->run();
+if (!$process3->isSuccessful()) {
+    throw new ProcessFailedException($process3);
+}
+    echo $process3->getOutput();
+    echo '<img src="\image\ms_displace_map_girl_white_regular.png">'; 
+   
+    $process4 = new Process('magick convert ^
+    '.$path.'\image\ms_temp.png ^
+    '.$path.'\image\ms_displace_map_girl_white_regular.png ^
+    -alpha set -virtual-pixel transparent ^
+    -compose displace -set option:compose:args -5x-5 -composite ^
+    -depth 16 ^
+    '.$path.'\image\ms_displaced_logo.png
+  
+     ');
+
+$process4->run();
+if (!$process4->isSuccessful()) {
+    throw new ProcessFailedException($process4);
+}
+    echo $process4->getOutput();
+    echo '<img src="\image\ms_displaced_logo.png">';
+
+    
+     $process5 = new Process('magick convert ^
+    '.$path.'\site-images\U-one-16.jpg[303x322+610+531] ^
+    -colorspace gray -auto-level ^
+    -blur 0x4 ^
+    -contrast-stretch 0,30%% ^
+    -depth 16 ^
+    '.$path.'\image\ms_light_map_girl_white_regular.png
+     ');
+
+/*         Makao sam komandu -separate proces 5 */
+
+$process5->run();
+if (!$process5->isSuccessful()) {
+    throw new ProcessFailedException($process5);
+}
+    echo $process5->getOutput();
+    echo '<img src="\image\ms_light_map_girl_white_regular.png">'; 
+    
+    $process6 = new Process('magick convert ^
+    '.$path.'\image\ms_displaced_logo.png ^
+    -channel matte -separate ^
+    '.$path.'\image\ms_logo_displace_mask.png
+     ');
+
+$process6->run();
+if (!$process6->isSuccessful()) {
+    throw new ProcessFailedException($process6);
+}
+    echo $process6->getOutput();
+    echo '<img src="\image\ms_logo_displace_mask.png">';
+    
+    $process7 = new Process('magick convert ^
+    '.$path.'\image\ms_displaced_logo.png ^
+    '.$path.'\image\ms_light_map_girl_white_regular.png ^
+    -compose Multiply -composite ^
+    '.$path.'\image\ms_logo_displace_mask.png ^
+    -compose CopyOpacity -composite ^
+    '.$path.'\image\ms_light_map_logo.png
+    ');
+
+$process7->run();
+if (!$process7->isSuccessful()) {
+   throw new ProcessFailedException($process7);
+}
+   echo $process7->getOutput();
+   echo '<img src="\image\ms_light_map_logo.png">';
+   
+   list($width, $height) = getimagesize($path.'\image\ms_light_map_logo.png');
+
+   
+   
+ $X = 610 + (303-$width)/2;
+ $Y = 531 +  (322-$height)/2;
+ 
+  
+  $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $name = mt_rand(1000000, 9999999)
+      . mt_rand(1000000, 9999999)
+      . $characters[rand(0, strlen($characters) - 1)];
+  
+  $string = str_shuffle($name);
+  $string .=  round(microtime(true) * 1000);
+  $imageRandom = '/' . $string . '.png';
+
+ /*  */
+
+   $process8 = new Process('magick convert ^
+   '.$path.'\site-images\U-one-16.jpg ^
+   '.$path.'\image\ms_light_map_logo.png ^
+   -geometry +'.$X.'+'.$Y.' ^
+   -compose over -composite ^
+   -depth 16 ^
+   '.$path.'\image' .$imageRandom. '
+   ');
+
+$process8->run();
+if (!$process8->isSuccessful()) {
+  throw new ProcessFailedException($process8);
+}
+
+
+$imageRandom = ltrim($imageRandom, '/');
+
+$check = DB::table('images')->insert([
+'name' => $imageRandom, 'product_id' => $id, 'color' => 'white', 'position' => 'front', 'gender' => 'female'
+  ]);
+
+return $check;
+    dd();
+    $path = public_path();
+
+
 
     exec('magick convert '.$path.'\site-images\U-one-16.jpg 
     -resize 1500x2500
@@ -191,180 +366,7 @@ return $check;
 
 
     dd();
-        $path = public_path();
-
-
-         $process0 = new Process('magick convert '.$path.'\site-images\U-one-16.jpg 
-         -resize 1500x2500
-         '.$path.'\site-images\U-one-16.jpg 
-          ');
-          $process0->run();
-          if (!$process0->isSuccessful()) {
-              throw new ProcessFailedException($process0);
-          } 
-  
-          $process = new Process('magick convert   '.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
-         -colorspace gray 
-         -blur 10x250 
-         -auto-level
-         '.$path.'\image\displace_map.png
-          ');
-    
-     $process->run();
-     if (!$process->isSuccessful()) {
-         throw new ProcessFailedException($process);
-     }
-         echo $process->getOutput();
-         echo '<img src="\image\displace_map.png">'; 
-  
-         $imageName1 = "/" .  $image; 
-  
-         $process1 = new Process('magick convert   '.$path.'\design' . $imageName1 . '
-         -resize 300x300
-         '.$path.'\resized_pictures' . $imageName1 . '
-         '); 
-         
-      $process1->run();
-       if (!$process1->isSuccessful()) {
-           throw new ProcessFailedException($process1);    
-     } 
-  
-  
-         $process2 = new Process('magick convert 
-         '.$path.'\resized_pictures' . $imageName1 . '
-         -bordercolor transparent -border 12x12 -thumbnail 303x322 
-         '.$path.'\image\ms_temp.png
-          ');
-    
-     $process2->run();
-     if (!$process1->isSuccessful()) {
-         throw new ProcessFailedException($process2);
-     }
-         echo $process2->getOutput();
-         echo '<img src="\image\ms_temp.png">';
-  
-        
-  
-          $process3 = new Process('magick convert 
-         '.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
-         -colorspace gray -blur 10x250 -auto-level 
-         -depth 16 
-         '.$path.'\image\ms_displace_map_girl_white_regular.png
-          ');
-    
-     $process3->run();
-     if (!$process3->isSuccessful()) {
-         throw new ProcessFailedException($process3);
-     }
-         echo $process3->getOutput();
-         echo '<img src="\image\ms_displace_map_girl_white_regular.png">'; 
-        
-         $process4 = new Process('magick convert ^
-         '.$path.'\image\ms_temp.png ^
-         '.$path.'\image\ms_displace_map_girl_white_regular.png ^
-         -alpha set -virtual-pixel transparent ^
-         -compose displace -set option:compose:args -5x-5 -composite ^
-         -depth 16 ^
-         '.$path.'\image\ms_displaced_logo.png
-       
-          ');
-    
-     $process4->run();
-     if (!$process4->isSuccessful()) {
-         throw new ProcessFailedException($process4);
-     }
-         echo $process4->getOutput();
-         echo '<img src="\image\ms_displaced_logo.png">';
-  
-         
-          $process5 = new Process('magick convert ^
-         '.$path.'\site-images\U-one-16.jpg[303x322+610+531] ^
-         -colorspace gray -auto-level ^
-         -blur 0x4 ^
-         -contrast-stretch 0,30%% ^
-         -depth 16 ^
-         '.$path.'\image\ms_light_map_girl_white_regular.png
-          ');
-  
-  /*         Makao sam komandu -separate proces 5 */
-    
-     $process5->run();
-     if (!$process5->isSuccessful()) {
-         throw new ProcessFailedException($process5);
-     }
-         echo $process5->getOutput();
-         echo '<img src="\image\ms_light_map_girl_white_regular.png">'; 
-         
-         $process6 = new Process('magick convert ^
-         '.$path.'\image\ms_displaced_logo.png ^
-         -channel matte -separate ^
-         '.$path.'\image\ms_logo_displace_mask.png
-          ');
-    
-     $process6->run();
-     if (!$process6->isSuccessful()) {
-         throw new ProcessFailedException($process6);
-     }
-         echo $process6->getOutput();
-         echo '<img src="\image\ms_logo_displace_mask.png">';
-         
-         $process7 = new Process('magick convert ^
-         '.$path.'\image\ms_displaced_logo.png ^
-         '.$path.'\image\ms_light_map_girl_white_regular.png ^
-         -compose Multiply -composite ^
-         '.$path.'\image\ms_logo_displace_mask.png ^
-         -compose CopyOpacity -composite ^
-         '.$path.'\image\ms_light_map_logo.png
-         ');
-   
-    $process7->run();
-    if (!$process7->isSuccessful()) {
-        throw new ProcessFailedException($process7);
-    }
-        echo $process7->getOutput();
-        echo '<img src="\image\ms_light_map_logo.png">';
-        
-        list($width, $height) = getimagesize($path.'\image\ms_light_map_logo.png');
-  
-        
-        
-      $X = 610 + (303-$width)/2;
-      $Y = 531 +  (322-$height)/2;
       
-       
-       $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-       $name = mt_rand(1000000, 9999999)
-           . mt_rand(1000000, 9999999)
-           . $characters[rand(0, strlen($characters) - 1)];
-       
-       $string = str_shuffle($name);
-       $string .=  round(microtime(true) * 1000);
-       $imageRandom = '/' . $string . '.png';
- 
-      /*  */
- 
-        $process8 = new Process('magick convert ^
-        '.$path.'\site-images\U-one-16.jpg ^
-        '.$path.'\image\ms_light_map_logo.png ^
-        -geometry +'.$X.'+'.$Y.' ^
-        -compose over -composite ^
-        -depth 16 ^
-        '.$path.'\image' .$imageRandom. '
-        ');
-  
-   $process8->run();
-   if (!$process8->isSuccessful()) {
-       throw new ProcessFailedException($process8);
-   }
-
-   
-   $imageRandom = ltrim($imageRandom, '/');
-
-   $check = DB::table('images')->insert([
-    'name' => $imageRandom, 'product_id' => $id, 'color' => 'white', 'position' => 'front', 'gender' => 'female'
-       ]);
-
-   return $check;
 
     }
 
@@ -5809,14 +5811,59 @@ if (!$process8->isSuccessful()) {
 
     public static function canvas($id, $image){
 
+        $imageName1 = "/" .  $image; 
+    
+        $path = public_path();
+   
+   
+        $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
+       /*  $src1->resizeImage(400, null,\Imagick::FILTER_LANCZOS,1); */
+        $src1->writeImage(public_path("resized_pictures". $imageName1)); 
+        $src2 = new \Imagick(public_path("\site-images\Canvas-Art-BG01-1200.png"));
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_MULTIPLY,320,180);
+        $src2->writeImage(public_path("image\multiply_canvas-new.png"));
+        echo '<img src="\image\multiply_canvas-new.png">';
+   
+        $src3 = new \Imagick(public_path("\site-images\Canvas-Art-Mask01-1200.png"));
+        $src3->compositeImage($src2, \Imagick::COMPOSITE_DSTOVER,0,0);
       
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        
+        $string = str_shuffle($name);
+        $string .=  round(microtime(true) * 1000);
+        $imageRandom = '/' . $string . '.png';
+
+        $src3->writeImage(public_path("image" . $imageRandom));
+
+        
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'size' => 'main'
+        ]);
+     
+        return $check;
+
+ 
+
+      
+      
+
+     
+    }
+
+    public static function canvasThumb($id, $image){
+        
         $imageName1 = "/" .  $image; 
 
         $path = public_path();
    
    
-        $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
+       // $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
         $src1->writeImage(public_path("resized_pictures". $imageName1));
         $src2 = new \Imagick(public_path("\site-images\U1-Canvas_Slika-Maska.png"));
       
@@ -5830,214 +5877,19 @@ if (!$process8->isSuccessful()) {
         '.$path.'\image\ms_light_map-canvas.png
         ');
         
-        /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
-        -blur 0x3 ^
-        -contrast-stretch 0,50%% ^
-        -depth 16 ^  -negate  -channel A -blur 0x8*/
-        
-        $process5->run();
-        if (!$process5->isSuccessful()) {
-        throw new ProcessFailedException($process5);
-        }
-        echo $process5->getOutput();
-        echo '<img src="\image\ms_light_map-canvas.png">';
-        
-        $process6 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
-        -channel matte -separate ^
-        '.$path.'\image\ms_logo_displace_mask_canvas.png
-        ');
-        
-        
-        
-        $process6->run();
-        if (!$process6->isSuccessful()) {
-        throw new ProcessFailedException($process6);
-        }
-        echo $process6->getOutput();
-        echo '<img src="\image\ms_logo_displace_mask_canvas.png">';
-        
-        $process7 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
-        '.$path.'\image\ms_light_map-canvas.png ^
-        -geometry -350-250 ^
-        -compose Multiply -composite ^
-        '.$path.'\image\ms_logo_displace_mask_canvas.png ^
-        -compose CopyOpacity -composite ^
-        '.$path.'\image\ms_light_map_logo_canvas.png
-        ');
-        
-        $process7->run();
-        if (!$process7->isSuccessful()) {
-        throw new ProcessFailedException($process7);
-        }
-        echo $process7->getOutput();
-        echo '<img src="\image\ms_light_map_logo_canvas.png">';
-   
-   
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,350,250);
-        $src2->writeImage(public_path("image\image-canvas.png"));
-        echo '<img src="\image\image-canvas.png">';
-        $src4 = new \Imagick(public_path("site-images/U1-Canvas_Slika-BG.png"));
-       /*  $src4->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src4->writeImage(public_path("\site-images/Textura-Canvas-mockup.png")); */
-         $src3 = new \Imagick(public_path("image/image-canvas.png"));
-         $src3->compositeImage($src4, \Imagick::COMPOSITE_MULTIPLY,0,0);
-
-         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-         $name = mt_rand(1000000, 9999999)
-             . mt_rand(1000000, 9999999)
-             . $characters[rand(0, strlen($characters) - 1)];
-         
-         $string = str_shuffle($name);
-         $string .=  round(microtime(true) * 1000);
-         $imageRandom = '/' . $string . '.png';
-
-         $src3->writeImage(public_path("image" . $imageRandom));
-
-         $imageRandom = ltrim($imageRandom, '/');
-
-         $check = DB::table('images')->insert([
-          'name' => $imageRandom, 'product_id' => $id, 'size' => 'main'
-         ]);
-      
-         return $check;
-        dd();
-        $imageName1 = "/" .  $image; 
-
-        $path = public_path();
-   
-   
-        $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(700, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("resized_pictures". $imageName1));
-        $src2 = new \Imagick(public_path("\site-images\Canvas-mockup-thumbnail.png"));
-        $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src2->writeImage(public_path("\site-images\Canvas-mockup-thumbnail.png"));
-        
-        $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5"); 
-        
-        $process5 = new Process('magick convert ^
-        '.$path.'\site-images\Canvas-mockup-thumbnail.png ^
-        -channel A -blur 0x8
-        -compose hardlight
-        '.$path.'\image\ms_light_map-canvas.png
-        ');
-        
-        /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
-        -blur 0x3 ^
-        -contrast-stretch 0,50%% ^
-        -depth 16 ^  -negate  -channel A -blur 0x8*/
-        
-        $process5->run();
-        if (!$process5->isSuccessful()) {
-        throw new ProcessFailedException($process5);
-        }
-        echo $process5->getOutput();
-        echo '<img src="\image\ms_light_map-canvas.png">';
-        
-        $process6 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
-        -channel matte -separate ^
-        '.$path.'\image\ms_logo_displace_mask_canvas.png
-        ');
-        
-        
-        
-        $process6->run();
-        if (!$process6->isSuccessful()) {
-        throw new ProcessFailedException($process6);
-        }
-        echo $process6->getOutput();
-        echo '<img src="\image\ms_logo_displace_mask_canvas.png">';
-        
-        $process7 = new Process('magick convert ^
-        '.$path.'\resized_pictures'. $imageName1. ' ^
-        '.$path.'\image\ms_light_map-canvas.png ^
-        -geometry -390-450 ^
-        -compose Multiply -composite ^
-        '.$path.'\image\ms_logo_displace_mask_canvas.png ^
-        -compose CopyOpacity -composite ^
-        '.$path.'\image\ms_light_map_logo_canvas.png
-        ');
-        
-        $process7->run();
-        if (!$process7->isSuccessful()) {
-        throw new ProcessFailedException($process7);
-        }
-        echo $process7->getOutput();
-        echo '<img src="\image\ms_light_map_logo_canvas.png">';
-   
-   
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,390,450);
-        $src2->writeImage(public_path("image\image-canvas.png"));
-        echo '<img src="\image\image-canvas.png">';
-        $src4 = new \Imagick(public_path("site-images/Textura-Canvas-mockup.png"));
-        $src4->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src4->writeImage(public_path("\site-images/Textura-Canvas-mockup.png"));
-         $src3 = new \Imagick(public_path("image/image-canvas.png"));
-         $src3->compositeImage($src4, \Imagick::COMPOSITE_MULTIPLY,0,0);
-
-         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-         $name = mt_rand(1000000, 9999999)
-             . mt_rand(1000000, 9999999)
-             . $characters[rand(0, strlen($characters) - 1)];
-         
-         $string = str_shuffle($name);
-         $string .=  round(microtime(true) * 1000);
-         $imageRandom = '/' . $string . '.png';
-
-         $src3->writeImage(public_path("image" . $imageRandom));
-   
-         $imageRandom = ltrim($imageRandom, '/');
-
-         $check = DB::table('images')->insert([
-          'name' => $imageRandom, 'product_id' => $id, 'size' => 'main'
-         ]);
-      
-         return $check;
-
      
-    }
-
-    public static function canvasThumb($id, $image){
-        $imageName1 = "/" .  $image; 
-
-        $path = public_path();
-   
-   
-        $src1 = new \Imagick(public_path("design". $imageName1));
-        $src1->resizeImage(600, null,\Imagick::FILTER_LANCZOS,1); 
-        $src1->writeImage(public_path("resized_pictures". $imageName1));
-        $src2 = new \Imagick(public_path("\site-images\U1-Canvas_Slika-Maska.png"));
-       /*  $src2->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src2->writeImage(public_path("\site-images\Canvas-mockup-thumbnail.png")); */
-        
-        $src1->setImageArtifact('compose:args', "1,0,-0.5,0.5"); 
-        
-        $process5 = new Process('magick convert ^
-        '.$path.'\site-images\Canvas-mockup-thumbnail.png ^
-        -channel A -blur 0x8
-        -compose hardlight
-        '.$path.'\image\ms_light_map-canvas-thumb.png
-        ');
-        
-        /* Makao sam komandu -separate proces 5   -colorspace gray -auto-level ^
-        -blur 0x3 ^
-        -contrast-stretch 0,50%% ^
-        -depth 16 ^  -negate  -channel A -blur 0x8*/
         
         $process5->run();
         if (!$process5->isSuccessful()) {
         throw new ProcessFailedException($process5);
         }
         echo $process5->getOutput();
-        echo '<img src="\image\ms_light_map-canvas-thumb.png">';
+        echo '<img src="\image\ms_light_map-canvas.png">';
         
         $process6 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
         -channel matte -separate ^
-        '.$path.'\image\ms_logo_displace_mask_canvas_thumb.png
+        '.$path.'\image\ms_logo_displace_mask_canvas.png
         ');
         
         
@@ -6047,16 +5899,16 @@ if (!$process8->isSuccessful()) {
         throw new ProcessFailedException($process6);
         }
         echo $process6->getOutput();
-        echo '<img src="\image\ms_logo_displace_mask_canvas_thumb.png">';
+        echo '<img src="\image\ms_logo_displace_mask_canvas.png">';
         
         $process7 = new Process('magick convert ^
         '.$path.'\resized_pictures'. $imageName1. ' ^
-        '.$path.'\image\ms_light_map-canvas-thumb.png ^
-        -geometry -300-230 ^
+        '.$path.'\image\ms_light_map-canvas.png ^
+        -geometry -330-175 ^
         -compose Multiply -composite ^
-        '.$path.'\image\ms_logo_displace_mask_canvas_thumb.png ^
+        '.$path.'\image\ms_logo_displace_mask_canvas.png ^
         -compose CopyOpacity -composite ^
-        '.$path.'\image\ms_light_map_logo_canvas_thumb.png
+        '.$path.'\image\ms_light_map_logo_canvas.png
         ');
         
         $process7->run();
@@ -6064,16 +5916,14 @@ if (!$process8->isSuccessful()) {
         throw new ProcessFailedException($process7);
         }
         echo $process7->getOutput();
-        echo '<img src="\image\ms_light_map_logo_canvas_thumb.png">';
+        echo '<img src="\image\ms_light_map_logo_canvas.png">';
    
    
-        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,300,230);
-        $src2->writeImage(public_path("image\image-canvas-thumb.png"));
-        echo '<img src="\image\image-canvas-thumb.png">';
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER ,330,175);
+        $src2->writeImage(public_path("image\image-canvas.png"));
+        echo '<img src="\image\image-canvas.png">';
         $src4 = new \Imagick(public_path("site-images/U1-Canvas_Slika-BG.png"));
-       /*  $src4->resizeImage(1500, 1500,\Imagick::FILTER_LANCZOS,1); 
-        $src4->writeImage(public_path("\site-images/Textura-Canvas-mockup.png")); */
-         $src3 = new \Imagick(public_path("image/image-canvas-thumb.png"));
+         $src3 = new \Imagick(public_path("image/image-canvas.png"));
          $src3->compositeImage($src4, \Imagick::COMPOSITE_MULTIPLY,0,0);
 
          $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -6085,7 +5935,7 @@ if (!$process8->isSuccessful()) {
          $string .=  round(microtime(true) * 1000);
          $imageRandom = '/' . $string . '.png';
 
-         $src3->writeImage(public_path("image".$imageRandom));
+         $src3->writeImage(public_path("image" . $imageRandom));
 
          $imageRandom = ltrim($imageRandom, '/');
 

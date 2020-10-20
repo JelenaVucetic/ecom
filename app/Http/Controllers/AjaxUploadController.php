@@ -48,7 +48,7 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
-        
+      
         $data = $request->all();
 
         $picture = $data['picture'];
@@ -224,24 +224,11 @@ if($original == "Poster"){
  }
 
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
-    ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
- //   ImageMagick::womanNavyTshirt($idProduct, $originalImagePath);
-   // ImageMagick::womanRedTshirt($idProduct, $originalImagePath);
-  //  ImageMagick::womanBlackTshirt($idProduct, $originalImagePath);
-    /* ImageModel::womanRedBackTshirt($idProduct, $originalImagePath);
-    ImageModel::womanNavyBackTshirt($idProduct, $originalImagePath);
-    ImageModel::womanBlackBackTshirt($idProduct, $originalImagePath);
-    ImageModel::womanWhiteBackTshirt($idProduct, $originalImagePath); */
+    $this->createTshirtMockupWoman($idProduct, $originalImagePath, $data['checkTshirts']);
+    
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
-  //  ImageMagick::manWhiteTshirt($idProduct, $originalImagePath);
-  //  ImageMagick::manNavyTshirt($idProduct, $originalImagePath);
-  //  ImageMagick::manRedTshirt($idProduct, $originalImagePath);
-  //  ImageMagick::manBlackTshirt($idProduct, $originalImagePath);
-   /*  ImageModel::manRedBackTshirt($idProduct, $originalImagePath);
-    ImageModel::manNavyBackTshirt($idProduct, $originalImagePath);
-    ImageModel::manBlackBackTshirt($idProduct, $originalImagePath);
-    ImageModel::manWhiteBackTshirt($idProduct, $originalImagePath); */
+    $this->createTshirtMockupMan($idProduct, $originalImagePath, $data['checkTshirts']);
 }
 if($original=='IPhone'){
     ImageModel::iphonePhoneCase($idProduct, $imageCanvas);
@@ -386,6 +373,35 @@ echo $checkImage;
     }
 
 
+    public static function createTshirtMockupWoman($idProduct, $originalImagePath,$array){
+        if(in_array("white", $array,true)){
+            ImageModel::womanWhiteTshirt($idProduct, $originalImagePath);
+        }
+        if(in_array("black", $array,true)){
+            ImageModel::womanBlackTshirt($idProduct, $originalImagePath);
+        }
+        if(in_array("navy", $array,true)){
+            ImageModel::womanNavyTshirt($idProduct, $originalImagePath);
+        }
+        if(in_array("red", $array,true)){
+            ImageModel::womanRedTshirt($idProduct, $originalImagePath);
+        } 
+    }
+
+    public static function createTshirtMockupMan($idProduct, $originalImagePath,$array){
+        if(in_array("white", $array,true)){
+            ImageModel::manWhiteTshirt($idProduct, $originalImagePath);
+        }
+        if(in_array("black", $array,true)){
+            ImageModel::manBlackTshirt($idProduct, $originalImagePath);
+        }
+        if(in_array("navy", $array,true)){
+            ImageModel::manNavyTshirt($idProduct, $originalImagePath);
+        }
+        if(in_array("red",$array ,true)){
+            ImageModel::manRedTshirt($idProduct, $originalImagePath);
+        } 
+    }
 
 
     function save1(Request $request){

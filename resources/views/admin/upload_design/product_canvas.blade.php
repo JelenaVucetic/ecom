@@ -2152,8 +2152,8 @@ function load(objects){
 fabric.Image.fromURL(objects, function(img) {
  
    imageForCanvas = img;
-   canvas22.setWidth(250);
-   canvas22.setHeight(300);
+   canvas22.setWidth(450);
+   canvas22.setHeight(550);
    canvas22.add(imageForCanvas);
    imageForCanvas.center();
    image19.src = canvas22.toDataURL();

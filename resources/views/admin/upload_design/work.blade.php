@@ -369,20 +369,25 @@
           <div class="product-options1">
   
   
-            {{--   <form method="post" id="upload-form1" enctype="multipart/form-data">
-                {{ csrf_field() }}
-               <input type="file" name="file1" >
-               <input type="submit" value="Upload" name="submit">
-               </form>
-   --}}
+            <div class="select-color" id="tshirt-check">
+              <h5>Color</h5>
+              <input type="checkbox" class="check-tshirt" name="white" value="white" checked>
+              <label for="white">White</label>
+              <input type="checkbox" class="check-tshirt" name="red" value="red" checked>
+              <label for="red">Red</label>
+              <input type="checkbox" class="check-tshirt" name="black" value="black" checked>
+              <label for="black">Black</label>
+              <input type="checkbox" class="check-tshirt" name="navy" value="navy" checked>
+              <label for="navy">Navy</label>
+            </div>
               <div class="color-choose">
   
                   <div class="container">
                       <div class="output" id="output"></div>
   
                       <div class="result-wrp">
-                         <p>Choose a color</p>
-                        <input type="color" id="color1">
+                       
+                       {{--   <p>Choose a color</p> <input type="color" id="color1"> --}}
                       </div>
                       <label  class="scale-lable">
                           <span>Scale:</span>
@@ -2819,8 +2824,27 @@
           }
     });
   }
-  
-  $("#capture").click(function(event){
+
+  function checkTshirt(){
+    var wall = document.getElementById('enabled-product1');
+    if(wall.classList.contains("enable")){
+      if ($("#tshirt-check input:checkbox:checked").length > 0)
+      {
+        return true;
+      }
+      else
+      {
+      alert('morate izabrati boju majice');
+      return false;
+      }
+    }else{
+      return true;
+    }
+    
+  } 
+
+
+function checkWallpapers(){
   var wall = document.getElementById('enabled-product16');
     if(wall.classList.contains("enable")){
       var check = document.getElementsByClassName("check-wallpaper");
@@ -2829,26 +2853,45 @@
             repeat = check[0].value;
             large = check[1].value;
             var checkArray = [repeat, large];
-            sendProducts(checkArray);
+           // sendProducts(checkArray);
+            return true;
            }else if(check[0].checked){
+            return true;
             repeat = check[0].value;
             var checkArray = [repeat];
-            sendProducts(checkArray);
+            return true;
+           // sendProducts(checkArray);
            }else if(check[1].checked){
             large = check[1].value;
             var checkArray = [large];
-            sendProducts(checkArray);
+            return true;
+           // sendProducts(checkArray);
            }
           }else{
-            alert("Izaberite opciju za wallpaper")
+            alert("Izaberite opciju za wallpaper");
+            return false;
           }
     }else{
-            sendProducts("null");
+           // sendProducts("null");
+            return true;
     }
+}
   
+  $("#capture").click(function(event){
+    if(checkWallpapers() && checkTshirt()){
+      var wallpaper = new Array();
+      $('.check-wallpaper:checked').each(function(){
+        wallpaper.push($(this).val());
+      });
+      var tshirt = new Array();
+      $('.check-tshirt:checked').each(function(){
+        tshirt.push($(this).val());
+      });
+      sendProducts(wallpaper,tshirt);
+    }
   });
 
-function sendProducts(check){
+function sendProducts(check, checkTshirts){
 window.scrollTo(0,0);
 time = 500;
 var title = document.getElementById('title').value;
@@ -2859,6 +2902,8 @@ var mockUpCanvas = document.getElementById("canvasMockUp");
 var gender = $('input[name=gender]:checked').val();
 var count = 0;
 var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
+/* var check = $('.check-wallpaper:checked').serialize();
+var checkTshirts = $('.check-tshirt:checked').serialize(); */
 
 Array.prototype.forEach.call(els, function(el) {
   if( el.getAttribute('value')=='0'){
@@ -2914,7 +2959,8 @@ if( el.getAttribute('value')=='0'){
                     category : category,
                     picture : picture,
                     title : title,
-                    check : check
+                    check : check,
+                    checkTshirts : checkTshirts
                 },
                 beforeSend: function(){
                   // Show image container

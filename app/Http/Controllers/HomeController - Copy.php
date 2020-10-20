@@ -226,9 +226,10 @@ class HomeController extends Controller
             $imageBack = "Framed-Prints-Art-White-A4-Mask01-1080.png";
         }elseif($find_cat->category->name=="Canvas Art"){
             $imageFront = DB::table('images')->where([
-                ['product_id',"=", $id]
+                ['product_id',"=", $id],
+                ['size', 'main']
             ])->first();
-            $imageBack = "Canvas-mockup-thumbnail.png";
+            $imageBack = "Canvas-Art-BG01-1200.png";
         }elseif($find_cat->category->name=="Wallpapers"){
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
