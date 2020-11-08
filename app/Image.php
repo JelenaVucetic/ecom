@@ -48,6 +48,152 @@ class Image extends Model
     $path = public_path();
 
 
+
+    exec('magick convert '.$path.'\site-images\U-one-16.jpg 
+    -resize 1500x2500
+    '.$path.'\site-images\U-one-16.jpg 
+     ');
+
+     exec('magick convert   '.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
+     -colorspace gray 
+     -blur 10x250 
+     -auto-level
+     '.$path.'\image\displace_map_jak.png
+      ');
+
+ 
+
+   $imageName1 = "/" .  $image; 
+
+
+
+      exec('magick convert   '.$path.'\design' . $imageName1 . '
+      -resize 300x300
+      '.$path.'\resized_pictures' . $imageName1 . '
+      '); 
+
+
+
+
+    exec('magick convert 
+    '.$path.'\resized_pictures' . $imageName1 . '
+    -bordercolor transparent -border 12x12 -thumbnail 303x322 
+    '.$path.'\image\ms_temp.png
+     ');
+
+
+exec('magick convert 
+'.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
+-colorspace gray -blur 10x250 -auto-level 
+-depth 16 
+'.$path.'\image\ms_displace_map_girl_white_regular.png
+');
+  
+
+exec('magick convert 
+'.$path.'\image\ms_temp.png 
+'.$path.'\image\ms_displace_map_girl_white_regular.png 
+-alpha set -virtual-pixel transparent 
+-compose displace -set option:compose:args -5x-5 -composite 
+-depth 16 
+'.$path.'\image\ms_displaced_logo.png
+');
+
+   
+   
+
+exec('magick convert 
+'.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
+-colorspace gray -auto-level 
+-blur 0x4 
+-contrast-stretch 0,30%% 
+-depth 16 
+'.$path.'\image\ms_light_map_girl_white_regular.png
+');
+   
+  
+
+  exec('magick convert 
+  '.$path.'\image\ms_displaced_logo.png 
+  -channel matte -separate 
+  '.$path.'\image\ms_logo_displace_mask.png
+   ');
+   
+ 
+
+exec('magick convert 
+'.$path.'\image\ms_displaced_logo.png 
+'.$path.'\image\ms_light_map_girl_white_regular.png 
+-compose Multiply -composite 
+'.$path.'\image\ms_logo_displace_mask.png 
+-compose CopyOpacity -composite 
+'.$path.'\image\ms_light_map_logo.png
+');
+  
+  list($width, $height) = getimagesize($path.'\image\ms_light_map_logo.png');
+
+  
+  
+$X = 610 + (303-$width)/2;
+$Y = 531 +  (322-$height)/2;
+
+ 
+ $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+ $name = mt_rand(1000000, 9999999)
+     . mt_rand(1000000, 9999999)
+     . $characters[rand(0, strlen($characters) - 1)];
+ 
+ $string = str_shuffle($name);
+ $string .=  round(microtime(true) * 1000);
+ $imageRandom = '/' . $string . '.png';
+
+
+  
+
+/* exec('magick convert 
+'.$path.'\site-images\U-one-16.jpg 
+'.$path.'\image\ms_light_map_logo.png 
+-geometry +'.$X.'+'.$Y.' 
+-compose over -composite 
+-depth 16 
+'.$path.'\image' .$imageRandom. '
+'); */
+
+$exec = 'magick convert 
+'.$path.'\site-images\U-one-16.jpg 
+'.$path.'\image\ms_light_map_logo.png 
+-geometry +'.$X.'+'.$Y.' 
+-compose over -composite 
+-depth 16 
+'.$path.'\image' .$imageRandom. '
+';
+
+exec($exec);
+
+$process = Process::fromShellCommandline('magick convert 
+'.$path.'\site-images\U-one-16.jpg 
+'.$path.'\image\ms_light_map_logo.png 
+-geometry +'.$X.'+'.$Y.' 
+-compose over -composite 
+-depth 16 
+'.$path.'\image' .$imageRandom. '
+');
+
+$imageRandom = ltrim($imageRandom, '/');
+
+// move(public_path('image'), $imageRandom );
+
+$check = DB::table('images')->insert([
+'name' => $imageRandom, 'product_id' => $id, 'color' => 'white', 'position' => 'front', 'gender' => 'female'
+ ]);
+
+return $check;
+
+
+    dd();
+    $path = public_path();
+
+
     $process0 = new Process('magick convert '.$path.'\site-images\U-one-16.jpg 
     -resize 1500x2500
     '.$path.'\site-images\U-one-16.jpg 
@@ -220,152 +366,7 @@ $check = DB::table('images')->insert([
 
 return $check;
     dd();
-    $path = public_path();
-
-
-
-    exec('magick convert '.$path.'\site-images\U-one-16.jpg 
-    -resize 1500x2500
-    '.$path.'\site-images\U-one-16.jpg 
-     ');
-
-     exec('magick convert   '.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
-     -colorspace gray 
-     -blur 10x250 
-     -auto-level
-     '.$path.'\image\displace_map_jak.png
-      ');
-
- 
-
-   $imageName1 = "/" .  $image; 
-
-
-
-      exec('magick convert   '.$path.'\design' . $imageName1 . '
-      -resize 300x300
-      '.$path.'\resized_pictures' . $imageName1 . '
-      '); 
-
-
-
-
-    exec('magick convert 
-    '.$path.'\resized_pictures' . $imageName1 . '
-    -bordercolor transparent -border 12x12 -thumbnail 303x322 
-    '.$path.'\image\ms_temp.png
-     ');
-
-
-exec('magick convert 
-'.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
--colorspace gray -blur 10x250 -auto-level 
--depth 16 
-'.$path.'\image\ms_displace_map_girl_white_regular.png
-');
-  
-
-exec('magick convert 
-'.$path.'\image\ms_temp.png 
-'.$path.'\image\ms_displace_map_girl_white_regular.png 
--alpha set -virtual-pixel transparent 
--compose displace -set option:compose:args -5x-5 -composite 
--depth 16 
-'.$path.'\image\ms_displaced_logo.png
-');
-
    
-   
-
-exec('magick convert 
-'.$path.'\site-images\U-one-16.jpg[303x322+610+531] 
--colorspace gray -auto-level 
--blur 0x4 
--contrast-stretch 0,30%% 
--depth 16 
-'.$path.'\image\ms_light_map_girl_white_regular.png
-');
-   
-  
-
-  exec('magick convert 
-  '.$path.'\image\ms_displaced_logo.png 
-  -channel matte -separate 
-  '.$path.'\image\ms_logo_displace_mask.png
-   ');
-   
- 
-
-exec('magick convert 
-'.$path.'\image\ms_displaced_logo.png 
-'.$path.'\image\ms_light_map_girl_white_regular.png 
--compose Multiply -composite 
-'.$path.'\image\ms_logo_displace_mask.png 
--compose CopyOpacity -composite 
-'.$path.'\image\ms_light_map_logo.png
-');
-  
-  list($width, $height) = getimagesize($path.'\image\ms_light_map_logo.png');
-
-  
-  
-$X = 610 + (303-$width)/2;
-$Y = 531 +  (322-$height)/2;
-
- 
- $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
- $name = mt_rand(1000000, 9999999)
-     . mt_rand(1000000, 9999999)
-     . $characters[rand(0, strlen($characters) - 1)];
- 
- $string = str_shuffle($name);
- $string .=  round(microtime(true) * 1000);
- $imageRandom = '/' . $string . '.png';
-
-
-  
-
-/* exec('magick convert 
-'.$path.'\site-images\U-one-16.jpg 
-'.$path.'\image\ms_light_map_logo.png 
--geometry +'.$X.'+'.$Y.' 
--compose over -composite 
--depth 16 
-'.$path.'\image' .$imageRandom. '
-'); */
-
-$exec = 'magick convert 
-'.$path.'\site-images\U-one-16.jpg 
-'.$path.'\image\ms_light_map_logo.png 
--geometry +'.$X.'+'.$Y.' 
--compose over -composite 
--depth 16 
-'.$path.'\image' .$imageRandom. '
-';
-
-exec($exec);
-
-$process = Process::fromShellCommandline('magick convert 
-'.$path.'\site-images\U-one-16.jpg 
-'.$path.'\image\ms_light_map_logo.png 
--geometry +'.$X.'+'.$Y.' 
--compose over -composite 
--depth 16 
-'.$path.'\image' .$imageRandom. '
-');
-
-$imageRandom = ltrim($imageRandom, '/');
-
-// move(public_path('image'), $imageRandom );
-
-$check = DB::table('images')->insert([
-'name' => $imageRandom, 'product_id' => $id, 'color' => 'white', 'position' => 'front', 'gender' => 'female'
- ]);
-
-return $check;
-
-
-    dd();
       
 
     }
@@ -4511,9 +4512,43 @@ if (!$process8->isSuccessful()) {
         $path = public_path();
    
        
-    
+        $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
+        $src1->resizeImage(550, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("resized_pictures". $imageName1)); 
+        $src2 = new \Imagick(public_path("\site-images\Huawei-P20-Bezpozadinecopy.png"));
+        
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 265, 130);
+        $src2->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src2 = $src2->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        $src2->setImageFormat('jpeg');
+        $src2->setImageCompressionQuality(90);
+        $imageRandom = Image::randomString();
        
-   
+        $src2->writeImage(public_path("image".$imageRandom)); 
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+            'name' => $imageRandom, 'product_id' => $id, 'color' => 'transparent', 'size' => "Huawei P20"
+           ]);
+        
+        $src3 = new \Imagick(public_path("\site-images\Huawei-P20-Bezpozadinecopy.png"));
+        $src3->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 265, 130);
+        $src3->setImageBackgroundColor('#000000');
+        $src3->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src3 = $src3->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        
+        $src3->setImageFormat("jpeg");
+        $src3->setImageCompressionQuality(95);
+        $imageRandom1 = Image::randomString();
+        $src3->writeImage(public_path('\image'. $imageRandom1)); 
+        $imageRandom1 = ltrim($imageRandom1, '/');
+
+        $check2 = DB::table('images')->insert([
+            'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black', 'size' => "Huawei P20"
+           ]);
+          
+           return $check2;
+   dd();
    $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
     $src1->resizeImage(550, null,\Imagick::FILTER_LANCZOS,1); 
    $src1->writeImage(public_path("design". $imageName1)); 
@@ -4804,9 +4839,42 @@ if (!$process8->isSuccessful()) {
   
         $path = public_path();
 
-       
+        $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
+        $src1->resizeImage(530, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("resized_pictures". $imageName1)); 
+        $src2 = new \Imagick(public_path("\site-images\Samsung-S20Plus-Bezpozadine.png"));
+        
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 280, 160);
+        $src2->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src2 = $src2->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        $src2->setImageFormat('jpeg');
+        $src2->setImageCompressionQuality(90);
+        $imageRandom = Image::randomString();
+        $src2->writeImage(public_path("image" . $imageRandom)); 
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+        'name' => $imageRandom, 'product_id' => $id, 'color' => 'transparent', 'size' => "Samsung Galaxy S20+"
+        ]);
+        
+        
+        $src3 = new \Imagick(public_path("\site-images\Samsung-S20Plus-Bezpozadine.png"));
+        $src3->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 280, 160);
+        $src3->setImageBackgroundColor('#000000');
+        $src3->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src3 = $src3->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        
+        $src3->setImageFormat("jpeg");
+        $src3->setImageCompressionQuality(95);
+        $imageRandom1 = Image::randomString();
+        $src3->writeImage(public_path('\image'. $imageRandom1)); 
+        $imageRandom1 = ltrim($imageRandom1, '/');
+
+        $check2 = DB::table('images')->insert([
+         'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black', 'size' => "Samsung Galaxy S20+"
+        ]);
     
-       
+       return $check2;
  
   $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
   $src1->resizeImage(550, null,\Imagick::FILTER_LANCZOS,1); 
@@ -5098,9 +5166,45 @@ if (!$process8->isSuccessful()) {
       
         $path = public_path();
 
-    
+        
+        $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
+        $src1->resizeImage(530, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("resized_pictures". $imageName1)); 
+        $src2 = new \Imagick(public_path("\site-images\Samsung-P20-Bezpozadine.png"));
+        
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 280, 160);
+        $src2->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src2 = $src2->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        $src2->setImageFormat('jpeg');
+        $src2->setImageCompressionQuality(90);
+        $imageRandom = Image::randomString();
+        $src2->writeImage(public_path("image" . $imageRandom)); 
+        $imageRandom = ltrim($imageRandom, '/');
+     
+        $check = DB::table('images')->insert([
+         'name' => $imageRandom, 'product_id' => $id, 'color' => 'transparent', 'size' => "Samsung Galaxy S20"
+        ]);
+        
+        
+        $src3 = new \Imagick(public_path("\site-images\Samsung-P20-Bezpozadine.png"));
+        $src3->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 280, 160);
+        $src3->setImageBackgroundColor('#000000');
+        $src3->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src3 = $src3->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        
+        $src3->setImageFormat("jpeg");
+        $src3->setImageCompressionQuality(95);
+        $imageRandom1 = Image::randomString();
+        $src3->writeImage(public_path('\image' . $imageRandom1)); 
+        $imageRandom1 = ltrim($imageRandom1, '/');
+
+        $check2 = DB::table('images')->insert([
+         'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black', 'size' => "Samsung Galaxy S20"
+        ]);
        
- 
+        return $check2;
+       
+ dd();
   $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
   $src1->resizeImage(500, null,\Imagick::FILTER_LANCZOS,1); 
   $src1->writeImage(public_path("resized_pictures". $imageName1));
@@ -5395,7 +5499,7 @@ if (!$process8->isSuccessful()) {
   $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
    $src1->resizeImage(550, null,\Imagick::FILTER_LANCZOS,1); 
   $src1->writeImage(public_path("resized_pictures". $imageName1)); 
- $src2 = new \Imagick(public_path("\site-images\Iphone-II-Pro-Bezpozadine1.png"));
+ $src2 = new \Imagick(public_path("\site-images\Iphone-XI-Pro-Providna.png"));
  $src3 = new \Imagick(public_path("\site-images\Iphone-II-Pro.jpg"));
  
  
@@ -5467,7 +5571,7 @@ if (!$process8->isSuccessful()) {
  $string .=  round(microtime(true) * 1000);
  $imageRandom1 = '/' . $string . '.png'; 
 
- $src2->writeImage(public_path("image". $imageRandom1));
+// $src2->writeImage(public_path("image". $imageRandom1));
 
  $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
  $name = mt_rand(1000000, 9999999)
@@ -5478,7 +5582,8 @@ if (!$process8->isSuccessful()) {
  $string .=  round(microtime(true) * 1000);
  $imageRandom = '/' . $string . '.png';
 
-  $process5 = new Process('magick  convert '.$path.'\image\output1.png -background "rgb(6, 6, 6)" 
+
+  $process5 = new Process('magick  convert '.$path.'\image\output1.png -background "rgb(64, 79, 68)" 
   -flatten  '.$path.'\image'.$imageRandom.'
  ');
     $process5->run();
@@ -5508,7 +5613,7 @@ if (!$process8->isSuccessful()) {
  -compose ATop -composite ^
  
  -depth 16 ^
- '.$path.'\image\ms_product_phone1.png
+ '.$path.'\image'.$imageRandom1.'
  ');
  
  $process8->run();
@@ -5522,13 +5627,13 @@ if (!$process8->isSuccessful()) {
  $imageRandom1 = ltrim($imageRandom1, '/');
 
  $check1 = DB::table('images')->insert([
-  'name' => $imageRandom1, 'product_id' => $id, 'color' => 'transparent', 'size' => 'iPhone XI Pro'
+  'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black', 'size' => 'iPhone XI Pro'
  ]);
 
  $imageRandom = ltrim($imageRandom, '/');
 
  $check = DB::table('images')->insert([
-  'name' => $imageRandom, 'product_id' => $id, 'color' => 'black', 'size' => 'iPhone XI Pro'
+  'name' => $imageRandom, 'product_id' => $id, 'color' => 'transparent', 'size' => 'iPhone XI Pro'
  ]);
  return $check;
 
@@ -5662,6 +5767,17 @@ if (!$process8->isSuccessful()) {
 
     }
 
+    public static function randomString(){
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $name = mt_rand(1000000, 9999999)
+            . mt_rand(1000000, 9999999)
+            . $characters[rand(0, strlen($characters) - 1)];
+        
+        $string = str_shuffle($name);
+        $string .=  round(microtime(true) * 1000);
+        return $imageRandom = '/' . $string . '.jpg';
+    }
+
 
     public static function customCase($id, $image){
         $imageName1 = "/" .  $image; 
@@ -5669,9 +5785,49 @@ if (!$process8->isSuccessful()) {
         $path = public_path();
    
        
-    
+        $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
+        $src1->resizeImage(530, null,\Imagick::FILTER_LANCZOS,1); 
+        $src1->writeImage(public_path("resized_pictures". $imageName1)); 
+        $src2 = new \Imagick(public_path("\site-images\Custommaska.png"));
+        
+        $src2->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 280, 160);
+        $src2->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src2 = $src2->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        $src2->setImageFormat('jpeg');
+        $src2->setImageCompressionQuality(90);
+        $imageRandom = Image::randomString();
+
+        $src2->writeImage(public_path("image". $imageRandom)); 
+
+        $imageRandom = ltrim($imageRandom, '/');
+
+        $check = DB::table('images')->insert([
+            'name' => $imageRandom, 'product_id' => $id, 'color' => 'transparent' ,'size' => 'custom'
+           ]);
+        
+        
+        $src3 = new \Imagick(public_path("\site-images\Custommaska.png"));
+        $src3->compositeImage($src1, \Imagick::COMPOSITE_DSTOVER, 280, 160);
+        $src3->setImageBackgroundColor('#000000');
+        $src3->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
+        $src3 = $src3->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+        
+        $src3->setImageFormat("jpeg");
+        $src3->setImageCompressionQuality(95);
+        $imageRandom1 = Image::randomString();
+        $src3->writeImage(public_path('\image'.$imageRandom1)); 
+
+        $imageRandom1 = ltrim($imageRandom1, '/');
+
+        $check1 = DB::table('images')->insert([
+         'name' => $imageRandom1, 'product_id' => $id, 'color' => 'black' ,'size' => 'custom'
+        ]);
+     
+     
+        return $check1;
+        
        
-   
+   dd();
    $src1 = new \Imagick(public_path("canvas_picture". $imageName1));
     $src1->resizeImage(530, null,\Imagick::FILTER_LANCZOS,1); 
    $src1->writeImage(public_path("resized_pictures". $imageName1)); 

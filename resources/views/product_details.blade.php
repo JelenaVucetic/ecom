@@ -228,30 +228,38 @@
 
           <div class="select-color">
             <h5>Color</h5>
-              <label class="white">
-                <div class="black-border">
-                  <input type="radio" name="color" value="white"  class="color-class" checked>
-                  <span></span>
-                </div>
-              </label>
+            @if (in_array("white", $colors))
+            <label class="white">
+              <div class="black-border">
+                <input type="radio" name="color" value="white"  class="color-class" checked>
+                <span></span>
+              </div>
+            </label>
+            @endif
+            @if (in_array("black", $colors))
               <label class="black">
                 <div  class="white-border">
                   <input type="radio" name="color" class="color-class" value="black" >
                   <span></span>
                 </div>
             </label>
+            @endif  
+            @if (in_array("red", $colors))
             <label class="red">
               <div class="black-border">
                 <input type="radio" name="color" value="red"  class="color-class">
                 <span></span>
               </div>
             </label>
+            @endif
+            @if (in_array("navy", $colors))
             <label class="navy">
               <div  class="white-border">
                 <input type="radio" name="color" class="color-class" value="navy" >
                 <span></span>
               </div>
           </label>
+          @endif
           </div>
 
 

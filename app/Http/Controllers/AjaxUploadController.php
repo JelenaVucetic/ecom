@@ -9,6 +9,7 @@ use App\Image as ImageModel;
 use App\Tag;
 use App\Product;
 use App\ImageMagick;
+use App\Design;
 //use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Facades\Image;
 
@@ -48,7 +49,7 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
-      
+     
         $data = $request->all();
 
         $picture = $data['picture'];
@@ -367,10 +368,28 @@ echo $checkImage;
   
         $title = $data['name'];
         $tags = $data['tag'];
-        $design_title = $data['title'];
-        dd($title, $tags, $description, $design_title);
+        $design_title = $data['title']; 
+      
 
-    }
+        $design = Design::find($request->designId);
+        $design_title_before =  $design->title;
+        $design->title = $design_title;
+        $design->save();
+
+        if($design_title != $design_title_before){
+            $product = $design->products()->FindByCategory($request->category);
+            dd($product);
+            $product->name = $request->name;
+           }
+
+        }
+      
+
+    
+
+ /*    public static function changeProductsName($name){
+       $products = Desgin::products();
+    } */
 
 
     public static function createTshirtMockupWoman($idProduct, $originalImagePath,$array){

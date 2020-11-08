@@ -39,7 +39,7 @@
                 <h3>Category</h3>
             </div>
 
-            <ul class="list-unstyled components">
+            <ul class="list-unstyled components"> 
                 <a href="#homeSubmenu"  data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Gender</a>
                 <ul class="collapse list-unstyled show" id="homeSubmenu">
                     <li>
@@ -73,6 +73,7 @@
 
         </nav>
     </div>
+    
 
          @if ($mainCategory->parent_id == null)
 
@@ -100,7 +101,12 @@
                               @else
                                   
                               @endif --}}
-                              @if ($item->color == "white" && $item->position == "front")
+`                              
+                              @if(str_contains( Request::url(), 'male'))
+                              @if($item->color == "white" && $item->position == "front" &&  $item->gender == "male")
+                              <img src="{{ url('image', $item->name) }}" class="" alt="">
+                              @endif
+                              @else ($item->color == "white" && $item->position == "front")
                               <img src="{{ url('image', $item->name) }}" class="" alt="">
                               @break
                               @endif
@@ -198,7 +204,12 @@
 
                                 @foreach ($product->images as $item)
                                 @if($product->category->name=="T-Shirts")
-                                    @if ($item->color == "white" && $item->position == "front")
+                                @if(str_contains( Request::url(), 'male'))
+                                
+                                @if($item->color == "white" && $item->position == "front" &&  $item->gender == "male")
+                                <img src="{{ url('image', $item->name) }}" class="" alt="">
+                                @endif
+                                    @elseif ($item->color == "white" && $item->position == "front")
                                         <img src="{{ url('image', $item->name) }}" class="" alt="">
                                         @break
                                     @endif

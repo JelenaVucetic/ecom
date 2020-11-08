@@ -12,7 +12,7 @@ class CategoriesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['index', 'show']]);
+        $this->middleware('admin', ['except' => [ 'show']]);
     }
     //
     public function index() {
@@ -62,7 +62,6 @@ class CategoriesController extends Controller
 
 
     public function show(Request $request,$id) {
-        /* dd(url()->full()); */
         $number = substr($request->fullUrl(),-1);
 
         $products = Category::find($id)->products;

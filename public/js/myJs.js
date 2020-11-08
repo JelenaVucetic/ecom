@@ -831,8 +831,10 @@ jQuery('.quantity').each(function() {
     for(var i=0;i<category_bold.length;i++){
       if(id == category_bold[i].getAttribute("data-category")){
         category_bold[i].style.fontWeight = "bold";
+        category_bold[i].closest('ul').classList.add('show');
       }else{
         category_bold[i].style.fontWeight = "400";
+        
       }
 
     }
@@ -936,18 +938,39 @@ $("#female-x").on("click", function(){
                 } ,
       type: 'post',
       dataType: 'html',
-      url: '/category_search',
+      url: '/category_search', 
       data: { category:attribute, number:number, gender:gender},
       success: function(response) {
         attribute = attribute.replace(/ /g,"");
         category = category.replace(/ /g,"");
         number = number.replace(/ /g,"");
         gender = gender.replace(/ /g,"");
-        history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number+"?"+gender);
-          $("#content").html(response);
+      //  alert(category);
+       // alert( window.location.host+ "a a" + window.location.pathname + "b b" + gender);
+     var url = window.location.pathname;
+     if(url.includes('male') || url.includes('female')){
+       url = url.split('/');
+       var new_url = window.location.pathname.replace("/"+url[3], '');
+       var refresh = window.location.protocol + "//" + window.location.host + new_url + '/' + gender;    
+       window.history.pushState({ path: refresh }, '', refresh);
+     }else{
+      var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '/' + gender;    
+      window.history.pushState({ path: refresh }, '', refresh);
+     }
+    
+     
+       
+
+       // history.replaceState({page: window.location.hostname+"/category/"}, "", category + "/" + gender /*  + "?" + attribute +"="  + number+"?"+gender */);
+ 
+        $("#content").html(response);
           $("#category-paragraph").attr("data-gender", gender);
       }
   });
+}
+
+function hasNumber(myString) {
+  return /\d/.test(myString);
 }
 
 
@@ -981,7 +1004,34 @@ $("#female-x").on("click", function(){
           category = category.replace(/ /g,"");
           number = number.replace(/ /g,"");
           gender = gender.replace(/ /g,"");
-          history.replaceState({page: window.location.hostname+"/category/"}, "", category + "?" + attribute +"="  + number+"?"+gender);
+         
+          var url = window.location.pathname;
+          var new_url;
+          var bool = true;
+          if(url.includes('male') || url.includes('female')){
+            url = url.split('/');
+            new_url = window.location.pathname.replace("/"+url[3], '');
+            bool = false;
+          }else{
+            new_url = window.location.pathname;
+          }
+          if(hasNumber(window.location.pathname)){
+             url = new_url.split('/');
+             new_url = new_url.replace("/"+url[2], '');
+            var refresh = window.location.protocol + "//" + window.location.host + new_url + '/' + category;    
+            window.history.pushState({ path: refresh }, '', refresh);
+            bool = false;
+          /*   new_url = window.location.pathname.split("/");
+            new_url = window.location.pathname.replace("/"+new_url[4], '');
+            alert(new_url); */
+          }
+          if(bool){
+            var refresh = window.location.protocol + "//" + window.location.host + new_url + '/' + category;    
+           window.history.pushState({ path: refresh }, '', refresh);
+          }
+      //    var refresh = window.location.protocol + "//" + window.location.host + new_url + '/' + category;    
+        //  window.history.pushState({ path: refresh }, '', refresh);
+        //  history.replaceState({page: window.location.hostname+"/category/"}, "", category /* + "?" + attribute +"="  + number+"?"+gender */);
            boldCategory(category);
 
       }

@@ -82,7 +82,7 @@
             <a href="/gifts_for_her" style="color: inherit;">
                 <div class="box-container">
                     <div class="box11-img-holder"></div>
-                    <img id="female" src="/site-images/217-Female.svg">
+                    <img id="female" src="/site-images/217-Female.svg" >
                     <button>Gifts for Her</button>
                 </div>
             </a>
@@ -90,6 +90,7 @@
     </div>
 
   <!--   Accessories -->
+
 
     <div class="">
         <div class="accessories">
@@ -202,7 +203,7 @@
                                     @break
                                 @endif
                                 @elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent")
-                                <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                <img src="{{ url('image', $item->name) }}" class="img-div-phone lazy" alt="">
                                 @break
                                 @elseif($product->category->name=="Canvas Art")
                                 <img src="{{ url('image', $item->name) }}" class="img-div-pictures" alt="">
@@ -235,13 +236,13 @@
                                 <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
                                 @break
                              @else
-                                <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
+                                <img  class="img-div-phone" alt="">
                                 @break
                             @endif
                             @endforeach
 
                                @else
-                                <img src="{{ url('images', $product->image) }}" class="" alt="">
+                                <img  src="{{ url('images', $product->image) }}" class="" alt="">
                                 @break
                                 @endif
                             </div>

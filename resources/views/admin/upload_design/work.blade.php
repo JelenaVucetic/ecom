@@ -521,11 +521,15 @@
                   <canvas id="c6" width="250" height="300"></canvas>
               </div>
               <div class="product-options3">
-                  {{-- <form method="post" id="upload-form3" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                   <input type="file" name="file1" >
-                   <input type="submit" value="Upload" name="submit">
-                   </form> --}}
+
+                <div class="select-color" id="hoodie-check">
+                  <h5>Color</h5>
+                  <input type="checkbox" class="check-hoodie" name="white" value="white" checked>
+                  <label for="white">White</label>
+                  <input type="checkbox" class="check-hoodie" name="black" value="black" checked>
+                  <label for="black">Black</label>
+                </div>
+
                   <div class="color-choose">
   
                       <div class="container">
@@ -2825,6 +2829,23 @@
     });
   }
 
+  function checkHoodie(){
+    var hoodie = document.getElementById('enabled-product3');
+    if(hoodie.classList.contains("enable")){
+      if ($("#hoodie-check input:checkbox:checked").length > 0)
+      {
+        return true;
+      }
+      else
+      {
+      alert('morate izabrati boju dukserice');
+      return false;
+      }
+    }else{
+      return true;
+    } 
+  } 
+
   function checkTshirt(){
     var wall = document.getElementById('enabled-product1');
     if(wall.classList.contains("enable")){
@@ -2839,8 +2860,7 @@
       }
     }else{
       return true;
-    }
-    
+    } 
   } 
 
 
@@ -2878,7 +2898,7 @@ function checkWallpapers(){
 }
   
   $("#capture").click(function(event){
-    if(checkWallpapers() && checkTshirt()){
+    if(checkWallpapers() && checkTshirt() && checkHoodie()){
       var wallpaper = new Array();
       $('.check-wallpaper:checked').each(function(){
         wallpaper.push($(this).val());
@@ -2887,11 +2907,16 @@ function checkWallpapers(){
       $('.check-tshirt:checked').each(function(){
         tshirt.push($(this).val());
       });
-      sendProducts(wallpaper,tshirt);
+      var hoodie = new Array();
+      $('.check-hoodie:checked').each(function(){
+        hoodie.push($(this).val());
+      });
+
+      sendProducts(wallpaper,tshirt,hoodie);
     }
   });
 
-function sendProducts(check, checkTshirts){
+function sendProducts(check, checkTshirts, checkHoodies){
 window.scrollTo(0,0);
 time = 500;
 var title = document.getElementById('title').value;
@@ -2960,7 +2985,8 @@ if( el.getAttribute('value')=='0'){
                     picture : picture,
                     title : title,
                     check : check,
-                    checkTshirts : checkTshirts
+                    checkTshirts : checkTshirts,
+                    checkHoodies : checkHoodies
                 },
                 beforeSend: function(){
                   // Show image container

@@ -2852,6 +2852,7 @@ $("#capture").click(function(event){
     var gender = $('input[name=gender]:checked').val();
     var count = 0;
     var originalImagePath = "<?php if(!empty($image)){echo $image;} ?>";
+    var designId = '<?php echo $design->id; ?>';
 
     Array.prototype.forEach.call(els, function(el) {
       if( el.getAttribute('value')=='0'){
@@ -2886,7 +2887,7 @@ $("#capture").click(function(event){
             console.log(originalImagePath);
             var category = el.getAttribute('data-category');
             var nameProduct = title + " " + el.getAttribute('name');
-            $.ajax({
+            $.ajax({ 
                      headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -2904,7 +2905,8 @@ $("#capture").click(function(event){
                         gedner : gender,
                         category : category,
                         picture : picture,
-                        title : title
+                        title : title,
+                        designId : designId
                     },
                     beforeSend: function(){
                       // Show image container

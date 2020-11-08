@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use App\Wishlist;
 use App\Design;
+use App\Image as Images;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Recommends;
@@ -102,6 +103,11 @@ class HomeController extends Controller
     }
 
 
+    public function showGenderCategory(Request $request){
+        
+    }
+
+
     public function loadImagesMasks(Request $request)
     {
         $image = DB::table('images')->where([
@@ -168,7 +174,8 @@ class HomeController extends Controller
         $product = DB::table('product')->where('id', $id)->first();
         $find_cat = Product::findOrFail($id);
         $pro_cat = Product::find($product->id); 
-
+        $colors = Images::where('product_id', $id)->get('color');
+        $colors = $colors->pluck('color')->toArray();
         if($find_cat->category->name == "T-Shirts"){
             if($product->gender == "female"){
             $imageFront = DB::table('images')->where([
@@ -202,7 +209,7 @@ class HomeController extends Controller
                 ['product_id',"=", $id],
                 ['color',"=" ,'transparent']
             ])->first();
-            $imageBack = "Iphone-II-Pro-Bezpozadine1.png";
+            $imageBack = "Zelni-Iphone.png";
 
         }elseif($find_cat->category->name == "Samsung Cases"){
             $imageFront = DB::table('images')->where([
@@ -402,7 +409,7 @@ class HomeController extends Controller
             $recommends->save();
         }
        
-        return view('product_details', compact('pro_cat','product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack', 'imageSlider'));
+        return view('product_details', compact('pro_cat','product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack', 'imageSlider', 'colors'));
     }
 
     public function viewWishlist()
@@ -1305,7 +1312,7 @@ class HomeController extends Controller
                     if($request->color=="Black"){
                         $blankImage = 'Iphone-II-Pro-Crna.png';
                     }else{
-                        $blankImage = 'Iphone-II-Pro-Bezpozadine1.png';
+                        $blankImage = 'Zelni-Iphone.png';
                     }
                 }else{
 

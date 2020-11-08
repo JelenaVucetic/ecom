@@ -101,4 +101,8 @@ class Product extends Model
     {
         return $this->belongsTo(Design::class);
     }
+
+    public function scopeFindByCategory($query, $categoryId){
+        return $query->where('category_id',$categoryId)->first();
+    }
 }
