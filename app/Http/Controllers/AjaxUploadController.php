@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 use Validator;
 use DB;
 use App\Image as ImageModel;
@@ -49,9 +51,14 @@ class AjaxUploadController extends Controller
 
 
     function save(Request $request){
-     
+
         $data = $request->all();
 
+        $path = public_path();
+
+      
+
+     
         $picture = $data['picture'];
         $title = $data['name'];
         $image = $data['image'];
@@ -75,13 +82,13 @@ class AjaxUploadController extends Controller
           . $characters1[rand(0, strlen($characters1) - 1)];
           $string2 = str_shuffle($name1);
           $string2 .=  round(microtime(true) * 1000);
-  
+
           file_put_contents("canvas_picture/". $string2 . ".png", $picture);
       }
       file_put_contents("test/". $string2 . ".png", $picture);
 
-     
-      
+
+
       $imageCanvas = $string2 . ".png";
  /*    if($canvasImage!=="0"){
 
@@ -226,7 +233,7 @@ if($original == "Poster"){
 
 if($original=='T-shirt' && ($gender == "female" || $gender == "unisex")){
     $this->createTshirtMockupWoman($idProduct, $originalImagePath, $data['checkTshirts']);
-    
+
 }
 if($original=='T-shirt' && ($gender == "male" || $gender == "unisex")){
     $this->createTshirtMockupMan($idProduct, $originalImagePath, $data['checkTshirts']);
@@ -309,7 +316,7 @@ if($original == "Magnets"){
 }
 if($original == "Mugs"){
     ImageModel::mugThumb($idProduct, $imageCanvas);
-     ImageModel::mugMain($idProduct, $imageCanvas);  
+     ImageModel::mugMain($idProduct, $imageCanvas);
 }
 if($original == "Termos"){
     ImageModel::thermos($idProduct, $imageCanvas);
@@ -347,7 +354,7 @@ $products = Product::where([
  $items = array();
  foreach($tagsComma as $tag){
     Tag::firstOrCreate([
-        'name'=> $tag 
+        'name'=> $tag
         ]);
         $item = DB::table('tags')->select('id')->where('name',$tag)->first();
         $items[] = $item->id;
@@ -365,11 +372,11 @@ echo $checkImage;
         $data = $request->all();
         $picture = $data['picture'];
         $description = $data['description1'];
-  
+
         $title = $data['name'];
         $tags = $data['tag'];
-        $design_title = $data['title']; 
-      
+        $design_title = $data['title'];
+
 
         $design = Design::find($request->designId);
         $design_title_before =  $design->title;
@@ -383,9 +390,9 @@ echo $checkImage;
            }
 
         }
-      
 
-    
+
+
 
  /*    public static function changeProductsName($name){
        $products = Desgin::products();
@@ -404,7 +411,7 @@ echo $checkImage;
         }
         if(in_array("red", $array,true)){
             ImageModel::womanRedTshirt($idProduct, $originalImagePath);
-        } 
+        }
     }
 
     public static function createTshirtMockupMan($idProduct, $originalImagePath,$array){
@@ -419,7 +426,7 @@ echo $checkImage;
         }
         if(in_array("red",$array ,true)){
             ImageModel::manRedTshirt($idProduct, $originalImagePath);
-        } 
+        }
     }
 
 

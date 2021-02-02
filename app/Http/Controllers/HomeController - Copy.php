@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Mail;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
-class HomeController extends Controller
+class  HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -37,10 +37,10 @@ class HomeController extends Controller
         //Maknuti komentar ispod ,'verified'
         $this->middleware('verified', ['only' => ['index']]);
         $this->middleware('auth', ['only' => ['index']]);
-       
+
     }
 
-    public function test() 
+    public function test()
     {
         return view('test');
     }
@@ -96,15 +96,15 @@ class HomeController extends Controller
         $faceMasksCat = DB::table('categories')
                 ->where('categories.name', '=', 'Masks')
                 ->first();
-              
-            
+
+
         return view('welcome', compact('products', 'categories', 'shirtsCat', 'casesCat', 'postersCat', 'mugsCat', 'coastersCat', 'clocksCat', 'sacksCat', 'magnetsCat', 'faceMasksCat'));
-        
+
     }
 
 
     public function showGenderCategory(Request $request){
-        
+
     }
 
 
@@ -115,7 +115,7 @@ class HomeController extends Controller
             ['color' , "=",$request->color]
         ])->first();
             $blankImage = "Mask". $request->color. ".png";
-        
+
 
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
@@ -134,15 +134,15 @@ class HomeController extends Controller
         $tShirts = Product::distinct()->where('category_id', 6)->groupBy("product.design_id")->get();
 
         $masks = Product::distinct()->where('category_id', 2)->groupBy("product.design_id")->get();
-        
+
         $cases1 = Category::where('parent_id', $parentId = Category::where('name', "Cases")
                 ->value('id'))
                 ->pluck('id')
                 ->all();
 
-              
+
         $cases = Product::distinct()->whereIn('category_id', $cases1)->groupBy("product.design_id")->get();
-        
+
 
   /*
         foreach($tShirts as $t) {
@@ -173,7 +173,7 @@ class HomeController extends Controller
         $imageSlider = "";
         $product = DB::table('product')->where('id', $id)->first();
         $find_cat = Product::findOrFail($id);
-        $pro_cat = Product::find($product->id); 
+        $pro_cat = Product::find($product->id);
         $colors = Images::where('product_id', $id)->get('color');
         $colors = $colors->pluck('color')->toArray();
         if($find_cat->category->name == "T-Shirts"){
@@ -229,7 +229,7 @@ class HomeController extends Controller
                 ['size', '=', 'A4'],
                 ['color', '=', 'white']
             ])->first();
-          
+
             $imageBack = "Framed-Prints-Art-White-A4-Mask01-1080.png";
         }elseif($find_cat->category->name=="Canvas Art"){
             $imageFront = DB::table('images')->where([
@@ -244,6 +244,7 @@ class HomeController extends Controller
             $imageSlider =  DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->get();
+            
             $imageBack = "Wall-Wallpapers-BG.png";
         }elseif($find_cat->category->name=="Tote Bags") {
             $imageFront = DB::table('images')->where([
@@ -295,7 +296,7 @@ class HomeController extends Controller
             $imageFront = DB::table('images')->where([
                 ['product_id',"=", $id]
             ])->first();
-          
+
             $imageBack = "TermosThumbnail.png";
         }elseif($find_cat->category->name=="Mugs"){
             $imageFront = DB::table('images')->where([
@@ -358,14 +359,14 @@ class HomeController extends Controller
         $counter = null;
         $reviewsStar = DB::table('reviews')->where('product_id', $product->id)->select('reviews.*',DB::raw('AVG(reviews.stars) as avg' ))
                                             ->groupBy('reviews.stars')->first();
-                     
+
         if($reviewsStar) {
             $average = round($reviewsStar->avg,1);
         } else {
             $average = '';
         }
-      
-      
+
+
 /* dd($reviewsStar);
         if(!$reviewsStar->isEmpty()) {
           $totalStar = 0;
@@ -379,7 +380,7 @@ class HomeController extends Controller
             $average = 1;
         } */
 
-        if(Auth::check()) 
+        if(Auth::check())
         {
             $user = Auth::id();
             $createReview = DB::table('reviews')->where('user_id', $user)->where('product_id', $product->id)->first();
@@ -408,7 +409,7 @@ class HomeController extends Controller
             $recommends->pro_id = $id;
             $recommends->save();
         }
-       
+
         return view('product_details', compact('pro_cat','product', 'categories', 'design', 'poster_size', 'createReview', 'counter', 'review', 'average', 'numberOfReviews', 'imageFront', 'imageBack', 'imageSlider', 'colors'));
     }
 
@@ -449,7 +450,7 @@ class HomeController extends Controller
      */
 }
 
-    public function destroy($id) 
+    public function destroy($id)
     {
         DB::table('wishlist')->where([
             ['pro_id', '=', $id],
@@ -464,13 +465,13 @@ class HomeController extends Controller
                <a href='/product_details/" . $product->id . " '>
                    <div>
                        <div class='img-div  img-div-cat'> ";
-                       if($product->images){ 
+                       if($product->images){
                        foreach ($product->images as $item) {
                            if($product->category->name=="T-Shirts") {
                                if ($item->color == "white" && $item->position == "front") {
                                 $output.= " <img src='" . url('image',  $item->name ) ."'> ";
                                break;
-                           } 
+                           }
                         }
                            elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-phone'> ";
@@ -508,7 +509,7 @@ class HomeController extends Controller
                             $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-wall" alt="'.$product->category->name.'">';
                             break;
                         }
-                        
+
                            elseif($product->category->name == "Gift Bags") {
                             $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-gift-bags'> ";
                            break;
@@ -519,20 +520,20 @@ class HomeController extends Controller
                                }
                            }
                        }
-    
+
                           else {
                             $output.="<img src='" . url('images',  $product->image ). " '> ";
                           break;
                           }
-                       
+
                           $output.="</div>
                        <div class='product-info'>
-                           <p class='product-name'>".$product->name ."</p> ";                  
+                           <p class='product-name'>".$product->name ."</p> ";
                                $pro_cat = Product::find($product->id);
                                if($pro_cat->category != null){
-    
+
                                 $output.=" <p class='product-category'>".$pro_cat->category->name ."</p>
-                           "; } 
+                           "; }
                            if($product->spl_price==0) {
                             $output.="  <p><span style='font-weight: bold'>&euro;" .number_format((float)$product->price, 2) ."</span></p> ";
                            }else {
@@ -542,21 +543,21 @@ class HomeController extends Controller
                    </div>
                </a>
            </div>";
-    
+
         }
-    
+
             if(count($products)>0){
                 echo $output;
              }else{
                  echo "<h3>No products</h3>";
              }
-       
+
     }
 
 
     public function addReview(Request $request)
     {
-       
+
         $this->validate($request, [
 
             'person_name' => 'required|min:3|max:35',
@@ -632,7 +633,7 @@ class HomeController extends Controller
                 'query.min' => 'Your search must have more than three caracters.'
             ]);
         $query = $request->input('query');
- 
+
 
         $products = Product::search($query)->paginate(20);
         $categories = Category::where([
@@ -644,10 +645,10 @@ class HomeController extends Controller
 
     public function showCategoryProduct(Request $request)
     {
-       
+
         $category = Category::where('name',$request->category)->first();
          $categoryId = $category->id;
-        
+
          $all = Category::where('parent_id', $parentId = Category::where('name', $category->name)
                 ->value('id'))
                 ->pluck('id')
@@ -689,13 +690,13 @@ class HomeController extends Controller
                         $products = Product::where(
                             'category_id', '11'
                         )->get();
-                        
+
                     }else{
                         $products = Product::whereIn(
                             'category_id',$all
                         )->get();
                     }
-                    
+
 
                  } else {
                      $products = Product::where(
@@ -706,7 +707,7 @@ class HomeController extends Controller
              }
 
          }
-        
+
         $output = '';
          foreach($products as $product){
 
@@ -734,7 +735,7 @@ class HomeController extends Controller
                             break;
                         }
                     }
-              
+
                 }else if( $product->category->getParentsNames() == "Cases" && $item->color == "transparent"){
                     $output .= '<img src="'. url("image",  $item->name) .'" class="img-div-phone" alt="'.$product->category->name.'">';
                     break;
@@ -830,13 +831,13 @@ class HomeController extends Controller
            <a href='/product_details/" . $product->id . " '>
                <div>
                    <div class='img-div  img-div-cat'> ";
-                   if($product->images){ 
+                   if($product->images){
                    foreach ($product->images as $item) {
                        if($product->category->name=="T-Shirts") {
                            if ($item->color == "white" && $item->position == "front") {
                             $output.= " <img src='" . url('image',  $item->name ) ."'> ";
                            break;
-                       } 
+                       }
                     }
                        elseif( $product->category->getParentsNames() == "Cases" && $item->color == "transparent") {
                         $output.= " <img src='" . url('image',  $item->name ) ."') class='img-div-phone'> ";
@@ -893,15 +894,15 @@ class HomeController extends Controller
                         $output.="<img src='" . url('images',  $product->image ). " '> ";
                       break;
                       }
-                   
+
                       $output.="</div>
                    <div class='product-info'>
-                       <p class='product-name'>".$product->name ."</p> ";                  
+                       <p class='product-name'>".$product->name ."</p> ";
                            $pro_cat = Product::find($product->id);
                            if($pro_cat->category != null){
 
                             $output.=" <p class='product-category'>".$pro_cat->category->name ."</p>
-                       "; } 
+                       "; }
                        if($product->spl_price==0) {
                         $output.="  <p><span style='font-weight: bold'>&euro;" .number_format((float)$product->price, 2) ."</span></p> ";
                        }else {
@@ -921,9 +922,9 @@ class HomeController extends Controller
 
     }
 
-    public function giftsForHim() 
+    public function giftsForHim()
     {
-    
+
         $categories = Category::where([
             ['parent_id',NULL],
             ['active',1]
@@ -996,7 +997,7 @@ class HomeController extends Controller
         return view('gifts_for_him', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'backpacks', 'clocks', 'notebooks'));
     }
 
-    public function giftsForHer() 
+    public function giftsForHer()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1087,16 +1088,16 @@ class HomeController extends Controller
         return view('gifts_for_her', compact('categories', 'shirts', 'casesProducts', 'wallProducts', 'makeupBags', 'mugs', 'bags', 'backpacks', 'notebooks','sacks', 'magnets'));
     }
 
-    public function termsAndPrivacy() 
+    public function termsAndPrivacy()
     {
         $categories = Category::where([
             ['parent_id',NULL],
             ['active',1]
             ])->get();
         return view('terms_and_privacy', compact('categories'));
-    } 
+    }
 
-    public function privacyPolicy() 
+    public function privacyPolicy()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1105,7 +1106,7 @@ class HomeController extends Controller
         return view('privacy_policy', compact('categories'));
     }
 
-    public function termsAndConditions() 
+    public function termsAndConditions()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1132,7 +1133,7 @@ class HomeController extends Controller
         return view('how_to_order', compact('categories'));
     }
 
-    public function shipping() 
+    public function shipping()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1150,7 +1151,7 @@ class HomeController extends Controller
         return view('help_center', compact('categories'));
     }
 
-    public function copyright() 
+    public function copyright()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1159,7 +1160,7 @@ class HomeController extends Controller
         return view('copyright', compact('categories'));
     }
 
-    public function contact() 
+    public function contact()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1168,7 +1169,7 @@ class HomeController extends Controller
         return view('contact_us', compact('categories'));
     }
 
-    public function specialPrice() 
+    public function specialPrice()
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1352,13 +1353,13 @@ class HomeController extends Controller
     }
 
     public function loadImagesPosters(Request $request){
-        
+
         $image = DB::table('images')->where([
             ['product_id', "=", $request->id],
             ['color' , "=",$request->color],
             ['size',"=",$request->size]
         ])->first();
-      
+
         $blankImage = $request->size . $request->color . ".png";
 
         return response()->json(array('image' => $image,'blankImage' => $blankImage));
@@ -1372,7 +1373,7 @@ class HomeController extends Controller
         return view('mastercard_secure');
     }
 
-    public function productsOfDesign($id) 
+    public function productsOfDesign($id)
     {
         $categories = Category::where([
             ['parent_id',NULL],
@@ -1392,7 +1393,7 @@ class HomeController extends Controller
             'description' =>  'required',
             'image' => 'nullable'
            ]);
-      
+
         $details = [
             'subject'      =>  $request->subject,
             'email'   =>   $request->email,
@@ -1409,13 +1410,13 @@ class HomeController extends Controller
         }
 
 
-         // check if reCaptcha has been validated by Google      
+         // check if reCaptcha has been validated by Google
         $secret = env('GOOGLE_RECAPTCHA_SECRET');
         $captchaId = $request->input('g-recaptcha-response');
-    
+
         //sends post request to the URL and tranforms response to JSON
         $responseCaptcha = json_decode(file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$captchaId));
-        
+
         if($responseCaptcha->success == true)
         {
 
@@ -1423,11 +1424,11 @@ class HomeController extends Controller
 
                 if( count(Mail::failures()) > 0 ) {
                 echo "There was one or more failures. They were: <br />";
-        
+
                 foreach(Mail::failures() as $email_address) {
                     echo " - $email_address <br />";
                     }
-        
+
                 }
                return redirect()->back()->with('status', 'Message successfully sent !');
 
@@ -1436,8 +1437,8 @@ class HomeController extends Controller
             // send back error message
 
             return redirect()->back()->with('status', 'Looks like you are a replicant. Sorry but I do not receive emails from non human entities :(');
-        }      
-    
+        }
+
     }
-    
+
 }

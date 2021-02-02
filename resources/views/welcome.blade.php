@@ -19,7 +19,7 @@
                         <button>  Shop T-Shirts</button>
                     </div>
                 </a>
-            </div>          
+            </div>
             <div class="col-6 col-md-4">
                 <a href="{{route('category.show',[$casesCat->id, $casesCat->name => $casesCat->id ])}}" style="color: inherit;">
                     <div class="box-container">
@@ -166,8 +166,8 @@
                         </div>
                           <div class="my-card-body">
                               <p class="my-card-text">{{ $product->name }}</p>
-                               <p class="my-card-text">{{ $product->description }}</p> 
-                               
+                               <p class="my-card-text">{{ $product->description }}</p>
+
                               <div class="d-flex justify-content-between align-items-center">
                                   <div class="btn-group">
                                       <button type="button" class="btn btn-sm btn-outline-primpary">
@@ -177,10 +177,10 @@
                                           <a href="{{ url('/cart/addItem', [$product->id]) }}" class="add-to-cart"> Add to cart</a>
                                       </button>
                                   </div>
-                               
+
                               </div>
                           </div>
-                      
+
                   </div>
               @empty
                   <h3>No products</h3>
@@ -236,7 +236,7 @@
                                 <img src="{{ url('image', $item->name) }}" class="img-div-gift-bags" alt="">
                                 @break
                              @else
-                                <img  class="img-div-phone" alt="">
+                                <img src="{{ url('image', $item->name) }}" class="img-div-phone" alt="">
                                 @break
                             @endif
                             @endforeach
